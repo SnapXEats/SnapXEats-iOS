@@ -50,6 +50,13 @@
 		9D8E89151FFD2BEC0066A1D9 /* ValidatorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88BA1FFD28C50066A1D9 /* ValidatorHelper.swift */; };
 		9D8E89161FFD2C400066A1D9 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88BD1FFD28C50066A1D9 /* RootRouter.swift */; };
 		9D8E89171FFD2C400066A1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88BE1FFD28C50066A1D9 /* AppDelegate.swift */; };
+		9DEB5CF71FFE6D49003B9D4B /* FlashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88BC1FFD28C50066A1D9 /* FlashScreen.storyboard */; };
+		9DEB5CF81FFE6D49003B9D4B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88C61FFD28C50066A1D9 /* Login.storyboard */; };
+		9DEB5CF91FFE6D49003B9D4B /* PlainButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88AB1FFD28C50066A1D9 /* PlainButtonCell.xib */; };
+		9DEB5CFA1FFE6D49003B9D4B /* SectionHeaderLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88AE1FFD28C50066A1D9 /* SectionHeaderLabelCell.xib */; };
+		9DEB5CFB1FFE6D49003B9D4B /* SanFranciscoText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88E11FFD2A6F0066A1D9 /* SanFranciscoText-Regular.otf */; };
+		9DEB5CFC1FFE6D49003B9D4B /* SanFranciscoText-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88E21FFD2A6F0066A1D9 /* SanFranciscoText-Medium.otf */; };
+		9DEB5CFD1FFE6D49003B9D4B /* SanFranciscoText-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88E31FFD2A6F0066A1D9 /* SanFranciscoText-Light.otf */; };
 		CE64A9A86226702DB23DF92F /* Pods_SnapXEats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967BD01B1CEED06931835CA3 /* Pods_SnapXEats.framework */; };
 /* End PBXBuildFile section */
 
@@ -103,12 +110,12 @@
 		9D8E88B71FFD28C50066A1D9 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		9D8E88B91FFD28C50066A1D9 /* SessionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionHelper.swift; sourceTree = "<group>"; };
 		9D8E88BA1FFD28C50066A1D9 /* ValidatorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorHelper.swift; sourceTree = "<group>"; };
-		9D8E88BC1FFD28C50066A1D9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9D8E88BC1FFD28C50066A1D9 /* FlashScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FlashScreen.storyboard; sourceTree = "<group>"; };
 		9D8E88BD1FFD28C50066A1D9 /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
 		9D8E88BE1FFD28C50066A1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D8E88C21FFD28C50066A1D9 /* LoginContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContract.swift; sourceTree = "<group>"; };
 		9D8E88C41FFD28C50066A1D9 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
-		9D8E88C61FFD28C50066A1D9 /* LoginStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginStoryboard.storyboard; sourceTree = "<group>"; };
+		9D8E88C61FFD28C50066A1D9 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		9D8E88C71FFD28C50066A1D9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9D8E88C91FFD28C50066A1D9 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		9D8E88CB1FFD28C50066A1D9 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
@@ -344,7 +351,7 @@
 		9D8E88BB1FFD28C50066A1D9 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				9D8E88BC1FFD28C50066A1D9 /* LaunchScreen.storyboard */,
+				9D8E88BC1FFD28C50066A1D9 /* FlashScreen.storyboard */,
 				9D8E88BD1FFD28C50066A1D9 /* RootRouter.swift */,
 				9D8E88BE1FFD28C50066A1D9 /* AppDelegate.swift */,
 			);
@@ -354,13 +361,13 @@
 		9D8E88BF1FFD28C50066A1D9 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				9D8E88C01FFD28C50066A1D9 /* MainSearch */,
+				9D8E88C01FFD28C50066A1D9 /* Login */,
 				9D8E88CD1FFD28C50066A1D9 /* Base */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		9D8E88C01FFD28C50066A1D9 /* MainSearch */ = {
+		9D8E88C01FFD28C50066A1D9 /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				9D8E88C11FFD28C50066A1D9 /* Contract */,
@@ -369,7 +376,7 @@
 				9D8E88C81FFD28C50066A1D9 /* Interactor */,
 				9D8E88CA1FFD28C50066A1D9 /* Router */,
 			);
-			path = MainSearch;
+			path = Login;
 			sourceTree = "<group>";
 		};
 		9D8E88C11FFD28C50066A1D9 /* Contract */ = {
@@ -391,7 +398,7 @@
 		9D8E88C51FFD28C50066A1D9 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9D8E88C61FFD28C50066A1D9 /* LoginStoryboard.storyboard */,
+				9D8E88C61FFD28C50066A1D9 /* Login.storyboard */,
 				9D8E88C71FFD28C50066A1D9 /* LoginViewController.swift */,
 			);
 			path = View;
@@ -592,6 +599,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DEB5CF71FFE6D49003B9D4B /* FlashScreen.storyboard in Resources */,
+				9DEB5CF81FFE6D49003B9D4B /* Login.storyboard in Resources */,
+				9DEB5CF91FFE6D49003B9D4B /* PlainButtonCell.xib in Resources */,
+				9DEB5CFA1FFE6D49003B9D4B /* SectionHeaderLabelCell.xib in Resources */,
+				9DEB5CFB1FFE6D49003B9D4B /* SanFranciscoText-Regular.otf in Resources */,
+				9DEB5CFC1FFE6D49003B9D4B /* SanFranciscoText-Medium.otf in Resources */,
+				9DEB5CFD1FFE6D49003B9D4B /* SanFranciscoText-Light.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -614,8 +628,14 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-SnapXEats/Pods-SnapXEats-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Localize-Swift/Localize_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/ReachabilitySwift.framework",
@@ -625,8 +645,14 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Localize_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReachabilitySwift.framework",

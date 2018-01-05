@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,36 +12,13 @@
         <!--Login View Controller-->
         <scene sceneID="1dW-bA-U0h">
             <objects>
-                <viewController id="b95-f1-haL" customClass="LoginViewController" customModule="SnapXEats" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="b95-f1-haL" customClass="LoginViewController" customModule="SnapXEats" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KJu-86-iFm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TSJ-h1-hU2">
-                                <rect key="frame" x="108" y="340" width="159" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="FaceBookLogin"/>
-                                <connections>
-                                    <action selector="faceBookLoginClicked" destination="b95-f1-haL" eventType="touchUpInside" id="aF1-JA-3Wg"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VNi-na-48O">
-                                <rect key="frame" x="108" y="398" width="159" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Instagram Login"/>
-                                <connections>
-                                    <action selector="instagramLoginClicked" destination="b95-f1-haL" eventType="touchUpInside" id="dBH-wg-mvI"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Fd-nu-MZK"/>
                     </view>
-                    <connections>
-                        <outlet property="faceBookLogin" destination="TSJ-h1-hU2" id="cdZ-i7-UzB"/>
-                        <outlet property="instagramLOginButton" destination="VNi-na-48O" id="3JV-q7-3aA"/>
-                        <outlet property="instagramLoginButton" destination="VNi-na-48O" id="EHh-Ig-VXj"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ao6-o7-HGY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

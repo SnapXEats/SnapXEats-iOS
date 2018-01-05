@@ -4,7 +4,11 @@
 
 import UIKit
 
-class LoginViewController: BaseViewController, StoryboardLoadable {
+enum LoginEnum{
+    public static  var fbButtonTitle = "Login with FaceBook"
+}
+
+class LoginViewController: BaseViewController, StoryboardLoadable, LoginView {
     
     // MARK: Properties
     
@@ -13,15 +17,12 @@ class LoginViewController: BaseViewController, StoryboardLoadable {
     // MARK: IBOutlets
     
  
-    @IBOutlet var faceBookLogin: UIButton!
-    
-    @IBOutlet var instagramLoginButton: UIButton!
     // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
-        hideKeyboardWhenTappedAround()
+        initView()
+        //hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,30 +32,41 @@ class LoginViewController: BaseViewController, StoryboardLoadable {
     
     override func viewWillDisappear(_ animated: Bool) { 
         super.viewDidDisappear(animated)
-        removeKeyboardNotification()
+        //removeKeyboardNotification()
     }
     
-    // MARK: IBActions
-    
-    @IBAction func faceBookLoginClicked() {
-        presenter?.loginUsingFaceBook()
-    }
-    
-    @IBAction func instagramLoginClicked() {
-        presenter?.loginUsingInstagram()
-    }
-    
-    // MARK: Private
-    
-    private func setupView() {
-        // TODO: Setup view here
-    }
-    
+
 }
 
-extension  LoginViewController: LoginView {
+extension  LoginViewController  {
     
-    //TODO: Implement MainSearchView methods here
+    //TODO: Implement LoginView methods here
     
+    // MARK: Private
+
+    func initView() {
+        createFaceBookLoginButton()
+    }
+    
+    private func createFaceBookLoginButton() {
+        // Add a custom facebook login button to your app
+        let fbLoginButton = UIButton(type: .custom)
+        fbLoginButton.backgroundColor = UIColor.darkGray
+        
+        fbLoginButton.frame = CGRect(x: 0, y: 0, width: 180, height: 40)
+        fbLoginButton.center = view.center;
+        fbLoginButton.setTitle(LoginEnum.fbButtonTitle, for: .normal)
+        
+        // Handle clicks on the button
+        fbLoginButton.addTarget(self,  action: #selector(self.fbLoginClicked), for: .touchUpInside)
+        
+        // Add the button to the view
+        view.addSubview(fbLoginButton)
+    }
+    
+    // Once the button is clicked, show the login dialog
+    @objc func fbLoginClicked() {
+        presenter?.loginUsingFaceBook()
+    }
 }
 

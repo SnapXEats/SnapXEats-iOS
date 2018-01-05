@@ -6,7 +6,7 @@ import Foundation
 
 
 protocol LoginView: BaseView {
-    
+    func initView()
 }
 
 protocol LoginViewPresentation: class {
@@ -15,8 +15,8 @@ protocol LoginViewPresentation: class {
 }
 
 protocol LoginViewInteractorInput: class {
-    func sendFaceBookLoginRequest(userName: String, pwd: String)
-    func sendInstagramRequest(userName: String, pwd: String);
+    func sendFaceBookLoginRequest(view: LoginView?)
+    func sendInstagramRequest(view: LoginView?)
 }
 
 protocol LoginViewInteractorOutput: class {

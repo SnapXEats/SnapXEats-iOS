@@ -11,18 +11,19 @@ class LoginPresenter {
     // MARK: Properties
     
     weak var view: LoginView?
-    //var router: LoginViewWireframe?
+    var router: LoginViewWireframe?
     var interactor: LoginInteractor?
-    
+    private init () {}
+    static  var  singletenInstance = LoginPresenter()
 }
 
 extension LoginPresenter: LoginViewPresentation {
     func loginUsingFaceBook() {
-        interactor?.sendInstagramRequest(userName: "", pwd: "")
+        interactor?.sendFaceBookLoginRequest(view: view)
     }
     
     func loginUsingInstagram() {
-        
+        interactor?.sendFaceBookLoginRequest(view: view)
     }
     
     

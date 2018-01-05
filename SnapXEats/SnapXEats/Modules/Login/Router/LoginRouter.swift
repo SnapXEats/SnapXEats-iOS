@@ -12,32 +12,34 @@ class LoginRouter {
     
     weak var view: UIViewController?
     
+    private init() {}
+    static var singletenInstance = LoginRouter()
     // MARK: Static methods
     
     static func setupModule() -> LoginViewController {
         
         let viewController = UIStoryboard.loadViewController() as LoginViewController
         
-        let presenter = LoginPresenter()
-      //  let router = LoginRouter()
-       // let interactor = LoginInteractor()
+        let presenter = LoginPresenter.singletenInstance
+        let router = singletenInstance
+        let interactor = LoginInteractor.singletenInstance
         
         
         viewController.presenter =  presenter
         
         presenter.view = viewController
-      //  presenter.router = router
-       // presenter.interactor = interactor
+        presenter.router = router
+        presenter.interactor = interactor
         
-      //  router.view = viewController
+        router.view = viewController
         
-      //  interactor.output = presenter
+        interactor.output = presenter
         
         return viewController
     }
 }
 
 
-extension LoginRouter {  //LoginWireframe
+extension LoginRouter: LoginViewWireframe {
     // TODO: Implement wireframe methods
 }

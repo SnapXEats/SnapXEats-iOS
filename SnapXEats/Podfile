@@ -12,16 +12,21 @@ target 'SnapXEats' do
     pod 'ReachabilitySwift', '~> 3'
     pod 'KeychainSwift', '~> 7.0'
     pod 'Crashlytics'
-    pod 'Localize-Swift', '~> 1.6'
+    
+    pod 'FacebookCore'
+    pod 'FacebookLogin'
+    pod 'FacebookShare'
+end
+
+    # pod 'Localize-Swift', '~> 1.6'
     ## might requred in future keep it commeted
     # pod 'ObjectMapper+Realm'
     # pod 'NextResponderTextField'
    
     # pod 'RealmSwift', '~> 1.1.0'
     # pod 'Fabric'
-    
-   
-end
+
+
 
 post_install do |installer|
     installer.pods_project.targets.each do |target|

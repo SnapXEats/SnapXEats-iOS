@@ -21,17 +21,13 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>0.1</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>com.hairsize.ios</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>hairsize</string>
+				<string>fb160584371233936</string>
 			</array>
 		</dict>
 	</array>
@@ -51,6 +47,17 @@
 			</dict>
 		</array>
 	</dict>
+	<key>FacebookAppID</key>
+	<string>160584371233936</string>
+	<key>FacebookDisplayName</key>
+	<string>SnapXEats</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -67,9 +74,9 @@
 		<string>SanFranciscoText-Regular.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<string>FlashScreen</string>
 	<key>UIMainStoryboardFile</key>
-	<string>MainSearch</string>
+	<string>FlashScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
