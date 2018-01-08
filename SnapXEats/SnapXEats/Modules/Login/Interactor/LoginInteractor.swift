@@ -24,15 +24,7 @@ class LoginInteractor {
 }
 
 extension LoginInteractor: LoginViewInteractorInput {
-    
-    
-    func sendInstagramRequest(view: LoginView?) {
-        if Reachability()?.currentReachabilityStatus == .notReachable {
-            output?.onLoginReguestFailure(message: "NO_INTERNET")
-            return
-        }
-    }
-    
+
     func sendFaceBookLoginRequest(view: LoginView?) {
         if Reachability()?.currentReachabilityStatus == .notReachable {
             output?.onLoginReguestFailure(message: "NO_INTERNET")
@@ -51,5 +43,30 @@ extension LoginInteractor: LoginViewInteractorInput {
             }
         }
     }
+}
 
+extension LoginInteractor {
+
+    func sendInstagramRequest(request: URLRequest) -> Bool {
+        if Reachability()?.currentReachabilityStatus == .notReachable {
+            output?.onLoginReguestFailure(message: "NO_INTERNET")
+            return false
+        }
+        return checkRequestForCallbackURL(request: request)
+    }
+    
+    func checkRequestForCallbackURL(request: URLRequest) -> Bool {
+        let requestURLString = (request.url?.absoluteString)! as String
+        if requestURLString.hasPrefix(InstagramEnum.INSTAGRAM_REDIRECT_URI) {
+            let range: Range<String.Index> = requestURLString.range(of: "#access_token=")!
+            //requestURLString.substring(from: range.upperBound) // swift 3
+            let newStr = String(requestURLString[range.upperBound...]) // swift 4
+            handleAuth(authToken: newStr)
+            return false;
+        }
+        return true
+    }
+    func handleAuth(authToken: String) {
+        print("Instagram authentication token ==", authToken)
+    }
 }

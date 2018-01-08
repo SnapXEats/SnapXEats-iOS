@@ -10,36 +10,42 @@ class LoginRouter {
     
     // MARK: Properties
     
-    weak var view: UIViewController?
+    // weak var view: UIViewController?
     
     private init() {}
     static var singletenInstance = LoginRouter()
     // MARK: Static methods
-    
-    static func setupModule() -> LoginViewController {
-        
-        let viewController = UIStoryboard.loadViewController() as LoginViewController
-        
-        let presenter = LoginPresenter.singletenInstance
-        let router = singletenInstance
-        let interactor = LoginInteractor.singletenInstance
-        
-        
-        viewController.presenter =  presenter
-        
-        presenter.view = viewController
-        presenter.router = router
-        presenter.interactor = interactor
-        
-        router.view = viewController
-        
-        interactor.output = presenter
-        
-        return viewController
-    }
 }
 
 
 extension LoginRouter: LoginViewWireframe {
-    // TODO: Implement wireframe methods
+    
+    func loadLoginModule() -> LoginView {
+        let viewController = UIStoryboard.loadViewController() as LoginViewController
+        initView(viewController: viewController)
+        return viewController
+    }
+    
+    func loadInstagramView() -> LoginView {
+        return initInstagramView()
+    }
+    
+    private  func initView(viewController: LoginView) {
+        let presenter = LoginPresenter.singletenInstance
+        viewController.presenter =  presenter
+        presenter.view = viewController
+        let router = LoginRouter.singletenInstance
+        let interactor = LoginInteractor.singletenInstance
+        presenter.router = router
+        presenter.interactor = interactor
+        // router.view = viewController
+        interactor.output = presenter
+    }
+    
+    private func initInstagramView() -> LoginView {
+        
+        let viewController = UIStoryboard.loadViewControler(storyBoardName: Constants.Storyboard.loginStoryboard, storyBoardId: Constants.StoryboardIdentifier.instagramViewControllerID) as! InstagramViewController
+        initView(viewController: viewController)
+        return viewController
+    }
 }

@@ -3,20 +3,24 @@
 //  Copyright © 2018 SnapXEats. All rights reserved.
 
 import Foundation
-
+import UIKit
 
 protocol LoginView: BaseView {
+    var presenter: LoginViewPresentation? {get set}
     func initView()
 }
 
-protocol LoginViewPresentation: class {
-    func loginUsingFaceBook()
+protocol LoginViewPresentation: LoginViewPresentationInstagram {
     func loginUsingInstagram()
+    func loginUsingFaceBook()
 }
 
+protocol LoginViewPresentationInstagram: class {
+        func instagramLoginRequest(request: URLRequest) -> Bool
+}
 protocol LoginViewInteractorInput: class {
     func sendFaceBookLoginRequest(view: LoginView?)
-    func sendInstagramRequest(view: LoginView?)
+    func sendInstagramRequest(request: URLRequest) -> Bool
 }
 
 protocol LoginViewInteractorOutput: class {
@@ -24,5 +28,6 @@ protocol LoginViewInteractorOutput: class {
 }
 
 protocol LoginViewWireframe: class {
-    
+    func loadLoginModule() -> LoginView
+    func loadInstagramView() -> LoginView
 }

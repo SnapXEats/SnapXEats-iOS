@@ -6,6 +6,7 @@ import UIKit
 
 enum LoginEnum{
     public static  var fbButtonTitle = "Login with FaceBook"
+    public static var instagramStoryBoardID = "InstagramViewController"
 }
 
 class LoginViewController: BaseViewController, StoryboardLoadable, LoginView {
@@ -16,7 +17,11 @@ class LoginViewController: BaseViewController, StoryboardLoadable, LoginView {
     
     // MARK: IBOutlets
     
- 
+    @IBOutlet weak var instagramLoginButton: UIButton!
+    
+    @IBAction func loginUsinInstagram(_ sender: Any) {
+        presenter?.loginUsingInstagram()
+    }
     // MARK: Lifecycle
     
     override func viewDidLoad() {

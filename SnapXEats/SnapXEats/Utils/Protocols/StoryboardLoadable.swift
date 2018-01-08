@@ -28,4 +28,9 @@ extension UIStoryboard {
         // swiftlint:disable:next force_cast
         return UIStoryboard(name: T.storyboardName(), bundle: nil).instantiateViewController(withIdentifier: T.storyboardIdentifier()) as! T
     }
+    
+    static func loadViewControler(storyBoardName: String, storyBoardId: String) -> UIViewController {
+        let storyboard = UIStoryboard(name: storyBoardName, bundle: nil)
+        return  storyboard.instantiateViewController(withIdentifier: storyBoardId)
+    }
 }

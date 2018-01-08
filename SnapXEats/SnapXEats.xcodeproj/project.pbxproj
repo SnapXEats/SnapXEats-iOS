@@ -50,6 +50,7 @@
 		9D8E89151FFD2BEC0066A1D9 /* ValidatorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88BA1FFD28C50066A1D9 /* ValidatorHelper.swift */; };
 		9D8E89161FFD2C400066A1D9 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88BD1FFD28C50066A1D9 /* RootRouter.swift */; };
 		9D8E89171FFD2C400066A1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88BE1FFD28C50066A1D9 /* AppDelegate.swift */; };
+		9DB7FE0B1FFFAC3800D0E816 /* InstagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7FE0A1FFFAC3800D0E816 /* InstagramViewController.swift */; };
 		9DEB5CF71FFE6D49003B9D4B /* FlashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88BC1FFD28C50066A1D9 /* FlashScreen.storyboard */; };
 		9DEB5CF81FFE6D49003B9D4B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88C61FFD28C50066A1D9 /* Login.storyboard */; };
 		9DEB5CF91FFE6D49003B9D4B /* PlainButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88AB1FFD28C50066A1D9 /* PlainButtonCell.xib */; };
@@ -130,6 +131,7 @@
 		9D8E88E71FFD2A6F0066A1D9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9D8E88E81FFD2A6F0066A1D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9D8E88EA1FFD2A6F0066A1D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9DB7FE0A1FFFAC3800D0E816 /* InstagramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramViewController.swift; sourceTree = "<group>"; };
 		C272160BBB123BC8E63B160D /* Pods-SnapXEats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapXEats.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapXEats/Pods-SnapXEats.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -400,6 +402,7 @@
 			children = (
 				9D8E88C61FFD28C50066A1D9 /* Login.storyboard */,
 				9D8E88C71FFD28C50066A1D9 /* LoginViewController.swift */,
+				9DB7FE0A1FFFAC3800D0E816 /* InstagramViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -708,6 +711,7 @@
 				9D8E88EB1FFD2BEC0066A1D9 /* LoginContract.swift in Sources */,
 				9D8E88EC1FFD2BEC0066A1D9 /* LoginPresenter.swift in Sources */,
 				9D8E88ED1FFD2BEC0066A1D9 /* LoginViewController.swift in Sources */,
+				9DB7FE0B1FFFAC3800D0E816 /* InstagramViewController.swift in Sources */,
 				9D8E88EE1FFD2BEC0066A1D9 /* LoginInteractor.swift in Sources */,
 				9D8E88EF1FFD2BEC0066A1D9 /* LoginRouter.swift in Sources */,
 				9D8E88F11FFD2BEC0066A1D9 /* BaseContract.swift in Sources */,

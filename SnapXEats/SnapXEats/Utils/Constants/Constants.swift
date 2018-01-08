@@ -11,17 +11,18 @@ import Foundation
 enum Constants {
     
     enum URL {
-        static let baseURL = "http://hspay.herokuapp.com/v1/"
+        static let baseURL = "http://snapXEats.com"
         static let signUp = baseURL + ""
         static let login = baseURL + "auth/"
     }
     
     enum Storyboard {
-        static let mainSearchStoryboard = "MainSearchStoryboard"
+        static let loginStoryboard = "Login"
     }
     
-    enum ViewControllerIdentifier {
-        static let mainSearchViewControllerIdentifier = "MainSearchViewControllerID"
+    enum StoryboardIdentifier {
+        static let loginViewControllerID = "LoginViewController"
+        static let instagramViewControllerID = "InstagramViewController"
     }
     
     enum Label {

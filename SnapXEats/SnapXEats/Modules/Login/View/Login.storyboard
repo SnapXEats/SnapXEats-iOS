@@ -16,13 +16,60 @@
                     <view key="view" contentMode="scaleToFill" id="KJu-86-iFm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XVf-a1-UFi">
+                                <rect key="frame" x="85" y="534" width="205" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Instagram Login"/>
+                                <connections>
+                                    <action selector="loginUsinInstagram:" destination="b95-f1-haL" eventType="touchUpInside" id="EsG-t9-Rmz"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Fd-nu-MZK"/>
                     </view>
+                    <connections>
+                        <outlet property="instagramLoginButton" destination="XVf-a1-UFi" id="yfA-KX-sXo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ao6-o7-HGY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-655.20000000000005" y="-142.57871064467767"/>
+        </scene>
+        <!--Instagram View Controller-->
+        <scene sceneID="tOf-az-WL5">
+            <objects>
+                <viewController storyboardIdentifier="InstagramViewController" id="hWB-Zl-iHy" customClass="InstagramViewController" customModule="SnapXEats" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jiv-Zm-y6f">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fsh-fw-c3F">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fsh-fw-c3F" firstAttribute="trailing" secondItem="UVM-MV-wxs" secondAttribute="trailing" id="AQO-MT-waE"/>
+                            <constraint firstItem="fsh-fw-c3F" firstAttribute="top" secondItem="jiv-Zm-y6f" secondAttribute="top" id="E3U-Es-djt"/>
+                            <constraint firstItem="fsh-fw-c3F" firstAttribute="leading" secondItem="UVM-MV-wxs" secondAttribute="leading" id="U46-oZ-q5R"/>
+                            <constraint firstItem="fsh-fw-c3F" firstAttribute="bottom" secondItem="UVM-MV-wxs" secondAttribute="bottom" id="b89-lV-XGK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UVM-MV-wxs"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="fsh-fw-c3F" id="M2R-LG-6vR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ArX-3S-vrw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="-142.57871064467767"/>
         </scene>
     </scenes>
 </document>

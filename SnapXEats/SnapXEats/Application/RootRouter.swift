@@ -7,13 +7,21 @@ import UIKit
 
 class RootRouter: NSObject {
     
+    private override init() {}
+    static var singleInstance = RootRouter()
+    
     func presentFirstScreen(inWindow window: UIWindow) {
         presentLoginScreen()
     }
     
     private func presentLoginScreen() {
-        let loginViewController = LoginRouter.setupModule()
+        let loginViewController = LoginRouter.singletenInstance.loadLoginModule() as! LoginViewController
         presentView(loginViewController)
+    }
+    
+    func presentLoginInstagramScreen(_ viewController: LoginView) {
+        let instagramViewController = viewController as! InstagramViewController
+         presentView(instagramViewController)
     }
     
     private func presentView(_ viewController: UIViewController) {
