@@ -33,7 +33,7 @@ extension LoginRouter: LoginViewWireframe {
     private  func initView(viewController: LoginView) {
         let presenter = LoginPresenter.singletenInstance
         viewController.presenter =  presenter
-        presenter.view = viewController
+        presenter.setView(view: viewController)
         let router = LoginRouter.singletenInstance
         let interactor = LoginInteractor.singletenInstance
         presenter.router = router

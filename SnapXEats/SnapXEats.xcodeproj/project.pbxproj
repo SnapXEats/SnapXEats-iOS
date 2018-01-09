@@ -51,6 +51,8 @@
 		9D8E89161FFD2C400066A1D9 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88BD1FFD28C50066A1D9 /* RootRouter.swift */; };
 		9D8E89171FFD2C400066A1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88BE1FFD28C50066A1D9 /* AppDelegate.swift */; };
 		9DB7FE0B1FFFAC3800D0E816 /* InstagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7FE0A1FFFAC3800D0E816 /* InstagramViewController.swift */; };
+		9DB7FE0E2004BC9D00D0E816 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7FE0D2004BC9D00D0E816 /* Network.swift */; };
+		9DB7FE112004F0EE00D0E816 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7FE102004F0EE00D0E816 /* Alert.swift */; };
 		9DEB5CF71FFE6D49003B9D4B /* FlashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88BC1FFD28C50066A1D9 /* FlashScreen.storyboard */; };
 		9DEB5CF81FFE6D49003B9D4B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88C61FFD28C50066A1D9 /* Login.storyboard */; };
 		9DEB5CF91FFE6D49003B9D4B /* PlainButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88AB1FFD28C50066A1D9 /* PlainButtonCell.xib */; };
@@ -132,6 +134,8 @@
 		9D8E88E81FFD2A6F0066A1D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9D8E88EA1FFD2A6F0066A1D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9DB7FE0A1FFFAC3800D0E816 /* InstagramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramViewController.swift; sourceTree = "<group>"; };
+		9DB7FE0D2004BC9D00D0E816 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		9DB7FE102004F0EE00D0E816 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		C272160BBB123BC8E63B160D /* Pods-SnapXEats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapXEats.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapXEats/Pods-SnapXEats.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -209,6 +213,8 @@
 		9D8E888C1FFD28C50066A1D9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				9DB7FE0F2004F0E100D0E816 /* Alert */,
+				9DB7FE0C2004BC8800D0E816 /* Network */,
 				9D8E888D1FFD28C50066A1D9 /* Constants */,
 				9D8E888F1FFD28C50066A1D9 /* Delegate */,
 				9D8E88911FFD28C50066A1D9 /* Extensions */,
@@ -508,6 +514,22 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		9DB7FE0C2004BC8800D0E816 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				9DB7FE0D2004BC9D00D0E816 /* Network.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		9DB7FE0F2004F0E100D0E816 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				9DB7FE102004F0EE00D0E816 /* Alert.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
 		B29705C62477A6A310B7D943 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -731,6 +753,7 @@
 				9D8E88FF1FFD2BEC0066A1D9 /* UITableViewCell.swift in Sources */,
 				9D8E89001FFD2BEC0066A1D9 /* String.swift in Sources */,
 				9D8E89011FFD2BEC0066A1D9 /* UIViewController.swift in Sources */,
+				9DB7FE112004F0EE00D0E816 /* Alert.swift in Sources */,
 				9D8E89021FFD2BEC0066A1D9 /* UIColor+Pallet.swift in Sources */,
 				9D8E89031FFD2BEC0066A1D9 /* Double.swift in Sources */,
 				9D8E89041FFD2BEC0066A1D9 /* UIAlertController.swift in Sources */,
@@ -744,6 +767,7 @@
 				9D8E890D1FFD2BEC0066A1D9 /* SectionHeaderLabelCell.swift in Sources */,
 				9D8E890F1FFD2BEC0066A1D9 /* ProfileLocalDataManager.swift in Sources */,
 				9D8E89101FFD2BEC0066A1D9 /* ProfileApiDataManager.swift in Sources */,
+				9DB7FE0E2004BC9D00D0E816 /* Network.swift in Sources */,
 				9D8E89111FFD2BEC0066A1D9 /* StoryboardLoadable.swift in Sources */,
 				9D8E89121FFD2BEC0066A1D9 /* NibLoadableView.swift in Sources */,
 				9D8E89131FFD2BEC0066A1D9 /* ReusableView.swift in Sources */,

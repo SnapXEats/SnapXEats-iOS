@@ -14,6 +14,10 @@ class RootRouter: NSObject {
         presentLoginScreen()
     }
     
+    func presentFirstScreen() {
+        presentLoginScreen()
+    }
+    
     private func presentLoginScreen() {
         let loginViewController = LoginRouter.singletenInstance.loadLoginModule() as! LoginViewController
         presentView(loginViewController)

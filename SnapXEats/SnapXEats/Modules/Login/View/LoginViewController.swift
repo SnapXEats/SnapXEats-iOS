@@ -20,8 +20,11 @@ class LoginViewController: BaseViewController, StoryboardLoadable, LoginView {
     @IBOutlet weak var instagramLoginButton: UIButton!
     
     @IBAction func loginUsinInstagram(_ sender: Any) {
+        presenter?.setView(view: self)  // keep the view as current view
         presenter?.loginUsingInstagram()
     }
+    
+    var loginAlert = SnapXAlert.singleInstance
     // MARK: Lifecycle
     
     override func viewDidLoad() {
@@ -71,7 +74,25 @@ extension  LoginViewController  {
     
     // Once the button is clicked, show the login dialog
     @objc func fbLoginClicked() {
+        presenter?.setView(view: self)
         presenter?.loginUsingFaceBook()
+    }
+}
+
+extension LoginViewController: SnapXResult {
+    func resultError(result: NetworkResult) {
+        loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.messageNoInternet,forView: self)
+        loginAlert.show()
+    }
+    
+    func resultNOInternet(result: NetworkResult) {
+        loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.messageNoInternet,forView: self)
+        loginAlert.show()
+    }
+    
+    func resultSuccess(result: NetworkResult) {
+        loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.messageSuccess,forView: self)
+        loginAlert.show()
     }
 }
 

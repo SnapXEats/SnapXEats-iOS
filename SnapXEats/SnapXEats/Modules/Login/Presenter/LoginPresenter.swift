@@ -7,12 +7,12 @@ import Foundation
 
 class LoginPresenter {
     // MARK: Properties
-    var view: LoginView?
+    private var view: LoginView?
     
     var router: LoginViewWireframe?
     
     var interactor: LoginInteractor?
-
+    
     private init () {}
     static  var  singletenInstance = LoginPresenter()
 }
@@ -23,20 +23,35 @@ extension LoginPresenter: LoginViewPresentation {
     }
     
     func loginUsingInstagram() {
-        if let instaView = router?.loadInstagramView() {
+        if let router = router, let interact = interactor, interact.checkRechability() == true {
+           let  instaView = router.loadInstagramView()
             RootRouter.singleInstance.presentLoginInstagramScreen(instaView)
         }
     }
     
-    func doSomething() {
-        view?.showMessage("I'm doing something!!", withTitle: "Hey")
+    func setView(view: LoginView) {
+        self.view = view
     }
-    
+
     //TODO: Implement other methods from presenter->view here
     
 }
 
-extension LoginPresenter: LoginViewInteractorOutput {
+extension LoginPresenter: Result {
+    
+    func result(result: NetworkResult) {
+        switch result {
+        case .success:
+            view?.resultSuccess(result: NetworkResult.success)
+        case .error:
+            view?.resultError(result: NetworkResult.error)
+        case .fail:
+            view?.resultError(result: NetworkResult.error)
+        case  .noInternet:
+            view?.resultNOInternet(result: NetworkResult.noInternet)
+            
+        }
+    }
     
     func onLoginReguestFailure(message: String) {
         view?.showError(message)
@@ -49,6 +64,11 @@ extension LoginPresenter: LoginViewPresentationInstagram {
         guard let interactor = interactor else {
             return false
         }
-       return interactor.sendInstagramRequest(request: request)
+        return interactor.sendInstagramRequest(request: request)
+    }
+    
+    func removeInstagramWebView() {
+        RootRouter.singleInstance.presentFirstScreen()
+        //router?.loadLoginModule()
     }
 }

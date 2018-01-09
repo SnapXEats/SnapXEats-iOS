@@ -5,7 +5,7 @@
 import Foundation
 import UIKit
 
-protocol LoginView: BaseView {
+protocol LoginView: BaseView, SnapXResult {
     var presenter: LoginViewPresentation? {get set}
     func initView()
 }
@@ -13,10 +13,12 @@ protocol LoginView: BaseView {
 protocol LoginViewPresentation: LoginViewPresentationInstagram {
     func loginUsingInstagram()
     func loginUsingFaceBook()
+    func setView(view: LoginView)
 }
 
 protocol LoginViewPresentationInstagram: class {
         func instagramLoginRequest(request: URLRequest) -> Bool
+        func removeInstagramWebView()
 }
 protocol LoginViewInteractorInput: class {
     func sendFaceBookLoginRequest(view: LoginView?)

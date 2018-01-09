@@ -14,45 +14,40 @@ class LoginInteractor {
     
     // MARK: Properties
     private var view : UIViewController?
-    weak var output: LoginViewInteractorOutput?
+    var output: Result?
     
     private init() {}
     static  var  singletenInstance = LoginInteractor()
- //   var apiDataManager = ProfileApiDataManager()
-  //  var localDataManager = ProfileLocalDataManager()
+    //   var apiDataManager = ProfileApiDataManager()
+    //  var localDataManager = ProfileLocalDataManager()
     
 }
 
 extension LoginInteractor: LoginViewInteractorInput {
-
+    
     func sendFaceBookLoginRequest(view: LoginView?) {
-        if Reachability()?.currentReachabilityStatus == .notReachable {
-            output?.onLoginReguestFailure(message: "NO_INTERNET")
-            return
-        }
-        self.view = view as? UIViewController
-        let loginManager = LoginManager()
-        loginManager.logIn(readPermissions: [ .publicProfile, .email, .userFriends ], viewController: self.view) { loginResult in
-            switch loginResult {
-            case .failed(let error):
-                print(error)
-            case .cancelled:
-                print("User cancelled login.")
-            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
-                print("Logged in!")
+        if checkRechability() {
+            self.view = view as? UIViewController
+            let loginManager = LoginManager()
+            loginManager.logIn(readPermissions: [ .publicProfile, .email, .userFriends ], viewController: self.view) { [weak self] loginResult in
+                guard let strongSelf = self else { return }
+                switch loginResult {
+                case .failed(let error):
+                    print(error)
+                case .cancelled:
+                    print("User cancelled login.")
+                case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+                    strongSelf.output?.result(result: NetworkResult.success)
+                }
             }
         }
     }
 }
 
 extension LoginInteractor {
-
+    
     func sendInstagramRequest(request: URLRequest) -> Bool {
-        if Reachability()?.currentReachabilityStatus == .notReachable {
-            output?.onLoginReguestFailure(message: "NO_INTERNET")
-            return false
-        }
-        return checkRequestForCallbackURL(request: request)
+        return  checkRechability() ? checkRequestForCallbackURL(request: request) : false
     }
     
     func checkRequestForCallbackURL(request: URLRequest) -> Bool {
@@ -68,5 +63,15 @@ extension LoginInteractor {
     }
     func handleAuth(authToken: String) {
         print("Instagram authentication token ==", authToken)
+    }
+    
+    func checkRechability() -> Bool {
+        if Reachability()?.currentReachabilityStatus == .notReachable {
+            output?.result(result: .noInternet)
+            return false
+        } else {
+            return true
+        }
+        
     }
 }

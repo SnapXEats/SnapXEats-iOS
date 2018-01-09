@@ -37,6 +37,7 @@ class InstagramViewController: BaseViewController, StoryboardLoadable, LoginView
     // MARK: IBOutlets
     @IBOutlet var webView: WKWebView?
     
+    var loginAlert = SnapXAlert.singleInstance
     // MARK: Lifecycle
     
     override func viewDidLoad() {
@@ -82,7 +83,7 @@ extension InstagramViewController: WKNavigationDelegate{
     
     /* Stop the network activity indicator when the loading finishes fail */
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-       hideLoading()
+        hideLoading()
     }
     
     /* Stop the network activity indicator when the loading finishes */
@@ -91,10 +92,49 @@ extension InstagramViewController: WKNavigationDelegate{
     }
     
     func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-         hideLoading()
+        let user = "user"
+        let password = "pass" // use dumy data to load the page
+        let credential = URLCredential(user: user, password: password, persistence: URLCredential.Persistence.forSession)
+        //challenge.sender?.use(credential, for: challenge)
+        completionHandler(URLSession.AuthChallengeDisposition.useCredential, credential)
     }
     
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-        hideLoading()
+        
+        removeWebView()
+        webView.stopLoading()
+        
     }
+    
+    private func  removeWebView() {
+        hideLoading()
+        let action = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler:  { [weak self ]action in
+            guard let strongSelf = self else { return }
+            strongSelf.discardWebView()})
+        loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.messageNoInternet, forView: self, withAction: action)
+        loginAlert.show()
+    }
+    
+    private func discardWebView() {
+        presenter?.removeInstagramWebView()
+    }
+}
+
+extension InstagramViewController: SnapXResult {
+    
+    func resultError(result: NetworkResult) {
+        loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.messageNoInternet,forView: self)
+        loginAlert.show()
+    }
+    
+    func resultNOInternet(result: NetworkResult) {
+        loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.messageNoInternet,forView: self)
+        loginAlert.show()
+    }
+    
+    func resultSuccess(result: NetworkResult) {
+        loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.messageSuccess,forView: self)
+        loginAlert.show()
+    }
+    
 }
