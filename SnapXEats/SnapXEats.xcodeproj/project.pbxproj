@@ -53,13 +53,17 @@
 		9DB7FE0B1FFFAC3800D0E816 /* InstagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7FE0A1FFFAC3800D0E816 /* InstagramViewController.swift */; };
 		9DB7FE0E2004BC9D00D0E816 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7FE0D2004BC9D00D0E816 /* Network.swift */; };
 		9DB7FE112004F0EE00D0E816 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7FE102004F0EE00D0E816 /* Alert.swift */; };
+		9DB7FE132005F96A00D0E816 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE122005F96A00D0E816 /* Assets.xcassets */; };
+		9DB7FE1720061B6200D0E816 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1620061B1600D0E816 /* Roboto-Light.ttf */; };
+		9DB7FE1820061B6200D0E816 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1520061B1600D0E816 /* Roboto-Medium.ttf */; };
+		9DB7FE1920061B6200D0E816 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1420061B1600D0E816 /* Roboto-Regular.ttf */; };
+		9DB7FE1B20061E3600D0E816 /* SnapX-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1A20061E3600D0E816 /* SnapX-logo.png */; };
+		9DB7FE1D20061E4300D0E816 /* SnapX-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1C20061E4300D0E816 /* SnapX-logo.png */; };
+		9DB7FE1F20061E8C00D0E816 /* BG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1E20061E8C00D0E816 /* BG@3x.png */; };
 		9DEB5CF71FFE6D49003B9D4B /* FlashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88BC1FFD28C50066A1D9 /* FlashScreen.storyboard */; };
 		9DEB5CF81FFE6D49003B9D4B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88C61FFD28C50066A1D9 /* Login.storyboard */; };
 		9DEB5CF91FFE6D49003B9D4B /* PlainButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88AB1FFD28C50066A1D9 /* PlainButtonCell.xib */; };
 		9DEB5CFA1FFE6D49003B9D4B /* SectionHeaderLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88AE1FFD28C50066A1D9 /* SectionHeaderLabelCell.xib */; };
-		9DEB5CFB1FFE6D49003B9D4B /* SanFranciscoText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88E11FFD2A6F0066A1D9 /* SanFranciscoText-Regular.otf */; };
-		9DEB5CFC1FFE6D49003B9D4B /* SanFranciscoText-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88E21FFD2A6F0066A1D9 /* SanFranciscoText-Medium.otf */; };
-		9DEB5CFD1FFE6D49003B9D4B /* SanFranciscoText-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88E31FFD2A6F0066A1D9 /* SanFranciscoText-Light.otf */; };
 		CE64A9A86226702DB23DF92F /* Pods_SnapXEats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967BD01B1CEED06931835CA3 /* Pods_SnapXEats.framework */; };
 /* End PBXBuildFile section */
 
@@ -127,15 +131,18 @@
 		9D8E88DB1FFD28C50066A1D9 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		9D8E88DD1FFD28C50066A1D9 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		9D8E88DF1FFD2A6F0066A1D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9D8E88E11FFD2A6F0066A1D9 /* SanFranciscoText-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-Regular.otf"; sourceTree = "<group>"; };
-		9D8E88E21FFD2A6F0066A1D9 /* SanFranciscoText-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-Medium.otf"; sourceTree = "<group>"; };
-		9D8E88E31FFD2A6F0066A1D9 /* SanFranciscoText-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-Light.otf"; sourceTree = "<group>"; };
 		9D8E88E71FFD2A6F0066A1D9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9D8E88E81FFD2A6F0066A1D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9D8E88EA1FFD2A6F0066A1D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9DB7FE0A1FFFAC3800D0E816 /* InstagramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramViewController.swift; sourceTree = "<group>"; };
 		9DB7FE0D2004BC9D00D0E816 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		9DB7FE102004F0EE00D0E816 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		9DB7FE122005F96A00D0E816 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9DB7FE1420061B1600D0E816 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		9DB7FE1520061B1600D0E816 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		9DB7FE1620061B1600D0E816 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		9DB7FE1A20061E3600D0E816 /* SnapX-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SnapX-logo.png"; sourceTree = "<group>"; };
+		9DB7FE1C20061E4300D0E816 /* SnapX-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SnapX-logo.png"; sourceTree = "<group>"; };
+		9DB7FE1E20061E8C00D0E816 /* BG@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BG@3x.png"; sourceTree = "<group>"; };
 		C272160BBB123BC8E63B160D /* Pods-SnapXEats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapXEats.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapXEats/Pods-SnapXEats.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -206,6 +213,7 @@
 				9D8E88D91FFD28C50066A1D9 /* Entities */,
 				9D8E888C1FFD28C50066A1D9 /* Utils */,
 				9D8E88DF1FFD2A6F0066A1D9 /* Info.plist */,
+				9DB7FE122005F96A00D0E816 /* Assets.xcassets */,
 			);
 			path = SnapXEats;
 			sourceTree = "<group>";
@@ -213,6 +221,7 @@
 		9D8E888C1FFD28C50066A1D9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				9DB7FE1A20061E3600D0E816 /* SnapX-logo.png */,
 				9DB7FE0F2004F0E100D0E816 /* Alert */,
 				9DB7FE0C2004BC8800D0E816 /* Network */,
 				9D8E888D1FFD28C50066A1D9 /* Constants */,
@@ -482,9 +491,11 @@
 		9D8E88E01FFD2A6F0066A1D9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				9D8E88E11FFD2A6F0066A1D9 /* SanFranciscoText-Regular.otf */,
-				9D8E88E21FFD2A6F0066A1D9 /* SanFranciscoText-Medium.otf */,
-				9D8E88E31FFD2A6F0066A1D9 /* SanFranciscoText-Light.otf */,
+				9DB7FE1C20061E4300D0E816 /* SnapX-logo.png */,
+				9DB7FE1E20061E8C00D0E816 /* BG@3x.png */,
+				9DB7FE1620061B1600D0E816 /* Roboto-Light.ttf */,
+				9DB7FE1520061B1600D0E816 /* Roboto-Medium.ttf */,
+				9DB7FE1420061B1600D0E816 /* Roboto-Regular.ttf */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -509,7 +520,6 @@
 		9D8E88E91FFD2A6F0066A1D9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				9D8E88EA1FFD2A6F0066A1D9 /* Assets.xcassets */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -624,13 +634,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DB7FE1720061B6200D0E816 /* Roboto-Light.ttf in Resources */,
+				9DB7FE1820061B6200D0E816 /* Roboto-Medium.ttf in Resources */,
+				9DB7FE1920061B6200D0E816 /* Roboto-Regular.ttf in Resources */,
+				9DB7FE1D20061E4300D0E816 /* SnapX-logo.png in Resources */,
 				9DEB5CF71FFE6D49003B9D4B /* FlashScreen.storyboard in Resources */,
+				9DB7FE1B20061E3600D0E816 /* SnapX-logo.png in Resources */,
 				9DEB5CF81FFE6D49003B9D4B /* Login.storyboard in Resources */,
 				9DEB5CF91FFE6D49003B9D4B /* PlainButtonCell.xib in Resources */,
+				9DB7FE1F20061E8C00D0E816 /* BG@3x.png in Resources */,
 				9DEB5CFA1FFE6D49003B9D4B /* SectionHeaderLabelCell.xib in Resources */,
-				9DEB5CFB1FFE6D49003B9D4B /* SanFranciscoText-Regular.otf in Resources */,
-				9DEB5CFC1FFE6D49003B9D4B /* SanFranciscoText-Medium.otf in Resources */,
-				9DEB5CFD1FFE6D49003B9D4B /* SanFranciscoText-Light.otf in Resources */,
+				9DB7FE132005F96A00D0E816 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -855,7 +869,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -906,7 +920,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -919,14 +933,18 @@
 			baseConfigurationReference = 18C81282DCA92A76FE981E2D /* Pods-SnapXEats.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7ANMTSLCYM;
+				DEVELOPMENT_TEAM = 67822934AQ;
 				INFOPLIST_FILE = SnapXEats/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.snapxeats.SnapXEats;
+				PRODUCT_BUNDLE_IDENTIFIER = com.synerzip.SnapXEatstest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -935,14 +953,18 @@
 			baseConfigurationReference = C272160BBB123BC8E63B160D /* Pods-SnapXEats.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7ANMTSLCYM;
+				DEVELOPMENT_TEAM = 67822934AQ;
 				INFOPLIST_FILE = SnapXEats/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.snapxeats.SnapXEats;
+				PRODUCT_BUNDLE_IDENTIFIER = com.synerzip.SnapXEatstest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

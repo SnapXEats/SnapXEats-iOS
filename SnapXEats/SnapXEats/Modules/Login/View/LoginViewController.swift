@@ -18,10 +18,17 @@ class LoginViewController: BaseViewController, StoryboardLoadable, LoginView {
     // MARK: IBOutlets
     
     @IBOutlet weak var instagramLoginButton: UIButton!
+    @IBOutlet weak var facebookLoginButton: UIButton!
     
     @IBAction func loginUsinInstagram(_ sender: Any) {
         presenter?.setView(view: self)  // keep the view as current view
         presenter?.loginUsingInstagram()
+    }
+    
+    // Once the button is clicked, show the login dialog
+    @IBAction func fbLoginClicked(_ sender: Any) {
+        presenter?.setView(view: self)
+        presenter?.loginUsingFaceBook()
     }
     
     var loginAlert = SnapXAlert.singleInstance
@@ -29,6 +36,7 @@ class LoginViewController: BaseViewController, StoryboardLoadable, LoginView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //initView()
         initView()
         //hideKeyboardWhenTappedAround()
     }
@@ -43,41 +51,12 @@ class LoginViewController: BaseViewController, StoryboardLoadable, LoginView {
         //removeKeyboardNotification()
     }
     
-
-}
-
-extension  LoginViewController  {
-    
-    //TODO: Implement LoginView methods here
-    
-    // MARK: Private
-
-    func initView() {
-        createFaceBookLoginButton()
-    }
-    
-    private func createFaceBookLoginButton() {
-        // Add a custom facebook login button to your app
-        let fbLoginButton = UIButton(type: .custom)
-        fbLoginButton.backgroundColor = UIColor.darkGray
-        
-        fbLoginButton.frame = CGRect(x: 0, y: 0, width: 180, height: 40)
-        fbLoginButton.center = view.center;
-        fbLoginButton.setTitle(LoginEnum.fbButtonTitle, for: .normal)
-        
-        // Handle clicks on the button
-        fbLoginButton.addTarget(self,  action: #selector(self.fbLoginClicked), for: .touchUpInside)
-        
-        // Add the button to the view
-        view.addSubview(fbLoginButton)
-    }
-    
-    // Once the button is clicked, show the login dialog
-    @objc func fbLoginClicked() {
-        presenter?.setView(view: self)
-        presenter?.loginUsingFaceBook()
+     func initView() {
+        instagramLoginButton.addBorder(ofWidth: 1, withColor: UIColor.rgba(255.0, 255.0, 255.0, 0.34), radius: 5.0)
+        facebookLoginButton.addBorder(ofWidth: 1, withColor: UIColor.rgba(255.0, 255.0, 255.0, 0.34), radius: 5.0)
     }
 }
+
 
 extension LoginViewController: SnapXResult {
     func resultError(result: NetworkResult) {

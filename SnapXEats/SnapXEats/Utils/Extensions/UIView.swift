@@ -23,4 +23,18 @@ extension UIView {
         }
         return subviews
     }
+    
+    /**
+     Add border to the button on exam detail view whether exam step is completed or fail, green color for complete operation and red color for operation failed
+     
+     - parameters:
+     - width:    Width of border
+     - color:    Color for border
+     - returns: Void
+     */
+    func addBorder(ofWidth width: CGFloat = 1.0, withColor color: UIColor = .black, radius: CGFloat = 0.0) {
+        self.layer.borderColor = color.cgColor
+        self.layer.borderWidth = width
+        self.layer.cornerRadius = radius
+    }
 }

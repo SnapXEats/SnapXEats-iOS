@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="b95-f1-haL">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -8,6 +8,14 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Login View Controller-->
         <scene sceneID="1dW-bA-U0h">
@@ -17,20 +25,82 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XVf-a1-UFi">
-                                <rect key="frame" x="85" y="534" width="205" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Instagram Login"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="cF3-Vv-vyL">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_snapX-logo" translatesAutoresizingMaskIntoConstraints="NO" id="JA4-qj-M4R">
+                                <rect key="frame" x="53.5" y="183" width="267" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="NS8-EV-pjB"/>
+                                    <constraint firstAttribute="width" constant="267" id="eEL-Ej-tEq"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ioS-Mu-RNs">
+                                <rect key="frame" x="67.5" y="410" width="241" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="241" id="9ph-Xj-qt4"/>
+                                    <constraint firstAttribute="height" constant="44" id="rrA-nT-P4K"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                                <inset key="contentEdgeInsets" minX="18" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="18" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Login with Instagram" image="instagram_icon">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
-                                    <action selector="loginUsinInstagram:" destination="b95-f1-haL" eventType="touchUpInside" id="EsG-t9-Rmz"/>
+                                    <action selector="loginUsinInstagram:" destination="b95-f1-haL" eventType="touchUpInside" id="1OF-dv-V37"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8n5-OQ-hoZ">
+                                <rect key="frame" x="137.5" y="569" width="100" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="bLh-ia-atG"/>
+                                    <constraint firstAttribute="height" constant="40" id="h1A-do-OPV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                <state key="normal" title="Skip">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zu6-5E-njV">
+                                <rect key="frame" x="67" y="341" width="241" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="241" id="QIZ-AQ-Kdh"/>
+                                    <constraint firstAttribute="height" constant="44" id="XUi-Yr-0bs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                                <inset key="contentEdgeInsets" minX="18" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="18" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Login with Facebook" image="facebook_icon">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="fbLoginClicked:" destination="b95-f1-haL" eventType="touchUpInside" id="pji-S6-8V8"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cF3-Vv-vyL" firstAttribute="top" secondItem="KJu-86-iFm" secondAttribute="top" id="5gz-gG-ndE"/>
+                            <constraint firstItem="6Fd-nu-MZK" firstAttribute="bottom" secondItem="ioS-Mu-RNs" secondAttribute="bottom" constant="213" id="9dI-fr-jdI"/>
+                            <constraint firstItem="cF3-Vv-vyL" firstAttribute="leading" secondItem="6Fd-nu-MZK" secondAttribute="leading" id="PTB-rz-BvG"/>
+                            <constraint firstItem="ioS-Mu-RNs" firstAttribute="trailing" secondItem="Zu6-5E-njV" secondAttribute="trailing" id="PdW-2p-cnz"/>
+                            <constraint firstItem="JA4-qj-M4R" firstAttribute="top" secondItem="6Fd-nu-MZK" secondAttribute="top" constant="163" id="fd5-Sa-ott"/>
+                            <constraint firstItem="6Fd-nu-MZK" firstAttribute="bottom" secondItem="cF3-Vv-vyL" secondAttribute="bottom" id="jt0-2n-dBk"/>
+                            <constraint firstItem="6Fd-nu-MZK" firstAttribute="bottom" secondItem="8n5-OQ-hoZ" secondAttribute="bottom" constant="58" id="lyD-JB-g71"/>
+                            <constraint firstItem="JA4-qj-M4R" firstAttribute="centerX" secondItem="KJu-86-iFm" secondAttribute="centerX" id="pxk-Bc-X1O"/>
+                            <constraint firstItem="6Fd-nu-MZK" firstAttribute="trailing" secondItem="cF3-Vv-vyL" secondAttribute="trailing" id="qlh-hn-XA0"/>
+                            <constraint firstItem="ioS-Mu-RNs" firstAttribute="centerX" secondItem="KJu-86-iFm" secondAttribute="centerX" id="rr9-lk-NZn"/>
+                            <constraint firstItem="ioS-Mu-RNs" firstAttribute="top" secondItem="Zu6-5E-njV" secondAttribute="bottom" constant="25" id="sLB-1e-YBO"/>
+                            <constraint firstItem="8n5-OQ-hoZ" firstAttribute="centerX" secondItem="KJu-86-iFm" secondAttribute="centerX" id="vPf-mD-AQZ"/>
+                            <constraint firstItem="ioS-Mu-RNs" firstAttribute="leading" secondItem="Zu6-5E-njV" secondAttribute="leading" id="yeK-c8-8Gc"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Fd-nu-MZK"/>
                     </view>
                     <connections>
-                        <outlet property="instagramLoginButton" destination="XVf-a1-UFi" id="yfA-KX-sXo"/>
+                        <outlet property="facebookLoginButton" destination="Zu6-5E-njV" id="Pap-on-FM5"/>
+                        <outlet property="instagramLoginButton" destination="ioS-Mu-RNs" id="ULD-oO-Cya"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ao6-o7-HGY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -72,4 +142,10 @@
             <point key="canvasLocation" x="140" y="-142.57871064467767"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Image" width="375" height="667"/>
+        <image name="facebook_icon" width="20" height="20"/>
+        <image name="icon_snapX-logo" width="267" height="61"/>
+        <image name="instagram_icon" width="20" height="20"/>
+    </resources>
 </document>

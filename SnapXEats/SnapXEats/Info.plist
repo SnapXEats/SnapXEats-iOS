@@ -69,14 +69,14 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>SanFranciscoText-Light.otf</string>
-		<string>SanFranciscoText-Medium.otf</string>
-		<string>SanFranciscoText-Regular.otf</string>
+		<string>Roboto-Light.ttf</string>
+		<string>Roboto-Regular.ttf</string>
+		<string>Roboto-Medium.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>FlashScreen</string>
 	<key>UIMainStoryboardFile</key>
-	<string>FlashScreen</string>
+	<string>Login</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
