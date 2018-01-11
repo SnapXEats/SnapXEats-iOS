@@ -30,14 +30,14 @@
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_snapX-logo" translatesAutoresizingMaskIntoConstraints="NO" id="JA4-qj-M4R">
-                                <rect key="frame" x="53.5" y="183" width="267" height="61"/>
+                                <rect key="frame" x="53.5" y="133" width="267" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="NS8-EV-pjB"/>
                                     <constraint firstAttribute="width" constant="267" id="eEL-Ej-tEq"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ioS-Mu-RNs">
-                                <rect key="frame" x="67.5" y="410" width="241" height="44"/>
+                                <rect key="frame" x="67.5" y="440" width="241" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="241" id="9ph-Xj-qt4"/>
                                     <constraint firstAttribute="height" constant="44" id="rrA-nT-P4K"/>
@@ -64,7 +64,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zu6-5E-njV">
-                                <rect key="frame" x="67" y="341" width="241" height="44"/>
+                                <rect key="frame" x="67" y="371" width="241" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="241" id="QIZ-AQ-Kdh"/>
                                     <constraint firstAttribute="height" constant="44" id="XUi-Yr-0bs"/>
@@ -83,10 +83,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cF3-Vv-vyL" firstAttribute="top" secondItem="KJu-86-iFm" secondAttribute="top" id="5gz-gG-ndE"/>
-                            <constraint firstItem="6Fd-nu-MZK" firstAttribute="bottom" secondItem="ioS-Mu-RNs" secondAttribute="bottom" constant="213" id="9dI-fr-jdI"/>
+                            <constraint firstItem="6Fd-nu-MZK" firstAttribute="bottom" secondItem="ioS-Mu-RNs" secondAttribute="bottom" constant="183" id="9dI-fr-jdI"/>
                             <constraint firstItem="cF3-Vv-vyL" firstAttribute="leading" secondItem="6Fd-nu-MZK" secondAttribute="leading" id="PTB-rz-BvG"/>
                             <constraint firstItem="ioS-Mu-RNs" firstAttribute="trailing" secondItem="Zu6-5E-njV" secondAttribute="trailing" id="PdW-2p-cnz"/>
-                            <constraint firstItem="JA4-qj-M4R" firstAttribute="top" secondItem="6Fd-nu-MZK" secondAttribute="top" constant="163" id="fd5-Sa-ott"/>
+                            <constraint firstItem="JA4-qj-M4R" firstAttribute="top" secondItem="6Fd-nu-MZK" secondAttribute="top" constant="113" id="fd5-Sa-ott"/>
                             <constraint firstItem="6Fd-nu-MZK" firstAttribute="bottom" secondItem="cF3-Vv-vyL" secondAttribute="bottom" id="jt0-2n-dBk"/>
                             <constraint firstItem="6Fd-nu-MZK" firstAttribute="bottom" secondItem="8n5-OQ-hoZ" secondAttribute="bottom" constant="58" id="lyD-JB-g71"/>
                             <constraint firstItem="JA4-qj-M4R" firstAttribute="centerX" secondItem="KJu-86-iFm" secondAttribute="centerX" id="pxk-Bc-X1O"/>

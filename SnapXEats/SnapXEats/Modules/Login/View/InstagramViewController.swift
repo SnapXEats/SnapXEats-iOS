@@ -29,6 +29,15 @@ enum InstagramEnum {
     }
 }
 
+enum ServerErrorCode  {
+    static let timeOut = -1001  // TIMED OUT:
+    static let serverCanFound = -1003  // SERVER CANNOT BE FOUND
+    static let urlNotFoundONServer = -1100  // URL NOT FOUND ON SERVER
+    static let noInternetConnection = -1009  // No Internet connection
+    static let loadingFiled = -999 // HTTP load failed
+
+}
+
 class InstagramViewController: BaseViewController, StoryboardLoadable, LoginView {
     // MARK: Properties
     
@@ -39,7 +48,7 @@ class InstagramViewController: BaseViewController, StoryboardLoadable, LoginView
     
     var loginAlert = SnapXAlert.singleInstance
     // MARK: Lifecycle
-    
+    private var loginRequest = false
     override func viewDidLoad() {
         super.viewDidLoad()
         webView?.navigationDelegate = self
@@ -67,13 +76,12 @@ extension InstagramViewController: WKNavigationDelegate{
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Swift.Void) {
         decisionHandler(.allow)
-        guard let presenter = presenter  else {
+          //Read this link
+        //http://onebigfunction.com/ios/2017/01/06/wknavigationdelegate-errors/
+        guard let presenter = presenter else {
             return
         }
-        let response = presenter.instagramLoginRequest(request: InstagramEnum.instagramURL.getRequest())
-        if response == true {
-            hideLoading()
-        }
+        loginRequest = presenter.instagramLoginRequest(request: InstagramEnum.instagramURL.getRequest())
     }
     
     /* Start the network activity indicator when the web view is loading */
@@ -101,9 +109,25 @@ extension InstagramViewController: WKNavigationDelegate{
     
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         
-        removeWebView()
-        webView.stopLoading()
+        let nsError = error as NSError
+       
+        if loginRequest == false {
+            removeWebView()
+            webView.stopLoading()
+            return
+        }
         
+        switch nsError.code {
+        case ServerErrorCode.timeOut,
+             ServerErrorCode.serverCanFound,
+             ServerErrorCode.urlNotFoundONServer,
+             ServerErrorCode.noInternetConnection :
+            hideLoading()
+            resultNOInternet(result: .noInternet)
+            
+        default :
+            break
+        }
     }
     
     private func  removeWebView() {
