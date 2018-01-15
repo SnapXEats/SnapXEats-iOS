@@ -13,6 +13,7 @@ enum NetworkResult {
     case error
     case fail
     case success
+    case cancelRequest
 }
 protocol NetworkFailure {
     func resultNOInternet(result: NetworkResult)

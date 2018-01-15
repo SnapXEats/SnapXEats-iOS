@@ -33,9 +33,9 @@ extension LoginInteractor: LoginViewInteractorInput {
                 guard let strongSelf = self else { return }
                 switch loginResult {
                 case .failed(let error):
-                    print(error)
+                    strongSelf.output?.result(result: NetworkResult.error)
                 case .cancelled:
-                    print("User cancelled login.")
+                    strongSelf.output?.result(result: NetworkResult.cancelRequest)
                 case .success(let grantedPermissions, let declinedPermissions, let accessToken):
                     strongSelf.output?.result(result: NetworkResult.success)
                 }

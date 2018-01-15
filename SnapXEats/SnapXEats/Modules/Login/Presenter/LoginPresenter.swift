@@ -49,6 +49,8 @@ extension LoginPresenter: Result {
             view?.resultError(result: NetworkResult.error)
         case  .noInternet:
             view?.resultNOInternet(result: NetworkResult.noInternet)
+        case  .cancelRequest:
+            view?.resultNOInternet(result: NetworkResult.noInternet)
             
         }
     }

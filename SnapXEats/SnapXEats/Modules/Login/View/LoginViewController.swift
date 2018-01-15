@@ -60,7 +60,7 @@ class LoginViewController: BaseViewController, StoryboardLoadable, LoginView {
 
 extension LoginViewController: SnapXResult {
     func resultError(result: NetworkResult) {
-        loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.messageNoInternet,forView: self)
+        loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.loginError,forView: self)
         loginAlert.show()
     }
     
