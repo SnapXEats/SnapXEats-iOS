@@ -65,9 +65,3 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
-
-# PODS
-
-Pods/*.xcodeproj/xcuserdata/
-Pods/*.xcodeproj/project.xcworkspace/xcuserdata/
-Pods/
