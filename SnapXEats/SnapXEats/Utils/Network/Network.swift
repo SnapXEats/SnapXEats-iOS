@@ -26,5 +26,6 @@ protocol Response {
 protocol SnapXResult: NetworkFailure {
     func resultSuccess(result: NetworkResult)
     func resultError(result: NetworkResult)
+    func resultCancel (result: NetworkResult)
 }
 

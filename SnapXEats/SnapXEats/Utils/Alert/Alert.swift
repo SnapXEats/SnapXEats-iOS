@@ -14,6 +14,7 @@ enum LoginAlert {
     static var messageNoInternet = "You can't login check the Internet first"
     static var messageSuccess = "Login Succesful"
     static var loginError = "Server Error in login"
+    static var cancelRequest = "Login Canceled"
 }
 class SnapXAlert{
     private var alertSnapX: UIAlertController?

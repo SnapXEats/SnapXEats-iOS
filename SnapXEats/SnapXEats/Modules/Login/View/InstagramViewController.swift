@@ -8,26 +8,7 @@
 
 import Foundation
 import WebKit
-enum InstagramEnum {
-    static let INSTAGRAM_AUTHURL = "https://api.instagram.com/oauth/authorize/"
-    static let INSTAGRAM_CLIENT_ID = "e8454500a65241c3a8f833fee63a5043"
-    static let INSTAGRAM_CLIENTSERCRET = "4464a69c1fce432f9f00dd0f05591f12"
-    static let INSTAGRAM_REDIRECT_URI = "http://www.snapx.com"
-    static let INSTAGRAM_ACCESS_TOKEN = "access_token"
-    static let INSTAGRAM_SCOPE = "follower_list+public_content" /* add whatever scope you need https://www.instagram.com/developer/authorization/ */
-    static let INSTAGRAM_AUTH_STRING = "%@?client_id=%@&redirect_uri=%@&response_type=token&scope=%@&DEBUG=True"
-    
-    case instagramURL
-    
-    private func getString() -> String {
-        return  String(format: InstagramEnum.INSTAGRAM_AUTH_STRING, arguments: [InstagramEnum.INSTAGRAM_AUTHURL,InstagramEnum.INSTAGRAM_CLIENT_ID,InstagramEnum.INSTAGRAM_REDIRECT_URI, InstagramEnum.INSTAGRAM_SCOPE])
-    }
-    
-    func getRequest() -> URLRequest {
-        let string = getString()
-        return URLRequest.init(url: URL.init(string: string)!)
-    }
-}
+
 
 enum ServerErrorCode  {
     static let timeOut = -1001  // TIMED OUT:
@@ -44,8 +25,9 @@ class InstagramViewController: BaseViewController, StoryboardLoadable, LoginView
     var presenter: LoginViewPresentation?
     
     // MARK: IBOutlets
-    @IBOutlet var webView: WKWebView?
+    var webView: WKWebView!
     
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     var loginAlert = SnapXAlert.singleInstance
     // MARK: Lifecycle
     private var loginRequest = false
@@ -55,10 +37,22 @@ class InstagramViewController: BaseViewController, StoryboardLoadable, LoginView
         initView()
         //hideKeyboardWhenTappedAround()
     }
-    
-    func initView() {
+    @IBAction func cancelLogin(_ sender: Any) {
+        presenter?.removeInstagramWebView()
+    }
+
+    private func creatWKWebview() {
+        let webConfiguration = WKWebViewConfiguration()
+        webView = WKWebView(frame: .init(x: self.view.frame.origin.x, y: self.view.frame.origin.y + 55, width: self.view.frame.width, height: self.view.frame.height), configuration: webConfiguration)
+        webView.navigationDelegate = self
         let urlRequest = InstagramEnum.instagramURL.getRequest()
         webView?.load(urlRequest)
+        self.view.addSubview(webView)
+        self.view.sendSubview(toBack: webView)
+    }
+    
+    func initView() {
+        creatWKWebview()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -158,6 +152,11 @@ extension InstagramViewController: SnapXResult {
     
     func resultSuccess(result: NetworkResult) {
         loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.messageSuccess,forView: self)
+        loginAlert.show()
+    }
+    
+    func resultCancel(result: NetworkResult) {
+        loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.cancelRequest,forView: self)
         loginAlert.show()
     }
     

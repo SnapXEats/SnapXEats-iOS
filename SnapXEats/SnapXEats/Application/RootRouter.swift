@@ -6,16 +6,20 @@
 import UIKit
 
 class RootRouter: NSObject {
+    var window: UIWindow?
     
-    private override init() {}
+    private override init() {
+    }
     static var singleInstance = RootRouter()
-    
+
     func presentFirstScreen(inWindow window: UIWindow) {
+        guard let window  = UIApplication.shared.delegate?.window! else { return }
+        self.window = window
         presentLoginScreen()
     }
     
     func presentFirstScreen() {
-        presentLoginScreen()
+        window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
     
     private func presentLoginScreen() {
@@ -25,7 +29,7 @@ class RootRouter: NSObject {
     
     func presentLoginInstagramScreen(_ viewController: LoginView) {
         let instagramViewController = viewController as! InstagramViewController
-         presentView(instagramViewController)
+        window?.rootViewController?.present(instagramViewController, animated: true, completion: nil)
     }
     
     private func presentView(_ viewController: UIViewController) {

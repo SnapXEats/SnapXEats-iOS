@@ -50,7 +50,7 @@ extension LoginPresenter: Response {
         case  .noInternet:
             view?.resultNOInternet(result: NetworkResult.noInternet)
         case  .cancelRequest:
-            view?.resultNOInternet(result: NetworkResult.noInternet)
+            view?.resultCancel(result: NetworkResult.cancelRequest)
             
         }
     }

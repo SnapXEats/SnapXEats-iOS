@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D3D1CE02006479500AAAB95 /* SnapXEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3D1CDF2006479500AAAB95 /* SnapXEnum.swift */; };
 		9D8E887D1FFD27F30066A1D9 /* SnapXEatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E887C1FFD27F30066A1D9 /* SnapXEatsTests.swift */; };
 		9D8E88EB1FFD2BEC0066A1D9 /* LoginContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88C21FFD28C50066A1D9 /* LoginContract.swift */; };
 		9D8E88EC1FFD2BEC0066A1D9 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88C41FFD28C50066A1D9 /* LoginPresenter.swift */; };
@@ -57,13 +58,10 @@
 		9DB7FE1720061B6200D0E816 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1620061B1600D0E816 /* Roboto-Light.ttf */; };
 		9DB7FE1820061B6200D0E816 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1520061B1600D0E816 /* Roboto-Medium.ttf */; };
 		9DB7FE1920061B6200D0E816 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1420061B1600D0E816 /* Roboto-Regular.ttf */; };
-		9DB7FE1B20061E3600D0E816 /* SnapX-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1A20061E3600D0E816 /* SnapX-logo.png */; };
 		9DB7FE1D20061E4300D0E816 /* SnapX-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1C20061E4300D0E816 /* SnapX-logo.png */; };
 		9DB7FE1F20061E8C00D0E816 /* BG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1E20061E8C00D0E816 /* BG@3x.png */; };
 		9DEB5CF71FFE6D49003B9D4B /* FlashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88BC1FFD28C50066A1D9 /* FlashScreen.storyboard */; };
 		9DEB5CF81FFE6D49003B9D4B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88C61FFD28C50066A1D9 /* Login.storyboard */; };
-		9DEB5CF91FFE6D49003B9D4B /* PlainButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88AB1FFD28C50066A1D9 /* PlainButtonCell.xib */; };
-		9DEB5CFA1FFE6D49003B9D4B /* SectionHeaderLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88AE1FFD28C50066A1D9 /* SectionHeaderLabelCell.xib */; };
 		CE64A9A86226702DB23DF92F /* Pods_SnapXEats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967BD01B1CEED06931835CA3 /* Pods_SnapXEats.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +78,7 @@
 /* Begin PBXFileReference section */
 		18C81282DCA92A76FE981E2D /* Pods-SnapXEats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapXEats.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SnapXEats/Pods-SnapXEats.debug.xcconfig"; sourceTree = "<group>"; };
 		967BD01B1CEED06931835CA3 /* Pods_SnapXEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnapXEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D3D1CDF2006479500AAAB95 /* SnapXEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEnum.swift; sourceTree = "<group>"; };
 		9D8E88641FFD27F30066A1D9 /* SnapXEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapXEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8E88781FFD27F30066A1D9 /* SnapXEatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapXEatsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8E887C1FFD27F30066A1D9 /* SnapXEatsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEatsTests.swift; sourceTree = "<group>"; };
@@ -107,9 +106,7 @@
 		9D8E88A51FFD28C50066A1D9 /* RoundedPinkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedPinkButton.swift; sourceTree = "<group>"; };
 		9D8E88A61FFD28C50066A1D9 /* SimpleCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCircle.swift; sourceTree = "<group>"; };
 		9D8E88AA1FFD28C50066A1D9 /* PlainButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainButtonCell.swift; sourceTree = "<group>"; };
-		9D8E88AB1FFD28C50066A1D9 /* PlainButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlainButtonCell.xib; sourceTree = "<group>"; };
 		9D8E88AD1FFD28C50066A1D9 /* SectionHeaderLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderLabelCell.swift; sourceTree = "<group>"; };
-		9D8E88AE1FFD28C50066A1D9 /* SectionHeaderLabelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderLabelCell.xib; sourceTree = "<group>"; };
 		9D8E88B11FFD28C50066A1D9 /* ProfileLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLocalDataManager.swift; sourceTree = "<group>"; };
 		9D8E88B31FFD28C50066A1D9 /* ProfileApiDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileApiDataManager.swift; sourceTree = "<group>"; };
 		9D8E88B51FFD28C50066A1D9 /* StoryboardLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardLoadable.swift; sourceTree = "<group>"; };
@@ -140,7 +137,6 @@
 		9DB7FE1420061B1600D0E816 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		9DB7FE1520061B1600D0E816 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		9DB7FE1620061B1600D0E816 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
-		9DB7FE1A20061E3600D0E816 /* SnapX-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SnapX-logo.png"; sourceTree = "<group>"; };
 		9DB7FE1C20061E4300D0E816 /* SnapX-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SnapX-logo.png"; sourceTree = "<group>"; };
 		9DB7FE1E20061E8C00D0E816 /* BG@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BG@3x.png"; sourceTree = "<group>"; };
 		C272160BBB123BC8E63B160D /* Pods-SnapXEats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapXEats.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapXEats/Pods-SnapXEats.release.xcconfig"; sourceTree = "<group>"; };
@@ -172,6 +168,14 @@
 				C272160BBB123BC8E63B160D /* Pods-SnapXEats.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		9D3D1CDE2006477B00AAAB95 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				9D3D1CDF2006479500AAAB95 /* SnapXEnum.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 		9D8E885B1FFD27F30066A1D9 = {
@@ -221,7 +225,7 @@
 		9D8E888C1FFD28C50066A1D9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				9DB7FE1A20061E3600D0E816 /* SnapX-logo.png */,
+				9D3D1CDE2006477B00AAAB95 /* Enum */,
 				9DB7FE0F2004F0E100D0E816 /* Alert */,
 				9DB7FE0C2004BC8800D0E816 /* Network */,
 				9D8E888D1FFD28C50066A1D9 /* Constants */,
@@ -307,7 +311,6 @@
 			isa = PBXGroup;
 			children = (
 				9D8E88AA1FFD28C50066A1D9 /* PlainButtonCell.swift */,
-				9D8E88AB1FFD28C50066A1D9 /* PlainButtonCell.xib */,
 			);
 			path = PlainButtonCell;
 			sourceTree = "<group>";
@@ -316,7 +319,6 @@
 			isa = PBXGroup;
 			children = (
 				9D8E88AD1FFD28C50066A1D9 /* SectionHeaderLabelCell.swift */,
-				9D8E88AE1FFD28C50066A1D9 /* SectionHeaderLabelCell.xib */,
 			);
 			path = SectionHeaderLabelCell;
 			sourceTree = "<group>";
@@ -639,11 +641,8 @@
 				9DB7FE1920061B6200D0E816 /* Roboto-Regular.ttf in Resources */,
 				9DB7FE1D20061E4300D0E816 /* SnapX-logo.png in Resources */,
 				9DEB5CF71FFE6D49003B9D4B /* FlashScreen.storyboard in Resources */,
-				9DB7FE1B20061E3600D0E816 /* SnapX-logo.png in Resources */,
 				9DEB5CF81FFE6D49003B9D4B /* Login.storyboard in Resources */,
-				9DEB5CF91FFE6D49003B9D4B /* PlainButtonCell.xib in Resources */,
 				9DB7FE1F20061E8C00D0E816 /* BG@3x.png in Resources */,
-				9DEB5CFA1FFE6D49003B9D4B /* SectionHeaderLabelCell.xib in Resources */,
 				9DB7FE132005F96A00D0E816 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -759,6 +758,7 @@
 				9D8E88F71FFD2BEC0066A1D9 /* UIImage+Icons.swift in Sources */,
 				9D8E88F81FFD2BEC0066A1D9 /* UIView.swift in Sources */,
 				9D8E88F91FFD2BEC0066A1D9 /* UIFont+Utils.swift in Sources */,
+				9D3D1CE02006479500AAAB95 /* SnapXEnum.swift in Sources */,
 				9D8E88FA1FFD2BEC0066A1D9 /* UITextField+Border.swift in Sources */,
 				9D8E88FB1FFD2BEC0066A1D9 /* UICollectionView.swift in Sources */,
 				9D8E88FC1FFD2BEC0066A1D9 /* DataResponse.swift in Sources */,
@@ -938,7 +938,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 67822934AQ;
 				INFOPLIST_FILE = SnapXEats/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.synerzip.SnapXEatstest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -958,7 +958,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 67822934AQ;
 				INFOPLIST_FILE = SnapXEats/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.synerzip.SnapXEatstest;
 				PRODUCT_NAME = "$(TARGET_NAME)";

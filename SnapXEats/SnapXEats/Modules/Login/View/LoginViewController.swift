@@ -73,5 +73,11 @@ extension LoginViewController: SnapXResult {
         loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.messageSuccess,forView: self)
         loginAlert.show()
     }
+    
+    func resultCancel(result: NetworkResult) {
+        
+        // loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.cancelRequest,forView: self)
+        //loginAlert.show()
+    }
 }
 
