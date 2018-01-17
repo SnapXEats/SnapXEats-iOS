@@ -19,8 +19,8 @@ protocol NetworkFailure {
     func resultNOInternet(result: NetworkResult)
 }
 
-protocol Result {
-    func result(result: NetworkResult)
+protocol Response {
+    func response(result: NetworkResult)
 }
 
 protocol SnapXResult: NetworkFailure {

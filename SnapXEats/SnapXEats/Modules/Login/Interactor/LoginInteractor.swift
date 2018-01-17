@@ -14,7 +14,7 @@ class LoginInteractor {
     
     // MARK: Properties
     private var view : UIViewController?
-    var output: Result?
+    var output: Response?
     
     private init() {}
     static  var  singletenInstance = LoginInteractor()
@@ -33,11 +33,11 @@ extension LoginInteractor: LoginViewInteractorInput {
                 guard let strongSelf = self else { return }
                 switch loginResult {
                 case .failed(let error):
-                    strongSelf.output?.result(result: NetworkResult.error)
+                    strongSelf.output?.response(result: NetworkResult.error)
                 case .cancelled:
-                    strongSelf.output?.result(result: NetworkResult.cancelRequest)
+                    strongSelf.output?.response(result: NetworkResult.cancelRequest)
                 case .success(let grantedPermissions, let declinedPermissions, let accessToken):
-                    strongSelf.output?.result(result: NetworkResult.success)
+                    strongSelf.output?.response(result: NetworkResult.success)
                 }
             }
         }
@@ -67,7 +67,7 @@ extension LoginInteractor {
     
     func checkRechability() -> Bool {
         if Reachability()?.currentReachabilityStatus == .notReachable {
-            output?.result(result: .noInternet)
+            output?.response(result: .noInternet)
             return false
         } else {
             return true

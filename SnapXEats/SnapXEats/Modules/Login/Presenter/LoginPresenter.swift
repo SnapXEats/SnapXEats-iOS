@@ -37,9 +37,9 @@ extension LoginPresenter: LoginViewPresentation {
     
 }
 
-extension LoginPresenter: Result {
+extension LoginPresenter: Response {
     
-    func result(result: NetworkResult) {
+    func response(result: NetworkResult) {
         switch result {
         case .success:
             view?.resultSuccess(result: NetworkResult.success)
