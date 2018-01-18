@@ -29,3 +29,18 @@ enum InstagramEnum {
         return URLRequest.init(url: URL.init(string: string)!)
     }
 }
+
+enum SnapXEatsConstant {
+    case buildVersion
+    
+    func getBuildVersion() -> String {
+        var buildVersion = ""
+        if let showBuildVersion = Bundle.main.infoDictionary!["BuildVersion"] as? Bool, showBuildVersion == true {
+            let appBuildNumber = Bundle.main.infoDictionary!["CFBundleVersion"] as! String
+            let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+            buildVersion = "V-\(appVersion)-Build-\(appBuildNumber)"
+        }
+        return buildVersion
+    }
+    
+}

@@ -20,6 +20,7 @@ class LoginViewController: BaseViewController, StoryboardLoadable, LoginView {
     @IBOutlet weak var instagramLoginButton: UIButton!
     @IBOutlet weak var facebookLoginButton: UIButton!
     
+    @IBOutlet weak var buildLabel: UILabel!
     @IBAction func loginUsinInstagram(_ sender: Any) {
         presenter?.setView(view: self)  // keep the view as current view
         presenter?.loginUsingInstagram()
@@ -54,6 +55,7 @@ class LoginViewController: BaseViewController, StoryboardLoadable, LoginView {
      func initView() {
         instagramLoginButton.addBorder(ofWidth: 1, withColor: UIColor.rgba(255.0, 255.0, 255.0, 0.34), radius: 5.0)
         facebookLoginButton.addBorder(ofWidth: 1, withColor: UIColor.rgba(255.0, 255.0, 255.0, 0.34), radius: 5.0)
+        buildLabel.text = SnapXEatsConstant.buildVersion.getBuildVersion()
     }
 }
 
