@@ -1,0 +1,26 @@
+//
+//  LocationPresenter.swift
+//  SnapXEats
+//
+//  Created by Durgesh Trivedi on 18/01/18.
+//  Copyright © 2018 SnapXEats. All rights reserved.
+//
+
+import Foundation
+
+class LocationPresenter {
+
+    // MARK: Properties
+
+    weak var view: LocationView?
+    var router: LocationWireframe?
+    var interactor: LocationUseCase?
+}
+
+extension LocationPresenter: LocationPresentation {
+    // TODO: implement presentation methods
+}
+
+extension LocationPresenter: LocationInteractorOutput {
+    // TODO: implement interactor output methods
+}
