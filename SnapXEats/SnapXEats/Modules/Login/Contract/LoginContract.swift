@@ -29,7 +29,7 @@ protocol LoginViewInteractorOutput: class {
     func onLoginReguestFailure(message: String)
 }
 
-protocol LoginViewWireframe: class {
+protocol LoginViewWireframe: class, RootWireFrame {
     func loadLoginModule() -> LoginView
     func loadInstagramView() -> LoginView
 }

@@ -16,6 +16,7 @@ target 'SnapXEats' do
     pod 'FacebookCore'
     pod 'FacebookLogin'
     pod 'FacebookShare'
+
 end
 
     # pod 'Localize-Swift', '~> 1.6'

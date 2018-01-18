@@ -13,15 +13,17 @@ class LocationRouter {
 
     // MARK: Properties
 
-    weak var view: UIViewController?
+    private init() {}
+    static let singleInstance = LocationRouter()
+    weak var view: LocationView?
 
     // MARK: Static methods
 
-    static func setupModule() -> LocationViewController {
-        let viewController = UIStoryboard.loadViewController() as LocationViewController
-        let presenter = LocationPresenter()
-        let router = LocationRouter()
-        let interactor = LocationInteractor()
+    private func initView(viewController: LocationView) {
+
+        let presenter = LocationPresenter.singleInstance
+        let router = LocationRouter.singleInstance
+        let interactor = LocationInteractor.singleInstance
 
         viewController.presenter =  presenter
 
@@ -32,11 +34,13 @@ class LocationRouter {
         router.view = viewController
 
         interactor.output = presenter
-
-        return viewController
     }
 }
 
 extension LocationRouter: LocationWireframe {
-    // TODO: Implement wireframe methods
+    func loadLocationModule () -> LocationView {
+        let viewController = UIStoryboard.loadViewController() as LocationViewController
+        initView(viewController: viewController)
+        return viewController
+    }
 }

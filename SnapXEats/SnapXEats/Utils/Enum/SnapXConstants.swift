@@ -42,5 +42,15 @@ enum SnapXEatsConstant {
         }
         return buildVersion
     }
-    
+}
+
+enum SnapXEatsStoryboard {
+    static let loginStoryboard = "Login"
+    static let locationStoryboard = "Location"
+}
+
+enum SnapXEatsStoryboardIdentifier {
+    static let loginViewControllerID = "LoginViewController"
+    static let instagramViewControllerID = "InstagramViewController"
+    static let locationViewControllerID = "LocationViewController"
 }

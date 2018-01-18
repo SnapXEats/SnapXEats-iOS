@@ -570,8 +570,8 @@
 		9DB02A682010805F0061FC0C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9DB02A692010805F0061FC0C /* LocationViewController.swift */,
 				9DB02A75201084730061FC0C /* Location.storyboard */,
+				9DB02A692010805F0061FC0C /* LocationViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1027,7 +1027,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 67822934AQ;
 				INFOPLIST_FILE = SnapXEats/Info.plist;
@@ -1035,8 +1035,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.synerzip.SnapXEatstest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "023432aa-2161-47d1-993c-13bb278f2ade";
-				PROVISIONING_PROFILE_SPECIFIER = "Synerzip In house Wildcard";
+				PROVISIONING_PROFILE = "460e161f-c22d-4263-b782-e2b1b1b258b1";
+				PROVISIONING_PROFILE_SPECIFIER = "Synerzip wildcard dev";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

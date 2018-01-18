@@ -9,7 +9,8 @@
 import Foundation
 
 protocol LocationView: class, BaseView {
-    // TODO: Declare view methods
+    var presenter: LocationPresentation? {get set}
+    func initView()
 }
 
 protocol LocationPresentation: class {
@@ -25,5 +26,5 @@ protocol LocationInteractorOutput: class {
 }
 
 protocol LocationWireframe: class {
-    // TODO: Declare wireframe methods
+    func loadLocationModule() -> LocationView
 }

@@ -13,6 +13,8 @@ class LocationInteractor {
     // MARK: Properties
 
     weak var output: LocationInteractorOutput?
+    private init() {}
+    static let singleInstance = LocationInteractor()
 }
 
 extension LocationInteractor: LocationUseCase {

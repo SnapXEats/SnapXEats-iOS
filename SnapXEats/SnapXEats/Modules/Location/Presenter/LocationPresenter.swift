@@ -15,6 +15,9 @@ class LocationPresenter {
     weak var view: LocationView?
     var router: LocationWireframe?
     var interactor: LocationUseCase?
+    
+    private init() {}
+    static let singleInstance = LocationPresenter()
 }
 
 extension LocationPresenter: LocationPresentation {

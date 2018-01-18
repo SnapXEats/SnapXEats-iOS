@@ -23,9 +23,8 @@ extension LoginPresenter: LoginViewPresentation {
     }
     
     func loginUsingInstagram() {
-        if let router = router, let interact = interactor, interact.checkRechability() == true {
-           let  instaView = router.loadInstagramView()
-            RootRouter.singleInstance.presentLoginInstagramScreen(instaView)
+        if  let interact = interactor, interact.checkRechability() == true {
+            router?.presentScreen(screen: .instagram)
         }
     }
     
@@ -42,7 +41,7 @@ extension LoginPresenter: Response {
     func response(result: NetworkResult) {
         switch result {
         case .success:
-            view?.resultSuccess(result: NetworkResult.success)
+            presentLocationScreen()
         case .error:
             view?.resultError(result: NetworkResult.error)
         case .fail:
@@ -58,6 +57,10 @@ extension LoginPresenter: Response {
     func onLoginReguestFailure(message: String) {
         view?.showError(message)
     }
+    
+    private func presentLocationScreen() {
+        router?.presentScreen(screen: .location)
+    }
     //TODO: Implement other methods from interactor->presenter here
 }
 
@@ -70,7 +73,6 @@ extension LoginPresenter: LoginViewPresentationInstagram {
     }
     
     func removeInstagramWebView() {
-        RootRouter.singleInstance.presentFirstScreen()
-        //router?.loadLoginModule()
+         router?.presentScreen(screen: .firstScreen)
     }
 }
