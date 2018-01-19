@@ -15,6 +15,8 @@ protocol LocationView: class, BaseView {
 
 protocol LocationPresentation: class {
     // TODO: Declare presentation methods
+        func closeLocationView()
+        func selectLocation()
 }
 
 protocol LocationUseCase: class {
@@ -25,6 +27,6 @@ protocol LocationInteractorOutput: class {
     // TODO: Declare interactor output methods
 }
 
-protocol LocationWireframe: class {
+protocol LocationWireframe: class, RootWireFrame {
     func loadLocationModule() -> LocationView
 }

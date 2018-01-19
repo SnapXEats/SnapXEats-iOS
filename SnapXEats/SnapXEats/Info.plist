@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string></string>
 	<key>BuildVersion</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
@@ -73,6 +69,10 @@
 		<key>NSExceptionDomains</key>
 		<dict/>
 	</dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string></string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string></string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Roboto-Light.ttf</string>

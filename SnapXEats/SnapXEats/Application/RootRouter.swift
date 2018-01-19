@@ -5,7 +5,7 @@
 
 import UIKit
 enum Screens {
-    case login, instagram, location, firstScreen
+    case login, instagram, location, firstScreen, card, newLocation
 }
 
 protocol RootWireFrame {
@@ -28,11 +28,6 @@ class RootRouter: NSObject {
         window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
     
-    private func presentLocationScreen() {
-        let locatioViewController = LocationRouter.singleInstance.loadLocationModule() as! LocationViewController
-        presentView(locatioViewController)
-    }
-    
     private func presentLoginScreen() {
         let loginViewController = LoginRouter.singletenInstance.loadLoginModule() as! LoginViewController
         presentView(loginViewController)
@@ -43,6 +38,19 @@ class RootRouter: NSObject {
         window?.rootViewController?.present(instagramViewController, animated: true, completion: nil)
     }
     
+    private func presentLocationScreen() {
+        let locatioViewController = LocationRouter.singleInstance.loadLocationModule() as! LocationViewController
+        presentView(locatioViewController)
+    }
+    
+    func presentCardScreen() {
+        // This is temp code
+         window?.rootViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    func presentNewLocationScreen() {
+        
+    }
     func presentScreen(screens: Screens) {
         switch screens {
         case .firstScreen:
@@ -53,6 +61,10 @@ class RootRouter: NSObject {
              presentLoginInstagramScreen()
         case .location:
             presentLocationScreen()
+        case .card:
+            presentCardScreen()
+        case .newLocation:
+            presentNewLocationScreen()
         }
     }
     private func presentView(_ viewController: UIViewController) {
@@ -60,5 +72,5 @@ class RootRouter: NSObject {
         window.backgroundColor = UIColor.white
         window.makeKeyAndVisible()
         window.rootViewController = viewController
-    }    
+    }
 }

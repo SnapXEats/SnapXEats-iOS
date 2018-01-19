@@ -43,4 +43,8 @@ extension LocationRouter: LocationWireframe {
         initView(viewController: viewController)
         return viewController
     }
+    
+    func presentScreen(screen: Screens) {
+        RootRouter.singleInstance.presentScreen(screens: screen)
+    }
 }

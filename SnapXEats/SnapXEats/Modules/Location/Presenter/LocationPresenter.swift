@@ -22,6 +22,13 @@ class LocationPresenter {
 
 extension LocationPresenter: LocationPresentation {
     // TODO: implement presentation methods
+    func closeLocationView() {
+        router?.presentScreen(screen: .card)
+    }
+    
+    func selectLocation() {
+        router?.presentScreen(screen: .newLocation)
+    }
 }
 
 extension LocationPresenter: LocationInteractorOutput {
