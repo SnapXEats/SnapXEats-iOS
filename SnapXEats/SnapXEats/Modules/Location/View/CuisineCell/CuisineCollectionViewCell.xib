@@ -28,34 +28,26 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Wj-EI-ru9">
                         <rect key="frame" x="5" y="5" width="214" height="180"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="bYZ-fv-eVv">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_cuisine" translatesAutoresizingMaskIntoConstraints="NO" id="bYZ-fv-eVv">
                                 <rect key="frame" x="0.0" y="0.0" width="213.5" height="142"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="bYZ-fv-eVv" secondAttribute="height" multiplier="3:2" id="pkl-2A-tD7"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3E0-or-aDz">
-                                <rect key="frame" x="10" y="142" width="194" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="fTD-ef-CiQ"/>
-                                </constraints>
+                                <rect key="frame" x="10" y="142" width="194" height="38"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="eNh-ot-5ik">
-                                <rect key="frame" x="97" y="61" width="20" height="20"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="3E0-or-aDz" firstAttribute="top" secondItem="bYZ-fv-eVv" secondAttribute="bottom" id="Blo-4g-xB4"/>
                             <constraint firstAttribute="trailing" secondItem="bYZ-fv-eVv" secondAttribute="trailing" id="DnZ-pd-fjJ"/>
                             <constraint firstItem="bYZ-fv-eVv" firstAttribute="leading" secondItem="3Wj-EI-ru9" secondAttribute="leading" id="LlP-cO-t0X"/>
-                            <constraint firstItem="eNh-ot-5ik" firstAttribute="centerX" secondItem="bYZ-fv-eVv" secondAttribute="centerX" id="N4K-0r-IJr"/>
                             <constraint firstItem="bYZ-fv-eVv" firstAttribute="top" secondItem="3Wj-EI-ru9" secondAttribute="top" id="V8m-gY-oOg"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="3E0-or-aDz" secondAttribute="bottom" constant="6" id="VJ9-hy-4Bk"/>
-                            <constraint firstItem="eNh-ot-5ik" firstAttribute="centerY" secondItem="bYZ-fv-eVv" secondAttribute="centerY" id="W3Q-qo-65X"/>
+                            <constraint firstAttribute="bottom" secondItem="3E0-or-aDz" secondAttribute="bottom" id="VJ9-hy-4Bk"/>
                             <constraint firstAttribute="trailing" secondItem="3E0-or-aDz" secondAttribute="trailing" constant="10" id="kRB-f1-khD"/>
                             <constraint firstItem="3E0-or-aDz" firstAttribute="leading" secondItem="3Wj-EI-ru9" secondAttribute="leading" constant="10" id="wOu-A7-0cT"/>
                             <constraint firstItem="3E0-or-aDz" firstAttribute="top" secondItem="bYZ-fv-eVv" secondAttribute="bottom" id="whG-yI-0cW"/>
@@ -80,6 +72,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="Image" width="375" height="667"/>
+        <image name="placeholder_cuisine" width="89" height="58"/>
     </resources>
 </document>

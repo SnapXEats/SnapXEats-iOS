@@ -18,7 +18,7 @@ class CuisinePreference: Mappable {
     
     // Mappable
     func mapping(map: Map) {
-        cuisineList <- map["cusineList"]
+        cuisineList <- map["cuisineList"]
     }
 }
 class Cuisine: Mappable {
