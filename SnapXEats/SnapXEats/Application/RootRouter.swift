@@ -4,6 +4,8 @@
 //  Copyright © 2018 SnapXEats. All rights reserved.
 
 import UIKit
+import FacebookLogin
+import FacebookCore
 enum Screens {
     case login, instagram, location, firstScreen, foodcards, selectLocation, dismissNewLocation
 }
@@ -19,9 +21,28 @@ class RootRouter: NSObject {
     static var singleInstance = RootRouter()
 
     func presentFirstScreen(inWindow window: UIWindow) {
-        guard let window  = UIApplication.shared.delegate?.window! else { return }
-        self.window = window
-        presentLoginScreen()
+       userLoggedIn()
+    }
+    
+   private func userLoggedIn() {
+        if faceBookLoggedIn() || instagramLoggedIn() {
+            presentScreen(screens: .location)
+        } else {
+            guard let window  = UIApplication.shared.delegate?.window! else { return }
+            self.window = window
+            presentLoginScreen()
+        }
+    }
+    
+    func instagramLoggedIn () -> Bool{
+        return UserDefaults.standard.bool(forKey: InstagramConstant.INSTAGRAM_LOGGEDIN)
+    }
+    
+    func faceBookLoggedIn () -> Bool {
+       if let _ =  AccessToken.current?.authenticationToken {
+            return true
+        }
+        return false
     }
     
     private func presentFirstScreen() {
