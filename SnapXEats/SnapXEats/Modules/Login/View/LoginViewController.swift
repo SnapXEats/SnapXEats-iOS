@@ -19,7 +19,8 @@ class LoginViewController: BaseViewController, StoryboardLoadable, LoginView {
     
     @IBOutlet weak var instagramLoginButton: UIButton!
     @IBOutlet weak var facebookLoginButton: UIButton!
-    
+
+    @IBOutlet weak var buildLabel: UILabel!
     @IBAction func loginUsinInstagram(_ sender: Any) {
         presenter?.setView(view: self)  // keep the view as current view
         presenter?.loginUsingInstagram()
@@ -31,6 +32,10 @@ class LoginViewController: BaseViewController, StoryboardLoadable, LoginView {
         presenter?.loginUsingFaceBook()
     }
     
+    
+    @IBAction func skipLogin(_ sender: Any) {
+        presenter?.skipUserLogin()
+    }
     var loginAlert = SnapXAlert.singleInstance
     // MARK: Lifecycle
     
@@ -54,24 +59,32 @@ class LoginViewController: BaseViewController, StoryboardLoadable, LoginView {
      func initView() {
         instagramLoginButton.addBorder(ofWidth: 1, withColor: UIColor.rgba(255.0, 255.0, 255.0, 0.34), radius: 5.0)
         facebookLoginButton.addBorder(ofWidth: 1, withColor: UIColor.rgba(255.0, 255.0, 255.0, 0.34), radius: 5.0)
+        buildLabel.text = SnapXEatsConstant.buildVersion.getBuildVersion()
     }
 }
 
 
 extension LoginViewController: SnapXResult {
-    func resultError(result: NetworkResult) {
+    
+    func error(result: NetworkResult) {
         loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.loginError,forView: self)
         loginAlert.show()
     }
     
-    func resultNOInternet(result: NetworkResult) {
+    func noInternet(result: NetworkResult) {
         loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.messageNoInternet,forView: self)
         loginAlert.show()
     }
     
-    func resultSuccess(result: NetworkResult) {
+    func success(result: Any?) {
         loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.messageSuccess,forView: self)
         loginAlert.show()
+    }
+    
+    func cancel(result: NetworkResult) {
+        
+        // loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.cancelRequest,forView: self)
+        //loginAlert.show()
     }
 }
 

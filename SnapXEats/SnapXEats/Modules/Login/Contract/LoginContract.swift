@@ -14,6 +14,7 @@ protocol LoginViewPresentation: LoginViewPresentationInstagram {
     func loginUsingInstagram()
     func loginUsingFaceBook()
     func setView(view: LoginView)
+    func skipUserLogin()
 }
 
 protocol LoginViewPresentationInstagram: class {
@@ -29,7 +30,7 @@ protocol LoginViewInteractorOutput: class {
     func onLoginReguestFailure(message: String)
 }
 
-protocol LoginViewWireframe: class {
+protocol LoginViewWireframe: class, RootWireFrame {
     func loadLoginModule() -> LoginView
     func loadInstagramView() -> LoginView
 }

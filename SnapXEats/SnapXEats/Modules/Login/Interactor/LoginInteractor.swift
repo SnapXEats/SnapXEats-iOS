@@ -37,7 +37,7 @@ extension LoginInteractor: LoginViewInteractorInput {
                 case .cancelled:
                     strongSelf.output?.response(result: NetworkResult.cancelRequest)
                 case .success(let grantedPermissions, let declinedPermissions, let accessToken):
-                    strongSelf.output?.response(result: NetworkResult.success)
+                    strongSelf.output?.response(result: NetworkResult.success(data: nil))
                 }
             }
         }
