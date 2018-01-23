@@ -168,6 +168,7 @@
 		9D902BE3201729E300359DFD /* SelectLocationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLocationRouter.swift; sourceTree = "<group>"; };
 		9D902BE920172A2F00359DFD /* SelectLocation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectLocation.storyboard; sourceTree = "<group>"; };
 		9D902BEB201736B500359DFD /* FoodCards.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FoodCards.storyboard; sourceTree = "<group>"; };
+		9D902BED20177EFF00359DFD /* SnapXEats.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SnapXEats.entitlements; sourceTree = "<group>"; };
 		9DB02A652010805F0061FC0C /* LocationContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationContract.swift; sourceTree = "<group>"; };
 		9DB02A672010805F0061FC0C /* LocationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPresenter.swift; sourceTree = "<group>"; };
 		9DB02A692010805F0061FC0C /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
@@ -266,6 +267,7 @@
 		9D8E88871FFD28C50066A1D9 /* SnapXEats */ = {
 			isa = PBXGroup;
 			children = (
+				9D902BED20177EFF00359DFD /* SnapXEats.entitlements */,
 				9D8E88BB1FFD28C50066A1D9 /* Application */,
 				9D8E88BF1FFD28C50066A1D9 /* Modules */,
 				9D8E88D91FFD28C50066A1D9 /* Entities */,
@@ -822,6 +824,11 @@
 					9D8E88631FFD27F30066A1D9 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					9D8E88771FFD27F30066A1D9 = {
 						CreatedOnToolsVersion = 9.0;
@@ -1176,6 +1183,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = SnapXEats/SnapXEats.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 265UFUW5H2;
@@ -1197,6 +1205,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = SnapXEats/SnapXEats.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 265UFUW5H2;

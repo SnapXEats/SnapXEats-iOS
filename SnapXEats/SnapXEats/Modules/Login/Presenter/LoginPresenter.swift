@@ -31,6 +31,11 @@ extension LoginPresenter: LoginViewPresentation {
     func skipUserLogin() {
         presentLocationScreen()
     }
+    
+    func showLocationScreen() {
+        removeInstagramWebView()
+        presentLocationScreen()
+    }
     func setView(view: LoginView) {
         self.view = view
     }
