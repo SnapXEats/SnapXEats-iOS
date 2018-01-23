@@ -27,7 +27,7 @@ class CuisineCollectionViewCell: UICollectionViewCell {
         //activityIndicatorView.startAnimating()
         if let imagURL = cuisineItem.cuisineImageURL {
         let url = URL(string: imagURL)!
-            let placeholderImage = UIImage(named: "BG")!
+            let placeholderImage = UIImage(named: "placeholder_cuisine")!
             cuisineImage.af_setImage(withURL: url, placeholderImage: placeholderImage)
         }
        

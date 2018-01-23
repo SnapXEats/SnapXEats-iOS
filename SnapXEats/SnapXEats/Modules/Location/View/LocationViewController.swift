@@ -57,7 +57,6 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
 
 extension LocationViewController: LocationView {
    
-    
     // TODO: implement view output methods
     func initView() {
         locationManager = CLLocationManager()
@@ -95,22 +94,28 @@ extension LocationViewController: CLLocationManagerDelegate {
         let location = locations.first!
         locationManager?.stopUpdatingLocation()
         locationManager = nil
-        // Get user's current location name
+        
+        // Get user's current location Address
+        showAddressForLocation(location: location)
+    }
+    
+    private func showAddressForLocation(location: CLLocation) {
         let geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(location) {[weak self] (placemarksArray, error) in
-             guard let strongSelf = self else { return }
+            guard let strongSelf = self else { return }
+        
             if (placemarksArray?.count)! > 0 {
-                
-                let placemark = placemarksArray?.first
-                let number = placemark!.subThoroughfare
-                let bairro = placemark!.subLocality
-                let street = placemark!.thoroughfare
-                strongSelf.userLocation.titleLabel?.text = "\(street!), \(number!) - \(bairro!)"
                 strongSelf.hideLoading()
+                
+                let placemark = placemarksArray?.first // Get the First Address from List
+                if let locality = placemark?.subLocality {
+                    strongSelf.userLocation.setTitle("\(locality)", for: .normal)
+                } else if let area = placemark?.subAdministrativeArea {
+                    strongSelf.userLocation.setTitle("\(area)", for: .normal)
+                }
             }
         }
     }
-    
 }
 
 
@@ -149,12 +154,6 @@ extension LocationViewController: UICollectionViewDelegateFlowLayout {
         
         return sectionInsets
     }
-
-//    func collectionView(_ collectionView: UICollectionView,
-//                        layout collectionViewLayout: UICollectionViewLayout,
-//                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return sectionInsets.left
-//    }
 }
 
 
