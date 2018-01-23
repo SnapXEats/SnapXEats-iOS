@@ -56,6 +56,11 @@
 		9D8E89151FFD2BEC0066A1D9 /* ValidatorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88BA1FFD28C50066A1D9 /* ValidatorHelper.swift */; };
 		9D8E89161FFD2C400066A1D9 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88BD1FFD28C50066A1D9 /* RootRouter.swift */; };
 		9D8E89171FFD2C400066A1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88BE1FFD28C50066A1D9 /* AppDelegate.swift */; };
+		9D902BC920171AED00359DFD /* FoodCardsContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D902BC020171AED00359DFD /* FoodCardsContract.swift */; };
+		9D902BCA20171AED00359DFD /* FoodCardsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D902BC220171AED00359DFD /* FoodCardsPresenter.swift */; };
+		9D902BCB20171AED00359DFD /* FoodCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D902BC420171AED00359DFD /* FoodCardsViewController.swift */; };
+		9D902BCC20171AED00359DFD /* FoodCardsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D902BC620171AED00359DFD /* FoodCardsInteractor.swift */; };
+		9D902BCD20171AED00359DFD /* FoodCardsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D902BC820171AED00359DFD /* FoodCardsRouter.swift */; };
 		9DB02A6E2010805F0061FC0C /* LocationContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB02A652010805F0061FC0C /* LocationContract.swift */; };
 		9DB02A6F2010805F0061FC0C /* LocationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB02A672010805F0061FC0C /* LocationPresenter.swift */; };
 		9DB02A702010805F0061FC0C /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB02A692010805F0061FC0C /* LocationViewController.swift */; };
@@ -146,6 +151,11 @@
 		9D8E88DF1FFD2A6F0066A1D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D8E88E71FFD2A6F0066A1D9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9D8E88E81FFD2A6F0066A1D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9D902BC020171AED00359DFD /* FoodCardsContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCardsContract.swift; sourceTree = "<group>"; };
+		9D902BC220171AED00359DFD /* FoodCardsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCardsPresenter.swift; sourceTree = "<group>"; };
+		9D902BC420171AED00359DFD /* FoodCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCardsViewController.swift; sourceTree = "<group>"; };
+		9D902BC620171AED00359DFD /* FoodCardsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCardsInteractor.swift; sourceTree = "<group>"; };
+		9D902BC820171AED00359DFD /* FoodCardsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCardsRouter.swift; sourceTree = "<group>"; };
 		9DB02A652010805F0061FC0C /* LocationContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationContract.swift; sourceTree = "<group>"; };
 		9DB02A672010805F0061FC0C /* LocationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPresenter.swift; sourceTree = "<group>"; };
 		9DB02A692010805F0061FC0C /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
@@ -412,6 +422,7 @@
 		9D8E88BF1FFD28C50066A1D9 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				9D902BBE20171AED00359DFD /* FoodCards */,
 				9DB02A632010805F0061FC0C /* Location */,
 				9D8E88C01FFD28C50066A1D9 /* Login */,
 				9D8E88CD1FFD28C50066A1D9 /* Base */,
@@ -557,6 +568,58 @@
 			children = (
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		9D902BBE20171AED00359DFD /* FoodCards */ = {
+			isa = PBXGroup;
+			children = (
+				9D902BBF20171AED00359DFD /* Contract */,
+				9D902BC120171AED00359DFD /* Presenter */,
+				9D902BC320171AED00359DFD /* View */,
+				9D902BC520171AED00359DFD /* Interactor */,
+				9D902BC720171AED00359DFD /* Router */,
+			);
+			path = FoodCards;
+			sourceTree = "<group>";
+		};
+		9D902BBF20171AED00359DFD /* Contract */ = {
+			isa = PBXGroup;
+			children = (
+				9D902BC020171AED00359DFD /* FoodCardsContract.swift */,
+			);
+			path = Contract;
+			sourceTree = "<group>";
+		};
+		9D902BC120171AED00359DFD /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				9D902BC220171AED00359DFD /* FoodCardsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		9D902BC320171AED00359DFD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9D902BC420171AED00359DFD /* FoodCardsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9D902BC520171AED00359DFD /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				9D902BC620171AED00359DFD /* FoodCardsInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		9D902BC720171AED00359DFD /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				9D902BC820171AED00359DFD /* FoodCardsRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		9DB02A632010805F0061FC0C /* Location */ = {
@@ -852,6 +915,7 @@
 				9D8E88F71FFD2BEC0066A1D9 /* UIImage+Icons.swift in Sources */,
 				9D8E88F81FFD2BEC0066A1D9 /* UIView.swift in Sources */,
 				9D8E88F91FFD2BEC0066A1D9 /* UIFont+Utils.swift in Sources */,
+				9D902BCA20171AED00359DFD /* FoodCardsPresenter.swift in Sources */,
 				9D3D1CE02006479500AAAB95 /* SnapXConstants.swift in Sources */,
 				9D8E88FA1FFD2BEC0066A1D9 /* UITextField+Border.swift in Sources */,
 				9DB02A6F2010805F0061FC0C /* LocationPresenter.swift in Sources */,
@@ -867,11 +931,14 @@
 				9DB02A722010805F0061FC0C /* LocationRouter.swift in Sources */,
 				9D8E89031FFD2BEC0066A1D9 /* Double.swift in Sources */,
 				9DB02A6E2010805F0061FC0C /* LocationContract.swift in Sources */,
+				9D902BCC20171AED00359DFD /* FoodCardsInteractor.swift in Sources */,
 				9D8E89041FFD2BEC0066A1D9 /* UIAlertController.swift in Sources */,
 				9D8E89051FFD2BEC0066A1D9 /* UICollectionViewCell.swift in Sources */,
 				9D8E89061FFD2BEC0066A1D9 /* UIStoryboard.swift in Sources */,
 				9D8E89071FFD2BEC0066A1D9 /* ValidableUILabel.swift in Sources */,
+				9D902BC920171AED00359DFD /* FoodCardsContract.swift in Sources */,
 				9D8E89081FFD2BEC0066A1D9 /* RoundedTextField.swift in Sources */,
+				9D902BCB20171AED00359DFD /* FoodCardsViewController.swift in Sources */,
 				9D8E89091FFD2BEC0066A1D9 /* RoundedPinkButton.swift in Sources */,
 				9D8E890A1FFD2BEC0066A1D9 /* SimpleCircle.swift in Sources */,
 				9D8E890B1FFD2BEC0066A1D9 /* PlainButtonCell.swift in Sources */,
@@ -884,6 +951,7 @@
 				9DB7FE0E2004BC9D00D0E816 /* Network.swift in Sources */,
 				9D8E89111FFD2BEC0066A1D9 /* StoryboardLoadable.swift in Sources */,
 				9D8E89121FFD2BEC0066A1D9 /* NibLoadableView.swift in Sources */,
+				9D902BCD20171AED00359DFD /* FoodCardsRouter.swift in Sources */,
 				9D8E89131FFD2BEC0066A1D9 /* ReusableView.swift in Sources */,
 				9D3FC4D82011C94A001A4264 /* CuisinePreference.swift in Sources */,
 				9D8E89141FFD2BEC0066A1D9 /* SessionHelper.swift in Sources */,
