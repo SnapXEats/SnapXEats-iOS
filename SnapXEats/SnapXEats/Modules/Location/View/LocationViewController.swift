@@ -11,14 +11,17 @@ import UIKit
 import MapKit
 import CoreLocation
 
+enum LocationResourceIdentifiler {
+    static let cellReuseIdentifier = "CuisineCell"
+    static  let cuisineCollectionCellIdentifier = "CuisineCollectionViewCell"
+}
 class LocationViewController: BaseViewController, StoryboardLoadable {
 
     // MARK: Properties
-    private var items = [Cuisine]()
-    private let cuisine = Cuisine()
+    private var cuiseItems = [Cuisine]()
+   // private let cuisine = CuisinePrefernce(map: <#Map#>)
     private let itemsPerRow: CGFloat = 2
-    private let reuseIdentifier = "CuisineCell"
-    private let cuisineCollectionCellIdentifier = "CuisineCollectionViewCell"
+    
     private let sectionInsets = UIEdgeInsets(top: 10.0, left: 20.0, bottom: 30.0, right: 20.0)
     var presenter: LocationPresentation?
 
@@ -48,17 +51,18 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     }
     
     func registerCellForNib() {
-        let nib = UINib(nibName: cuisineCollectionCellIdentifier, bundle: nil)
-        cuisinCollectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
+        let nib = UINib(nibName: LocationResourceIdentifiler.cuisineCollectionCellIdentifier, bundle: nil)
+        cuisinCollectionView.register(nib, forCellWithReuseIdentifier: LocationResourceIdentifiler.cellReuseIdentifier)
     }
 }
 
 extension LocationViewController: LocationView {
+   
+    
     // TODO: implement view output methods
     func initView() {
         locationManager = CLLocationManager()
         isAuthorizedtoGetUserLocation()
-        
     }
 }
 
@@ -80,6 +84,7 @@ extension LocationViewController: CLLocationManagerDelegate {
             showLoading()
             locationManager?.desiredAccuracy = kCLLocationAccuracyBest
             locationManager?.startUpdatingLocation()
+            presenter?.cuisinePreferenceRequest()
           //  let locValue: CLLocationCoordinate2D = (manager.location?.coordinate)!
           //  print("locations = \(locValue.latitude) \(locValue.longitude)")
         }//if authorized
@@ -116,11 +121,12 @@ extension LocationViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return cuiseItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CuisineCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LocationResourceIdentifiler.cellReuseIdentifier, for: indexPath) as! CuisineCollectionViewCell
+        cell.configureCell(cuisineItem: cuiseItems[indexPath.row])
         return cell
     }
 }
@@ -149,4 +155,27 @@ extension LocationViewController: UICollectionViewDelegateFlowLayout {
 //                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
 //        return sectionInsets.left
 //    }
+}
+
+
+extension LocationViewController  {
+    func success(result: Any?) {
+        if let result = result {
+            let cuises = result as! CuisinePreference
+            cuiseItems = cuises.cuisineList
+            cuisinCollectionView.reloadData()
+        }
+    }
+    
+    func error(result: NetworkResult) {
+        
+    }
+    
+    func cancel(result: NetworkResult) {
+        
+    }
+    
+    func noInternet(result: NetworkResult) {
+        
+    }
 }

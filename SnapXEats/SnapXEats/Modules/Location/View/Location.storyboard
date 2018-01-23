@@ -43,13 +43,9 @@
                                             <action selector="closeLocationView:" destination="WSv-n5-V5p" eventType="touchUpInside" id="ksc-0R-dOc"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8p-ZN-Lg0">
-                                        <rect key="frame" x="20" y="35" width="112" height="35"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="5yv-ch-Gwg"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
-                                        <state key="normal" title="Select Location">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8p-ZN-Lg0">
+                                        <rect key="frame" x="20" y="35" width="209" height="35"/>
+                                        <state key="normal" title="Select Location" image="cuisinepreference">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -60,12 +56,13 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="w8p-ZN-Lg0" firstAttribute="leading" secondItem="L4O-nv-sZa" secondAttribute="leading" constant="20" id="1aT-Qt-Mpz"/>
                                     <constraint firstAttribute="trailing" secondItem="KKh-JC-1ut" secondAttribute="trailing" constant="10" id="9aK-sn-eTI"/>
                                     <constraint firstAttribute="height" constant="80" id="AbR-4I-xnt"/>
-                                    <constraint firstItem="KKh-JC-1ut" firstAttribute="top" secondItem="w8p-ZN-Lg0" secondAttribute="top" id="Iq4-Ov-BKq"/>
+                                    <constraint firstItem="w8p-ZN-Lg0" firstAttribute="top" secondItem="KKh-JC-1ut" secondAttribute="top" id="Ahb-cc-K7h"/>
                                     <constraint firstAttribute="bottom" secondItem="KKh-JC-1ut" secondAttribute="bottom" constant="10" id="L86-9w-T2B"/>
-                                    <constraint firstItem="KKh-JC-1ut" firstAttribute="bottom" secondItem="w8p-ZN-Lg0" secondAttribute="bottom" id="LeQ-FA-JA2"/>
-                                    <constraint firstItem="w8p-ZN-Lg0" firstAttribute="leading" secondItem="L4O-nv-sZa" secondAttribute="leading" constant="20" id="OEl-1H-MKB"/>
+                                    <constraint firstItem="KKh-JC-1ut" firstAttribute="leading" secondItem="w8p-ZN-Lg0" secondAttribute="trailing" constant="56" id="aSj-xO-kvb"/>
+                                    <constraint firstItem="w8p-ZN-Lg0" firstAttribute="bottom" secondItem="KKh-JC-1ut" secondAttribute="bottom" id="nzt-Dt-hcD"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Cuisines" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQe-g7-lXq">
@@ -88,8 +85,8 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                                 <connections>
-                                    <outlet property="dataSource" destination="WSv-n5-V5p" id="Tfr-HN-WqH"/>
-                                    <outlet property="delegate" destination="WSv-n5-V5p" id="RkN-0f-BrG"/>
+                                    <outlet property="dataSource" destination="WSv-n5-V5p" id="1v1-iJ-s3N"/>
+                                    <outlet property="delegate" destination="WSv-n5-V5p" id="I84-TI-a6q"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -213,4 +210,7 @@
             <point key="canvasLocation" x="864.79999999999995" y="56.221889055472268"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cuisinepreference" width="11" height="17"/>
+    </resources>
 </document>

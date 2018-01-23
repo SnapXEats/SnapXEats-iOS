@@ -54,3 +54,9 @@ enum SnapXEatsStoryboardIdentifier {
     static let instagramViewControllerID = "InstagramViewController"
     static let locationViewControllerID = "LocationViewController"
 }
+
+enum SnapXEatsWebServiceResourcePath {
+    static let  port = "3000"
+    static let  root = "http://ec2-18-216-193-78.us-east-2.compute.amazonaws.com:" + port
+    static let  cuisinePreference =   root + "/api/v1/cuisine"
+}

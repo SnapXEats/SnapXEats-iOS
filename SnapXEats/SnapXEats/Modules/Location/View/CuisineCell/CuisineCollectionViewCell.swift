@@ -7,13 +7,29 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class CuisineCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var cellContainerView: UIView!
     
+    @IBOutlet weak var cuisineLabel: UILabel!
+    @IBOutlet weak var cuisineImage: UIImageView!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         cellContainerView.addShadow()
+    }
+    
+    func configureCell(cuisineItem: Cuisine) {
+        cuisineLabel.text = cuisineItem.cuisineName
+        activityIndicatorView.startAnimating()
+        if let imagURL = cuisineItem.cuisineImageURL {
+        let url = URL(string: imagURL)!
+            let placeholderImage = UIImage(named: "BG")!
+            cuisineImage.af_setImage(withURL: url, placeholderImage: placeholderImage)
+        }
+       
     }
 }

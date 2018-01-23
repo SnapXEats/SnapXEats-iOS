@@ -117,7 +117,7 @@ extension InstagramViewController: WKNavigationDelegate{
              ServerErrorCode.urlNotFoundONServer,
              ServerErrorCode.noInternetConnection :
             hideLoading()
-            resultNOInternet(result: .noInternet)
+            noInternet(result: .noInternet)
             
         default :
             break
@@ -140,22 +140,22 @@ extension InstagramViewController: WKNavigationDelegate{
 
 extension InstagramViewController: SnapXResult {
     
-    func resultError(result: NetworkResult) {
+    func error(result: NetworkResult) {
         loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.messageNoInternet,forView: self)
         loginAlert.show()
     }
     
-    func resultNOInternet(result: NetworkResult) {
+    func noInternet(result: NetworkResult) {
         loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.messageNoInternet,forView: self)
         loginAlert.show()
     }
     
-    func resultSuccess(result: NetworkResult) {
+    func success(result: Any?) {
         loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.messageSuccess,forView: self)
         loginAlert.show()
     }
     
-    func resultCancel(result: NetworkResult) {
+    func cancel(result: NetworkResult) {
         loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.cancelRequest,forView: self)
         loginAlert.show()
     }

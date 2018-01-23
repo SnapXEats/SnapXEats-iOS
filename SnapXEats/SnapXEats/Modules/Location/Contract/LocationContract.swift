@@ -7,8 +7,8 @@
 //
 
 import Foundation
-
-protocol LocationView: class, BaseView {
+import Alamofire
+protocol LocationView: BaseView, SnapXResult {
     var presenter: LocationPresentation? {get set}
     func initView()
 }
@@ -17,14 +17,22 @@ protocol LocationPresentation: class {
     // TODO: Declare presentation methods
         func closeLocationView()
         func selectLocation()
+        func cuisinePreferenceRequest()
 }
 
-protocol LocationUseCase: class {
-    // TODO: Declare use case methods
+protocol LocationRequestFomatter: class {
+    func getCuisines()
 }
 
-protocol LocationInteractorOutput: class {
-    // TODO: Declare interactor output methods
+protocol LocationWebService: class {
+    func getCuisinesRequest(forPath: String)
+}
+
+protocol LocationObjectMapper: class {
+    func cuisinesDetails(data: Result<CuisinePreference> )
+}
+
+protocol LocationInteractorOutput: Response {
 }
 
 protocol LocationWireframe: class, RootWireFrame {

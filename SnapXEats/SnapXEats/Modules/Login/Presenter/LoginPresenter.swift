@@ -43,13 +43,13 @@ extension LoginPresenter: Response {
         case .success:
             presentLocationScreen()
         case .error:
-            view?.resultError(result: NetworkResult.error)
+            view?.error(result: NetworkResult.error)
         case .fail:
-            view?.resultError(result: NetworkResult.error)
+            view?.error(result: NetworkResult.error)
         case  .noInternet:
-            view?.resultNOInternet(result: NetworkResult.noInternet)
+            view?.noInternet(result: NetworkResult.noInternet)
         case  .cancelRequest:
-            view?.resultCancel(result: NetworkResult.cancelRequest)
+            view?.cancel(result: NetworkResult.cancelRequest)
             
         }
     }

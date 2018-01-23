@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		9D3D1CE02006479500AAAB95 /* SnapXConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3D1CDF2006479500AAAB95 /* SnapXConstants.swift */; };
-		9D3FC4D82011C94A001A4264 /* Cuisine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3FC4D72011C94A001A4264 /* Cuisine.swift */; };
+		9D3FC4D82011C94A001A4264 /* CuisinePreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3FC4D72011C94A001A4264 /* CuisinePreference.swift */; };
 		9D3FC4DB2011E34D001A4264 /* CuisineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3FC4D92011E34D001A4264 /* CuisineCollectionViewCell.swift */; };
 		9D3FC4DC2011E34D001A4264 /* CuisineCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D3FC4DA2011E34D001A4264 /* CuisineCollectionViewCell.xib */; };
 		9D3FC4DF20121B2D001A4264 /* CurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3FC4DE20121B2D001A4264 /* CurrentLocationViewController.swift */; };
+		9D8095712015E5200077F84B /* SnapXEatsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8095702015E5200077F84B /* SnapXEatsApi.swift */; };
 		9D8E887D1FFD27F30066A1D9 /* SnapXEatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E887C1FFD27F30066A1D9 /* SnapXEatsTests.swift */; };
 		9D8E88EB1FFD2BEC0066A1D9 /* LoginContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88C21FFD28C50066A1D9 /* LoginContract.swift */; };
 		9D8E88EC1FFD2BEC0066A1D9 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88C41FFD28C50066A1D9 /* LoginPresenter.swift */; };
@@ -89,10 +90,11 @@
 		18C81282DCA92A76FE981E2D /* Pods-SnapXEats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapXEats.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SnapXEats/Pods-SnapXEats.debug.xcconfig"; sourceTree = "<group>"; };
 		967BD01B1CEED06931835CA3 /* Pods_SnapXEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnapXEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D3D1CDF2006479500AAAB95 /* SnapXConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXConstants.swift; sourceTree = "<group>"; };
-		9D3FC4D72011C94A001A4264 /* Cuisine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cuisine.swift; sourceTree = "<group>"; };
+		9D3FC4D72011C94A001A4264 /* CuisinePreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisinePreference.swift; sourceTree = "<group>"; };
 		9D3FC4D92011E34D001A4264 /* CuisineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisineCollectionViewCell.swift; sourceTree = "<group>"; };
 		9D3FC4DA2011E34D001A4264 /* CuisineCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CuisineCollectionViewCell.xib; sourceTree = "<group>"; };
 		9D3FC4DE20121B2D001A4264 /* CurrentLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewController.swift; sourceTree = "<group>"; };
+		9D8095702015E5200077F84B /* SnapXEatsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEatsApi.swift; sourceTree = "<group>"; };
 		9D8E88641FFD27F30066A1D9 /* SnapXEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapXEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8E88781FFD27F30066A1D9 /* SnapXEatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapXEatsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8E887C1FFD27F30066A1D9 /* SnapXEatsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEatsTests.swift; sourceTree = "<group>"; };
@@ -203,7 +205,7 @@
 			children = (
 				9D3FC4DA2011E34D001A4264 /* CuisineCollectionViewCell.xib */,
 				9D3FC4D92011E34D001A4264 /* CuisineCollectionViewCell.swift */,
-				9D3FC4D72011C94A001A4264 /* Cuisine.swift */,
+				9D3FC4D72011C94A001A4264 /* CuisinePreference.swift */,
 			);
 			path = CuisineCell;
 			sourceTree = "<group>";
@@ -616,6 +618,7 @@
 			isa = PBXGroup;
 			children = (
 				9DB7FE0D2004BC9D00D0E816 /* Network.swift */,
+				9D8095702015E5200077F84B /* SnapXEatsApi.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -753,6 +756,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SnapXEats/Pods-SnapXEats-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
@@ -770,6 +774,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
@@ -832,6 +837,7 @@
 				9D8E89161FFD2C400066A1D9 /* RootRouter.swift in Sources */,
 				9D8E89171FFD2C400066A1D9 /* AppDelegate.swift in Sources */,
 				9D8E88EB1FFD2BEC0066A1D9 /* LoginContract.swift in Sources */,
+				9D8095712015E5200077F84B /* SnapXEatsApi.swift in Sources */,
 				9D8E88EC1FFD2BEC0066A1D9 /* LoginPresenter.swift in Sources */,
 				9D8E88ED1FFD2BEC0066A1D9 /* LoginViewController.swift in Sources */,
 				9DB7FE0B1FFFAC3800D0E816 /* InstagramViewController.swift in Sources */,
@@ -879,7 +885,7 @@
 				9D8E89111FFD2BEC0066A1D9 /* StoryboardLoadable.swift in Sources */,
 				9D8E89121FFD2BEC0066A1D9 /* NibLoadableView.swift in Sources */,
 				9D8E89131FFD2BEC0066A1D9 /* ReusableView.swift in Sources */,
-				9D3FC4D82011C94A001A4264 /* Cuisine.swift in Sources */,
+				9D3FC4D82011C94A001A4264 /* CuisinePreference.swift in Sources */,
 				9D8E89141FFD2BEC0066A1D9 /* SessionHelper.swift in Sources */,
 				9D8E89151FFD2BEC0066A1D9 /* ValidatorHelper.swift in Sources */,
 				9DB02A712010805F0061FC0C /* LocationInteractor.swift in Sources */,

@@ -18,7 +18,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CuisineCollectionViewCell" customModule="SnapXEats" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CuisineCell" id="gTV-IL-0wX" customClass="CuisineCollectionViewCell" customModule="SnapXEats" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="224" height="190"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -43,14 +43,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="eNh-ot-5ik">
+                                <rect key="frame" x="97" y="61" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="3E0-or-aDz" firstAttribute="top" secondItem="bYZ-fv-eVv" secondAttribute="bottom" id="Blo-4g-xB4"/>
                             <constraint firstAttribute="trailing" secondItem="bYZ-fv-eVv" secondAttribute="trailing" id="DnZ-pd-fjJ"/>
                             <constraint firstItem="bYZ-fv-eVv" firstAttribute="leading" secondItem="3Wj-EI-ru9" secondAttribute="leading" id="LlP-cO-t0X"/>
+                            <constraint firstItem="eNh-ot-5ik" firstAttribute="centerX" secondItem="bYZ-fv-eVv" secondAttribute="centerX" id="N4K-0r-IJr"/>
                             <constraint firstItem="bYZ-fv-eVv" firstAttribute="top" secondItem="3Wj-EI-ru9" secondAttribute="top" id="V8m-gY-oOg"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="3E0-or-aDz" secondAttribute="bottom" constant="6" id="VJ9-hy-4Bk"/>
+                            <constraint firstItem="eNh-ot-5ik" firstAttribute="centerY" secondItem="bYZ-fv-eVv" secondAttribute="centerY" id="W3Q-qo-65X"/>
                             <constraint firstAttribute="trailing" secondItem="3E0-or-aDz" secondAttribute="trailing" constant="10" id="kRB-f1-khD"/>
                             <constraint firstItem="3E0-or-aDz" firstAttribute="leading" secondItem="3Wj-EI-ru9" secondAttribute="leading" constant="10" id="wOu-A7-0cT"/>
                             <constraint firstItem="3E0-or-aDz" firstAttribute="top" secondItem="bYZ-fv-eVv" secondAttribute="bottom" id="whG-yI-0cW"/>
@@ -68,6 +73,8 @@
             <size key="customSize" width="229" height="181"/>
             <connections>
                 <outlet property="cellContainerView" destination="3Wj-EI-ru9" id="eQV-Pu-kQp"/>
+                <outlet property="cuisineImage" destination="bYZ-fv-eVv" id="3l4-EG-O66"/>
+                <outlet property="cuisineLabel" destination="3E0-or-aDz" id="XFd-MJ-0qU"/>
             </connections>
             <point key="canvasLocation" x="4" y="44"/>
         </collectionViewCell>

@@ -12,11 +12,15 @@ enum NetworkResult {
     case noInternet
     case error
     case fail
-    case success
+    case success(data: Any?)
     case cancelRequest
 }
+
+protocol SnapXEatsData {
+    
+}
 protocol NetworkFailure {
-    func resultNOInternet(result: NetworkResult)
+    func noInternet(result: NetworkResult)
 }
 
 protocol Response {
@@ -24,8 +28,8 @@ protocol Response {
 }
 
 protocol SnapXResult: NetworkFailure {
-    func resultSuccess(result: NetworkResult)
-    func resultError(result: NetworkResult)
-    func resultCancel (result: NetworkResult)
+    func success(result: Any?)
+    func error(result: NetworkResult)
+    func cancel (result: NetworkResult)
 }
 
