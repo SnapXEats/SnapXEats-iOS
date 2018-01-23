@@ -13,6 +13,8 @@ class FoodCardsInteractor {
     // MARK: Properties
 
     weak var output: FoodCardsInteractorOutput?
+    private init() {}
+    static let singleInstance = FoodCardsInteractor()
 }
 
 extension FoodCardsInteractor: FoodCardsUseCase {

@@ -23,5 +23,7 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
 }
 
 extension FoodCardsViewController: FoodCardsView {
-    // TODO: implement view output methods
+    func initView() {
+        
+    }
 }

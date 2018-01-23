@@ -63,6 +63,9 @@
                                 <state key="normal" title="Skip">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="skipLogin:" destination="b95-f1-haL" eventType="touchUpInside" id="itt-JB-FyQ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zu6-5E-njV">
                                 <rect key="frame" x="67" y="371" width="241" height="44"/>

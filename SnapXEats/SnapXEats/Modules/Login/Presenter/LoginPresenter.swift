@@ -28,6 +28,9 @@ extension LoginPresenter: LoginViewPresentation {
         }
     }
     
+    func skipUserLogin() {
+        presentLocationScreen()
+    }
     func setView(view: LoginView) {
         self.view = view
     }

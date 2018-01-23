@@ -15,6 +15,8 @@ class FoodCardsPresenter {
     weak var view: FoodCardsView?
     var router: FoodCardsWireframe?
     var interactor: FoodCardsUseCase?
+    
+    static let singleInstance = FoodCardsPresenter()
 }
 
 extension FoodCardsPresenter: FoodCardsPresentation {

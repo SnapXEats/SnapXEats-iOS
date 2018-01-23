@@ -1,5 +1,5 @@
 //
-//  FoodCardsRouter.swift
+//  SelectLocationRouter.swift
 //  SnapXEats
 //
 //  Created by Durgesh Trivedi on 23/01/18.
@@ -9,19 +9,22 @@
 import Foundation
 import UIKit
 
-class FoodCardsRouter {
+class SelectLocationRouter {
 
     // MARK: Properties
 
     weak var view: UIViewController?
+
     private init() {}
+    
+    static let singleInstance = SelectLocationRouter()
     // MARK: Static methods
-    static let singleInstance = FoodCardsRouter()
-     func loadFoodCardModule() -> FoodCardsViewController {
-        let viewController = UIStoryboard.loadViewController() as FoodCardsViewController
-        let presenter = FoodCardsPresenter.singleInstance
-        let router = FoodCardsRouter.singleInstance
-        let interactor = FoodCardsInteractor.singleInstance
+
+     func loadSelectLocationModule() -> SelectLocationViewController {
+        let viewController = UIStoryboard.loadViewController() as SelectLocationViewController
+        let presenter = SelectLocationPresenter.singleInstance
+        let router = SelectLocationRouter.singleInstance
+        let interactor = SelectLocationInteractor.singleInstance
 
         viewController.presenter =  presenter
 
@@ -37,8 +40,8 @@ class FoodCardsRouter {
     }
 }
 
-extension FoodCardsRouter: FoodCardsWireframe {
+extension SelectLocationRouter: SelectLocationWireframe {
     func presentScreen(screen: Screens) {
-        // Todo implement this method
+        RootRouter.singleInstance.presentScreen(screens: screen)
     }
 }

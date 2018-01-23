@@ -9,7 +9,8 @@
 import Foundation
 
 protocol FoodCardsView: class, BaseView {
-    // TODO: Declare view methods
+    var presenter: FoodCardsPresentation? {get set}
+    func initView()
 }
 
 protocol FoodCardsPresentation: class {
@@ -24,6 +25,6 @@ protocol FoodCardsInteractorOutput: class {
     // TODO: Declare interactor output methods
 }
 
-protocol FoodCardsWireframe: class {
+protocol FoodCardsWireframe: class, RootWireFrame {
     // TODO: Declare wireframe methods
 }

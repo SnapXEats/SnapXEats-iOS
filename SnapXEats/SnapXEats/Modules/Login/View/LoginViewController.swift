@@ -19,7 +19,7 @@ class LoginViewController: BaseViewController, StoryboardLoadable, LoginView {
     
     @IBOutlet weak var instagramLoginButton: UIButton!
     @IBOutlet weak var facebookLoginButton: UIButton!
-    
+
     @IBOutlet weak var buildLabel: UILabel!
     @IBAction func loginUsinInstagram(_ sender: Any) {
         presenter?.setView(view: self)  // keep the view as current view
@@ -32,6 +32,10 @@ class LoginViewController: BaseViewController, StoryboardLoadable, LoginView {
         presenter?.loginUsingFaceBook()
     }
     
+    
+    @IBAction func skipLogin(_ sender: Any) {
+        presenter?.skipUserLogin()
+    }
     var loginAlert = SnapXAlert.singleInstance
     // MARK: Lifecycle
     

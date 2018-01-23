@@ -39,7 +39,6 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
-        configureView()
     }
     
     @IBAction func setNewLocation(_ sender: Any) {
@@ -63,6 +62,7 @@ extension LocationViewController: LocationView {
     func initView() {
         locationManager = CLLocationManager()
         isAuthorizedtoGetUserLocation()
+        configureView()
     }
 }
 

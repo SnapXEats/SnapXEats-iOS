@@ -24,7 +24,7 @@ class CuisineCollectionViewCell: UICollectionViewCell {
     
     func configureCell(cuisineItem: Cuisine) {
         cuisineLabel.text = cuisineItem.cuisineName
-        activityIndicatorView.startAnimating()
+        //activityIndicatorView.startAnimating()
         if let imagURL = cuisineItem.cuisineImageURL {
         let url = URL(string: imagURL)!
             let placeholderImage = UIImage(named: "BG")!

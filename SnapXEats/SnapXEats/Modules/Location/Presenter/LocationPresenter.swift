@@ -24,11 +24,11 @@ extension LocationPresenter: LocationPresentation {
     
     // TODO: implement presentation methods
     func closeLocationView() {
-        router?.presentScreen(screen: .card)
+        router?.presentScreen(screen: .foodcards)
     }
     
     func selectLocation() {
-        router?.presentScreen(screen: .newLocation)
+        router?.presentScreen(screen: .selectLocation)
     }
     
     func cuisinePreferenceRequest() {

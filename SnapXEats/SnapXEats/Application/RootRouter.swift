@@ -5,7 +5,7 @@
 
 import UIKit
 enum Screens {
-    case login, instagram, location, firstScreen, card, newLocation
+    case login, instagram, location, firstScreen, foodcards, selectLocation, dismissNewLocation
 }
 
 protocol RootWireFrame {
@@ -43,13 +43,19 @@ class RootRouter: NSObject {
         presentView(locatioViewController)
     }
     
-    func presentCardScreen() {
+    func presentFoodcardsScreen() {
         // This is temp code
-         window?.rootViewController?.dismiss(animated: true, completion: nil)
+        let locatioViewController = FoodCardsRouter.singleInstance.loadFoodCardModule() as! FoodCardsViewController
+        presentView(locatioViewController)
     }
     
-    func presentNewLocationScreen() {
-        
+    func dissmissSelectLocationScreen() {
+        window?.rootViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    func presentSelectLocationScreen() {
+        let selectLocationViewController = SelectLocationRouter.singleInstance.loadSelectLocationModule()
+        window?.rootViewController?.present(selectLocationViewController, animated: true, completion: nil)
     }
     func presentScreen(screens: Screens) {
         switch screens {
@@ -61,10 +67,12 @@ class RootRouter: NSObject {
              presentLoginInstagramScreen()
         case .location:
             presentLocationScreen()
-        case .card:
-            presentCardScreen()
-        case .newLocation:
-            presentNewLocationScreen()
+        case .foodcards:
+            presentFoodcardsScreen()
+        case .selectLocation:
+            presentSelectLocationScreen()
+        case .dismissNewLocation:
+            dissmissSelectLocationScreen()
         }
     }
     private func presentView(_ viewController: UIViewController) {

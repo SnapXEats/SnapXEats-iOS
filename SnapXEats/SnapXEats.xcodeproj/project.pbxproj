@@ -11,7 +11,6 @@
 		9D3FC4D82011C94A001A4264 /* CuisinePreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3FC4D72011C94A001A4264 /* CuisinePreference.swift */; };
 		9D3FC4DB2011E34D001A4264 /* CuisineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3FC4D92011E34D001A4264 /* CuisineCollectionViewCell.swift */; };
 		9D3FC4DC2011E34D001A4264 /* CuisineCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D3FC4DA2011E34D001A4264 /* CuisineCollectionViewCell.xib */; };
-		9D3FC4DF20121B2D001A4264 /* CurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3FC4DE20121B2D001A4264 /* CurrentLocationViewController.swift */; };
 		9D8095712015E5200077F84B /* SnapXEatsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8095702015E5200077F84B /* SnapXEatsApi.swift */; };
 		9D8E887D1FFD27F30066A1D9 /* SnapXEatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E887C1FFD27F30066A1D9 /* SnapXEatsTests.swift */; };
 		9D8E88EB1FFD2BEC0066A1D9 /* LoginContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88C21FFD28C50066A1D9 /* LoginContract.swift */; };
@@ -61,6 +60,13 @@
 		9D902BCB20171AED00359DFD /* FoodCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D902BC420171AED00359DFD /* FoodCardsViewController.swift */; };
 		9D902BCC20171AED00359DFD /* FoodCardsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D902BC620171AED00359DFD /* FoodCardsInteractor.swift */; };
 		9D902BCD20171AED00359DFD /* FoodCardsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D902BC820171AED00359DFD /* FoodCardsRouter.swift */; };
+		9D902BE4201729E400359DFD /* SelectLocationContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D902BDB201729E300359DFD /* SelectLocationContract.swift */; };
+		9D902BE5201729E400359DFD /* SelectLocationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D902BDD201729E300359DFD /* SelectLocationPresenter.swift */; };
+		9D902BE6201729E400359DFD /* SelectLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D902BDF201729E300359DFD /* SelectLocationViewController.swift */; };
+		9D902BE7201729E400359DFD /* SelectLocationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D902BE1201729E300359DFD /* SelectLocationInteractor.swift */; };
+		9D902BE8201729E400359DFD /* SelectLocationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D902BE3201729E300359DFD /* SelectLocationRouter.swift */; };
+		9D902BEA20172A2F00359DFD /* SelectLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D902BE920172A2F00359DFD /* SelectLocation.storyboard */; };
+		9D902BEC201736B500359DFD /* FoodCards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D902BEB201736B500359DFD /* FoodCards.storyboard */; };
 		9DB02A6E2010805F0061FC0C /* LocationContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB02A652010805F0061FC0C /* LocationContract.swift */; };
 		9DB02A6F2010805F0061FC0C /* LocationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB02A672010805F0061FC0C /* LocationPresenter.swift */; };
 		9DB02A702010805F0061FC0C /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB02A692010805F0061FC0C /* LocationViewController.swift */; };
@@ -98,7 +104,6 @@
 		9D3FC4D72011C94A001A4264 /* CuisinePreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisinePreference.swift; sourceTree = "<group>"; };
 		9D3FC4D92011E34D001A4264 /* CuisineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisineCollectionViewCell.swift; sourceTree = "<group>"; };
 		9D3FC4DA2011E34D001A4264 /* CuisineCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CuisineCollectionViewCell.xib; sourceTree = "<group>"; };
-		9D3FC4DE20121B2D001A4264 /* CurrentLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewController.swift; sourceTree = "<group>"; };
 		9D8095702015E5200077F84B /* SnapXEatsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEatsApi.swift; sourceTree = "<group>"; };
 		9D8E88641FFD27F30066A1D9 /* SnapXEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapXEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8E88781FFD27F30066A1D9 /* SnapXEatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapXEatsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,6 +161,13 @@
 		9D902BC420171AED00359DFD /* FoodCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCardsViewController.swift; sourceTree = "<group>"; };
 		9D902BC620171AED00359DFD /* FoodCardsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCardsInteractor.swift; sourceTree = "<group>"; };
 		9D902BC820171AED00359DFD /* FoodCardsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCardsRouter.swift; sourceTree = "<group>"; };
+		9D902BDB201729E300359DFD /* SelectLocationContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLocationContract.swift; sourceTree = "<group>"; };
+		9D902BDD201729E300359DFD /* SelectLocationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLocationPresenter.swift; sourceTree = "<group>"; };
+		9D902BDF201729E300359DFD /* SelectLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLocationViewController.swift; sourceTree = "<group>"; };
+		9D902BE1201729E300359DFD /* SelectLocationInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLocationInteractor.swift; sourceTree = "<group>"; };
+		9D902BE3201729E300359DFD /* SelectLocationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLocationRouter.swift; sourceTree = "<group>"; };
+		9D902BE920172A2F00359DFD /* SelectLocation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectLocation.storyboard; sourceTree = "<group>"; };
+		9D902BEB201736B500359DFD /* FoodCards.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FoodCards.storyboard; sourceTree = "<group>"; };
 		9DB02A652010805F0061FC0C /* LocationContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationContract.swift; sourceTree = "<group>"; };
 		9DB02A672010805F0061FC0C /* LocationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPresenter.swift; sourceTree = "<group>"; };
 		9DB02A692010805F0061FC0C /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
@@ -422,9 +434,10 @@
 		9D8E88BF1FFD28C50066A1D9 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				9D902BBE20171AED00359DFD /* FoodCards */,
-				9DB02A632010805F0061FC0C /* Location */,
 				9D8E88C01FFD28C50066A1D9 /* Login */,
+				9DB02A632010805F0061FC0C /* Location */,
+				9D902BD9201729E300359DFD /* SelectLocation */,
+				9D902BBE20171AED00359DFD /* FoodCards */,
 				9D8E88CD1FFD28C50066A1D9 /* Base */,
 			);
 			path = Modules;
@@ -601,6 +614,7 @@
 		9D902BC320171AED00359DFD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9D902BEB201736B500359DFD /* FoodCards.storyboard */,
 				9D902BC420171AED00359DFD /* FoodCardsViewController.swift */,
 			);
 			path = View;
@@ -618,6 +632,59 @@
 			isa = PBXGroup;
 			children = (
 				9D902BC820171AED00359DFD /* FoodCardsRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		9D902BD9201729E300359DFD /* SelectLocation */ = {
+			isa = PBXGroup;
+			children = (
+				9D902BDA201729E300359DFD /* Contract */,
+				9D902BDC201729E300359DFD /* Presenter */,
+				9D902BDE201729E300359DFD /* View */,
+				9D902BE0201729E300359DFD /* Interactor */,
+				9D902BE2201729E300359DFD /* Router */,
+			);
+			path = SelectLocation;
+			sourceTree = "<group>";
+		};
+		9D902BDA201729E300359DFD /* Contract */ = {
+			isa = PBXGroup;
+			children = (
+				9D902BDB201729E300359DFD /* SelectLocationContract.swift */,
+			);
+			path = Contract;
+			sourceTree = "<group>";
+		};
+		9D902BDC201729E300359DFD /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				9D902BDD201729E300359DFD /* SelectLocationPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		9D902BDE201729E300359DFD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9D902BE920172A2F00359DFD /* SelectLocation.storyboard */,
+				9D902BDF201729E300359DFD /* SelectLocationViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9D902BE0201729E300359DFD /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				9D902BE1201729E300359DFD /* SelectLocationInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		9D902BE2201729E300359DFD /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				9D902BE3201729E300359DFD /* SelectLocationRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -655,7 +722,6 @@
 			children = (
 				9D3FC4DD20120BBC001A4264 /* CuisineCell */,
 				9DB02A75201084730061FC0C /* Location.storyboard */,
-				9D3FC4DE20121B2D001A4264 /* CurrentLocationViewController.swift */,
 				9DB02A692010805F0061FC0C /* LocationViewController.swift */,
 			);
 			path = View;
@@ -792,6 +858,8 @@
 				9DB7FE1820061B6200D0E816 /* Roboto-Medium.ttf in Resources */,
 				9DB7FE1920061B6200D0E816 /* Roboto-Regular.ttf in Resources */,
 				9DB02A76201084730061FC0C /* Location.storyboard in Resources */,
+				9D902BEC201736B500359DFD /* FoodCards.storyboard in Resources */,
+				9D902BEA20172A2F00359DFD /* SelectLocation.storyboard in Resources */,
 				9DB7FE1D20061E4300D0E816 /* SnapX-logo.png in Resources */,
 				9D3FC4DC2011E34D001A4264 /* CuisineCollectionViewCell.xib in Resources */,
 				9DEB5CF71FFE6D49003B9D4B /* FlashScreen.storyboard in Resources */,
@@ -903,6 +971,7 @@
 				9D8095712015E5200077F84B /* SnapXEatsApi.swift in Sources */,
 				9D8E88EC1FFD2BEC0066A1D9 /* LoginPresenter.swift in Sources */,
 				9D8E88ED1FFD2BEC0066A1D9 /* LoginViewController.swift in Sources */,
+				9D902BE4201729E400359DFD /* SelectLocationContract.swift in Sources */,
 				9DB7FE0B1FFFAC3800D0E816 /* InstagramViewController.swift in Sources */,
 				9D8E88EE1FFD2BEC0066A1D9 /* LoginInteractor.swift in Sources */,
 				9D8E88EF1FFD2BEC0066A1D9 /* LoginRouter.swift in Sources */,
@@ -910,6 +979,7 @@
 				9D8E88F21FFD2BEC0066A1D9 /* BaseViewController.swift in Sources */,
 				9D8E88F31FFD2BEC0066A1D9 /* Product.swift in Sources */,
 				9D8E88F41FFD2BEC0066A1D9 /* UserProfile.swift in Sources */,
+				9D902BE6201729E400359DFD /* SelectLocationViewController.swift in Sources */,
 				9D8E88F51FFD2BEC0066A1D9 /* Constants.swift in Sources */,
 				9D8E88F61FFD2BEC0066A1D9 /* PlainButtonCellDelegate.swift in Sources */,
 				9D8E88F71FFD2BEC0066A1D9 /* UIImage+Icons.swift in Sources */,
@@ -921,12 +991,14 @@
 				9DB02A6F2010805F0061FC0C /* LocationPresenter.swift in Sources */,
 				9D8E88FB1FFD2BEC0066A1D9 /* UICollectionView.swift in Sources */,
 				9D8E88FC1FFD2BEC0066A1D9 /* DataResponse.swift in Sources */,
+				9D902BE5201729E400359DFD /* SelectLocationPresenter.swift in Sources */,
 				9D8E88FD1FFD2BEC0066A1D9 /* Results.swift in Sources */,
 				9D8E88FE1FFD2BEC0066A1D9 /* UITableView.swift in Sources */,
 				9D8E88FF1FFD2BEC0066A1D9 /* UITableViewCell.swift in Sources */,
 				9D8E89001FFD2BEC0066A1D9 /* String.swift in Sources */,
 				9D8E89011FFD2BEC0066A1D9 /* UIViewController.swift in Sources */,
 				9DB7FE112004F0EE00D0E816 /* Alert.swift in Sources */,
+				9D902BE8201729E400359DFD /* SelectLocationRouter.swift in Sources */,
 				9D8E89021FFD2BEC0066A1D9 /* UIColor+Pallet.swift in Sources */,
 				9DB02A722010805F0061FC0C /* LocationRouter.swift in Sources */,
 				9D8E89031FFD2BEC0066A1D9 /* Double.swift in Sources */,
@@ -939,13 +1011,13 @@
 				9D902BC920171AED00359DFD /* FoodCardsContract.swift in Sources */,
 				9D8E89081FFD2BEC0066A1D9 /* RoundedTextField.swift in Sources */,
 				9D902BCB20171AED00359DFD /* FoodCardsViewController.swift in Sources */,
+				9D902BE7201729E400359DFD /* SelectLocationInteractor.swift in Sources */,
 				9D8E89091FFD2BEC0066A1D9 /* RoundedPinkButton.swift in Sources */,
 				9D8E890A1FFD2BEC0066A1D9 /* SimpleCircle.swift in Sources */,
 				9D8E890B1FFD2BEC0066A1D9 /* PlainButtonCell.swift in Sources */,
 				9D8E890D1FFD2BEC0066A1D9 /* SectionHeaderLabelCell.swift in Sources */,
 				9D8E890F1FFD2BEC0066A1D9 /* ProfileLocalDataManager.swift in Sources */,
 				9D3FC4DB2011E34D001A4264 /* CuisineCollectionViewCell.swift in Sources */,
-				9D3FC4DF20121B2D001A4264 /* CurrentLocationViewController.swift in Sources */,
 				9D8E89101FFD2BEC0066A1D9 /* ProfileApiDataManager.swift in Sources */,
 				9DB02A702010805F0061FC0C /* LocationViewController.swift in Sources */,
 				9DB7FE0E2004BC9D00D0E816 /* Network.swift in Sources */,
