@@ -15,6 +15,7 @@ protocol LoginViewPresentation: LoginViewPresentationInstagram {
     func loginUsingFaceBook()
     func setView(view: LoginView)
     func skipUserLogin()
+    func showLocationScreen()
 }
 
 protocol LoginViewPresentationInstagram: class {

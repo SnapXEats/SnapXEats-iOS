@@ -45,7 +45,7 @@ class InstagramViewController: BaseViewController, StoryboardLoadable, LoginView
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: .init(x: self.view.frame.origin.x, y: self.view.frame.origin.y + 55, width: self.view.frame.width, height: self.view.frame.height), configuration: webConfiguration)
         webView.navigationDelegate = self
-        let urlRequest = InstagramEnum.instagramURL.getRequest()
+        let urlRequest = InstagramConstant.instagramURL.getRequest()
         webView?.load(urlRequest)
         self.view.addSubview(webView)
         self.view.sendSubview(toBack: webView)
@@ -75,7 +75,13 @@ extension InstagramViewController: WKNavigationDelegate{
         guard let presenter = presenter else {
             return
         }
-        loginRequest = presenter.instagramLoginRequest(request: InstagramEnum.instagramURL.getRequest())
+        loginRequest = presenter.instagramLoginRequest(request: InstagramConstant.instagramURL.getRequest())
+        
+        if (loginRequest == true) {
+            hideLoading()
+            webView.stopLoading()
+            presenter.showLocationScreen()
+        }
     }
     
     /* Start the network activity indicator when the web view is loading */
