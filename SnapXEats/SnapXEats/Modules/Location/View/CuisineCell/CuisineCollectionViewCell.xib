@@ -53,13 +53,26 @@
                             <constraint firstItem="3E0-or-aDz" firstAttribute="top" secondItem="bYZ-fv-eVv" secondAttribute="bottom" id="whG-yI-0cW"/>
                         </constraints>
                     </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selected_cuisine" translatesAutoresizingMaskIntoConstraints="NO" id="b3W-dD-ryb">
+                        <rect key="frame" x="92" y="75" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="2tK-Do-e0u"/>
+                            <constraint firstAttribute="width" constant="40" id="oia-N9-TEi"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="3Wj-EI-ru9" secondAttribute="bottom" constant="5" id="1Xs-Wb-HoL"/>
+                <constraint firstItem="3Wj-EI-ru9" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="NLN-nO-tqj"/>
+                <constraint firstItem="b3W-dD-ryb" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Ok3-MT-onP"/>
+                <constraint firstItem="3Wj-EI-ru9" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="e7l-Yh-tB1"/>
                 <constraint firstAttribute="trailing" secondItem="3Wj-EI-ru9" secondAttribute="trailing" constant="5" id="gdN-Ku-oeJ"/>
+                <constraint firstItem="b3W-dD-ryb" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="ioR-pG-f8j"/>
+                <constraint firstItem="3Wj-EI-ru9" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="tlc-cO-zOY"/>
                 <constraint firstItem="3Wj-EI-ru9" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="tw6-zr-b36"/>
                 <constraint firstItem="3Wj-EI-ru9" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="ucW-5B-sx5"/>
+                <constraint firstItem="3Wj-EI-ru9" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="ut4-I4-nkf"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="229" height="181"/>
@@ -67,11 +80,13 @@
                 <outlet property="cellContainerView" destination="3Wj-EI-ru9" id="eQV-Pu-kQp"/>
                 <outlet property="cuisineImage" destination="bYZ-fv-eVv" id="3l4-EG-O66"/>
                 <outlet property="cuisineLabel" destination="3E0-or-aDz" id="XFd-MJ-0qU"/>
+                <outlet property="selectedImageView" destination="b3W-dD-ryb" id="Ih8-ZO-ftF"/>
             </connections>
             <point key="canvasLocation" x="4" y="44"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="placeholder_cuisine" width="89" height="58"/>
+        <image name="selected_cuisine" width="38" height="38"/>
     </resources>
 </document>

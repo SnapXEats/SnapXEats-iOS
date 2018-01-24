@@ -16,20 +16,21 @@ class CuisineCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var cuisineLabel: UILabel!
     @IBOutlet weak var cuisineImage: UIImageView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var selectedImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         cellContainerView.addShadow()
     }
     
-    func configureCell(cuisineItem: Cuisine) {
+    func configureCell(cuisineItem: Cuisine, isSelected:Bool) {
         cuisineLabel.text = cuisineItem.cuisineName
-        //activityIndicatorView.startAnimating()
         if let imagURL = cuisineItem.cuisineImageURL {
         let url = URL(string: imagURL)!
             let placeholderImage = UIImage(named: "placeholder_cuisine")!
             cuisineImage.af_setImage(withURL: url, placeholderImage: placeholderImage)
         }
-       
+        selectedImageView.isHidden = (isSelected) ? false : true
+        cellContainerView.alpha = (isSelected) ? 0.2 : 1.0
     }
 }
