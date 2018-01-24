@@ -53,6 +53,14 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
         let nib = UINib(nibName: SnapXEatsStoryboardIdentifier.locationCuisineCollectionCellIdentifier, bundle: nil)
         cuisinCollectionView.register(nib, forCellWithReuseIdentifier: SnapXEatsStoryboardIdentifier.locationCellReuseIdentifier)
     }
+    
+    override func success(result: Any?) {
+        if let result = result {
+            let cuises = result as! CuisinePreference
+            cuiseItems = cuises.cuisineList
+            cuisinCollectionView.reloadData()
+        }
+    }
 }
 
 extension LocationViewController: LocationView {
@@ -75,7 +83,9 @@ extension LocationViewController: CLLocationManagerDelegate {
     //if we have no permission to access user location, then ask user for permission.
     private func verigyLocationService() {
         locationManager?.delegate = self
-        CLLocationManager.locationServicesEnabled() ? checkLocationStatus() : showSettingDialog()
+        if checkRechability() {
+            CLLocationManager.locationServicesEnabled() ? checkLocationStatus() : showSettingDialog()
+        }
     }
     
     private func checkLocationStatus() {
@@ -116,19 +126,20 @@ extension LocationViewController: CLLocationManagerDelegate {
     }
     
     private func sendCuiseRequest() {
-        if cuiseItems.count == 0 {
+        if checkRechability() && cuiseItems.count == 0 {
             showLoading()
             presenter?.cuisinePreferenceRequest()
         }
     }
     //this method is called by the framework on locationManager.requestLocation();
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations.first!
-        locationManager?.stopUpdatingLocation()
-        locationManager = nil
-        
-        // Get user's current location Address
-        showAddressForLocation(location: location)
+        if checkRechability() {
+            let location = locations.first!
+            locationManager?.stopUpdatingLocation()
+            locationManager = nil
+            // Get user's current location Address
+            showAddressForLocation(location: location)
+        }
     }
     
     private func showAddressForLocation(location: CLLocation) {
@@ -196,28 +207,5 @@ extension LocationViewController: UICollectionViewDelegateFlowLayout {
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         
         return sectionInsets
-    }
-}
-
-
-extension LocationViewController  {
-    func success(result: Any?) {
-        if let result = result {
-            let cuises = result as! CuisinePreference
-            cuiseItems = cuises.cuisineList
-            cuisinCollectionView.reloadData()
-        }
-    }
-    
-    func error(result: NetworkResult) {
-        
-    }
-    
-    func cancel(result: NetworkResult) {
-        
-    }
-    
-    func noInternet(result: NetworkResult) {
-        
     }
 }

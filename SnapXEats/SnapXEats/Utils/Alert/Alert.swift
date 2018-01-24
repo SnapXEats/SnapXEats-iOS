@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 
 enum LoginAlert {
-    static var loginTitle = "Login"
-    static var messageNoInternet = "You can't login check the Internet first"
-    static var messageSuccess = "Login Succesful"
-    static var loginError = "Server Error in login"
-    static var cancelRequest = "Login Canceled"
+    static var loginTitle = "Error"
+    static var messageNoInternet = "SnapXEats required internet connection to process your request. Please enable you internet access."
+    static var messageSuccess = "Request Succesful"
+    static var loginError = "Server Error during process your request"
+    static var cancelRequest = "User canceled request"
 }
 class SnapXAlert{
     private var alertSnapX: UIAlertController?

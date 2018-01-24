@@ -5,7 +5,7 @@
 import Foundation
 import UIKit
 
-protocol LoginView: BaseView, SnapXResult {
+protocol LoginView: BaseView {
     var presenter: LoginViewPresentation? {get set}
     func initView()
 }

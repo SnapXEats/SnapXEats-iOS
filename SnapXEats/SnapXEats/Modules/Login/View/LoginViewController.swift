@@ -36,7 +36,6 @@ class LoginViewController: BaseViewController, StoryboardLoadable, LoginView {
     @IBAction func skipLogin(_ sender: Any) {
         presenter?.skipUserLogin()
     }
-    var loginAlert = SnapXAlert.singleInstance
     // MARK: Lifecycle
     
     override func viewDidLoad() {
@@ -60,31 +59,6 @@ class LoginViewController: BaseViewController, StoryboardLoadable, LoginView {
         instagramLoginButton.addBorder(ofWidth: 1, withColor: UIColor.rgba(255.0, 255.0, 255.0, 0.34), radius: 5.0)
         facebookLoginButton.addBorder(ofWidth: 1, withColor: UIColor.rgba(255.0, 255.0, 255.0, 0.34), radius: 5.0)
         buildLabel.text = SnapXEatsConstant.buildVersion.getBuildVersion()
-    }
-}
-
-
-extension LoginViewController: SnapXResult {
-    
-    func error(result: NetworkResult) {
-        loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.loginError,forView: self)
-        loginAlert.show()
-    }
-    
-    func noInternet(result: NetworkResult) {
-        loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.messageNoInternet,forView: self)
-        loginAlert.show()
-    }
-    
-    func success(result: Any?) {
-        loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.messageSuccess,forView: self)
-        loginAlert.show()
-    }
-    
-    func cancel(result: NetworkResult) {
-        
-        // loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.cancelRequest,forView: self)
-        //loginAlert.show()
     }
 }
 

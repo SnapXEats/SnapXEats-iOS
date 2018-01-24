@@ -4,7 +4,7 @@
 
 import Foundation
 
-protocol BaseView: class {
+protocol BaseView: class, SnapXResult {
     func showLoading()
     func hideLoading()
     func showError(_ message: String?)

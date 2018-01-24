@@ -28,7 +28,7 @@ class InstagramViewController: BaseViewController, StoryboardLoadable, LoginView
     var webView: WKWebView!
     
     @IBOutlet weak var cancelButton: UIBarButtonItem!
-    var loginAlert = SnapXAlert.singleInstance
+
     // MARK: Lifecycle
     private var loginRequest = false
     override func viewDidLoad() {
@@ -144,26 +144,3 @@ extension InstagramViewController: WKNavigationDelegate{
     }
 }
 
-extension InstagramViewController: SnapXResult {
-    
-    func error(result: NetworkResult) {
-        loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.messageNoInternet,forView: self)
-        loginAlert.show()
-    }
-    
-    func noInternet(result: NetworkResult) {
-        loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.messageNoInternet,forView: self)
-        loginAlert.show()
-    }
-    
-    func success(result: Any?) {
-        loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.messageSuccess,forView: self)
-        loginAlert.show()
-    }
-    
-    func cancel(result: NetworkResult) {
-        loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.cancelRequest,forView: self)
-        loginAlert.show()
-    }
-    
-}

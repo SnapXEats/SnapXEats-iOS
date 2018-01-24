@@ -21,6 +21,7 @@ protocol SnapXEatsData {
 }
 protocol NetworkFailure {
     func noInternet(result: NetworkResult)
+    func checkRechability() -> Bool
 }
 
 protocol Response {
