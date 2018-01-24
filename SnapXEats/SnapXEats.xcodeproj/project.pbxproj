@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E5C057E2017A6DC000B5C33 /* SavedLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C057C2017A6DC000B5C33 /* SavedLocationTableViewCell.swift */; };
+		7E5C057F2017A6DC000B5C33 /* SavedLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5C057D2017A6DC000B5C33 /* SavedLocationTableViewCell.xib */; };
+		7E5C058220185F34000B5C33 /* SavedAddressHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C058020185F34000B5C33 /* SavedAddressHeaderViewCell.swift */; };
+		7E5C058320185F34000B5C33 /* SavedAddressHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5C058120185F34000B5C33 /* SavedAddressHeaderViewCell.xib */; };
+		7E5C058520186846000B5C33 /* UISearchbar+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C058420186846000B5C33 /* UISearchbar+helper.swift */; };
+		7E5C058720186C36000B5C33 /* roboto.bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E5C058620186C1A000B5C33 /* roboto.bold.ttf */; };
 		9D3D1CE02006479500AAAB95 /* SnapXConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3D1CDF2006479500AAAB95 /* SnapXConstants.swift */; };
 		9D3FC4D82011C94A001A4264 /* CuisinePreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3FC4D72011C94A001A4264 /* CuisinePreference.swift */; };
 		9D3FC4DB2011E34D001A4264 /* CuisineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3FC4D92011E34D001A4264 /* CuisineCollectionViewCell.swift */; };
@@ -99,6 +105,12 @@
 
 /* Begin PBXFileReference section */
 		18C81282DCA92A76FE981E2D /* Pods-SnapXEats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapXEats.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SnapXEats/Pods-SnapXEats.debug.xcconfig"; sourceTree = "<group>"; };
+		7E5C057C2017A6DC000B5C33 /* SavedLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationTableViewCell.swift; sourceTree = "<group>"; };
+		7E5C057D2017A6DC000B5C33 /* SavedLocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavedLocationTableViewCell.xib; sourceTree = "<group>"; };
+		7E5C058020185F34000B5C33 /* SavedAddressHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedAddressHeaderViewCell.swift; sourceTree = "<group>"; };
+		7E5C058120185F34000B5C33 /* SavedAddressHeaderViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavedAddressHeaderViewCell.xib; sourceTree = "<group>"; };
+		7E5C058420186846000B5C33 /* UISearchbar+helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchbar+helper.swift"; sourceTree = "<group>"; };
+		7E5C058620186C1A000B5C33 /* roboto.bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = roboto.bold.ttf; sourceTree = "<group>"; };
 		967BD01B1CEED06931835CA3 /* Pods_SnapXEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnapXEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D3D1CDF2006479500AAAB95 /* SnapXConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXConstants.swift; sourceTree = "<group>"; };
 		9D3FC4D72011C94A001A4264 /* CuisinePreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisinePreference.swift; sourceTree = "<group>"; };
@@ -213,6 +225,17 @@
 				C272160BBB123BC8E63B160D /* Pods-SnapXEats.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		7E5C057B2017A6A3000B5C33 /* SelectLocationCells */ = {
+			isa = PBXGroup;
+			children = (
+				7E5C057C2017A6DC000B5C33 /* SavedLocationTableViewCell.swift */,
+				7E5C057D2017A6DC000B5C33 /* SavedLocationTableViewCell.xib */,
+				7E5C058020185F34000B5C33 /* SavedAddressHeaderViewCell.swift */,
+				7E5C058120185F34000B5C33 /* SavedAddressHeaderViewCell.xib */,
+			);
+			path = SelectLocationCells;
 			sourceTree = "<group>";
 		};
 		9D3D1CDE2006477B00AAAB95 /* Enum */ = {
@@ -331,6 +354,7 @@
 				9D8E889F1FFD28C50066A1D9 /* UIAlertController.swift */,
 				9D8E88A01FFD28C50066A1D9 /* UICollectionViewCell.swift */,
 				9D8E88A11FFD28C50066A1D9 /* UIStoryboard.swift */,
+				7E5C058420186846000B5C33 /* UISearchbar+helper.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -557,6 +581,7 @@
 				9DB7FE1620061B1600D0E816 /* Roboto-Light.ttf */,
 				9DB7FE1520061B1600D0E816 /* Roboto-Medium.ttf */,
 				9DB7FE1420061B1600D0E816 /* Roboto-Regular.ttf */,
+				7E5C058620186C1A000B5C33 /* roboto.bold.ttf */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -669,6 +694,7 @@
 		9D902BDE201729E300359DFD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7E5C057B2017A6A3000B5C33 /* SelectLocationCells */,
 				9D902BE920172A2F00359DFD /* SelectLocation.storyboard */,
 				9D902BDF201729E300359DFD /* SelectLocationViewController.swift */,
 			);
@@ -861,15 +887,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E5C058720186C36000B5C33 /* roboto.bold.ttf in Resources */,
 				9DB7FE1720061B6200D0E816 /* Roboto-Light.ttf in Resources */,
 				9DB7FE1820061B6200D0E816 /* Roboto-Medium.ttf in Resources */,
 				9DB7FE1920061B6200D0E816 /* Roboto-Regular.ttf in Resources */,
 				9DB02A76201084730061FC0C /* Location.storyboard in Resources */,
+				7E5C058320185F34000B5C33 /* SavedAddressHeaderViewCell.xib in Resources */,
 				9D902BEC201736B500359DFD /* FoodCards.storyboard in Resources */,
 				9D902BEA20172A2F00359DFD /* SelectLocation.storyboard in Resources */,
 				9DB7FE1D20061E4300D0E816 /* SnapX-logo.png in Resources */,
 				9D3FC4DC2011E34D001A4264 /* CuisineCollectionViewCell.xib in Resources */,
 				9DEB5CF71FFE6D49003B9D4B /* FlashScreen.storyboard in Resources */,
+				7E5C057F2017A6DC000B5C33 /* SavedLocationTableViewCell.xib in Resources */,
 				9DEB5CF81FFE6D49003B9D4B /* Login.storyboard in Resources */,
 				9DB7FE1F20061E8C00D0E816 /* BG@3x.png in Resources */,
 				9DB7FE132005F96A00D0E816 /* Assets.xcassets in Resources */,
@@ -978,6 +1007,7 @@
 				9D8095712015E5200077F84B /* SnapXEatsApi.swift in Sources */,
 				9D8E88EC1FFD2BEC0066A1D9 /* LoginPresenter.swift in Sources */,
 				9D8E88ED1FFD2BEC0066A1D9 /* LoginViewController.swift in Sources */,
+				7E5C058520186846000B5C33 /* UISearchbar+helper.swift in Sources */,
 				9D902BE4201729E400359DFD /* SelectLocationContract.swift in Sources */,
 				9DB7FE0B1FFFAC3800D0E816 /* InstagramViewController.swift in Sources */,
 				9D8E88EE1FFD2BEC0066A1D9 /* LoginInteractor.swift in Sources */,
@@ -986,6 +1016,7 @@
 				9D8E88F21FFD2BEC0066A1D9 /* BaseViewController.swift in Sources */,
 				9D8E88F31FFD2BEC0066A1D9 /* Product.swift in Sources */,
 				9D8E88F41FFD2BEC0066A1D9 /* UserProfile.swift in Sources */,
+				7E5C057E2017A6DC000B5C33 /* SavedLocationTableViewCell.swift in Sources */,
 				9D902BE6201729E400359DFD /* SelectLocationViewController.swift in Sources */,
 				9D8E88F51FFD2BEC0066A1D9 /* Constants.swift in Sources */,
 				9D8E88F61FFD2BEC0066A1D9 /* PlainButtonCellDelegate.swift in Sources */,
@@ -995,6 +1026,7 @@
 				9D902BCA20171AED00359DFD /* FoodCardsPresenter.swift in Sources */,
 				9D3D1CE02006479500AAAB95 /* SnapXConstants.swift in Sources */,
 				9D8E88FA1FFD2BEC0066A1D9 /* UITextField+Border.swift in Sources */,
+				7E5C058220185F34000B5C33 /* SavedAddressHeaderViewCell.swift in Sources */,
 				9DB02A6F2010805F0061FC0C /* LocationPresenter.swift in Sources */,
 				9D8E88FB1FFD2BEC0066A1D9 /* UICollectionView.swift in Sources */,
 				9D8E88FC1FFD2BEC0066A1D9 /* DataResponse.swift in Sources */,
@@ -1186,11 +1218,11 @@
 				CODE_SIGN_ENTITLEMENTS = SnapXEats/SnapXEats.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 265UFUW5H2;
+				DEVELOPMENT_TEAM = 67822934AQ;
 				INFOPLIST_FILE = SnapXEats/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.synerzip.SnapXEatstest123;
+				PRODUCT_BUNDLE_IDENTIFIER = com.synerzip.SnapXEatstest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1208,11 +1240,11 @@
 				CODE_SIGN_ENTITLEMENTS = SnapXEats/SnapXEats.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 265UFUW5H2;
+				DEVELOPMENT_TEAM = 67822934AQ;
 				INFOPLIST_FILE = SnapXEats/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.synerzip.SnapXEatstest123;
+				PRODUCT_BUNDLE_IDENTIFIER = com.synerzip.SnapXEatstest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

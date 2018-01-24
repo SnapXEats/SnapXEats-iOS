@@ -24,7 +24,8 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     
     private let sectionInsets = UIEdgeInsets(top: 10.0, left: 20.0, bottom: 30.0, right: 20.0)
     var presenter: LocationPresentation?
-
+    var selectedCuisineIndexes = NSMutableArray()
+    
     // MARK: Lifecycle
     var locationManager: CLLocationManager?
     
@@ -131,8 +132,19 @@ extension LocationViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LocationResourceIdentifiler.cellReuseIdentifier, for: indexPath) as! CuisineCollectionViewCell
-        cell.configureCell(cuisineItem: cuiseItems[indexPath.row])
+        let isItemSelected = selectedCuisineIndexes.contains(indexPath.row) ? true : false
+        cell.configureCell(cuisineItem: cuiseItems[indexPath.row], isSelected: isItemSelected)
+
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if selectedCuisineIndexes.contains(indexPath.row) {
+            selectedCuisineIndexes.remove(indexPath.row)
+        } else {
+            selectedCuisineIndexes.add(indexPath.row)
+        }
+        collectionView.reloadItems(at: [indexPath])
     }
 }
 
