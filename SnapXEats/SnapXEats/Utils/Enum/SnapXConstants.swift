@@ -55,8 +55,14 @@ enum SnapXEatsStoryboardIdentifier {
     static let instagramViewControllerID = "InstagramViewController"
     static let locationViewControllerID = "LocationViewController"
     static let foodCardsNavigationControllerID = "FoodCardsNavigationController"
+    static let locationCellReuseIdentifier = "CuisineCell"
+    static  let locationCuisineCollectionCellIdentifier = "CuisineCollectionViewCell"
 }
 
+enum SnapXEatsLocationConstant {
+    static let locationAlertTitle = "Location not Detected"
+    static let locationAlertMessage = "Location services are turned off on your device. Please go to settings and enable location services to use this feature or manually select a location."
+}
 enum SnapXEatsWebServiceResourcePath {
     static let  port = "3000"
     static let  root = "http://ec2-18-216-193-78.us-east-2.compute.amazonaws.com:" + port
