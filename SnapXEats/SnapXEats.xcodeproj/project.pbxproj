@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E5C057E2017A6DC000B5C33 /* SavedLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C057C2017A6DC000B5C33 /* SavedLocationTableViewCell.swift */; };
+		7E5C057F2017A6DC000B5C33 /* SavedLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5C057D2017A6DC000B5C33 /* SavedLocationTableViewCell.xib */; };
+		7E5C058220185F34000B5C33 /* SavedAddressHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C058020185F34000B5C33 /* SavedAddressHeaderViewCell.swift */; };
+		7E5C058320185F34000B5C33 /* SavedAddressHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5C058120185F34000B5C33 /* SavedAddressHeaderViewCell.xib */; };
+		7E5C058520186846000B5C33 /* UISearchbar+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C058420186846000B5C33 /* UISearchbar+helper.swift */; };
+		7E5C058720186C36000B5C33 /* roboto.bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E5C058620186C1A000B5C33 /* roboto.bold.ttf */; };
+		9D3D1CE02006479500AAAB95 /* SnapXConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3D1CDF2006479500AAAB95 /* SnapXConstants.swift */; };
+		9D3FC4D82011C94A001A4264 /* CuisinePreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3FC4D72011C94A001A4264 /* CuisinePreference.swift */; };
+		9D3FC4DB2011E34D001A4264 /* CuisineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3FC4D92011E34D001A4264 /* CuisineCollectionViewCell.swift */; };
+		9D3FC4DC2011E34D001A4264 /* CuisineCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D3FC4DA2011E34D001A4264 /* CuisineCollectionViewCell.xib */; };
+		9D8095712015E5200077F84B /* SnapXEatsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8095702015E5200077F84B /* SnapXEatsApi.swift */; };
 		9D8E887D1FFD27F30066A1D9 /* SnapXEatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E887C1FFD27F30066A1D9 /* SnapXEatsTests.swift */; };
 		9D8E88EB1FFD2BEC0066A1D9 /* LoginContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88C21FFD28C50066A1D9 /* LoginContract.swift */; };
 		9D8E88EC1FFD2BEC0066A1D9 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88C41FFD28C50066A1D9 /* LoginPresenter.swift */; };
@@ -50,6 +61,24 @@
 		9D8E89151FFD2BEC0066A1D9 /* ValidatorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88BA1FFD28C50066A1D9 /* ValidatorHelper.swift */; };
 		9D8E89161FFD2C400066A1D9 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88BD1FFD28C50066A1D9 /* RootRouter.swift */; };
 		9D8E89171FFD2C400066A1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88BE1FFD28C50066A1D9 /* AppDelegate.swift */; };
+		9D902BC920171AED00359DFD /* FoodCardsContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D902BC020171AED00359DFD /* FoodCardsContract.swift */; };
+		9D902BCA20171AED00359DFD /* FoodCardsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D902BC220171AED00359DFD /* FoodCardsPresenter.swift */; };
+		9D902BCB20171AED00359DFD /* FoodCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D902BC420171AED00359DFD /* FoodCardsViewController.swift */; };
+		9D902BCC20171AED00359DFD /* FoodCardsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D902BC620171AED00359DFD /* FoodCardsInteractor.swift */; };
+		9D902BCD20171AED00359DFD /* FoodCardsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D902BC820171AED00359DFD /* FoodCardsRouter.swift */; };
+		9D902BE4201729E400359DFD /* SelectLocationContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D902BDB201729E300359DFD /* SelectLocationContract.swift */; };
+		9D902BE5201729E400359DFD /* SelectLocationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D902BDD201729E300359DFD /* SelectLocationPresenter.swift */; };
+		9D902BE6201729E400359DFD /* SelectLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D902BDF201729E300359DFD /* SelectLocationViewController.swift */; };
+		9D902BE7201729E400359DFD /* SelectLocationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D902BE1201729E300359DFD /* SelectLocationInteractor.swift */; };
+		9D902BE8201729E400359DFD /* SelectLocationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D902BE3201729E300359DFD /* SelectLocationRouter.swift */; };
+		9D902BEA20172A2F00359DFD /* SelectLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D902BE920172A2F00359DFD /* SelectLocation.storyboard */; };
+		9D902BEC201736B500359DFD /* FoodCards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D902BEB201736B500359DFD /* FoodCards.storyboard */; };
+		9DB02A6E2010805F0061FC0C /* LocationContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB02A652010805F0061FC0C /* LocationContract.swift */; };
+		9DB02A6F2010805F0061FC0C /* LocationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB02A672010805F0061FC0C /* LocationPresenter.swift */; };
+		9DB02A702010805F0061FC0C /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB02A692010805F0061FC0C /* LocationViewController.swift */; };
+		9DB02A712010805F0061FC0C /* LocationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB02A6B2010805F0061FC0C /* LocationInteractor.swift */; };
+		9DB02A722010805F0061FC0C /* LocationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB02A6D2010805F0061FC0C /* LocationRouter.swift */; };
+		9DB02A76201084730061FC0C /* Location.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DB02A75201084730061FC0C /* Location.storyboard */; };
 		9DB7FE0B1FFFAC3800D0E816 /* InstagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7FE0A1FFFAC3800D0E816 /* InstagramViewController.swift */; };
 		9DB7FE0E2004BC9D00D0E816 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7FE0D2004BC9D00D0E816 /* Network.swift */; };
 		9DB7FE112004F0EE00D0E816 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7FE102004F0EE00D0E816 /* Alert.swift */; };
@@ -57,13 +86,10 @@
 		9DB7FE1720061B6200D0E816 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1620061B1600D0E816 /* Roboto-Light.ttf */; };
 		9DB7FE1820061B6200D0E816 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1520061B1600D0E816 /* Roboto-Medium.ttf */; };
 		9DB7FE1920061B6200D0E816 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1420061B1600D0E816 /* Roboto-Regular.ttf */; };
-		9DB7FE1B20061E3600D0E816 /* SnapX-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1A20061E3600D0E816 /* SnapX-logo.png */; };
 		9DB7FE1D20061E4300D0E816 /* SnapX-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1C20061E4300D0E816 /* SnapX-logo.png */; };
 		9DB7FE1F20061E8C00D0E816 /* BG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1E20061E8C00D0E816 /* BG@3x.png */; };
 		9DEB5CF71FFE6D49003B9D4B /* FlashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88BC1FFD28C50066A1D9 /* FlashScreen.storyboard */; };
 		9DEB5CF81FFE6D49003B9D4B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88C61FFD28C50066A1D9 /* Login.storyboard */; };
-		9DEB5CF91FFE6D49003B9D4B /* PlainButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88AB1FFD28C50066A1D9 /* PlainButtonCell.xib */; };
-		9DEB5CFA1FFE6D49003B9D4B /* SectionHeaderLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88AE1FFD28C50066A1D9 /* SectionHeaderLabelCell.xib */; };
 		CE64A9A86226702DB23DF92F /* Pods_SnapXEats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967BD01B1CEED06931835CA3 /* Pods_SnapXEats.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,7 +105,18 @@
 
 /* Begin PBXFileReference section */
 		18C81282DCA92A76FE981E2D /* Pods-SnapXEats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapXEats.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SnapXEats/Pods-SnapXEats.debug.xcconfig"; sourceTree = "<group>"; };
+		7E5C057C2017A6DC000B5C33 /* SavedLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationTableViewCell.swift; sourceTree = "<group>"; };
+		7E5C057D2017A6DC000B5C33 /* SavedLocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavedLocationTableViewCell.xib; sourceTree = "<group>"; };
+		7E5C058020185F34000B5C33 /* SavedAddressHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedAddressHeaderViewCell.swift; sourceTree = "<group>"; };
+		7E5C058120185F34000B5C33 /* SavedAddressHeaderViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavedAddressHeaderViewCell.xib; sourceTree = "<group>"; };
+		7E5C058420186846000B5C33 /* UISearchbar+helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchbar+helper.swift"; sourceTree = "<group>"; };
+		7E5C058620186C1A000B5C33 /* roboto.bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = roboto.bold.ttf; sourceTree = "<group>"; };
 		967BD01B1CEED06931835CA3 /* Pods_SnapXEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnapXEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D3D1CDF2006479500AAAB95 /* SnapXConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXConstants.swift; sourceTree = "<group>"; };
+		9D3FC4D72011C94A001A4264 /* CuisinePreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisinePreference.swift; sourceTree = "<group>"; };
+		9D3FC4D92011E34D001A4264 /* CuisineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisineCollectionViewCell.swift; sourceTree = "<group>"; };
+		9D3FC4DA2011E34D001A4264 /* CuisineCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CuisineCollectionViewCell.xib; sourceTree = "<group>"; };
+		9D8095702015E5200077F84B /* SnapXEatsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEatsApi.swift; sourceTree = "<group>"; };
 		9D8E88641FFD27F30066A1D9 /* SnapXEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapXEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8E88781FFD27F30066A1D9 /* SnapXEatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapXEatsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8E887C1FFD27F30066A1D9 /* SnapXEatsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEatsTests.swift; sourceTree = "<group>"; };
@@ -107,9 +144,7 @@
 		9D8E88A51FFD28C50066A1D9 /* RoundedPinkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedPinkButton.swift; sourceTree = "<group>"; };
 		9D8E88A61FFD28C50066A1D9 /* SimpleCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCircle.swift; sourceTree = "<group>"; };
 		9D8E88AA1FFD28C50066A1D9 /* PlainButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainButtonCell.swift; sourceTree = "<group>"; };
-		9D8E88AB1FFD28C50066A1D9 /* PlainButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlainButtonCell.xib; sourceTree = "<group>"; };
 		9D8E88AD1FFD28C50066A1D9 /* SectionHeaderLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderLabelCell.swift; sourceTree = "<group>"; };
-		9D8E88AE1FFD28C50066A1D9 /* SectionHeaderLabelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderLabelCell.xib; sourceTree = "<group>"; };
 		9D8E88B11FFD28C50066A1D9 /* ProfileLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLocalDataManager.swift; sourceTree = "<group>"; };
 		9D8E88B31FFD28C50066A1D9 /* ProfileApiDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileApiDataManager.swift; sourceTree = "<group>"; };
 		9D8E88B51FFD28C50066A1D9 /* StoryboardLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardLoadable.swift; sourceTree = "<group>"; };
@@ -133,6 +168,25 @@
 		9D8E88DF1FFD2A6F0066A1D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D8E88E71FFD2A6F0066A1D9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9D8E88E81FFD2A6F0066A1D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9D902BC020171AED00359DFD /* FoodCardsContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCardsContract.swift; sourceTree = "<group>"; };
+		9D902BC220171AED00359DFD /* FoodCardsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCardsPresenter.swift; sourceTree = "<group>"; };
+		9D902BC420171AED00359DFD /* FoodCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCardsViewController.swift; sourceTree = "<group>"; };
+		9D902BC620171AED00359DFD /* FoodCardsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCardsInteractor.swift; sourceTree = "<group>"; };
+		9D902BC820171AED00359DFD /* FoodCardsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCardsRouter.swift; sourceTree = "<group>"; };
+		9D902BDB201729E300359DFD /* SelectLocationContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLocationContract.swift; sourceTree = "<group>"; };
+		9D902BDD201729E300359DFD /* SelectLocationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLocationPresenter.swift; sourceTree = "<group>"; };
+		9D902BDF201729E300359DFD /* SelectLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLocationViewController.swift; sourceTree = "<group>"; };
+		9D902BE1201729E300359DFD /* SelectLocationInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLocationInteractor.swift; sourceTree = "<group>"; };
+		9D902BE3201729E300359DFD /* SelectLocationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectLocationRouter.swift; sourceTree = "<group>"; };
+		9D902BE920172A2F00359DFD /* SelectLocation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectLocation.storyboard; sourceTree = "<group>"; };
+		9D902BEB201736B500359DFD /* FoodCards.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FoodCards.storyboard; sourceTree = "<group>"; };
+		9D902BED20177EFF00359DFD /* SnapXEats.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SnapXEats.entitlements; sourceTree = "<group>"; };
+		9DB02A652010805F0061FC0C /* LocationContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationContract.swift; sourceTree = "<group>"; };
+		9DB02A672010805F0061FC0C /* LocationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPresenter.swift; sourceTree = "<group>"; };
+		9DB02A692010805F0061FC0C /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		9DB02A6B2010805F0061FC0C /* LocationInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationInteractor.swift; sourceTree = "<group>"; };
+		9DB02A6D2010805F0061FC0C /* LocationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationRouter.swift; sourceTree = "<group>"; };
+		9DB02A75201084730061FC0C /* Location.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Location.storyboard; sourceTree = "<group>"; };
 		9DB7FE0A1FFFAC3800D0E816 /* InstagramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramViewController.swift; sourceTree = "<group>"; };
 		9DB7FE0D2004BC9D00D0E816 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		9DB7FE102004F0EE00D0E816 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
@@ -140,7 +194,6 @@
 		9DB7FE1420061B1600D0E816 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		9DB7FE1520061B1600D0E816 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		9DB7FE1620061B1600D0E816 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
-		9DB7FE1A20061E3600D0E816 /* SnapX-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SnapX-logo.png"; sourceTree = "<group>"; };
 		9DB7FE1C20061E4300D0E816 /* SnapX-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SnapX-logo.png"; sourceTree = "<group>"; };
 		9DB7FE1E20061E8C00D0E816 /* BG@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BG@3x.png"; sourceTree = "<group>"; };
 		C272160BBB123BC8E63B160D /* Pods-SnapXEats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapXEats.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapXEats/Pods-SnapXEats.release.xcconfig"; sourceTree = "<group>"; };
@@ -172,6 +225,35 @@
 				C272160BBB123BC8E63B160D /* Pods-SnapXEats.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		7E5C057B2017A6A3000B5C33 /* SelectLocationCells */ = {
+			isa = PBXGroup;
+			children = (
+				7E5C057C2017A6DC000B5C33 /* SavedLocationTableViewCell.swift */,
+				7E5C057D2017A6DC000B5C33 /* SavedLocationTableViewCell.xib */,
+				7E5C058020185F34000B5C33 /* SavedAddressHeaderViewCell.swift */,
+				7E5C058120185F34000B5C33 /* SavedAddressHeaderViewCell.xib */,
+			);
+			path = SelectLocationCells;
+			sourceTree = "<group>";
+		};
+		9D3D1CDE2006477B00AAAB95 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				9D3D1CDF2006479500AAAB95 /* SnapXConstants.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		9D3FC4DD20120BBC001A4264 /* CuisineCell */ = {
+			isa = PBXGroup;
+			children = (
+				9D3FC4DA2011E34D001A4264 /* CuisineCollectionViewCell.xib */,
+				9D3FC4D92011E34D001A4264 /* CuisineCollectionViewCell.swift */,
+				9D3FC4D72011C94A001A4264 /* CuisinePreference.swift */,
+			);
+			path = CuisineCell;
 			sourceTree = "<group>";
 		};
 		9D8E885B1FFD27F30066A1D9 = {
@@ -208,6 +290,7 @@
 		9D8E88871FFD28C50066A1D9 /* SnapXEats */ = {
 			isa = PBXGroup;
 			children = (
+				9D902BED20177EFF00359DFD /* SnapXEats.entitlements */,
 				9D8E88BB1FFD28C50066A1D9 /* Application */,
 				9D8E88BF1FFD28C50066A1D9 /* Modules */,
 				9D8E88D91FFD28C50066A1D9 /* Entities */,
@@ -221,7 +304,7 @@
 		9D8E888C1FFD28C50066A1D9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				9DB7FE1A20061E3600D0E816 /* SnapX-logo.png */,
+				9D3D1CDE2006477B00AAAB95 /* Enum */,
 				9DB7FE0F2004F0E100D0E816 /* Alert */,
 				9DB7FE0C2004BC8800D0E816 /* Network */,
 				9D8E888D1FFD28C50066A1D9 /* Constants */,
@@ -271,6 +354,7 @@
 				9D8E889F1FFD28C50066A1D9 /* UIAlertController.swift */,
 				9D8E88A01FFD28C50066A1D9 /* UICollectionViewCell.swift */,
 				9D8E88A11FFD28C50066A1D9 /* UIStoryboard.swift */,
+				7E5C058420186846000B5C33 /* UISearchbar+helper.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -307,7 +391,6 @@
 			isa = PBXGroup;
 			children = (
 				9D8E88AA1FFD28C50066A1D9 /* PlainButtonCell.swift */,
-				9D8E88AB1FFD28C50066A1D9 /* PlainButtonCell.xib */,
 			);
 			path = PlainButtonCell;
 			sourceTree = "<group>";
@@ -316,7 +399,6 @@
 			isa = PBXGroup;
 			children = (
 				9D8E88AD1FFD28C50066A1D9 /* SectionHeaderLabelCell.swift */,
-				9D8E88AE1FFD28C50066A1D9 /* SectionHeaderLabelCell.xib */,
 			);
 			path = SectionHeaderLabelCell;
 			sourceTree = "<group>";
@@ -379,6 +461,9 @@
 			isa = PBXGroup;
 			children = (
 				9D8E88C01FFD28C50066A1D9 /* Login */,
+				9DB02A632010805F0061FC0C /* Location */,
+				9D902BD9201729E300359DFD /* SelectLocation */,
+				9D902BBE20171AED00359DFD /* FoodCards */,
 				9D8E88CD1FFD28C50066A1D9 /* Base */,
 			);
 			path = Modules;
@@ -496,6 +581,7 @@
 				9DB7FE1620061B1600D0E816 /* Roboto-Light.ttf */,
 				9DB7FE1520061B1600D0E816 /* Roboto-Medium.ttf */,
 				9DB7FE1420061B1600D0E816 /* Roboto-Regular.ttf */,
+				7E5C058620186C1A000B5C33 /* roboto.bold.ttf */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -524,10 +610,172 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		9D902BBE20171AED00359DFD /* FoodCards */ = {
+			isa = PBXGroup;
+			children = (
+				9D902BBF20171AED00359DFD /* Contract */,
+				9D902BC120171AED00359DFD /* Presenter */,
+				9D902BC320171AED00359DFD /* View */,
+				9D902BC520171AED00359DFD /* Interactor */,
+				9D902BC720171AED00359DFD /* Router */,
+			);
+			path = FoodCards;
+			sourceTree = "<group>";
+		};
+		9D902BBF20171AED00359DFD /* Contract */ = {
+			isa = PBXGroup;
+			children = (
+				9D902BC020171AED00359DFD /* FoodCardsContract.swift */,
+			);
+			path = Contract;
+			sourceTree = "<group>";
+		};
+		9D902BC120171AED00359DFD /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				9D902BC220171AED00359DFD /* FoodCardsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		9D902BC320171AED00359DFD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9D902BEB201736B500359DFD /* FoodCards.storyboard */,
+				9D902BC420171AED00359DFD /* FoodCardsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9D902BC520171AED00359DFD /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				9D902BC620171AED00359DFD /* FoodCardsInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		9D902BC720171AED00359DFD /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				9D902BC820171AED00359DFD /* FoodCardsRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		9D902BD9201729E300359DFD /* SelectLocation */ = {
+			isa = PBXGroup;
+			children = (
+				9D902BDA201729E300359DFD /* Contract */,
+				9D902BDC201729E300359DFD /* Presenter */,
+				9D902BDE201729E300359DFD /* View */,
+				9D902BE0201729E300359DFD /* Interactor */,
+				9D902BE2201729E300359DFD /* Router */,
+			);
+			path = SelectLocation;
+			sourceTree = "<group>";
+		};
+		9D902BDA201729E300359DFD /* Contract */ = {
+			isa = PBXGroup;
+			children = (
+				9D902BDB201729E300359DFD /* SelectLocationContract.swift */,
+			);
+			path = Contract;
+			sourceTree = "<group>";
+		};
+		9D902BDC201729E300359DFD /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				9D902BDD201729E300359DFD /* SelectLocationPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		9D902BDE201729E300359DFD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7E5C057B2017A6A3000B5C33 /* SelectLocationCells */,
+				9D902BE920172A2F00359DFD /* SelectLocation.storyboard */,
+				9D902BDF201729E300359DFD /* SelectLocationViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9D902BE0201729E300359DFD /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				9D902BE1201729E300359DFD /* SelectLocationInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		9D902BE2201729E300359DFD /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				9D902BE3201729E300359DFD /* SelectLocationRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		9DB02A632010805F0061FC0C /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				9DB02A642010805F0061FC0C /* Contract */,
+				9DB02A662010805F0061FC0C /* Presenter */,
+				9DB02A682010805F0061FC0C /* View */,
+				9DB02A6A2010805F0061FC0C /* Interactor */,
+				9DB02A6C2010805F0061FC0C /* Router */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		9DB02A642010805F0061FC0C /* Contract */ = {
+			isa = PBXGroup;
+			children = (
+				9DB02A652010805F0061FC0C /* LocationContract.swift */,
+			);
+			path = Contract;
+			sourceTree = "<group>";
+		};
+		9DB02A662010805F0061FC0C /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				9DB02A672010805F0061FC0C /* LocationPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		9DB02A682010805F0061FC0C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9D3FC4DD20120BBC001A4264 /* CuisineCell */,
+				9DB02A75201084730061FC0C /* Location.storyboard */,
+				9DB02A692010805F0061FC0C /* LocationViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9DB02A6A2010805F0061FC0C /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				9DB02A6B2010805F0061FC0C /* LocationInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		9DB02A6C2010805F0061FC0C /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				9DB02A6D2010805F0061FC0C /* LocationRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		9DB7FE0C2004BC8800D0E816 /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				9DB7FE0D2004BC9D00D0E816 /* Network.swift */,
+				9D8095702015E5200077F84B /* SnapXEatsApi.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -602,6 +850,11 @@
 					9D8E88631FFD27F30066A1D9 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					9D8E88771FFD27F30066A1D9 = {
 						CreatedOnToolsVersion = 9.0;
@@ -634,16 +887,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E5C058720186C36000B5C33 /* roboto.bold.ttf in Resources */,
 				9DB7FE1720061B6200D0E816 /* Roboto-Light.ttf in Resources */,
 				9DB7FE1820061B6200D0E816 /* Roboto-Medium.ttf in Resources */,
 				9DB7FE1920061B6200D0E816 /* Roboto-Regular.ttf in Resources */,
+				9DB02A76201084730061FC0C /* Location.storyboard in Resources */,
+				7E5C058320185F34000B5C33 /* SavedAddressHeaderViewCell.xib in Resources */,
+				9D902BEC201736B500359DFD /* FoodCards.storyboard in Resources */,
+				9D902BEA20172A2F00359DFD /* SelectLocation.storyboard in Resources */,
 				9DB7FE1D20061E4300D0E816 /* SnapX-logo.png in Resources */,
+				9D3FC4DC2011E34D001A4264 /* CuisineCollectionViewCell.xib in Resources */,
 				9DEB5CF71FFE6D49003B9D4B /* FlashScreen.storyboard in Resources */,
-				9DB7FE1B20061E3600D0E816 /* SnapX-logo.png in Resources */,
+				7E5C057F2017A6DC000B5C33 /* SavedLocationTableViewCell.xib in Resources */,
 				9DEB5CF81FFE6D49003B9D4B /* Login.storyboard in Resources */,
-				9DEB5CF91FFE6D49003B9D4B /* PlainButtonCell.xib in Resources */,
 				9DB7FE1F20061E8C00D0E816 /* BG@3x.png in Resources */,
-				9DEB5CFA1FFE6D49003B9D4B /* SectionHeaderLabelCell.xib in Resources */,
 				9DB7FE132005F96A00D0E816 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -666,6 +923,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SnapXEats/Pods-SnapXEats-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
@@ -683,6 +941,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
@@ -745,8 +1004,11 @@
 				9D8E89161FFD2C400066A1D9 /* RootRouter.swift in Sources */,
 				9D8E89171FFD2C400066A1D9 /* AppDelegate.swift in Sources */,
 				9D8E88EB1FFD2BEC0066A1D9 /* LoginContract.swift in Sources */,
+				9D8095712015E5200077F84B /* SnapXEatsApi.swift in Sources */,
 				9D8E88EC1FFD2BEC0066A1D9 /* LoginPresenter.swift in Sources */,
 				9D8E88ED1FFD2BEC0066A1D9 /* LoginViewController.swift in Sources */,
+				7E5C058520186846000B5C33 /* UISearchbar+helper.swift in Sources */,
+				9D902BE4201729E400359DFD /* SelectLocationContract.swift in Sources */,
 				9DB7FE0B1FFFAC3800D0E816 /* InstagramViewController.swift in Sources */,
 				9D8E88EE1FFD2BEC0066A1D9 /* LoginInteractor.swift in Sources */,
 				9D8E88EF1FFD2BEC0066A1D9 /* LoginRouter.swift in Sources */,
@@ -754,39 +1016,58 @@
 				9D8E88F21FFD2BEC0066A1D9 /* BaseViewController.swift in Sources */,
 				9D8E88F31FFD2BEC0066A1D9 /* Product.swift in Sources */,
 				9D8E88F41FFD2BEC0066A1D9 /* UserProfile.swift in Sources */,
+				7E5C057E2017A6DC000B5C33 /* SavedLocationTableViewCell.swift in Sources */,
+				9D902BE6201729E400359DFD /* SelectLocationViewController.swift in Sources */,
 				9D8E88F51FFD2BEC0066A1D9 /* Constants.swift in Sources */,
 				9D8E88F61FFD2BEC0066A1D9 /* PlainButtonCellDelegate.swift in Sources */,
 				9D8E88F71FFD2BEC0066A1D9 /* UIImage+Icons.swift in Sources */,
 				9D8E88F81FFD2BEC0066A1D9 /* UIView.swift in Sources */,
 				9D8E88F91FFD2BEC0066A1D9 /* UIFont+Utils.swift in Sources */,
+				9D902BCA20171AED00359DFD /* FoodCardsPresenter.swift in Sources */,
+				9D3D1CE02006479500AAAB95 /* SnapXConstants.swift in Sources */,
 				9D8E88FA1FFD2BEC0066A1D9 /* UITextField+Border.swift in Sources */,
+				7E5C058220185F34000B5C33 /* SavedAddressHeaderViewCell.swift in Sources */,
+				9DB02A6F2010805F0061FC0C /* LocationPresenter.swift in Sources */,
 				9D8E88FB1FFD2BEC0066A1D9 /* UICollectionView.swift in Sources */,
 				9D8E88FC1FFD2BEC0066A1D9 /* DataResponse.swift in Sources */,
+				9D902BE5201729E400359DFD /* SelectLocationPresenter.swift in Sources */,
 				9D8E88FD1FFD2BEC0066A1D9 /* Results.swift in Sources */,
 				9D8E88FE1FFD2BEC0066A1D9 /* UITableView.swift in Sources */,
 				9D8E88FF1FFD2BEC0066A1D9 /* UITableViewCell.swift in Sources */,
 				9D8E89001FFD2BEC0066A1D9 /* String.swift in Sources */,
 				9D8E89011FFD2BEC0066A1D9 /* UIViewController.swift in Sources */,
 				9DB7FE112004F0EE00D0E816 /* Alert.swift in Sources */,
+				9D902BE8201729E400359DFD /* SelectLocationRouter.swift in Sources */,
 				9D8E89021FFD2BEC0066A1D9 /* UIColor+Pallet.swift in Sources */,
+				9DB02A722010805F0061FC0C /* LocationRouter.swift in Sources */,
 				9D8E89031FFD2BEC0066A1D9 /* Double.swift in Sources */,
+				9DB02A6E2010805F0061FC0C /* LocationContract.swift in Sources */,
+				9D902BCC20171AED00359DFD /* FoodCardsInteractor.swift in Sources */,
 				9D8E89041FFD2BEC0066A1D9 /* UIAlertController.swift in Sources */,
 				9D8E89051FFD2BEC0066A1D9 /* UICollectionViewCell.swift in Sources */,
 				9D8E89061FFD2BEC0066A1D9 /* UIStoryboard.swift in Sources */,
 				9D8E89071FFD2BEC0066A1D9 /* ValidableUILabel.swift in Sources */,
+				9D902BC920171AED00359DFD /* FoodCardsContract.swift in Sources */,
 				9D8E89081FFD2BEC0066A1D9 /* RoundedTextField.swift in Sources */,
+				9D902BCB20171AED00359DFD /* FoodCardsViewController.swift in Sources */,
+				9D902BE7201729E400359DFD /* SelectLocationInteractor.swift in Sources */,
 				9D8E89091FFD2BEC0066A1D9 /* RoundedPinkButton.swift in Sources */,
 				9D8E890A1FFD2BEC0066A1D9 /* SimpleCircle.swift in Sources */,
 				9D8E890B1FFD2BEC0066A1D9 /* PlainButtonCell.swift in Sources */,
 				9D8E890D1FFD2BEC0066A1D9 /* SectionHeaderLabelCell.swift in Sources */,
 				9D8E890F1FFD2BEC0066A1D9 /* ProfileLocalDataManager.swift in Sources */,
+				9D3FC4DB2011E34D001A4264 /* CuisineCollectionViewCell.swift in Sources */,
 				9D8E89101FFD2BEC0066A1D9 /* ProfileApiDataManager.swift in Sources */,
+				9DB02A702010805F0061FC0C /* LocationViewController.swift in Sources */,
 				9DB7FE0E2004BC9D00D0E816 /* Network.swift in Sources */,
 				9D8E89111FFD2BEC0066A1D9 /* StoryboardLoadable.swift in Sources */,
 				9D8E89121FFD2BEC0066A1D9 /* NibLoadableView.swift in Sources */,
+				9D902BCD20171AED00359DFD /* FoodCardsRouter.swift in Sources */,
 				9D8E89131FFD2BEC0066A1D9 /* ReusableView.swift in Sources */,
+				9D3FC4D82011C94A001A4264 /* CuisinePreference.swift in Sources */,
 				9D8E89141FFD2BEC0066A1D9 /* SessionHelper.swift in Sources */,
 				9D8E89151FFD2BEC0066A1D9 /* ValidatorHelper.swift in Sources */,
+				9DB02A712010805F0061FC0C /* LocationInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -934,14 +1215,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = SnapXEats/SnapXEats.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 67822934AQ;
 				INFOPLIST_FILE = SnapXEats/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.synerzip.SnapXEatstest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -954,14 +1237,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = SnapXEats/SnapXEats.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 67822934AQ;
 				INFOPLIST_FILE = SnapXEats/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.synerzip.SnapXEatstest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
