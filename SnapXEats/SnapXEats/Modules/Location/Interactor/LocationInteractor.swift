@@ -51,7 +51,7 @@ extension LocationInteractor: LocationObjectMapper {
         case .success(let value):
             output?.response(result: .success(data: value))
         case .failure( _):
-        output?.response(result: NetworkResult.error)
+        output?.response(result: NetworkResult.noInternet)
         }
     }
 }

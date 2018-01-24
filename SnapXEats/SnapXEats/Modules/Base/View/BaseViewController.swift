@@ -4,12 +4,15 @@
 
 import UIKit
 import MBProgressHUD
+import ReachabilitySwift
 
 class BaseViewController: UIViewController, BaseView {
 
     // MARK: Properties
     
     var progressHUD: MBProgressHUD?
+    
+    var loginAlert = SnapXAlert.singleInstance
     
     fileprivate var internalScrollView: UIScrollView?
     
@@ -69,5 +72,34 @@ class BaseViewController: UIViewController, BaseView {
         let contentInsets = UIEdgeInsets.zero
         internalScrollView?.contentInset = contentInsets
         internalScrollView?.scrollIndicatorInsets = contentInsets
+    }
+   
+    func error(result: NetworkResult) {
+        loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.messageNoInternet,forView: self)
+        loginAlert.show()
+    }
+    
+    func noInternet(result: NetworkResult) {
+        loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.messageNoInternet,forView: self)
+        loginAlert.show()
+    }
+    
+    func success(result: Any?) {
+        loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.messageSuccess,forView: self)
+        loginAlert.show()
+    }
+    
+    func cancel(result: NetworkResult) {
+        loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.cancelRequest,forView: self)
+        loginAlert.show()
+    }
+    
+    func checkRechability() -> Bool {
+        if Reachability()?.currentReachabilityStatus == .notReachable {
+            noInternet(result: .noInternet)
+            return false
+        } else {
+            return true
+        }
     }
 }

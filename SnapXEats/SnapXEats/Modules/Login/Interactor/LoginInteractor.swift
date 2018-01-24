@@ -75,6 +75,5 @@ extension LoginInteractor {
         } else {
             return true
         }
-        
     }
 }
