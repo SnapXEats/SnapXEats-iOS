@@ -20,10 +20,29 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="4TV-Kl-tqH"/>
                     </view>
+                    <navigationItem key="navigationItem" id="g0V-s3-Rqf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rOa-bO-Hsq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-137" y="43"/>
+            <point key="canvasLocation" x="596" y="42"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fCB-lN-BPJ">
+            <objects>
+                <navigationController storyboardIdentifier="FoodCardsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="vmp-wP-0Qe" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yWH-HO-N6I">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="PVr-ZQ-ZIz" kind="relationship" relationship="rootViewController" id="tk5-L2-fYh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cr5-Wh-uct" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-137.59999999999999" y="42.278860569715143"/>
         </scene>
     </scenes>
 </document>

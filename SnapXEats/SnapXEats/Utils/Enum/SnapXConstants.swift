@@ -47,12 +47,14 @@ enum SnapXEatsConstant {
 enum SnapXEatsStoryboard {
     static let loginStoryboard = "Login"
     static let locationStoryboard = "Location"
+    static let foodCardsStoryboard = "FoodCards"
 }
 
 enum SnapXEatsStoryboardIdentifier {
     static let loginViewControllerID = "LoginViewController"
     static let instagramViewControllerID = "InstagramViewController"
     static let locationViewControllerID = "LocationViewController"
+    static let foodCardsNavigationControllerID = "FoodCardsNavigationController"
 }
 
 enum SnapXEatsWebServiceResourcePath {
