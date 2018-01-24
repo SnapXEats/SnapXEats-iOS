@@ -17,8 +17,14 @@ class FoodCardsRouter {
     private init() {}
     // MARK: Static methods
     static let singleInstance = FoodCardsRouter()
-     func loadFoodCardModule() -> FoodCardsViewController {
-        let viewController = UIStoryboard.loadViewController() as FoodCardsViewController
+     func loadFoodCardModule() -> UINavigationController {
+        
+        let foodCardNavigationController = UIStoryboard.loadNavigationControler(storyBoardName: SnapXEatsStoryboard.foodCardsStoryboard, storyBoardId: SnapXEatsStoryboardIdentifier.foodCardsNavigationControllerID)
+        
+        guard let firstViewController = foodCardNavigationController.viewControllers.first, let viewController = firstViewController as? FoodCardsViewController else {
+            return UINavigationController()
+        }
+        
         let presenter = FoodCardsPresenter.singleInstance
         let router = FoodCardsRouter.singleInstance
         let interactor = FoodCardsInteractor.singleInstance
@@ -33,7 +39,7 @@ class FoodCardsRouter {
 
         interactor.output = presenter
 
-        return viewController
+        return foodCardNavigationController
     }
 }
 

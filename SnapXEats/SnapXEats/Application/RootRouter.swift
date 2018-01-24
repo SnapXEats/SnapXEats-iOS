@@ -65,8 +65,7 @@ class RootRouter: NSObject {
     }
     
     func presentFoodcardsScreen() {
-        // This is temp code
-        let locatioViewController = FoodCardsRouter.singleInstance.loadFoodCardModule() as! FoodCardsViewController
+        let locatioViewController = FoodCardsRouter.singleInstance.loadFoodCardModule()
         presentView(locatioViewController)
     }
     

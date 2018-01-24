@@ -31,20 +31,21 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     
     @IBOutlet weak var cuisinCollectionView: UICollectionView!
     @IBOutlet weak var topView: UIView!
-   
+    @IBOutlet weak var userLocation: UIButton!
+    
     @IBAction func closeLocationView(_ sender: Any) {
         presenter?.closeLocationView()
-    }
-    
-    @IBOutlet weak var userLocation: UIButton!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        initView()
     }
     
     @IBAction func setNewLocation(_ sender: Any) {
         presenter?.selectLocation()
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        initView()
+    }
+    
     func configureView() {
         topView.addShadow()
         registerCellForNib()
