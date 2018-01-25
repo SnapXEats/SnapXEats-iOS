@@ -27,7 +27,7 @@ class CuisineCollectionViewCell: UICollectionViewCell {
         cuisineLabel.text = cuisineItem.cuisineName
         if let imagURL = cuisineItem.cuisineImageURL {
         let url = URL(string: imagURL)!
-            let placeholderImage = UIImage(named: "placeholder_cuisine")!
+            let placeholderImage = UIImage(named: SnapXEatsImageNames.placeholder_cuisine)!
             cuisineImage.af_setImage(withURL: url, placeholderImage: placeholderImage)
         }
         selectedImageView.isHidden = (isSelected) ? false : true

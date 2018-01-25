@@ -18,11 +18,6 @@ struct FoodCard {
 class FoodCardsViewController: BaseViewController, StoryboardLoadable {
 
     // MARK: Constants
-    private enum ImageNames {
-        static let navigationLogo = "snapx_logo_orange"
-        static let navigationMenu = "navigation_menu_icon"
-        static let navigationSearch = "navigation_search_icon"
-    }
     private let foodCardNibName = "FoodCardView"
     
     var presenter: FoodCardsPresentation?
@@ -51,19 +46,19 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
         // Navigation Title Logo
         let titleLogoImage = UIImageView(frame: CGRect(x:0, y:0, width: 134, height: 30))
         titleLogoImage.contentMode = .scaleAspectFit
-        titleLogoImage.image = UIImage(named: ImageNames.navigationLogo)
+        titleLogoImage.image = UIImage(named: SnapXEatsImageNames.navigationLogo)
         self.navigationItem.titleView = titleLogoImage
         
         // Left Button - Menu
         let menuButton:UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 21, height: 18))
-        menuButton.setImage(UIImage(named: ImageNames.navigationMenu), for: UIControlState.normal)
+        menuButton.setImage(UIImage(named: SnapXEatsImageNames.navigationMenu), for: UIControlState.normal)
         menuButton.addTarget(self, action: #selector(menuButtonTapped), for: UIControlEvents.touchUpInside)
         let menuBarButton : UIBarButtonItem = UIBarButtonItem(customView: menuButton)
         self.navigationItem.leftBarButtonItem = menuBarButton
         
         // Right Button - Search
         let serarchButton:UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 23, height: 23))
-        serarchButton.setImage(UIImage(named: ImageNames.navigationSearch), for: UIControlState.normal)
+        serarchButton.setImage(UIImage(named: SnapXEatsImageNames.navigationSearch), for: UIControlState.normal)
         serarchButton.addTarget(self, action: #selector(serarchButtonTapped), for: UIControlEvents.touchUpInside)
         let rightBarButton : UIBarButtonItem = UIBarButtonItem(customView: serarchButton)
         self.navigationItem.rightBarButtonItem = rightBarButton
