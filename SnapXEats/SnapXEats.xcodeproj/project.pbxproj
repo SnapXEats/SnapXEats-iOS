@@ -13,6 +13,12 @@
 		7E5C058320185F34000B5C33 /* SavedAddressHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5C058120185F34000B5C33 /* SavedAddressHeaderViewCell.xib */; };
 		7E5C058520186846000B5C33 /* UISearchbar+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C058420186846000B5C33 /* UISearchbar+helper.swift */; };
 		7E5C058720186C36000B5C33 /* roboto.bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E5C058620186C1A000B5C33 /* roboto.bold.ttf */; };
+		7EAC86092019C7E300DE162A /* foodCard3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EAC86052019C7E200DE162A /* foodCard3.jpg */; };
+		7EAC860A2019C7E300DE162A /* foodCard2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EAC86062019C7E200DE162A /* foodCard2.jpg */; };
+		7EAC860B2019C7E300DE162A /* foodCard4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EAC86072019C7E300DE162A /* foodCard4.jpg */; };
+		7EAC860C2019C7E300DE162A /* foodCard1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EAC86082019C7E300DE162A /* foodCard1.jpg */; };
+		7EAC8610201A066B00DE162A /* FoodCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAC860F201A066B00DE162A /* FoodCardView.swift */; };
+		7EAC8612201A067A00DE162A /* FoodCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EAC8611201A067A00DE162A /* FoodCardView.xib */; };
 		9D3D1CE02006479500AAAB95 /* SnapXConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3D1CDF2006479500AAAB95 /* SnapXConstants.swift */; };
 		9D3FC4D82011C94A001A4264 /* CuisinePreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3FC4D72011C94A001A4264 /* CuisinePreference.swift */; };
 		9D3FC4DB2011E34D001A4264 /* CuisineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3FC4D92011E34D001A4264 /* CuisineCollectionViewCell.swift */; };
@@ -111,6 +117,12 @@
 		7E5C058120185F34000B5C33 /* SavedAddressHeaderViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavedAddressHeaderViewCell.xib; sourceTree = "<group>"; };
 		7E5C058420186846000B5C33 /* UISearchbar+helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchbar+helper.swift"; sourceTree = "<group>"; };
 		7E5C058620186C1A000B5C33 /* roboto.bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = roboto.bold.ttf; sourceTree = "<group>"; };
+		7EAC86052019C7E200DE162A /* foodCard3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = foodCard3.jpg; sourceTree = "<group>"; };
+		7EAC86062019C7E200DE162A /* foodCard2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = foodCard2.jpg; sourceTree = "<group>"; };
+		7EAC86072019C7E300DE162A /* foodCard4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = foodCard4.jpg; sourceTree = "<group>"; };
+		7EAC86082019C7E300DE162A /* foodCard1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = foodCard1.jpg; sourceTree = "<group>"; };
+		7EAC860F201A066B00DE162A /* FoodCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCardView.swift; sourceTree = "<group>"; };
+		7EAC8611201A067A00DE162A /* FoodCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodCardView.xib; sourceTree = "<group>"; };
 		967BD01B1CEED06931835CA3 /* Pods_SnapXEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnapXEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D3D1CDF2006479500AAAB95 /* SnapXConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXConstants.swift; sourceTree = "<group>"; };
 		9D3FC4D72011C94A001A4264 /* CuisinePreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisinePreference.swift; sourceTree = "<group>"; };
@@ -236,6 +248,15 @@
 				7E5C058120185F34000B5C33 /* SavedAddressHeaderViewCell.xib */,
 			);
 			path = SelectLocationCells;
+			sourceTree = "<group>";
+		};
+		7EAC860E201A061D00DE162A /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				7EAC860F201A066B00DE162A /* FoodCardView.swift */,
+				7EAC8611201A067A00DE162A /* FoodCardView.xib */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 		9D3D1CDE2006477B00AAAB95 /* Enum */ = {
@@ -576,6 +597,10 @@
 		9D8E88E01FFD2A6F0066A1D9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7EAC86082019C7E300DE162A /* foodCard1.jpg */,
+				7EAC86062019C7E200DE162A /* foodCard2.jpg */,
+				7EAC86052019C7E200DE162A /* foodCard3.jpg */,
+				7EAC86072019C7E300DE162A /* foodCard4.jpg */,
 				9DB7FE1C20061E4300D0E816 /* SnapX-logo.png */,
 				9DB7FE1E20061E8C00D0E816 /* BG@3x.png */,
 				9DB7FE1620061B1600D0E816 /* Roboto-Light.ttf */,
@@ -641,6 +666,7 @@
 		9D902BC320171AED00359DFD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7EAC860E201A061D00DE162A /* CustomView */,
 				9D902BEB201736B500359DFD /* FoodCards.storyboard */,
 				9D902BC420171AED00359DFD /* FoodCardsViewController.swift */,
 			);
@@ -888,6 +914,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E5C058720186C36000B5C33 /* roboto.bold.ttf in Resources */,
+				7EAC86092019C7E300DE162A /* foodCard3.jpg in Resources */,
+				7EAC860B2019C7E300DE162A /* foodCard4.jpg in Resources */,
 				9DB7FE1720061B6200D0E816 /* Roboto-Light.ttf in Resources */,
 				9DB7FE1820061B6200D0E816 /* Roboto-Medium.ttf in Resources */,
 				9DB7FE1920061B6200D0E816 /* Roboto-Regular.ttf in Resources */,
@@ -895,11 +923,14 @@
 				7E5C058320185F34000B5C33 /* SavedAddressHeaderViewCell.xib in Resources */,
 				9D902BEC201736B500359DFD /* FoodCards.storyboard in Resources */,
 				9D902BEA20172A2F00359DFD /* SelectLocation.storyboard in Resources */,
+				7EAC8612201A067A00DE162A /* FoodCardView.xib in Resources */,
 				9DB7FE1D20061E4300D0E816 /* SnapX-logo.png in Resources */,
+				7EAC860C2019C7E300DE162A /* foodCard1.jpg in Resources */,
 				9D3FC4DC2011E34D001A4264 /* CuisineCollectionViewCell.xib in Resources */,
 				9DEB5CF71FFE6D49003B9D4B /* FlashScreen.storyboard in Resources */,
 				7E5C057F2017A6DC000B5C33 /* SavedLocationTableViewCell.xib in Resources */,
 				9DEB5CF81FFE6D49003B9D4B /* Login.storyboard in Resources */,
+				7EAC860A2019C7E300DE162A /* foodCard2.jpg in Resources */,
 				9DB7FE1F20061E8C00D0E816 /* BG@3x.png in Resources */,
 				9DB7FE132005F96A00D0E816 /* Assets.xcassets in Resources */,
 			);
@@ -933,10 +964,12 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Koloda/Koloda.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/ReachabilitySwift.framework",
 				"${BUILT_PRODUCTS_DIR}/UIColor_Hex_Swift/UIColor_Hex_Swift.framework",
+				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -951,10 +984,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Koloda.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReachabilitySwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIColor_Hex_Swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1019,6 +1054,7 @@
 				7E5C057E2017A6DC000B5C33 /* SavedLocationTableViewCell.swift in Sources */,
 				9D902BE6201729E400359DFD /* SelectLocationViewController.swift in Sources */,
 				9D8E88F51FFD2BEC0066A1D9 /* Constants.swift in Sources */,
+				7EAC8610201A066B00DE162A /* FoodCardView.swift in Sources */,
 				9D8E88F61FFD2BEC0066A1D9 /* PlainButtonCellDelegate.swift in Sources */,
 				9D8E88F71FFD2BEC0066A1D9 /* UIImage+Icons.swift in Sources */,
 				9D8E88F81FFD2BEC0066A1D9 /* UIView.swift in Sources */,

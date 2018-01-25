@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,26 +20,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yDu-HP-HSF">
-                                <rect key="frame" x="0.0" y="84" width="375" height="412"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="20" y="124" width="335" height="368.5"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yZP-OQ-Zyj" customClass="KolodaView" customModule="Koloda">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="368.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="yDu-HP-HSF" secondAttribute="height" multiplier="1:1.1" id="8ax-cU-lxS"/>
+                                    <constraint firstItem="yZP-OQ-Zyj" firstAttribute="leading" secondItem="yDu-HP-HSF" secondAttribute="leading" id="Jtb-MG-Slu"/>
+                                    <constraint firstAttribute="trailing" secondItem="yZP-OQ-Zyj" secondAttribute="trailing" id="WxP-2g-cnU"/>
+                                    <constraint firstItem="yZP-OQ-Zyj" firstAttribute="top" secondItem="yDu-HP-HSF" secondAttribute="top" id="go3-ox-f4L"/>
+                                    <constraint firstAttribute="bottom" secondItem="yZP-OQ-Zyj" secondAttribute="bottom" id="n00-XI-lTx"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D8N-1e-PCl">
                                 <rect key="frame" x="47" y="546" width="282" height="70"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6do-gt-WaK">
                                         <rect key="frame" x="20" y="16" width="38" height="38"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="38" id="f2q-Gr-VyQ"/>
                                             <constraint firstAttribute="width" constant="38" id="hFv-Ul-JMu"/>
                                         </constraints>
-                                        <state key="normal" image="undo">
-                                            <color key="titleColor" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
+                                        <state key="normal" image="undo"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6O6-Ad-9oa">
                                         <rect key="frame" x="72" y="2" width="66" height="66"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="66" id="AL4-Oi-RZI"/>
                                             <constraint firstAttribute="width" constant="66" id="uWB-HS-6U0"/>
@@ -49,7 +61,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xjo-O2-KrF">
                                         <rect key="frame" x="146" y="3" width="64" height="64"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="64" id="bKa-NQ-jPV"/>
                                             <constraint firstAttribute="height" constant="64" id="iAY-7N-TTc"/>
@@ -60,13 +72,13 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUt-w3-E1e">
                                         <rect key="frame" x="224" y="16.5" width="38" height="38"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="*" image="star">
                                             <color key="titleColor" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="6do-gt-WaK" firstAttribute="leading" secondItem="D8N-1e-PCl" secondAttribute="leading" constant="20" id="0cU-Vh-VOc"/>
                                     <constraint firstItem="LUt-w3-E1e" firstAttribute="centerY" secondItem="D8N-1e-PCl" secondAttribute="centerY" id="7Gc-09-Xca"/>
@@ -83,18 +95,21 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="D8N-1e-PCl" firstAttribute="top" secondItem="yDu-HP-HSF" secondAttribute="bottom" constant="50" id="8nA-yo-d26"/>
+                            <constraint firstItem="yDu-HP-HSF" firstAttribute="leading" secondItem="4TV-Kl-tqH" secondAttribute="leading" constant="20" id="ICq-Kq-xHJ"/>
                             <constraint firstItem="D8N-1e-PCl" firstAttribute="centerX" secondItem="OZx-SU-l0N" secondAttribute="centerX" id="JgB-Ct-JUa"/>
                             <constraint firstItem="4TV-Kl-tqH" firstAttribute="bottom" secondItem="D8N-1e-PCl" secondAttribute="bottom" constant="51" id="bhd-RJ-O2K"/>
-                            <constraint firstItem="yDu-HP-HSF" firstAttribute="leading" secondItem="4TV-Kl-tqH" secondAttribute="leading" id="gw6-pi-FsE"/>
-                            <constraint firstItem="yDu-HP-HSF" firstAttribute="top" secondItem="4TV-Kl-tqH" secondAttribute="top" constant="20" id="m5g-am-gvy"/>
-                            <constraint firstItem="yDu-HP-HSF" firstAttribute="trailing" secondItem="4TV-Kl-tqH" secondAttribute="trailing" id="mYN-bj-SY2"/>
+                            <constraint firstItem="yDu-HP-HSF" firstAttribute="top" secondItem="4TV-Kl-tqH" secondAttribute="top" constant="60" id="m5g-am-gvy"/>
+                            <constraint firstItem="4TV-Kl-tqH" firstAttribute="trailing" secondItem="yDu-HP-HSF" secondAttribute="trailing" constant="20" id="w9e-Lr-D1p"/>
+                            <constraint firstItem="yDu-HP-HSF" firstAttribute="centerX" secondItem="OZx-SU-l0N" secondAttribute="centerX" id="yVG-Ed-lVB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4TV-Kl-tqH"/>
                     </view>
                     <navigationItem key="navigationItem" id="g0V-s3-Rqf"/>
+                    <connections>
+                        <outlet property="kolodaView" destination="yZP-OQ-Zyj" id="wac-SE-htp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rOa-bO-Hsq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
