@@ -50,7 +50,7 @@ class SelectLocationViewController: BaseViewController, StoryboardLoadable {
     }
     
     private func configureSearchBar() {
-        locationSearchBar.setFont(textFont: UIFont(name: "Roboto-Regular", size: 14.0))
+        locationSearchBar.setFont(textFont: UIFont(name: Constants.Font.roboto_regular, size: 14.0))
         locationSearchBar.backgroundImage = UIImage()
         locationSearchBar.layer.borderWidth = 0.5
         locationSearchBar.layer.borderColor = UIColor.rgba(232.0, 232.0, 232.0, 1).cgColor

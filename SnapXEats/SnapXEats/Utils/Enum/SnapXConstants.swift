@@ -68,3 +68,10 @@ enum SnapXEatsWebServiceResourcePath {
     static let  root = "http://ec2-18-216-193-78.us-east-2.compute.amazonaws.com:" + port
     static let  cuisinePreference =   root + "/api/v1/cuisine"
 }
+
+enum SnapXEatsImageNames {
+    static let navigationLogo = "snapx_logo_orange"
+    static let navigationMenu = "navigation_menu_icon"
+    static let navigationSearch = "navigation_search_icon"
+    static let placeholder_cuisine = "placeholder_cuisine"
+}
