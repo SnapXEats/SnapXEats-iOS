@@ -7,7 +7,7 @@ import MBProgressHUD
 import ReachabilitySwift
 
 class BaseViewController: UIViewController, BaseView {
-
+    
     // MARK: Properties
     
     var progressHUD: MBProgressHUD?
@@ -16,16 +16,22 @@ class BaseViewController: UIViewController, BaseView {
     
     fileprivate var internalScrollView: UIScrollView?
     
+    var isProgressHUD = false
     // MARK: Methods
     
     func showLoading() {
-        let topmostViewController = findTopmostViewController()
-        progressHUD = MBProgressHUD.showAdded(to: topmostViewController.view, animated: true)
-        progressHUD?.mode = MBProgressHUDMode.indeterminate
+        if !isProgressHUD {
+            isProgressHUD = true
+            let topmostViewController = findTopmostViewController()
+            progressHUD = MBProgressHUD.showAdded(to: topmostViewController.view, animated: true)
+            progressHUD?.mode = MBProgressHUDMode.indeterminate
+        }
     }
     
     func hideLoading() {
-        self.progressHUD?.hide(animated: true)
+        if isProgressHUD {
+            self.progressHUD?.hide(animated: true)
+        }
     }
     
     func showMessage(_ message: String?, withTitle title: String?) {
@@ -45,14 +51,14 @@ class BaseViewController: UIViewController, BaseView {
     
     func setupKeyboardNotifications(with scrollView: UIScrollView?) {
         internalScrollView = scrollView
-       // NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-       // NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        // NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        // NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     // MARK: Keyboard Notifications
     func keyboardWillShow(notification: NSNotification) {
         guard let info = notification.userInfo,
-              let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size else { return }
+            let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size else { return }
         let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height + 15.0, right: 0.0)
         
         internalScrollView?.contentInset = contentInsets
@@ -73,7 +79,7 @@ class BaseViewController: UIViewController, BaseView {
         internalScrollView?.contentInset = contentInsets
         internalScrollView?.scrollIndicatorInsets = contentInsets
     }
-   
+    
     func error(result: NetworkResult) {
         loginAlert.createAlert(alertTitle: LoginAlert.loginTitle, message: LoginAlert.messageNoInternet,forView: self)
         loginAlert.show()

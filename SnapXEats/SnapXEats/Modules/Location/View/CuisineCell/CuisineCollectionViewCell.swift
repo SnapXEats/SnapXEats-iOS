@@ -15,7 +15,6 @@ class CuisineCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var cuisineLabel: UILabel!
     @IBOutlet weak var cuisineImage: UIImageView!
-    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var selectedImageView: UIImageView!
     
     override func awakeFromNib() {
