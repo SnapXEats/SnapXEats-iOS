@@ -44,9 +44,17 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
         enabledLocationSharing ? presenter?.selectLocation()
             : verigyLocationService()
     }
-    func configureView() {
+    private func configureView() {
         topView.addShadow()
         registerCellForNib()
+    }
+    
+    func registerNotification() {
+            NotificationCenter.default.addObserver(self,selector: #selector(internetConnected), name: NSNotification.Name(rawValue: SnapXEatsNotification.connectedToInternet), object: nil)
+    }
+    
+    @objc func internetConnected() {
+        verigyLocationService()
     }
     
     func registerCellForNib() {
@@ -70,6 +78,7 @@ extension LocationViewController: LocationView {
         locationManager = CLLocationManager()
         locationManager?.delegate = self
         configureView()
+        registerNotification()
     }
 }
 

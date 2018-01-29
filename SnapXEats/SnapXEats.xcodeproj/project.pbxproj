@@ -94,6 +94,7 @@
 		9DB7FE1920061B6200D0E816 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1420061B1600D0E816 /* Roboto-Regular.ttf */; };
 		9DB7FE1D20061E4300D0E816 /* SnapX-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1C20061E4300D0E816 /* SnapX-logo.png */; };
 		9DB7FE1F20061E8C00D0E816 /* BG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1E20061E8C00D0E816 /* BG@3x.png */; };
+		9DCBE184201EF6F80030A0F9 /* SnapXEatsNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCBE183201EF6F80030A0F9 /* SnapXEatsNetworkManager.swift */; };
 		9DEB5CF71FFE6D49003B9D4B /* FlashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88BC1FFD28C50066A1D9 /* FlashScreen.storyboard */; };
 		9DEB5CF81FFE6D49003B9D4B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88C61FFD28C50066A1D9 /* Login.storyboard */; };
 		CE64A9A86226702DB23DF92F /* Pods_SnapXEats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967BD01B1CEED06931835CA3 /* Pods_SnapXEats.framework */; };
@@ -208,6 +209,7 @@
 		9DB7FE1620061B1600D0E816 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		9DB7FE1C20061E4300D0E816 /* SnapX-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SnapX-logo.png"; sourceTree = "<group>"; };
 		9DB7FE1E20061E8C00D0E816 /* BG@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BG@3x.png"; sourceTree = "<group>"; };
+		9DCBE183201EF6F80030A0F9 /* SnapXEatsNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEatsNetworkManager.swift; sourceTree = "<group>"; };
 		C272160BBB123BC8E63B160D /* Pods-SnapXEats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapXEats.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapXEats/Pods-SnapXEats.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -802,6 +804,7 @@
 			children = (
 				9DB7FE0D2004BC9D00D0E816 /* Network.swift */,
 				9D8095702015E5200077F84B /* SnapXEatsApi.swift */,
+				9DCBE183201EF6F80030A0F9 /* SnapXEatsNetworkManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1066,6 +1069,7 @@
 				9DB02A6F2010805F0061FC0C /* LocationPresenter.swift in Sources */,
 				9D8E88FB1FFD2BEC0066A1D9 /* UICollectionView.swift in Sources */,
 				9D8E88FC1FFD2BEC0066A1D9 /* DataResponse.swift in Sources */,
+				9DCBE184201EF6F80030A0F9 /* SnapXEatsNetworkManager.swift in Sources */,
 				9D902BE5201729E400359DFD /* SelectLocationPresenter.swift in Sources */,
 				9D8E88FD1FFD2BEC0066A1D9 /* Results.swift in Sources */,
 				9D8E88FE1FFD2BEC0066A1D9 /* UITableView.swift in Sources */,
