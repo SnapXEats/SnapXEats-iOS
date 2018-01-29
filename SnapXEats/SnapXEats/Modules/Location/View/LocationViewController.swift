@@ -68,10 +68,9 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     }
     
     override func success(result: Any?) {
-        if let result = result {
+        if let result = result as? CuisinePreference {
             hideLoading()
-            let cuises = result as! CuisinePreference
-            cuiseItems = cuises.cuisineList
+            cuiseItems = result.cuisineList
             cuisinCollectionView.reloadData()
         }
     }
@@ -141,7 +140,7 @@ extension LocationViewController: CLLocationManagerDelegate {
     }
     
     private func sendCuiseRequest() {
-        if checkRechability() && cuiseItems.count == 0 {
+        if checkRechability() && cuiseItems.count == 0 && !isProgressHUD {
             showLoading()
             presenter?.cuisinePreferenceRequest()
         }
@@ -163,7 +162,7 @@ extension LocationViewController: CLLocationManagerDelegate {
             guard let strongSelf = self else { return }
             
             if (placemarksArray?.count)! > 0 {
-                strongSelf.hideLoading()
+               // strongSelf.hideLoading()
                 
                 let placemark = placemarksArray?.first // Get the First Address from List
                 if let locality = placemark?.subLocality {
