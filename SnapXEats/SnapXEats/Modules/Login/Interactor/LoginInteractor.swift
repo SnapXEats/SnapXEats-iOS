@@ -69,7 +69,7 @@ extension LoginInteractor {
     }
     
     func checkRechability() -> Bool {
-        if Reachability()?.currentReachabilityStatus == .notReachable {
+        if !SnapXEatsNetworkManager.sharedInstance.isConnectedToInternet {
             output?.response(result: .noInternet)
             return false
         } else {

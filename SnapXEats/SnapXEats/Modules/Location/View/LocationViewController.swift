@@ -31,13 +31,18 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     @IBOutlet weak var userLocation: UIButton!
     
     @IBAction func closeLocationView(_ sender: Any) {
-        enabledLocationSharing ? presenter?.closeLocationView()
-            : verigyLocationService()
+        presenter?.closeLocationView()
+//        enabledLocationSharing ? presenter?.closeLocationView()
+//            : verigyLocationService()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        enabledLocationSharing = false
     }
     
     @IBAction func setNewLocation(_ sender: Any) {
@@ -64,6 +69,7 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     
     override func success(result: Any?) {
         if let result = result {
+            hideLoading()
             let cuises = result as! CuisinePreference
             cuiseItems = cuises.cuisineList
             cuisinCollectionView.reloadData()

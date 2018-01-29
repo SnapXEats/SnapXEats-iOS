@@ -95,7 +95,7 @@ class BaseViewController: UIViewController, BaseView {
     }
     
     func checkRechability() -> Bool {
-        if Reachability()?.currentReachabilityStatus == .notReachable {
+        if !SnapXEatsNetworkManager.sharedInstance.isConnectedToInternet {
             noInternet(result: .noInternet)
             return false
         } else {
