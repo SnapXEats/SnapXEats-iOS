@@ -16,6 +16,11 @@ enum NetworkResult {
     case cancelRequest
 }
 
+// MARK: - Notifications
+enum SnapXEatsNotification {
+
+    static let connectedToInternet = "ConnectedToInternet"
+}
 protocol SnapXEatsData {
     
 }

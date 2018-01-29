@@ -11,7 +11,7 @@ import UIKit
 
 enum LoginAlert {
     static var loginTitle = "Error"
-    static var messageNoInternet = "SnapXEats required internet connection to process your request. Please enable you internet access."
+    static var messageNoInternet = "SnapXEats required internet connection to process your request. Please enable your internet access."
     static var messageSuccess = "Request Succesful"
     static var loginError = "Server Error during process your request"
     static var cancelRequest = "User canceled request"

@@ -43,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // in analytics and advertising reporting.
         AppEventsLogger.activate(application)
         SDKSettings.limitedEventAndDataUsage = true
+        SnapXEatsNetworkManager.sharedInstance.startMonitoringNetwork()
     }
     
     func applicationWillTerminate(_ application: UIApplication) {

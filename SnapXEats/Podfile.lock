@@ -34,8 +34,11 @@ PODS:
   - FBSDKShareKit (4.29.0):
     - FBSDKCoreKit
   - KeychainSwift (7.0.1)
+  - Koloda (4.3.1):
+    - pop (~> 1.0)
   - MBProgressHUD (1.0.0)
   - ObjectMapper (3.0.0)
+  - pop (1.0.10)
   - ReachabilitySwift (3)
   - UIColor_Hex_Swift (3.0.2)
 
@@ -48,6 +51,7 @@ DEPENDENCIES:
   - FacebookLogin
   - FacebookShare
   - KeychainSwift (~> 7.0)
+  - Koloda (~> 4.3.1)
   - MBProgressHUD (~> 1.0.0)
   - ObjectMapper (~> 3.0.0)
   - ReachabilitySwift (~> 3)
@@ -67,11 +71,13 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: 56a057ca6822535ea0faa25f57a7c41edb697fd4
   FBSDKShareKit: 18a2cd118aef11dd657fe7e8b64bae5c719088b2
   KeychainSwift: 7e15d26b1d6fc504a5eadb89a3e8ab17b2d3573a
+  Koloda: 0d39b2aa188ccd1fac48d752acaf9802e683c625
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   ObjectMapper: 92230db59bf8f341a5c3a3cf0b9fbdde3cf0d87f
+  pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
   UIColor_Hex_Swift: 95f718452092a3efc8a827dffd2c04d3237be02d
 
-PODFILE CHECKSUM: a29cc085b61d13951157cae385c6081b3b9ea8fe
+PODFILE CHECKSUM: a3a7021be92e5cb6a88ba5bd3fc4c714dc148956
 
 COCOAPODS: 1.3.1

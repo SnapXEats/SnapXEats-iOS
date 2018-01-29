@@ -31,8 +31,9 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     @IBOutlet weak var userLocation: UIButton!
     
     @IBAction func closeLocationView(_ sender: Any) {
-        enabledLocationSharing ? presenter?.closeLocationView()
-            : verigyLocationService()
+        presenter?.closeLocationView()
+//        enabledLocationSharing ? presenter?.closeLocationView()
+//            : verigyLocationService()
     }
     
     override func viewDidLoad() {
@@ -40,13 +41,25 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
         initView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        enabledLocationSharing = false
+    }
+    
     @IBAction func setNewLocation(_ sender: Any) {
         enabledLocationSharing ? presenter?.selectLocation()
             : verigyLocationService()
     }
-    func configureView() {
+    private func configureView() {
         topView.addShadow()
         registerCellForNib()
+    }
+    
+    func registerNotification() {
+            NotificationCenter.default.addObserver(self,selector: #selector(internetConnected), name: NSNotification.Name(rawValue: SnapXEatsNotification.connectedToInternet), object: nil)
+    }
+    
+    @objc func internetConnected() {
+        verigyLocationService()
     }
     
     func registerCellForNib() {
@@ -56,6 +69,7 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     
     override func success(result: Any?) {
         if let result = result {
+            hideLoading()
             let cuises = result as! CuisinePreference
             cuiseItems = cuises.cuisineList
             cuisinCollectionView.reloadData()
@@ -70,6 +84,7 @@ extension LocationViewController: LocationView {
         locationManager = CLLocationManager()
         locationManager?.delegate = self
         configureView()
+        registerNotification()
     }
 }
 
