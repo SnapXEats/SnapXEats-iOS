@@ -101,7 +101,7 @@ class BaseViewController: UIViewController, BaseView {
     }
     
     func checkRechability() -> Bool {
-        if !SnapXEatsNetworkManager.sharedInstance.isConnectedToInternet {
+        if SnapXEatsNetworkManager.sharedInstance.isConnectedToInternet  == false {
             noInternet(result: .noInternet)
             return false
         } else {
