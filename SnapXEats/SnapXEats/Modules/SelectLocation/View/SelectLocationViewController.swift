@@ -14,6 +14,8 @@ enum SelectLocationResourceIdentifiler {
     static let savedLocationNibName = "SavedLocationTableViewCell"
     static let SavedAddressHeaderViewCellIdentifier = "SavedAddressHeaderCell"
     static let SavedAddressHeaderNibName = "SavedAddressHeaderViewCell"
+    static let searchPlaceCell = "SearchPlaceCell"
+    static let searchPlaceNibName = "SearchPlacesTableViewCell"
 }
 
 struct SavedAddress {
@@ -71,6 +73,9 @@ class SelectLocationViewController: BaseViewController, StoryboardLoadable {
         
         let tableHeaderNib = UINib(nibName: SelectLocationResourceIdentifiler.SavedAddressHeaderNibName, bundle: nil)
         locationsTableview.register(tableHeaderNib, forCellReuseIdentifier: SelectLocationResourceIdentifiler.SavedAddressHeaderViewCellIdentifier)
+        
+        let searchPlaceNib = UINib(nibName: SelectLocationResourceIdentifiler.searchPlaceNibName, bundle: nil)
+        locationsTableview.register(searchPlaceNib, forCellReuseIdentifier: SelectLocationResourceIdentifiler.searchPlaceCell)
     }
     
     func createSavedAddressesDataSource() {
@@ -99,12 +104,13 @@ extension SelectLocationViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SelectLocationResourceIdentifiler.savedLocationCellIdentifier, for: indexPath) as! SavedLocationTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: SelectLocationResourceIdentifiler.searchPlaceCell, for: indexPath) as! SearchPlacesTableViewCell
+        
         //let address = savedAddresses[indexPath.row]
         //cell.configureSavedAddressCell(savedAddress: address)
         
         let place = searchPlaces[indexPath.row]
-        cell.addressLabel.text = place.description
+        cell.descriptionLabel.text = place.description
         return cell
     }
     

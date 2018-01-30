@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E5946972020BD02006702AF /* SearchPlacesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5946952020BD02006702AF /* SearchPlacesTableViewCell.swift */; };
+		7E5946982020BD02006702AF /* SearchPlacesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5946962020BD02006702AF /* SearchPlacesTableViewCell.xib */; };
 		7E5C057E2017A6DC000B5C33 /* SavedLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C057C2017A6DC000B5C33 /* SavedLocationTableViewCell.swift */; };
 		7E5C057F2017A6DC000B5C33 /* SavedLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5C057D2017A6DC000B5C33 /* SavedLocationTableViewCell.xib */; };
 		7E5C058220185F34000B5C33 /* SavedAddressHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C058020185F34000B5C33 /* SavedAddressHeaderViewCell.swift */; };
@@ -113,6 +115,8 @@
 
 /* Begin PBXFileReference section */
 		18C81282DCA92A76FE981E2D /* Pods-SnapXEats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapXEats.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SnapXEats/Pods-SnapXEats.debug.xcconfig"; sourceTree = "<group>"; };
+		7E5946952020BD02006702AF /* SearchPlacesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlacesTableViewCell.swift; sourceTree = "<group>"; };
+		7E5946962020BD02006702AF /* SearchPlacesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchPlacesTableViewCell.xib; sourceTree = "<group>"; };
 		7E5C057C2017A6DC000B5C33 /* SavedLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationTableViewCell.swift; sourceTree = "<group>"; };
 		7E5C057D2017A6DC000B5C33 /* SavedLocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavedLocationTableViewCell.xib; sourceTree = "<group>"; };
 		7E5C058020185F34000B5C33 /* SavedAddressHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedAddressHeaderViewCell.swift; sourceTree = "<group>"; };
@@ -250,6 +254,8 @@
 				7E5C057D2017A6DC000B5C33 /* SavedLocationTableViewCell.xib */,
 				7E5C058020185F34000B5C33 /* SavedAddressHeaderViewCell.swift */,
 				7E5C058120185F34000B5C33 /* SavedAddressHeaderViewCell.xib */,
+				7E5946952020BD02006702AF /* SearchPlacesTableViewCell.swift */,
+				7E5946962020BD02006702AF /* SearchPlacesTableViewCell.xib */,
 			);
 			path = SelectLocationCells;
 			sourceTree = "<group>";
@@ -921,6 +927,7 @@
 			files = (
 				7E5C058720186C36000B5C33 /* roboto.bold.ttf in Resources */,
 				7EAC86092019C7E300DE162A /* foodCard3.jpg in Resources */,
+				7E5946982020BD02006702AF /* SearchPlacesTableViewCell.xib in Resources */,
 				7EAC860B2019C7E300DE162A /* foodCard4.jpg in Resources */,
 				9DB7FE1720061B6200D0E816 /* Roboto-Light.ttf in Resources */,
 				9DB7FE1820061B6200D0E816 /* Roboto-Medium.ttf in Resources */,
@@ -1088,6 +1095,7 @@
 				9DB02A6E2010805F0061FC0C /* LocationContract.swift in Sources */,
 				9D902BCC20171AED00359DFD /* FoodCardsInteractor.swift in Sources */,
 				9D8E89041FFD2BEC0066A1D9 /* UIAlertController.swift in Sources */,
+				7E5946972020BD02006702AF /* SearchPlacesTableViewCell.swift in Sources */,
 				9D8E89051FFD2BEC0066A1D9 /* UICollectionViewCell.swift in Sources */,
 				9D8E89061FFD2BEC0066A1D9 /* UIStoryboard.swift in Sources */,
 				9D8E89071FFD2BEC0066A1D9 /* ValidableUILabel.swift in Sources */,
