@@ -28,6 +28,8 @@ class SelectLocationViewController: BaseViewController, StoryboardLoadable {
     
     var presenter: SelectLocationPresentation?
     var savedAddresses = [SavedAddress]()
+    var searchPlaces = [SearchPlace]()
+    
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var locationsTableview: UITableView!
     @IBOutlet weak var locationSearchBar: UISearchBar!
@@ -40,6 +42,13 @@ class SelectLocationViewController: BaseViewController, StoryboardLoadable {
         super.viewDidLoad()
         configureView()
         createSavedAddressesDataSource()
+    }
+    
+    override func success(result: Any?) {
+        if let result = result as? SearchPlacePredictions {
+            self.searchPlaces = result.palceList
+            locationsTableview.reloadData()
+        }
     }
     
     func configureView() {
@@ -71,26 +80,43 @@ class SelectLocationViewController: BaseViewController, StoryboardLoadable {
     }
 }
 
+extension SelectLocationViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.searchPlaces = []
+        if (searchText == "") { // If nothing in search, reload table with blank Dataspurce
+            locationsTableview.reloadData()
+        } else {
+            presenter?.getSearchPlaces(searchText: searchText)
+        }
+    }
+}
+
 extension SelectLocationViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return savedAddresses.count
+        //return savedAddresses.count
+        return searchPlaces.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SelectLocationResourceIdentifiler.savedLocationCellIdentifier, for: indexPath) as! SavedLocationTableViewCell
-        let address = savedAddresses[indexPath.row]
-        cell.configureSavedAddressCell(savedAddress: address)
+        //let address = savedAddresses[indexPath.row]
+        //cell.configureSavedAddressCell(savedAddress: address)
+        
+        let place = searchPlaces[indexPath.row]
+        cell.addressLabel.text = place.description
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return savedLocationHeaderHeight
+        //return savedLocationHeaderHeight
+        return 1
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = tableView.dequeueReusableCell(withIdentifier: SelectLocationResourceIdentifiler.SavedAddressHeaderViewCellIdentifier) as! SavedAddressHeaderViewCell
-        return headerView
-    }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let headerView = tableView.dequeueReusableCell(withIdentifier: SelectLocationResourceIdentifiler.SavedAddressHeaderViewCellIdentifier) as! SavedAddressHeaderViewCell
+//        return headerView
+//    }
 }
 
 extension SelectLocationViewController: SelectLocationView {

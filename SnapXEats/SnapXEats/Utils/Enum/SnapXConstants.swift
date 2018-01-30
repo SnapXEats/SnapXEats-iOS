@@ -75,3 +75,15 @@ enum SnapXEatsImageNames {
     static let navigationSearch = "navigation_search_icon"
     static let placeholder_cuisine = "placeholder_cuisine"
 }
+
+enum SnapXEatsPlaceSearchConstants {
+    static let apiUrl = "https://maps.googleapis.com/maps/api/place/autocomplete/json"
+    static let apiKey = "AIzaSyBhb0GdrMqn4ge5QLgxkybQv66M6_bu7y0"
+    static let components = "country:in"
+}
+
+enum SnapXEatsPlaceSearchRequestKeys {
+    static let input = "input"
+    static let components = "components"
+    static let key = "key"
+}
