@@ -17,6 +17,7 @@ protocol SelectLocationView: class, BaseView {
 protocol SelectLocationPresentation: class {
     func dismissScreen()
     func getSearchPlaces(searchText: String)
+    func getPlaceDetails(placeid: String)
 }
 
 protocol SelectLocationUseCase: class {
@@ -32,13 +33,16 @@ protocol SelectLocationWireframe: class, RootWireFrame {
 
 protocol SearchPlacePredictionsRequestFomatter: class {
     func getSearchPlacePredictionsFor(searchText: String)
+    func getPlaceDetailsFor(placeid: String)
 }
 
 protocol SearchPlacePredictionsWebService: class {
     func getSearchPlacePredictionRequest(forPath: String, withParameters parameters: [String: String])
+    func getPlaceDetailsRequest(forPath: String, withParameters parameters: [String: String])
 }
 
 protocol SearchPlacePredictionsObjectMapper: class {
     func searchedPlacePredictionDetails(data: Result<SearchPlacePredictions> )
+    func mapPlaceDetails(data: Result<SnapXEatsPlaceDetails> )
 }
 

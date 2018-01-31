@@ -31,6 +31,7 @@ class SelectLocationViewController: BaseViewController, StoryboardLoadable {
     var presenter: SelectLocationPresentation?
     var savedAddresses = [SavedAddress]()
     var searchPlaces = [SearchPlace]()
+    var selectedLocation: SnapXEatsLocation?
     
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var locationsTableview: UITableView!
@@ -38,6 +39,10 @@ class SelectLocationViewController: BaseViewController, StoryboardLoadable {
     
     @IBAction func closeSelectLocation(_ sender: Any) {
         presenter?.dismissScreen()
+    }
+    
+    @IBAction func doneButtonAction(_ sender: Any) {
+        print("Selected Location --- \(String(describing: selectedLocation?.latitude)) ----- \(String(describing: selectedLocation?.latitude))")
     }
     
     override func viewDidLoad() {
@@ -50,6 +55,10 @@ class SelectLocationViewController: BaseViewController, StoryboardLoadable {
         if let result = result as? SearchPlacePredictions {
             self.searchPlaces = result.palceList
             locationsTableview.reloadData()
+        }
+        
+        if let result = result as? SnapXEatsPlaceDetails {
+            selectedLocation = result.placeResult?.geometry?.location
         }
     }
     
@@ -83,6 +92,12 @@ class SelectLocationViewController: BaseViewController, StoryboardLoadable {
         let workAddress = SavedAddress(tilte: "Work", address: "1994 Webster street,  Edison, NJ", imageName: "work_icon")
         savedAddresses = [homeAddress, workAddress]
     }
+    
+    private func setLocationForSearchedPlace(place : SearchPlace) {
+        if let placeId = place.id {
+            presenter?.getPlaceDetails(placeid: placeId)
+        }
+    }
 }
 
 extension SelectLocationViewController: UISearchBarDelegate {
@@ -99,7 +114,6 @@ extension SelectLocationViewController: UISearchBarDelegate {
 
 extension SelectLocationViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return savedAddresses.count
         return searchPlaces.count == 0 ? savedAddresses.count : searchPlaces.count
     }
     
@@ -133,6 +147,12 @@ extension SelectLocationViewController: UITableViewDelegate, UITableViewDataSour
             return headerView
         }
         return UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if searchPlaces.count != 0 {
+            setLocationForSearchedPlace(place: searchPlaces[indexPath.row])
+        }
     }
 }
 

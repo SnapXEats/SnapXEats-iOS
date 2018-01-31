@@ -55,6 +55,9 @@
                                         <state key="normal" title="Done">
                                             <color key="titleColor" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="doneButtonAction:" destination="OHS-y6-UmX" eventType="touchUpInside" id="UIP-Tw-QBP"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

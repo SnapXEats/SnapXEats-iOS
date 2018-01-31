@@ -32,7 +32,7 @@ class SearchPlace: Mappable {
     
     // Mappable
     func mapping(map: Map) {
-        id            <- map["id"]
+        id            <- map["place_id"]
         description   <- map["description"]
     }
 }

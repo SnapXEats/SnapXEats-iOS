@@ -16,6 +16,7 @@
 		7E5C058520186846000B5C33 /* UISearchbar+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C058420186846000B5C33 /* UISearchbar+helper.swift */; };
 		7E5C058720186C36000B5C33 /* roboto.bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E5C058620186C1A000B5C33 /* roboto.bold.ttf */; };
 		7E6FD41C2020A00F0058BFB8 /* SearchPlacePredictions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6FD41B2020A00F0058BFB8 /* SearchPlacePredictions.swift */; };
+		7E9C0B912021DC5700BA999E /* SnapXEatsLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9C0B902021DC5700BA999E /* SnapXEatsLocation.swift */; };
 		7EAC86092019C7E300DE162A /* foodCard3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EAC86052019C7E200DE162A /* foodCard3.jpg */; };
 		7EAC860A2019C7E300DE162A /* foodCard2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EAC86062019C7E200DE162A /* foodCard2.jpg */; };
 		7EAC860B2019C7E300DE162A /* foodCard4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EAC86072019C7E300DE162A /* foodCard4.jpg */; };
@@ -124,6 +125,7 @@
 		7E5C058420186846000B5C33 /* UISearchbar+helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchbar+helper.swift"; sourceTree = "<group>"; };
 		7E5C058620186C1A000B5C33 /* roboto.bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = roboto.bold.ttf; sourceTree = "<group>"; };
 		7E6FD41B2020A00F0058BFB8 /* SearchPlacePredictions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlacePredictions.swift; sourceTree = "<group>"; };
+		7E9C0B902021DC5700BA999E /* SnapXEatsLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEatsLocation.swift; sourceTree = "<group>"; };
 		7EAC86052019C7E200DE162A /* foodCard3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = foodCard3.jpg; sourceTree = "<group>"; };
 		7EAC86062019C7E200DE162A /* foodCard2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = foodCard2.jpg; sourceTree = "<group>"; };
 		7EAC86072019C7E300DE162A /* foodCard4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = foodCard4.jpg; sourceTree = "<group>"; };
@@ -742,6 +744,7 @@
 			children = (
 				9D902BE1201729E300359DFD /* SelectLocationInteractor.swift */,
 				7E6FD41B2020A00F0058BFB8 /* SearchPlacePredictions.swift */,
+				7E9C0B902021DC5700BA999E /* SnapXEatsLocation.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -1075,6 +1078,7 @@
 				9D8E88F91FFD2BEC0066A1D9 /* UIFont+Utils.swift in Sources */,
 				9D902BCA20171AED00359DFD /* FoodCardsPresenter.swift in Sources */,
 				9D3D1CE02006479500AAAB95 /* SnapXConstants.swift in Sources */,
+				7E9C0B912021DC5700BA999E /* SnapXEatsLocation.swift in Sources */,
 				9D8E88FA1FFD2BEC0066A1D9 /* UITextField+Border.swift in Sources */,
 				7E5C058220185F34000B5C33 /* SavedAddressHeaderViewCell.swift in Sources */,
 				9DB02A6F2010805F0061FC0C /* LocationPresenter.swift in Sources */,

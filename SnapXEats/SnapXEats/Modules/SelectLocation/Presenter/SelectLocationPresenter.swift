@@ -29,6 +29,10 @@ extension SelectLocationPresenter: SelectLocationPresentation {
     func getSearchPlaces(searchText: String) {
         interactor?.getSearchPlacePredictionsFor(searchText: searchText)
     }
+    
+    func getPlaceDetails(placeid: String) {
+        interactor?.getPlaceDetailsFor(placeid: placeid)
+    }
 }
 
 extension SelectLocationPresenter: SelectLocationInteractorOutput {

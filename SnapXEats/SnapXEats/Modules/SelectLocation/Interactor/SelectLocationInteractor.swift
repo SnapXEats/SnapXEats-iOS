@@ -39,7 +39,15 @@ extension SelectLocationInteractor: SearchPlacePredictionsRequestFomatter {
             SnapXEatsPlaceSearchRequestKeys.components:SnapXEatsPlaceSearchConstants.components,
             SnapXEatsPlaceSearchRequestKeys.key: SnapXEatsPlaceSearchConstants.apiKey
         ]
-        getSearchPlacePredictionRequest(forPath: SnapXEatsPlaceSearchConstants.apiUrl, withParameters: requestParameters)
+        getSearchPlacePredictionRequest(forPath: SnapXEatsPlaceSearchConstants.autocompleteApiUrl, withParameters: requestParameters)
+    }
+    
+    func getPlaceDetailsFor(placeid: String) {
+        let requestParameters = [
+            SnapXEatsPlaceSearchRequestKeys.placeid: placeid,
+            SnapXEatsPlaceSearchRequestKeys.key: SnapXEatsPlaceSearchConstants.apiKey
+        ]
+        getPlaceDetailsRequest(forPath: SnapXEatsPlaceSearchConstants.detailsApiUrl, withParameters: requestParameters)
     }
 }
 
@@ -49,6 +57,13 @@ extension SelectLocationInteractor: SearchPlacePredictionsWebService {
         SnapXEatsApi.snapXRequestWithParameters(path: forPath, parameters: parameters) { [weak self](response: DataResponse<SearchPlacePredictions>) in
             let placePredictionResult = response.result
             self?.searchedPlacePredictionDetails(data: placePredictionResult)
+        }
+    }
+    
+    func getPlaceDetailsRequest(forPath: String, withParameters parameters: [String: String]) {
+        SnapXEatsApi.snapXRequestWithParameters(path: forPath, parameters: parameters) { [weak self](response: DataResponse<SnapXEatsPlaceDetails>) in
+            let placePredictionResult = response.result
+            self?.mapPlaceDetails(data: placePredictionResult)
         }
     }
 }
@@ -61,6 +76,15 @@ extension SelectLocationInteractor: SearchPlacePredictionsObjectMapper {
             output?.response(result: .success(data: value))
         case .failure( _): break
             output?.response(result: NetworkResult.noInternet)
+        }
+    }
+    
+    func mapPlaceDetails(data: Result<SnapXEatsPlaceDetails> ) {
+        switch data {
+        case .success(let value):
+            output?.response(result: .success(data: value))
+        case .failure( _): break
+        output?.response(result: NetworkResult.noInternet)
         }
     }
 }
