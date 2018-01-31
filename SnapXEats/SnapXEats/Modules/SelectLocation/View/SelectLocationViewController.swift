@@ -100,29 +100,40 @@ extension SelectLocationViewController: UISearchBarDelegate {
 extension SelectLocationViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return savedAddresses.count
-        return searchPlaces.count
+        return searchPlaces.count == 0 ? savedAddresses.count : searchPlaces.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SelectLocationResourceIdentifiler.searchPlaceCell, for: indexPath) as! SearchPlacesTableViewCell
-        
-        //let address = savedAddresses[indexPath.row]
-        //cell.configureSavedAddressCell(savedAddress: address)
-        
-        let place = searchPlaces[indexPath.row]
-        cell.descriptionLabel.text = place.description
-        return cell
+    
+        if searchPlaces.count == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: SelectLocationResourceIdentifiler.savedLocationCellIdentifier, for: indexPath) as! SavedLocationTableViewCell
+            tableView.separatorStyle = .none
+            
+            let address = savedAddresses[indexPath.row]
+            cell.configureSavedAddressCell(savedAddress: address)
+            return cell
+            
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: SelectLocationResourceIdentifiler.searchPlaceCell, for: indexPath) as! SearchPlacesTableViewCell
+            tableView.separatorStyle = .singleLine
+            
+            let place = searchPlaces[indexPath.row]
+            cell.descriptionLabel.text = place.description
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        //return savedLocationHeaderHeight
-        return 1
+        return searchPlaces.count == 0 ? savedLocationHeaderHeight : 1
     }
     
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let headerView = tableView.dequeueReusableCell(withIdentifier: SelectLocationResourceIdentifiler.SavedAddressHeaderViewCellIdentifier) as! SavedAddressHeaderViewCell
-//        return headerView
-//    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if searchPlaces.count == 0 {
+            let headerView = tableView.dequeueReusableCell(withIdentifier: SelectLocationResourceIdentifiler.SavedAddressHeaderViewCellIdentifier) as! SavedAddressHeaderViewCell
+            return headerView
+        }
+        return UIView()
+    }
 }
 
 extension SelectLocationViewController: SelectLocationView {
