@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 protocol SelectLocationView: class, BaseView {
     var presenter: SelectLocationPresentation? {get set}
@@ -15,15 +16,33 @@ protocol SelectLocationView: class, BaseView {
 
 protocol SelectLocationPresentation: class {
     func dismissScreen()
+    func getSearchPlaces(searchText: String)
+    func getPlaceDetails(placeid: String)
 }
 
 protocol SelectLocationUseCase: class {
     // TODO: Declare use case methods
 }
 
-protocol SelectLocationInteractorOutput: class {
+protocol SelectLocationInteractorOutput: Response {
     // TODO: Declare interactor output methods
 }
 
 protocol SelectLocationWireframe: class, RootWireFrame {
 }
+
+protocol SearchPlacePredictionsRequestFomatter: class {
+    func getSearchPlacePredictionsFor(searchText: String)
+    func getPlaceDetailsFor(placeid: String)
+}
+
+protocol SearchPlacePredictionsWebService: class {
+    func getSearchPlacePredictionRequest(forPath: String, withParameters parameters: [String: String])
+    func getPlaceDetailsRequest(forPath: String, withParameters parameters: [String: String])
+}
+
+protocol SearchPlacePredictionsObjectMapper: class {
+    func searchedPlacePredictionDetails(data: Result<SearchPlacePredictions> )
+    func mapPlaceDetails(data: Result<SnapXEatsPlaceDetails> )
+}
+

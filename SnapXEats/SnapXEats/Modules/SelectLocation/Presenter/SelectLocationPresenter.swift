@@ -14,7 +14,7 @@ class SelectLocationPresenter {
 
     weak var view: SelectLocationView?
     var router: SelectLocationWireframe?
-    var interactor: SelectLocationUseCase?
+    var interactor: SearchPlacePredictionsRequestFomatter?
     
     private init() {}
     
@@ -25,8 +25,28 @@ extension SelectLocationPresenter: SelectLocationPresentation {
     func dismissScreen() {
         router?.presentScreen(screen: .dismissNewLocation)
     }
+    
+    func getSearchPlaces(searchText: String) {
+        interactor?.getSearchPlacePredictionsFor(searchText: searchText)
+    }
+    
+    func getPlaceDetails(placeid: String) {
+        interactor?.getPlaceDetailsFor(placeid: placeid)
+    }
 }
 
 extension SelectLocationPresenter: SelectLocationInteractorOutput {
-    // TODO: implement interactor output methods
+    func response(result: NetworkResult) {
+        switch result {
+        case .success(let value):
+            view?.success(result: value)
+        case .error:
+            view?.error(result: .error)
+        case .noInternet:
+            view?.error(result: .noInternet)
+        default: break
+        }
+    }
+    
+    
 }

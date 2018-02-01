@@ -31,5 +31,10 @@ class SnapXEatsApi {
     static func snapXRequestObjectArray<T: Mappable>(path: String, completionHandler: @escaping (DataResponse<[T]>) -> ()) {
         Alamofire.request(path).responseArray( completionHandler: completionHandler)
     }
-   
+    
+    static func snapXRequestWithParameters<T: Mappable>(path: String, parameters: [String: String], completionHandler:  @escaping (DataResponse<T>) -> ()) {
+        
+        Alamofire.request(path, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseObject( completionHandler: completionHandler)
+    
+    }
 }

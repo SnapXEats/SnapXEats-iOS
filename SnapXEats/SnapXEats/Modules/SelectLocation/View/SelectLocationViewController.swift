@@ -14,6 +14,8 @@ enum SelectLocationResourceIdentifiler {
     static let savedLocationNibName = "SavedLocationTableViewCell"
     static let SavedAddressHeaderViewCellIdentifier = "SavedAddressHeaderCell"
     static let SavedAddressHeaderNibName = "SavedAddressHeaderViewCell"
+    static let searchPlaceCell = "SearchPlaceCell"
+    static let searchPlaceNibName = "SearchPlacesTableViewCell"
 }
 
 struct SavedAddress {
@@ -28,6 +30,9 @@ class SelectLocationViewController: BaseViewController, StoryboardLoadable {
     
     var presenter: SelectLocationPresentation?
     var savedAddresses = [SavedAddress]()
+    var searchPlaces = [SearchPlace]()
+    var selectedLocation: SnapXEatsLocation?
+    
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var locationsTableview: UITableView!
     @IBOutlet weak var locationSearchBar: UISearchBar!
@@ -36,10 +41,25 @@ class SelectLocationViewController: BaseViewController, StoryboardLoadable {
         presenter?.dismissScreen()
     }
     
+    @IBAction func doneButtonAction(_ sender: Any) {
+        print("Selected Location --- \(String(describing: selectedLocation?.latitude)) ----- \(String(describing: selectedLocation?.latitude))")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
         createSavedAddressesDataSource()
+    }
+    
+    override func success(result: Any?) {
+        if let result = result as? SearchPlacePredictions {
+            self.searchPlaces = result.palceList
+            locationsTableview.reloadData()
+        }
+        
+        if let result = result as? SnapXEatsPlaceDetails {
+            selectedLocation = result.placeResult?.geometry?.location
+        }
     }
     
     func configureView() {
@@ -62,6 +82,9 @@ class SelectLocationViewController: BaseViewController, StoryboardLoadable {
         
         let tableHeaderNib = UINib(nibName: SelectLocationResourceIdentifiler.SavedAddressHeaderNibName, bundle: nil)
         locationsTableview.register(tableHeaderNib, forCellReuseIdentifier: SelectLocationResourceIdentifiler.SavedAddressHeaderViewCellIdentifier)
+        
+        let searchPlaceNib = UINib(nibName: SelectLocationResourceIdentifiler.searchPlaceNibName, bundle: nil)
+        locationsTableview.register(searchPlaceNib, forCellReuseIdentifier: SelectLocationResourceIdentifiler.searchPlaceCell)
     }
     
     func createSavedAddressesDataSource() {
@@ -69,27 +92,67 @@ class SelectLocationViewController: BaseViewController, StoryboardLoadable {
         let workAddress = SavedAddress(tilte: "Work", address: "1994 Webster street,  Edison, NJ", imageName: "work_icon")
         savedAddresses = [homeAddress, workAddress]
     }
+    
+    private func setLocationForSearchedPlace(place : SearchPlace) {
+        if let placeId = place.id {
+            presenter?.getPlaceDetails(placeid: placeId)
+        }
+    }
+}
+
+extension SelectLocationViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.searchPlaces = []
+        if (searchText == "") { // If nothing in search, reload table with blank Dataspurce
+            locationsTableview.reloadData()
+        } else {
+            presenter?.getSearchPlaces(searchText: searchText)
+        }
+    }
 }
 
 extension SelectLocationViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return savedAddresses.count
+        return searchPlaces.count == 0 ? savedAddresses.count : searchPlaces.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SelectLocationResourceIdentifiler.savedLocationCellIdentifier, for: indexPath) as! SavedLocationTableViewCell
-        let address = savedAddresses[indexPath.row]
-        cell.configureSavedAddressCell(savedAddress: address)
-        return cell
+    
+        if searchPlaces.count == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: SelectLocationResourceIdentifiler.savedLocationCellIdentifier, for: indexPath) as! SavedLocationTableViewCell
+            tableView.separatorStyle = .none
+            
+            let address = savedAddresses[indexPath.row]
+            cell.configureSavedAddressCell(savedAddress: address)
+            return cell
+            
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: SelectLocationResourceIdentifiler.searchPlaceCell, for: indexPath) as! SearchPlacesTableViewCell
+            tableView.separatorStyle = .singleLine
+            
+            let place = searchPlaces[indexPath.row]
+            cell.descriptionLabel.text = place.description
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return savedLocationHeaderHeight
+        return searchPlaces.count == 0 ? savedLocationHeaderHeight : 1
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = tableView.dequeueReusableCell(withIdentifier: SelectLocationResourceIdentifiler.SavedAddressHeaderViewCellIdentifier) as! SavedAddressHeaderViewCell
-        return headerView
+        if searchPlaces.count == 0 {
+            let headerView = tableView.dequeueReusableCell(withIdentifier: SelectLocationResourceIdentifiler.SavedAddressHeaderViewCellIdentifier) as! SavedAddressHeaderViewCell
+            return headerView
+        }
+        return UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if searchPlaces.count != 0 {
+            setLocationForSearchedPlace(place: searchPlaces[indexPath.row])
+        }
     }
 }
 
