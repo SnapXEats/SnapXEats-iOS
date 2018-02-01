@@ -10,7 +10,7 @@ enum LoginEnum{
 }
 
 class LoginViewController: BaseViewController, StoryboardLoadable, LoginView {
-    
+
     // MARK: Properties
     
     var presenter: LoginViewPresentation?

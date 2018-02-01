@@ -21,20 +21,23 @@ class SnapXEatsApi {
     static var uploadRequest: Request?
     
     static var baseURL: String {
-        return SnapXEatsWebServiceResourcePath.root
+        return SnapXEatsWebServicePath.rootURL
     }
     
     static func snapXRequestObject<T: Mappable>(path: String, completionHandler:  @escaping (DataResponse<T>) -> ()) {
-        Alamofire.request(path).responseObject( completionHandler: completionHandler)
+         let url = baseURL + path
+        Alamofire.request(url).responseObject( completionHandler: completionHandler)
     }
     
     static func snapXRequestObjectArray<T: Mappable>(path: String, completionHandler: @escaping (DataResponse<[T]>) -> ()) {
-        Alamofire.request(path).responseArray( completionHandler: completionHandler)
+        let url = baseURL + path
+        Alamofire.request(url).responseArray( completionHandler: completionHandler)
     }
     
-    static func snapXRequestWithParameters<T: Mappable>(path: String, parameters: [String: String], completionHandler:  @escaping (DataResponse<T>) -> ()) {
-        
-        Alamofire.request(path, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseObject( completionHandler: completionHandler)
+    static func snapXRequestObjectWithParameters<T: Mappable>(path: String, parameters: [String: Any], completionHandler:  @escaping (DataResponse<T>) -> ()) {
+         let url = baseURL + path
+        Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseObject( completionHandler: completionHandler)
     
     }
+
 }

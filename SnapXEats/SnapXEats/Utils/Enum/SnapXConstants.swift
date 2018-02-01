@@ -63,10 +63,11 @@ enum SnapXEatsLocationConstant {
     static let locationAlertTitle = "Location not Detected"
     static let locationAlertMessage = "Location services are turned off on your device. Please go to settings and enable location services to use this feature or manually select a location."
 }
-enum SnapXEatsWebServiceResourcePath {
+enum SnapXEatsWebServicePath {
     static let  port = "3000"
-    static let  root = "http://ec2-18-216-193-78.us-east-2.compute.amazonaws.com:" + port
-    static let  cuisinePreference =   root + "/api/v1/cuisine"
+    static let  rootURL = "http://ec2-18-216-193-78.us-east-2.compute.amazonaws.com:" + port
+    static let  cuisinePreferenceURL = "/api/v1/cuisine"
+    static let  dishesURL = "/api/v1/Dishes"
 }
 
 enum SnapXEatsImageNames {
@@ -75,6 +76,7 @@ enum SnapXEatsImageNames {
     static let navigationSearch = "navigation_search_icon"
     static let placeholder_cuisine = "placeholder_cuisine"
 }
+
 
 enum SnapXEatsPlaceSearchConstants {
     static let autocompleteApiUrl = "https://maps.googleapis.com/maps/api/place/autocomplete/json"
@@ -90,6 +92,7 @@ enum SnapXEatsPlaceSearchRequestKeys {
     static let placeid = "placeid"
 }
 
+
 enum SnapXEatsMenuOptions {
     static let wishlist = "Wishlist"
     static let preferences = "Preferences"
@@ -103,4 +106,15 @@ enum SnapXEatsCellResourceIdentifiler {
 
 enum SnapXEatsNibNames {
     static let navigationMenuTableViewCell = "NavigationMenuTableViewCell"
+}
+
+enum SnapXEatsFoodCardInfoKeys {
+    static let latitude = "latitude"
+    static let longitude = "longitude"
+    static let cuisineArray = "cuisineArray"
+}
+enum SnapXButtonTitle {
+    static let ok = "Ok"
+    static let cancel = "Cancel"
+    static let settings = "Settings"
 }

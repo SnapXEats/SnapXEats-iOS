@@ -47,16 +47,24 @@ class SnapXEatsGeometry: Mappable {
 }
 
 
-class SnapXEatsLocation: Mappable {
+class SnapXEatsLocation: NSObject, Mappable {
     var latitude: Double?
     var longitude: Double?
+    
+    override init() {
+        super.init()
+    }
+    
+    convenience required init?(_ map: Map) {
+        self.init()
+    }
     
     required init?(map: Map) {
     }
     
     // Mappable
     func mapping(map: Map) {
-        latitude            <- map["lat"]
+        latitude    <- map["lat"]
         longitude   <- map["lng"]
     }
 }

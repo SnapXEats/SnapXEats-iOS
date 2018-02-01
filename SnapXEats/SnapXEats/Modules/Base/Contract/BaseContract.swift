@@ -4,9 +4,23 @@
 
 import Foundation
 
-protocol BaseView: class, SnapXResult {
+protocol BaseView: SnapXResult, SnapXDialogs {
+    func initView()
+}
+
+protocol SnapXDialogs: class {
     func showLoading()
     func hideLoading()
     func showError(_ message: String?)
     func showMessage(_ message: String?, withTitle title: String?)
+}
+
+protocol RootWireFrame {
+    func presentScreen(screen: Screens)
+}
+
+extension RootWireFrame {
+    func presentScreen(screen: Screens) {
+        RootRouter.singleInstance.presentScreen(screens: screen)
+    }
 }

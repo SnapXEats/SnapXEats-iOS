@@ -6,7 +6,7 @@ import UIKit
 import MBProgressHUD
 import ReachabilitySwift
 
-class BaseViewController: UIViewController, BaseView {
+class BaseViewController: UIViewController {
     
     // MARK: Properties
     

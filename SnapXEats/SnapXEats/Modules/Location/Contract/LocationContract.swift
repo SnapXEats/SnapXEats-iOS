@@ -8,14 +8,14 @@
 
 import Foundation
 import Alamofire
-protocol LocationView: BaseView, SnapXResult {
+protocol LocationView: BaseView {
     var presenter: LocationPresentation? {get set}
     func initView()
 }
 
 protocol LocationPresentation: class {
-    // TODO: Declare presentation methods
-        func closeLocationView()
+
+        func closeLocationView(selectedPreference: SelectedPreference?)
         func selectLocation()
         func cuisinePreferenceRequest()
 }

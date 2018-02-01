@@ -7,24 +7,37 @@
 //
 
 import Foundation
+import ObjectMapper
+import Alamofire
 
-protocol FoodCardsView: class, BaseView {
-    var presenter: FoodCardsPresentation? {get set}
-    func initView()
+import UIKit
+
+protocol FoodCardsView: BaseView {
+    var presenter: FoodCardsPresentation? { set get }
+    func showFoodCard()
 }
 
 protocol FoodCardsPresentation: class {
-    // TODO: Declare presentation methods
+    func refreshFoodCards()
+    func getFoodCards(selectedPreferences: SelectedPreference?)
 }
 
-protocol FoodCardsUseCase: class {
-    // TODO: Declare use case methods
+protocol FoodCardsRequestFomatter: class {
+    func sendFoodCardRequest(selectedPreferences: SelectedPreference?)
 }
 
-protocol FoodCardsInteractorOutput: class {
+protocol FoodCardsWebService: class {
+     func getFoodCardDishesRequest(forPath: String, withParameters: [String: Any])
+}
+
+protocol FoodCardsObjectMapper: class {
+     func foodCardDetails(data: Result<FoodCards> )
+}
+
+protocol FoodCardsInteractorOutput: Response {
     // TODO: Declare interactor output methods
 }
 
 protocol FoodCardsWireframe: class, RootWireFrame {
-    // TODO: Declare wireframe methods
+     func loadFoodCardModule() -> UINavigationController
 }

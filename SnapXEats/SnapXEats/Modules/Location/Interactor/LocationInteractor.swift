@@ -28,14 +28,13 @@ extension LocationInteractor: LocationRequestFomatter {
       - returns: Void
      */
     func getCuisines() {
-        getCuisinesRequest(forPath: SnapXEatsWebServiceResourcePath.cuisinePreference)
+        getCuisinesRequest(forPath: SnapXEatsWebServicePath.cuisinePreferenceURL)
     }
 }
 
 extension LocationInteractor: LocationWebService {
     // TODO: Implement use case methods
     func getCuisinesRequest(forPath: String) {
-        
         SnapXEatsApi.snapXRequestObject(path: forPath ) { [weak self] (response: DataResponse<CuisinePreference>) in
             guard let strongSelf = self else { return }
             let cuisePrefernceArray = response.result
@@ -45,6 +44,7 @@ extension LocationInteractor: LocationWebService {
 }
 
 extension LocationInteractor: LocationObjectMapper {
+    
     // TODO: Implement use case methods
     func cuisinesDetails(data: Result<CuisinePreference> ) {
         switch data {

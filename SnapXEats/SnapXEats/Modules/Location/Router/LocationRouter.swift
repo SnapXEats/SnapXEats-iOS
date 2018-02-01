@@ -38,13 +38,10 @@ class LocationRouter {
 }
 
 extension LocationRouter: LocationWireframe {
+    
     func loadLocationModule () -> LocationView {
         let viewController = UIStoryboard.loadViewController() as LocationViewController
         initView(viewController: viewController)
         return viewController
-    }
-    
-    func presentScreen(screen: Screens) {
-        RootRouter.singleInstance.presentScreen(screens: screen)
     }
 }

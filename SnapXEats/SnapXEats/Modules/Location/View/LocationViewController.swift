@@ -18,6 +18,7 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     private var cuiseItems = [Cuisine]()
     private let itemsPerRow: CGFloat = 2
     
+    private let selectedPreference = SelectedPreference()
     private var enabledLocationSharing = false
     private let sectionInsets = UIEdgeInsets(top: 10.0, left: 20.0, bottom: 30.0, right: 20.0)
     var presenter: LocationPresentation?
@@ -26,14 +27,15 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     // MARK: Lifecycle
     var locationManager: CLLocationManager?
     
+    @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var cuisinCollectionView: UICollectionView!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var userLocation: UIButton!
     
     @IBAction func closeLocationView(_ sender: Any) {
-        presenter?.closeLocationView()
-//        enabledLocationSharing ? presenter?.closeLocationView()
-//            : verigyLocationService()
+         (selectedPreference.location.latitude == 0 && selectedPreference.location.longitude == 0)
+            ? showSettingDialog()
+            : presenter?.closeLocationView(selectedPreference: selectedPreference)
     }
     
     override func viewDidLoad() {
@@ -46,8 +48,7 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     }
     
     @IBAction func setNewLocation(_ sender: Any) {
-        enabledLocationSharing ? presenter?.selectLocation()
-            : verigyLocationService()
+        presenter?.selectLocation()
     }
     private func configureView() {
         topView.addShadow()
@@ -82,6 +83,7 @@ extension LocationViewController: LocationView {
     func initView() {
         locationManager = CLLocationManager()
         locationManager?.delegate = self
+        enableDoneButton(state: false)
         configureView()
         registerNotification()
     }
@@ -126,11 +128,11 @@ extension LocationViewController: CLLocationManagerDelegate {
     func showSettingDialog() {
         let alertController = UIAlertController(title: NSLocalizedString(SnapXEatsLocationConstant.locationAlertTitle, comment: ""), message: NSLocalizedString(SnapXEatsLocationConstant.locationAlertMessage, comment: ""), preferredStyle: .alert)
         
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { [weak self ](UIAlertAction) in
+        let cancelAction = UIAlertAction(title: NSLocalizedString(SnapXButtonTitle.cancel, comment: ""), style: .cancel, handler: { [weak self ](UIAlertAction) in
             guard let strongSelf = self else { return }
             strongSelf.sendCuiseRequest()
         })
-        let settingsAction = UIAlertAction(title: NSLocalizedString("Settings", comment: ""), style: .default) { (UIAlertAction) in
+        let settingsAction = UIAlertAction(title: NSLocalizedString(SnapXButtonTitle.settings, comment: ""), style: .default) { (UIAlertAction) in
             UIApplication.shared.openURL(NSURL(string: UIApplicationOpenSettingsURLString)! as URL)
         }
         
@@ -163,8 +165,9 @@ extension LocationViewController: CLLocationManagerDelegate {
             
             if (placemarksArray?.count)! > 0 {
                // strongSelf.hideLoading()
-                
                 let placemark = placemarksArray?.first // Get the First Address from List
+                strongSelf.selectedPreference.location.latitude =  Double(placemark?.location?.coordinate.latitude ?? 0)
+                strongSelf.selectedPreference.location.longitude = Double(placemark?.location?.coordinate.longitude ?? 0)
                 if let locality = placemark?.subLocality {
                     strongSelf.userLocation.setTitle("\(locality)", for: .normal)
                 } else if let area = placemark?.subAdministrativeArea {
@@ -197,10 +200,19 @@ extension LocationViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if selectedCuisineIndexes.contains(indexPath.row) {
             selectedCuisineIndexes.remove(indexPath.row)
+            selectedPreference.selectedCuisine?.remove(at: indexPath.row)
         } else {
             selectedCuisineIndexes.add(indexPath.row)
+             let item = cuiseItems[indexPath.row]
+            selectedPreference.selectedCuisine?.append(item.cuisineName ?? "")
         }
+        enableDoneButton(state: selectedCuisineIndexes.count > 0 ? true : false)
         collectionView.reloadItems(at: [indexPath])
+    }
+    
+    func enableDoneButton(state: Bool) {
+        doneButton.isUserInteractionEnabled = state
+        doneButton.alpha = state == true ? 1.0 : 0.5
     }
 }
 
@@ -210,10 +222,10 @@ extension LocationViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         //2
-        let paddingSpace: CGFloat = 12 + sectionInsets.left*2
+        let paddingSpace: CGFloat = 12 + sectionInsets.left * 2
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
-        return CGSize(width: widthPerItem, height: widthPerItem*2/3 + 35)
+        return CGSize(width: widthPerItem, height: widthPerItem * 2/3 + 35)
     }
     
     func collectionView(_ collectionView: UICollectionView,
