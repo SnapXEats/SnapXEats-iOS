@@ -10,7 +10,7 @@ import UIKit
 
 class DrawerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var navigationOptions = ["Wishlist", "Preferences", "Food Journey", "Rewards"]
+    var navigationOptions = [SnapXEatsMenuOptions.wishlist, SnapXEatsMenuOptions.preferences, SnapXEatsMenuOptions.foodJourney, SnapXEatsMenuOptions.rewards]
     
     @IBOutlet weak var navigationOptionTable: UITableView!
     @IBOutlet weak var userInfoView: UIView!
@@ -46,8 +46,8 @@ class DrawerViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     private func registerNibsForCells() {
-        let nibName = UINib(nibName: "NavigationMenuTableViewCell", bundle:nil)
-        navigationOptionTable.register(nibName, forCellReuseIdentifier: "navigationtionmenucell")
+        let nibName = UINib(nibName: SnapXEatsNibNames.navigationMenuTableViewCell, bundle:nil)
+        navigationOptionTable.register(nibName, forCellReuseIdentifier: SnapXEatsCellResourceIdentifiler.navigationMenu)
     }
     
     //MARK: TableViewDelegate & TableViewDatasource
@@ -60,7 +60,7 @@ class DrawerViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "navigationtionmenucell", for: indexPath as IndexPath) as! NavigationMenuTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: SnapXEatsCellResourceIdentifiler.navigationMenu, for: indexPath as IndexPath) as! NavigationMenuTableViewCell
         let showCount = indexPath.row == 0 ? true : false
         cell.configureCell(WithMenu: navigationOptions[indexPath.row], showCount: showCount)
         return cell
@@ -78,20 +78,4 @@ class DrawerViewController: UIViewController, UITableViewDelegate, UITableViewDa
 //                break
 //            }
     }
-    
-//    private func showLogoutConfirmationAlert() {
-//        let alertController = UIAlertController(title:"Logout", message: "Are you sure you want to Logout?", preferredStyle: .alert)
-//        let yesButtonAction = UIAlertAction(title: "YES", style: .default, handler: {
-//            action in
-//            PCFirebaseManager.shared.signOut(onComplete: { (success) in
-//                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//                appDelegate.loadLoginPage()
-//            })
-//        })
-//        
-//        let noButtonAction = UIAlertAction(title: "CANCEL", style: .default, handler: nil)
-//        alertController.addAction(yesButtonAction)
-//        alertController.addAction(noButtonAction)
-//        present(alertController, animated: true, completion: nil)
-//    }
 }
