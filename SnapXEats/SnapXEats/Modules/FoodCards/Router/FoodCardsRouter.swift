@@ -41,6 +41,12 @@ class FoodCardsRouter {
 
         return foodCardNavigationController
     }
+    
+    func loadDrawerMenu() -> DrawerViewController {
+        let storyboard = UIStoryboard(name: "FoodCards", bundle: nil)
+        let drawerVC = storyboard.instantiateViewController(withIdentifier: "drawerviewcontroller") as! DrawerViewController
+        return drawerVC
+    }
 }
 
 extension FoodCardsRouter: FoodCardsWireframe {

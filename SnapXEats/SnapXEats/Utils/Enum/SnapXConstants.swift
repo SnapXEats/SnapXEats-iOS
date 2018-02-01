@@ -89,3 +89,18 @@ enum SnapXEatsPlaceSearchRequestKeys {
     static let key = "key"
     static let placeid = "placeid"
 }
+
+enum SnapXEatsMenuOptions {
+    static let wishlist = "Wishlist"
+    static let preferences = "Preferences"
+    static let foodJourney = "Food Journeys"
+    static let rewards = "Rewards"
+}
+
+enum SnapXEatsCellResourceIdentifiler {
+    static let navigationMenu = "navigationtionmenucell"
+}
+
+enum SnapXEatsNibNames {
+    static let navigationMenuTableViewCell = "NavigationMenuTableViewCell"
+}

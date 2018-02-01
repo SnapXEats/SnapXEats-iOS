@@ -15,6 +15,7 @@ protocol RootWireFrame {
 }
 class RootRouter: NSObject {
     var window: UIWindow?
+    var drawerController: KYDrawerController!
     
     private override init() {
     }
@@ -65,8 +66,16 @@ class RootRouter: NSObject {
     }
     
     func presentFoodcardsScreen() {
-        let locatioViewController = FoodCardsRouter.singleInstance.loadFoodCardModule()
-        presentView(locatioViewController)
+        
+        // Embed the VC into the Drawer
+        drawerController = KYDrawerController(drawerDirection: .left, drawerWidth: (0.61 * UIScreen.main.bounds.width))
+        
+        let foodCardVC = FoodCardsRouter.singleInstance.loadFoodCardModule()
+        let drawerVC = FoodCardsRouter.singleInstance.loadDrawerMenu()
+        
+        drawerController.mainViewController = foodCardVC
+        drawerController.drawerViewController = drawerVC
+        presentView(drawerController)
     }
     
     func dissmissSelectLocationScreen() {

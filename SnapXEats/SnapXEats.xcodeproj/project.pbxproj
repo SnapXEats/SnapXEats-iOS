@@ -16,6 +16,12 @@
 		7E5C058520186846000B5C33 /* UISearchbar+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C058420186846000B5C33 /* UISearchbar+helper.swift */; };
 		7E5C058720186C36000B5C33 /* roboto.bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E5C058620186C1A000B5C33 /* roboto.bold.ttf */; };
 		7E6FD41C2020A00F0058BFB8 /* SearchPlacePredictions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6FD41B2020A00F0058BFB8 /* SearchPlacePredictions.swift */; };
+		7E71FC072022CCAD00CA8467 /* KYDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E71FC042022CCAD00CA8467 /* KYDrawerController.swift */; };
+		7E71FC082022CCAD00CA8467 /* KYEmbedDrawerControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E71FC052022CCAD00CA8467 /* KYEmbedDrawerControllerSegue.swift */; };
+		7E71FC092022CCAD00CA8467 /* KYEmbedMainControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E71FC062022CCAD00CA8467 /* KYEmbedMainControllerSegue.swift */; };
+		7E71FC0F2022CDC200CA8467 /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E71FC0E2022CDC200CA8467 /* DrawerViewController.swift */; };
+		7E71FC1A2022ECE100CA8467 /* NavigationMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E71FC172022ECE100CA8467 /* NavigationMenuTableViewCell.swift */; };
+		7E71FC1B2022ECE100CA8467 /* NavigationMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E71FC182022ECE100CA8467 /* NavigationMenuTableViewCell.xib */; };
 		7E9C0B912021DC5700BA999E /* SnapXEatsLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9C0B902021DC5700BA999E /* SnapXEatsLocation.swift */; };
 		7EAC86092019C7E300DE162A /* foodCard3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EAC86052019C7E200DE162A /* foodCard3.jpg */; };
 		7EAC860A2019C7E300DE162A /* foodCard2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EAC86062019C7E200DE162A /* foodCard2.jpg */; };
@@ -125,6 +131,12 @@
 		7E5C058420186846000B5C33 /* UISearchbar+helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchbar+helper.swift"; sourceTree = "<group>"; };
 		7E5C058620186C1A000B5C33 /* roboto.bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = roboto.bold.ttf; sourceTree = "<group>"; };
 		7E6FD41B2020A00F0058BFB8 /* SearchPlacePredictions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlacePredictions.swift; sourceTree = "<group>"; };
+		7E71FC042022CCAD00CA8467 /* KYDrawerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYDrawerController.swift; sourceTree = "<group>"; };
+		7E71FC052022CCAD00CA8467 /* KYEmbedDrawerControllerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYEmbedDrawerControllerSegue.swift; sourceTree = "<group>"; };
+		7E71FC062022CCAD00CA8467 /* KYEmbedMainControllerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYEmbedMainControllerSegue.swift; sourceTree = "<group>"; };
+		7E71FC0E2022CDC200CA8467 /* DrawerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
+		7E71FC172022ECE100CA8467 /* NavigationMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationMenuTableViewCell.swift; sourceTree = "<group>"; };
+		7E71FC182022ECE100CA8467 /* NavigationMenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationMenuTableViewCell.xib; sourceTree = "<group>"; };
 		7E9C0B902021DC5700BA999E /* SnapXEatsLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEatsLocation.swift; sourceTree = "<group>"; };
 		7EAC86052019C7E200DE162A /* foodCard3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = foodCard3.jpg; sourceTree = "<group>"; };
 		7EAC86062019C7E200DE162A /* foodCard2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = foodCard2.jpg; sourceTree = "<group>"; };
@@ -262,6 +274,33 @@
 			path = SelectLocationCells;
 			sourceTree = "<group>";
 		};
+		7E71FC022022CC6800CA8467 /* External Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				7E71FC032022CCAD00CA8467 /* KYDrawer */,
+			);
+			path = "External Libraries";
+			sourceTree = "<group>";
+		};
+		7E71FC032022CCAD00CA8467 /* KYDrawer */ = {
+			isa = PBXGroup;
+			children = (
+				7E71FC042022CCAD00CA8467 /* KYDrawerController.swift */,
+				7E71FC052022CCAD00CA8467 /* KYEmbedDrawerControllerSegue.swift */,
+				7E71FC062022CCAD00CA8467 /* KYEmbedMainControllerSegue.swift */,
+			);
+			path = KYDrawer;
+			sourceTree = "<group>";
+		};
+		7E71FC162022ECE100CA8467 /* TableviewCells */ = {
+			isa = PBXGroup;
+			children = (
+				7E71FC172022ECE100CA8467 /* NavigationMenuTableViewCell.swift */,
+				7E71FC182022ECE100CA8467 /* NavigationMenuTableViewCell.xib */,
+			);
+			path = TableviewCells;
+			sourceTree = "<group>";
+		};
 		7EAC860E201A061D00DE162A /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
@@ -324,6 +363,7 @@
 			isa = PBXGroup;
 			children = (
 				9D902BED20177EFF00359DFD /* SnapXEats.entitlements */,
+				7E71FC022022CC6800CA8467 /* External Libraries */,
 				9D8E88BB1FFD28C50066A1D9 /* Application */,
 				9D8E88BF1FFD28C50066A1D9 /* Modules */,
 				9D8E88D91FFD28C50066A1D9 /* Entities */,
@@ -678,9 +718,11 @@
 		9D902BC320171AED00359DFD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7E71FC162022ECE100CA8467 /* TableviewCells */,
 				7EAC860E201A061D00DE162A /* CustomView */,
 				9D902BEB201736B500359DFD /* FoodCards.storyboard */,
 				9D902BC420171AED00359DFD /* FoodCardsViewController.swift */,
+				7E71FC0E2022CDC200CA8467 /* DrawerViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -937,6 +979,7 @@
 				9DB7FE1920061B6200D0E816 /* Roboto-Regular.ttf in Resources */,
 				9DB02A76201084730061FC0C /* Location.storyboard in Resources */,
 				7E5C058320185F34000B5C33 /* SavedAddressHeaderViewCell.xib in Resources */,
+				7E71FC1B2022ECE100CA8467 /* NavigationMenuTableViewCell.xib in Resources */,
 				9D902BEC201736B500359DFD /* FoodCards.storyboard in Resources */,
 				9D902BEA20172A2F00359DFD /* SelectLocation.storyboard in Resources */,
 				7EAC8612201A067A00DE162A /* FoodCardView.xib in Resources */,
@@ -1069,9 +1112,12 @@
 				7E6FD41C2020A00F0058BFB8 /* SearchPlacePredictions.swift in Sources */,
 				9D8E88F41FFD2BEC0066A1D9 /* UserProfile.swift in Sources */,
 				7E5C057E2017A6DC000B5C33 /* SavedLocationTableViewCell.swift in Sources */,
+				7E71FC092022CCAD00CA8467 /* KYEmbedMainControllerSegue.swift in Sources */,
 				9D902BE6201729E400359DFD /* SelectLocationViewController.swift in Sources */,
 				9D8E88F51FFD2BEC0066A1D9 /* Constants.swift in Sources */,
 				7EAC8610201A066B00DE162A /* FoodCardView.swift in Sources */,
+				7E71FC0F2022CDC200CA8467 /* DrawerViewController.swift in Sources */,
+				7E71FC082022CCAD00CA8467 /* KYEmbedDrawerControllerSegue.swift in Sources */,
 				9D8E88F61FFD2BEC0066A1D9 /* PlainButtonCellDelegate.swift in Sources */,
 				9D8E88F71FFD2BEC0066A1D9 /* UIImage+Icons.swift in Sources */,
 				9D8E88F81FFD2BEC0066A1D9 /* UIView.swift in Sources */,
@@ -1084,12 +1130,14 @@
 				9DB02A6F2010805F0061FC0C /* LocationPresenter.swift in Sources */,
 				9D8E88FB1FFD2BEC0066A1D9 /* UICollectionView.swift in Sources */,
 				9D8E88FC1FFD2BEC0066A1D9 /* DataResponse.swift in Sources */,
+				7E71FC1A2022ECE100CA8467 /* NavigationMenuTableViewCell.swift in Sources */,
 				9DCBE184201EF6F80030A0F9 /* SnapXEatsNetworkManager.swift in Sources */,
 				9D902BE5201729E400359DFD /* SelectLocationPresenter.swift in Sources */,
 				9D8E88FD1FFD2BEC0066A1D9 /* Results.swift in Sources */,
 				9D8E88FE1FFD2BEC0066A1D9 /* UITableView.swift in Sources */,
 				9D8E88FF1FFD2BEC0066A1D9 /* UITableViewCell.swift in Sources */,
 				9D8E89001FFD2BEC0066A1D9 /* String.swift in Sources */,
+				7E71FC072022CCAD00CA8467 /* KYDrawerController.swift in Sources */,
 				9D8E89011FFD2BEC0066A1D9 /* UIViewController.swift in Sources */,
 				9DB7FE112004F0EE00D0E816 /* Alert.swift in Sources */,
 				9D902BE8201729E400359DFD /* SelectLocationRouter.swift in Sources */,
