@@ -5,9 +5,8 @@
 import Foundation
 import UIKit
 
-protocol LoginView: BaseView {
+protocol LoginView: BaseView  {
     var presenter: LoginViewPresentation? {get set}
-    func initView()
 }
 
 protocol LoginViewPresentation: LoginViewPresentationInstagram {
@@ -27,7 +26,7 @@ protocol LoginViewInteractorInput: class {
     func sendInstagramRequest(request: URLRequest) -> Bool
 }
 
-protocol LoginViewInteractorOutput: class {
+protocol LoginViewInteractorOutput: class, Response {
     func onLoginReguestFailure(message: String)
 }
 

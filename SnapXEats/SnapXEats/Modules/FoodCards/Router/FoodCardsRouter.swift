@@ -17,6 +17,7 @@ class FoodCardsRouter {
     private init() {}
     // MARK: Static methods
     static let singleInstance = FoodCardsRouter()
+    
      func loadFoodCardModule() -> UINavigationController {
         
         let foodCardNavigationController = UIStoryboard.loadNavigationControler(storyBoardName: SnapXEatsStoryboard.foodCardsStoryboard, storyBoardId: SnapXEatsStoryboardIdentifier.foodCardsNavigationControllerID)
@@ -50,7 +51,4 @@ class FoodCardsRouter {
 }
 
 extension FoodCardsRouter: FoodCardsWireframe {
-    func presentScreen(screen: Screens) {
-        // Todo implement this method
-    }
 }

@@ -38,4 +38,3 @@ protocol SnapXResult: NetworkFailure {
     func error(result: NetworkResult)
     func cancel (result: NetworkResult)
 }
-

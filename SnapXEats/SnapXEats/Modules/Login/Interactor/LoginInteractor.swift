@@ -15,7 +15,7 @@ class LoginInteractor {
     
     // MARK: Properties
     private var view : UIViewController?
-    var output: Response?
+    var output: LoginViewInteractorOutput?
     
     private init() {}
     static  var  singletenInstance = LoginInteractor()
@@ -33,7 +33,7 @@ extension LoginInteractor: LoginViewInteractorInput {
             loginManager.logIn(readPermissions: [ .publicProfile, .email, .userFriends ], viewController: self.view) { [weak self] loginResult in
                 guard let strongSelf = self else { return }
                 switch loginResult {
-                case .failed(let _):
+                case .failed( _):
                     strongSelf.output?.response(result: NetworkResult.error)
                 case .cancelled:
                     strongSelf.output?.response(result: NetworkResult.cancelRequest)

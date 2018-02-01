@@ -20,7 +20,6 @@ class LoginRouter {
 
 extension LoginRouter: LoginViewWireframe {
     
-    
     func loadLoginModule() -> LoginView {
         let viewController = UIStoryboard.loadViewController() as LoginViewController
         initView(viewController: viewController)
@@ -47,9 +46,5 @@ extension LoginRouter: LoginViewWireframe {
         let viewController = UIStoryboard.loadViewControler(storyBoardName: SnapXEatsStoryboard.loginStoryboard, storyBoardId: SnapXEatsStoryboardIdentifier.instagramViewControllerID) as! InstagramViewController
         initView(viewController: viewController)
         return viewController
-    }
-    
-    func presentScreen(screen: Screens) {
-        RootRouter.singleInstance.presentScreen(screens: screen)
     }
 }

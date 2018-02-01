@@ -7,7 +7,7 @@ import Foundation
 
 class LoginPresenter {
     // MARK: Properties
-    private var view: LoginView?
+    var view: LoginView?
     
     var router: LoginViewWireframe?
     
@@ -44,7 +44,7 @@ extension LoginPresenter: LoginViewPresentation {
     
 }
 
-extension LoginPresenter: Response {
+extension LoginPresenter: LoginViewInteractorOutput {
     
     func response(result: NetworkResult) {
         switch result {

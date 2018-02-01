@@ -58,6 +58,9 @@
                                             <constraint firstAttribute="width" constant="38" id="hFv-Ul-JMu"/>
                                         </constraints>
                                         <state key="normal" image="undo"/>
+                                        <connections>
+                                            <action selector="refreshScreen:" destination="PVr-ZQ-ZIz" eventType="touchUpInside" id="xZM-DA-Qdb"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6O6-Ad-9oa">
                                         <rect key="frame" x="72" y="2" width="66" height="66"/>

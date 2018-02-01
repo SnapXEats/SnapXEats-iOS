@@ -7,12 +7,9 @@ import UIKit
 import FacebookLogin
 import FacebookCore
 enum Screens {
-    case login, instagram, location, firstScreen, foodcards, selectLocation, dismissNewLocation
+    case login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference?), selectLocation, dismissNewLocation
 }
 
-protocol RootWireFrame {
-    func presentScreen(screen: Screens)
-}
 class RootRouter: NSObject {
     var window: UIWindow?
     var drawerController: KYDrawerController!
@@ -35,11 +32,11 @@ class RootRouter: NSObject {
         }
     }
     
-    func instagramLoggedIn () -> Bool{
+    private func instagramLoggedIn () -> Bool{
         return UserDefaults.standard.bool(forKey: InstagramConstant.INSTAGRAM_LOGGEDIN)
     }
     
-    func faceBookLoggedIn () -> Bool {
+   private func faceBookLoggedIn () -> Bool {
        if let _ =  AccessToken.current?.authenticationToken {
             return true
         }
@@ -65,27 +62,30 @@ class RootRouter: NSObject {
         presentView(locatioViewController)
     }
     
-    func presentFoodcardsScreen() {
-        
+    private func presentFoodcardsScreen(selectedPreference: SelectedPreference?) {
         // Embed the VC into the Drawer
-        drawerController = KYDrawerController(drawerDirection: .left, drawerWidth: (0.61 * UIScreen.main.bounds.width))
         
-        let foodCardVC = FoodCardsRouter.singleInstance.loadFoodCardModule()
-        let drawerVC = FoodCardsRouter.singleInstance.loadDrawerMenu()
-        
-        drawerController.mainViewController = foodCardVC
-        drawerController.drawerViewController = drawerVC
-        presentView(drawerController)
+        let foodCardNavigationController = FoodCardsRouter.singleInstance.loadFoodCardModule()
+        if let firstViewController = foodCardNavigationController.viewControllers.first, let foodCardViewController = firstViewController as? FoodCardsViewController {
+            drawerController = KYDrawerController(drawerDirection: .left, drawerWidth: (0.61 * UIScreen.main.bounds.width))
+            let drawerVC = FoodCardsRouter.singleInstance.loadDrawerMenu()
+            foodCardViewController.selectedPrefernce = selectedPreference
+            drawerController.mainViewController = foodCardViewController
+            drawerController.drawerViewController = drawerVC
+            presentView(drawerController)
+        }
+
     }
     
-    func dissmissSelectLocationScreen() {
+    private func dissmissSelectLocationScreen() {
         window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
     
-    func presentSelectLocationScreen() {
+    private func presentSelectLocationScreen() {
         let selectLocationViewController = SelectLocationRouter.singleInstance.loadSelectLocationModule()
         window?.rootViewController?.present(selectLocationViewController, animated: true, completion: nil)
     }
+    
     func presentScreen(screens: Screens) {
         switch screens {
         case .firstScreen:
@@ -96,8 +96,8 @@ class RootRouter: NSObject {
              presentLoginInstagramScreen()
         case .location:
             presentLocationScreen()
-        case .foodcards:
-            presentFoodcardsScreen()
+        case .foodcards(let selectedPreference):
+            presentFoodcardsScreen(selectedPreference: selectedPreference)
         case .selectLocation:
             presentSelectLocationScreen()
         case .dismissNewLocation:

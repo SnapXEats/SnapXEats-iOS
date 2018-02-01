@@ -14,15 +14,33 @@ class FoodCardsPresenter {
 
     weak var view: FoodCardsView?
     var router: FoodCardsWireframe?
-    var interactor: FoodCardsUseCase?
+    var interactor: FoodCardsRequestFomatter?
     
     static let singleInstance = FoodCardsPresenter()
 }
 
 extension FoodCardsPresenter: FoodCardsPresentation {
-    // TODO: implement presentation methods
+    
+    func getFoodCards(selectedPreferences: SelectedPreference?) {
+        interactor?.sendFoodCardRequest(selectedPreferences: selectedPreferences)
+    }
+    
+    func refreshFoodCards() {
+        router?.presentScreen(screen: .location)
+    }
+    
 }
 
 extension FoodCardsPresenter: FoodCardsInteractorOutput {
-    // TODO: implement interactor output methods
+    func response(result: NetworkResult) {
+        switch result {
+        case .success(let value):
+            view?.success(result: value)
+        case .error:
+            view?.error(result: .error)
+        case .noInternet:
+            view?.error(result: .noInternet)
+        default: break
+        }
+    }
 }
