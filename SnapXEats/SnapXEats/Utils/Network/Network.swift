@@ -12,19 +12,30 @@ enum NetworkResult {
     case noInternet
     case error
     case fail
-    case success
+    case success(data: Any?)
     case cancelRequest
 }
+
+// MARK: - Notifications
+enum SnapXEatsNotification {
+
+    static let connectedToInternet = "ConnectedToInternet"
+}
+protocol SnapXEatsData {
+    
+}
 protocol NetworkFailure {
-    func resultNOInternet(result: NetworkResult)
+    func noInternet(result: NetworkResult)
+    func checkRechability() -> Bool
 }
 
-protocol Result {
-    func result(result: NetworkResult)
+protocol Response {
+    func response(result: NetworkResult)
 }
 
 protocol SnapXResult: NetworkFailure {
-    func resultSuccess(result: NetworkResult)
-    func resultError(result: NetworkResult)
+    func success(result: Any?)
+    func error(result: NetworkResult)
+    func cancel (result: NetworkResult)
 }
 

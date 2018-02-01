@@ -8,6 +8,13 @@ import UIKit
 
 extension UIView {
     
+    enum ViewSides {
+        case top
+        case bottom
+        case left
+        case right
+    }
+    
     func superview<T>(ofType type: T.Type) -> T? where T: UIView {
         return superview as? T ?? superview?.superview(ofType: type)
     }
@@ -36,5 +43,35 @@ extension UIView {
         self.layer.borderColor = color.cgColor
         self.layer.borderWidth = width
         self.layer.cornerRadius = radius
+    }
+    
+    func addShadow() {
+        self.layer.shadowOpacity = 0.6
+        self.layer.shadowRadius = 1.0
+        self.layer.shadowColor = UIColor.rgba(202.0, 202.0, 202.0, 1).cgColor
+        self.layer.shadowOffset = CGSize(width: 1, height: 1)
+        self.layer.masksToBounds = false
+    }
+    
+    func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = path.cgPath
+        self.layer.mask = maskLayer
+    }
+    
+    func addViewBorderWithColor(color: UIColor, width: CGFloat, side: ViewSides) {
+        var frame = CGRect()
+        switch side {
+            case .top: frame = CGRect(x:0,y: 0, width:self.frame.size.width, height:width)
+            case .bottom: frame = CGRect(x:0, y:self.frame.size.height - width, width:self.frame.size.width, height:width)
+            case .left: frame = CGRect(x:0, y:0, width:width, height:self.frame.size.height)
+            case .right: frame = CGRect(x: self.frame.size.width - width,y: 0, width:width, height:self.frame.size.height)
+        }
+        
+        let border = CALayer()
+        border.backgroundColor = color.cgColor
+        border.frame = frame
+        self.layer.addSublayer(border)
     }
 }

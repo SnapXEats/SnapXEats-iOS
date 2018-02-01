@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>BuildVersion</key>
+	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -21,18 +23,18 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.1</string>
+	<string>0.2</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb160584371233936</string>
+				<string>fb240700273135016</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>0.1</string>
+	<string>201</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -48,7 +50,7 @@
 		</array>
 	</dict>
 	<key>FacebookAppID</key>
-	<string>160584371233936</string>
+	<string>240700273135016</string>
 	<key>FacebookDisplayName</key>
 	<string>SnapXEats</string>
 	<key>LSApplicationQueriesSchemes</key>
@@ -67,11 +69,16 @@
 		<key>NSExceptionDomains</key>
 		<dict/>
 	</dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string></string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string></string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Roboto-Light.ttf</string>
 		<string>Roboto-Regular.ttf</string>
 		<string>Roboto-Medium.ttf</string>
+		<string>Roboto-Bold.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>FlashScreen</string>

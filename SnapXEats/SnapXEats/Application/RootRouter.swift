@@ -4,18 +4,50 @@
 //  Copyright © 2018 SnapXEats. All rights reserved.
 
 import UIKit
+import FacebookLogin
+import FacebookCore
+enum Screens {
+    case login, instagram, location, firstScreen, foodcards, selectLocation, dismissNewLocation
+}
 
+protocol RootWireFrame {
+    func presentScreen(screen: Screens)
+}
 class RootRouter: NSObject {
+    var window: UIWindow?
+    var drawerController: KYDrawerController!
     
-    private override init() {}
+    private override init() {
+    }
     static var singleInstance = RootRouter()
-    
+
     func presentFirstScreen(inWindow window: UIWindow) {
-        presentLoginScreen()
+       userLoggedIn()
     }
     
-    func presentFirstScreen() {
-        presentLoginScreen()
+   private func userLoggedIn() {
+        if faceBookLoggedIn() || instagramLoggedIn() {
+            presentScreen(screens: .location)
+        } else {
+            guard let window  = UIApplication.shared.delegate?.window! else { return }
+            self.window = window
+            presentLoginScreen()
+        }
+    }
+    
+    func instagramLoggedIn () -> Bool{
+        return UserDefaults.standard.bool(forKey: InstagramConstant.INSTAGRAM_LOGGEDIN)
+    }
+    
+    func faceBookLoggedIn () -> Bool {
+       if let _ =  AccessToken.current?.authenticationToken {
+            return true
+        }
+        return false
+    }
+    
+    private func presentFirstScreen() {
+        window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
     
     private func presentLoginScreen() {
@@ -23,15 +55,59 @@ class RootRouter: NSObject {
         presentView(loginViewController)
     }
     
-    func presentLoginInstagramScreen(_ viewController: LoginView) {
-        let instagramViewController = viewController as! InstagramViewController
-         presentView(instagramViewController)
+    private func presentLoginInstagramScreen() {
+        let  instagramViewController = LoginRouter.singletenInstance.loadInstagramView() as! InstagramViewController
+        window?.rootViewController?.present(instagramViewController, animated: true, completion: nil)
     }
     
+    private func presentLocationScreen() {
+        let locatioViewController = LocationRouter.singleInstance.loadLocationModule() as! LocationViewController
+        presentView(locatioViewController)
+    }
+    
+    func presentFoodcardsScreen() {
+        
+        // Embed the VC into the Drawer
+        drawerController = KYDrawerController(drawerDirection: .left, drawerWidth: (0.61 * UIScreen.main.bounds.width))
+        
+        let foodCardVC = FoodCardsRouter.singleInstance.loadFoodCardModule()
+        let drawerVC = FoodCardsRouter.singleInstance.loadDrawerMenu()
+        
+        drawerController.mainViewController = foodCardVC
+        drawerController.drawerViewController = drawerVC
+        presentView(drawerController)
+    }
+    
+    func dissmissSelectLocationScreen() {
+        window?.rootViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    func presentSelectLocationScreen() {
+        let selectLocationViewController = SelectLocationRouter.singleInstance.loadSelectLocationModule()
+        window?.rootViewController?.present(selectLocationViewController, animated: true, completion: nil)
+    }
+    func presentScreen(screens: Screens) {
+        switch screens {
+        case .firstScreen:
+            presentFirstScreen()
+        case .login:
+            presentLoginScreen()
+        case .instagram:
+             presentLoginInstagramScreen()
+        case .location:
+            presentLocationScreen()
+        case .foodcards:
+            presentFoodcardsScreen()
+        case .selectLocation:
+            presentSelectLocationScreen()
+        case .dismissNewLocation:
+            dissmissSelectLocationScreen()
+        }
+    }
     private func presentView(_ viewController: UIViewController) {
         guard let window = UIApplication.shared.delegate?.window! else { return }
         window.backgroundColor = UIColor.white
         window.makeKeyAndVisible()
         window.rootViewController = viewController
-    }    
+    }
 }
