@@ -238,6 +238,9 @@
                                 <state key="normal" title="Privacy Policy">
                                     <color key="titleColor" red="0.33725490196078434" green="0.33725490196078434" blue="0.33725490196078434" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="privacyPolicyButtonActionWithSender:" destination="Ez3-hg-TLH" eventType="touchUpInside" id="IPW-YY-RAP"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eq0-UJ-ZtV">
                                 <rect key="frame" x="0.0" y="622" width="375" height="45"/>
@@ -249,6 +252,9 @@
                                 <state key="normal" title="Log Out">
                                     <color key="titleColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="logoutButtonActionWithSender:" destination="Ez3-hg-TLH" eventType="touchUpInside" id="A7X-aU-j8j"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -276,6 +282,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="logoutButton" destination="Eq0-UJ-ZtV" id="pGm-ZN-iHN"/>
                         <outlet property="navigationOptionTable" destination="Afx-AE-9a9" id="3gL-Lv-reB"/>
                         <outlet property="userImageView" destination="17w-bE-dMa" id="Y9v-nV-LQ7"/>
                         <outlet property="userInfoView" destination="liz-ok-5Rm" id="OaO-Z3-BpZ"/>

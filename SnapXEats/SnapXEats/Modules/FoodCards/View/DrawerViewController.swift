@@ -17,6 +17,16 @@ class DrawerViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     
+    @IBOutlet weak var logoutButton: UIButton!
+    
+    @IBAction func logoutButtonAction(sender: UIButton) {
+        // Logout Button action
+    }
+    
+    @IBAction func privacyPolicyButtonAction(sender: UIButton) {
+        // Privacy Policy Action
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
@@ -26,10 +36,10 @@ class DrawerViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         userInfoView.addViewBorderWithColor(color: UIColor.rgba(230.0, 230.0, 230.0, 1.0), width: 1.0, side: .bottom)
+        logoutButton.addViewBorderWithColor(color: UIColor.rgba(230.0, 230.0, 230.0, 1.0), width: 1.0, side: .top)
     }
     
     private func configureView() {
-        
         userImageView.layer.masksToBounds = true
         userImageView.layer.cornerRadius = userImageView.frame.width/2
         navigationOptionTable.tableFooterView = UIView()
