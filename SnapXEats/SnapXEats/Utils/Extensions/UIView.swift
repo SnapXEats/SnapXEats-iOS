@@ -8,6 +8,13 @@ import UIKit
 
 extension UIView {
     
+    enum ViewSides {
+        case top
+        case bottom
+        case left
+        case right
+    }
+    
     func superview<T>(ofType type: T.Type) -> T? where T: UIView {
         return superview as? T ?? superview?.superview(ofType: type)
     }
@@ -51,5 +58,20 @@ extension UIView {
         let maskLayer = CAShapeLayer()
         maskLayer.path = path.cgPath
         self.layer.mask = maskLayer
+    }
+    
+    func addViewBorderWithColor(color: UIColor, width: CGFloat, side: ViewSides) {
+        var frame = CGRect()
+        switch side {
+            case .top: frame = CGRect(x:0,y: 0, width:self.frame.size.width, height:width)
+            case .bottom: frame = CGRect(x:0, y:self.frame.size.height - width, width:self.frame.size.width, height:width)
+            case .left: frame = CGRect(x:0, y:0, width:width, height:self.frame.size.height)
+            case .right: frame = CGRect(x: self.frame.size.width - width,y: 0, width:width, height:self.frame.size.height)
+        }
+        
+        let border = CALayer()
+        border.backgroundColor = color.cgColor
+        border.frame = frame
+        self.layer.addSublayer(border)
     }
 }

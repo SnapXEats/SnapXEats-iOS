@@ -66,6 +66,8 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     
     @objc func menuButtonTapped() {
         //Menu Button Action
+        let router = RootRouter.singleInstance
+        router.drawerController.setDrawerState(.opened, animated: true)
     }
     
     @objc func serarchButtonTapped() {
