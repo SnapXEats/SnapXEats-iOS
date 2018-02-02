@@ -23,5 +23,9 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
 }
 
 extension UserPreferenceViewController: UserPreferenceView {
+    func initView() {
+        
+    }
+    
     // TODO: implement view output methods
 }

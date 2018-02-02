@@ -70,7 +70,7 @@ class RootRouter: NSObject {
             drawerController = KYDrawerController(drawerDirection: .left, drawerWidth: (0.61 * UIScreen.main.bounds.width))
             let drawerVC = FoodCardsRouter.singleInstance.loadDrawerMenu()
             foodCardViewController.selectedPrefernce = selectedPreference
-            drawerController.mainViewController = foodCardViewController
+            drawerController.mainViewController = foodCardNavigationController
             drawerController.drawerViewController = drawerVC
             presentView(drawerController)
         }
