@@ -18,7 +18,6 @@ enum NetworkResult {
 
 // MARK: - Notifications
 enum SnapXEatsNotification {
-
     static let connectedToInternet = "ConnectedToInternet"
 }
 protocol SnapXEatsData {
@@ -27,10 +26,6 @@ protocol SnapXEatsData {
 protocol NetworkFailure {
     func noInternet(result: NetworkResult)
     func checkRechability() -> Bool
-}
-
-protocol Response {
-    func response(result: NetworkResult)
 }
 
 protocol SnapXResult: NetworkFailure {

@@ -27,7 +27,7 @@ class LocationRouter {
 
         viewController.presenter =  presenter
 
-        presenter.view = viewController
+        presenter.baseView = viewController
         presenter.router = router
         presenter.interactor = interactor
 

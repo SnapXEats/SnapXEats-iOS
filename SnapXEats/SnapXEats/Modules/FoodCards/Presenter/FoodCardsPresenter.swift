@@ -10,12 +10,12 @@ import Foundation
 
 class FoodCardsPresenter {
 
-    // MARK: Properties
-
-    weak var view: FoodCardsView?
+    // MARK: Propertiesx
+    var baseView: BaseView?
     var router: FoodCardsWireframe?
     var interactor: FoodCardsRequestFomatter?
     
+    private init() {}
     static let singleInstance = FoodCardsPresenter()
 }
 
@@ -28,19 +28,7 @@ extension FoodCardsPresenter: FoodCardsPresentation {
     func refreshFoodCards() {
         router?.presentScreen(screen: .location)
     }
-    
 }
 
 extension FoodCardsPresenter: FoodCardsInteractorOutput {
-    func response(result: NetworkResult) {
-        switch result {
-        case .success(let value):
-            view?.success(result: value)
-        case .error:
-            view?.error(result: .error)
-        case .noInternet:
-            view?.error(result: .noInternet)
-        default: break
-        }
-    }
 }

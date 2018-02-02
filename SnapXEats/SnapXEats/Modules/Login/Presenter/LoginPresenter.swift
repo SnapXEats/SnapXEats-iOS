@@ -8,6 +8,7 @@ import Foundation
 class LoginPresenter {
     // MARK: Properties
     var view: LoginView?
+    var baseView: BaseView?
     
     var router: LoginViewWireframe?
     
@@ -38,6 +39,7 @@ extension LoginPresenter: LoginViewPresentation {
     }
     func setView(view: LoginView) {
         self.view = view
+        baseView = view
     }
 
     //TODO: Implement other methods from presenter->view here

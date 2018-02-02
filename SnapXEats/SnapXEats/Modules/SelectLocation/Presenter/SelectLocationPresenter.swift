@@ -12,7 +12,7 @@ class SelectLocationPresenter {
 
     // MARK: Properties
 
-    weak var view: SelectLocationView?
+    weak var baseView: BaseView?
     var router: SelectLocationWireframe?
     var interactor: SearchPlacePredictionsRequestFomatter?
     
@@ -36,17 +36,4 @@ extension SelectLocationPresenter: SelectLocationPresentation {
 }
 
 extension SelectLocationPresenter: SelectLocationInteractorOutput {
-    func response(result: NetworkResult) {
-        switch result {
-        case .success(let value):
-            view?.success(result: value)
-        case .error:
-            view?.error(result: .error)
-        case .noInternet:
-            view?.error(result: .noInternet)
-        default: break
-        }
-    }
-    
-    
 }

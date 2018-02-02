@@ -28,7 +28,7 @@ class SelectLocationRouter {
 
         viewController.presenter =  presenter
 
-        presenter.view = viewController
+        presenter.baseView = viewController
         presenter.router = router
         presenter.interactor = interactor
 
