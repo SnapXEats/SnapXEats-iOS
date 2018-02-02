@@ -33,9 +33,9 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     @IBOutlet weak var userLocation: UIButton!
     
     @IBAction func closeLocationView(_ sender: Any) {
-        (selectedPreference.location.latitude == 0 && selectedPreference.location.longitude == 0)
-            ? showSettingDialog()
-            : presenter?.closeLocationView(selectedPreference: selectedPreference)
+        navigateScreen {
+            presenter?.closeLocationView(selectedPreference: selectedPreference)
+        }
     }
     
     override func viewDidLoad() {
@@ -48,7 +48,18 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     }
     
     @IBAction func setNewLocation(_ sender: Any) {
-        presenter?.selectLocation()
+        navigateScreen {
+            presenter?.selectLocation()
+        }
+    }
+    
+    private func navigateScreen(screen:  () -> ()) {
+        let shareLocation = CLLocationManager.locationServicesEnabled()
+        let status = CLLocationManager.authorizationStatus()
+        let currectLoaction = (selectedPreference.location.latitude != 0.0 && selectedPreference.location.longitude != 0.0)
+        (shareLocation && (status == .authorizedWhenInUse || status == .authorizedAlways) && currectLoaction)
+            ? screen()
+            : showSettingDialog()
     }
     private func configureView() {
         topView.addShadow()
@@ -113,7 +124,7 @@ extension LocationViewController: CLLocationManagerDelegate {
             locationManager?.startUpdatingLocation()
             enabledLocationSharing = true
         case .denied:
-            showSettingDialog()
+            presenter?.selectLocation()
         case  .notDetermined:
             locationManager?.requestWhenInUseAuthorization()
         default: break
@@ -163,15 +174,15 @@ extension LocationViewController: CLLocationManagerDelegate {
         geocoder.reverseGeocodeLocation(location) {[weak self] (placemarksArray, error) in
             let enable = self?.checkRechability() ?? false
             if  enable && (placemarksArray?.count)! > 0 { // app was crashin on on/off internet
-                    // strongSelf.hideLoading()
-                    let placemark = placemarksArray?.first // Get the First Address from List
-                    self?.selectedPreference.location.latitude =  Double(placemark?.location?.coordinate.latitude ?? 0)
-                    self?.selectedPreference.location.longitude = Double(placemark?.location?.coordinate.longitude ?? 0)
-                    if let locality = placemark?.subLocality {
-                        self?.userLocation.setTitle("\(locality)", for: .normal)
-                    } else if let area = placemark?.subAdministrativeArea {
-                        self?.userLocation.setTitle("\(area)", for: .normal)
-                    }
+                // strongSelf.hideLoading()
+                let placemark = placemarksArray?.first // Get the First Address from List
+                self?.selectedPreference.location.latitude =  Double(placemark?.location?.coordinate.latitude ?? 0)
+                self?.selectedPreference.location.longitude = Double(placemark?.location?.coordinate.longitude ?? 0)
+                if let locality = placemark?.subLocality {
+                    self?.userLocation.setTitle("\(locality)", for: .normal)
+                } else if let area = placemark?.subAdministrativeArea {
+                    self?.userLocation.setTitle("\(area)", for: .normal)
+                }
             }
         }
     }
