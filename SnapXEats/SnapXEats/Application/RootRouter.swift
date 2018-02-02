@@ -7,7 +7,7 @@ import UIKit
 import FacebookLogin
 import FacebookCore
 enum Screens {
-    case login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference?), selectLocation, dismissNewLocation
+    case login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference?), selectLocation, dismissNewLocation, userPreference
 }
 
 class RootRouter: NSObject {
@@ -77,6 +77,16 @@ class RootRouter: NSObject {
 
     }
     
+    private func presentUserPreferencesScreen() {
+        let userPreferenceNvController = UserPreferenceRouter.singleInstance.loadUserPreferenceModule()
+        drawerController = KYDrawerController(drawerDirection: .left, drawerWidth: (0.61 * UIScreen.main.bounds.width))
+            
+        let drawerVC = FoodCardsRouter.singleInstance.loadDrawerMenu()
+        drawerController.mainViewController = userPreferenceNvController
+        drawerController.drawerViewController = drawerVC
+        presentView(drawerController)
+    }
+    
     private func dissmissSelectLocationScreen() {
         window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
@@ -100,6 +110,8 @@ class RootRouter: NSObject {
             presentFoodcardsScreen(selectedPreference: selectedPreference)
         case .selectLocation:
             presentSelectLocationScreen()
+        case .userPreference:
+            presentUserPreferencesScreen()
         case .dismissNewLocation:
             dissmissSelectLocationScreen()
         }
