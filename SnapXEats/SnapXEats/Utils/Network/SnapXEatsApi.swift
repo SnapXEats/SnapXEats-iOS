@@ -39,5 +39,4 @@ class SnapXEatsApi {
         Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseObject( completionHandler: completionHandler)
     
     }
-
 }

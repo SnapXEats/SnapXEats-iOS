@@ -20,7 +20,7 @@ class BaseViewController: UIViewController {
     // MARK: Methods
     
     func showLoading() {
-        if !isProgressHUD {
+        if isProgressHUD == false {
             isProgressHUD = true
             let topmostViewController = findTopmostViewController()
             progressHUD = MBProgressHUD.showAdded(to: topmostViewController.view, animated: true)
@@ -31,6 +31,7 @@ class BaseViewController: UIViewController {
     func hideLoading() {
         if isProgressHUD {
             self.progressHUD?.hide(animated: true)
+            isProgressHUD = false
         }
     }
     

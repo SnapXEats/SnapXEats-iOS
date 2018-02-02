@@ -15,7 +15,7 @@ protocol LocationView: BaseView {
 
 protocol LocationPresentation: class {
 
-        func closeLocationView(selectedPreference: SelectedPreference?)
+        func closeLocationView(selectedPreference: SelectedPreference)
         func selectLocation()
         func cuisinePreferenceRequest()
 }

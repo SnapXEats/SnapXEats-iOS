@@ -19,11 +19,11 @@ protocol FoodCardsView: BaseView {
 
 protocol FoodCardsPresentation: class {
     func refreshFoodCards()
-    func getFoodCards(selectedPreferences: SelectedPreference?)
+    func getFoodCards(selectedPreferences: SelectedPreference)
 }
 
 protocol FoodCardsRequestFomatter: class {
-    func sendFoodCardRequest(selectedPreferences: SelectedPreference?)
+    func sendFoodCardRequest(selectedPreferences: SelectedPreference)
 }
 
 protocol FoodCardsWebService: class {
@@ -31,7 +31,7 @@ protocol FoodCardsWebService: class {
 }
 
 protocol FoodCardsObjectMapper: class {
-     func foodCardDetails(data: Result<FoodCards> )
+     func restaurantsDetail(data: Result<DishInfo> )
 }
 
 protocol FoodCardsInteractorOutput: Response {
