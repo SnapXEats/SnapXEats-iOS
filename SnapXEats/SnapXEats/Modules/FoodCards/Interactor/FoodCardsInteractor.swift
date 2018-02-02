@@ -21,11 +21,14 @@ class FoodCardsInteractor {
 }
 
 extension FoodCardsInteractor: FoodCardsRequestFomatter {
-    func sendFoodCardRequest(selectedPreferences: SelectedPreference?) {
+    func sendFoodCardRequest(selectedPreferences: SelectedPreference) {
+        // For testing this values are hardcoded
+        let lat =  NSDecimalNumber(floatLiteral: 40.4862157)
+        let long = NSDecimalNumber(floatLiteral: -74.4518188)
         let requestParameter: [String: Any] = [
-            SnapXEatsFoodCardInfoKeys.latitude : selectedPreferences?.location.latitude ?? 0.0,
-            SnapXEatsFoodCardInfoKeys.longitude : selectedPreferences?.location.longitude ?? 0.0,
-            SnapXEatsFoodCardInfoKeys.cuisineArray : selectedPreferences?.selectedCuisine ?? []
+            SnapXEatsFoodCardInfoKeys.latitude  : lat.decimalValue, //selectedPreferences?.location.latitude ?? 0.0,
+            SnapXEatsFoodCardInfoKeys.longitude : long.decimalValue,// selectedPreferences?.location.longitude ?? 0.0,
+            SnapXEatsFoodCardInfoKeys.cuisineArray : selectedPreferences.selectedCuisine
         ]
         getFoodCardDishesRequest(forPath: SnapXEatsWebServicePath.dishesURL, withParameters: requestParameter)
     }
@@ -33,17 +36,17 @@ extension FoodCardsInteractor: FoodCardsRequestFomatter {
 
 extension FoodCardsInteractor: FoodCardsWebService {
     func getFoodCardDishesRequest(forPath: String, withParameters: [String: Any]) {
-        SnapXEatsApi.snapXRequestObjectWithParameters(path: forPath, parameters: withParameters) { [weak self](response: DataResponse<FoodCards>) in
+        SnapXEatsApi.snapXRequestObjectWithParameters(path: forPath, parameters: withParameters) { [weak self](response: DataResponse<DishInfo>) in
             let foodCardsResult = response.result
-            self?.foodCardDetails(data: foodCardsResult)
+            self?.restaurantsDetail(data: foodCardsResult)
         }
     }
 }
 
 extension FoodCardsInteractor: FoodCardsObjectMapper {
-    
+
     // TODO: Implement use case methods
-    func foodCardDetails(data: Result<FoodCards> ) {
+    func restaurantsDetail(data: Result<DishInfo>) {
         switch data {
         case .success(let value):
             output?.response(result: .success(data: value))

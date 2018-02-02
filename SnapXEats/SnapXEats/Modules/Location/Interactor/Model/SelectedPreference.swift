@@ -10,7 +10,7 @@ import Foundation
 
 class SelectedPreference {
     var location = SnapXEatsLocation()
-    var selectedCuisine:[String]?
+    var selectedCuisine = [String]()
     
     func getLatitude() -> (Double, Double) {
         return (0, 0)

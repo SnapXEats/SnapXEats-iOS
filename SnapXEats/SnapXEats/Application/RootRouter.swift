@@ -7,7 +7,7 @@ import UIKit
 import FacebookLogin
 import FacebookCore
 enum Screens {
-    case login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference?), selectLocation, dismissNewLocation
+    case login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference), selectLocation, dismissNewLocation
 }
 
 class RootRouter: NSObject {
@@ -62,7 +62,7 @@ class RootRouter: NSObject {
         presentView(locatioViewController)
     }
     
-    private func presentFoodcardsScreen(selectedPreference: SelectedPreference?) {
+    private func presentFoodcardsScreen(selectedPreference: SelectedPreference) {
         // Embed the VC into the Drawer
         
         let foodCardNavigationController = FoodCardsRouter.singleInstance.loadFoodCardModule()

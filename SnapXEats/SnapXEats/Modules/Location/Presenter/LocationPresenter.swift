@@ -23,7 +23,7 @@ class LocationPresenter {
 extension LocationPresenter: LocationPresentation {
     
     // TODO: implement presentation methods
-    func closeLocationView(selectedPreference: SelectedPreference?) {
+    func closeLocationView(selectedPreference: SelectedPreference) {
         router?.presentScreen(screen: .foodcards(selectPreference: selectedPreference))
     }
     
