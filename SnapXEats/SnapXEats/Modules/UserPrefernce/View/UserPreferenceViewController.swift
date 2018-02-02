@@ -19,12 +19,13 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        initView()
     }
 }
 
 extension UserPreferenceViewController: UserPreferenceView {
     func initView() {
-        
+        self.customizeNavigationItemWithTitle(title: SnapXEatsMenuOptions.preferences)
     }
     
     // TODO: implement view output methods
