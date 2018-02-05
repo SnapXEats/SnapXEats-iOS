@@ -120,3 +120,7 @@ enum SnapXButtonTitle {
     static let cancel = "Cancel"
     static let settings = "Settings"
 }
+
+enum SnapXEatsAppDefaults {
+    static let emptyString = ""
+}

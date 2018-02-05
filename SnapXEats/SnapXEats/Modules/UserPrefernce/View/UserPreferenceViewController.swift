@@ -8,19 +8,34 @@
 
 import Foundation
 import UIKit
+import BetterSegmentedControl
 
 class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
 
-    // MARK: Properties
-
+    enum filterColors {
+        static let textColor = UIColor.rgba(157.0, 157.0, 163.0, 1.0)
+        static let selectedTextColor = UIColor.rgba(86.0, 86.0, 86.0, 1.0)
+    }
+    
     var presenter: UserPreferencePresentation?
 
-    // MARK: Lifecycle
     @IBOutlet weak var sampleLabel: UILabel!
     @IBOutlet weak var locationInfoView: UIView!
+    @IBOutlet weak var pricingFilter: BetterSegmentedControl!
+    @IBOutlet weak var distanceFilter: BetterSegmentedControl!
     
     @IBOutlet weak var distanceRadioButton: UIButton!
     @IBOutlet weak var ratingsRadioButton: UIButton!
+    
+    @IBOutlet weak var fiveStarRatingButton: UIButton!
+    @IBOutlet weak var fourStarRatingButton: UIButton!
+    @IBOutlet weak var threeStarRatingButton: UIButton!
+    
+    @IBOutlet weak var distanceRangeContainerView: UIView!
+    @IBOutlet weak var priceRangeContainerView: UIView!
+    
+    @IBOutlet weak var selectCuisineButton: UIButton!
+    @IBOutlet weak var selectFoodButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +50,10 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
         // Apply Button Action
     }
     
+    @IBAction func locationSelectAction(sender: UIButton) {
+        // Location Select Action
+    }
+        
     @IBAction func radioButtonSelected(sender: UIButton) {
         if sender == distanceRadioButton && sender.isSelected == false {
             sender.isSelected = true
@@ -46,12 +65,106 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
             distanceRadioButton.isSelected = false
         }
     }
+    
+    @IBAction func starRatingSelected(sender: UIButton) {
+        
+        switch sender {
+        case fiveStarRatingButton:
+            sender.isSelected = true
+            threeStarRatingButton.isSelected = false
+            fourStarRatingButton.isSelected = false
+            
+        case fourStarRatingButton:
+            sender.isSelected = true
+            threeStarRatingButton.isSelected = false
+            fiveStarRatingButton.isSelected = false
+            
+        case threeStarRatingButton:
+            sender.isSelected = true
+            fourStarRatingButton.isSelected = false
+            fiveStarRatingButton.isSelected = false
+            
+        default: break
+        }
+    }
 }
 
 extension UserPreferenceViewController: UserPreferenceView {
     func initView() {
         self.customizeNavigationItemWithTitle(title: SnapXEatsMenuOptions.preferences)
+        
+        pricingFilter.titles = [
+            SnapXEatsAppDefaults.emptyString,
+            SnapXEatsAppDefaults.emptyString,
+            SnapXEatsAppDefaults.emptyString,
+            SnapXEatsAppDefaults.emptyString
+        ]
+        
+        distanceFilter.titles = [
+            SnapXEatsAppDefaults.emptyString,
+            SnapXEatsAppDefaults.emptyString,
+            SnapXEatsAppDefaults.emptyString,
+            SnapXEatsAppDefaults.emptyString,
+            SnapXEatsAppDefaults.emptyString,
+            SnapXEatsAppDefaults.emptyString
+        ]
+        
+        selectCuisineButton.addShadow(width: 0.0, height: 0.0)
+        selectFoodButton.addShadow(width: 0.0, height: 0.0)
+        selectFoodButton.layer.cornerRadius = 3.0
+        selectCuisineButton.layer.cornerRadius = 3.0
+        
+        // Show first item in Filter selected byDefault
+        if let button = priceRangeContainerView.viewWithTag(1) as? UIButton {
+            button.setTitleColor(filterColors.selectedTextColor, for: .normal)
+        }
+        
+        if let button = distanceRangeContainerView.viewWithTag(1) as? UIButton {
+            button.setTitleColor(filterColors.selectedTextColor, for: .normal)
+        }
+    }
+
+    // TODO: implement view output methods
+}
+
+// Pricing and Distance filter and related methods
+extension UserPreferenceViewController {
+    
+    @IBAction func pricingSelectedAction(sender: UIButton) {
+        do {
+            try pricingFilter.setIndex(UInt(sender.tag - 1), animated: true)
+        } catch {
+            print("Error in Setting Index for Price filter")
+        }
     }
     
-    // TODO: implement view output methods
+    @IBAction  func priceFilterValueChanged(_ sender: BetterSegmentedControl) {
+        let buttonTag = Int(sender.index) + 1 // Tag starts from 1 to avoid confusion with other subviews of the view
+        for index in 1...pricingFilter.titles.count {
+            if let button = priceRangeContainerView.viewWithTag(index) as? UIButton {
+                button.setTitleColor(titleColorForFilterRangeAt(index: index, buttonTag: buttonTag), for: .normal)
+            }
+        }
+    }
+    
+    @IBAction func DistanceSelectedAction(sender: UIButton) {
+        do {
+            try distanceFilter.setIndex(UInt(sender.tag-1), animated: true)
+        } catch {
+            print("Error in Setting Index for Distance filter")
+        }
+    }
+    
+    @IBAction  func distanceFilterValueChanged(_ sender: BetterSegmentedControl) {
+        let buttonTag = Int(sender.index) + 1 // Tag starts from 1 to avoid confusion with other subviews of the view
+        for index in 1...distanceFilter.titles.count {
+            if let button = distanceRangeContainerView.viewWithTag(index) as? UIButton {
+                button.setTitleColor(titleColorForFilterRangeAt(index: index, buttonTag: buttonTag), for: .normal)
+            }
+        }
+    }
+    
+    private func titleColorForFilterRangeAt(index: Int, buttonTag: Int) -> UIColor {
+        return (index == buttonTag) ? filterColors.selectedTextColor : filterColors.textColor
+    }
 }
