@@ -120,7 +120,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4TV-Kl-tqH"/>
                     </view>
-                    <navigationItem key="navigationItem" id="g0V-s3-Rqf"/>
+                    <navigationItem key="navigationItem" id="g0V-s3-Rqf">
+                        <barButtonItem key="rightBarButtonItem" image="navigation_search_icon" id="Tif-uD-TTq">
+                            <color key="tintColor" red="0.36470588235294116" green="0.36470588235294116" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="searchButtonAction:" destination="PVr-ZQ-ZIz" id="IHO-FC-kd2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="kolodaView" destination="yZP-OQ-Zyj" id="wac-SE-htp"/>
                     </connections>
@@ -328,6 +335,7 @@
     <resources>
         <image name="cross" width="65" height="64"/>
         <image name="heart" width="64" height="64"/>
+        <image name="navigation_search_icon" width="23" height="23"/>
         <image name="profile_placeholder" width="60" height="61"/>
         <image name="reward_points" width="16" height="12"/>
         <image name="star" width="38" height="38"/>

@@ -31,8 +31,11 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
         locationInfoView.addViewBorderWithColor(color: UIColor.rgba(230.0, 230.0, 230.0, 1.0), width: 1.0, side: .bottom)
     }
     
+    @IBAction func applyButtonAction(_: Any) {
+        // Apply Button Action
+    }
+    
     @IBAction func radioButtonSelected(sender: UIButton) {
-        
         if sender == distanceRadioButton && sender.isSelected == false {
             sender.isSelected = true
             ratingsRadioButton.isSelected = false

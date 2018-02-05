@@ -302,7 +302,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NHn-TD-AZ9"/>
                     </view>
-                    <navigationItem key="navigationItem" id="SL9-Y2-kc2"/>
+                    <navigationItem key="navigationItem" id="SL9-Y2-kc2">
+                        <barButtonItem key="rightBarButtonItem" title="Apply" id="77Y-HN-Udo">
+                            <color key="tintColor" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="applyButtonAction:" destination="Ipe-nt-eOg" id="Jtk-zn-LI1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <size key="freeformSize" width="375" height="750"/>
                     <connections>

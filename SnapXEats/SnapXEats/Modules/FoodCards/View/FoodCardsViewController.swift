@@ -27,6 +27,11 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     @IBAction func refreshScreen(_ sender: Any) {
         presenter?.refreshFoodCards()
     }
+    
+    @IBAction func searchButtonAction(_: Any) {
+        // Search Button Action
+    }
+    
     //TO DO: This is Temp Code and should be removed when API is implemented
     var  foodCards = [
         FoodCard(name: "Restaurant", imageURL: ""),

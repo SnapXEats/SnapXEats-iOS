@@ -76,9 +76,7 @@ extension UIViewController { // Navigation Item
         
         // Left Button - Menu
         self.navigationItem.leftBarButtonItem = setMenuButton()
-        
-        // Right Button - Search
-        self.navigationItem.rightBarButtonItem = setSearchButton()
+    
     }
     
     private func setTitleLogo() -> UIImageView {
@@ -96,13 +94,7 @@ extension UIViewController { // Navigation Item
         return  UIBarButtonItem(customView: menuButton)
     }
     
-    private func setSearchButton() -> UIBarButtonItem {
-        let serarchButton:UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 23, height: 23))
-        serarchButton.setImage(UIImage(named: SnapXEatsImageNames.navigationSearch), for: UIControlState.normal)
-        serarchButton.addTarget(self, action: #selector(serarchButtonTapped), for: UIControlEvents.touchUpInside)
-        return UIBarButtonItem(customView: serarchButton)
-    }
-    
+
     @objc func menuButtonTapped() {
         //Menu Button Action
         let router = RootRouter.singleInstance
