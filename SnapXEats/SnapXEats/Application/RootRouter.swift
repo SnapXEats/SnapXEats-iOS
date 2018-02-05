@@ -62,7 +62,7 @@ class RootRouter: NSObject {
         presentView(locatioViewController)
     }
     
-    private func presentFoodcardsScreen(selectedPreference: SelectedPreference?) {
+    private func presentFoodcardsScreen(selectedPreference: SelectedPreference) {
         // Embed the VC into the Drawer
         
         let foodCardNavigationController = FoodCardsRouter.singleInstance.loadFoodCardModule()

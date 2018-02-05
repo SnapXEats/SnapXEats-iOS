@@ -33,9 +33,9 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     @IBOutlet weak var userLocation: UIButton!
     
     @IBAction func closeLocationView(_ sender: Any) {
-         (selectedPreference.location.latitude == 0 && selectedPreference.location.longitude == 0)
-            ? showSettingDialog()
-            : presenter?.closeLocationView(selectedPreference: selectedPreference)
+        navigateScreen {
+            presenter?.closeLocationView(selectedPreference: selectedPreference)
+        }
     }
     
     override func viewDidLoad() {
@@ -48,7 +48,18 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     }
     
     @IBAction func setNewLocation(_ sender: Any) {
-        presenter?.selectLocation()
+        navigateScreen {
+            presenter?.selectLocation()
+        }
+    }
+    
+    private func navigateScreen(screen:  () -> ()) {
+        let shareLocation = CLLocationManager.locationServicesEnabled()
+        let status = CLLocationManager.authorizationStatus()
+        let currectLoaction = (selectedPreference.location.latitude != 0.0 && selectedPreference.location.longitude != 0.0)
+        (shareLocation && (status == .authorizedWhenInUse || status == .authorizedAlways) && currectLoaction)
+            ? screen()
+            : showSettingDialog()
     }
     private func configureView() {
         topView.addShadow()
@@ -56,7 +67,7 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     }
     
     func registerNotification() {
-            NotificationCenter.default.addObserver(self,selector: #selector(internetConnected), name: NSNotification.Name(rawValue: SnapXEatsNotification.connectedToInternet), object: nil)
+        NotificationCenter.default.addObserver(self,selector: #selector(internetConnected), name: NSNotification.Name(rawValue: SnapXEatsNotification.connectedToInternet), object: nil)
     }
     
     @objc func internetConnected() {
@@ -113,7 +124,7 @@ extension LocationViewController: CLLocationManagerDelegate {
             locationManager?.startUpdatingLocation()
             enabledLocationSharing = true
         case .denied:
-            showSettingDialog()
+            presenter?.selectLocation()
         case  .notDetermined:
             locationManager?.requestWhenInUseAuthorization()
         default: break
@@ -161,17 +172,16 @@ extension LocationViewController: CLLocationManagerDelegate {
     private func showAddressForLocation(location: CLLocation) {
         let geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(location) {[weak self] (placemarksArray, error) in
-            guard let strongSelf = self else { return }
-            
-            if (placemarksArray?.count)! > 0 {
-               // strongSelf.hideLoading()
+            let enable = self?.checkRechability() ?? false
+            if  enable && (placemarksArray?.count)! > 0 { // app was crashin on on/off internet
+                // strongSelf.hideLoading()
                 let placemark = placemarksArray?.first // Get the First Address from List
-                strongSelf.selectedPreference.location.latitude =  Double(placemark?.location?.coordinate.latitude ?? 0)
-                strongSelf.selectedPreference.location.longitude = Double(placemark?.location?.coordinate.longitude ?? 0)
+                self?.selectedPreference.location.latitude =  Double(placemark?.location?.coordinate.latitude ?? 0)
+                self?.selectedPreference.location.longitude = Double(placemark?.location?.coordinate.longitude ?? 0)
                 if let locality = placemark?.subLocality {
-                    strongSelf.userLocation.setTitle("\(locality)", for: .normal)
+                    self?.userLocation.setTitle("\(locality)", for: .normal)
                 } else if let area = placemark?.subAdministrativeArea {
-                    strongSelf.userLocation.setTitle("\(area)", for: .normal)
+                    self?.userLocation.setTitle("\(area)", for: .normal)
                 }
             }
         }
@@ -200,11 +210,11 @@ extension LocationViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if selectedCuisineIndexes.contains(indexPath.row) {
             selectedCuisineIndexes.remove(indexPath.row)
-            selectedPreference.selectedCuisine?.remove(at: indexPath.row)
+            selectedPreference.selectedCuisine.remove(at: indexPath.row)
         } else {
             selectedCuisineIndexes.add(indexPath.row)
-             let item = cuiseItems[indexPath.row]
-            selectedPreference.selectedCuisine?.append(item.cuisineName ?? "")
+            let item = cuiseItems[indexPath.row]
+            selectedPreference.selectedCuisine.append(item.cuisineName ?? "")
         }
         enableDoneButton(state: selectedCuisineIndexes.count > 0 ? true : false)
         collectionView.reloadItems(at: [indexPath])

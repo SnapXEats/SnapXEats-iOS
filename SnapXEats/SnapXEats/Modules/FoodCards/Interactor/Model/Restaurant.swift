@@ -11,10 +11,23 @@
 import Foundation
 import ObjectMapper
 
-class FoodCards: Mappable {
+class DishInfo: Mappable {
+
+    var dishInfo: [Restaurant]?
+    
+    required init?(map: Map) {
+    }
+    
+    // Mappable
+    func mapping(map: Map) {
+        dishInfo <- map["dishesInfo"]
+    }
+}
+
+class Restaurant: Mappable {
 	var restaurant_info_id: String?
 	var restaurant_name: String?
-	var restaurantDishes: [RestaurantDishes]?
+	var restaurantDishes =  [RestaurantDishes]()
 
     required init?(map: Map) {
     }
@@ -31,7 +44,7 @@ class RestaurantDishes: Mappable {
     
     var restaurant_dish_id: String?
     var dish_image_url: String?
-    var restaurantDishLabels: [RestaurantDishLabels]?
+    var restaurantDishLabels = [DishLabels]()
     
     required init?(map: Map) {
     }
@@ -43,12 +56,13 @@ class RestaurantDishes: Mappable {
     }
 }
 
-class RestaurantDishLabels: Mappable {
+class DishLabels: Mappable {
     
     var dish_label: String?
     
     required init?(map: Map) {
     }
+    
     func mapping(map: Map) {
         dish_label <- map["dish_label"]
     }

@@ -24,3 +24,25 @@ extension RootWireFrame {
         RootRouter.singleInstance.presentScreen(screens: screen)
     }
 }
+
+protocol Response {
+    var baseView: BaseView? {set get}
+    func response(result: NetworkResult)
+}
+
+extension Response {
+    func response(result: NetworkResult) {
+        switch result {
+        case .success(let value):
+            baseView?.success(result: value)
+        case .error:
+            baseView?.error(result: .error)
+        case .fail:
+            baseView?.error(result: .error)
+        case  .noInternet:
+            baseView?.noInternet(result: .noInternet)
+        case  .cancelRequest:
+            baseView?.cancel(result: .cancelRequest)
+        }
+    }
+}

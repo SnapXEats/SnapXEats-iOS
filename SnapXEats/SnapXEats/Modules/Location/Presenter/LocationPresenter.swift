@@ -12,7 +12,7 @@ class LocationPresenter {
 
     // MARK: Properties
 
-    weak var view: LocationView?
+    weak var baseView: BaseView?
     var router: LocationWireframe?
     var interactor: LocationRequestFomatter?
     
@@ -23,7 +23,7 @@ class LocationPresenter {
 extension LocationPresenter: LocationPresentation {
     
     // TODO: implement presentation methods
-    func closeLocationView(selectedPreference: SelectedPreference?) {
+    func closeLocationView(selectedPreference: SelectedPreference) {
         router?.presentScreen(screen: .foodcards(selectPreference: selectedPreference))
     }
     
@@ -37,17 +37,6 @@ extension LocationPresenter: LocationPresentation {
 }
 
 extension LocationPresenter: LocationInteractorOutput {
-    func response(result: NetworkResult) {
-        switch result {
-        case .success(let value):
-            view?.success(result: value)
-        case .error:
-            view?.error(result: .error)
-        case .noInternet:
-            view?.error(result: .noInternet)
-        default: break
-        }
-    }
-    
     // TODO: implement interactor output methods
 }
+

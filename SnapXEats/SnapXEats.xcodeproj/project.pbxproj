@@ -91,7 +91,7 @@
 		9D902BE8201729E400359DFD /* SelectLocationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D902BE3201729E300359DFD /* SelectLocationRouter.swift */; };
 		9D902BEA20172A2F00359DFD /* SelectLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D902BE920172A2F00359DFD /* SelectLocation.storyboard */; };
 		9D902BEC201736B500359DFD /* FoodCards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D902BEB201736B500359DFD /* FoodCards.storyboard */; };
-		9D9868D92023202B003E82F6 /* FoodCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9868D62023202B003E82F6 /* FoodCards.swift */; };
+		9D9868D92023202B003E82F6 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9868D62023202B003E82F6 /* Restaurant.swift */; };
 		9DB02A6E2010805F0061FC0C /* LocationContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB02A652010805F0061FC0C /* LocationContract.swift */; };
 		9DB02A6F2010805F0061FC0C /* LocationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB02A672010805F0061FC0C /* LocationPresenter.swift */; };
 		9DB02A702010805F0061FC0C /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB02A692010805F0061FC0C /* LocationViewController.swift */; };
@@ -224,7 +224,7 @@
 		9D902BE920172A2F00359DFD /* SelectLocation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectLocation.storyboard; sourceTree = "<group>"; };
 		9D902BEB201736B500359DFD /* FoodCards.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FoodCards.storyboard; sourceTree = "<group>"; };
 		9D902BED20177EFF00359DFD /* SnapXEats.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SnapXEats.entitlements; sourceTree = "<group>"; };
-		9D9868D62023202B003E82F6 /* FoodCards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCards.swift; sourceTree = "<group>"; };
+		9D9868D62023202B003E82F6 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		9DB02A652010805F0061FC0C /* LocationContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationContract.swift; sourceTree = "<group>"; };
 		9DB02A672010805F0061FC0C /* LocationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPresenter.swift; sourceTree = "<group>"; };
 		9DB02A692010805F0061FC0C /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
@@ -828,7 +828,7 @@
 		9D9868D520232018003E82F6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9D9868D62023202B003E82F6 /* FoodCards.swift */,
+				9D9868D62023202B003E82F6 /* Restaurant.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1220,7 +1220,7 @@
 				9D8E88FA1FFD2BEC0066A1D9 /* UITextField+Border.swift in Sources */,
 				7E5C058220185F34000B5C33 /* SavedAddressHeaderViewCell.swift in Sources */,
 				9DB02A6F2010805F0061FC0C /* LocationPresenter.swift in Sources */,
-				9D9868D92023202B003E82F6 /* FoodCards.swift in Sources */,
+				9D9868D92023202B003E82F6 /* Restaurant.swift in Sources */,
 				9DE7CE512023620500BBBFEC /* UserPreferenceContract.swift in Sources */,
 				9D8E88FB1FFD2BEC0066A1D9 /* UICollectionView.swift in Sources */,
 				9D8E88FC1FFD2BEC0066A1D9 /* DataResponse.swift in Sources */,

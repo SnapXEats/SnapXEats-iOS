@@ -16,11 +16,11 @@ struct FoodCard {
 }
 
 class FoodCardsViewController: BaseViewController, StoryboardLoadable {
-
+    
     // MARK: Constants
     private let foodCardNibName = "FoodCardView"
     
-    var selectedPrefernce: SelectedPreference?
+    var selectedPrefernce = SelectedPreference()
     var presenter: FoodCardsPresentation?
     @IBOutlet weak var kolodaView: KolodaView!
     
@@ -34,12 +34,12 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     
     //TO DO: This is Temp Code and should be removed when API is implemented
     var  foodCards = [
-        FoodCard(name: "Restaurant", imageURL: ""),
-        FoodCard(name: "Restaurant", imageURL: ""),
-        FoodCard(name: "Restaurant", imageURL: ""),
-        FoodCard(name: "Restaurant", imageURL: "")
+        FoodCard(name: "", imageURL: ""),
+        FoodCard(name: "", imageURL: ""),
+        FoodCard(name: "", imageURL: ""),
+        FoodCard(name: "", imageURL: "")
     ]
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,14 +52,21 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     
     override func  success(result: Any?) {
         hideLoading()
-        if let foodCards = result as? FoodCards, let dishes = foodCards.restaurantDishes {
-            hideLoading()
-            for dishitem in dishes {
-                let foodCard = FoodCard(name: foodCards.restaurant_name!, imageURL: dishitem.dish_image_url!)
-                self.foodCards.append(foodCard)
-            }
-            kolodaView.reloadData()
+        if let restaurants = result as? [Restaurant] {
+            setFoodCardDetails(restaurants: restaurants)
         }
+    }
+    
+    private func setFoodCardDetails(restaurants: [Restaurant]) {
+        hideLoading()
+        for restaurant in restaurants {
+             let dishes = restaurant.restaurantDishes
+                for dishitem in dishes {
+                    let foodCard = FoodCard(name: restaurant.restaurant_name!, imageURL: dishitem.dish_image_url!)
+                    self.foodCards.append(foodCard)
+                }
+        }
+         kolodaView.reloadData()
     }
 }
 
@@ -87,7 +94,7 @@ extension FoodCardsViewController: KolodaViewDelegate, KolodaViewDataSource {
         foodCardView.addShadow()
         return foodCardView
     }
-
+    
     func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
         koloda.reloadData()
     }
