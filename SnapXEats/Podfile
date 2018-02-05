@@ -18,6 +18,7 @@ target 'SnapXEats' do
     pod 'FacebookLogin'
     pod 'FacebookShare'
     pod 'Koloda', '~> 4.3.1'
+    pod 'BetterSegmentedControl', '~> 0.9'
 
 end
 

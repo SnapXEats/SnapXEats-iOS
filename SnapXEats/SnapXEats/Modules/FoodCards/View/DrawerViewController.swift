@@ -67,15 +67,15 @@ class DrawerViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//            switch indexPath.row {
-//            case 0: self.navigateToHomePage()
-//            case 1: self.navigateToMenuOption(identifier: PCConstants.Identifiers.ourstoryNavigation)
-//            case 2: self.navigateToMenuOption(identifier: PCConstants.Identifiers.clientdiariesNavigation)
-//            case 3: self.navigateToMenuOption(identifier: PCConstants.Identifiers.policiesNavigation)
-//            case 4: self.navigateToMenuOption(identifier: PCConstants.Identifiers.reachUsNavigation)
-//            //case 5: self.showLogoutConfirmationAlert()
-//            default:
-//                break
-//            }
+        
+        let router = RootRouter.singleInstance
+        router.drawerController.setDrawerState(.closed, animated: true)
+        
+        switch indexPath.row {
+        case 1:
+            router.presentScreen(screens: .userPreference)
+        default:
+            break
+        }
     }
 }

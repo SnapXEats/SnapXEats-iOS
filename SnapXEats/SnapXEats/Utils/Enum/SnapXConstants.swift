@@ -48,6 +48,7 @@ enum SnapXEatsStoryboard {
     static let loginStoryboard = "Login"
     static let locationStoryboard = "Location"
     static let foodCardsStoryboard = "FoodCards"
+    static let userPreferenceStoryboard = "UserPreference"
 }
 
 enum SnapXEatsStoryboardIdentifier {
@@ -56,7 +57,8 @@ enum SnapXEatsStoryboardIdentifier {
     static let locationViewControllerID = "LocationViewController"
     static let foodCardsNavigationControllerID = "FoodCardsNavigationController"
     static let locationCellReuseIdentifier = "CuisineCell"
-    static  let locationCuisineCollectionCellIdentifier = "CuisineCollectionViewCell"
+    static let locationCuisineCollectionCellIdentifier = "CuisineCollectionViewCell"
+    static let userPreferenceNavigationControllerID = "UserPreferenceNavigationController"
 }
 
 enum SnapXEatsLocationConstant {
@@ -117,4 +119,8 @@ enum SnapXButtonTitle {
     static let ok = "Ok"
     static let cancel = "Cancel"
     static let settings = "Settings"
+}
+
+enum SnapXEatsAppDefaults {
+    static let emptyString = ""
 }

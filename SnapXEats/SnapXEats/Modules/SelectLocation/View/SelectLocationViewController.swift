@@ -36,6 +36,7 @@ class SelectLocationViewController: BaseViewController, StoryboardLoadable {
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var locationsTableview: UITableView!
     @IBOutlet weak var locationSearchBar: UISearchBar!
+    @IBOutlet weak var selectLocationButton: UISearchBar!
     
     @IBAction func closeSelectLocation(_ sender: Any) {
         presenter?.dismissScreen()
@@ -43,6 +44,10 @@ class SelectLocationViewController: BaseViewController, StoryboardLoadable {
     
     @IBAction func doneButtonAction(_ sender: Any) {
         print("Selected Location --- \(String(describing: selectedLocation?.latitude)) ----- \(String(describing: selectedLocation?.latitude))")
+    }
+    
+    @IBAction func selectLocationAction(_ sender: Any) {
+        // Select Location Action
     }
     
     override func viewDidLoad() {

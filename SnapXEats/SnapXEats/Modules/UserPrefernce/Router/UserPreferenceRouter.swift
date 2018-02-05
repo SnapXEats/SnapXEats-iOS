@@ -14,11 +14,18 @@ class UserPreferenceRouter {
     // MARK: Properties
 
     weak var view: UIViewController?
+    static let singleInstance = UserPreferenceRouter()
 
     // MARK: Static methods
 
-    static func setupModule() -> UserPreferenceViewController {
-        let viewController = UIStoryboard.loadViewController() as UserPreferenceViewController
+    func loadUserPreferenceModule() -> UINavigationController {
+        
+        let userPreferenceNVController = UIStoryboard.loadNavigationControler(storyBoardName: SnapXEatsStoryboard.userPreferenceStoryboard, storyBoardId: SnapXEatsStoryboardIdentifier.userPreferenceNavigationControllerID)
+        
+        guard let firstViewController = userPreferenceNVController.viewControllers.first, let viewController = firstViewController as? UserPreferenceViewController else {
+            return UINavigationController()
+        }
+        
         let presenter = UserPreferencePresenter()
         let router = UserPreferenceRouter()
         let interactor = UserPreferenceInteractor()
@@ -33,7 +40,7 @@ class UserPreferenceRouter {
 
         interactor.output = presenter
 
-        return viewController
+        return userPreferenceNVController
     }
 }
 

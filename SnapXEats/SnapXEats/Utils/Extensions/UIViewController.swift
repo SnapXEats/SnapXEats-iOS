@@ -61,5 +61,49 @@ extension UIViewController: UIGestureRecognizerDelegate {
     }
 }
 
+extension UIViewController { // Navigation Item
+
+    func customizeNavigationItemWithTitle(title: String? = nil) {
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationItem.backBarButtonItem?.title = nil
+        
+        // Navigation Title Logo/Text
+        if let navigationTitle = title {
+            self.navigationItem.title = navigationTitle
+        } else {
+            self.navigationItem.titleView = setTitleLogo()
+        }
+        
+        // Left Button - Menu
+        self.navigationItem.leftBarButtonItem = setMenuButton()
+    
+    }
+    
+    private func setTitleLogo() -> UIImageView {
+        let titleLogoImage = UIImageView(frame: CGRect(x:0, y:0, width: 134, height: 30))
+        titleLogoImage.contentMode = .scaleAspectFit
+        titleLogoImage.image = UIImage(named: SnapXEatsImageNames.navigationLogo)
+        return titleLogoImage
+    }
+    
+    
+    private func setMenuButton() -> UIBarButtonItem {
+        let menuButton:UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 21, height: 18))
+        menuButton.setImage(UIImage(named: SnapXEatsImageNames.navigationMenu), for: UIControlState.normal)
+        menuButton.addTarget(self, action: #selector(menuButtonTapped), for: UIControlEvents.touchUpInside)
+        return  UIBarButtonItem(customView: menuButton)
+    }
+    
+
+    @objc func menuButtonTapped() {
+        //Menu Button Action
+        let router = RootRouter.singleInstance
+        router.drawerController.setDrawerState(.opened, animated: true)
+    }
+    
+    @objc func serarchButtonTapped() {
+        //Search Button Action
+    }
+}
 extension UIViewController: ReusableView { }
 
