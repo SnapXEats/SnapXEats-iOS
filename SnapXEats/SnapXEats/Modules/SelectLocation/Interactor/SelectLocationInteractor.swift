@@ -54,14 +54,14 @@ extension SelectLocationInteractor: SearchPlacePredictionsRequestFomatter {
 extension SelectLocationInteractor: SearchPlacePredictionsWebService {
     // TODO: Implement use case methods
     func getSearchPlacePredictionRequest(forPath: String, withParameters parameters: [String: String]) {
-        SnapXEatsApi.snapXRequestObjectWithParameters(path: forPath, parameters: parameters) { [weak self](response: DataResponse<SearchPlacePredictions>) in
+        SnapXEatsApi.googleRequestObjectWithParameters(path: forPath, parameters: parameters) { [weak self](response: DataResponse<SearchPlacePredictions>) in
             let placePredictionResult = response.result
             self?.searchedPlacePredictionDetails(data: placePredictionResult)
         }
     }
     
     func getPlaceDetailsRequest(forPath: String, withParameters parameters: [String: String]) {
-        SnapXEatsApi.snapXRequestObjectWithParameters(path: forPath, parameters: parameters) { [weak self](response: DataResponse<SnapXEatsPlaceDetails>) in
+        SnapXEatsApi.googleRequestObjectWithParameters(path: forPath, parameters: parameters) { [weak self](response: DataResponse<SnapXEatsPlaceDetails>) in
             let placePredictionResult = response.result
             self?.mapPlaceDetails(data: placePredictionResult)
         }
