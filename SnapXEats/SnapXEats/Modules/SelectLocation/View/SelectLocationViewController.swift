@@ -36,7 +36,6 @@ class SelectLocationViewController: BaseViewController, StoryboardLoadable {
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var locationsTableview: UITableView!
     @IBOutlet weak var locationSearchBar: UISearchBar!
-    @IBOutlet weak var selectLocationButton: UISearchBar!
     
     @IBAction func closeSelectLocation(_ sender: Any) {
         presenter?.dismissScreen()
@@ -156,7 +155,13 @@ extension SelectLocationViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if searchPlaces.count != 0 {
-            setLocationForSearchedPlace(place: searchPlaces[indexPath.row])
+            let selectedPlace = searchPlaces[indexPath.row]
+            setLocationForSearchedPlace(place: selectedPlace)
+            
+            // Set Selected Place to text box and clear searched places
+            locationSearchBar.text = selectedPlace.description
+            self.searchPlaces = []
+            tableView.reloadData()
         }
     }
 }
