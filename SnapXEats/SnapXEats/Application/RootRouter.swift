@@ -7,7 +7,7 @@ import UIKit
 import FacebookLogin
 import FacebookCore
 enum Screens {
-    case login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference?), selectLocation, dismissNewLocation, userPreference
+    case login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference), selectLocation, dismissNewLocation, userPreference
 }
 
 class RootRouter: NSObject {
