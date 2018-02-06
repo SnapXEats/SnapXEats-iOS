@@ -162,6 +162,7 @@
                         <viewLayoutGuide key="safeArea" id="uoE-MN-LaK"/>
                     </view>
                     <connections>
+                        <outlet property="currentLocationLabel" destination="Q2d-0Q-FXY" id="Btu-dL-ge2"/>
                         <outlet property="locationSearchBar" destination="dYC-KQ-aqI" id="rha-af-5Gr"/>
                         <outlet property="locationsTableview" destination="5B1-CN-meF" id="FwS-jj-osw"/>
                         <outlet property="searchDisplayController" destination="GQz-5y-m6W" id="PJa-fy-5oj"/>

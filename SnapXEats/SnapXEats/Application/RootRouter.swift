@@ -7,7 +7,7 @@ import UIKit
 import FacebookLogin
 import FacebookCore
 enum Screens {
-    case login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference), selectLocation, dismissNewLocation, userPreference
+    case login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference), selectLocation, dismissNewLocation(selectPreference: SelectedPreference), userPreference
 }
 
 class RootRouter: NSObject {
@@ -112,7 +112,7 @@ class RootRouter: NSObject {
             presentSelectLocationScreen()
         case .userPreference:
             presentUserPreferencesScreen()
-        case .dismissNewLocation:
+        case .dismissNewLocation(let value):
             dissmissSelectLocationScreen()
         }
     }

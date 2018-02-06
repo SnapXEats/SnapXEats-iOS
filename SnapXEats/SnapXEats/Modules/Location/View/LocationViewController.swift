@@ -18,24 +18,30 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     private var cuiseItems = [Cuisine]()
     private let itemsPerRow: CGFloat = 2
     
-    private let selectedPreference = SelectedPreference()
-    private var enabledLocationSharing = false
+    let userPreference = UserPreference()
     private let sectionInsets = UIEdgeInsets(top: 10.0, left: 20.0, bottom: 30.0, right: 20.0)
     var presenter: LocationPresentation?
     var selectedCuisineIndexes = NSMutableArray()
     
-    // MARK: Lifecycle
-    var locationManager: CLLocationManager?
+    var currentView: UIViewController {
+        get {
+            return self
+        }
+    }
     
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var cuisinCollectionView: UICollectionView!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var userLocation: UIButton!
+
+    private var locationEnabled: Bool {
+        get {
+            return (selectedPreference.location.latitude != 0.0 && selectedPreference.location.longitude != 0.0)
+        }
+    }
     
     @IBAction func closeLocationView(_ sender: Any) {
-        navigateScreen {
-            presenter?.closeLocationView(selectedPreference: selectedPreference)
-        }
+        presenter?.closeLocationView(selectedPreference: selectedPreference)
     }
     
     override func viewDidLoad() {
@@ -44,23 +50,16 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        enabledLocationSharing = false
+        locationManager.delegate = self
+        registerCellForNib()
     }
     
     @IBAction func setNewLocation(_ sender: Any) {
-        navigateScreen {
-            presenter?.selectLocation()
-        }
+        stopLocationManager()
+        unRegisterNotification()
+        presenter?.selectLocation()
     }
     
-    private func navigateScreen(screen:  () -> ()) {
-        let shareLocation = CLLocationManager.locationServicesEnabled()
-        let status = CLLocationManager.authorizationStatus()
-        let currectLoaction = (selectedPreference.location.latitude != 0.0 && selectedPreference.location.longitude != 0.0)
-        (shareLocation && (status == .authorizedWhenInUse || status == .authorizedAlways) && currectLoaction)
-            ? screen()
-            : showSettingDialog()
-    }
     private func configureView() {
         topView.addShadow()
         registerCellForNib()
@@ -70,8 +69,14 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
         NotificationCenter.default.addObserver(self,selector: #selector(internetConnected), name: NSNotification.Name(rawValue: SnapXEatsNotification.connectedToInternet), object: nil)
     }
     
+    func unRegisterNotification() {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     @objc func internetConnected() {
-        verigyLocationService()
+        if permissionDenied && locationEnabled == false {
+          verigyLocationService()
+        }
     }
     
     func registerCellForNib() {
@@ -92,15 +97,12 @@ extension LocationViewController: LocationView {
     
     // TODO: implement view output methods
     func initView() {
-        locationManager = CLLocationManager()
-        locationManager?.delegate = self
-        enableDoneButton(state: false)
+        enableDoneButton()
         configureView()
-        registerNotification()
     }
 }
 
-extension LocationViewController: CLLocationManagerDelegate {
+extension LocationViewController: CLLocationManagerDelegate, SnapXEatsUserLocation {
     
     //this method will be called each time when a user change his location access preference.
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -109,47 +111,30 @@ extension LocationViewController: CLLocationManagerDelegate {
     
     //if we have no permission to access user location, then ask user for permission.
     private func verigyLocationService() {
-        locationManager?.delegate = self
-        if checkRechability() {
-            CLLocationManager.locationServicesEnabled() ? checkLocationStatus() : showSettingDialog()
-        }
+        showSettingDialog()
+        //CLLocationManager.locationServicesEnabled() ? checkLocationStatus() : showSettingDialog()
     }
     
-    private func checkLocationStatus() {
+     func checkLocationStatus() {
         let status = CLLocationManager.authorizationStatus()
         switch status  {
         case .authorizedWhenInUse:
-            sendCuiseRequest()
-            locationManager?.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager?.startUpdatingLocation()
-            enabledLocationSharing = true
+            if checkRechability() {
+                locationManager.desiredAccuracy = kCLLocationAccuracyBest
+                locationManager.startUpdatingLocation()
+            }
         case .denied:
-            presenter?.selectLocation()
+            if permissionDenied == false {
+                permissionDenied = true
+                presenter?.selectLocation()
+
+            } else  {
+                showSettingDialog()
+            }
         case  .notDetermined:
-            locationManager?.requestWhenInUseAuthorization()
+            locationManager.requestWhenInUseAuthorization()
         default: break
         }
-    }
-    
-    private func showUserLocationDialog() {
-        SnapXAlert.singleInstance.createAlert(alertTitle: SnapXEatsLocationConstant.locationAlertTitle, message: SnapXEatsLocationConstant.locationAlertMessage, forView: self)
-        SnapXAlert.singleInstance.show()
-    }
-    
-    func showSettingDialog() {
-        let alertController = UIAlertController(title: NSLocalizedString(SnapXEatsLocationConstant.locationAlertTitle, comment: ""), message: NSLocalizedString(SnapXEatsLocationConstant.locationAlertMessage, comment: ""), preferredStyle: .alert)
-        
-        let cancelAction = UIAlertAction(title: NSLocalizedString(SnapXButtonTitle.cancel, comment: ""), style: .cancel, handler: { [weak self ](UIAlertAction) in
-            guard let strongSelf = self else { return }
-            strongSelf.sendCuiseRequest()
-        })
-        let settingsAction = UIAlertAction(title: NSLocalizedString(SnapXButtonTitle.settings, comment: ""), style: .default) { (UIAlertAction) in
-            UIApplication.shared.openURL(NSURL(string: UIApplicationOpenSettingsURLString)! as URL)
-        }
-        
-        alertController.addAction(cancelAction)
-        alertController.addAction(settingsAction)
-        self.present(alertController, animated: true, completion: nil)
     }
     
     private func sendCuiseRequest() {
@@ -160,22 +145,23 @@ extension LocationViewController: CLLocationManagerDelegate {
     }
     //this method is called by the framework on locationManager.requestLocation();
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if checkRechability() {
-            let location = locations.first!
-            locationManager?.stopUpdatingLocation()
-            locationManager = nil
-            // Get user's current location Address
-            showAddressForLocation(location: location)
-        }
+            showAddressForLocation(locations: locations) {[weak self] (locality: String?, subAdministrativeArea: String? ) in
+                if let locality = locality {
+                    self?.userLocation.setTitle("\(locality)", for: .normal)
+                } else if let area = subAdministrativeArea {
+                    self?.userLocation.setTitle("\(area)", for: .normal)
+                }
+                self?.sendCuiseRequest()
+            }
     }
     
     private func showAddressForLocation(location: CLLocation) {
         let geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(location) {[weak self] (placemarksArray, error) in
             let enable = self?.checkRechability() ?? false
-            if  enable && (placemarksArray?.count)! > 0 { // app was crashin on on/off internet
+            if let placemarksArray = placemarksArray, placemarksArray.count > 0 && enable { // app was crashin on on/off internet
                 // strongSelf.hideLoading()
-                let placemark = placemarksArray?.first // Get the First Address from List
+                let placemark = placemarksArray.first // Get the First Address from List
                 self?.selectedPreference.location.latitude =  Double(placemark?.location?.coordinate.latitude ?? 0)
                 self?.selectedPreference.location.longitude = Double(placemark?.location?.coordinate.longitude ?? 0)
                 if let locality = placemark?.subLocality {
@@ -183,6 +169,7 @@ extension LocationViewController: CLLocationManagerDelegate {
                 } else if let area = placemark?.subAdministrativeArea {
                     self?.userLocation.setTitle("\(area)", for: .normal)
                 }
+                self?.sendCuiseRequest()
             }
         }
     }
@@ -216,11 +203,12 @@ extension LocationViewController: UICollectionViewDelegate, UICollectionViewData
             let item = cuiseItems[indexPath.row]
             selectedPreference.selectedCuisine.append(item.cuisineName ?? "")
         }
-        enableDoneButton(state: selectedCuisineIndexes.count > 0 ? true : false)
+        enableDoneButton()
         collectionView.reloadItems(at: [indexPath])
     }
     
-    func enableDoneButton(state: Bool) {
+    private func enableDoneButton() {
+        let state =  selectedCuisineIndexes.count > 0 && locationEnabled
         doneButton.isUserInteractionEnabled = state
         doneButton.alpha = state == true ? 1.0 : 0.5
     }

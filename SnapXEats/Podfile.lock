@@ -5,6 +5,7 @@ PODS:
   - AlamofireObjectMapper (5.0.0):
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 3.0)
+  - BetterSegmentedControl (0.9)
   - Bolts (1.9.0):
     - Bolts/AppLinks (= 1.9.0)
     - Bolts/Tasks (= 1.9.0)
@@ -46,6 +47,7 @@ DEPENDENCIES:
   - Alamofire (~> 4.5)
   - AlamofireImage (~> 3.3)
   - AlamofireObjectMapper (~> 5.0)
+  - BetterSegmentedControl (~> 0.9)
   - Crashlytics
   - FacebookCore
   - FacebookLogin
@@ -61,6 +63,7 @@ SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   AlamofireImage: 2e784dc5d00f04903a52c1d169181469c805c3df
   AlamofireObjectMapper: 5fafc816351cbbc0d486611aaeba7461c0cbad49
+  BetterSegmentedControl: 40b2b6a08bbc59663149624d1b5235efa8d43a3c
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
   Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
@@ -78,6 +81,6 @@ SPEC CHECKSUMS:
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
   UIColor_Hex_Swift: 95f718452092a3efc8a827dffd2c04d3237be02d
 
-PODFILE CHECKSUM: a3a7021be92e5cb6a88ba5bd3fc4c714dc148956
+PODFILE CHECKSUM: 34ca1cb2927b92b78b5b1dc59c94a1f130914472
 
 COCOAPODS: 1.3.1

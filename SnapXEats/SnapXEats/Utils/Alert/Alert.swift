@@ -40,6 +40,21 @@ class SnapXAlert{
         view = forView
     }
     
+    func showLoationSettingDialog(forView: UIViewController, settingString: String, cancel : @escaping () -> ()) {
+         create(alertTitle: SnapXEatsLocationConstant.locationAlertTitle, message: SnapXEatsLocationConstant.locationAlertMessage, forView: forView)
+        
+        let cancelAction = UIAlertAction(title: NSLocalizedString(SnapXButtonTitle.cancel, comment: ""), style: .cancel, handler: {(UIAlertAction) in
+            cancel()
+        })
+        let settingsAction = UIAlertAction(title: NSLocalizedString(SnapXButtonTitle.settings, comment: ""), style: .default) { (UIAlertAction) in
+            if let url = NSURL(string: settingString) as URL? {
+                UIApplication.shared.openURL(url)
+            }
+        }
+        alertSnapX?.addAction(cancelAction)
+        alertSnapX?.addAction(settingsAction)
+        show()
+    }
     
     func show() {
         if let alert = alertSnapX, let alrtView = view {
