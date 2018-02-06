@@ -58,7 +58,7 @@ class LoginViewController: BaseViewController, StoryboardLoadable, LoginView {
      func initView() {
         instagramLoginButton.addBorder(ofWidth: 1, withColor: UIColor.rgba(255.0, 255.0, 255.0, 0.34), radius: 5.0)
         facebookLoginButton.addBorder(ofWidth: 1, withColor: UIColor.rgba(255.0, 255.0, 255.0, 0.34), radius: 5.0)
-        buildLabel.text = SnapXEatsConstant.buildVersion.getBuildVersion()
+        buildLabel.text = SnapXEatsBuild.buildVersion.getBuildVersion()
     }
 }
 

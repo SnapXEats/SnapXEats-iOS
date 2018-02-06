@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
 enum SelectLocationResourceIdentifiler {
     static let savedLocationCellIdentifier = "SavedLocationCell"
@@ -25,7 +26,7 @@ struct SavedAddress {
 }
 
 class SelectLocationViewController: BaseViewController, StoryboardLoadable {
-
+    
     let savedLocationHeaderHeight: CGFloat = 35.0
     
     var presenter: SelectLocationPresentation?
@@ -37,22 +38,33 @@ class SelectLocationViewController: BaseViewController, StoryboardLoadable {
     @IBOutlet weak var locationsTableview: UITableView!
     @IBOutlet weak var locationSearchBar: UISearchBar!
     
-    @IBAction func closeSelectLocation(_ sender: Any) {
-        presenter?.dismissScreen()
+    @IBOutlet weak var currentLocationLabel: UILabel!
+    
+    var userPreference = UserPreference()
+    var currentView: UIViewController {
+        get {
+            return self
+        }
     }
+    
+    var locationDenied: Bool  = false
+    
+    @IBAction func closeSelectLocation(_ sender: Any) {
+        // presenter?.dismissScreen()
+    }
+    
     
     @IBAction func doneButtonAction(_ sender: Any) {
         print("Selected Location --- \(String(describing: selectedLocation?.latitude)) ----- \(String(describing: selectedLocation?.latitude))")
     }
     
     @IBAction func selectLocationAction(_ sender: Any) {
-        // Select Location Action
+        verigyLocationService()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureView()
-        createSavedAddressesDataSource()
+        initView()
     }
     
     override func success(result: Any?) {
@@ -61,8 +73,8 @@ class SelectLocationViewController: BaseViewController, StoryboardLoadable {
             locationsTableview.reloadData()
         }
         
-        if let result = result as? SnapXEatsPlaceDetails {
-            selectedLocation = result.placeResult?.geometry?.location
+        if let result = result as? SnapXEatsPlaceDetails, let location = result.placeResult?.geometry?.location {
+            selectedPreference.location = location
         }
     }
     
@@ -122,7 +134,7 @@ extension SelectLocationViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
+        
         if searchPlaces.count == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: SelectLocationResourceIdentifiler.savedLocationCellIdentifier, for: indexPath) as! SavedLocationTableViewCell
             tableView.separatorStyle = .none
@@ -162,14 +174,66 @@ extension SelectLocationViewController: UITableViewDelegate, UITableViewDataSour
             locationSearchBar.text = selectedPlace.description
             self.searchPlaces = []
             tableView.reloadData()
+            self.navigatView {
+                 self.presenter?.dismissScreen(selectedPreference: (self.selectedPreference))
+            }
+            
         }
     }
 }
 
 extension SelectLocationViewController: SelectLocationView {
     func initView() {
-        
+        configureView()
+        createSavedAddressesDataSource()
+    }
+}
+
+extension SelectLocationViewController: CLLocationManagerDelegate, SnapXEatsUserLocation {
+
+    //this method will be called each time when a user change his location access preference.
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        verigyLocationService()
     }
     
-    // TODO: implement view output methods
+    //if we have no permission to access user location, then ask user for permission.
+    private func verigyLocationService() {
+        locationManager.delegate = self
+        showSettingDialog()
+    }
+    
+    func checkLocationStatus() {
+        let status = CLLocationManager.authorizationStatus()
+        switch status  {
+        case .authorizedWhenInUse:
+            showLoading()
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+        case .denied, .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        default: break
+        }
+    }
+    
+    //this method is called by the framework on locationManager.requestLocation();
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        showAddressForLocation(locations: locations) {[weak self] (locality: String?, subAdministrativeArea: String? ) in
+            if let locality = locality {
+                self?.currentLocationLabel.text = locality //("\(locality)", for: .normal)
+            } else if let area = subAdministrativeArea {
+                self?.currentLocationLabel.text = area //("\(area)", for: .normal)
+            }
+            self?.hideLoading()
+            self?.navigatView {
+                self?.presenter?.dismissScreen(selectedPreference: (self?.selectedPreference)!)
+            }
+            
+        }
+    }
+    
+    private func navigatView(present: () -> ()) {
+        stopLocationManager()
+        present()
+    }
 }
+

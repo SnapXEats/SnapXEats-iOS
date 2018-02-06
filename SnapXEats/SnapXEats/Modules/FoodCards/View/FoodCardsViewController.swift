@@ -20,7 +20,7 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     // MARK: Constants
     private let foodCardNibName = "FoodCardView"
     
-    var selectedPrefernce = SelectedPreference()
+    var selectedPrefernce = SelectedPreference.singleInstance
     var presenter: FoodCardsPresentation?
     @IBOutlet weak var kolodaView: KolodaView!
     

@@ -23,7 +23,7 @@ enum SnapXEatsNotification {
 protocol SnapXEatsData {
     
 }
-protocol NetworkFailure {
+protocol NetworkFailure: class {
     func noInternet(result: NetworkResult)
     func checkRechability() -> Bool
 }

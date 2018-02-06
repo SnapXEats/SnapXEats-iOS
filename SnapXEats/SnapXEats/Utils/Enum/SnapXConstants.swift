@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 
 enum InstagramConstant {
     static let INSTAGRAM_AUTHURL = "https://api.instagram.com/oauth/authorize/"
@@ -30,7 +30,7 @@ enum InstagramConstant {
     }
 }
 
-enum SnapXEatsConstant {
+enum SnapXEatsBuild {
     case buildVersion
     
     func getBuildVersion() -> String {
@@ -123,4 +123,13 @@ enum SnapXButtonTitle {
 
 enum SnapXEatsAppDefaults {
     static let emptyString = ""
+}
+
+enum SnapXEatsSettingsURL {
+    static let appLocationSettings = UIApplicationOpenSettingsURLString
+    static let deviceLocationSetting = "App-Prefs:root=Privacy&path=LOCATION" // There is a bug in ios 11 because of that it is not oppening the URL
+}
+
+enum SnapXEatsConstant {
+    static let onceDeniedLocation = "SnapXEatsOnceDenedLocation"
 }

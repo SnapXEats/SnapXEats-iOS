@@ -9,10 +9,13 @@
 import Foundation
 
 class SelectedPreference {
-    var location = SnapXEatsLocation()
+    var location = SnapXEatsLocation ()
     var selectedCuisine = [String]()
     
     func getLatitude() -> (Double, Double) {
         return (0, 0)
+    }
+    static let singleInstance = SelectedPreference()
+    private init() {
     }
 }

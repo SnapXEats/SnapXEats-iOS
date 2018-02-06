@@ -15,7 +15,7 @@ protocol SelectLocationView: class, BaseView {
 }
 
 protocol SelectLocationPresentation: class {
-    func dismissScreen()
+    func dismissScreen(selectedPreference: SelectedPreference)
     func getSearchPlaces(searchText: String)
     func getPlaceDetails(placeid: String)
 }

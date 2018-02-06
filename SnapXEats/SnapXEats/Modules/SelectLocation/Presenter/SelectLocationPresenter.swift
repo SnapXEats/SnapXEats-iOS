@@ -22,8 +22,8 @@ class SelectLocationPresenter {
 }
 
 extension SelectLocationPresenter: SelectLocationPresentation {
-    func dismissScreen() {
-        router?.presentScreen(screen: .dismissNewLocation)
+    func dismissScreen(selectedPreference: SelectedPreference) {
+        router?.presentScreen(screen: .dismissNewLocation(selectPreference: selectedPreference))
     }
     
     func getSearchPlaces(searchText: String) {
