@@ -31,8 +31,8 @@ extension LocationPresenter: LocationPresentation {
         router?.presentScreen(screen: .selectLocation)
     }
     
-    func cuisinePreferenceRequest() {
-        interactor?.getCuisines()
+    func cuisinePreferenceRequest(selectedPreference: SelectedPreference) {
+        interactor?.getCuisines(selectedPreference: selectedPreference)
     }
 }
 

@@ -34,9 +34,6 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     
     //TO DO: This is Temp Code and should be removed when API is implemented
     var  foodCards = [
-        FoodCard(name: "", imageURL: ""),
-        FoodCard(name: "", imageURL: ""),
-        FoodCard(name: "", imageURL: ""),
         FoodCard(name: "", imageURL: "")
     ]
     
@@ -52,13 +49,13 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     
     override func  success(result: Any?) {
         hideLoading()
-        if let restaurants = result as? [Restaurant] {
+        if let dishInfo = result as?  DishInfo, let restaurants = dishInfo.restaurants, restaurants.count > 0  {
             setFoodCardDetails(restaurants: restaurants)
         }
     }
     
     private func setFoodCardDetails(restaurants: [Restaurant]) {
-        hideLoading()
+        self.foodCards.removeAll()
         for restaurant in restaurants {
              let dishes = restaurant.restaurantDishes
                 for dishitem in dishes {
@@ -66,7 +63,8 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
                     self.foodCards.append(foodCard)
                 }
         }
-         kolodaView.reloadData()
+        kolodaView.reloadData()
+         hideLoading()
     }
 }
 
@@ -107,7 +105,7 @@ extension FoodCardsViewController: KolodaViewDelegate, KolodaViewDataSource {
 extension FoodCardsViewController {
     
     func showFoodCard() {
-        if checkRechability() {
+        if checkRechability() &&  foodCards.count == 1 {
             showLoading()
             presenter?.getFoodCards(selectedPreferences: selectedPrefernce)
         }

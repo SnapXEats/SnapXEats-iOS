@@ -13,12 +13,27 @@ class CuisinePreference: Mappable {
     
     var cuisineList = [Cuisine]()
     
+    var userSelectedCuisinePreference = [UserSelectedCuisinePreference]()
+    
     required init?(map: Map) {
     }
     
     // Mappable
     func mapping(map: Map) {
         cuisineList <- map["cuisineList"]
+    }
+}
+
+class UserSelectedCuisinePreference : Mappable {
+    
+    var cuisineList = [Cuisine]()
+    
+    required init?(map: Map) {
+    }
+    
+    // Mappable
+    func mapping(map: Map) {
+        cuisineList <- map["userPreSelectedCuisines"]
     }
 }
 class Cuisine: Mappable {

@@ -27,18 +27,24 @@ extension LocationInteractor: LocationRequestFomatter {
      - parameters:
       - returns: Void
      */
-    func getCuisines() {
-        getCuisinesRequest(forPath: SnapXEatsWebServicePath.cuisinePreferenceURL)
+    func getCuisines(selectedPreference: SelectedPreference) {
+        let lat = selectedPreference.getLatitude()  // This is for testing we need to send actual from selectedpreferences
+        let requestParameters: [String: Any] = [
+            SnapXEatsWebServiceParameterKeys.latitude: lat.0,
+            SnapXEatsWebServiceParameterKeys.longitude: lat.1,
+            SnapXEatsWebServiceParameterKeys.authorization: ""
+        ]
+        getCuisinesRequest(forPath: SnapXEatsWebServicePath.cuisinePreferenceURL, withParameters: requestParameters)
     }
 }
 
 extension LocationInteractor: LocationWebService {
     // TODO: Implement use case methods
-    func getCuisinesRequest(forPath: String) {
-        SnapXEatsApi.snapXRequestObject(path: forPath ) { [weak self] (response: DataResponse<CuisinePreference>) in
-            guard let strongSelf = self else { return }
+    func getCuisinesRequest(forPath: String, withParameters: [String: Any]) {
+        
+        SnapXEatsApi.snapXRequestObjectWithParameters(path: forPath, parameters: withParameters) { [weak self](response: DataResponse<CuisinePreference>) in
             let cuisePrefernceArray = response.result
-            strongSelf.cuisinesDetails(data: cuisePrefernceArray)
+            self?.cuisinesDetails(data: cuisePrefernceArray)
         }
     }
 }

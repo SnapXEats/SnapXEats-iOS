@@ -54,6 +54,7 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
         locationManager.delegate = self
         registerCellForNib()
         setLocationTitle()
+        sendCuiseRequest()
     }
     
     @IBAction func setNewLocation(_ sender: Any) {
@@ -147,9 +148,9 @@ extension LocationViewController: CLLocationManagerDelegate, SnapXEatsUserLocati
     }
     
     private func sendCuiseRequest() {
-        if checkRechability() && cuiseItems.count == 0 && !isProgressHUD {
+        if checkRechability() && cuiseItems.count == 0 && !isProgressHUD && locationEnabled {
             showLoading()
-            presenter?.cuisinePreferenceRequest()
+            presenter?.cuisinePreferenceRequest(selectedPreference: selectedPreference)
         }
     }
     //this method is called by the framework on locationManager.requestLocation();

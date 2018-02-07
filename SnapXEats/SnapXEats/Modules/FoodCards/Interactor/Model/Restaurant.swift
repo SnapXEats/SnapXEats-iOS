@@ -13,14 +13,14 @@ import ObjectMapper
 
 class DishInfo: Mappable {
 
-    var dishInfo: [Restaurant]?
+    var restaurants: [Restaurant]?
     
     required init?(map: Map) {
     }
     
     // Mappable
     func mapping(map: Map) {
-        dishInfo <- map["dishesInfo"]
+        restaurants <- map["dishesInfo"]
     }
 }
 
