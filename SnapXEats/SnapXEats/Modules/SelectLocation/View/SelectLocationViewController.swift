@@ -50,7 +50,7 @@ class SelectLocationViewController: BaseViewController, StoryboardLoadable {
     var locationDenied: Bool  = false
     
     @IBAction func closeSelectLocation(_ sender: Any) {
-        // presenter?.dismissScreen()
+        presenter?.dismissScreen()
     }
     
     
@@ -75,6 +75,13 @@ class SelectLocationViewController: BaseViewController, StoryboardLoadable {
         
         if let result = result as? SnapXEatsPlaceDetails, let location = result.placeResult?.geometry?.location {
             selectedPreference.location = location
+            if let locatioString = locationSearchBar.text, locatioString != SnapXEatsConstant.emptyString,
+                let index = locatioString.index(of: ",") {
+                let locationName = String(locatioString[..<index])
+                navigatScreen(locationName: locationName)
+            }
+            
+            
         }
     }
     
@@ -120,10 +127,12 @@ extension SelectLocationViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.searchPlaces = []
-        if (searchText == "") { // If nothing in search, reload table with blank Dataspurce
-            locationsTableview.reloadData()
-        } else {
-            presenter?.getSearchPlaces(searchText: searchText)
+        if checkRechability() {
+            if (searchText == "") { // If nothing in search, reload table with blank Dataspurce
+                locationsTableview.reloadData()
+            } else {
+                presenter?.getSearchPlaces(searchText: searchText)
+            }
         }
     }
 }
@@ -167,17 +176,15 @@ extension SelectLocationViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if searchPlaces.count != 0 {
-            let selectedPlace = searchPlaces[indexPath.row]
-            setLocationForSearchedPlace(place: selectedPlace)
-            
-            // Set Selected Place to text box and clear searched places
-            locationSearchBar.text = selectedPlace.description
-            self.searchPlaces = []
-            tableView.reloadData()
-            self.navigatView {
-                 self.presenter?.dismissScreen(selectedPreference: (self.selectedPreference))
+            if checkRechability() {
+                let selectedPlace = searchPlaces[indexPath.row]
+                setLocationForSearchedPlace(place: selectedPlace)
+                
+                // Set Selected Place to text box and clear searched places
+                locationSearchBar.text = selectedPlace.description
+                self.searchPlaces = []
+                tableView.reloadData()
             }
-            
         }
     }
 }
@@ -190,7 +197,7 @@ extension SelectLocationViewController: SelectLocationView {
 }
 
 extension SelectLocationViewController: CLLocationManagerDelegate, SnapXEatsUserLocation {
-
+    
     //this method will be called each time when a user change his location access preference.
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         verigyLocationService()
@@ -206,10 +213,15 @@ extension SelectLocationViewController: CLLocationManagerDelegate, SnapXEatsUser
         let status = CLLocationManager.authorizationStatus()
         switch status  {
         case .authorizedWhenInUse:
-            showLoading()
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.startUpdatingLocation()
-        case .denied, .notDetermined:
+            if checkRechability() {
+                showLoading()
+                locationManager.desiredAccuracy = kCLLocationAccuracyBest
+                locationManager.startUpdatingLocation()
+            }
+        case .denied:
+            permissionDenied == false  ? permissionDenied = true : showSettingDialog()
+            
+        case  .notDetermined:
             locationManager.requestWhenInUseAuthorization()
         default: break
         }
@@ -223,17 +235,16 @@ extension SelectLocationViewController: CLLocationManagerDelegate, SnapXEatsUser
             } else if let area = subAdministrativeArea {
                 self?.currentLocationLabel.text = area //("\(area)", for: .normal)
             }
-            self?.hideLoading()
-            self?.navigatView {
-                self?.presenter?.dismissScreen(selectedPreference: (self?.selectedPreference)!)
-            }
             
+            self?.hideLoading()
+            self?.navigatScreen(locationName: self?.currentLocationLabel.text)
         }
     }
     
-    private func navigatView(present: () -> ()) {
+    private func navigatScreen(locationName: String?) {
+        selectedPreference.location.locationName = locationName ?? SnapXEatsConstant.emptyString
         stopLocationManager()
-        present()
+        presenter?.dismissScreen()
     }
 }
 

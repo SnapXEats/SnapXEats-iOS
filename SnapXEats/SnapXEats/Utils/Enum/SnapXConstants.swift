@@ -132,4 +132,5 @@ enum SnapXEatsSettingsURL {
 
 enum SnapXEatsConstant {
     static let onceDeniedLocation = "SnapXEatsOnceDenedLocation"
+    static let emptyString = ""
 }

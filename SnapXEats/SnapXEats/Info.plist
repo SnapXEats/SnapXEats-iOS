@@ -77,10 +77,12 @@
 		<key>NSExceptionDomains</key>
 		<dict/>
 	</dict>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>SnapXEats want to use your location to show cuisine based on your preferences</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string></string>
+	<string>Will you allow SnapXEats app to always use your location to show you cuisines based on your  preferences</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>SnapXEats want to use your location to show cuisine based on your preferences</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Roboto-Light.ttf</string>

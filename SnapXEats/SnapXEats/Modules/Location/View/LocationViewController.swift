@@ -28,6 +28,7 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
             return self
         }
     }
+
     
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var cuisinCollectionView: UICollectionView!
@@ -52,6 +53,7 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     override func viewWillAppear(_ animated: Bool) {
         locationManager.delegate = self
         registerCellForNib()
+        setLocationTitle()
     }
     
     @IBAction func setNewLocation(_ sender: Any) {
@@ -63,6 +65,13 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     private func configureView() {
         topView.addShadow()
         registerCellForNib()
+    }
+    
+    private func setLocationTitle() {
+        let locationTitle = self.selectedPreference.location.locationName
+        if locationTitle != SnapXEatsConstant.emptyString {
+            self.userLocation.setTitle("\(locationTitle)", for: .normal)
+        }
     }
     
     func registerNotification() {
@@ -103,7 +112,7 @@ extension LocationViewController: LocationView {
 }
 
 extension LocationViewController: CLLocationManagerDelegate, SnapXEatsUserLocation {
-    
+
     //this method will be called each time when a user change his location access preference.
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         verigyLocationService()
@@ -112,7 +121,6 @@ extension LocationViewController: CLLocationManagerDelegate, SnapXEatsUserLocati
     //if we have no permission to access user location, then ask user for permission.
     private func verigyLocationService() {
         showSettingDialog()
-        //CLLocationManager.locationServicesEnabled() ? checkLocationStatus() : showSettingDialog()
     }
     
      func checkLocationStatus() {
@@ -120,6 +128,7 @@ extension LocationViewController: CLLocationManagerDelegate, SnapXEatsUserLocati
         switch status  {
         case .authorizedWhenInUse:
             if checkRechability() {
+                showLoading()
                 locationManager.desiredAccuracy = kCLLocationAccuracyBest
                 locationManager.startUpdatingLocation()
             }
@@ -151,6 +160,7 @@ extension LocationViewController: CLLocationManagerDelegate, SnapXEatsUserLocati
                 } else if let area = subAdministrativeArea {
                     self?.userLocation.setTitle("\(area)", for: .normal)
                 }
+                self?.hideLoading()
                 self?.sendCuiseRequest()
             }
     }
