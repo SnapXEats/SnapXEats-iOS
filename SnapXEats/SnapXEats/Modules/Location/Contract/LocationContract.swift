@@ -17,15 +17,15 @@ protocol LocationPresentation: class {
 
         func closeLocationView(selectedPreference: SelectedPreference)
         func selectLocation()
-        func cuisinePreferenceRequest()
+        func cuisinePreferenceRequest(selectedPreference: SelectedPreference)
 }
 
 protocol LocationRequestFomatter: class {
-    func getCuisines()
+    func getCuisines(selectedPreference: SelectedPreference)
 }
 
 protocol LocationWebService: class {
-    func getCuisinesRequest(forPath: String)
+    func getCuisinesRequest(forPath: String, withParameters: [String: Any])
 }
 
 protocol LocationObjectMapper: class {

@@ -110,10 +110,11 @@ enum SnapXEatsNibNames {
     static let navigationMenuTableViewCell = "NavigationMenuTableViewCell"
 }
 
-enum SnapXEatsFoodCardInfoKeys {
+enum SnapXEatsWebServiceParameterKeys {
     static let latitude = "latitude"
     static let longitude = "longitude"
     static let cuisineArray = "cuisineArray"
+    static let authorization = "Authorization"
 }
 enum SnapXButtonTitle {
     static let ok = "Ok"

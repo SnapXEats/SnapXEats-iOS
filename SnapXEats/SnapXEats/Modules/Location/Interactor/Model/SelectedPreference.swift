@@ -12,8 +12,10 @@ class SelectedPreference {
     var location = SnapXEatsLocation ()
     var selectedCuisine = [String]()
     
-    func getLatitude() -> (Double, Double) {
-        return (0, 0)
+    func getLatitude() -> (Decimal, Decimal) {
+        let lat =  NSDecimalNumber(floatLiteral: 40.4862157)
+        let long = NSDecimalNumber(floatLiteral: -74.4518188)
+        return (NSDecimalNumber(floatLiteral: 40.4862157).decimalValue, NSDecimalNumber(floatLiteral: -74.4518188).decimalValue)
     }
     static let singleInstance = SelectedPreference()
     private init() {

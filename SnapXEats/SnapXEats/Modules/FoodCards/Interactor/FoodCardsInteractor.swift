@@ -23,12 +23,11 @@ class FoodCardsInteractor {
 extension FoodCardsInteractor: FoodCardsRequestFomatter {
     func sendFoodCardRequest(selectedPreferences: SelectedPreference) {
         // For testing this values are hardcoded
-        let lat =  NSDecimalNumber(floatLiteral: 40.4862157)
-        let long = NSDecimalNumber(floatLiteral: -74.4518188)
+        let lat = selectedPreferences.getLatitude()
         let requestParameter: [String: Any] = [
-            SnapXEatsFoodCardInfoKeys.latitude  : lat.decimalValue, //selectedPreferences?.location.latitude ?? 0.0,
-            SnapXEatsFoodCardInfoKeys.longitude : long.decimalValue,// selectedPreferences?.location.longitude ?? 0.0,
-            SnapXEatsFoodCardInfoKeys.cuisineArray : selectedPreferences.selectedCuisine
+            SnapXEatsWebServiceParameterKeys.latitude  : lat.0, //selectedPreferences?.location.latitude ?? 0.0,
+            SnapXEatsWebServiceParameterKeys.longitude : lat.1,// selectedPreferences?.location.longitude ?? 0.0,
+            SnapXEatsWebServiceParameterKeys.cuisineArray : selectedPreferences.selectedCuisine
         ]
         getFoodCardDishesRequest(forPath: SnapXEatsWebServicePath.dishesURL, withParameters: requestParameter)
     }
