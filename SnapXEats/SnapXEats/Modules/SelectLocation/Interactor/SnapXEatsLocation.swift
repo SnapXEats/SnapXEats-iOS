@@ -50,7 +50,7 @@ class SnapXEatsGeometry: Mappable {
 class SnapXEatsLocation: NSObject, Mappable {
     var latitude: Double = 0.0
     var longitude: Double = 0.0
-    
+    var locationName: String = ""
     override init() {
         super.init()
     }
