@@ -52,8 +52,8 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     
     override func viewWillAppear(_ animated: Bool) {
         locationManager.delegate = self
-        registerCellForNib()
         setLocationTitle()
+        registerNotification()
         sendCuiseRequest()
     }
     
@@ -75,16 +75,8 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
         }
     }
     
-    func registerNotification() {
-        NotificationCenter.default.addObserver(self,selector: #selector(internetConnected), name: NSNotification.Name(rawValue: SnapXEatsNotification.connectedToInternet), object: nil)
-    }
-    
-    func unRegisterNotification() {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    @objc func internetConnected() {
-        if permissionDenied && locationEnabled == false {
+    @objc override func internetConnected() {
+        if locationEnabled == false {
           verigyLocationService()
         }
     }

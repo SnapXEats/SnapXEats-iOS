@@ -54,10 +54,6 @@ class SelectLocationViewController: BaseViewController, StoryboardLoadable {
     }
     
     
-    @IBAction func doneButtonAction(_ sender: Any) {
-        print("Selected Location --- \(String(describing: selectedLocation?.latitude)) ----- \(String(describing: selectedLocation?.latitude))")
-    }
-    
     @IBAction func selectLocationAction(_ sender: Any) {
         verigyLocationService()
     }
@@ -111,9 +107,9 @@ class SelectLocationViewController: BaseViewController, StoryboardLoadable {
     }
     
     func createSavedAddressesDataSource() {
-        let homeAddress = SavedAddress(tilte: "Home", address: "4278 Webster street,  Edison, NJ", imageName: "home_icon")
-        let workAddress = SavedAddress(tilte: "Work", address: "1994 Webster street,  Edison, NJ", imageName: "work_icon")
-        savedAddresses = [homeAddress, workAddress]
+//        let homeAddress = SavedAddress(tilte: "Home", address: "4278 Webster street,  Edison, NJ", imageName: "home_icon")
+//        let workAddress = SavedAddress(tilte: "Work", address: "1994 Webster street,  Edison, NJ", imageName: "work_icon")
+//        savedAddresses = [homeAddress, workAddress]
     }
     
     private func setLocationForSearchedPlace(place : SearchPlace) {

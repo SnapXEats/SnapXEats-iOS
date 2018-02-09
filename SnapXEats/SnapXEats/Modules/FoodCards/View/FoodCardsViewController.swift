@@ -20,9 +20,24 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     // MARK: Constants
     private let foodCardNibName = "FoodCardView"
     
-    var selectedPrefernce = SelectedPreference.singleInstance
+    var selectedPrefernce: SelectedPreference?
     var presenter: FoodCardsPresentation?
     @IBOutlet weak var kolodaView: KolodaView!
+    
+    private var locationEnabled: Bool {
+        get {
+            guard let selectedPreference = selectedPrefernce else {
+               return false
+            }
+             return (selectedPreference.location.latitude != 0.0 && selectedPreference.location.longitude != 0.0)
+        }
+    }
+    
+    private var loadFoodCard: Bool {
+        get {
+             return checkRechability() &&  foodCards.count == 1 && locationEnabled
+        }
+    }
     
     @IBAction func refreshScreen(_ sender: Any) {
         presenter?.refreshFoodCards()
@@ -44,11 +59,23 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        showFoodCard()
+         registerNotification()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+         showFoodCard()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        unRegisterNotification()
+    }
+    
+    @objc override func internetConnected() {
+           showFoodCard()
     }
     
     override func  success(result: Any?) {
-        hideLoading()
+        selectedPrefernce?.resetData() // Reset the data once request completed
         if let dishInfo = result as?  DishInfo, let restaurants = dishInfo.restaurants, restaurants.count > 0  {
             setFoodCardDetails(restaurants: restaurants)
         }
@@ -105,9 +132,9 @@ extension FoodCardsViewController: KolodaViewDelegate, KolodaViewDataSource {
 extension FoodCardsViewController {
     
     func showFoodCard() {
-        if checkRechability() &&  foodCards.count == 1 {
+        if loadFoodCard {
             showLoading()
-            presenter?.getFoodCards(selectedPreferences: selectedPrefernce)
+            presenter?.getFoodCards(selectedPreferences: selectedPrefernce!)
         }
     }
 }

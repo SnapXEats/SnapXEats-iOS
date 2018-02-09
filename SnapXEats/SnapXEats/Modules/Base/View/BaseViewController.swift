@@ -7,7 +7,7 @@ import MBProgressHUD
 import ReachabilitySwift
 
 class BaseViewController: UIViewController {
-    
+
     // MARK: Properties
     
     var progressHUD: MBProgressHUD?
@@ -33,6 +33,10 @@ class BaseViewController: UIViewController {
             self.progressHUD?.hide(animated: true)
             isProgressHUD = false
         }
+    }
+    
+    @objc func internetConnected() {
+        // Sub class should have thre own implemetation
     }
     
     func showMessage(_ message: String?, withTitle title: String?) {
@@ -104,6 +108,7 @@ class BaseViewController: UIViewController {
     func checkRechability() -> Bool {
         if SnapXEatsNetworkManager.sharedInstance.isConnectedToInternet  == false {
             noInternet(result: .noInternet)
+            hideLoading()
             return false
         } else {
             return true

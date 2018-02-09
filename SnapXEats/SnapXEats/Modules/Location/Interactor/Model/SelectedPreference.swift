@@ -13,11 +13,19 @@ class SelectedPreference {
     var selectedCuisine = [String]()
     
     func getLatitude() -> (Decimal, Decimal) {
-        let lat =  NSDecimalNumber(floatLiteral: 40.4862157)
-        let long = NSDecimalNumber(floatLiteral: -74.4518188)
-        return (NSDecimalNumber(floatLiteral: 40.4862157).decimalValue, NSDecimalNumber(floatLiteral: -74.4518188).decimalValue)
+        let lat  =  40.4862157
+        let long = -74.4518188
+        return (NSDecimalNumber(floatLiteral: lat).decimalValue, NSDecimalNumber(floatLiteral: long).decimalValue)
     }
-    static let singleInstance = SelectedPreference()
+    
+     func resetData() {
+        location.latitude = 0.0
+        location.longitude = 0.0
+        location.locationName = ""
+        selectedCuisine = [String]()
+    }
+    
+    static let shared = SelectedPreference()
     private init() {
     }
 }

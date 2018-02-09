@@ -11,7 +11,7 @@ import CoreLocation
 import UIKit
 
 struct UserPreference {
-    let preference = SelectedPreference.singleInstance
+    let preference = SelectedPreference.shared
     let locationManager = CLLocationManager()
 }
 

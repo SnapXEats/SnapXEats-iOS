@@ -24,6 +24,7 @@ extension FoodCardsInteractor: FoodCardsRequestFomatter {
     func sendFoodCardRequest(selectedPreferences: SelectedPreference) {
         // For testing this values are hardcoded
         let lat = selectedPreferences.getLatitude()
+        
         let requestParameter: [String: Any] = [
             SnapXEatsWebServiceParameterKeys.latitude  : lat.0, //selectedPreferences?.location.latitude ?? 0.0,
             SnapXEatsWebServiceParameterKeys.longitude : lat.1,// selectedPreferences?.location.longitude ?? 0.0,
@@ -49,7 +50,7 @@ extension FoodCardsInteractor: FoodCardsObjectMapper {
         switch data {
         case .success(let value):
             output?.response(result: .success(data: value))
-        case .failure( _): break
+        case .failure( _):
         output?.response(result: NetworkResult.noInternet)
         }
     }

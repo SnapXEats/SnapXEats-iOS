@@ -57,10 +57,19 @@
 			</dict>
 		</array>
 	</dict>
-	<key>FacebookAppID</key>
-	<string>240700273135016</string>
-	<key>FacebookDisplayName</key>
-	<string>SnapXEats</string>
+<key>CFBundleURLTypes</key>
+<array>
+  <dict>
+  <key>CFBundleURLSchemes</key>
+  <array>
+    <string>fb240700273135016</string>
+  </array>
+  </dict>
+</array>
+<key>FacebookAppID</key>
+<string>240700273135016</string>
+<key>FacebookDisplayName</key>
+<string>SnapXEats</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
