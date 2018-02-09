@@ -18,6 +18,11 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
     }
     
     var presenter: UserPreferencePresentation?
+    var selectedRating:RatingPreferences = .threeStar
+    var selectedPrice:PricingPreference = .single
+    var sortByFilter: SortByPreference = .distance
+    var selectedDistance = 0
+
 
     @IBOutlet weak var sampleLabel: UILabel!
     @IBOutlet weak var locationInfoView: UIView!
@@ -48,6 +53,10 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
     
     @IBAction func applyButtonAction(_: Any) {
         // Apply Button Action
+        SelectedPreference.shared.ratingPreference = selectedRating
+        SelectedPreference.shared.pricingPreference = selectedPrice
+        SelectedPreference.shared.sortByPreference = sortByFilter
+        SelectedPreference.shared.distancePreference = selectedDistance
     }
     
     @IBAction func locationSelectAction(sender: UIButton) {
@@ -57,11 +66,13 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
     @IBAction func radioButtonSelected(sender: UIButton) {
         if sender == distanceRadioButton && sender.isSelected == false {
             sender.isSelected = true
+            sortByFilter = .distance
             ratingsRadioButton.isSelected = false
         }
         
         if sender == ratingsRadioButton && sender.isSelected == false {
             sender.isSelected = true
+            sortByFilter = .rating
             distanceRadioButton.isSelected = false
         }
     }
@@ -71,16 +82,19 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
         switch sender {
         case fiveStarRatingButton:
             sender.isSelected = true
+            selectedRating = .fiveStar
             threeStarRatingButton.isSelected = false
             fourStarRatingButton.isSelected = false
             
         case fourStarRatingButton:
             sender.isSelected = true
+            selectedRating = .fourStar
             threeStarRatingButton.isSelected = false
             fiveStarRatingButton.isSelected = false
             
         case threeStarRatingButton:
             sender.isSelected = true
+            selectedRating = .threeStar
             fourStarRatingButton.isSelected = false
             fiveStarRatingButton.isSelected = false
             
@@ -140,6 +154,7 @@ extension UserPreferenceViewController {
     
     @IBAction  func priceFilterValueChanged(_ sender: BetterSegmentedControl) {
         let buttonTag = Int(sender.index) + 1 // Tag starts from 1 to avoid confusion with other subviews of the view
+        selectedPrice = PricingPreference(rawValue: buttonTag) ?? .single
         for index in 1...pricingFilter.titles.count {
             if let button = priceRangeContainerView.viewWithTag(index) as? UIButton {
                 button.setTitleColor(titleColorForFilterRangeAt(index: index, buttonTag: buttonTag), for: .normal)
@@ -157,6 +172,7 @@ extension UserPreferenceViewController {
     
     @IBAction  func distanceFilterValueChanged(_ sender: BetterSegmentedControl) {
         let buttonTag = Int(sender.index) + 1 // Tag starts from 1 to avoid confusion with other subviews of the view
+        selectedDistance = Int(sender.index)
         for index in 1...distanceFilter.titles.count {
             if let button = distanceRangeContainerView.viewWithTag(index) as? UIButton {
                 button.setTitleColor(titleColorForFilterRangeAt(index: index, buttonTag: buttonTag), for: .normal)
