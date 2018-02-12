@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationBarAppearace = UINavigationBar.appearance()
         navigationBarAppearace.tintColor = .black
         navigationBarAppearace.barTintColor = .white
-        navigationBarAppearace.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.black]
+        navigationBarAppearace.titleTextAttributes =  [NSAttributedStringKey.foregroundColor:UIColor.rgba(74.0, 74.0, 74.0, 1.0), NSAttributedStringKey.font: UIFont(name: "Roboto-Medium", size: 16.0)!]
     }
     
     fileprivate func setupBackButtonAppearance() {

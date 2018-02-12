@@ -39,5 +39,5 @@ protocol FoodCardsInteractorOutput: Response {
 }
 
 protocol FoodCardsWireframe: class, RootWireFrame {
-     func loadFoodCardModule() -> UINavigationController
+     func loadFoodCardModule() -> FoodCardsViewController
 }

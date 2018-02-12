@@ -55,6 +55,7 @@ enum SnapXEatsStoryboardIdentifier {
     static let loginViewControllerID = "LoginViewController"
     static let instagramViewControllerID = "InstagramViewController"
     static let locationViewControllerID = "LocationViewController"
+    static let locationNavigationControllerID = "LocationNavigationController"
     static let foodCardsNavigationControllerID = "FoodCardsNavigationController"
     static let locationCellReuseIdentifier = "CuisineCell"
     static let locationCuisineCollectionCellIdentifier = "CuisineCollectionViewCell"
@@ -96,6 +97,7 @@ enum SnapXEatsPlaceSearchRequestKeys {
 
 
 enum SnapXEatsMenuOptions {
+    static let restaurants = "Restaurants"
     static let wishlist = "Wishlist"
     static let preferences = "Preferences"
     static let foodJourney = "Food Journeys"

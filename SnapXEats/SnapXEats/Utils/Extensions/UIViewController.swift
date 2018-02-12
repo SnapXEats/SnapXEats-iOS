@@ -61,22 +61,24 @@ extension UIViewController: UIGestureRecognizerDelegate {
     }
 }
 
-extension UIViewController { // Navigation Item
+extension UIViewController { // Navigation Item Customizations
 
-    func customizeNavigationItemWithTitle(title: String? = nil) {
+    func customizeNavigationItem(title: String = "", isDetailPage: Bool) {
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationItem.backBarButtonItem?.title = nil
+        self.navigationItem.title = title
         
-        // Navigation Title Logo/Text
-        if let navigationTitle = title {
-            self.navigationItem.title = navigationTitle
+        
+        if isDetailPage == false {
+            // Left Button - Menu
+            self.navigationItem.leftBarButtonItem = setMenuButton()
         } else {
-            self.navigationItem.titleView = setTitleLogo()
+            self.navigationItem.leftBarButtonItem = nil
         }
         
-        // Left Button - Menu
-        self.navigationItem.leftBarButtonItem = setMenuButton()
-    
+        let leftItem: UIBarButtonItem = UIBarButtonItem()
+        leftItem.title = ""
+        self.navigationItem.backBarButtonItem = leftItem
     }
     
     private func setTitleLogo() -> UIImageView {

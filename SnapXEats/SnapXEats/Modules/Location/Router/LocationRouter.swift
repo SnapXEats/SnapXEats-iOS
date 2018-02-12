@@ -39,9 +39,21 @@ class LocationRouter {
 
 extension LocationRouter: LocationWireframe {
     
-    func loadLocationModule () -> LocationView {
-        let viewController = UIStoryboard.loadViewController() as LocationViewController
+//    func loadLocationModule () -> LocationView {
+//        let viewController = UIStoryboard.loadViewController() as LocationViewController
+//        initView(viewController: viewController)
+//        return viewController
+//    }
+    
+    func loadLocationModule () -> UINavigationController {
+        
+        let locationNavigationController = UIStoryboard.loadNavigationControler(storyBoardName: SnapXEatsStoryboard.locationStoryboard, storyBoardId: SnapXEatsStoryboardIdentifier.locationNavigationControllerID)
+        
+        guard let firstViewController = locationNavigationController.viewControllers.first, let viewController = firstViewController as? LocationViewController else {
+            return UINavigationController()
+        }
+        
         initView(viewController: viewController)
-        return viewController
+        return locationNavigationController
     }
 }

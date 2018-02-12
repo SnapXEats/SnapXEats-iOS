@@ -17,6 +17,9 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     // MARK: Properties
     private var cuiseItems = [Cuisine]()
     private let itemsPerRow: CGFloat = 2
+    private let defaultLocationTitle = "Select Location"
+    private let locationTitleTopInset: CGFloat = 5
+    private let locationTitleLeftInsetMargin: CGFloat = 15.0
     
     let userPreference = UserPreference()
     private let sectionInsets = UIEdgeInsets(top: 10.0, left: 20.0, bottom: 30.0, right: 20.0)
@@ -41,8 +44,12 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
         }
     }
     
-    @IBAction func closeLocationView(_ sender: Any) {
-        presenter?.closeLocationView(selectedPreference: selectedPreference)
+    @IBAction func doneButtonAction(_ sender: Any) {
+        self.navigationController?.isNavigationBarHidden = false // UnHide navigation bar when moved to Next Page. Not Used View will disappear because it unhides NvBar even if Drawer is opened.
+        
+        setCuisinePreferences()
+        resetCollectionView()
+        presenter?.closeLocationView(selectedPreference: selectedPreference, parent: self.navigationController!)
     }
     
     override func viewDidLoad() {
@@ -51,33 +58,47 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+        
+        enableDoneButton()
         locationManager.delegate = self
-        setLocationTitle()
+        setLocationTitle(locationName: selectedPreference.location.locationName)
         registerNotification()
-        sendCuiseRequest()
+        
+        if !locationEnabled {
+            verifyLocationService()
+        }
     }
-    
+
     @IBAction func setNewLocation(_ sender: Any) {
         stopLocationManager()
         unRegisterNotification()
         presenter?.selectLocation()
     }
     
+    @IBAction func menuButtonTapped(_ sender: Any) {
+        //Menu Button Action
+        let router = RootRouter.singleInstance
+        router.drawerController.setDrawerState(.opened, animated: true)
+    }
+    
     private func configureView() {
-        topView.addShadow()
+        topView.addBorder(ofWidth: 1.0, withColor: UIColor.rgba(202.0, 202.0, 202.0, 1), radius: 1.0)
         registerCellForNib()
     }
     
-    private func setLocationTitle() {
-        let locationTitle = self.selectedPreference.location.locationName
-        if locationTitle != SnapXEatsConstant.emptyString {
-            self.userLocation.setTitle("\(locationTitle)", for: .normal)
-        }
+    private func setLocationTitle(locationName: String) {
+        let locationButtonTitle = (locationName == SnapXEatsAppDefaults.emptyString) ? defaultLocationTitle : locationName
+        self.userLocation.setTitle("\(locationButtonTitle)", for: .normal)
+        userLocation.titleLabel?.sizeToFit()
+        let leftInset = (userLocation.titleLabel?.frame.size.width)! + locationTitleLeftInsetMargin
+        userLocation.imageEdgeInsets = UIEdgeInsetsMake(locationTitleTopInset, leftInset, 0, -leftInset);
     }
     
     @objc override func internetConnected() {
         if locationEnabled == false {
-          verigyLocationService()
+          verifyLocationService()
         }
     }
     
@@ -93,13 +114,25 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
             cuisinCollectionView.reloadData()
         }
     }
+    
+    private func setCuisinePreferences() {
+        for (_, index) in selectedCuisineIndexes.enumerated() {
+            let cuisine = cuiseItems[(index as! Int)]
+            selectedPreference.selectedCuisine.append(cuisine.cuisineName ?? "")
+        }
+    }
+    
+    private func resetCollectionView() {
+        selectedCuisineIndexes.removeAllObjects()
+        cuisinCollectionView.reloadData()
+    }
 }
 
 extension LocationViewController: LocationView {
     
     // TODO: implement view output methods
     func initView() {
-        enableDoneButton()
+        customizeNavigationItem(isDetailPage: false)
         configureView()
     }
 }
@@ -108,11 +141,11 @@ extension LocationViewController: CLLocationManagerDelegate, SnapXEatsUserLocati
 
     //this method will be called each time when a user change his location access preference.
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        verigyLocationService()
+        verifyLocationService()
     }
     
     //if we have no permission to access user location, then ask user for permission.
-    private func verigyLocationService() {
+    private func verifyLocationService() {
         showSettingDialog()
     }
     
@@ -140,7 +173,7 @@ extension LocationViewController: CLLocationManagerDelegate, SnapXEatsUserLocati
     }
     
     private func sendCuiseRequest() {
-        if checkRechability() && cuiseItems.count == 0 && !isProgressHUD && locationEnabled {
+        if checkRechability() && !isProgressHUD && locationEnabled {
             showLoading()
             presenter?.cuisinePreferenceRequest(selectedPreference: selectedPreference)
         }
@@ -149,9 +182,9 @@ extension LocationViewController: CLLocationManagerDelegate, SnapXEatsUserLocati
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
             showAddressForLocation(locations: locations) {[weak self] (locality: String?, subAdministrativeArea: String? ) in
                 if let locality = locality {
-                    self?.userLocation.setTitle("\(locality)", for: .normal)
+                    self?.setLocationTitle(locationName: locality)
                 } else if let area = subAdministrativeArea {
-                    self?.userLocation.setTitle("\(area)", for: .normal)
+                    self?.setLocationTitle(locationName: area)
                 }
                 self?.hideLoading()
                 self?.sendCuiseRequest()
@@ -168,9 +201,9 @@ extension LocationViewController: CLLocationManagerDelegate, SnapXEatsUserLocati
                 self?.selectedPreference.location.latitude =  Double(placemark?.location?.coordinate.latitude ?? 0)
                 self?.selectedPreference.location.longitude = Double(placemark?.location?.coordinate.longitude ?? 0)
                 if let locality = placemark?.subLocality {
-                    self?.userLocation.setTitle("\(locality)", for: .normal)
+                    self?.setLocationTitle(locationName: locality)
                 } else if let area = placemark?.subAdministrativeArea {
-                    self?.userLocation.setTitle("\(area)", for: .normal)
+                    self?.setLocationTitle(locationName: area)
                 }
                 self?.sendCuiseRequest()
             }
@@ -200,11 +233,8 @@ extension LocationViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if selectedCuisineIndexes.contains(indexPath.row) {
             selectedCuisineIndexes.remove(indexPath.row)
-            selectedPreference.selectedCuisine.remove(at: indexPath.row)
         } else {
             selectedCuisineIndexes.add(indexPath.row)
-            let item = cuiseItems[indexPath.row]
-            selectedPreference.selectedCuisine.append(item.cuisineName ?? "")
         }
         enableDoneButton()
         collectionView.reloadItems(at: [indexPath])
