@@ -10,7 +10,7 @@ import UIKit
 
 class DrawerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var navigationOptions = [SnapXEatsMenuOptions.wishlist, SnapXEatsMenuOptions.preferences, SnapXEatsMenuOptions.foodJourney, SnapXEatsMenuOptions.rewards]
+    var navigationOptions = [SnapXEatsMenuOptions.restaurants, SnapXEatsMenuOptions.wishlist, SnapXEatsMenuOptions.preferences, SnapXEatsMenuOptions.foodJourney, SnapXEatsMenuOptions.rewards]
     
     @IBOutlet weak var navigationOptionTable: UITableView!
     @IBOutlet weak var userInfoView: UIView!
@@ -61,7 +61,7 @@ class DrawerViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SnapXEatsCellResourceIdentifiler.navigationMenu, for: indexPath as IndexPath) as! NavigationMenuTableViewCell
-        let showCount = indexPath.row == 0 ? true : false
+        let showCount = indexPath.row == 1 ? true : false
         cell.configureCell(WithMenu: navigationOptions[indexPath.row], showCount: showCount)
         return cell
     }
@@ -72,7 +72,9 @@ class DrawerViewController: UIViewController, UITableViewDelegate, UITableViewDa
         router.drawerController.setDrawerState(.closed, animated: true)
         
         switch indexPath.row {
-        case 1:
+        case 0:
+            router.presentScreen(screens: .location)
+        case 2:
             router.presentScreen(screens: .userPreference)
         default:
             break

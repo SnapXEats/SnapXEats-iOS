@@ -31,7 +31,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yDu-HP-HSF">
-                                <rect key="frame" x="20" y="124" width="335" height="368.5"/>
+                                <rect key="frame" x="20" y="80" width="335" height="368.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yZP-OQ-Zyj" customClass="KolodaView" customModule="Koloda">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="368.5"/>
@@ -135,24 +135,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rOa-bO-Hsq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="596" y="41.829085457271368"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="fCB-lN-BPJ">
-            <objects>
-                <navigationController storyboardIdentifier="FoodCardsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="vmp-wP-0Qe" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yWH-HO-N6I">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="PVr-ZQ-ZIz" kind="relationship" relationship="rootViewController" id="tk5-L2-fYh"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cr5-Wh-uct" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-137.59999999999999" y="42.278860569715143"/>
         </scene>
         <!--Drawer View Controller-->
         <scene sceneID="kpx-mb-JDD">

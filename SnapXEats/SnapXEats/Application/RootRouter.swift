@@ -7,7 +7,7 @@ import UIKit
 import FacebookLogin
 import FacebookCore
 enum Screens {
-    case login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference), selectLocation, dismissNewLocation, userPreference
+    case login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference
 }
 
 class RootRouter: NSObject {
@@ -15,6 +15,7 @@ class RootRouter: NSObject {
     var drawerController: KYDrawerController!
     
     private override init() {
+        
     }
     static var singleInstance = RootRouter()
 
@@ -58,32 +59,23 @@ class RootRouter: NSObject {
     }
     
     private func presentLocationScreen() {
-        let locatioViewController = LocationRouter.singleInstance.loadLocationModule() as! LocationViewController
-        presentView(locatioViewController)
+        //let locatioViewController = LocationRouter.singleInstance.loadLocationModule() as! LocationViewController
+        
+        let locationNavigationController = LocationRouter.singleInstance.loadLocationModule()
+        updateDrawerWithMainController(mainVC: locationNavigationController)
+        presentView(drawerController)
     }
     
-    private func presentFoodcardsScreen(selectedPreference: SelectedPreference) {
-        // Embed the VC into the Drawer
+    private func pushFoodcardsScreen(selectedPreference: SelectedPreference, onNavigationController parentController: UINavigationController) {
         
-        let foodCardNavigationController = FoodCardsRouter.singleInstance.loadFoodCardModule()
-        if let firstViewController = foodCardNavigationController.viewControllers.first, let foodCardViewController = firstViewController as? FoodCardsViewController {
-            drawerController = KYDrawerController(drawerDirection: .left, drawerWidth: (0.61 * UIScreen.main.bounds.width))
-            let drawerVC = FoodCardsRouter.singleInstance.loadDrawerMenu()
-            foodCardViewController.selectedPrefernce = selectedPreference
-            drawerController.mainViewController = foodCardNavigationController
-            drawerController.drawerViewController = drawerVC
-            presentView(drawerController)
-        }
-
+        let foodCardVC = FoodCardsRouter.singleInstance.loadFoodCardModule()
+        foodCardVC.selectedPrefernce = selectedPreference
+        parentController.pushViewController(foodCardVC, animated: true)
     }
     
     private func presentUserPreferencesScreen() {
         let userPreferenceNvController = UserPreferenceRouter.singleInstance.loadUserPreferenceModule()
-        drawerController = KYDrawerController(drawerDirection: .left, drawerWidth: (0.61 * UIScreen.main.bounds.width))
-            
-        let drawerVC = FoodCardsRouter.singleInstance.loadDrawerMenu()
-        drawerController.mainViewController = userPreferenceNvController
-        drawerController.drawerViewController = drawerVC
+        updateDrawerWithMainController(mainVC: userPreferenceNvController)
         presentView(drawerController)
     }
     
@@ -106,8 +98,8 @@ class RootRouter: NSObject {
              presentLoginInstagramScreen()
         case .location:
             presentLocationScreen()
-        case .foodcards(let selectedPreference):
-            presentFoodcardsScreen(selectedPreference: selectedPreference)
+        case .foodcards(let selectedPreference, let parentController):
+            pushFoodcardsScreen(selectedPreference: selectedPreference, onNavigationController: parentController)
         case .selectLocation:
             presentSelectLocationScreen()
         case .userPreference:
@@ -116,10 +108,24 @@ class RootRouter: NSObject {
             dissmissSelectLocationScreen()
         }
     }
+    
     private func presentView(_ viewController: UIViewController) {
         guard let window = UIApplication.shared.delegate?.window! else { return }
         window.backgroundColor = UIColor.white
         window.makeKeyAndVisible()
         window.rootViewController = viewController
+    }
+    
+    private func updateDrawerWithMainController(mainVC: UINavigationController) {
+        drawerController = KYDrawerController(drawerDirection: .left, drawerWidth: (0.61 * UIScreen.main.bounds.width))
+        let drawerVC = loadDrawerMenu()
+        drawerController.mainViewController = mainVC
+        drawerController.drawerViewController = drawerVC
+    }
+    
+    func loadDrawerMenu() -> DrawerViewController {
+        let storyboard = UIStoryboard(name: SnapXEatsStoryboard.foodCardsStoryboard, bundle: nil)
+        let drawerVC = storyboard.instantiateViewController(withIdentifier: "drawerviewcontroller") as! DrawerViewController
+        return drawerVC
     }
 }

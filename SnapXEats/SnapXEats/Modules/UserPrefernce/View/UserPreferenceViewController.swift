@@ -105,8 +105,7 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
 
 extension UserPreferenceViewController: UserPreferenceView {
     func initView() {
-        self.customizeNavigationItemWithTitle(title: SnapXEatsMenuOptions.preferences)
-        
+        customizeNavigationItem(title: SnapXEatsMenuOptions.preferences, isDetailPage: false)
         pricingFilter.titles = [
             SnapXEatsAppDefaults.emptyString,
             SnapXEatsAppDefaults.emptyString,

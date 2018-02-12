@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class LocationPresenter {
 
@@ -22,9 +23,9 @@ class LocationPresenter {
 
 extension LocationPresenter: LocationPresentation {
     
-    // TODO: implement presentation methods
-    func closeLocationView(selectedPreference: SelectedPreference) {
-        router?.presentScreen(screen: .foodcards(selectPreference: selectedPreference))
+    // TODO: implement presentation methodsiewController
+    func closeLocationView(selectedPreference: SelectedPreference, parent: UINavigationController) {
+        router?.presentScreen(screen: .foodcards(selectPreference: selectedPreference, parentController: parent))
     }
     
     func selectLocation() {

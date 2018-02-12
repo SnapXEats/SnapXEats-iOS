@@ -42,7 +42,8 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     }
     
     @IBAction func closeLocationView(_ sender: Any) {
-        presenter?.closeLocationView(selectedPreference: selectedPreference)
+        self.navigationController?.isNavigationBarHidden = false // UnHide navigation bar when moved to Next Page. Not Used View will disappear because it unhides NvBar even if Drawer is opened.
+        presenter?.closeLocationView(selectedPreference: selectedPreference, parent: self.navigationController!)
     }
     
     override func viewDidLoad() {
@@ -51,6 +52,9 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+        
         locationManager.delegate = self
         setLocationTitle()
         registerNotification()
@@ -61,6 +65,12 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
         stopLocationManager()
         unRegisterNotification()
         presenter?.selectLocation()
+    }
+    
+    @IBAction func menuButtonTapped(_ sender: Any) {
+        //Menu Button Action
+        let router = RootRouter.singleInstance
+        router.drawerController.setDrawerState(.opened, animated: true)
     }
     
     private func configureView() {

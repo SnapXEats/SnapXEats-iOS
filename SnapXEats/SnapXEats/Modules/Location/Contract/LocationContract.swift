@@ -15,7 +15,7 @@ protocol LocationView: BaseView {
 
 protocol LocationPresentation: class {
 
-        func closeLocationView(selectedPreference: SelectedPreference)
+    func closeLocationView(selectedPreference: SelectedPreference, parent: UINavigationController)
         func selectLocation()
         func cuisinePreferenceRequest(selectedPreference: SelectedPreference)
 }
@@ -36,5 +36,5 @@ protocol LocationInteractorOutput: Response {
 }
 
 protocol LocationWireframe: class, RootWireFrame {
-    func loadLocationModule() -> LocationView
+    func loadLocationModule () -> UINavigationController
 }
