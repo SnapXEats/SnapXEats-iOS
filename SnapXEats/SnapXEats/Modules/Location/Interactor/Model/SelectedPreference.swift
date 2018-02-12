@@ -44,7 +44,7 @@ class SelectedPreference {
         location.latitude = 0.0
         location.longitude = 0.0
         location.locationName = ""
-        selectedCuisine = [String]()
+        selectedCuisine.removeAll()
     }
     
     static let shared = SelectedPreference()

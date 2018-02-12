@@ -41,8 +41,11 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
         }
     }
     
-    @IBAction func closeLocationView(_ sender: Any) {
+    @IBAction func doneButtonAction(_ sender: Any) {
         self.navigationController?.isNavigationBarHidden = false // UnHide navigation bar when moved to Next Page. Not Used View will disappear because it unhides NvBar even if Drawer is opened.
+        
+        setCuisinePreferences()
+        resetCollectionView()
         presenter?.closeLocationView(selectedPreference: selectedPreference, parent: self.navigationController!)
     }
     
@@ -58,7 +61,10 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
         locationManager.delegate = self
         setLocationTitle()
         registerNotification()
-        sendCuiseRequest()
+        
+        if !locationEnabled {
+            verifyLocationService()
+        }
     }
     
     @IBAction func setNewLocation(_ sender: Any) {
@@ -87,7 +93,7 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     
     @objc override func internetConnected() {
         if locationEnabled == false {
-          verigyLocationService()
+          verifyLocationService()
         }
     }
     
@@ -102,6 +108,18 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
             cuiseItems = result.cuisineList
             cuisinCollectionView.reloadData()
         }
+    }
+    
+    private func setCuisinePreferences() {
+        for (_, index) in selectedCuisineIndexes.enumerated() {
+            let cuisine = cuiseItems[(index as! Int)]
+            selectedPreference.selectedCuisine.append(cuisine.cuisineName ?? "")
+        }
+    }
+    
+    private func resetCollectionView() {
+        selectedCuisineIndexes.removeAllObjects()
+        cuisinCollectionView.reloadData()
     }
 }
 
@@ -118,11 +136,11 @@ extension LocationViewController: CLLocationManagerDelegate, SnapXEatsUserLocati
 
     //this method will be called each time when a user change his location access preference.
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        verigyLocationService()
+        verifyLocationService()
     }
     
     //if we have no permission to access user location, then ask user for permission.
-    private func verigyLocationService() {
+    private func verifyLocationService() {
         showSettingDialog()
     }
     
@@ -150,7 +168,7 @@ extension LocationViewController: CLLocationManagerDelegate, SnapXEatsUserLocati
     }
     
     private func sendCuiseRequest() {
-        if checkRechability() && cuiseItems.count == 0 && !isProgressHUD && locationEnabled {
+        if checkRechability() && !isProgressHUD && locationEnabled {
             showLoading()
             presenter?.cuisinePreferenceRequest(selectedPreference: selectedPreference)
         }
@@ -210,11 +228,8 @@ extension LocationViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if selectedCuisineIndexes.contains(indexPath.row) {
             selectedCuisineIndexes.remove(indexPath.row)
-            selectedPreference.selectedCuisine.remove(at: indexPath.row)
         } else {
             selectedCuisineIndexes.add(indexPath.row)
-            let item = cuiseItems[indexPath.row]
-            selectedPreference.selectedCuisine.append(item.cuisineName ?? "")
         }
         enableDoneButton()
         collectionView.reloadItems(at: [indexPath])
