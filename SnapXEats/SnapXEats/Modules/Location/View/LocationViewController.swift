@@ -17,6 +17,9 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     // MARK: Properties
     private var cuiseItems = [Cuisine]()
     private let itemsPerRow: CGFloat = 2
+    private let defaultLocationTitle = "Select Location"
+    private let locationTitleTopInset: CGFloat = 5
+    private let locationTitleLeftInsetMargin: CGFloat = 15.0
     
     let userPreference = UserPreference()
     private let sectionInsets = UIEdgeInsets(top: 10.0, left: 20.0, bottom: 30.0, right: 20.0)
@@ -59,14 +62,14 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
         self.navigationController?.isNavigationBarHidden = true
         
         locationManager.delegate = self
-        setLocationTitle()
+        setLocationTitle(locationName: selectedPreference.location.locationName)
         registerNotification()
         
         if !locationEnabled {
             verifyLocationService()
         }
     }
-    
+
     @IBAction func setNewLocation(_ sender: Any) {
         stopLocationManager()
         unRegisterNotification()
@@ -80,15 +83,16 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     }
     
     private func configureView() {
-        topView.addShadow()
+        topView.addBorder(ofWidth: 1.0, withColor: UIColor.rgba(202.0, 202.0, 202.0, 1), radius: 1.0)
         registerCellForNib()
     }
     
-    private func setLocationTitle() {
-        let locationTitle = self.selectedPreference.location.locationName
-        if locationTitle != SnapXEatsConstant.emptyString {
-            self.userLocation.setTitle("\(locationTitle)", for: .normal)
-        }
+    private func setLocationTitle(locationName: String) {
+        let locationButtonTitle = (locationName == SnapXEatsAppDefaults.emptyString) ? defaultLocationTitle : locationName
+        self.userLocation.setTitle("\(locationButtonTitle)", for: .normal)
+        userLocation.titleLabel?.sizeToFit()
+        let leftInset = (userLocation.titleLabel?.frame.size.width)! + locationTitleLeftInsetMargin
+        userLocation.imageEdgeInsets = UIEdgeInsetsMake(locationTitleTopInset, leftInset, 0, -leftInset);
     }
     
     @objc override func internetConnected() {
@@ -178,9 +182,9 @@ extension LocationViewController: CLLocationManagerDelegate, SnapXEatsUserLocati
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
             showAddressForLocation(locations: locations) {[weak self] (locality: String?, subAdministrativeArea: String? ) in
                 if let locality = locality {
-                    self?.userLocation.setTitle("\(locality)", for: .normal)
+                    self?.setLocationTitle(locationName: locality)
                 } else if let area = subAdministrativeArea {
-                    self?.userLocation.setTitle("\(area)", for: .normal)
+                    self?.setLocationTitle(locationName: area)
                 }
                 self?.hideLoading()
                 self?.sendCuiseRequest()
@@ -197,9 +201,9 @@ extension LocationViewController: CLLocationManagerDelegate, SnapXEatsUserLocati
                 self?.selectedPreference.location.latitude =  Double(placemark?.location?.coordinate.latitude ?? 0)
                 self?.selectedPreference.location.longitude = Double(placemark?.location?.coordinate.longitude ?? 0)
                 if let locality = placemark?.subLocality {
-                    self?.userLocation.setTitle("\(locality)", for: .normal)
+                    self?.setLocationTitle(locationName: locality)
                 } else if let area = placemark?.subAdministrativeArea {
-                    self?.userLocation.setTitle("\(area)", for: .normal)
+                    self?.setLocationTitle(locationName: area)
                 }
                 self?.sendCuiseRequest()
             }
