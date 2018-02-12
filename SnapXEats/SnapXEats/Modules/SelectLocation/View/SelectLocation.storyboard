@@ -45,45 +45,29 @@
                                         <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XpT-Qi-o8U">
-                                        <rect key="frame" x="305" y="33" width="50" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="W0T-Hy-65B"/>
-                                            <constraint firstAttribute="width" constant="50" id="r4r-IB-SAC"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
-                                        <state key="normal" title="Done">
-                                            <color key="titleColor" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="doneButtonAction:" destination="OHS-y6-UmX" eventType="touchUpInside" id="UIP-Tw-QBP"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="6cU-Cg-5RX" firstAttribute="top" secondItem="UxD-0K-32g" secondAttribute="top" constant="33" id="37W-m5-0QQ"/>
                                     <constraint firstItem="OMN-eH-56a" firstAttribute="bottom" secondItem="6cU-Cg-5RX" secondAttribute="bottom" id="FZp-B1-hZE"/>
-                                    <constraint firstItem="XpT-Qi-o8U" firstAttribute="bottom" secondItem="OMN-eH-56a" secondAttribute="bottom" id="JZ5-Xm-9ro"/>
                                     <constraint firstItem="OMN-eH-56a" firstAttribute="top" secondItem="6cU-Cg-5RX" secondAttribute="top" id="Jer-bq-ucA"/>
-                                    <constraint firstItem="XpT-Qi-o8U" firstAttribute="top" secondItem="OMN-eH-56a" secondAttribute="top" id="MmJ-Ws-udF"/>
-                                    <constraint firstAttribute="bottom" secondItem="XpT-Qi-o8U" secondAttribute="bottom" constant="10" id="ZIB-Oc-YNA"/>
+                                    <constraint firstAttribute="bottom" secondItem="6cU-Cg-5RX" secondAttribute="bottom" constant="10" id="UU4-xZ-ZV3"/>
                                     <constraint firstItem="OMN-eH-56a" firstAttribute="leading" secondItem="6cU-Cg-5RX" secondAttribute="trailing" constant="10" id="kcb-w8-ESQ"/>
                                     <constraint firstItem="6cU-Cg-5RX" firstAttribute="leading" secondItem="UxD-0K-32g" secondAttribute="leading" constant="20" id="ksI-QE-LuW"/>
                                     <constraint firstAttribute="height" constant="73" id="t42-rT-r8I"/>
-                                    <constraint firstAttribute="trailing" secondItem="XpT-Qi-o8U" secondAttribute="trailing" constant="20" id="xkr-l4-eTM"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I1G-9Z-YCh">
-                                <rect key="frame" x="0.0" y="74" width="375" height="76"/>
+                                <rect key="frame" x="0.0" y="74" width="375" height="77"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q2d-0Q-FXY">
-                                        <rect key="frame" x="54" y="20" width="120.5" height="21.5"/>
+                                        <rect key="frame" x="54" y="20" width="121" height="22"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                         <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Using GPS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZO-YT-UYP">
-                                        <rect key="frame" x="54" y="43.5" width="67" height="18.5"/>
+                                        <rect key="frame" x="54" y="44" width="67" height="19"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                         <color key="textColor" red="0.44313725490196076" green="0.44313725490196076" blue="0.44313725490196076" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -96,7 +80,7 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Lu-EG-bcL" userLabel="Select Location Action Button">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="76"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="77"/>
                                         <connections>
                                             <action selector="selectLocationAction:" destination="OHS-y6-UmX" eventType="touchUpInside" id="nuV-JB-bV4"/>
                                         </connections>
@@ -118,7 +102,7 @@
                                 </constraints>
                             </view>
                             <searchBar contentMode="redraw" placeholder="Search for your area, city etc." translatesAutoresizingMaskIntoConstraints="NO" id="dYC-KQ-aqI">
-                                <rect key="frame" x="0.0" y="150" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="151" width="375" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="P6r-PV-zEP"/>
@@ -132,7 +116,7 @@
                                 </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5B1-CN-meF">
-                                <rect key="frame" x="0.0" y="210" width="375" height="457"/>
+                                <rect key="frame" x="0.0" y="211" width="375" height="456"/>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
