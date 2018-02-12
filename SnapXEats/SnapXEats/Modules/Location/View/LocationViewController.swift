@@ -61,6 +61,7 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
         
+        enableDoneButton()
         locationManager.delegate = self
         setLocationTitle(locationName: selectedPreference.location.locationName)
         registerNotification()
@@ -132,7 +133,6 @@ extension LocationViewController: LocationView {
     // TODO: implement view output methods
     func initView() {
         customizeNavigationItem(isDetailPage: false)
-        enableDoneButton()
         configureView()
     }
 }
