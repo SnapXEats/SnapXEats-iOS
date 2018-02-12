@@ -129,7 +129,7 @@ extension LocationViewController: CLLocationManagerDelegate, SnapXEatsUserLocati
      func checkLocationStatus() {
         let status = CLLocationManager.authorizationStatus()
         switch status  {
-        case .authorizedWhenInUse:
+        case .authorizedWhenInUse,.authorizedAlways:
             if checkRechability() {
                 showLoading()
                 locationManager.desiredAccuracy = kCLLocationAccuracyBest
