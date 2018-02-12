@@ -50,6 +50,7 @@ class SelectLocationViewController: BaseViewController, StoryboardLoadable {
     var locationDenied: Bool  = false
     
     @IBAction func closeSelectLocation(_ sender: Any) {
+        dismissKeyboard()
         presenter?.dismissScreen()
     }
     
@@ -172,15 +173,16 @@ extension SelectLocationViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if searchPlaces.count != 0 {
-            if checkRechability() {
+             dismissKeyboard()
+             if checkRechability() {
                 let selectedPlace = searchPlaces[indexPath.row]
                 setLocationForSearchedPlace(place: selectedPlace)
                 
                 // Set Selected Place to text box and clear searched places
                 locationSearchBar.text = selectedPlace.description
                 self.searchPlaces = []
-                tableView.reloadData()
             }
+            tableView.reloadData()
         }
     }
 }
@@ -189,6 +191,7 @@ extension SelectLocationViewController: SelectLocationView {
     func initView() {
         configureView()
         createSavedAddressesDataSource()
+        hideKeyboardWhenTappedAround()
     }
 }
 
@@ -208,7 +211,7 @@ extension SelectLocationViewController: CLLocationManagerDelegate, SnapXEatsUser
     func checkLocationStatus() {
         let status = CLLocationManager.authorizationStatus()
         switch status  {
-        case .authorizedWhenInUse:
+        case .authorizedWhenInUse, .authorizedAlways:
             if checkRechability() {
                 showLoading()
                 locationManager.desiredAccuracy = kCLLocationAccuracyBest

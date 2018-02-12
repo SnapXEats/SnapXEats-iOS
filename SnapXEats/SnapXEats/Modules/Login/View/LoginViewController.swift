@@ -52,7 +52,7 @@ class LoginViewController: BaseViewController, StoryboardLoadable, LoginView {
     
     override func viewWillDisappear(_ animated: Bool) { 
         super.viewDidDisappear(animated)
-        //removeKeyboardNotification()
+        removeKeyboardNotification()
     }
     
      func initView() {
