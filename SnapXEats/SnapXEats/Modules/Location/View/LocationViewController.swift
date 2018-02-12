@@ -127,6 +127,7 @@ extension LocationViewController: LocationView {
     
     // TODO: implement view output methods
     func initView() {
+        customizeNavigationItem(isDetailPage: false)
         enableDoneButton()
         configureView()
     }
