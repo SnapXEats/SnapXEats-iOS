@@ -42,7 +42,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>302</string>
+	<string>303</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -66,10 +66,10 @@
   </array>
   </dict>
 </array>
-<key>FacebookAppID</key>
-<string>240700273135016</string>
-<key>FacebookDisplayName</key>
-<string>SnapXEats</string>
+	<key>FacebookAppID</key>
+	<string>240700273135016</string>
+	<key>FacebookDisplayName</key>
+	<string>SnapXEats</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
