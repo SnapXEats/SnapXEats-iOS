@@ -10,7 +10,7 @@ import UIKit
 
 class DrawerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var navigationOptions = [SnapXEatsMenuOptions.restaurants, SnapXEatsMenuOptions.wishlist, SnapXEatsMenuOptions.preferences, SnapXEatsMenuOptions.foodJourney, SnapXEatsMenuOptions.rewards]
+    var navigationOptions = [SnapXEatsPageTitles.restaurants, SnapXEatsPageTitles.wishlist, SnapXEatsPageTitles.preferences, SnapXEatsPageTitles.foodJourney, SnapXEatsPageTitles.rewards]
     
     @IBOutlet weak var navigationOptionTable: UITableView!
     @IBOutlet weak var userInfoView: UIView!
