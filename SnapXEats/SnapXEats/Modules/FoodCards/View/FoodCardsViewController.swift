@@ -40,7 +40,7 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     }
     
     @IBAction func refreshScreen(_ sender: Any) {
-        presenter?.refreshFoodCards()
+       // presenter?.refreshFoodCards()
     }
     
     @IBAction func searchButtonAction(_: Any) {
@@ -75,7 +75,7 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     }
     
     override func  success(result: Any?) {
-        selectedPrefernce?.resetData() // Reset the data once request completed
+        //selectedPrefernce?.resetData() // Reset the data once request completed
         if let dishInfo = result as?  DishInfo, let restaurants = dishInfo.restaurants, restaurants.count > 0  {
             setFoodCardDetails(restaurants: restaurants)
         }
