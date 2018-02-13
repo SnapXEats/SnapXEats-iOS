@@ -7,7 +7,7 @@ import UIKit
 import FacebookLogin
 import FacebookCore
 enum Screens {
-    case login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference
+    case login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, preferenceItems: [PreferenceItem], parentController: UINavigationController)
 }
 
 class RootRouter: NSObject {
@@ -73,6 +73,14 @@ class RootRouter: NSObject {
         parentController.pushViewController(foodCardVC, animated: true)
     }
     
+    private func pushFoodAndCuisinePreferencesScreen(onNavigationController parentController: UINavigationController, withPreferenceType type: PreferenceType, withPreferenceItems items: [PreferenceItem]) {
+        
+        let foodCardVC = UserPreferenceRouter.singleInstance.loadCuisineAndFoodPreferenceModule()
+        foodCardVC.preferenceType = type
+        foodCardVC.preferenceItems = items
+        parentController.pushViewController(foodCardVC, animated: true)
+    }
+    
     private func presentUserPreferencesScreen() {
         let userPreferenceNvController = UserPreferenceRouter.singleInstance.loadUserPreferenceModule()
         updateDrawerWithMainController(mainVC: userPreferenceNvController)
@@ -106,6 +114,8 @@ class RootRouter: NSObject {
             presentUserPreferencesScreen()
         case .dismissNewLocation:
             dissmissSelectLocationScreen()
+        case .foodAndCusinePreferences(let preferenceType, let preferenceItems, let parentController):
+            pushFoodAndCuisinePreferencesScreen(onNavigationController: parentController, withPreferenceType: preferenceType, withPreferenceItems: preferenceItems)
         }
     }
     
