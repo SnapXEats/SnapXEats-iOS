@@ -74,7 +74,7 @@ extension SelectLocationInteractor: SearchPlacePredictionsObjectMapper {
         switch data {
         case .success(let value):
             output?.response(result: .success(data: value))
-        case .failure( _): break
+        case .failure( _):
             output?.response(result: NetworkResult.noInternet)
         }
     }
@@ -83,7 +83,7 @@ extension SelectLocationInteractor: SearchPlacePredictionsObjectMapper {
         switch data {
         case .success(let value):
             output?.response(result: .success(data: value))
-        case .failure( _): break
+        case .failure( _):
         output?.response(result: NetworkResult.noInternet)
         }
     }

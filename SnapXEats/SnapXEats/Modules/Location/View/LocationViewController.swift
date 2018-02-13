@@ -60,11 +60,9 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
         self.navigationController?.isNavigationBarHidden = true
         
         enableDoneButton()
-        locationManager.delegate = self
         setLocationTitle(locationName: selectedPreference.location.locationName)
         registerNotification()
-        
-        verifyLocationService()
+        sendCuiseRequest()
     }
     
     @IBAction func setNewLocation(_ sender: Any) {
@@ -102,7 +100,7 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     }
     
     @objc override func internetConnected() {
-        verifyLocationService()
+        locationEnabled ? sendCuiseRequest() : verifyLocationService()
     }
     
     func registerCellForNib() {
@@ -137,6 +135,7 @@ extension LocationViewController: LocationView {
     func initView() {
         customizeNavigationItem(isDetailPage: false)
         configureView()
+        verifyLocationService()
     }
 }
 
@@ -177,7 +176,7 @@ extension LocationViewController: CLLocationManagerDelegate, SnapXEatsUserLocati
     }
     
     private func sendCuiseRequest() {
-        if checkRechability() && !isProgressHUD  {
+        if checkRechability() && !isProgressHUD && locationEnabled {
             showLoading()
             presenter?.cuisinePreferenceRequest(selectedPreference: selectedPreference)
         }
