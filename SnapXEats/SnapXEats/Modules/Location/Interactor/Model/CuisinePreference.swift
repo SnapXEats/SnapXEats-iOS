@@ -36,14 +36,16 @@ class UserSelectedCuisinePreference : Mappable {
         cuisineList <- map["userPreSelectedCuisines"]
     }
 }
-class Cuisine: Mappable {
+class Cuisine: PreferenceItem, Mappable {
         var cuisineId: String?
         var cuisineImageURL: String?
         var cuisineName: String?
         var cuisentImage: UIImage?
-        
-         required init?(map: Map) {
+    
+        required init?(map: Map) {
+            super.init(type: .cuisine)
         }
+    
         // Mappable
         func mapping(map: Map) {
             cuisineId             <- map["cuisine_info_id"]

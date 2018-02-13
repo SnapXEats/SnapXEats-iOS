@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class UserPreferencePresenter {
 
@@ -23,4 +24,10 @@ extension UserPreferencePresenter: UserPreferencePresentation {
 
 extension UserPreferencePresenter: UserPreferenceInteractorOutput {
     // TODO: implement interactor output methods
+}
+
+extension UserPreferencePresenter: FoodAndCuisinePreferencePresentation {
+    func presentFoodAndCuisinePreferences(preferenceType: PreferenceType, preferenceItems: [PreferenceItem], parent: UINavigationController) {
+        router?.presentScreen(screen: .foodAndCusinePreferences(preferenceType: preferenceType, preferenceItems: preferenceItems, parentController: parent))
+    }
 }

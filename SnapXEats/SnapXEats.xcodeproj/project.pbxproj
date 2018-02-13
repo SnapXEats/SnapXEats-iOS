@@ -23,6 +23,10 @@
 		7E71FC0F2022CDC200CA8467 /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E71FC0E2022CDC200CA8467 /* DrawerViewController.swift */; };
 		7E71FC1A2022ECE100CA8467 /* NavigationMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E71FC172022ECE100CA8467 /* NavigationMenuTableViewCell.swift */; };
 		7E71FC1B2022ECE100CA8467 /* NavigationMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E71FC182022ECE100CA8467 /* NavigationMenuTableViewCell.xib */; };
+		7E791F122032B4A500FA887D /* CuisineAndFoodPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E791F112032B4A500FA887D /* CuisineAndFoodPreferencesViewController.swift */; };
+		7E791F182032CAB800FA887D /* PreferenceTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E791F162032CAB800FA887D /* PreferenceTypeCollectionViewCell.swift */; };
+		7E791F192032CAB800FA887D /* PreferenceTypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E791F172032CAB800FA887D /* PreferenceTypeCollectionViewCell.xib */; };
+		7E791F1C2032D8D600FA887D /* PreferenceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E791F1B2032D8D600FA887D /* PreferenceItem.swift */; };
 		7E9C0B912021DC5700BA999E /* SnapXEatsLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9C0B902021DC5700BA999E /* SnapXEatsLocation.swift */; };
 		7EAC86092019C7E300DE162A /* foodCard3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EAC86052019C7E200DE162A /* foodCard3.jpg */; };
 		7EAC860A2019C7E300DE162A /* foodCard2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EAC86062019C7E200DE162A /* foodCard2.jpg */; };
@@ -147,6 +151,10 @@
 		7E71FC0E2022CDC200CA8467 /* DrawerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
 		7E71FC172022ECE100CA8467 /* NavigationMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationMenuTableViewCell.swift; sourceTree = "<group>"; };
 		7E71FC182022ECE100CA8467 /* NavigationMenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationMenuTableViewCell.xib; sourceTree = "<group>"; };
+		7E791F112032B4A500FA887D /* CuisineAndFoodPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisineAndFoodPreferencesViewController.swift; sourceTree = "<group>"; };
+		7E791F162032CAB800FA887D /* PreferenceTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceTypeCollectionViewCell.swift; sourceTree = "<group>"; };
+		7E791F172032CAB800FA887D /* PreferenceTypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferenceTypeCollectionViewCell.xib; sourceTree = "<group>"; };
+		7E791F1B2032D8D600FA887D /* PreferenceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceItem.swift; sourceTree = "<group>"; };
 		7E9C0B902021DC5700BA999E /* SnapXEatsLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEatsLocation.swift; sourceTree = "<group>"; };
 		7EAC86052019C7E200DE162A /* foodCard3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = foodCard3.jpg; sourceTree = "<group>"; };
 		7EAC86062019C7E200DE162A /* foodCard2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = foodCard2.jpg; sourceTree = "<group>"; };
@@ -317,6 +325,23 @@
 				7E71FC182022ECE100CA8467 /* NavigationMenuTableViewCell.xib */,
 			);
 			path = TableviewCells;
+			sourceTree = "<group>";
+		};
+		7E791F152032CA8F00FA887D /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				7E791F162032CAB800FA887D /* PreferenceTypeCollectionViewCell.swift */,
+				7E791F172032CAB800FA887D /* PreferenceTypeCollectionViewCell.xib */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
+		7E791F1A2032D8C100FA887D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7E791F1B2032D8D600FA887D /* PreferenceItem.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		7EAC860E201A061D00DE162A /* CustomView */ = {
@@ -940,8 +965,10 @@
 		9DE7CE4B2023620500BBBFEC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7E791F152032CA8F00FA887D /* CustomCells */,
 				7E0CBBB4202435E4009E56AE /* UserPreference.storyboard */,
 				9DE7CE4C2023620500BBBFEC /* UserPreferenceViewController.swift */,
+				7E791F112032B4A500FA887D /* CuisineAndFoodPreferencesViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -949,6 +976,7 @@
 		9DE7CE4D2023620500BBBFEC /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				7E791F1A2032D8C100FA887D /* Model */,
 				9DE7CE4E2023620500BBBFEC /* UserPreferenceInteractor.swift */,
 			);
 			path = Interactor;
@@ -1082,6 +1110,7 @@
 				7E5C057F2017A6DC000B5C33 /* SavedLocationTableViewCell.xib in Resources */,
 				9DEB5CF81FFE6D49003B9D4B /* Login.storyboard in Resources */,
 				7EAC860A2019C7E300DE162A /* foodCard2.jpg in Resources */,
+				7E791F192032CAB800FA887D /* PreferenceTypeCollectionViewCell.xib in Resources */,
 				9DB7FE1F20061E8C00D0E816 /* BG@3x.png in Resources */,
 				9DB7FE132005F96A00D0E816 /* Assets.xcassets in Resources */,
 			);
@@ -1190,6 +1219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D8E89161FFD2C400066A1D9 /* RootRouter.swift in Sources */,
+				7E791F1C2032D8D600FA887D /* PreferenceItem.swift in Sources */,
 				9D8E89171FFD2C400066A1D9 /* AppDelegate.swift in Sources */,
 				9D8E88EB1FFD2BEC0066A1D9 /* LoginContract.swift in Sources */,
 				9D2C484D202073A700FD8B1C /* SelectedPreference.swift in Sources */,
@@ -1251,6 +1281,7 @@
 				9D8E89061FFD2BEC0066A1D9 /* UIStoryboard.swift in Sources */,
 				9D8E89071FFD2BEC0066A1D9 /* ValidableUILabel.swift in Sources */,
 				9D902BC920171AED00359DFD /* FoodCardsContract.swift in Sources */,
+				7E791F122032B4A500FA887D /* CuisineAndFoodPreferencesViewController.swift in Sources */,
 				9D8E89081FFD2BEC0066A1D9 /* RoundedTextField.swift in Sources */,
 				9D902BCB20171AED00359DFD /* FoodCardsViewController.swift in Sources */,
 				9D902BE7201729E400359DFD /* SelectLocationInteractor.swift in Sources */,
@@ -1269,6 +1300,7 @@
 				9D8E89121FFD2BEC0066A1D9 /* NibLoadableView.swift in Sources */,
 				9D902BCD20171AED00359DFD /* FoodCardsRouter.swift in Sources */,
 				9D8E89131FFD2BEC0066A1D9 /* ReusableView.swift in Sources */,
+				7E791F182032CAB800FA887D /* PreferenceTypeCollectionViewCell.swift in Sources */,
 				9D3FC4D82011C94A001A4264 /* CuisinePreference.swift in Sources */,
 				9DE7CE532023620500BBBFEC /* UserPreferenceViewController.swift in Sources */,
 				9D8E89141FFD2BEC0066A1D9 /* SessionHelper.swift in Sources */,

@@ -60,6 +60,7 @@ enum SnapXEatsStoryboardIdentifier {
     static let locationCellReuseIdentifier = "CuisineCell"
     static let locationCuisineCollectionCellIdentifier = "CuisineCollectionViewCell"
     static let userPreferenceNavigationControllerID = "UserPreferenceNavigationController"
+    static let cusineAndFoodPreferencesViewControllerID = "CusineAndFoodPreferencesViewControllerID"
 }
 
 enum SnapXEatsLocationConstant {
@@ -96,20 +97,24 @@ enum SnapXEatsPlaceSearchRequestKeys {
 }
 
 
-enum SnapXEatsMenuOptions {
+enum SnapXEatsPageTitles {
     static let restaurants = "Restaurants"
     static let wishlist = "Wishlist"
     static let preferences = "Preferences"
     static let foodJourney = "Food Journeys"
     static let rewards = "Rewards"
+    static let cusinePreferences = "Cuisine Preferences"
+    static let foodPreferences = "Food Preferences"
 }
 
 enum SnapXEatsCellResourceIdentifiler {
     static let navigationMenu = "navigationtionmenucell"
+    static let preferenceType = "PreferenceTypeCell"
 }
 
 enum SnapXEatsNibNames {
     static let navigationMenuTableViewCell = "NavigationMenuTableViewCell"
+    static let preferenceTypeCollectionViewCell = "PreferenceTypeCollectionViewCell"
 }
 
 enum SnapXEatsWebServiceParameterKeys {
@@ -137,3 +142,4 @@ enum SnapXEatsConstant {
     static let onceDeniedLocation = "SnapXEatsOnceDenedLocation"
     static let emptyString = ""
 }
+

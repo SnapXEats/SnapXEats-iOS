@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol UserPreferenceView: class, BaseView {
     // TODO: Declare view methods
@@ -24,6 +25,10 @@ protocol UserPreferenceInteractorOutput: class {
     // TODO: Declare interactor output methods
 }
 
-protocol UserPreferenceWireframe: class {
+protocol UserPreferenceWireframe: class, RootWireFrame {
     // TODO: Declare wireframe methods
+}
+
+protocol FoodAndCuisinePreferencePresentation: class {
+    func presentFoodAndCuisinePreferences(preferenceType: PreferenceType, preferenceItems: [PreferenceItem], parent: UINavigationController )
 }

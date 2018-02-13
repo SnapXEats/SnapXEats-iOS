@@ -17,7 +17,7 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
         static let selectedTextColor = UIColor.rgba(86.0, 86.0, 86.0, 1.0)
     }
     
-    var presenter: UserPreferencePresentation?
+    var presenter: FoodAndCuisinePreferencePresentation?
     var selectedRating:RatingPreferences = .threeStar
     var selectedPrice:PricingPreference = .single
     var sortByFilter: SortByPreference = .distance
@@ -77,8 +77,15 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
         }
     }
     
-    @IBAction func starRatingSelected(sender: UIButton) {
+    @IBAction func selectPreferencesAction(sender: UIButton) {
+        let preferenceType = PreferenceType(rawValue: sender.tag)
+        let preferenceItems: [PreferenceItem] = preferenceType! == .cuisine ? createCuisineItems() : createFoodItems()
         
+        presenter?.presentFoodAndCuisinePreferences(preferenceType: preferenceType!, preferenceItems: preferenceItems, parent: self.navigationController!)
+    
+    }
+    
+    @IBAction func starRatingSelected(sender: UIButton) {
         switch sender {
         case fiveStarRatingButton:
             sender.isSelected = true
@@ -101,11 +108,24 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
         default: break
         }
     }
+    
+    func createFoodItems() -> [FoodItem] {
+        let foodItem1 = FoodItem(itemID: "123", imageURL: "", itemName: "Sea food")
+        let foodItem2 = FoodItem(itemID: "123", imageURL: "", itemName: "Vegiterian")
+        let foodItem3 = FoodItem(itemID: "123", imageURL: "", itemName: "Fast Food")
+        let foodItem4 = FoodItem(itemID: "123", imageURL: "", itemName: "Chicken")
+    
+        return [foodItem1, foodItem2, foodItem3, foodItem4]
+    }
+    
+    func createCuisineItems() -> [Cuisine] {
+        return [Cuisine]()
+    }
 }
 
 extension UserPreferenceViewController: UserPreferenceView {
     func initView() {
-        customizeNavigationItem(title: SnapXEatsMenuOptions.preferences, isDetailPage: false)
+        customizeNavigationItem(title: SnapXEatsPageTitles.preferences, isDetailPage: false)
         pricingFilter.titles = [
             SnapXEatsAppDefaults.emptyString,
             SnapXEatsAppDefaults.emptyString,
