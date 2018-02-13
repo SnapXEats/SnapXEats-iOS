@@ -23,7 +23,7 @@ protocol SnapXEatsUserLocation: NetworkFailure, SelectedUserPreference {
     var currentView: UIViewController {get}
     func checkLocationStatus()
     func showSettingDialog()
-    func showAddressForLocation(locations: [CLLocation], completionHandler: @escaping (_ locality: String?, _ subAdministrativeArea: String? ) -> ())
+    func showAddressForLocation(locations: [CLLocation], completionHandler: @escaping (_ error: NetworkResult) -> ())
 }
 
 extension SnapXEatsUserLocation {
@@ -67,17 +67,22 @@ extension SnapXEatsUserLocation {
         locationManager.delegate = nil
     }
     
-    func showAddressForLocation(locations: [CLLocation], completionHandler: @escaping (_ locality: String?, _ subAdministrativeArea: String? ) -> ()) {
+    func showAddressForLocation(locations: [CLLocation], completionHandler: @escaping (_ result: NetworkResult ) -> ()) {
         let location = locations.first!
         stopLocationManager()
         let geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(location) {(placemarksArray, error) in
-            let enable = self.checkRechability()
-            if let placemarksArray = placemarksArray, placemarksArray.count > 0 && enable { // app was crashin on on/off internet
-                let placemark = placemarksArray.first // Get the First Address from List
-                self.selectedPreference.location.latitude =  Double(placemark?.location?.coordinate.latitude ?? 0)
-                self.selectedPreference.location.longitude = Double(placemark?.location?.coordinate.longitude ?? 0)
-                completionHandler(placemark?.subLocality, placemark?.subAdministrativeArea)
+            if self.checkRechability() {
+                if let placemarksArray = placemarksArray, placemarksArray.count > 0 { // app was crashin on on/off internet
+                    let placemark = placemarksArray.first // Get the First Address from List
+                    self.selectedPreference.location.latitude =  Double(placemark?.location?.coordinate.latitude ?? 0)
+                    self.selectedPreference.location.longitude = Double(placemark?.location?.coordinate.longitude ?? 0)
+                    let result: (String?, String?) = (subLocality: placemark?.subLocality, subAdministrativeArea : placemark?.subAdministrativeArea)
+                    completionHandler(.success(data: result))
+                } else {
+                    completionHandler(.noInternet)
+                }
+                
             }
         }
     }

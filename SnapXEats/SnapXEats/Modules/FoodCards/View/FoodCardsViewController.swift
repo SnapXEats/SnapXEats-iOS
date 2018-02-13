@@ -40,7 +40,7 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     }
     
     @IBAction func refreshScreen(_ sender: Any) {
-        presenter?.refreshFoodCards()
+       // presenter?.refreshFoodCards()
     }
     
     @IBAction func searchButtonAction(_: Any) {

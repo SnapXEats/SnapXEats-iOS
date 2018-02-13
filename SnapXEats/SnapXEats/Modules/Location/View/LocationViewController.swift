@@ -31,13 +31,13 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
             return self
         }
     }
-
+    
     
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var cuisinCollectionView: UICollectionView!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var userLocation: UIButton!
-
+    
     private var locationEnabled: Bool {
         get {
             return (selectedPreference.location.latitude != 0.0 && selectedPreference.location.longitude != 0.0)
@@ -46,9 +46,7 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     
     @IBAction func doneButtonAction(_ sender: Any) {
         self.navigationController?.isNavigationBarHidden = false // UnHide navigation bar when moved to Next Page. Not Used View will disappear because it unhides NvBar even if Drawer is opened.
-        
-        setCuisinePreferences()
-        resetCollectionView()
+        reset() // Reset view state unregister observer and location manager
         presenter?.closeLocationView(selectedPreference: selectedPreference, parent: self.navigationController!)
     }
     
@@ -66,11 +64,9 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
         setLocationTitle(locationName: selectedPreference.location.locationName)
         registerNotification()
         
-        if !locationEnabled {
-            verifyLocationService()
-        }
+        verifyLocationService()
     }
-
+    
     @IBAction func setNewLocation(_ sender: Any) {
         stopLocationManager()
         unRegisterNotification()
@@ -88,18 +84,25 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
         registerCellForNib()
     }
     
+    private func reset() {
+        stopLocationManager()
+        unRegisterNotification()
+        setCuisinePreferences()
+        resetCollectionView()
+    }
     private func setLocationTitle(locationName: String) {
         let locationButtonTitle = (locationName == SnapXEatsAppDefaults.emptyString) ? defaultLocationTitle : locationName
         self.userLocation.setTitle("\(locationButtonTitle)", for: .normal)
         userLocation.titleLabel?.sizeToFit()
         let leftInset = (userLocation.titleLabel?.frame.size.width)! + locationTitleLeftInsetMargin
         userLocation.imageEdgeInsets = UIEdgeInsetsMake(locationTitleTopInset, leftInset, 0, -leftInset);
+        if selectedPreference.location.locationName != locationName {
+            selectedPreference.location.locationName = locationName
+        }
     }
     
     @objc override func internetConnected() {
-        if locationEnabled == false {
-          verifyLocationService()
-        }
+        verifyLocationService()
     }
     
     func registerCellForNib() {
@@ -138,7 +141,7 @@ extension LocationViewController: LocationView {
 }
 
 extension LocationViewController: CLLocationManagerDelegate, SnapXEatsUserLocation {
-
+    
     //this method will be called each time when a user change his location access preference.
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         verifyLocationService()
@@ -146,13 +149,14 @@ extension LocationViewController: CLLocationManagerDelegate, SnapXEatsUserLocati
     
     //if we have no permission to access user location, then ask user for permission.
     private func verifyLocationService() {
+        locationManager.delegate = self // set the delegate again 
         showSettingDialog()
     }
     
-     func checkLocationStatus() {
+    func checkLocationStatus() {
         let status = CLLocationManager.authorizationStatus()
         switch status  {
-        case .authorizedWhenInUse,.authorizedAlways:
+        case .authorizedWhenInUse, .authorizedAlways:
             if checkRechability() {
                 showLoading()
                 locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -162,7 +166,7 @@ extension LocationViewController: CLLocationManagerDelegate, SnapXEatsUserLocati
             if permissionDenied == false {
                 permissionDenied = true
                 presenter?.selectLocation()
-
+                
             } else  {
                 showSettingDialog()
             }
@@ -173,39 +177,29 @@ extension LocationViewController: CLLocationManagerDelegate, SnapXEatsUserLocati
     }
     
     private func sendCuiseRequest() {
-        if checkRechability() && !isProgressHUD && locationEnabled {
+        if checkRechability() && !isProgressHUD  {
             showLoading()
             presenter?.cuisinePreferenceRequest(selectedPreference: selectedPreference)
         }
     }
     //this method is called by the framework on locationManager.requestLocation();
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-            showAddressForLocation(locations: locations) {[weak self] (locality: String?, subAdministrativeArea: String? ) in
-                if let locality = locality {
+        showAddressForLocation(locations: locations) {[weak self] (result: NetworkResult) in
+            switch result {
+            case .success(let value):
+                let data: (String?, String?) = value as! (String?, String?)
+                if let locality = data.0 {
                     self?.setLocationTitle(locationName: locality)
-                } else if let area = subAdministrativeArea {
+                } else if let area = data.1 {
                     self?.setLocationTitle(locationName: area)
                 }
                 self?.hideLoading()
                 self?.sendCuiseRequest()
-            }
-    }
-    
-    private func showAddressForLocation(location: CLLocation) {
-        let geocoder = CLGeocoder()
-        geocoder.reverseGeocodeLocation(location) {[weak self] (placemarksArray, error) in
-            let enable = self?.checkRechability() ?? false
-            if let placemarksArray = placemarksArray, placemarksArray.count > 0 && enable { // app was crashin on on/off internet
-                // strongSelf.hideLoading()
-                let placemark = placemarksArray.first // Get the First Address from List
-                self?.selectedPreference.location.latitude =  Double(placemark?.location?.coordinate.latitude ?? 0)
-                self?.selectedPreference.location.longitude = Double(placemark?.location?.coordinate.longitude ?? 0)
-                if let locality = placemark?.subLocality {
-                    self?.setLocationTitle(locationName: locality)
-                } else if let area = placemark?.subAdministrativeArea {
-                    self?.setLocationTitle(locationName: area)
-                }
-                self?.sendCuiseRequest()
+                
+            case .noInternet:
+                self?.hideLoading()
+            default:
+                break
             }
         }
     }

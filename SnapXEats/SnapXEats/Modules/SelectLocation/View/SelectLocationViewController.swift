@@ -77,7 +77,7 @@ class SelectLocationViewController: BaseViewController, StoryboardLoadable {
                 let locationName = String(locatioString[..<index])
                 navigatScreen(locationName: locationName)
             }
-            
+
             
         }
     }
@@ -115,6 +115,7 @@ class SelectLocationViewController: BaseViewController, StoryboardLoadable {
     
     private func setLocationForSearchedPlace(place : SearchPlace) {
         if let placeId = place.id {
+            showLoading()
             presenter?.getPlaceDetails(placeid: placeId)
         }
     }
@@ -181,8 +182,8 @@ extension SelectLocationViewController: UITableViewDelegate, UITableViewDataSour
                 // Set Selected Place to text box and clear searched places
                 locationSearchBar.text = selectedPlace.description
                 self.searchPlaces = []
+                tableView.reloadData()
             }
-            tableView.reloadData()
         }
     }
 }
@@ -228,15 +229,22 @@ extension SelectLocationViewController: CLLocationManagerDelegate, SnapXEatsUser
     
     //this method is called by the framework on locationManager.requestLocation();
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        showAddressForLocation(locations: locations) {[weak self] (locality: String?, subAdministrativeArea: String? ) in
-            if let locality = locality {
+        showAddressForLocation(locations: locations) {[weak self] (result: NetworkResult)  in
+            switch result {
+            case .success(let value):
+            let data: (String?, String?) = value as! (String?, String?)
+            if let locality = data.0 {
                 self?.currentLocationLabel.text = locality //("\(locality)", for: .normal)
-            } else if let area = subAdministrativeArea {
+            } else if let area = data.1 {
                 self?.currentLocationLabel.text = area //("\(area)", for: .normal)
             }
-            
             self?.hideLoading()
             self?.navigatScreen(locationName: self?.currentLocationLabel.text)
+            case .noInternet:
+                self?.hideLoading()
+            default:
+                break
+            }
         }
     }
     
