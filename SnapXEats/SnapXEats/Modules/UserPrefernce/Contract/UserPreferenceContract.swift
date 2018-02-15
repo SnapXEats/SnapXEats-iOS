@@ -30,5 +30,5 @@ protocol UserPreferenceWireframe: class, RootWireFrame {
 }
 
 protocol FoodAndCuisinePreferencePresentation: class {
-    func presentFoodAndCuisinePreferences(preferenceType: PreferenceType, preferenceItems: [PreferenceItem], parent: UINavigationController )
+    func presentFoodAndCuisinePreferences(preferenceType: PreferenceType, parent: UINavigationController )
 }

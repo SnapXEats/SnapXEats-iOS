@@ -78,11 +78,9 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
     }
     
     @IBAction func selectPreferencesAction(sender: UIButton) {
-        let preferenceType = PreferenceType(rawValue: sender.tag)
-        let preferenceItems: [PreferenceItem] = preferenceType! == .cuisine ? createCuisineItems() : createFoodItems()
-        
-        presenter?.presentFoodAndCuisinePreferences(preferenceType: preferenceType!, preferenceItems: preferenceItems, parent: self.navigationController!)
-    
+        if let preferenceType = PreferenceType(rawValue: sender.tag), let parentNVController = self.navigationController {
+          presenter?.presentFoodAndCuisinePreferences(preferenceType: preferenceType, parent: parentNVController)
+        }
     }
     
     @IBAction func starRatingSelected(sender: UIButton) {
@@ -107,19 +105,6 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
             
         default: break
         }
-    }
-    
-    func createFoodItems() -> [FoodItem] {
-        let foodItem1 = FoodItem(itemID: "123", imageURL: "", itemName: "Sea food")
-        let foodItem2 = FoodItem(itemID: "123", imageURL: "", itemName: "Vegiterian")
-        let foodItem3 = FoodItem(itemID: "123", imageURL: "", itemName: "Fast Food")
-        let foodItem4 = FoodItem(itemID: "123", imageURL: "", itemName: "Chicken")
-    
-        return [foodItem1, foodItem2, foodItem3, foodItem4]
-    }
-    
-    func createCuisineItems() -> [Cuisine] {
-        return [Cuisine]()
     }
 }
 

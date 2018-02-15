@@ -27,7 +27,7 @@ extension UserPreferencePresenter: UserPreferenceInteractorOutput {
 }
 
 extension UserPreferencePresenter: FoodAndCuisinePreferencePresentation {
-    func presentFoodAndCuisinePreferences(preferenceType: PreferenceType, preferenceItems: [PreferenceItem], parent: UINavigationController) {
-        router?.presentScreen(screen: .foodAndCusinePreferences(preferenceType: preferenceType, preferenceItems: preferenceItems, parentController: parent))
+    func presentFoodAndCuisinePreferences(preferenceType: PreferenceType, parent: UINavigationController) {
+        router?.presentScreen(screen: .foodAndCusinePreferences(preferenceType: preferenceType, parentController: parent))
     }
 }
