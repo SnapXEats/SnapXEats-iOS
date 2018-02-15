@@ -252,8 +252,8 @@ extension LocationViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        //2
-        let paddingSpace: CGFloat = 12 + sectionInsets.left * 2
+
+        let paddingSpace: CGFloat = 5 + sectionInsets.left * 2
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
         return CGSize(width: widthPerItem, height: widthPerItem * 2/3 + 35)
