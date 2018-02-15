@@ -38,12 +38,11 @@
                                 <rect key="frame" x="0.0" y="137" width="205" height="37"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IXe-gw-nLe">
-                                        <rect key="frame" x="180" y="11.5" width="15" height="15"/>
+                                        <rect key="frame" x="170" y="6.5" width="25" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="15" id="qvF-TP-iTy"/>
-                                            <constraint firstAttribute="height" constant="15" id="vRX-Uu-jek"/>
+                                            <constraint firstAttribute="width" constant="25" id="qvF-TP-iTy"/>
+                                            <constraint firstAttribute="height" constant="25" id="vRX-Uu-jek"/>
                                         </constraints>
-                                        <state key="normal" image="like_icon"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Lg-L1-yEr">
                                         <rect key="frame" x="10" y="10" width="34.5" height="16.5"/>
@@ -74,21 +73,12 @@
                             <constraint firstAttribute="trailing" secondItem="1Qb-VP-nch" secondAttribute="trailing" id="wEh-Hb-hYk"/>
                         </constraints>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selected_cuisine" translatesAutoresizingMaskIntoConstraints="NO" id="spB-A4-057">
-                        <rect key="frame" x="87" y="71" width="40" height="40"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="40" id="CL1-Xn-5SR"/>
-                            <constraint firstAttribute="width" constant="40" id="YcG-gm-fhG"/>
-                        </constraints>
-                    </imageView>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="spB-A4-057" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="8nj-ho-Igi"/>
                 <constraint firstAttribute="bottom" secondItem="7tx-Om-6KI" secondAttribute="bottom" constant="5" id="BSY-I5-cHO"/>
                 <constraint firstAttribute="trailing" secondItem="7tx-Om-6KI" secondAttribute="trailing" constant="5" id="Nef-fA-KTJ"/>
-                <constraint firstItem="spB-A4-057" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Rom-XK-xb1"/>
                 <constraint firstItem="7tx-Om-6KI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="W2P-0C-fJV"/>
                 <constraint firstItem="7tx-Om-6KI" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="icx-YY-tDJ"/>
             </constraints>
@@ -98,14 +88,12 @@
                 <outlet property="cellContainerView" destination="7tx-Om-6KI" id="vzf-Ur-gqQ"/>
                 <outlet property="preferenceItemImage" destination="d8s-e4-IFC" id="13u-sS-lwS"/>
                 <outlet property="preferenceItemNameLabel" destination="5Lg-L1-yEr" id="uI5-C4-cql"/>
-                <outlet property="selectedImageView" destination="spB-A4-057" id="Kbh-V0-mvX"/>
+                <outlet property="preferenceItemStatusButton" destination="IXe-gw-nLe" id="Ysm-zZ-9vF"/>
             </connections>
             <point key="canvasLocation" x="116.5" y="120.5"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="like_icon" width="14" height="12"/>
         <image name="placeholder_cuisine" width="89" height="58"/>
-        <image name="selected_cuisine" width="38" height="38"/>
     </resources>
 </document>

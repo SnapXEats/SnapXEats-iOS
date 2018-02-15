@@ -15,6 +15,8 @@ enum PreferenceType: Int {
 
 class PreferenceItem {
     var type: PreferenceType?
+    var isLiked: Bool = false
+    var isFavourite: Bool = false
     
     init(type: PreferenceType) {
         self.type = type
@@ -25,7 +27,7 @@ class FoodItem: PreferenceItem {
     var foodItemId: String?
     var foodItemImageURL: String?
     var foodItemName: String?
-
+    
     init(itemID: String, imageURL: String, itemName: String) {
         foodItemId = itemID
         foodItemImageURL = imageURL

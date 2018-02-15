@@ -16,7 +16,6 @@ class CuisineAndFoodPreferencesViewController: BaseViewController, StoryboardLoa
     var preferenceType: PreferenceType!
     var presenter: UserPreferencePresentation?
     var preferenceItems = [PreferenceItem]()
-    var selectedCuisineIndexes = NSMutableArray()
     
     @IBOutlet weak var preferencesCollectionView: UICollectionView!
     
@@ -25,7 +24,30 @@ class CuisineAndFoodPreferencesViewController: BaseViewController, StoryboardLoa
         initView()
     }
     
-    @IBAction func saveButtonAction(_: Any) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getPreferences()
+    }
+    
+    @IBAction func doneButtonAction(_: Any) {
+        
+    }
+    
+    private func getPreferences() {
+        (preferenceType == .food) ? getFoodItems() : getCuisineItems()
+    }
+    
+    private func getFoodItems() {
+        let foodItem1 = FoodItem(itemID: "123", imageURL: "", itemName: "Sea food")
+        let foodItem2 = FoodItem(itemID: "123", imageURL: "", itemName: "Vegiterian")
+        let foodItem3 = FoodItem(itemID: "123", imageURL: "", itemName: "Fast Food")
+        let foodItem4 = FoodItem(itemID: "123", imageURL: "", itemName: "Chicken")
+        
+        preferenceItems = [foodItem1, foodItem2, foodItem3, foodItem4]
+        preferencesCollectionView.reloadData()
+    }
+    
+    private func getCuisineItems() {
         
     }
 }
@@ -35,11 +57,52 @@ extension CuisineAndFoodPreferencesViewController: UserPreferenceView {
         let pageTitle = (preferenceType == .food) ? SnapXEatsPageTitles.foodPreferences : SnapXEatsPageTitles.cusinePreferences
         customizeNavigationItem(title: pageTitle, isDetailPage: true)
         registerCellForNib()
+        addGestureRecognizersForCollectionView()
     }
     
-    func registerCellForNib() {
+    private func registerCellForNib() {
         let nib = UINib(nibName: SnapXEatsNibNames.preferenceTypeCollectionViewCell, bundle: nil)
         preferencesCollectionView.register(nib, forCellWithReuseIdentifier: SnapXEatsCellResourceIdentifiler.preferenceType)
+    }
+    
+    private func addGestureRecognizersForCollectionView() {
+        // Double Tap Gesture
+        let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(didDoubleTapCollectionView(_:)))
+        doubleTapGesture.numberOfTapsRequired = 2
+        doubleTapGesture.cancelsTouchesInView = false
+        preferencesCollectionView.addGestureRecognizer(doubleTapGesture)
+        
+        // Single Tap Gesture
+        let singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(didSingleTapCollectionView(_:)))
+        singleTapGesture.numberOfTapsRequired = 1
+        preferencesCollectionView.addGestureRecognizer(singleTapGesture)
+        
+        singleTapGesture.require(toFail: doubleTapGesture)
+    }
+    
+    // Gesture Action Methods
+    @objc func didSingleTapCollectionView(_ sender: UITapGestureRecognizer) {
+        let pointInCollectionView: CGPoint = sender.location(in: preferencesCollectionView)
+        if let selectedIndexPath = preferencesCollectionView.indexPathForItem(at: pointInCollectionView) {
+            
+            let item = preferenceItems[selectedIndexPath.row]
+            item.isLiked = true
+            item.isFavourite = false
+            preferenceItems[selectedIndexPath.row] = item
+            preferencesCollectionView.reloadItems(at: [selectedIndexPath])
+        }
+    }
+    
+    @objc func didDoubleTapCollectionView(_ sender: UITapGestureRecognizer) {
+        let pointInCollectionView: CGPoint = sender.location(in: preferencesCollectionView)
+        if let selectedIndexPath = preferencesCollectionView.indexPathForItem(at: pointInCollectionView) {
+            
+            let item = preferenceItems[selectedIndexPath.row]
+            item.isLiked = false
+            item.isFavourite = true
+            preferenceItems[selectedIndexPath.row] = item
+            preferencesCollectionView.reloadItems(at: [selectedIndexPath])
+        }
     }
 }
 
@@ -55,18 +118,19 @@ extension CuisineAndFoodPreferencesViewController: UICollectionViewDelegate, UIC
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SnapXEatsCellResourceIdentifiler.preferenceType, for: indexPath) as! PreferenceTypeCollectionViewCell
-        let isItemSelected = selectedCuisineIndexes.contains(indexPath.row) ? true : false
-        cell.configurePreferenceItemCell(preferenceItem: preferenceItems[indexPath.row], preferencetype: preferenceType, isSelected: isItemSelected)
+        cell.configurePreferenceItemCell(preferenceItem: preferenceItems[indexPath.row], preferencetype: preferenceType)
+        cell.preferenceItemStatusButton.tag = indexPath.row
+        cell.preferenceItemStatusButton.addTarget(self, action: #selector(preferenceItemStatusButtonAction(_:)), for: .touchUpInside)
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if selectedCuisineIndexes.contains(indexPath.row) {
-            selectedCuisineIndexes.remove(indexPath.row)
-        } else {
-            selectedCuisineIndexes.add(indexPath.row)
-        }
-        collectionView.reloadItems(at: [indexPath])
+    @objc func preferenceItemStatusButtonAction(_ button: UIButton) {
+        let indexPath = IndexPath(item: button.tag, section: 0)
+        let item = preferenceItems[button.tag]
+        item.isLiked = false
+        item.isFavourite = false
+        preferenceItems[button.tag] = item
+        preferencesCollectionView.reloadItems(at: [indexPath])
     }
 }
 
