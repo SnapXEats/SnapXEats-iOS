@@ -25,7 +25,6 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
 
 
     @IBOutlet weak var sampleLabel: UILabel!
-    @IBOutlet weak var locationInfoView: UIView!
     @IBOutlet weak var pricingFilter: BetterSegmentedControl!
     @IBOutlet weak var distanceFilter: BetterSegmentedControl!
     
@@ -47,10 +46,6 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
         initView()
     }
     
-    override func viewDidLayoutSubviews() {
-        locationInfoView.addViewBorderWithColor(color: UIColor.rgba(230.0, 230.0, 230.0, 1.0), width: 1.0, side: .bottom)
-    }
-    
     @IBAction func applyButtonAction(_: Any) {
         // Apply Button Action
         SelectedPreference.shared.ratingPreference = selectedRating
@@ -59,10 +54,6 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
         SelectedPreference.shared.distancePreference = selectedDistance
     }
     
-    @IBAction func locationSelectAction(sender: UIButton) {
-        // Location Select Action
-    }
-        
     @IBAction func radioButtonSelected(sender: UIButton) {
         if sender == distanceRadioButton && sender.isSelected == false {
             sender.isSelected = true

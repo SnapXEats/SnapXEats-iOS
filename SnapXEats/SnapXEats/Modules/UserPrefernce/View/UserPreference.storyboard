@@ -30,54 +30,10 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="686"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IwV-bd-0dA">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="638"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="565"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pgf-UA-ZrN">
-                                                <rect key="frame" x="25" y="0.0" width="325" height="73"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOCATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="goU-Lx-kVm">
-                                                        <rect key="frame" x="0.0" y="18" width="57.5" height="16"/>
-                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
-                                                        <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location_marker_icon" translatesAutoresizingMaskIntoConstraints="NO" id="rAd-Gv-dN2">
-                                                        <rect key="frame" x="0.0" y="47" width="11" height="17"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="11" id="4lC-Qv-3cK"/>
-                                                            <constraint firstAttribute="height" constant="17" id="Fhq-GV-2kK"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kothrud" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6j-cE-oJV">
-                                                        <rect key="frame" x="19" y="47" width="47" height="17.5"/>
-                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
-                                                        <color key="textColor" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smy-LQ-rSK">
-                                                        <rect key="frame" x="0.0" y="0.0" width="325" height="73"/>
-                                                        <connections>
-                                                            <action selector="locationSelectActionWithSender:" destination="Ipe-nt-eOg" eventType="touchUpInside" id="uTa-AK-Fsk"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstItem="goU-Lx-kVm" firstAttribute="top" secondItem="Pgf-UA-ZrN" secondAttribute="top" constant="18" id="ODe-rg-QmH"/>
-                                                    <constraint firstAttribute="bottom" secondItem="smy-LQ-rSK" secondAttribute="bottom" id="P5g-z7-5qt"/>
-                                                    <constraint firstItem="smy-LQ-rSK" firstAttribute="top" secondItem="Pgf-UA-ZrN" secondAttribute="top" id="Q07-gQ-4us"/>
-                                                    <constraint firstItem="k6j-cE-oJV" firstAttribute="top" secondItem="goU-Lx-kVm" secondAttribute="bottom" constant="13" id="eHT-Tc-277"/>
-                                                    <constraint firstAttribute="height" constant="73" id="kCM-J9-l6q"/>
-                                                    <constraint firstItem="rAd-Gv-dN2" firstAttribute="top" secondItem="goU-Lx-kVm" secondAttribute="bottom" constant="13" id="mMx-Xh-bOa"/>
-                                                    <constraint firstItem="goU-Lx-kVm" firstAttribute="leading" secondItem="Pgf-UA-ZrN" secondAttribute="leading" id="n8H-E0-vQV"/>
-                                                    <constraint firstItem="smy-LQ-rSK" firstAttribute="leading" secondItem="Pgf-UA-ZrN" secondAttribute="leading" id="pXM-GC-gY0"/>
-                                                    <constraint firstItem="rAd-Gv-dN2" firstAttribute="leading" secondItem="Pgf-UA-ZrN" secondAttribute="leading" id="qMP-y1-6j6"/>
-                                                    <constraint firstItem="k6j-cE-oJV" firstAttribute="leading" secondItem="rAd-Gv-dN2" secondAttribute="trailing" constant="8" id="wcA-MV-bjN"/>
-                                                    <constraint firstAttribute="trailing" secondItem="smy-LQ-rSK" secondAttribute="trailing" id="xWd-aV-rr0"/>
-                                                </constraints>
-                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r1V-zN-v9C" userLabel="Ratings View">
-                                                <rect key="frame" x="0.0" y="73" width="375" height="122"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="122"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RATINGS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GfM-QZ-5fz">
                                                         <rect key="frame" x="25" y="20" width="50.5" height="16"/>
@@ -158,7 +114,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CbM-ZT-OLn" userLabel="Pricing View">
-                                                <rect key="frame" x="0.0" y="195" width="375" height="106"/>
+                                                <rect key="frame" x="0.0" y="122" width="375" height="106"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PRICING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j10-M7-Pys">
                                                         <rect key="frame" x="25" y="30" width="47" height="16"/>
@@ -270,7 +226,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IPN-lK-4tK" userLabel="Distance View">
-                                                <rect key="frame" x="0.0" y="301" width="375" height="100"/>
+                                                <rect key="frame" x="0.0" y="228" width="375" height="100"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DISTANCE (mi)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dM-jt-2HP">
                                                         <rect key="frame" x="25" y="30" width="81" height="16"/>
@@ -410,7 +366,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dwd-rH-kYS" userLabel="SortBy View">
-                                                <rect key="frame" x="0.0" y="401" width="375" height="75"/>
+                                                <rect key="frame" x="0.0" y="328" width="375" height="75"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SORT BY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fGk-x5-kcK">
                                                         <rect key="frame" x="25" y="30" width="48.5" height="16"/>
@@ -462,7 +418,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rqw-2e-RQk" userLabel="Preference View">
-                                                <rect key="frame" x="0.0" y="476" width="375" height="152"/>
+                                                <rect key="frame" x="0.0" y="403" width="375" height="152"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SET PREFERENCES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gu2-Z6-2cZ">
                                                         <rect key="frame" x="25" y="30" width="107" height="16"/>
@@ -521,21 +477,18 @@
                                         <constraints>
                                             <constraint firstItem="r1V-zN-v9C" firstAttribute="leading" secondItem="IwV-bd-0dA" secondAttribute="leading" id="4d0-jQ-w4N"/>
                                             <constraint firstItem="CbM-ZT-OLn" firstAttribute="leading" secondItem="IwV-bd-0dA" secondAttribute="leading" id="6I3-fK-T9s"/>
-                                            <constraint firstAttribute="trailing" secondItem="Pgf-UA-ZrN" secondAttribute="trailing" constant="25" id="7af-ka-EMf"/>
                                             <constraint firstItem="IPN-lK-4tK" firstAttribute="top" secondItem="CbM-ZT-OLn" secondAttribute="bottom" id="85T-u2-pu1"/>
                                             <constraint firstItem="dwd-rH-kYS" firstAttribute="leading" secondItem="IwV-bd-0dA" secondAttribute="leading" id="BNS-X3-eO8"/>
                                             <constraint firstAttribute="trailing" secondItem="Rqw-2e-RQk" secondAttribute="trailing" id="Cgg-zD-XTx"/>
                                             <constraint firstAttribute="trailing" secondItem="r1V-zN-v9C" secondAttribute="trailing" id="N0g-P4-uBo"/>
                                             <constraint firstAttribute="trailing" secondItem="IPN-lK-4tK" secondAttribute="trailing" id="N5P-dy-Swd"/>
-                                            <constraint firstItem="Pgf-UA-ZrN" firstAttribute="leading" secondItem="IwV-bd-0dA" secondAttribute="leading" constant="25" id="Ot3-d9-PnE"/>
-                                            <constraint firstItem="Pgf-UA-ZrN" firstAttribute="top" secondItem="IwV-bd-0dA" secondAttribute="top" id="QOB-he-okx"/>
                                             <constraint firstItem="CbM-ZT-OLn" firstAttribute="top" secondItem="r1V-zN-v9C" secondAttribute="bottom" id="V5x-xK-Veh"/>
                                             <constraint firstAttribute="bottom" secondItem="Rqw-2e-RQk" secondAttribute="bottom" constant="10" id="Vin-oI-bHN"/>
                                             <constraint firstAttribute="trailing" secondItem="CbM-ZT-OLn" secondAttribute="trailing" id="YQu-Vf-7SA"/>
                                             <constraint firstItem="dwd-rH-kYS" firstAttribute="top" secondItem="IPN-lK-4tK" secondAttribute="bottom" id="dJr-9P-WwK"/>
                                             <constraint firstItem="Rqw-2e-RQk" firstAttribute="top" secondItem="dwd-rH-kYS" secondAttribute="bottom" id="dUa-Cl-sEy"/>
                                             <constraint firstItem="IPN-lK-4tK" firstAttribute="leading" secondItem="IwV-bd-0dA" secondAttribute="leading" id="kUd-vC-uVC"/>
-                                            <constraint firstItem="r1V-zN-v9C" firstAttribute="top" secondItem="Pgf-UA-ZrN" secondAttribute="bottom" id="nj8-QE-Ttc"/>
+                                            <constraint firstItem="r1V-zN-v9C" firstAttribute="top" secondItem="IwV-bd-0dA" secondAttribute="top" id="pVO-f5-3eX"/>
                                             <constraint firstItem="Rqw-2e-RQk" firstAttribute="leading" secondItem="IwV-bd-0dA" secondAttribute="leading" id="vrH-CC-bHK"/>
                                             <constraint firstAttribute="trailing" secondItem="dwd-rH-kYS" secondAttribute="trailing" id="yNX-zm-pWm"/>
                                         </constraints>
@@ -575,11 +528,9 @@
                         <outlet property="distanceRangeContainerView" destination="H3S-CZ-Ppl" id="fQe-Un-ddl"/>
                         <outlet property="fiveStarRatingButton" destination="Lcf-Xt-wAI" id="HTL-Ig-P1V"/>
                         <outlet property="fourStarRatingButton" destination="4hD-sS-awB" id="f2Q-rI-VSx"/>
-                        <outlet property="locationInfoView" destination="Pgf-UA-ZrN" id="eYf-h6-Gea"/>
                         <outlet property="priceRangeContainerView" destination="EIT-Jr-saL" id="5bH-ZG-f29"/>
                         <outlet property="pricingFilter" destination="uge-MK-fia" id="ldl-ks-zU2"/>
                         <outlet property="ratingsRadioButton" destination="wso-39-EAV" id="Q4O-zc-NsJ"/>
-                        <outlet property="sampleLabel" destination="k6j-cE-oJV" id="DCc-2G-j7s"/>
                         <outlet property="selectCuisineButton" destination="0S9-Ax-2FB" id="uAl-bl-GBz"/>
                         <outlet property="selectFoodButton" destination="EId-fn-6e7" id="4Hw-9f-T4M"/>
                         <outlet property="threeStarRatingButton" destination="U2t-TH-dFC" id="WDz-0S-jHa"/>
@@ -704,7 +655,6 @@
         <image name="5star_selected" width="97" height="81"/>
         <image name="cuisine_icon" width="20" height="20"/>
         <image name="food_icon" width="24" height="13"/>
-        <image name="location_marker_icon" width="11" height="17"/>
         <image name="radio_button" width="15" height="15"/>
         <image name="radio_button_selected" width="15" height="15"/>
     </resources>
