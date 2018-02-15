@@ -72,6 +72,8 @@ enum SnapXEatsWebServicePath {
     static let  rootURL = "http://ec2-18-216-193-78.us-east-2.compute.amazonaws.com:" + port
     static let  cuisinePreferenceURL = "/api/v1/cuisine"
     static let  dishesURL = "/api/v1/Dishes"
+    static let  foodtypesURL = "/api/v1/foodTypes"
+    static let  cuisinetypesURL = "/api/v1/cuisine"
 }
 
 enum SnapXEatsImageNames {

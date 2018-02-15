@@ -29,26 +29,23 @@ class CuisineAndFoodPreferencesViewController: BaseViewController, StoryboardLoa
         getPreferences()
     }
     
+    override func success(result: Any?) {
+        hideLoading()
+        if let result = result as? FoodTypeList {
+            preferenceItems = result.foodItems
+        } else if let result = result as? CuisinePreference {
+            preferenceItems = result.cuisineList
+        }
+        preferencesCollectionView.reloadData()
+    }
+    
     @IBAction func doneButtonAction(_: Any) {
         
     }
     
     private func getPreferences() {
-        (preferenceType == .food) ? getFoodItems() : getCuisineItems()
-    }
-    
-    private func getFoodItems() {
-        let foodItem1 = FoodItem(itemID: "123", imageURL: "", itemName: "Sea food")
-        let foodItem2 = FoodItem(itemID: "123", imageURL: "", itemName: "Vegiterian")
-        let foodItem3 = FoodItem(itemID: "123", imageURL: "", itemName: "Fast Food")
-        let foodItem4 = FoodItem(itemID: "123", imageURL: "", itemName: "Chicken")
-        
-        preferenceItems = [foodItem1, foodItem2, foodItem3, foodItem4]
-        preferencesCollectionView.reloadData()
-    }
-    
-    private func getCuisineItems() {
-        
+        showLoading()
+        presenter?.preferenceItemRequest(preferenceType: preferenceType)
     }
 }
 

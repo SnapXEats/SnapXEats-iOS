@@ -38,10 +38,9 @@
                                 <rect key="frame" x="0.0" y="137" width="205" height="37"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IXe-gw-nLe">
-                                        <rect key="frame" x="170" y="6.5" width="25" height="25"/>
+                                        <rect key="frame" x="170" y="0.0" width="35" height="37"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="25" id="qvF-TP-iTy"/>
-                                            <constraint firstAttribute="height" constant="25" id="vRX-Uu-jek"/>
+                                            <constraint firstAttribute="width" constant="35" id="qvF-TP-iTy"/>
                                         </constraints>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Lg-L1-yEr">
@@ -56,8 +55,10 @@
                                     <constraint firstAttribute="height" constant="37" id="6Sg-Tp-SXG"/>
                                     <constraint firstItem="5Lg-L1-yEr" firstAttribute="leading" secondItem="1Qb-VP-nch" secondAttribute="leading" constant="10" id="bmy-li-cwr"/>
                                     <constraint firstItem="IXe-gw-nLe" firstAttribute="centerY" secondItem="1Qb-VP-nch" secondAttribute="centerY" id="dZE-vM-MxW"/>
-                                    <constraint firstAttribute="trailing" secondItem="IXe-gw-nLe" secondAttribute="trailing" constant="10" id="gfz-cv-XA9"/>
+                                    <constraint firstAttribute="trailing" secondItem="IXe-gw-nLe" secondAttribute="trailing" id="gfz-cv-XA9"/>
+                                    <constraint firstItem="IXe-gw-nLe" firstAttribute="top" secondItem="1Qb-VP-nch" secondAttribute="top" id="iGY-cL-GaZ"/>
                                     <constraint firstItem="5Lg-L1-yEr" firstAttribute="centerY" secondItem="1Qb-VP-nch" secondAttribute="centerY" id="yQV-NO-FYc"/>
+                                    <constraint firstAttribute="bottom" secondItem="IXe-gw-nLe" secondAttribute="bottom" id="yx1-fd-xMi"/>
                                 </constraints>
                             </view>
                         </subviews>

@@ -12,18 +12,20 @@ import UIKit
 class UserPreferencePresenter {
 
     // MARK: Properties
-
+    weak var baseView: BaseView?
     weak var view: UserPreferenceView?
     var router: UserPreferenceWireframe?
-    var interactor: UserPreferenceUseCase?
+    var interactor: UserPreferenceRequestFormatter?
 }
 
 extension UserPreferencePresenter: UserPreferencePresentation {
-    // TODO: implement presentation methods
+    func preferenceItemRequest(preferenceType: PreferenceType) {
+        interactor?.getPreferenceItems(preferenceType: preferenceType)
+    }
 }
 
 extension UserPreferencePresenter: UserPreferenceInteractorOutput {
-    // TODO: implement interactor output methods
+    
 }
 
 extension UserPreferencePresenter: FoodAndCuisinePreferencePresentation {

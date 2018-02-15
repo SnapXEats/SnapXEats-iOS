@@ -48,18 +48,16 @@ class UserPreferenceRouter {
         let viewController = UIStoryboard.loadViewControler(storyBoardName: SnapXEatsStoryboard.userPreferenceStoryboard, storyBoardId: SnapXEatsStoryboardIdentifier.cusineAndFoodPreferencesViewControllerID) as! CuisineAndFoodPreferencesViewController
         
         let presenter = UserPreferencePresenter()
-//        let router = UserPreferenceRouter()
-//        let interactor = UserPreferenceInteractor()
+        let router = UserPreferenceRouter()
+        let interactor = UserPreferenceInteractor()
         
         viewController.presenter =  presenter
+        presenter.baseView = viewController
+        presenter.router = router
+        presenter.interactor = interactor
+        router.view = viewController
+        interactor.output = presenter
 
-//        presenter.view = viewController
-//        presenter.router = router
-//        presenter.interactor = interactor
-//
-//        router.view = viewController
-//        interactor.output = presenter
-        
         return viewController
     }
 }

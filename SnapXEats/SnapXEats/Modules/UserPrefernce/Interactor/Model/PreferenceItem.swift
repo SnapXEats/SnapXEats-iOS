@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ObjectMapper
 
 enum PreferenceType: Int {
     case cuisine = 0
@@ -15,32 +16,39 @@ enum PreferenceType: Int {
 
 class PreferenceItem {
     var type: PreferenceType?
-    var isLiked: Bool = false
-    var isFavourite: Bool = false
+    var isLiked: Bool = true
+    var isFavourite: Bool = true
     
     init(type: PreferenceType) {
         self.type = type
     }
 }
 
-class FoodItem: PreferenceItem {
+class FoodTypeList: Mappable {
+    var foodItems = [FoodItem]()
+    
+    required init?(map: Map) {
+    }
+    
+    func mapping(map: Map) {
+        foodItems             <- map["foodTypeList"]
+    }
+}
+
+class FoodItem: PreferenceItem, Mappable {
     var foodItemId: String?
     var foodItemImageURL: String?
     var foodItemName: String?
     
-    init(itemID: String, imageURL: String, itemName: String) {
-        foodItemId = itemID
-        foodItemImageURL = imageURL
-        foodItemName = itemName
+    required init?(map: Map) {
         super.init(type: .food)
     }
     
-//    required init?(map: Map) {
-//    }
-//    // Mappable
-//    func mapping(map: Map) {
-//        cuisineId             <- map["cuisine_info_id"]
-//        cuisineImageURL       <- map["cuisine_image_url"]
-//        cuisineName           <- map["cuisine_name"]
-//    }
+    func mapping(map: Map) {
+        foodItemId          <- map["food_type_info_id"]
+        foodItemImageURL     <- map["food_image_url"]
+        foodItemName        <- map["food_name"]
+        isLiked             <- map["is_food_like"]
+        isFavourite         <- map["is_food_favourite"]
+    }
 }
