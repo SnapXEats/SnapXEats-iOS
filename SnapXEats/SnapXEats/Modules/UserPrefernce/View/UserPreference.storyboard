@@ -628,6 +628,9 @@
                                         <state key="normal" title="Reset">
                                             <color key="titleColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="resetButtonAction:" destination="61x-0n-vrb" eventType="touchUpInside" id="WL4-qi-iRg"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Preferences" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdt-gT-Cm5">
                                         <rect key="frame" x="20" y="25" width="100.5" height="30"/>
@@ -647,9 +650,9 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JTN-fj-HA3">
-                                <rect key="frame" x="0.0" y="114" width="375" height="553"/>
+                                <rect key="frame" x="0.0" y="119" width="375" height="548"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rfg-zJ-teA">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="rfg-zJ-teA">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -665,7 +668,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="vSN-xn-PEa" firstAttribute="leading" secondItem="YLq-8v-JEv" secondAttribute="leading" id="7Gl-8R-Xtl"/>
-                            <constraint firstItem="JTN-fj-HA3" firstAttribute="top" secondItem="vSN-xn-PEa" secondAttribute="bottom" id="MVa-tW-WKW"/>
+                            <constraint firstItem="JTN-fj-HA3" firstAttribute="top" secondItem="vSN-xn-PEa" secondAttribute="bottom" constant="5" id="MVa-tW-WKW"/>
                             <constraint firstItem="YLq-8v-JEv" firstAttribute="bottom" secondItem="JTN-fj-HA3" secondAttribute="bottom" id="Rhr-W1-QDY"/>
                             <constraint firstItem="vSN-xn-PEa" firstAttribute="top" secondItem="YLq-8v-JEv" secondAttribute="top" id="V46-kO-oBe"/>
                             <constraint firstItem="YLq-8v-JEv" firstAttribute="trailing" secondItem="vSN-xn-PEa" secondAttribute="trailing" id="fdT-id-s50"/>

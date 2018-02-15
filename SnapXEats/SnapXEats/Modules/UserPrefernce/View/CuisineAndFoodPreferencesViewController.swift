@@ -40,7 +40,15 @@ class CuisineAndFoodPreferencesViewController: BaseViewController, StoryboardLoa
     }
     
     @IBAction func doneButtonAction(_: Any) {
-        
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func resetButtonAction(_: Any) {
+        for item in preferenceItems {
+            item.isFavourite = false
+            item.isLiked = false
+        }
+        preferencesCollectionView.reloadData()
     }
     
     private func getPreferences() {
@@ -83,10 +91,12 @@ extension CuisineAndFoodPreferencesViewController: UserPreferenceView {
         if let selectedIndexPath = preferencesCollectionView.indexPathForItem(at: pointInCollectionView) {
             
             let item = preferenceItems[selectedIndexPath.row]
-            item.isLiked = true
-            item.isFavourite = false
-            preferenceItems[selectedIndexPath.row] = item
-            preferencesCollectionView.reloadItems(at: [selectedIndexPath])
+            if !item.isFavourite { // If already Favourite Should not go back to Like
+                item.isLiked = true
+                item.isFavourite = false
+                preferenceItems[selectedIndexPath.row] = item
+                preferencesCollectionView.reloadItems(at: [selectedIndexPath])
+            }
         }
     }
     
@@ -137,10 +147,10 @@ extension CuisineAndFoodPreferencesViewController: UICollectionViewDelegateFlowL
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        let paddingSpace: CGFloat = 12 + sectionInsets.left * 2
+        let paddingSpace: CGFloat = 5 + sectionInsets.left * 2
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
-        return CGSize(width: widthPerItem, height: widthPerItem * 2/3 + 42)
+        return CGSize(width: widthPerItem, height: widthPerItem * 2/3 + 50)
     }
     
     func collectionView(_ collectionView: UICollectionView,
