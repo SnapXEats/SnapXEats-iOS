@@ -49,9 +49,10 @@ extension LoginPresenter: LoginViewPresentation {
 extension LoginPresenter: LoginViewInteractorOutput {
     
     func response(result: NetworkResult) {
+        self.view?.hideLoading()
         switch result {
-        case .success:
-            presentLocationScreen()
+        case .success(_):
+                presentLocationScreen()
         case .error:
             view?.error(result: NetworkResult.error)
         case .fail:

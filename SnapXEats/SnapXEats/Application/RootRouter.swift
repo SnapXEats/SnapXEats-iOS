@@ -6,6 +6,9 @@
 import UIKit
 import FacebookLogin
 import FacebookCore
+import FBSDKCoreKit
+import FBSDKLoginKit
+
 enum Screens {
     case login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController)
 }
@@ -18,12 +21,12 @@ class RootRouter: NSObject {
         
     }
     static var singleInstance = RootRouter()
-
+    
     func presentFirstScreen(inWindow window: UIWindow) {
-       userLoggedIn()
+        userLoggedIn()
     }
     
-   private func userLoggedIn() {
+    private func userLoggedIn() {
         if faceBookLoggedIn() || instagramLoggedIn() {
             presentScreen(screens: .location)
         } else {
@@ -37,11 +40,8 @@ class RootRouter: NSObject {
         return UserDefaults.standard.bool(forKey: InstagramConstant.INSTAGRAM_LOGGEDIN)
     }
     
-   private func faceBookLoggedIn () -> Bool {
-       if let _ =  AccessToken.current?.authenticationToken {
-            return true
-        }
-        return false
+    private func faceBookLoggedIn () -> Bool {
+        return SnapXEatsLoginHelper.shared.fbHelper()
     }
     
     private func presentFirstScreen() {
@@ -102,7 +102,7 @@ class RootRouter: NSObject {
         case .login:
             presentLoginScreen()
         case .instagram:
-             presentLoginInstagramScreen()
+            presentLoginInstagramScreen()
         case .location:
             presentLocationScreen()
         case .foodcards(let selectedPreference, let parentController):

@@ -7,15 +7,25 @@ import Foundation
 import ObjectMapper
 
 
-class UserProfile:  Mappable {
+class UserProfile: Mappable {
+    var userInfo: UserInfo?
     required init?(map: Map) {
-        
     }
     
      func mapping(map: Map) {
-        
+        userInfo <- map["userInfo"]
     }
-    
-    
-    
+}
+
+class UserInfo: Mappable {
+    var token: String?
+    var user_id: String?
+    var social_platform: String?
+    required init?(map: Map) {
+    }
+    func mapping(map: Map) {
+        token <- map["token"]
+        user_id <- map["user_id"]
+        social_platform <- map["social_platform"]
+    }
 }

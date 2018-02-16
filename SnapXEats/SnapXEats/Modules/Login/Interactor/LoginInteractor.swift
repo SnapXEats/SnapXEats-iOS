@@ -10,11 +10,12 @@ import AlamofireObjectMapper
 import ReachabilitySwift
 import FacebookLogin
 import FacebookCore
+import RealmSwift
 
 class LoginInteractor {
     
     // MARK: Properties
-    private var view : UIViewController?
+    private var view : LoginViewController?
     var output: LoginViewInteractorOutput?
     
     private init() {}
@@ -28,9 +29,8 @@ extension LoginInteractor: LoginViewInteractorInput {
     
     func sendFaceBookLoginRequest(view: LoginView?) {
         if checkRechability() {
-            self.view = view as? UIViewController
             let loginManager = LoginManager()
-            loginManager.logIn(readPermissions: [ .publicProfile, .email, .userFriends ], viewController: self.view) { [weak self] loginResult in
+            loginManager.logIn(readPermissions: [ .publicProfile, .email, .userFriends, ], viewController: self.view) { [weak self] loginResult in
                 guard let strongSelf = self else { return }
                 switch loginResult {
                 case .failed( _):
@@ -38,12 +38,54 @@ extension LoginInteractor: LoginViewInteractorInput {
                 case .cancelled:
                     strongSelf.output?.response(result: NetworkResult.cancelRequest)
                 case .success( _, _, let accessToken):
-                    strongSelf.output?.response(result: NetworkResult.success(data: nil))
                     
+                    self?.view?.showLoading()
+                    // Send Login User info to server
+                    self?.sendUserInfo(path: SnapXEatsWebServicePath.snapXEatsUser, accessToken: accessToken, platform: SnapXEatsConstant.platFormFB) { result in
+                        switch result {
+                        case .success(let data):
+                            if let userInfo = data as? UserProfile, let serverID = userInfo.userInfo?.user_id  {
+                                SnapXEatsLoginHelper.shared.getUserProfileData(serverID: serverID, accessToken: accessToken) { (result) in
+                                    if let userId = accessToken.userId {
+                                        SnapXEatsLoginHelper.shared.saveloginInfo(userId: userId, plateform: SnapXEatsConstant.platFormFB)
+                                    }
+                                    strongSelf.output?.response(result: result)
+                                }
+                            }
+                        case .noInternet:
+                            strongSelf.output?.response(result: .noInternet)
+                        default: break
+                        }
+                        
+                    }
                 }
             }
         }
     }
+}
+
+extension LoginInteractor {
+    func sendUserInfo(path: String, accessToken: AccessToken, platform: String, completionHandler: @escaping (_ result: NetworkResult) -> ()) {
+        let parameter:[String: String] = [SnapXEatsConstant.userLoginToken : accessToken.authenticationToken,
+                                          SnapXEatsConstant.social_platform : platform,
+                                          SnapXEatsConstant.social_id: accessToken.userId ?? ""
+            
+        ]
+        SnapXEatsApi.snapXPostRequestObjectWithParameters(path: path, parameters: parameter) { [weak self](response: DataResponse<UserProfile>) in
+            let result = response.result
+            self?.sendUserInfoSuccess(data: result, completionHandler: completionHandler)
+        }
+    }
+    
+    func sendUserInfoSuccess(data: Result<UserProfile>, completionHandler: @escaping (_ result: NetworkResult) -> ()) {
+        switch data {
+        case .success(let value):
+            completionHandler(.success(data: value))
+        case .failure( _):
+            completionHandler(.noInternet)
+        }
+    }
+    
 }
 
 extension LoginInteractor {
