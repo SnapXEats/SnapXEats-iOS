@@ -97,7 +97,7 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
 
 extension FoodCardsViewController: FoodCardsView {
     func initView() {
-        customizeNavigationItem(title: SnapXEatsMenuOptions.restaurants, isDetailPage: true)
+        customizeNavigationItem(title: SnapXEatsPageTitles.restaurants, isDetailPage: true)
         kolodaView.dataSource = self
         kolodaView.delegate = self
     }

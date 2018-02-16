@@ -15,10 +15,11 @@ enum RatingPreferences: Int {
 }
 
 enum PricingPreference: Int {
-    case single = 1
-    case double = 2
-    case tripple = 3
-    case quadraple = 4
+    case auto = 1
+    case single
+    case double
+    case tripple
+    case quadraple
 }
 
 enum SortByPreference {
@@ -29,7 +30,7 @@ enum SortByPreference {
 class SelectedPreference {
     var location = SnapXEatsLocation ()
     var selectedCuisine = [String]()
-    var ratingPreference: RatingPreferences = .threeStar
+    var ratingPreference: RatingPreferences?
     var pricingPreference: PricingPreference = .single
     var sortByPreference: SortByPreference?
     var distancePreference = 0 // 0 is same as Auto. Other distances are in miles

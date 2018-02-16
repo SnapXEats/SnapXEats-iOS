@@ -17,15 +17,14 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
         static let selectedTextColor = UIColor.rgba(86.0, 86.0, 86.0, 1.0)
     }
     
-    var presenter: UserPreferencePresentation?
-    var selectedRating:RatingPreferences = .threeStar
-    var selectedPrice:PricingPreference = .single
+    var presenter: FoodAndCuisinePreferencePresentation?
+    var selectedRating:RatingPreferences?
+    var selectedPrice:PricingPreference = .auto
     var sortByFilter: SortByPreference = .distance
-    var selectedDistance = 0
+    var selectedDistance = 1
 
 
     @IBOutlet weak var sampleLabel: UILabel!
-    @IBOutlet weak var locationInfoView: UIView!
     @IBOutlet weak var pricingFilter: BetterSegmentedControl!
     @IBOutlet weak var distanceFilter: BetterSegmentedControl!
     
@@ -47,10 +46,6 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
         initView()
     }
     
-    override func viewDidLayoutSubviews() {
-        locationInfoView.addViewBorderWithColor(color: UIColor.rgba(230.0, 230.0, 230.0, 1.0), width: 1.0, side: .bottom)
-    }
-    
     @IBAction func applyButtonAction(_: Any) {
         // Apply Button Action
         SelectedPreference.shared.ratingPreference = selectedRating
@@ -59,10 +54,6 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
         SelectedPreference.shared.distancePreference = selectedDistance
     }
     
-    @IBAction func locationSelectAction(sender: UIButton) {
-        // Location Select Action
-    }
-        
     @IBAction func radioButtonSelected(sender: UIButton) {
         if sender == distanceRadioButton && sender.isSelected == false {
             sender.isSelected = true
@@ -77,8 +68,13 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
         }
     }
     
+    @IBAction func selectPreferencesAction(sender: UIButton) {
+        if let preferenceType = PreferenceType(rawValue: sender.tag), let parentNVController = self.navigationController {
+          presenter?.presentFoodAndCuisinePreferences(preferenceType: preferenceType, parent: parentNVController)
+        }
+    }
+    
     @IBAction func starRatingSelected(sender: UIButton) {
-        
         switch sender {
         case fiveStarRatingButton:
             sender.isSelected = true
@@ -105,8 +101,9 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
 
 extension UserPreferenceViewController: UserPreferenceView {
     func initView() {
-        customizeNavigationItem(title: SnapXEatsMenuOptions.preferences, isDetailPage: false)
+        customizeNavigationItem(title: SnapXEatsPageTitles.preferences, isDetailPage: false)
         pricingFilter.titles = [
+            SnapXEatsAppDefaults.emptyString,
             SnapXEatsAppDefaults.emptyString,
             SnapXEatsAppDefaults.emptyString,
             SnapXEatsAppDefaults.emptyString,
@@ -114,7 +111,6 @@ extension UserPreferenceViewController: UserPreferenceView {
         ]
         
         distanceFilter.titles = [
-            SnapXEatsAppDefaults.emptyString,
             SnapXEatsAppDefaults.emptyString,
             SnapXEatsAppDefaults.emptyString,
             SnapXEatsAppDefaults.emptyString,
@@ -171,7 +167,7 @@ extension UserPreferenceViewController {
     
     @IBAction  func distanceFilterValueChanged(_ sender: BetterSegmentedControl) {
         let buttonTag = Int(sender.index) + 1 // Tag starts from 1 to avoid confusion with other subviews of the view
-        selectedDistance = Int(sender.index)
+        selectedDistance = Int(sender.index) + 1
         for index in 1...distanceFilter.titles.count {
             if let button = distanceRangeContainerView.viewWithTag(index) as? UIButton {
                 button.setTitleColor(titleColorForFilterRangeAt(index: index, buttonTag: buttonTag), for: .normal)
