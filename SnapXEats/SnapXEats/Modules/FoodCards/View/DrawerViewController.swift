@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class DrawerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -43,8 +44,16 @@ class DrawerViewController: UIViewController, UITableViewDelegate, UITableViewDa
         userImageView.layer.masksToBounds = true
         userImageView.layer.cornerRadius = userImageView.frame.width/2
         navigationOptionTable.tableFooterView = UIView()
+        addUserInfo()
     }
     
+    private func addUserInfo() {
+        if let loginInfo =  SnapXEatsLoginHelper.shared.getloginInfo(), let url = URL(string: loginInfo.imageURL) {
+            let placeholderImage = UIImage(named: SnapXEatsImageNames.profile_placeholder)!
+            userImageView.af_setImage(withURL: url, placeholderImage: placeholderImage)
+            userNameLabel.text = loginInfo.name
+        }
+    }
     private func registerNibsForCells() {
         let nibName = UINib(nibName: SnapXEatsNibNames.navigationMenuTableViewCell, bundle:nil)
         navigationOptionTable.register(nibName, forCellReuseIdentifier: SnapXEatsCellResourceIdentifiler.navigationMenu)

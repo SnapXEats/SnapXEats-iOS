@@ -80,7 +80,6 @@
 		9D8E89111FFD2BEC0066A1D9 /* StoryboardLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88B51FFD28C50066A1D9 /* StoryboardLoadable.swift */; };
 		9D8E89121FFD2BEC0066A1D9 /* NibLoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88B61FFD28C50066A1D9 /* NibLoadableView.swift */; };
 		9D8E89131FFD2BEC0066A1D9 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88B71FFD28C50066A1D9 /* ReusableView.swift */; };
-		9D8E89141FFD2BEC0066A1D9 /* SessionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88B91FFD28C50066A1D9 /* SessionHelper.swift */; };
 		9D8E89151FFD2BEC0066A1D9 /* ValidatorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88BA1FFD28C50066A1D9 /* ValidatorHelper.swift */; };
 		9D8E89161FFD2C400066A1D9 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88BD1FFD28C50066A1D9 /* RootRouter.swift */; };
 		9D8E89171FFD2C400066A1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88BE1FFD28C50066A1D9 /* AppDelegate.swift */; };
@@ -113,6 +112,8 @@
 		9DB7FE1920061B6200D0E816 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1420061B1600D0E816 /* Roboto-Regular.ttf */; };
 		9DB7FE1F20061E8C00D0E816 /* BG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1E20061E8C00D0E816 /* BG@3x.png */; };
 		9DCBE184201EF6F80030A0F9 /* SnapXEatsNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCBE183201EF6F80030A0F9 /* SnapXEatsNetworkManager.swift */; };
+		9DDC3AEC2035553600A7F181 /* SnapXEatsLoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDC3AEB2035553600A7F181 /* SnapXEatsLoginHelper.swift */; };
+		9DDC3AF220358E9600A7F181 /* FBLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDC3AF120358E9600A7F181 /* FBLogin.swift */; };
 		9DE7CE512023620500BBBFEC /* UserPreferenceContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE7CE482023620500BBBFEC /* UserPreferenceContract.swift */; };
 		9DE7CE522023620500BBBFEC /* UserPreferencePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE7CE4A2023620500BBBFEC /* UserPreferencePresenter.swift */; };
 		9DE7CE532023620500BBBFEC /* UserPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE7CE4C2023620500BBBFEC /* UserPreferenceViewController.swift */; };
@@ -203,7 +204,6 @@
 		9D8E88B51FFD28C50066A1D9 /* StoryboardLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardLoadable.swift; sourceTree = "<group>"; };
 		9D8E88B61FFD28C50066A1D9 /* NibLoadableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadableView.swift; sourceTree = "<group>"; };
 		9D8E88B71FFD28C50066A1D9 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
-		9D8E88B91FFD28C50066A1D9 /* SessionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionHelper.swift; sourceTree = "<group>"; };
 		9D8E88BA1FFD28C50066A1D9 /* ValidatorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorHelper.swift; sourceTree = "<group>"; };
 		9D8E88BC1FFD28C50066A1D9 /* FlashScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FlashScreen.storyboard; sourceTree = "<group>"; };
 		9D8E88BD1FFD28C50066A1D9 /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
@@ -251,6 +251,8 @@
 		9DB7FE1620061B1600D0E816 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		9DB7FE1E20061E8C00D0E816 /* BG@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BG@3x.png"; sourceTree = "<group>"; };
 		9DCBE183201EF6F80030A0F9 /* SnapXEatsNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEatsNetworkManager.swift; sourceTree = "<group>"; };
+		9DDC3AEB2035553600A7F181 /* SnapXEatsLoginHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEatsLoginHelper.swift; sourceTree = "<group>"; };
+		9DDC3AF120358E9600A7F181 /* FBLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBLogin.swift; sourceTree = "<group>"; };
 		9DE7CE482023620500BBBFEC /* UserPreferenceContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferenceContract.swift; sourceTree = "<group>"; };
 		9DE7CE4A2023620500BBBFEC /* UserPreferencePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferencePresenter.swift; sourceTree = "<group>"; };
 		9DE7CE4C2023620500BBBFEC /* UserPreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferenceViewController.swift; sourceTree = "<group>"; };
@@ -362,14 +364,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		9D3D1CDE2006477B00AAAB95 /* Enum */ = {
-			isa = PBXGroup;
-			children = (
-				9D3D1CDF2006479500AAAB95 /* SnapXConstants.swift */,
-			);
-			path = Enum;
-			sourceTree = "<group>";
-		};
 		9D3FC4DD20120BBC001A4264 /* CuisineCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -428,7 +422,6 @@
 		9D8E888C1FFD28C50066A1D9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				9D3D1CDE2006477B00AAAB95 /* Enum */,
 				9DB7FE0F2004F0E100D0E816 /* Alert */,
 				9DB7FE0C2004BC8800D0E816 /* Network */,
 				9D8E888D1FFD28C50066A1D9 /* Constants */,
@@ -446,6 +439,7 @@
 		9D8E888D1FFD28C50066A1D9 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				9D3D1CDF2006479500AAAB95 /* SnapXConstants.swift */,
 				9D8E888E1FFD28C50066A1D9 /* Constants.swift */,
 			);
 			path = Constants;
@@ -565,8 +559,8 @@
 		9D8E88B81FFD28C50066A1D9 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				9D8E88B91FFD28C50066A1D9 /* SessionHelper.swift */,
 				9D8E88BA1FFD28C50066A1D9 /* ValidatorHelper.swift */,
+				9DDC3AEB2035553600A7F181 /* SnapXEatsLoginHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -677,6 +671,7 @@
 		9D8E88D91FFD28C50066A1D9 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				9DDC3AF020358E9600A7F181 /* Login */,
 				9D8E88DA1FFD28C50066A1D9 /* Product */,
 				9D8E88DC1FFD28C50066A1D9 /* UserProfile */,
 			);
@@ -934,6 +929,14 @@
 			path = Alert;
 			sourceTree = "<group>";
 		};
+		9DDC3AF020358E9600A7F181 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				9DDC3AF120358E9600A7F181 /* FBLogin.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		9DE7CE462023620500BBBFEC /* UserPrefernce */ = {
 			isa = PBXGroup;
 			children = (
@@ -1149,6 +1152,8 @@
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/ReachabilitySwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/UIColor_Hex_Swift/UIColor_Hex_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 			);
@@ -1170,6 +1175,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReachabilitySwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIColor_Hex_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 			);
@@ -1256,6 +1263,7 @@
 				9D9868D92023202B003E82F6 /* Restaurant.swift in Sources */,
 				9DE7CE512023620500BBBFEC /* UserPreferenceContract.swift in Sources */,
 				9D8E88FB1FFD2BEC0066A1D9 /* UICollectionView.swift in Sources */,
+				9DDC3AEC2035553600A7F181 /* SnapXEatsLoginHelper.swift in Sources */,
 				9D8E88FC1FFD2BEC0066A1D9 /* DataResponse.swift in Sources */,
 				9DE7CE542023620500BBBFEC /* UserPreferenceInteractor.swift in Sources */,
 				7E71FC1A2022ECE100CA8467 /* NavigationMenuTableViewCell.swift in Sources */,
@@ -1282,6 +1290,7 @@
 				9D8E89071FFD2BEC0066A1D9 /* ValidableUILabel.swift in Sources */,
 				9D902BC920171AED00359DFD /* FoodCardsContract.swift in Sources */,
 				7E791F122032B4A500FA887D /* CuisineAndFoodPreferencesViewController.swift in Sources */,
+				9DDC3AF220358E9600A7F181 /* FBLogin.swift in Sources */,
 				9D8E89081FFD2BEC0066A1D9 /* RoundedTextField.swift in Sources */,
 				9D902BCB20171AED00359DFD /* FoodCardsViewController.swift in Sources */,
 				9D902BE7201729E400359DFD /* SelectLocationInteractor.swift in Sources */,
@@ -1303,7 +1312,6 @@
 				7E791F182032CAB800FA887D /* PreferenceTypeCollectionViewCell.swift in Sources */,
 				9D3FC4D82011C94A001A4264 /* CuisinePreference.swift in Sources */,
 				9DE7CE532023620500BBBFEC /* UserPreferenceViewController.swift in Sources */,
-				9D8E89141FFD2BEC0066A1D9 /* SessionHelper.swift in Sources */,
 				9D8E89151FFD2BEC0066A1D9 /* ValidatorHelper.swift in Sources */,
 				9DB02A712010805F0061FC0C /* LocationInteractor.swift in Sources */,
 			);

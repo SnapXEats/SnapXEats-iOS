@@ -71,9 +71,10 @@ enum SnapXEatsWebServicePath {
     static let  port = "3000"
     static let  rootURL = "http://ec2-18-216-193-78.us-east-2.compute.amazonaws.com:" + port
     static let  cuisinePreferenceURL = "/api/v1/cuisine"
-    static let  dishesURL = "/api/v1/Dishes"
+    static let  dishesURL = "/api/v1/dishes"
     static let  foodtypesURL = "/api/v1/foodTypes"
     static let  cuisinetypesURL = "/api/v1/cuisine"
+    static let  snapXEatsUser = "/api/v1/users"
 }
 
 enum SnapXEatsImageNames {
@@ -81,6 +82,7 @@ enum SnapXEatsImageNames {
     static let navigationMenu = "navigation_menu_icon"
     static let navigationSearch = "navigation_search_icon"
     static let placeholder_cuisine = "placeholder_cuisine"
+    static let profile_placeholder = "profile_placeholder"
 }
 
 
@@ -143,5 +145,14 @@ enum SnapXEatsSettingsURL {
 enum SnapXEatsConstant {
     static let onceDeniedLocation = "SnapXEatsOnceDenedLocation"
     static let emptyString = ""
+    static let fbLoginToken = "SnapXEatsFBLoginToken"
+    static let loginID = "SnapXEatsLoginId"
+    static let fbLoginExpireDate = "SnapXEatsFBLoginExpireDate"
+    static let snapXLoginData = "SnapXLoginData"
+    static let userLoginToken = "access_token"
+    static let social_platform = "social_platform"
+    static let social_id = "social_id"
+    static let platFormFB = "facebook"
+    static let platFormInstagram = "instagram"
 }
 
