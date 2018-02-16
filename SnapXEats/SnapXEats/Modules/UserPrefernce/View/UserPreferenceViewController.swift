@@ -18,10 +18,10 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
     }
     
     var presenter: FoodAndCuisinePreferencePresentation?
-    var selectedRating:RatingPreferences = .threeStar
-    var selectedPrice:PricingPreference = .single
+    var selectedRating:RatingPreferences?
+    var selectedPrice:PricingPreference = .auto
     var sortByFilter: SortByPreference = .distance
-    var selectedDistance = 0
+    var selectedDistance = 1
 
 
     @IBOutlet weak var sampleLabel: UILabel!
@@ -106,11 +106,11 @@ extension UserPreferenceViewController: UserPreferenceView {
             SnapXEatsAppDefaults.emptyString,
             SnapXEatsAppDefaults.emptyString,
             SnapXEatsAppDefaults.emptyString,
+            SnapXEatsAppDefaults.emptyString,
             SnapXEatsAppDefaults.emptyString
         ]
         
         distanceFilter.titles = [
-            SnapXEatsAppDefaults.emptyString,
             SnapXEatsAppDefaults.emptyString,
             SnapXEatsAppDefaults.emptyString,
             SnapXEatsAppDefaults.emptyString,
@@ -167,7 +167,7 @@ extension UserPreferenceViewController {
     
     @IBAction  func distanceFilterValueChanged(_ sender: BetterSegmentedControl) {
         let buttonTag = Int(sender.index) + 1 // Tag starts from 1 to avoid confusion with other subviews of the view
-        selectedDistance = Int(sender.index)
+        selectedDistance = Int(sender.index) + 1
         for index in 1...distanceFilter.titles.count {
             if let button = distanceRangeContainerView.viewWithTag(index) as? UIButton {
                 button.setTitleColor(titleColorForFilterRangeAt(index: index, buttonTag: buttonTag), for: .normal)
