@@ -27,6 +27,7 @@
 		7E791F182032CAB800FA887D /* PreferenceTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E791F162032CAB800FA887D /* PreferenceTypeCollectionViewCell.swift */; };
 		7E791F192032CAB800FA887D /* PreferenceTypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E791F172032CAB800FA887D /* PreferenceTypeCollectionViewCell.xib */; };
 		7E791F1C2032D8D600FA887D /* PreferenceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E791F1B2032D8D600FA887D /* PreferenceItem.swift */; };
+		7E7A6E5A2036D2EE0026C305 /* SnapX_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7A6E592036D2EE0026C305 /* SnapX_White.png */; };
 		7E9C0B912021DC5700BA999E /* SnapXEatsLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9C0B902021DC5700BA999E /* SnapXEatsLocation.swift */; };
 		7EAC86092019C7E300DE162A /* foodCard3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EAC86052019C7E200DE162A /* foodCard3.jpg */; };
 		7EAC860A2019C7E300DE162A /* foodCard2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EAC86062019C7E200DE162A /* foodCard2.jpg */; };
@@ -110,7 +111,6 @@
 		9DB7FE1720061B6200D0E816 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1620061B1600D0E816 /* Roboto-Light.ttf */; };
 		9DB7FE1820061B6200D0E816 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1520061B1600D0E816 /* Roboto-Medium.ttf */; };
 		9DB7FE1920061B6200D0E816 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1420061B1600D0E816 /* Roboto-Regular.ttf */; };
-		9DB7FE1D20061E4300D0E816 /* SnapX-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1C20061E4300D0E816 /* SnapX-logo.png */; };
 		9DB7FE1F20061E8C00D0E816 /* BG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1E20061E8C00D0E816 /* BG@3x.png */; };
 		9DCBE184201EF6F80030A0F9 /* SnapXEatsNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCBE183201EF6F80030A0F9 /* SnapXEatsNetworkManager.swift */; };
 		9DE7CE512023620500BBBFEC /* UserPreferenceContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE7CE482023620500BBBFEC /* UserPreferenceContract.swift */; };
@@ -155,6 +155,7 @@
 		7E791F162032CAB800FA887D /* PreferenceTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		7E791F172032CAB800FA887D /* PreferenceTypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferenceTypeCollectionViewCell.xib; sourceTree = "<group>"; };
 		7E791F1B2032D8D600FA887D /* PreferenceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceItem.swift; sourceTree = "<group>"; };
+		7E7A6E592036D2EE0026C305 /* SnapX_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SnapX_White.png; sourceTree = "<group>"; };
 		7E9C0B902021DC5700BA999E /* SnapXEatsLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEatsLocation.swift; sourceTree = "<group>"; };
 		7EAC86052019C7E200DE162A /* foodCard3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = foodCard3.jpg; sourceTree = "<group>"; };
 		7EAC86062019C7E200DE162A /* foodCard2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = foodCard2.jpg; sourceTree = "<group>"; };
@@ -248,7 +249,6 @@
 		9DB7FE1420061B1600D0E816 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		9DB7FE1520061B1600D0E816 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		9DB7FE1620061B1600D0E816 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
-		9DB7FE1C20061E4300D0E816 /* SnapX-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SnapX-logo.png"; sourceTree = "<group>"; };
 		9DB7FE1E20061E8C00D0E816 /* BG@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BG@3x.png"; sourceTree = "<group>"; };
 		9DCBE183201EF6F80030A0F9 /* SnapXEatsNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEatsNetworkManager.swift; sourceTree = "<group>"; };
 		9DE7CE482023620500BBBFEC /* UserPreferenceContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferenceContract.swift; sourceTree = "<group>"; };
@@ -706,7 +706,7 @@
 				7EAC86062019C7E200DE162A /* foodCard2.jpg */,
 				7EAC86052019C7E200DE162A /* foodCard3.jpg */,
 				7EAC86072019C7E300DE162A /* foodCard4.jpg */,
-				9DB7FE1C20061E4300D0E816 /* SnapX-logo.png */,
+				7E7A6E592036D2EE0026C305 /* SnapX_White.png */,
 				9DB7FE1E20061E8C00D0E816 /* BG@3x.png */,
 				9DB7FE1620061B1600D0E816 /* Roboto-Light.ttf */,
 				9DB7FE1520061B1600D0E816 /* Roboto-Medium.ttf */,
@@ -1103,12 +1103,12 @@
 				9D902BEA20172A2F00359DFD /* SelectLocation.storyboard in Resources */,
 				7EAC8612201A067A00DE162A /* FoodCardView.xib in Resources */,
 				7E0CBBB5202435E4009E56AE /* UserPreference.storyboard in Resources */,
-				9DB7FE1D20061E4300D0E816 /* SnapX-logo.png in Resources */,
 				7EAC860C2019C7E300DE162A /* foodCard1.jpg in Resources */,
 				9D3FC4DC2011E34D001A4264 /* CuisineCollectionViewCell.xib in Resources */,
 				9DEB5CF71FFE6D49003B9D4B /* FlashScreen.storyboard in Resources */,
 				7E5C057F2017A6DC000B5C33 /* SavedLocationTableViewCell.xib in Resources */,
 				9DEB5CF81FFE6D49003B9D4B /* Login.storyboard in Resources */,
+				7E7A6E5A2036D2EE0026C305 /* SnapX_White.png in Resources */,
 				7EAC860A2019C7E300DE162A /* foodCard2.jpg in Resources */,
 				7E791F192032CAB800FA887D /* PreferenceTypeCollectionViewCell.xib in Resources */,
 				9DB7FE1F20061E8C00D0E816 /* BG@3x.png in Resources */,

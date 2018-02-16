@@ -31,10 +31,10 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="686"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IwV-bd-0dA">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="595.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="585"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r1V-zN-v9C" userLabel="Ratings View">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="152.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="142"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RATINGS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GfM-QZ-5fz">
                                                         <rect key="frame" x="25" y="20" width="50.5" height="16"/>
@@ -43,15 +43,15 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sbd-L2-wlg">
-                                                        <rect key="frame" x="25" y="51" width="325" height="101.5"/>
+                                                        <rect key="frame" x="25" y="51" width="325" height="91"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="hyK-Cv-SkM">
-                                                                <rect key="frame" x="0.0" y="0.0" width="325" height="101.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="325" height="91"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U2t-TH-dFC">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="101.5" height="101.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="105" height="91"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="width" secondItem="U2t-TH-dFC" secondAttribute="height" multiplier="1:1" id="a9d-Aw-G3O"/>
+                                                                            <constraint firstAttribute="width" secondItem="U2t-TH-dFC" secondAttribute="height" multiplier="15:13" id="td9-Sm-ItC"/>
                                                                         </constraints>
                                                                         <state key="normal" image="3star"/>
                                                                         <state key="selected" image="3star_selected"/>
@@ -60,7 +60,7 @@
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hD-sS-awB">
-                                                                        <rect key="frame" x="111.5" y="0.0" width="102" height="101.5"/>
+                                                                        <rect key="frame" x="110" y="0.0" width="105.5" height="91"/>
                                                                         <state key="normal" image="4star"/>
                                                                         <state key="selected" image="4star_selected"/>
                                                                         <connections>
@@ -68,7 +68,7 @@
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lcf-Xt-wAI">
-                                                                        <rect key="frame" x="223.5" y="0.0" width="101.5" height="101.5"/>
+                                                                        <rect key="frame" x="220.5" y="0.0" width="104.5" height="91"/>
                                                                         <state key="normal" image="5star"/>
                                                                         <state key="selected" image="5star_selected"/>
                                                                         <connections>
@@ -80,7 +80,7 @@
                                                                     <constraint firstItem="Lcf-Xt-wAI" firstAttribute="top" secondItem="hyK-Cv-SkM" secondAttribute="top" id="3YZ-6U-aC9"/>
                                                                     <constraint firstItem="4hD-sS-awB" firstAttribute="width" secondItem="U2t-TH-dFC" secondAttribute="width" id="AV6-xf-AiO"/>
                                                                     <constraint firstItem="4hD-sS-awB" firstAttribute="top" secondItem="hyK-Cv-SkM" secondAttribute="top" id="Dg8-eI-6bo"/>
-                                                                    <constraint firstItem="4hD-sS-awB" firstAttribute="leading" secondItem="U2t-TH-dFC" secondAttribute="trailing" constant="10" id="IWK-27-4pE"/>
+                                                                    <constraint firstItem="4hD-sS-awB" firstAttribute="leading" secondItem="U2t-TH-dFC" secondAttribute="trailing" constant="5" id="IWK-27-4pE"/>
                                                                     <constraint firstItem="Lcf-Xt-wAI" firstAttribute="height" secondItem="U2t-TH-dFC" secondAttribute="height" id="LF8-cR-DtW"/>
                                                                     <constraint firstAttribute="trailing" secondItem="Lcf-Xt-wAI" secondAttribute="trailing" id="Miz-Wo-Md9"/>
                                                                     <constraint firstAttribute="bottom" secondItem="4hD-sS-awB" secondAttribute="bottom" id="PNj-qq-W2u"/>
@@ -89,7 +89,7 @@
                                                                     <constraint firstItem="Lcf-Xt-wAI" firstAttribute="width" secondItem="U2t-TH-dFC" secondAttribute="width" id="hAT-D1-95V"/>
                                                                     <constraint firstAttribute="bottom" secondItem="Lcf-Xt-wAI" secondAttribute="bottom" id="iDK-or-G5y"/>
                                                                     <constraint firstAttribute="bottom" secondItem="U2t-TH-dFC" secondAttribute="bottom" id="lcC-YR-pP2"/>
-                                                                    <constraint firstItem="Lcf-Xt-wAI" firstAttribute="leading" secondItem="4hD-sS-awB" secondAttribute="trailing" constant="10" id="qQa-Ix-b4s"/>
+                                                                    <constraint firstItem="Lcf-Xt-wAI" firstAttribute="leading" secondItem="4hD-sS-awB" secondAttribute="trailing" constant="5" id="qQa-Ix-b4s"/>
                                                                     <constraint firstItem="U2t-TH-dFC" firstAttribute="top" secondItem="hyK-Cv-SkM" secondAttribute="top" id="yeg-uU-Jav"/>
                                                                 </constraints>
                                                             </stackView>
@@ -114,7 +114,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CbM-ZT-OLn" userLabel="Pricing View">
-                                                <rect key="frame" x="0.0" y="152.5" width="375" height="106"/>
+                                                <rect key="frame" x="0.0" y="142" width="375" height="106"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PRICING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j10-M7-Pys">
                                                         <rect key="frame" x="25" y="30" width="47" height="16"/>
@@ -240,7 +240,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IPN-lK-4tK" userLabel="Distance View">
-                                                <rect key="frame" x="0.0" y="258.5" width="375" height="100"/>
+                                                <rect key="frame" x="0.0" y="248" width="375" height="100"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DISTANCE (mi)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dM-jt-2HP">
                                                         <rect key="frame" x="25" y="30" width="81" height="16"/>
@@ -366,7 +366,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dwd-rH-kYS" userLabel="SortBy View">
-                                                <rect key="frame" x="0.0" y="358.5" width="375" height="75"/>
+                                                <rect key="frame" x="0.0" y="348" width="375" height="75"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SORT BY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fGk-x5-kcK">
                                                         <rect key="frame" x="25" y="30" width="48.5" height="16"/>
@@ -418,7 +418,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rqw-2e-RQk" userLabel="Preference View">
-                                                <rect key="frame" x="0.0" y="433.5" width="375" height="152"/>
+                                                <rect key="frame" x="0.0" y="423" width="375" height="152"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SET PREFERENCES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gu2-Z6-2cZ">
                                                         <rect key="frame" x="25" y="30" width="107" height="16"/>
@@ -647,12 +647,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="3star" width="97" height="81"/>
-        <image name="3star_selected" width="97" height="81"/>
-        <image name="4star" width="97" height="81"/>
-        <image name="4star_selected" width="97" height="81"/>
-        <image name="5star" width="97" height="81"/>
-        <image name="5star_selected" width="97" height="81"/>
+        <image name="3star" width="115" height="91"/>
+        <image name="3star_selected" width="115" height="91"/>
+        <image name="4star" width="115" height="91"/>
+        <image name="4star_selected" width="115" height="91"/>
+        <image name="5star" width="115" height="91"/>
+        <image name="5star_selected" width="115" height="91"/>
         <image name="cuisine_icon" width="20" height="20"/>
         <image name="food_icon" width="24" height="13"/>
         <image name="radio_button" width="15" height="15"/>

@@ -31,10 +31,10 @@
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_snapX-logo" translatesAutoresizingMaskIntoConstraints="NO" id="JA4-qj-M4R">
-                                <rect key="frame" x="53.5" y="133" width="267" height="61"/>
+                                <rect key="frame" x="60.5" y="133" width="253" height="62"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="61" id="NS8-EV-pjB"/>
-                                    <constraint firstAttribute="width" constant="267" id="eEL-Ej-tEq"/>
+                                    <constraint firstAttribute="height" constant="62" id="NS8-EV-pjB"/>
+                                    <constraint firstAttribute="width" constant="253" id="eEL-Ej-tEq"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ioS-Mu-RNs">
@@ -159,7 +159,7 @@
     <resources>
         <image name="Image" width="375" height="667"/>
         <image name="facebook_icon" width="20" height="20"/>
-        <image name="icon_snapX-logo" width="267" height="61"/>
+        <image name="icon_snapX-logo" width="253" height="62"/>
         <image name="instagram_icon" width="20" height="20"/>
     </resources>
 </document>
