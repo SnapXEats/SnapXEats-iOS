@@ -70,6 +70,10 @@
 	<string>240700273135016</string>
 	<key>FacebookDisplayName</key>
 	<string>SnapXEats</string>
+	<key>InstagramClientId</key>
+	<string>739cbd7da5c048fbab575487859602c9</string>
+	<key>InstagramRedirectURI</key>
+	<string>http://www.snapxeats.com/</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>

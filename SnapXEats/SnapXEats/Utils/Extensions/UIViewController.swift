@@ -99,7 +99,7 @@ extension UIViewController { // Navigation Item Customizations
 
     @objc func menuButtonTapped() {
         //Menu Button Action
-        let router = RootRouter.singleInstance
+        let router = RootRouter.shared
         router.drawerController.setDrawerState(.opened, animated: true)
     }
     

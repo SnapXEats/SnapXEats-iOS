@@ -41,7 +41,7 @@ protocol RootWireFrame {
 
 extension RootWireFrame {
     func presentScreen(screen: Screens) {
-        RootRouter.singleInstance.presentScreen(screens: screen)
+        RootRouter.shared.presentScreen(screens: screen)
     }
 }
 

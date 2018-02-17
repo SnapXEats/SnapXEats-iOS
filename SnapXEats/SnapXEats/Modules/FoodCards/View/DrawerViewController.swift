@@ -10,7 +10,7 @@ import UIKit
 import AlamofireImage
 
 class DrawerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     var navigationOptions = [SnapXEatsPageTitles.restaurants, SnapXEatsPageTitles.wishlist, SnapXEatsPageTitles.preferences, SnapXEatsPageTitles.foodJourney, SnapXEatsPageTitles.rewards]
     
     @IBOutlet weak var navigationOptionTable: UITableView!
@@ -21,7 +21,12 @@ class DrawerViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var logoutButton: UIButton!
     
     @IBAction func logoutButtonAction(sender: UIButton) {
-        // Logout Button action
+        let cancel = UIAlertAction(title: SnapXButtonTitle.cancel, style: UIAlertActionStyle.default, handler: nil)
+        let Ok = UIAlertAction(title: SnapXButtonTitle.ok, style: UIAlertActionStyle.default, handler:  {action in
+            SnapXEatsLoginHelper.shared.deleteLoginData()
+            RootRouter.shared.presentScreen(screens: .login)})
+        UIAlertController.presentAlertInViewController(self, title: LoginAlert.logOutTitle , message: LoginAlert.logOutMessage, actions: [cancel, Ok], completion: nil)
+        
     }
     
     @IBAction func privacyPolicyButtonAction(sender: UIButton) {
@@ -67,7 +72,7 @@ class DrawerViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return navigationOptions.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SnapXEatsCellResourceIdentifiler.navigationMenu, for: indexPath as IndexPath) as! NavigationMenuTableViewCell
         let showCount = indexPath.row == 1 ? true : false
@@ -77,7 +82,7 @@ class DrawerViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let router = RootRouter.singleInstance
+        let router = RootRouter.shared
         router.drawerController.setDrawerState(.closed, animated: true)
         
         switch indexPath.row {

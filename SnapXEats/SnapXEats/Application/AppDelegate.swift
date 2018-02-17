@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: Private Methods
     
     func presentInitialScreen() {
-        RootRouter.singleInstance.presentFirstScreen(inWindow: window!)
+        RootRouter.shared.presentFirstScreen(inWindow: window!)
     }
     
     fileprivate func setupNavigationBarFont() {

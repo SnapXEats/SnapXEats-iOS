@@ -1,3 +1,4 @@
+source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.0'
 use_frameworks!
 inhibit_all_warnings!
@@ -19,7 +20,8 @@ target 'SnapXEats' do
     pod 'FacebookShare'
     pod 'Koloda', '~> 4.3.1'
     pod 'BetterSegmentedControl', '~> 0.9'
-    pod 'RealmSwift' 
+    pod 'RealmSwift'
+    pod 'SwiftInstagram', '~> 1.1.0'
 
 end
 

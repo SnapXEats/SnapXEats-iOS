@@ -42,6 +42,6 @@ class SelectLocationRouter {
 
 extension SelectLocationRouter: SelectLocationWireframe {
     func presentScreen(screen: Screens) {
-        RootRouter.singleInstance.presentScreen(screens: screen)
+        RootRouter.shared.presentScreen(screens: screen)
     }
 }

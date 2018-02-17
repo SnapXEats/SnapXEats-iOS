@@ -19,6 +19,7 @@ protocol LoginViewPresentation: LoginViewPresentationInstagram {
 
 protocol LoginViewPresentationInstagram: class {
         func instagramLoginRequest(request: URLRequest) -> Bool
+        func getInstagramUserData(completionHandler: @escaping ()-> ())
         func removeInstagramWebView()
 }
 protocol LoginViewInteractorInput: class {
