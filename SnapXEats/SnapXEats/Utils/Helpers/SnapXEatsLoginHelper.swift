@@ -12,6 +12,7 @@ import Foundation
 import FacebookLogin
 import FacebookShare
 import FacebookCore
+import SwiftInstagram
 
 enum FBLoginConstant {
     static let loginId = "id"
@@ -35,7 +36,7 @@ class SnapXEatsLoginHelper {
             let picture = dict[FBLoginConstant.picture] as? [String: Any] ,
             let data = picture[FBLoginConstant.data] as? [String: Any],
             let imageURL =  data[FBLoginConstant.pictureURL] as? String {
-            let fblogin = FBLogin()
+            let fblogin = UserLogin()
             fblogin.Id = userID
             fblogin.serverUserID = serverID
             fblogin.name = userName
@@ -43,7 +44,7 @@ class SnapXEatsLoginHelper {
             fblogin.imageURL = imageURL
             fblogin.accessToken = accessToken.authenticationToken
             fblogin.expireDate = accessToken.expirationDate
-            FBLogin.createUserProfile(fbLogin: fblogin)
+            UserLogin.createUserProfile(login: fblogin)
         }
     }
     
@@ -67,16 +68,16 @@ class SnapXEatsLoginHelper {
         UserDefaults.standard.set(loginData, forKey: SnapXEatsConstant.snapXLoginData)
     }
     
-    func getloginInfo() -> FBLogin? {
+    func getloginInfo() -> UserLogin? {
         guard let userInfo = UserDefaults.standard.value(forKey: SnapXEatsConstant.snapXLoginData) as? [String: String],
-            let loginId = userInfo[SnapXEatsConstant.loginID], let fbLoginInfo = getFBLoginInfo(id: loginId) else {
+            let loginId = userInfo[SnapXEatsConstant.loginID], let userLoginInfo = getUserLoginInfo(id: loginId) else {
                 return nil
         }
-        return fbLoginInfo
+        return userLoginInfo
     }
     
-    private func getFBLoginInfo(id: String) -> FBLogin? {
-        return FBLogin.getUserProfile(id: id)
+    private func getUserLoginInfo(id: String) -> UserLogin? {
+        return UserLogin.getUserProfile(id: id)
     }
     
     func fbHelper() -> Bool {
@@ -85,7 +86,7 @@ class SnapXEatsLoginHelper {
             if Date() > fbLoginInfo.expireDate {
                 AccessToken.refreshCurrentToken({ (accessToken, error) in
                     if error == nil {
-                        FBLogin.updateExpireDate(currentDate: fbLoginInfo.expireDate, newDate: accessToken?.expirationDate ?? Date())
+                        UserLogin.updateExpireDate(currentDate: fbLoginInfo.expireDate, newDate: accessToken?.expirationDate ?? Date())
                     }
                 })
                 fbLoggedIn = true
@@ -94,5 +95,25 @@ class SnapXEatsLoginHelper {
             }
         }
         return fbLoggedIn
+    }
+    
+    func deleteLoginData() {
+        UserDefaults.standard.removeObject(forKey: SnapXEatsConstant.snapXLoginData)
+        UserLogin.deleteStoredLogedInUser()
+    }
+}
+
+extension SnapXEatsLoginHelper {
+    func saveInstagramLoginData(serverToken: String, serverID: String, instagram: InstagramUser) {
+        if let accesToken = Instagram.shared.retrieveAccessToken() {
+            let login = UserLogin()
+            login.Id = instagram.id
+            login.serverUserID = serverID
+            login.serverUserToken = serverToken
+            login.name = instagram.fullName
+            login.imageURL = instagram.profilePicture.absoluteString
+            login.accessToken = accesToken
+            UserLogin.createUserProfile(login: login)
+        }
     }
 }

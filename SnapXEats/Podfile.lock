@@ -46,6 +46,9 @@ PODS:
   - Realm/Headers (3.0.2)
   - RealmSwift (3.0.2):
     - Realm (= 3.0.2)
+  - SwiftInstagram (1.1.0):
+    - SwiftInstagram/Core (= 1.1.0)
+  - SwiftInstagram/Core (1.1.0)
   - UIColor_Hex_Swift (3.0.2)
 
 DEPENDENCIES:
@@ -63,6 +66,7 @@ DEPENDENCIES:
   - ObjectMapper (~> 3.0.0)
   - ReachabilitySwift (~> 3)
   - RealmSwift
+  - SwiftInstagram (~> 1.1.0)
   - UIColor_Hex_Swift (~> 3.0.1)
 
 SPEC CHECKSUMS:
@@ -87,8 +91,9 @@ SPEC CHECKSUMS:
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
   Realm: 6f23fd1f178a09342eac21bfa7c2bf4312a7a180
   RealmSwift: 695393add1b8f9d5fa75dd16e6355cf3935f71e2
+  SwiftInstagram: 90d5c143d8ebe1c790e06a138b8da3c8f2a9ba16
   UIColor_Hex_Swift: 95f718452092a3efc8a827dffd2c04d3237be02d
 
-PODFILE CHECKSUM: 7fc8b95befc10cb33307a8f92de28862e6cc6d3b
+PODFILE CHECKSUM: 1bd252a39562b55c5358978122640242d50b18fc
 
 COCOAPODS: 1.4.0

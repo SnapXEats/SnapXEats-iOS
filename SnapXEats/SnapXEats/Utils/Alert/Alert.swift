@@ -10,11 +10,14 @@ import Foundation
 import UIKit
 
 enum LoginAlert {
-    static var loginTitle = "Error"
+    static let loginTitle = "Error"
     static var messageNoInternet = "SnapXEats required internet connection to process your request. Please enable your internet access."
     static var messageSuccess = "Request Succesful"
     static var loginError = "Server Error during process your request"
     static var cancelRequest = "User canceled request"
+    static var logOutTitle = "LogOut"
+    static var logOutMessage = "Do you really want to Logout of SnapXEats"
+
 }
 class SnapXAlert{
     private var alertSnapX: UIAlertController?
@@ -26,7 +29,7 @@ class SnapXAlert{
     
     func createAlert(alertTitle: String, message: String, forView: UIViewController) {
         create(alertTitle: alertTitle, message: message, forView: forView)
-        alertSnapX?.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        alertSnapX?.addAction(UIAlertAction(title: SnapXButtonTitle.ok, style: UIAlertActionStyle.default, handler: nil))
     }
     
     func createAlert(alertTitle: String, message: String, forView: UIViewController, withAction: UIAlertAction) {

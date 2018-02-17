@@ -11,17 +11,15 @@ import ReachabilitySwift
 import FacebookLogin
 import FacebookCore
 import RealmSwift
+import SwiftInstagram
 
 class LoginInteractor {
     
     // MARK: Properties
     private var view : LoginViewController?
     var output: LoginViewInteractorOutput?
-    
     private init() {}
     static  var  singletenInstance = LoginInteractor()
-    //   var apiDataManager = ProfileApiDataManager()
-    //  var localDataManager = ProfileLocalDataManager()
     
 }
 
@@ -31,40 +29,43 @@ extension LoginInteractor: LoginViewInteractorInput {
         if checkRechability() {
             let loginManager = LoginManager()
             loginManager.logIn(readPermissions: [ .publicProfile, .email, .userFriends, ], viewController: self.view) { [weak self] loginResult in
-                guard let strongSelf = self else { return }
                 switch loginResult {
                 case .failed( _):
-                    strongSelf.output?.response(result: NetworkResult.error)
+                    self?.output?.response(result: NetworkResult.error)
                 case .cancelled:
-                    strongSelf.output?.response(result: NetworkResult.cancelRequest)
+                    self?.output?.response(result: NetworkResult.cancelRequest)
                 case .success( _, _, let accessToken):
-                    
                     self?.view?.showLoading()
-                    // Send Login User info to server
-                    self?.sendUserInfo(path: SnapXEatsWebServicePath.snapXEatsUser, accessToken: accessToken, platform: SnapXEatsConstant.platFormFB) { result in
-                        switch result {
-                        case .success(let data):
-                            if let userInfo = data as? UserProfile, let serverID = userInfo.userInfo?.user_id  {
-                                SnapXEatsLoginHelper.shared.getUserProfileData(serverID: serverID, accessToken: accessToken) { (result) in
-                                    if let userId = accessToken.userId {
-                                        SnapXEatsLoginHelper.shared.saveloginInfo(userId: userId, plateform: SnapXEatsConstant.platFormFB)
-                                    }
-                                    strongSelf.output?.response(result: result)
-                                }
-                            }
-                        case .noInternet:
-                            strongSelf.output?.response(result: .noInternet)
-                        default: break
-                        }
-                        
-                    }
+                    self?.updateLoginUserData(accessToken: accessToken)
                 }
             }
+        }
+    }
+    
+    private func updateLoginUserData(accessToken: AccessToken) {
+        // Send Login User info to server
+        sendUserInfo(path: SnapXEatsWebServicePath.snapXEatsUser, accessToken: accessToken, platform: SnapXEatsConstant.platFormFB) {[weak self] result in
+            switch result {
+            case .success(let data):
+                if let userInfo = data as? UserProfile, let serverID = userInfo.userInfo?.user_id  {
+                    SnapXEatsLoginHelper.shared.getUserProfileData(serverID: serverID, accessToken: accessToken) { (result) in
+                        if let userId = accessToken.userId {
+                            SnapXEatsLoginHelper.shared.saveloginInfo(userId: userId, plateform: SnapXEatsConstant.platFormFB)
+                        }
+                        self?.output?.response(result: result)
+                    }
+                }
+            case .noInternet:
+                self?.output?.response(result: .noInternet)
+            default: break
+            }
+            
         }
     }
 }
 
 extension LoginInteractor {
+    
     func sendUserInfo(path: String, accessToken: AccessToken, platform: String, completionHandler: @escaping (_ result: NetworkResult) -> ()) {
         let parameter:[String: String] = [SnapXEatsConstant.userLoginToken : accessToken.authenticationToken,
                                           SnapXEatsConstant.social_platform : platform,
@@ -91,23 +92,51 @@ extension LoginInteractor {
 extension LoginInteractor {
     
     func sendInstagramRequest(request: URLRequest) -> Bool {
-        return  checkRechability() ? checkRequestForCallbackURL(request: request) : false
+        return  false //checkRechability() ? checkRequestForCallbackURL(request: request) : false
     }
     
-    func checkRequestForCallbackURL(request: URLRequest) -> Bool {
-        let requestURLString = (request.url?.absoluteString)! as String
-        if requestURLString.hasPrefix(InstagramConstant.INSTAGRAM_REDIRECT_URI) {
-            let range: Range<String.Index> = requestURLString.range(of: "#access_token=")!
-            //requestURLString.substring(from: range.upperBound) // swift 3
-            let newStr = String(requestURLString[range.upperBound...]) // swift 4
-            handleAuth(authToken: newStr)
-            return false;
+    func updateInstagramUserData(accessToken: String, instagramUser: InstagramUser, completionHandler: @escaping ()-> ()) {
+        sendInstagramUserInfo(path: SnapXEatsWebServicePath.snapXEatsUser, accessToken: accessToken, instagramUser: instagramUser, platform: SnapXEatsConstant.platFormInstagram) { [weak self] (result) in
+            switch result {
+            case .success(let data):
+                if let userInfo = data as? UserProfile, let serverID = userInfo.userInfo?.user_id, let serverToken = userInfo.userInfo?.token  {
+                    SnapXEatsLoginHelper.shared.saveloginInfo(userId: instagramUser.id, plateform: SnapXEatsConstant.platFormInstagram)
+                    SnapXEatsLoginHelper.shared.saveInstagramLoginData(serverToken: serverToken, serverID: serverID, instagram: instagramUser)
+                    completionHandler()
+                    self?.output?.response(result: result)
+                }
+            case .noInternet:
+                completionHandler()
+                self?.output?.response(result: .noInternet)
+            default: break
+            }
         }
-        UserDefaults.standard.set(true, forKey: InstagramConstant.INSTAGRAM_LOGGEDIN)
-        return true
     }
-    func handleAuth(authToken: String) {
-        print("Instagram authentication token ==", authToken)
+    
+    func getInstagramUserData(completionHandler: @escaping ()-> ()) {
+        let instagramApi = Instagram.shared
+        if checkRechability()  {
+            view?.showLoading()
+            instagramApi.user("self", success: { (instagram) in
+                if let accessToken = instagramApi.retrieveAccessToken() {
+                    self.updateInstagramUserData(accessToken: accessToken, instagramUser: instagram, completionHandler: completionHandler)
+                }
+            }) {[weak self](error) in
+                self?.output?.response(result: .noInternet)
+            }
+        }
+    }
+    
+    func sendInstagramUserInfo(path: String, accessToken: String, instagramUser: InstagramUser, platform: String, completionHandler: @escaping (_ result: NetworkResult) -> ()) {
+        let parameter:[String: String] = [SnapXEatsConstant.userLoginToken : accessToken,
+                                          SnapXEatsConstant.social_platform : platform,
+                                          SnapXEatsConstant.social_id: instagramUser.id
+            
+        ]
+        SnapXEatsApi.snapXPostRequestObjectWithParameters(path: path, parameters: parameter) { [weak self] (response: DataResponse<UserProfile>) in
+            let result = response.result
+            self?.sendUserInfoSuccess(data: result, completionHandler: completionHandler)
+        }
     }
     
     func checkRechability() -> Bool {
@@ -118,4 +147,5 @@ extension LoginInteractor {
             return true
         }
     }
+    
 }

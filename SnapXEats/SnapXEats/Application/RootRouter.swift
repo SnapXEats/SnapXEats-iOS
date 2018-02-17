@@ -8,6 +8,7 @@ import FacebookLogin
 import FacebookCore
 import FBSDKCoreKit
 import FBSDKLoginKit
+import SwiftInstagram
 
 enum Screens {
     case login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController)
@@ -20,7 +21,7 @@ class RootRouter: NSObject {
     private override init() {
         
     }
-    static var singleInstance = RootRouter()
+    static var shared = RootRouter()
     
     func presentFirstScreen(inWindow window: UIWindow) {
         userLoggedIn()

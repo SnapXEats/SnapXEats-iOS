@@ -86,4 +86,8 @@ extension LoginPresenter: LoginViewPresentationInstagram {
     func removeInstagramWebView() {
          router?.presentScreen(screen: .firstScreen)
     }
+    
+    func getInstagramUserData(completionHandler: @escaping ()-> ()) {
+        interactor?.getInstagramUserData(completionHandler: completionHandler)
+    }
 }
