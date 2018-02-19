@@ -64,17 +64,37 @@ class SnapXEatsLoginHelper {
     }
     
     func saveloginInfo(userId: String, plateform: String) {
-        let loginData = [SnapXEatsConstant.loginID: userId, SnapXEatsConstant.social_platform: plateform]
+        let loginData = [SnapXEatsConstant.loginID: userId, SnapXEatsConstant.social_platform: plateform, SnapXEatsConstant.snaXEatsFirstTimeUser: SnapXEatsConstant.firstTimeUser]
         UserDefaults.standard.set(loginData, forKey: SnapXEatsConstant.snapXLoginData)
     }
     
     func getloginInfo() -> UserLogin? {
-        guard let userInfo = UserDefaults.standard.value(forKey: SnapXEatsConstant.snapXLoginData) as? [String: String],
+        guard let userInfo = getSnapXLoginData(),
             let loginId = userInfo[SnapXEatsConstant.loginID], let userLoginInfo = getUserLoginInfo(id: loginId) else {
                 return nil
         }
         return userLoginInfo
     }
+    
+    func setNotAFirstTimeUser() {
+        if var userInfo =  getSnapXLoginData() {
+            userInfo[SnapXEatsConstant.snaXEatsFirstTimeUser] = SnapXEatsConstant.emptyString
+            UserDefaults.standard.set(userInfo, forKey: SnapXEatsConstant.snapXLoginData)
+        }
+    }
+    
+    func firstTimeUser() -> Bool {
+        guard let userInfo = getSnapXLoginData(),
+            let firstTime = userInfo[SnapXEatsConstant.snaXEatsFirstTimeUser] else {
+                return false
+        }
+        return firstTime == SnapXEatsConstant.firstTimeUser
+    }
+    
+    func getSnapXLoginData() -> [String: String]? {
+        return UserDefaults.standard.value(forKey: SnapXEatsConstant.snapXLoginData) as? [String: String]
+    }
+    
     
     private func getUserLoginInfo(id: String) -> UserLogin? {
         return UserLogin.getUserProfile(id: id)
