@@ -36,6 +36,11 @@
 		7EAC8610201A066B00DE162A /* FoodCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAC860F201A066B00DE162A /* FoodCardView.swift */; };
 		7EAC8612201A067A00DE162A /* FoodCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EAC8611201A067A00DE162A /* FoodCardView.xib */; };
 		9D0D712C203859C80077FA7A /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D712B203859C80077FA7A /* UserLogin.swift */; };
+		9D0D7138203AAE1F0077FA7A /* RestaurantDetailsContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D712F203AAE1F0077FA7A /* RestaurantDetailsContract.swift */; };
+		9D0D7139203AAE1F0077FA7A /* RestaurantDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D7131203AAE1F0077FA7A /* RestaurantDetailsPresenter.swift */; };
+		9D0D713A203AAE1F0077FA7A /* RestaurantDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D7133203AAE1F0077FA7A /* RestaurantDetailsViewController.swift */; };
+		9D0D713B203AAE1F0077FA7A /* RestaurantDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D7135203AAE1F0077FA7A /* RestaurantDetailsInteractor.swift */; };
+		9D0D713C203AAE1F0077FA7A /* RestaurantDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D7137203AAE1F0077FA7A /* RestaurantDetailsRouter.swift */; };
 		9D2C484D202073A700FD8B1C /* SelectedPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C484C202073A700FD8B1C /* SelectedPreference.swift */; };
 		9D3D1CE02006479500AAAB95 /* SnapXConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3D1CDF2006479500AAAB95 /* SnapXConstants.swift */; };
 		9D3FC4D82011C94A001A4264 /* CuisinePreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3FC4D72011C94A001A4264 /* CuisinePreference.swift */; };
@@ -166,6 +171,11 @@
 		7EAC8611201A067A00DE162A /* FoodCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodCardView.xib; sourceTree = "<group>"; };
 		967BD01B1CEED06931835CA3 /* Pods_SnapXEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnapXEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D0D712B203859C80077FA7A /* UserLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
+		9D0D712F203AAE1F0077FA7A /* RestaurantDetailsContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailsContract.swift; sourceTree = "<group>"; };
+		9D0D7131203AAE1F0077FA7A /* RestaurantDetailsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailsPresenter.swift; sourceTree = "<group>"; };
+		9D0D7133203AAE1F0077FA7A /* RestaurantDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailsViewController.swift; sourceTree = "<group>"; };
+		9D0D7135203AAE1F0077FA7A /* RestaurantDetailsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailsInteractor.swift; sourceTree = "<group>"; };
+		9D0D7137203AAE1F0077FA7A /* RestaurantDetailsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailsRouter.swift; sourceTree = "<group>"; };
 		9D2C484C202073A700FD8B1C /* SelectedPreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedPreference.swift; sourceTree = "<group>"; };
 		9D3D1CDF2006479500AAAB95 /* SnapXConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXConstants.swift; sourceTree = "<group>"; };
 		9D3FC4D72011C94A001A4264 /* CuisinePreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisinePreference.swift; sourceTree = "<group>"; };
@@ -353,6 +363,58 @@
 				7EAC8611201A067A00DE162A /* FoodCardView.xib */,
 			);
 			path = CustomView;
+			sourceTree = "<group>";
+		};
+		9D0D712D203AAE1F0077FA7A /* RestaurantDetails */ = {
+			isa = PBXGroup;
+			children = (
+				9D0D712E203AAE1F0077FA7A /* Contract */,
+				9D0D7130203AAE1F0077FA7A /* Presenter */,
+				9D0D7132203AAE1F0077FA7A /* View */,
+				9D0D7134203AAE1F0077FA7A /* Interactor */,
+				9D0D7136203AAE1F0077FA7A /* Router */,
+			);
+			path = RestaurantDetails;
+			sourceTree = "<group>";
+		};
+		9D0D712E203AAE1F0077FA7A /* Contract */ = {
+			isa = PBXGroup;
+			children = (
+				9D0D712F203AAE1F0077FA7A /* RestaurantDetailsContract.swift */,
+			);
+			path = Contract;
+			sourceTree = "<group>";
+		};
+		9D0D7130203AAE1F0077FA7A /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				9D0D7131203AAE1F0077FA7A /* RestaurantDetailsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		9D0D7132203AAE1F0077FA7A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9D0D7133203AAE1F0077FA7A /* RestaurantDetailsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9D0D7134203AAE1F0077FA7A /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				9D0D7135203AAE1F0077FA7A /* RestaurantDetailsInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		9D0D7136203AAE1F0077FA7A /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				9D0D7137203AAE1F0077FA7A /* RestaurantDetailsRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		9D2C484B2020709600FD8B1C /* Model */ = {
@@ -583,6 +645,7 @@
 				9DB02A632010805F0061FC0C /* Location */,
 				9D902BD9201729E300359DFD /* SelectLocation */,
 				9D902BBE20171AED00359DFD /* FoodCards */,
+				9D0D712D203AAE1F0077FA7A /* RestaurantDetails */,
 				9DE7CE462023620500BBBFEC /* UserPrefernce */,
 				9D8E88CD1FFD28C50066A1D9 /* Base */,
 			);
@@ -1239,6 +1302,7 @@
 				9D902BE4201729E400359DFD /* SelectLocationContract.swift in Sources */,
 				9DB7FE0B1FFFAC3800D0E816 /* InstagramViewController.swift in Sources */,
 				9D8E88EE1FFD2BEC0066A1D9 /* LoginInteractor.swift in Sources */,
+				9D0D713C203AAE1F0077FA7A /* RestaurantDetailsRouter.swift in Sources */,
 				9D8E88EF1FFD2BEC0066A1D9 /* LoginRouter.swift in Sources */,
 				9D8E88F11FFD2BEC0066A1D9 /* BaseContract.swift in Sources */,
 				9D8E88F21FFD2BEC0066A1D9 /* BaseViewController.swift in Sources */,
@@ -1272,12 +1336,14 @@
 				7E71FC1A2022ECE100CA8467 /* NavigationMenuTableViewCell.swift in Sources */,
 				9DCBE184201EF6F80030A0F9 /* SnapXEatsNetworkManager.swift in Sources */,
 				9D902BE5201729E400359DFD /* SelectLocationPresenter.swift in Sources */,
+				9D0D7138203AAE1F0077FA7A /* RestaurantDetailsContract.swift in Sources */,
 				9D8E88FD1FFD2BEC0066A1D9 /* Results.swift in Sources */,
 				9D8E88FE1FFD2BEC0066A1D9 /* UITableView.swift in Sources */,
 				9D8E88FF1FFD2BEC0066A1D9 /* UITableViewCell.swift in Sources */,
 				9D8E89001FFD2BEC0066A1D9 /* String.swift in Sources */,
 				7E71FC072022CCAD00CA8467 /* KYDrawerController.swift in Sources */,
 				9D8E89011FFD2BEC0066A1D9 /* UIViewController.swift in Sources */,
+				9D0D713B203AAE1F0077FA7A /* RestaurantDetailsInteractor.swift in Sources */,
 				9DB7FE112004F0EE00D0E816 /* Alert.swift in Sources */,
 				9D902BE8201729E400359DFD /* SelectLocationRouter.swift in Sources */,
 				9D8E89021FFD2BEC0066A1D9 /* UIColor+Pallet.swift in Sources */,
@@ -1285,6 +1351,7 @@
 				9D8E89031FFD2BEC0066A1D9 /* Double.swift in Sources */,
 				9DB02A6E2010805F0061FC0C /* LocationContract.swift in Sources */,
 				9D902BCC20171AED00359DFD /* FoodCardsInteractor.swift in Sources */,
+				9D0D7139203AAE1F0077FA7A /* RestaurantDetailsPresenter.swift in Sources */,
 				9DE7CE522023620500BBBFEC /* UserPreferencePresenter.swift in Sources */,
 				9D8E89041FFD2BEC0066A1D9 /* UIAlertController.swift in Sources */,
 				7E5946972020BD02006702AF /* SearchPlacesTableViewCell.swift in Sources */,
@@ -1295,6 +1362,7 @@
 				7E791F122032B4A500FA887D /* CuisineAndFoodPreferencesViewController.swift in Sources */,
 				9D8E89081FFD2BEC0066A1D9 /* RoundedTextField.swift in Sources */,
 				9D902BCB20171AED00359DFD /* FoodCardsViewController.swift in Sources */,
+				9D0D713A203AAE1F0077FA7A /* RestaurantDetailsViewController.swift in Sources */,
 				9D902BE7201729E400359DFD /* SelectLocationInteractor.swift in Sources */,
 				9D8E89091FFD2BEC0066A1D9 /* RoundedPinkButton.swift in Sources */,
 				9D8E890A1FFD2BEC0066A1D9 /* SimpleCircle.swift in Sources */,
