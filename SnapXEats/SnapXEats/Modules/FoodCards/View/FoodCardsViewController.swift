@@ -125,7 +125,17 @@ extension FoodCardsViewController: KolodaViewDelegate, KolodaViewDataSource {
     }
     
     func koloda(_ koloda: KolodaView, didSelectCardAt index: Int) {
-        // FoodCard click Action
+        let currentFoodCard = foodCards[index]
+        gotoRestaurantDetailsForFoodCard(foodCard: currentFoodCard)
+    }
+    
+    func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
+        switch direction {
+        case .left: leftSwipeActionForIndex(index: index)
+        case .right: rightSwipeActionForIndex(index: index)
+        case .up: upSwipeActionForIndex(index: index)
+        default: break
+        }
     }
 }
 
@@ -136,5 +146,22 @@ extension FoodCardsViewController {
             showLoading()
             presenter?.getFoodCards(selectedPreferences: selectedPrefernce!)
         }
+    }
+    
+    private func rightSwipeActionForIndex(index: Int) {
+        let currentFoodCard = foodCards[index]
+        gotoRestaurantDetailsForFoodCard(foodCard: currentFoodCard)
+    }
+    
+    private func leftSwipeActionForIndex(index: Int) {
+        // Left Swipe Action
+    }
+    
+    private func upSwipeActionForIndex(index: Int) {
+        // Up Swipe Action
+    }
+    
+    private func gotoRestaurantDetailsForFoodCard(foodCard: FoodCard) {
+        // Restaurant Detail Action
     }
 }
