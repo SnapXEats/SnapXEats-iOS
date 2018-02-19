@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class FoodCardsPresenter {
 
@@ -27,6 +28,10 @@ extension FoodCardsPresenter: FoodCardsPresentation {
     
     func refreshFoodCards() {
         router?.presentScreen(screen: .location)
+    }
+    
+    func gotoRestaurantDetails(selectedRestaurant: Restaurant, parent: UINavigationController) {
+        router?.presentScreen(screen: .restaurantDetails(restaurant: selectedRestaurant, parentController: parent))
     }
 }
 

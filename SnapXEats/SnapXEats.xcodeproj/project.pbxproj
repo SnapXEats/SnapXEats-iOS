@@ -16,6 +16,7 @@
 		7E5C058320185F34000B5C33 /* SavedAddressHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5C058120185F34000B5C33 /* SavedAddressHeaderViewCell.xib */; };
 		7E5C058520186846000B5C33 /* UISearchbar+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C058420186846000B5C33 /* UISearchbar+helper.swift */; };
 		7E5C058720186C36000B5C33 /* roboto.bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E5C058620186C1A000B5C33 /* roboto.bold.ttf */; };
+		7E5E7FC2203AD11200009A56 /* RestaurantDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E5E7FC1203AD11200009A56 /* RestaurantDetails.storyboard */; };
 		7E6FD41C2020A00F0058BFB8 /* SearchPlacePredictions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6FD41B2020A00F0058BFB8 /* SearchPlacePredictions.swift */; };
 		7E71FC072022CCAD00CA8467 /* KYDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E71FC042022CCAD00CA8467 /* KYDrawerController.swift */; };
 		7E71FC082022CCAD00CA8467 /* KYEmbedDrawerControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E71FC052022CCAD00CA8467 /* KYEmbedDrawerControllerSegue.swift */; };
@@ -150,6 +151,7 @@
 		7E5C058120185F34000B5C33 /* SavedAddressHeaderViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavedAddressHeaderViewCell.xib; sourceTree = "<group>"; };
 		7E5C058420186846000B5C33 /* UISearchbar+helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchbar+helper.swift"; sourceTree = "<group>"; };
 		7E5C058620186C1A000B5C33 /* roboto.bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = roboto.bold.ttf; sourceTree = "<group>"; };
+		7E5E7FC1203AD11200009A56 /* RestaurantDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RestaurantDetails.storyboard; sourceTree = "<group>"; };
 		7E6FD41B2020A00F0058BFB8 /* SearchPlacePredictions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlacePredictions.swift; sourceTree = "<group>"; };
 		7E71FC042022CCAD00CA8467 /* KYDrawerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYDrawerController.swift; sourceTree = "<group>"; };
 		7E71FC052022CCAD00CA8467 /* KYEmbedDrawerControllerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYEmbedDrawerControllerSegue.swift; sourceTree = "<group>"; };
@@ -397,6 +399,7 @@
 			isa = PBXGroup;
 			children = (
 				9D0D7133203AAE1F0077FA7A /* RestaurantDetailsViewController.swift */,
+				7E5E7FC1203AD11200009A56 /* RestaurantDetails.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1160,6 +1163,7 @@
 				7E5946982020BD02006702AF /* SearchPlacesTableViewCell.xib in Resources */,
 				7EAC860B2019C7E300DE162A /* foodCard4.jpg in Resources */,
 				9DB7FE1720061B6200D0E816 /* Roboto-Light.ttf in Resources */,
+				7E5E7FC2203AD11200009A56 /* RestaurantDetails.storyboard in Resources */,
 				9DB7FE1820061B6200D0E816 /* Roboto-Medium.ttf in Resources */,
 				9DB7FE1920061B6200D0E816 /* Roboto-Regular.ttf in Resources */,
 				9DB02A76201084730061FC0C /* Location.storyboard in Resources */,

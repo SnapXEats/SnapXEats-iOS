@@ -13,6 +13,7 @@ import Koloda
 struct FoodCard {
     var name: String
     var imageURL: String
+    var restaurant: Restaurant
 }
 
 class FoodCardsViewController: BaseViewController, StoryboardLoadable {
@@ -22,6 +23,7 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     
     var selectedPrefernce: SelectedPreference?
     var presenter: FoodCardsPresentation?
+    
     @IBOutlet weak var kolodaView: KolodaView!
     
     private var locationEnabled: Bool {
@@ -33,9 +35,10 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
         }
     }
     
+    var  foodCards = [FoodCard]()
     private var loadFoodCard: Bool {
         get {
-             return checkRechability() &&  foodCards.count == 1 && locationEnabled
+             return checkRechability() &&  foodCards.count == 0 && locationEnabled
         }
     }
     
@@ -46,12 +49,6 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     @IBAction func searchButtonAction(_: Any) {
         // Search Button Action
     }
-    
-    //TO DO: This is Temp Code and should be removed when API is implemented
-    var  foodCards = [
-        FoodCard(name: "", imageURL: "")
-    ]
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,7 +83,7 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
         for restaurant in restaurants {
              let dishes = restaurant.restaurantDishes
                 for dishitem in dishes {
-                    let foodCard = FoodCard(name: restaurant.restaurant_name!, imageURL: dishitem.dish_image_url!)
+                    let foodCard = FoodCard(name: restaurant.restaurant_name!, imageURL: dishitem.dish_image_url!, restaurant: restaurant)
                     self.foodCards.append(foodCard)
                 }
         }
@@ -163,5 +160,9 @@ extension FoodCardsViewController {
     
     private func gotoRestaurantDetailsForFoodCard(foodCard: FoodCard) {
         // Restaurant Detail Action
+        if let parent = self.navigationController {
+            let selectedRestaurant = foodCard.restaurant
+            presenter?.gotoRestaurantDetails(selectedRestaurant: selectedRestaurant, parent: parent)
+        }
     }
 }

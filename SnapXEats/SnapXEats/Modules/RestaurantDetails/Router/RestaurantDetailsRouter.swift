@@ -12,12 +12,13 @@ import UIKit
 class RestaurantDetailsRouter {
 
     // MARK: Properties
-
+    
     weak var view: UIViewController?
 
-    // MARK: Static methods
+    private init() {}
+    static let singleInstance = RestaurantDetailsRouter()
 
-    static func setupModule() -> RestaurantDetailsViewController {
+    func loadRestaurantDetailsModule() -> RestaurantDetailsViewController {
         let viewController = UIStoryboard.loadViewController() as RestaurantDetailsViewController
         let presenter = RestaurantDetailsPresenter()
         let router = RestaurantDetailsRouter()

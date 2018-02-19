@@ -14,7 +14,8 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
     // MARK: Properties
 
     var presenter: RestaurantDetailsPresentation?
-
+    var restaurant: Restaurant!
+    
     // MARK: Lifecycle
 
     override func viewDidLoad() {
@@ -23,5 +24,9 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
 }
 
 extension RestaurantDetailsViewController: RestaurantDetailsView {
+    func initView() {
+        
+    }
+    
     // TODO: implement view output methods
 }

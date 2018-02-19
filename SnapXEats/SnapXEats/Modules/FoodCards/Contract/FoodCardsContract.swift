@@ -20,6 +20,7 @@ protocol FoodCardsView: BaseView {
 protocol FoodCardsPresentation: class {
     func refreshFoodCards()
     func getFoodCards(selectedPreferences: SelectedPreference)
+    func gotoRestaurantDetails(selectedRestaurant: Restaurant, parent: UINavigationController)
 }
 
 protocol FoodCardsRequestFomatter: class {

@@ -11,7 +11,7 @@ import FBSDKLoginKit
 import SwiftInstagram
 
 enum Screens {
-    case login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController)
+    case login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurant: Restaurant, parentController: UINavigationController)
 }
 
 class RootRouter: NSObject {
@@ -96,6 +96,12 @@ class RootRouter: NSObject {
         window?.rootViewController?.present(selectLocationViewController, animated: true, completion: nil)
     }
     
+    private func pushRestaurantDetailsScreen(onNavigationController parentController: UINavigationController, forRestaurant restaurant: Restaurant) {
+        let restaurantDetailsVC = RestaurantDetailsRouter.singleInstance.loadRestaurantDetailsModule()
+        restaurantDetailsVC.restaurant = restaurant
+        parentController.pushViewController(restaurantDetailsVC, animated: true)
+    }
+    
     func presentScreen(screens: Screens) {
         switch screens {
         case .firstScreen:
@@ -116,6 +122,9 @@ class RootRouter: NSObject {
             dissmissSelectLocationScreen()
         case .foodAndCusinePreferences(let preferenceType, let parentController):
             pushFoodAndCuisinePreferencesScreen(onNavigationController: parentController, withPreferenceType: preferenceType)
+        case .restaurantDetails(let restaurant, let parentController):
+            pushRestaurantDetailsScreen(onNavigationController: parentController, forRestaurant: restaurant)
+            
         }
     }
     
