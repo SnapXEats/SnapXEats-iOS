@@ -11,7 +11,7 @@ import FBSDKLoginKit
 import SwiftInstagram
 
 enum Screens {
-    case login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController)
+    case firsTimeUser, login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController)
 }
 
 class RootRouter: NSObject {
@@ -27,14 +27,23 @@ class RootRouter: NSObject {
         userLoggedIn()
     }
     
+    private func presentFirstTimeUserScreen() {
+          showFirstScreen()
+    }
     private func userLoggedIn() {
         if faceBookLoggedIn() || instagramLoggedIn() {
-            presentScreen(screens: .location)
+            showFirstScreen()
         } else {
             guard let window  = UIApplication.shared.delegate?.window! else { return }
             self.window = window
             presentLoginScreen()
         }
+    }
+    
+    private func showFirstScreen() {
+        SnapXEatsLoginHelper.shared.firstTimeUser()
+            ? presentScreen(screens: .userPreference)
+            : presentScreen(screens: .location)
     }
     
     private func instagramLoggedIn () -> Bool{
@@ -98,6 +107,8 @@ class RootRouter: NSObject {
     
     func presentScreen(screens: Screens) {
         switch screens {
+        case .firsTimeUser:
+            presentFirstTimeUserScreen()
         case .firstScreen:
             presentFirstScreen()
         case .login:
