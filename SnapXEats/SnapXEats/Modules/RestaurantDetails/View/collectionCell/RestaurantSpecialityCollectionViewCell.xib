@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="162" height="106"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ygq-bB-Let">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_cuisine" translatesAutoresizingMaskIntoConstraints="NO" id="ygq-bB-Let">
                         <rect key="frame" x="0.0" y="0.0" width="162" height="106"/>
                     </imageView>
                 </subviews>
@@ -38,4 +38,7 @@
             <point key="canvasLocation" x="76" y="92.5"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="placeholder_cuisine" width="89" height="58"/>
+    </resources>
 </document>

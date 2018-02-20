@@ -65,6 +65,9 @@
                                                     <constraint firstAttribute="width" constant="43" id="xIp-OG-rJc"/>
                                                 </constraints>
                                                 <state key="normal" title="C" image="call_icon"/>
+                                                <connections>
+                                                    <action selector="callButtonAction:" destination="2ez-hK-vzS" eventType="touchUpInside" id="xkz-z5-pIN"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U4V-eE-jUb">
                                                 <rect key="frame" x="91" y="382" width="43" height="43"/>
@@ -73,6 +76,9 @@
                                                     <constraint firstAttribute="width" constant="43" id="jjG-0T-9CT"/>
                                                 </constraints>
                                                 <state key="normal" title="C" image="direction_icon"/>
+                                                <connections>
+                                                    <action selector="directionButtonAction:" destination="2ez-hK-vzS" eventType="touchUpInside" id="IKg-W5-C9I"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Call" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hs4-i9-BwS">
                                                 <rect key="frame" x="31.5" y="432" width="20.5" height="16"/>
@@ -216,6 +222,8 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <size key="freeformSize" width="375" height="867"/>
                     <connections>
+                        <outlet property="restaurantAddressLabel" destination="396-eL-bmq" id="O6f-p6-Yi0"/>
+                        <outlet property="restaurantNameLabel" destination="UpG-YB-7ky" id="QEA-Vq-vdp"/>
                         <outlet property="slideshowContainer" destination="Ma9-91-AsJ" id="A9b-aT-2Fz"/>
                         <outlet property="slideshowCountLabel" destination="uSl-az-n9O" id="VTx-EM-ht5"/>
                         <outlet property="specialityCollectionView" destination="FsQ-Zk-rIl" id="GUu-48-9LR"/>

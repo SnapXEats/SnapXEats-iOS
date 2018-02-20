@@ -75,6 +75,7 @@ enum SnapXEatsWebServicePath {
     static let  foodtypesURL = "/api/v1/foodTypes"
     static let  cuisinetypesURL = "/api/v1/cuisine"
     static let  snapXEatsUser = "/api/v1/users"
+    static let  restaurantDetails = "/api/v1/restaurant"
 }
 
 enum SnapXEatsImageNames {

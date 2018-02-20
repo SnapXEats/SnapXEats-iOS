@@ -15,5 +15,10 @@ class RestaurantSpecialityCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
+    func configureSpecialityCell(specialityItem: RestaurantSpeciality) {
+        if let imageURL = URL(string: specialityItem.imageURL ?? "") {
+            specialityImageView.af_setImage(withURL: imageURL, placeholderImage:UIImage(named: SnapXEatsImageNames.placeholder_cuisine)!)
+        }
+    }
 }

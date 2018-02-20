@@ -15,11 +15,15 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
     @IBOutlet var slideshowContainer: UIView!
     @IBOutlet var slideshowCountLabel: UILabel!
     @IBOutlet var specialityCollectionView: UICollectionView!
+    @IBOutlet var restaurantNameLabel: UILabel!
+    @IBOutlet var restaurantAddressLabel: UILabel!
     
     var presenter: RestaurantDetailsPresentation?
     var restaurant: Restaurant!
     var slideshow =  ImageSlideshow()
-    var specialities = ["https://images.unsplash.com/photo-1432679963831-2dab49187847?w=1080", "https://images.unsplash.com/photo-1447746249824-4be4e1b76d66?w=1080", "https://images.unsplash.com/photo-1463595373836-6e0b0a8ee322?w=1080"]
+    var specialities = [RestaurantSpeciality]()
+    var restaurantDetails: RestaurantDetails?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,13 +35,54 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
         slideshow.frame = slideshowContainer.frame
         slideshowContainer.addSubview(slideshow)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getRestaurantDetails()
+    }
+    
+    override func success(result: Any?) {
+        hideLoading()
+        if let result = result as? RestaurantDetailsItem {
+            restaurantDetails = result.restaurantDetails
+            showRestaurantDetails()
+        }
+    }
+    
+    @IBAction func callButtonAction(_ sender: UIButton) {
+        if let phoneNumberStr = restaurantDetails?.contactNumber {
+            // String maipulation to convert number is iPhone Specific format
+            let phnone = phoneNumberStr.replacingOccurrences(of: "-", with: "").replacingOccurrences(of: " ", with: "")
+            if let url = URL(string: "tel://\(phnone)"), UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
+    
+    @IBAction func directionButtonAction(_ sender: UIButton) {
+        
+    }
+    
+    private func getRestaurantDetails() {
+        showLoading()
+        presenter?.restaurantDetailsRequest(restaurantId: restaurant.restaurant_info_id!)
+    }
+    
+    private func showRestaurantDetails() {
+        if let details = restaurantDetails {
+            restaurantNameLabel.text = details.name ?? SnapXEatsAppDefaults.emptyString
+            restaurantAddressLabel.text = details.address ?? SnapXEatsAppDefaults.emptyString
+            specialities = details.specialities
+            specialityCollectionView.reloadData()
+            setupImageSlideshowWithPhotos(photos: details.photos)
+        }
+    }
 }
 
 extension RestaurantDetailsViewController: RestaurantDetailsView {
     func initView() {
         customizeNavigationItem(title: SnapXEatsPageTitles.restaurantDetail, isDetailPage: true)
         registerCellForNib()
-        setupImageSlideshow()
     }
     
     private func registerCellForNib() {
@@ -45,17 +90,23 @@ extension RestaurantDetailsViewController: RestaurantDetailsView {
         specialityCollectionView.register(nib, forCellWithReuseIdentifier: SnapXEatsCellResourceIdentifiler.restaurantSpeciality)
     }
     
-    func setupImageSlideshow() {
-        let alamofireSource = [AlamofireSource(urlString: "https://images.unsplash.com/photo-1432679963831-2dab49187847?w=1080")!, AlamofireSource(urlString: "https://images.unsplash.com/photo-1447746249824-4be4e1b76d66?w=1080")!, AlamofireSource(urlString: "https://images.unsplash.com/photo-1463595373836-6e0b0a8ee322?w=1080")!]
+    func setupImageSlideshowWithPhotos(photos: [RestaurantPhoto]) {
         
-        slideshow.setImageInputs(alamofireSource)
-        slideshow.contentScaleMode = .scaleAspectFill
+        var inputsources = [AlamofireSource]()
+        for photo in photos {
+            if let photoURLString = photo.imageURL, let source = AlamofireSource(urlString: photoURLString) {
+               inputsources.append(source)
+            }
+        }
+        
+        slideshow.setImageInputs(inputsources)
+        slideshow.contentScaleMode = .scaleAspectFit
         slideshow.slideshowInterval = 0
         slideshow.pageControlPosition = .hidden
         slideshow.activityIndicator = DefaultActivityIndicator(style: .whiteLarge, color: .black)
-        self.slideshowCountLabel.text = "1/\(alamofireSource.count)"
+        self.slideshowCountLabel.text = "1/\(inputsources.count)"
         slideshow.currentPageChanged = { (index) in
-            self.slideshowCountLabel.text = "\(index+1)/\(alamofireSource.count)"
+            self.slideshowCountLabel.text = "\(index+1)/\(inputsources.count)"
         }
     }
 }
@@ -71,9 +122,7 @@ extension RestaurantDetailsViewController: UICollectionViewDelegate, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SnapXEatsCellResourceIdentifiler.restaurantSpeciality, for: indexPath) as! RestaurantSpecialityCollectionViewCell
-        if let imageURL = URL(string: specialities[indexPath.row]) {
-            cell.specialityImageView.af_setImage(withURL: imageURL, placeholderImage:UIImage(named: SnapXEatsImageNames.placeholder_cuisine)!)
-        }
+        cell.configureSpecialityCell(specialityItem: specialities[indexPath.row])
         return cell
     }
 }
