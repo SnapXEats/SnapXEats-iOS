@@ -109,16 +109,19 @@ enum SnapXEatsPageTitles {
     static let rewards = "Rewards"
     static let cusinePreferences = "Cuisine Preferences"
     static let foodPreferences = "Food Preferences"
+    static let restaurantDetail = "Restaurant Info"
 }
 
 enum SnapXEatsCellResourceIdentifiler {
     static let navigationMenu = "navigationtionmenucell"
     static let preferenceType = "PreferenceTypeCell"
+    static let restaurantSpeciality = "RestaurantSpecialityCell"
 }
 
 enum SnapXEatsNibNames {
     static let navigationMenuTableViewCell = "NavigationMenuTableViewCell"
     static let preferenceTypeCollectionViewCell = "PreferenceTypeCollectionViewCell"
+    static let restaurantSpecialityCollectionViewCell = "RestaurantSpecialityCollectionViewCell"
 }
 
 enum SnapXEatsWebServiceParameterKeys {
