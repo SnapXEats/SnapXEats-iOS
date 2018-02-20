@@ -157,5 +157,7 @@ enum SnapXEatsConstant {
     static let social_id = "social_id"
     static let platFormFB = "facebook"
     static let platFormInstagram = "instagram"
+    static let snaXEatsFirstTimeUser = "SnaXEatsFirstTimeUser"
+    static let firstTimeUser = "firstTimeUser"
 }
 

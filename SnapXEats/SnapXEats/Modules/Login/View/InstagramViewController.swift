@@ -88,11 +88,10 @@ extension InstagramViewController: WKNavigationDelegate{
             webView.stopLoading()
             let api = Instagram.shared
             if api.storeAccessToken(value) {
-               
                 presenter.getInstagramUserData {
-                    self?.removeWebView()
-                    webView.stopLoading()
                     self?.hideLoading()
+                    webView.stopLoading()
+                    self?.discardWebView()
                 }
             }
         }

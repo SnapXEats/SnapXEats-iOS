@@ -30,7 +30,7 @@ extension LoginPresenter: LoginViewPresentation {
     }
     
     func skipUserLogin() {
-        presentLocationScreen()
+        presentFirstTimeUserScreen()
     }
     
     func showLocationScreen() {
@@ -52,7 +52,7 @@ extension LoginPresenter: LoginViewInteractorOutput {
         self.view?.hideLoading()
         switch result {
         case .success(_):
-                presentLocationScreen()
+                presentFirstTimeUserScreen()
         case .error:
             view?.error(result: NetworkResult.error)
         case .fail:
@@ -67,6 +67,10 @@ extension LoginPresenter: LoginViewInteractorOutput {
     
     func onLoginReguestFailure(message: String) {
         view?.showError(message)
+    }
+    
+    private func presentFirstTimeUserScreen() {
+        router?.presentScreen(screen: .firsTimeUser)
     }
     
     private func presentLocationScreen() {
