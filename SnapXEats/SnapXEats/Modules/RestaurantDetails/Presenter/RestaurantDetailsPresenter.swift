@@ -11,14 +11,16 @@ import Foundation
 class RestaurantDetailsPresenter {
 
     // MARK: Properties
-
+    weak var baseView: BaseView?
     weak var view: RestaurantDetailsView?
     var router: RestaurantDetailsWireframe?
-    var interactor: RestaurantDetailsUseCase?
+    var interactor: RestaurantDetailsRequestFormatter?
 }
 
 extension RestaurantDetailsPresenter: RestaurantDetailsPresentation {
-    // TODO: implement presentation methods
+    func restaurantDetailsRequest(restaurantId: String) {
+        interactor?.getRestaurantDetailsRequest(restaurant_id: restaurantId)
+    }
 }
 
 extension RestaurantDetailsPresenter: RestaurantDetailsInteractorOutput {

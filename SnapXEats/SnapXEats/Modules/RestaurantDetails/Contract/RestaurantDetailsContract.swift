@@ -7,23 +7,36 @@
 //
 
 import Foundation
+import Alamofire
 
 protocol RestaurantDetailsView: class, BaseView {
     // TODO: Declare view methods
 }
 
 protocol RestaurantDetailsPresentation: class {
-    // TODO: Declare presentation methods
+    func restaurantDetailsRequest(restaurantId: String)
 }
 
 protocol RestaurantDetailsUseCase: class {
     // TODO: Declare use case methods
 }
 
-protocol RestaurantDetailsInteractorOutput: class {
+protocol RestaurantDetailsInteractorOutput: Response {
     // TODO: Declare interactor output methods
 }
 
 protocol RestaurantDetailsWireframe: class {
     // TODO: Declare wireframe methods
+}
+
+protocol RestaurantDetailsRequestFormatter: class {
+    func getRestaurantDetailsRequest(restaurant_id: String)
+}
+
+protocol RestaurantDetailsWebService: class {
+    func getRestaurantDetails(forPath: String)
+}
+
+protocol RestaurantDetailsObjectMapper: class {
+    func restaurantDetails(data: Result<RestaurantDetailsItem>)
 }

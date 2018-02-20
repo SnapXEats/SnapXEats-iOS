@@ -75,6 +75,7 @@ enum SnapXEatsWebServicePath {
     static let  foodtypesURL = "/api/v1/foodTypes"
     static let  cuisinetypesURL = "/api/v1/cuisine"
     static let  snapXEatsUser = "/api/v1/users"
+    static let  restaurantDetails = "/api/v1/restaurant"
 }
 
 enum SnapXEatsImageNames {
@@ -109,16 +110,19 @@ enum SnapXEatsPageTitles {
     static let rewards = "Rewards"
     static let cusinePreferences = "Cuisine Preferences"
     static let foodPreferences = "Food Preferences"
+    static let restaurantDetail = "Restaurant Info"
 }
 
 enum SnapXEatsCellResourceIdentifiler {
     static let navigationMenu = "navigationtionmenucell"
     static let preferenceType = "PreferenceTypeCell"
+    static let restaurantSpeciality = "RestaurantSpecialityCell"
 }
 
 enum SnapXEatsNibNames {
     static let navigationMenuTableViewCell = "NavigationMenuTableViewCell"
     static let preferenceTypeCollectionViewCell = "PreferenceTypeCollectionViewCell"
+    static let restaurantSpecialityCollectionViewCell = "RestaurantSpecialityCollectionViewCell"
 }
 
 enum SnapXEatsWebServiceParameterKeys {
