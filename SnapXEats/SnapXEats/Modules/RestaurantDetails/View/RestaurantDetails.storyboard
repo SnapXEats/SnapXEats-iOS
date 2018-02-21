@@ -51,12 +51,35 @@
                                                 <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="deviceRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="642-at-qQE">
-                                                <rect key="frame" x="20" y="334" width="158" height="28"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock_icon" translatesAutoresizingMaskIntoConstraints="NO" id="zly-7a-SZ6">
+                                                <rect key="frame" x="20" y="342.5" width="11" height="11"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="11" id="0vM-P8-B6t"/>
+                                                    <constraint firstAttribute="height" constant="11" id="mD5-bO-rYX"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open today - 11 AM to 11 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPh-m1-gH0">
+                                                <rect key="frame" x="37" y="334" width="157.5" height="28"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
-                                                <state key="normal" title="Open today - 11 AM to 11 PM">
+                                                <color key="textColor" red="0.20784313725490194" green="0.20784313725490194" blue="0.20784313725490194" alpha="1" colorSpace="deviceRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="dq6-am-2eX">
+                                                <rect key="frame" x="204.5" y="347" width="10" height="6"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="6" id="WkP-Jz-ErR"/>
+                                                    <constraint firstAttribute="width" constant="10" id="tcA-lI-7hM"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="642-at-qQE">
+                                                <rect key="frame" x="20" y="334" width="195" height="28"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                                                <state key="normal">
                                                     <color key="titleColor" red="0.20784313725490194" green="0.20784313725490194" blue="0.20784313725490194" alpha="1" colorSpace="deviceRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="timingButtonAction:" destination="2ez-hK-vzS" eventType="touchUpInside" id="src-OE-YAD"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Yg-nJ-4xU">
                                                 <rect key="frame" x="20" y="382" width="43" height="43"/>
@@ -168,6 +191,7 @@
                                         <constraints>
                                             <constraint firstItem="4N9-QR-yJF" firstAttribute="top" secondItem="Hs4-i9-BwS" secondAttribute="top" id="0X0-HJ-ly9"/>
                                             <constraint firstItem="GQn-M8-WrE" firstAttribute="top" secondItem="dgd-ax-5Jc" secondAttribute="bottom" constant="19" id="5Ah-gk-84b"/>
+                                            <constraint firstItem="zly-7a-SZ6" firstAttribute="centerY" secondItem="642-at-qQE" secondAttribute="centerY" id="657-NY-yN0"/>
                                             <constraint firstItem="Hs4-i9-BwS" firstAttribute="centerX" secondItem="8Yg-nJ-4xU" secondAttribute="centerX" id="7Dn-t1-et4"/>
                                             <constraint firstAttribute="bottom" secondItem="FsQ-Zk-rIl" secondAttribute="bottom" constant="20" id="7Kl-Vi-Xn4"/>
                                             <constraint firstItem="642-at-qQE" firstAttribute="top" secondItem="396-eL-bmq" secondAttribute="bottom" constant="10" id="82a-KX-ffN"/>
@@ -176,12 +200,16 @@
                                             <constraint firstItem="FsQ-Zk-rIl" firstAttribute="leading" secondItem="GQn-M8-WrE" secondAttribute="leading" id="CVz-i9-7aS"/>
                                             <constraint firstItem="dgd-ax-5Jc" firstAttribute="top" secondItem="Hs4-i9-BwS" secondAttribute="bottom" constant="22" id="JEW-KW-jt4"/>
                                             <constraint firstItem="UpG-YB-7ky" firstAttribute="leading" secondItem="rej-Yn-WrV" secondAttribute="leading" constant="20" id="Jia-c1-6aX"/>
+                                            <constraint firstItem="dq6-am-2eX" firstAttribute="leading" secondItem="gPh-m1-gH0" secondAttribute="trailing" constant="10" id="KE3-rm-dbV"/>
                                             <constraint firstItem="642-at-qQE" firstAttribute="leading" secondItem="396-eL-bmq" secondAttribute="leading" id="Lyx-OZ-1Oo"/>
                                             <constraint firstItem="FsQ-Zk-rIl" firstAttribute="top" secondItem="GQn-M8-WrE" secondAttribute="bottom" constant="15" id="MDs-j8-CZI"/>
+                                            <constraint firstItem="gPh-m1-gH0" firstAttribute="top" secondItem="642-at-qQE" secondAttribute="top" id="Mpi-Tg-E0q"/>
                                             <constraint firstItem="uSl-az-n9O" firstAttribute="leading" secondItem="Ma9-91-AsJ" secondAttribute="leading" id="PMo-qQ-UdP"/>
                                             <constraint firstItem="GQn-M8-WrE" firstAttribute="leading" secondItem="UpG-YB-7ky" secondAttribute="leading" id="PXq-SV-XTz"/>
+                                            <constraint firstItem="dq6-am-2eX" firstAttribute="trailing" secondItem="642-at-qQE" secondAttribute="trailing" id="Pjc-FW-5ef"/>
                                             <constraint firstItem="396-eL-bmq" firstAttribute="trailing" secondItem="UpG-YB-7ky" secondAttribute="trailing" id="RCO-lG-wfz"/>
                                             <constraint firstAttribute="trailing" secondItem="dgd-ax-5Jc" secondAttribute="trailing" id="TOh-hM-UgF"/>
+                                            <constraint firstItem="dq6-am-2eX" firstAttribute="centerY" secondItem="gPh-m1-gH0" secondAttribute="centerY" constant="2" id="ahk-Fp-Myi"/>
                                             <constraint firstItem="8Yg-nJ-4xU" firstAttribute="top" secondItem="642-at-qQE" secondAttribute="bottom" constant="20" id="bWc-PJ-BXz"/>
                                             <constraint firstItem="UpG-YB-7ky" firstAttribute="top" secondItem="Ma9-91-AsJ" secondAttribute="bottom" constant="15" id="dZV-Hz-OcT"/>
                                             <constraint firstItem="Hs4-i9-BwS" firstAttribute="top" secondItem="8Yg-nJ-4xU" secondAttribute="bottom" constant="7" id="f2t-LP-h27"/>
@@ -192,9 +220,12 @@
                                             <constraint firstItem="Ma9-91-AsJ" firstAttribute="top" secondItem="rej-Yn-WrV" secondAttribute="top" id="kMl-pX-f1e"/>
                                             <constraint firstItem="U4V-eE-jUb" firstAttribute="leading" secondItem="8Yg-nJ-4xU" secondAttribute="trailing" constant="28" id="pNI-Fo-sRY"/>
                                             <constraint firstItem="8Yg-nJ-4xU" firstAttribute="leading" secondItem="642-at-qQE" secondAttribute="leading" id="r4a-z0-BrI"/>
+                                            <constraint firstItem="gPh-m1-gH0" firstAttribute="bottom" secondItem="642-at-qQE" secondAttribute="bottom" id="rcW-PJ-vu2"/>
                                             <constraint firstAttribute="trailing" secondItem="UpG-YB-7ky" secondAttribute="trailing" constant="10" id="uQs-ne-3Ra"/>
                                             <constraint firstItem="396-eL-bmq" firstAttribute="leading" secondItem="UpG-YB-7ky" secondAttribute="leading" id="uSh-zt-r6K"/>
+                                            <constraint firstItem="gPh-m1-gH0" firstAttribute="leading" secondItem="zly-7a-SZ6" secondAttribute="trailing" constant="6" id="vcd-e5-MMv"/>
                                             <constraint firstItem="uSl-az-n9O" firstAttribute="bottom" secondItem="Ma9-91-AsJ" secondAttribute="bottom" id="wCC-Ty-ahB"/>
+                                            <constraint firstItem="zly-7a-SZ6" firstAttribute="leading" secondItem="642-at-qQE" secondAttribute="leading" id="wvQ-Ny-Ay5"/>
                                             <constraint firstItem="Ma9-91-AsJ" firstAttribute="leading" secondItem="rej-Yn-WrV" secondAttribute="leading" id="xWo-y7-tS9"/>
                                             <constraint firstItem="4N9-QR-yJF" firstAttribute="centerX" secondItem="U4V-eE-jUb" secondAttribute="centerX" id="zNg-1R-G9k"/>
                                             <constraint firstItem="U4V-eE-jUb" firstAttribute="height" secondItem="8Yg-nJ-4xU" secondAttribute="height" id="zlj-Vb-oVp"/>
@@ -224,6 +255,8 @@
                     <connections>
                         <outlet property="restaurantAddressLabel" destination="396-eL-bmq" id="O6f-p6-Yi0"/>
                         <outlet property="restaurantNameLabel" destination="UpG-YB-7ky" id="QEA-Vq-vdp"/>
+                        <outlet property="restaurantTimingButton" destination="642-at-qQE" id="sWu-08-Eu5"/>
+                        <outlet property="restaurantTimingLabel" destination="gPh-m1-gH0" id="FrB-b1-8i5"/>
                         <outlet property="slideshowContainer" destination="Ma9-91-AsJ" id="A9b-aT-2Fz"/>
                         <outlet property="slideshowCountLabel" destination="uSl-az-n9O" id="VTx-EM-ht5"/>
                         <outlet property="specialityCollectionView" destination="FsQ-Zk-rIl" id="GUu-48-9LR"/>
@@ -233,10 +266,93 @@
             </objects>
             <point key="canvasLocation" x="104.8" y="180.35982008995504"/>
         </scene>
+        <!--Restaurant Timing View Controller-->
+        <scene sceneID="87I-Oe-YsS">
+            <objects>
+                <viewController storyboardIdentifier="RestaurantTimingsViewController" id="Avg-Kr-Zd2" customClass="RestaurantTimingViewController" customModule="SnapXEats" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eS8-mn-tJ5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="60" sectionHeaderHeight="1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fYR-ws-liK">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="restaurantTimingCell" rowHeight="60" id="58D-6t-z5Z" customClass="TimingTableViewCell" customModule="SnapXEats" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="1" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="58D-6t-z5Z" id="ubi-ed-0Up">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AES-kK-xaI">
+                                                    <rect key="frame" x="30" y="22" width="33.5" height="16"/>
+                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                                                    <color key="textColor" red="0.20784313730000001" green="0.20784313730000001" blue="0.20784313730000001" alpha="1" colorSpace="deviceRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock_icon" translatesAutoresizingMaskIntoConstraints="NO" id="vrm-7X-Rc5">
+                                                    <rect key="frame" x="10" y="24.5" width="11" height="11"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="11" id="JaM-vP-QQI"/>
+                                                        <constraint firstAttribute="height" constant="11" id="ZwI-A5-wOA"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11AM to 11 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1b-U9-SQF">
+                                                    <rect key="frame" x="266.5" y="22" width="83.5" height="16"/>
+                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                                                    <color key="textColor" red="0.20784313730000001" green="0.20784313730000001" blue="0.20784313730000001" alpha="1" colorSpace="deviceRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="AES-kK-xaI" firstAttribute="centerY" secondItem="ubi-ed-0Up" secondAttribute="centerY" id="07j-c9-wzq"/>
+                                                <constraint firstItem="V1b-U9-SQF" firstAttribute="bottom" secondItem="AES-kK-xaI" secondAttribute="bottom" id="7T5-wF-R89"/>
+                                                <constraint firstItem="AES-kK-xaI" firstAttribute="leading" secondItem="ubi-ed-0Up" secondAttribute="leading" constant="30" id="7f0-xq-aQ9"/>
+                                                <constraint firstItem="V1b-U9-SQF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="AES-kK-xaI" secondAttribute="trailing" constant="10" id="ATE-rw-sJ8"/>
+                                                <constraint firstItem="V1b-U9-SQF" firstAttribute="top" secondItem="AES-kK-xaI" secondAttribute="top" id="EiF-ls-NKk"/>
+                                                <constraint firstItem="vrm-7X-Rc5" firstAttribute="leading" secondItem="ubi-ed-0Up" secondAttribute="leading" constant="10" id="Ie3-Fw-I7c"/>
+                                                <constraint firstItem="vrm-7X-Rc5" firstAttribute="centerY" secondItem="ubi-ed-0Up" secondAttribute="centerY" id="f66-U7-pYi"/>
+                                                <constraint firstAttribute="trailing" secondItem="V1b-U9-SQF" secondAttribute="trailing" constant="25" id="pCA-se-lJa"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="clockImageView" destination="vrm-7X-Rc5" id="GvV-k9-WrX"/>
+                                            <outlet property="dayLabel" destination="AES-kK-xaI" id="C3O-lR-Glm"/>
+                                            <outlet property="timeLabel" destination="V1b-U9-SQF" id="NUS-9Y-e1p"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Avg-Kr-Zd2" id="J4G-Ey-tvF"/>
+                                    <outlet property="delegate" destination="Avg-Kr-Zd2" id="9id-hc-vea"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fYR-ws-liK" firstAttribute="top" secondItem="eS8-mn-tJ5" secondAttribute="top" id="CQu-UX-fCs"/>
+                            <constraint firstItem="0Tx-aP-hbi" firstAttribute="trailing" secondItem="fYR-ws-liK" secondAttribute="trailing" id="Gv9-LW-ayY"/>
+                            <constraint firstItem="0Tx-aP-hbi" firstAttribute="bottom" secondItem="fYR-ws-liK" secondAttribute="bottom" id="kVq-Ku-6g8"/>
+                            <constraint firstItem="fYR-ws-liK" firstAttribute="leading" secondItem="0Tx-aP-hbi" secondAttribute="leading" id="z6v-a1-yM2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0Tx-aP-hbi"/>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="230" height="180"/>
+                    <connections>
+                        <outlet property="timingsTableView" destination="fYR-ws-liK" id="yJx-Nu-RLZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Mz-eZ-ZAh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="860" y="89.505247376311857"/>
+        </scene>
     </scenes>
     <resources>
         <image name="call_icon" width="45" height="45"/>
+        <image name="clock_icon" width="11" height="11"/>
         <image name="direction_icon" width="45" height="45"/>
+        <image name="down_arrow" width="9" height="6"/>
         <image name="uber_icon" width="25" height="25"/>
     </resources>
 </document>

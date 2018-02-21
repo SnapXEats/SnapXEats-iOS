@@ -32,6 +32,7 @@ class RestaurantDetails: Mappable {
     var price: Int?
     var rating: Double?
     var specialities = [RestaurantSpeciality]()
+    var timings = [RestaurantTiming]()
     
     required init?(map: Map) {
     }
@@ -48,6 +49,7 @@ class RestaurantDetails: Mappable {
         price          <- map["restaurant_price"]
         rating         <- map["restaurant_rating"]
         specialities   <- map["restaurant_speciality"]
+        timings        <- map["restaurant_timings"]
     }
 }
 
@@ -70,5 +72,18 @@ class RestaurantSpeciality: Mappable {
     
     func mapping(map: Map) {
         imageURL        <- map["dish_image_url"]
+    }
+}
+
+class RestaurantTiming: Mappable {
+    var day: String?
+    var time: String?
+    
+    required init?(map: Map) {
+    }
+    
+    func mapping(map: Map) {
+        day   <- map["day_of_week"]
+        time  <- map["restaurant_open_close_time"]
     }
 }
