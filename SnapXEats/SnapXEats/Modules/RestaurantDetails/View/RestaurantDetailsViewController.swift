@@ -11,12 +11,19 @@ import UIKit
 
 class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
 
-    
     @IBOutlet var slideshowContainer: UIView!
     @IBOutlet var slideshowCountLabel: UILabel!
     @IBOutlet var specialityCollectionView: UICollectionView!
     @IBOutlet var restaurantNameLabel: UILabel!
     @IBOutlet var restaurantAddressLabel: UILabel!
+    @IBOutlet var restaurantTimingButton: UIButton!
+    @IBOutlet var restaurantTimingLabel: UILabel!
+    
+    let weekDays = ["Monday": 1, "Tuesday":2, "Wednesday":3, "Thursday":4, "Friday":5, "Saturday":6, "Sunday":7]
+    enum restaurantTimingConstants {
+        static let open = "Open Today"
+        static let close = "Closed Now"
+    }
     
     var presenter: RestaurantDetailsPresentation?
     var restaurant: Restaurant!
@@ -63,9 +70,15 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
         
     }
     
+    @IBAction func timingButtonAction(_ sender: UIButton) {
+        showRestaurantTimingsPopover(onView: sender)
+    }
+    
     private func getRestaurantDetails() {
-        showLoading()
-        presenter?.restaurantDetailsRequest(restaurantId: restaurant.restaurant_info_id!)
+        if let restaurantId = restaurant.restaurant_info_id {
+            showLoading()
+            presenter?.restaurantDetailsRequest(restaurantId:restaurantId)
+        }
     }
     
     private func showRestaurantDetails() {
@@ -75,7 +88,56 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
             specialities = details.specialities
             specialityCollectionView.reloadData()
             setupImageSlideshowWithPhotos(photos: details.photos)
+            restaurantTimingButton.isEnabled = details.timings.count > 0 ? true : false
+            restaurantTimingLabel.text = getRestaurantTimingDisplayText(details: details)
         }
+    }
+    
+    private func getRestaurantTimingDisplayText(details: RestaurantDetails) -> String {
+        
+        var timingStr = SnapXEatsAppDefaults.emptyString
+        if details.isOpenNow == false {
+             return restaurantTimingConstants.close
+        } else if details.isOpenNow == true {
+            let today = Date().dayOfWeek()
+            for timing in details.timings {
+                if timing.day == today {
+                    timingStr = timing.time ?? SnapXEatsAppDefaults.emptyString
+                }
+            }
+            return restaurantTimingConstants.open + " " + timingStr
+        }
+        return SnapXEatsAppDefaults.emptyString
+    }
+    
+    private func getSortedRestaurantTimings() -> [RestaurantTiming]? {
+        let sortedTimings = restaurantDetails?.timings.sorted(by: { (item1, item2) -> Bool in
+            if let weekdayInt1 = weekDays[item1.day!], let weekdayInt2 = weekDays[item2.day!] {
+                return weekdayInt1 < weekdayInt2
+            }
+            return false
+        })
+        return sortedTimings
+    }
+    
+    private func showRestaurantTimingsPopover(onView sender: UIButton) {
+        if let timings = getSortedRestaurantTimings() {
+            let popController = self.storyboard?.instantiateViewController(withIdentifier: SnapXEatsStoryboardIdentifier.restaurantTimingsViewController) as! RestaurantTimingViewController
+            
+            popController.timings = timings
+            popController.modalPresentationStyle = UIModalPresentationStyle.popover
+            popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
+            popController.popoverPresentationController?.delegate = self
+            popController.popoverPresentationController?.sourceView = sender
+            popController.popoverPresentationController?.sourceRect = sender.bounds
+            self.present(popController, animated: true, completion: nil)
+        }
+    }
+}
+
+extension RestaurantDetailsViewController: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
     }
 }
 
@@ -98,7 +160,6 @@ extension RestaurantDetailsViewController: RestaurantDetailsView {
                inputsources.append(source)
             }
         }
-        
         slideshow.setImageInputs(inputsources)
         slideshow.contentScaleMode = .scaleAspectFit
         slideshow.slideshowInterval = 0

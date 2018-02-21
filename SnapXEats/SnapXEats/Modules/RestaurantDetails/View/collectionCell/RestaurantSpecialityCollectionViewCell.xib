@@ -19,11 +19,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="162" height="106"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_cuisine" translatesAutoresizingMaskIntoConstraints="NO" id="ygq-bB-Let">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_cuisine" translatesAutoresizingMaskIntoConstraints="NO" id="ygq-bB-Let">
                         <rect key="frame" x="0.0" y="0.0" width="162" height="106"/>
                     </imageView>
                 </subviews>
             </view>
+            <color key="backgroundColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="deviceRGB"/>
             <constraints>
                 <constraint firstItem="ygq-bB-Let" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="8sg-Zd-bEe"/>
                 <constraint firstAttribute="bottom" secondItem="ygq-bB-Let" secondAttribute="bottom" id="IBi-TZ-dBb"/>

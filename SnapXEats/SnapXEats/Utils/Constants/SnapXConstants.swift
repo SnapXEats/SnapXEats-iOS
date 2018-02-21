@@ -61,6 +61,7 @@ enum SnapXEatsStoryboardIdentifier {
     static let locationCuisineCollectionCellIdentifier = "CuisineCollectionViewCell"
     static let userPreferenceNavigationControllerID = "UserPreferenceNavigationController"
     static let cusineAndFoodPreferencesViewControllerID = "CusineAndFoodPreferencesViewControllerID"
+    static let restaurantTimingsViewController = "RestaurantTimingsViewController"
 }
 
 enum SnapXEatsLocationConstant {
@@ -117,6 +118,7 @@ enum SnapXEatsCellResourceIdentifiler {
     static let navigationMenu = "navigationtionmenucell"
     static let preferenceType = "PreferenceTypeCell"
     static let restaurantSpeciality = "RestaurantSpecialityCell"
+    static let restaurantTiming = "restaurantTimingCell"
 }
 
 enum SnapXEatsNibNames {
