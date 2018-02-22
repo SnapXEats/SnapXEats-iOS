@@ -10,40 +10,28 @@ import Foundation
 import UIKit
 import Alamofire
 
-protocol UserPreferenceView: class, BaseView {
+protocol UserPreferenceView: BaseView {
     // TODO: Declare view methods
 }
 
-protocol UserPreferencePresentation: class {
-    func preferenceItemRequest(preferenceType: PreferenceType)
+protocol UserPreferencePresentation: UserPreferenceUseCase {
+    func presentFoodAndCuisinePreferences(preferenceType: PreferenceType, parent: UINavigationController)
 }
 
 protocol UserPreferenceUseCase: class {
-    // TODO: Declare use case methods
+    func saveUserPreference(selectedPreference: SelectedPreference)
+    func getUserPreference(userID: String)
 }
 
-protocol UserPreferenceInteractorOutput: Response {
+protocol UserPreferenceInteractorIntput {
+    func saveUserPreference(selectedPreference: SelectedPreference)
+    func getUserPreference(userID: String)
 }
 
 protocol UserPreferenceWireframe: class, RootWireFrame {
     // TODO: Declare wireframe methods
 }
 
-protocol UserPreferenceRequestFormatter: class {
-    func getPreferenceItems(preferenceType: PreferenceType)
-}
-
-protocol UserPreferenceWebService: class {
-    func getFoodItemPreferences(forPath: String)
-    func getCuisinePreferences(forPath: String)
-}
-
-protocol UserPreferenceObjectMapper: class {
-    func foodItemPreferenceDetails(data: Result<FoodTypeList>)
-    func cuisinePreferenceDetails(data: Result<CuisinePreference>)
-}
-
-
-protocol FoodAndCuisinePreferencePresentation: class {
-    func presentFoodAndCuisinePreferences(preferenceType: PreferenceType, parent: UINavigationController )
+protocol UserPreferenceInteractorOutput: Response {
+    
 }

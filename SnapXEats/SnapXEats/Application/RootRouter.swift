@@ -85,13 +85,13 @@ class RootRouter: NSObject {
     
     private func pushFoodAndCuisinePreferencesScreen(onNavigationController parentController: UINavigationController, withPreferenceType type: PreferenceType) {
         
-        let foodCardVC = UserPreferenceRouter.singleInstance.loadCuisineAndFoodPreferenceModule()
+        let foodCardVC = FoodAndCuisinePreferenceRouter.shared.loadFoodAndCuisinePreferenceModule()
         foodCardVC.preferenceType = type
         parentController.pushViewController(foodCardVC, animated: true)
     }
     
     private func presentUserPreferencesScreen() {
-        let userPreferenceNvController = UserPreferenceRouter.singleInstance.loadUserPreferenceModule()
+        let userPreferenceNvController = UserPreferenceRouter.shared.loadUserPreferenceModule()
         updateDrawerWithMainController(mainVC: userPreferenceNvController)
         presentView(drawerController)
     }
