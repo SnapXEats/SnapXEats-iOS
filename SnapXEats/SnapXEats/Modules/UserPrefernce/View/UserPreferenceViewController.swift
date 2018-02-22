@@ -11,19 +11,19 @@ import UIKit
 import BetterSegmentedControl
 
 class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
-
+    
     enum filterColors {
         static let textColor = UIColor.rgba(157.0, 157.0, 163.0, 1.0)
         static let selectedTextColor = UIColor.rgba(86.0, 86.0, 86.0, 1.0)
     }
     
-    var presenter: FoodAndCuisinePreferencePresentation?
+    var presenter: UserPreferencePresentation?
     var selectedRating:RatingPreferences?
     var selectedPrice:PricingPreference = .auto
     var sortByFilter: SortByPreference = .distance
     var selectedDistance = 1
-
-
+    
+    
     @IBOutlet weak var sampleLabel: UILabel!
     @IBOutlet weak var pricingFilter: BetterSegmentedControl!
     @IBOutlet weak var distanceFilter: BetterSegmentedControl!
@@ -41,6 +41,8 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
     @IBOutlet weak var selectCuisineButton: UIButton!
     @IBOutlet weak var selectFoodButton: UIButton!
     
+    let selectedPreference = SelectedPreference.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
@@ -48,53 +50,92 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
     
     @IBAction func applyButtonAction(_: Any) {
         // Apply Button Action
-        SelectedPreference.shared.ratingPreference = selectedRating
-        SelectedPreference.shared.pricingPreference = selectedPrice
-        SelectedPreference.shared.sortByPreference = sortByFilter
-        SelectedPreference.shared.distancePreference = selectedDistance
+        saveChanges()
     }
     
     @IBAction func radioButtonSelected(sender: UIButton) {
         if sender == distanceRadioButton && sender.isSelected == false {
-            sender.isSelected = true
-            sortByFilter = .distance
-            ratingsRadioButton.isSelected = false
+           setButtonState(sortByPreference: .distance)
         }
         
         if sender == ratingsRadioButton && sender.isSelected == false {
-            sender.isSelected = true
-            sortByFilter = .rating
-            distanceRadioButton.isSelected = false
+            setButtonState(sortByPreference: .rating)
         }
     }
     
     @IBAction func selectPreferencesAction(sender: UIButton) {
+        saveChanges()
+        presenter?.saveUserPreference(selectedPreference: selectedPreference)
         if let preferenceType = PreferenceType(rawValue: sender.tag), let parentNVController = self.navigationController {
-          presenter?.presentFoodAndCuisinePreferences(preferenceType: preferenceType, parent: parentNVController)
+            presenter?.presentFoodAndCuisinePreferences(preferenceType: preferenceType, parent: parentNVController)
         }
     }
     
     @IBAction func starRatingSelected(sender: UIButton) {
         switch sender {
         case fiveStarRatingButton:
-            sender.isSelected = true
+            setButtonState(ratingPreferences: .fiveStar)
+            
+        case fourStarRatingButton:
+             setButtonState(ratingPreferences: .fourStar)
+            
+        case threeStarRatingButton:
+            setButtonState(ratingPreferences: .threeStar)
+            
+        default: break
+        }
+    }
+    
+    private func  setButtonState(ratingPreferences: RatingPreferences) {
+        switch ratingPreferences {
+        case .fiveStar:
             selectedRating = .fiveStar
             threeStarRatingButton.isSelected = false
             fourStarRatingButton.isSelected = false
+            fiveStarRatingButton.isSelected = true
             
-        case fourStarRatingButton:
-            sender.isSelected = true
+        case .fourStar:
             selectedRating = .fourStar
             threeStarRatingButton.isSelected = false
             fiveStarRatingButton.isSelected = false
+            fourStarRatingButton.isSelected = true
             
-        case threeStarRatingButton:
-            sender.isSelected = true
+        case .threeStar:
             selectedRating = .threeStar
             fourStarRatingButton.isSelected = false
             fiveStarRatingButton.isSelected = false
-            
-        default: break
+            threeStarRatingButton.isSelected = true
+
+        }
+    }
+    
+    private func setButtonState(sortByPreference: SortByPreference) {
+        switch sortByPreference {
+        case .distance:
+            sortByFilter = .distance
+            distanceRadioButton.isSelected = true
+            ratingsRadioButton.isSelected = false
+        case .rating:
+            sortByFilter = .rating
+            distanceRadioButton.isSelected = false
+            ratingsRadioButton.isSelected = true
+        }
+    }
+    private func saveChanges() {
+        selectedPreference.ratingPreference = selectedRating
+        selectedPreference.pricingPreference = selectedPrice
+        selectedPreference.sortByPreference = sortByFilter
+        selectedPreference.distancePreference = selectedDistance
+    }
+    
+    override func success(result: Any?) {
+        if let prefernce = result as? SetUserPreference,
+            let rating = RatingPreferences(rawValue: prefernce.ratingPreference) ,
+            let sortPrefernce = SortByPreference(rawValue: prefernce.sortByPreference) {
+            setButtonState(ratingPreferences: rating)
+            setButtonState(sortByPreference: sortPrefernce)
+            setPriceIndex(index: prefernce.pricingPreference)
+            setDistanceIndex(index: prefernce.distancePreference)
         }
     }
 }
@@ -131,17 +172,24 @@ extension UserPreferenceViewController: UserPreferenceView {
         if let button = distanceRangeContainerView.viewWithTag(1) as? UIButton {
             button.setTitleColor(filterColors.selectedTextColor, for: .normal)
         }
+        getUserPrefernces()
     }
-
-    // TODO: implement view output methods
+    
+    func getUserPrefernces() {
+        presenter?.getUserPreference(userID: selectedPreference.loginUserID)
+    }
 }
 
 // Pricing and Distance filter and related methods
 extension UserPreferenceViewController {
     
     @IBAction func pricingSelectedAction(sender: UIButton) {
+        setPriceIndex(index: sender.tag)
+    }
+    
+    private func setPriceIndex(index: Int) {
         do {
-            try pricingFilter.setIndex(UInt(sender.tag - 1), animated: true)
+            try pricingFilter.setIndex(UInt(index - 1), animated: true)
         } catch {
             print("Error in Setting Index for Price filter")
         }
@@ -158,13 +206,16 @@ extension UserPreferenceViewController {
     }
     
     @IBAction func DistanceSelectedAction(sender: UIButton) {
+        setDistanceIndex(index: sender.tag)
+    }
+    
+    private func setDistanceIndex(index: Int) {
         do {
-            try distanceFilter.setIndex(UInt(sender.tag-1), animated: true)
+             try distanceFilter.setIndex(UInt(index - 1), animated: true)
         } catch {
             print("Error in Setting Index for Distance filter")
         }
     }
-    
     @IBAction  func distanceFilterValueChanged(_ sender: BetterSegmentedControl) {
         let buttonTag = Int(sender.index) + 1 // Tag starts from 1 to avoid confusion with other subviews of the view
         selectedDistance = Int(sender.index) + 1

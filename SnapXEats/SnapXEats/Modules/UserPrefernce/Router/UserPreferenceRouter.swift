@@ -14,8 +14,8 @@ class UserPreferenceRouter {
     // MARK: Properties
 
     weak var view: UIViewController?
-    static let singleInstance = UserPreferenceRouter()
-
+    static let shared = UserPreferenceRouter()
+   
     // MARK: Static methods
 
     func loadUserPreferenceModule() -> UINavigationController {
@@ -26,13 +26,12 @@ class UserPreferenceRouter {
             return UINavigationController()
         }
         
-        let presenter = UserPreferencePresenter()
-        let router = UserPreferenceRouter()
-        let interactor = UserPreferenceInteractor()
+        let presenter = UserPreferencePresenter.shared
+        let router = UserPreferenceRouter.shared
+        let interactor = UserPreferenceInteractor.shared
 
         viewController.presenter =  presenter
-
-        presenter.view = viewController
+        presenter.baseView = viewController
         presenter.router = router
         presenter.interactor = interactor
 
@@ -41,24 +40,6 @@ class UserPreferenceRouter {
         interactor.output = presenter
 
         return userPreferenceNVController
-    }
-    
-    func loadCuisineAndFoodPreferenceModule() -> CuisineAndFoodPreferencesViewController {
-        
-        let viewController = UIStoryboard.loadViewControler(storyBoardName: SnapXEatsStoryboard.userPreferenceStoryboard, storyBoardId: SnapXEatsStoryboardIdentifier.cusineAndFoodPreferencesViewControllerID) as! CuisineAndFoodPreferencesViewController
-        
-        let presenter = UserPreferencePresenter()
-        let router = UserPreferenceRouter()
-        let interactor = UserPreferenceInteractor()
-        
-        viewController.presenter =  presenter
-        presenter.baseView = viewController
-        presenter.router = router
-        presenter.interactor = interactor
-        router.view = viewController
-        interactor.output = presenter
-
-        return viewController
     }
 }
 

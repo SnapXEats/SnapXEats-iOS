@@ -48,7 +48,7 @@ class Cuisine: PreferenceItem, Mappable {
     
         // Mappable
         func mapping(map: Map) {
-            cuisineId             <- map["cuisine_info_id"]
+            itemID                <- map["cuisine_info_id"]
             cuisineImageURL       <- map["cuisine_image_url"]
             cuisineName           <- map["cuisine_name"]
             isLiked              <- map["is_cuisine_like"]

@@ -95,6 +95,18 @@ class SnapXEatsLoginHelper {
         return UserDefaults.standard.value(forKey: SnapXEatsConstant.snapXLoginData) as? [String: String]
     }
     
+    func getLoggedInUserID() -> String {
+        guard let userInfo = getSnapXLoginData(),
+            let loginID = userInfo[SnapXEatsConstant.loginID] else {
+                return SnapXEatsConstant.emptyString
+        }
+        return loginID
+    }
+    
+    func isUserLoggedIn() -> Bool {
+        return getLoggedInUserID() != SnapXEatsConstant.emptyString
+    }
+    
     
     private func getUserLoginInfo(id: String) -> UserLogin? {
         return UserLogin.getUserProfile(id: id)

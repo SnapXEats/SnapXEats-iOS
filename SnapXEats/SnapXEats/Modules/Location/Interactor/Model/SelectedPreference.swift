@@ -22,9 +22,9 @@ enum PricingPreference: Int {
     case quadraple
 }
 
-enum SortByPreference {
-    case distance
-    case rating
+enum SortByPreference: Int {
+    case distance = 0
+    case rating = 1
 }
 
 class SelectedPreference {
@@ -34,6 +34,9 @@ class SelectedPreference {
     var pricingPreference: PricingPreference = .single
     var sortByPreference: SortByPreference?
     var distancePreference = 0 // 0 is same as Auto. Other distances are in miles
+    lazy var loginUserID = {
+        return SnapXEatsLoginHelper.shared.getLoggedInUserID()
+    }()
     
     func getLatitude() -> (Decimal, Decimal) {
         let lat  =  40.4862157

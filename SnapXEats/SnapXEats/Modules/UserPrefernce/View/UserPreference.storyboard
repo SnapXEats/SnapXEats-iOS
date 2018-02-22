@@ -558,10 +558,10 @@
             </objects>
             <point key="canvasLocation" x="-329" y="7"/>
         </scene>
-        <!--Cuisine And Food Preferences View Controller-->
+        <!--Food And Cuisine Preferences View Controller-->
         <scene sceneID="LYt-Si-DA8">
             <objects>
-                <viewController storyboardIdentifier="CusineAndFoodPreferencesViewControllerID" id="61x-0n-vrb" customClass="CuisineAndFoodPreferencesViewController" customModule="SnapXEats" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CusineAndFoodPreferencesViewControllerID" id="61x-0n-vrb" customClass="FoodAndCuisinePreferencesViewController" customModule="SnapXEats" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h9s-cR-u2T">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
