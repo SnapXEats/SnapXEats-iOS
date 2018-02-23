@@ -13,23 +13,29 @@ class UserPreferencePresenter {
 
     // MARK: Properties
     weak var baseView: BaseView?
-    weak var view: UserPreferenceView?
     var router: UserPreferenceWireframe?
-    var interactor: UserPreferenceRequestFormatter?
+    var interactor: UserPreferenceInteractorIntput?
+    static let shared = UserPreferencePresenter()
+    private init() {}
 }
 
 extension UserPreferencePresenter: UserPreferencePresentation {
-    func preferenceItemRequest(preferenceType: PreferenceType) {
-        interactor?.getPreferenceItems(preferenceType: preferenceType)
+
+    func presentFoodAndCuisinePreferences(preferenceType: PreferenceType, parent: UINavigationController) {
+        router?.presentScreen(screen: .foodAndCusinePreferences(preferenceType: preferenceType, parentController: parent))
     }
 }
 
 extension UserPreferencePresenter: UserPreferenceInteractorOutput {
-    
 }
 
-extension UserPreferencePresenter: FoodAndCuisinePreferencePresentation {
-    func presentFoodAndCuisinePreferences(preferenceType: PreferenceType, parent: UINavigationController) {
-        router?.presentScreen(screen: .foodAndCusinePreferences(preferenceType: preferenceType, parentController: parent))
+extension UserPreferencePresenter {
+    func saveUserPreference(selectedPreference: SelectedPreference) {
+        interactor?.saveUserPreference(selectedPreference: selectedPreference)
     }
+    
+    func getUserPreference(userID: String) {
+        interactor?.getUserPreference(userID: userID)
+    }
+
 }

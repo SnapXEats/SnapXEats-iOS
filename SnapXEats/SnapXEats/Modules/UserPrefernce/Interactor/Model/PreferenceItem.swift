@@ -18,25 +18,25 @@ class PreferenceItem {
     var type: PreferenceType?
     var isLiked: Bool = true
     var isFavourite: Bool = true
+    var itemID: String?
     
     init(type: PreferenceType) {
         self.type = type
     }
 }
 
-class FoodTypeList: Mappable {
+class FoodPreference: Mappable {
     var foodItems = [FoodItem]()
     
     required init?(map: Map) {
     }
     
     func mapping(map: Map) {
-        foodItems             <- map["foodTypeList"]
+        foodItems       <- map["foodTypeList"]
     }
 }
 
 class FoodItem: PreferenceItem, Mappable {
-    var foodItemId: String?
     var foodItemImageURL: String?
     var foodItemName: String?
     
@@ -45,7 +45,7 @@ class FoodItem: PreferenceItem, Mappable {
     }
     
     func mapping(map: Map) {
-        foodItemId          <- map["food_type_info_id"]
+        itemID          <- map["food_type_info_id"]
         foodItemImageURL     <- map["food_image_url"]
         foodItemName        <- map["food_name"]
         isLiked             <- map["is_food_like"]

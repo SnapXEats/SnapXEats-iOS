@@ -7,15 +7,17 @@
 //
 
 import UIKit
+import RealmSwift
 
-class CuisineAndFoodPreferencesViewController: BaseViewController, StoryboardLoadable {
-
+class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoadable {
+    
     private let itemsPerRow: CGFloat = 2
     private let sectionInsets = UIEdgeInsets(top: 10.0, left: 20.0, bottom: 30.0, right: 20.0)
     
     var preferenceType: PreferenceType!
-    var presenter: UserPreferencePresentation?
+    var presenter: FoodAndCuisinePreferencePresentation?
     var preferenceItems = [PreferenceItem]()
+    let selectedPrefernce = SelectedPreference.shared
     
     @IBOutlet weak var preferencesCollectionView: UICollectionView!
     
@@ -30,19 +32,31 @@ class CuisineAndFoodPreferencesViewController: BaseViewController, StoryboardLoa
     }
     
     override func success(result: Any?) {
-        hideLoading()
-        if let result = result as? FoodTypeList {
+        if let result = result as? FoodPreference {
             preferenceItems = result.foodItems
+            getSavedPreferecne()
         } else if let result = result as? CuisinePreference {
             preferenceItems = result.cuisineList
+            getSavedPreferecne()
+        } else if let result = result as? Bool, result == true {
+             hideLoading()
+             preferencesCollectionView.reloadData()
         }
-        preferencesCollectionView.reloadData()
+        
     }
     
     @IBAction func doneButtonAction(_: Any) {
+        savePreference()
         self.navigationController?.popViewController(animated: true)
     }
     
+    private func savePreference() {
+        presenter?.savePreferecne(type: preferenceType, usierID: selectedPrefernce.loginUserID, preferencesItems: preferenceItems)
+    }
+    
+    private func getSavedPreferecne() {
+        presenter?.getSavedPreferecne(usierID: selectedPrefernce.loginUserID, type: preferenceType, preferenceItems: preferenceItems)
+    }
     @IBAction func resetButtonAction(_: Any) {
         for item in preferenceItems {
             item.isFavourite = false
@@ -57,7 +71,7 @@ class CuisineAndFoodPreferencesViewController: BaseViewController, StoryboardLoa
     }
 }
 
-extension CuisineAndFoodPreferencesViewController: UserPreferenceView {
+extension FoodAndCuisinePreferencesViewController: FoodAndCuisinePreferenceView {
     func initView() {
         let pageTitle = (preferenceType == .food) ? SnapXEatsPageTitles.foodPreferences : SnapXEatsPageTitles.cusinePreferences
         customizeNavigationItem(title: pageTitle, isDetailPage: true)
@@ -113,7 +127,7 @@ extension CuisineAndFoodPreferencesViewController: UserPreferenceView {
     }
 }
 
-extension CuisineAndFoodPreferencesViewController: UICollectionViewDelegate, UICollectionViewDataSource  {
+extension FoodAndCuisinePreferencesViewController: UICollectionViewDelegate, UICollectionViewDataSource  {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -141,12 +155,12 @@ extension CuisineAndFoodPreferencesViewController: UICollectionViewDelegate, UIC
     }
 }
 
-extension CuisineAndFoodPreferencesViewController: UICollectionViewDelegateFlowLayout {
+extension FoodAndCuisinePreferencesViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-
+        
         let paddingSpace: CGFloat = 5 + sectionInsets.left * 2
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
