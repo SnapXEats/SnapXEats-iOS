@@ -70,6 +70,16 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
         
     }
     
+    @IBAction func uberButtonAction(_ sender: UIButton) {
+        if let url = URL(string: UberAppConstants.urlscheme), UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.openURL(url)
+        } else {
+            if let appstoreURL = URL(string: UberAppConstants.appstoreURL) {
+                UIApplication.shared.openURL(appstoreURL)
+            }
+        }
+    }
+    
     @IBAction func timingButtonAction(_ sender: UIButton) {
         showRestaurantTimingsPopover(onView: sender)
     }

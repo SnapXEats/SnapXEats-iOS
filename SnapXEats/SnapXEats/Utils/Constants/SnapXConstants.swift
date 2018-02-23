@@ -164,3 +164,8 @@ enum SnapXEatsConstant {
     static let firstTimeUser = "firstTimeUser"
 }
 
+enum UberAppConstants {
+    static let appstoreURL = "itms-apps://itunes.apple.com/us/app/uber/id368677368?mt=8"
+    static let urlscheme = "uber://"
+}
+
