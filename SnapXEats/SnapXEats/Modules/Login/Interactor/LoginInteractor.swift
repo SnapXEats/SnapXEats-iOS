@@ -47,8 +47,8 @@ extension LoginInteractor: LoginViewInteractorInput {
         sendUserInfo(path: SnapXEatsWebServicePath.snapXEatsUser, accessToken: accessToken, platform: SnapXEatsConstant.platFormFB) {[weak self] result in
             switch result {
             case .success(let data):
-                if let userInfo = data as? UserProfile, let serverID = userInfo.userInfo?.user_id  {
-                    SnapXEatsLoginHelper.shared.getUserProfileData(serverID: serverID, accessToken: accessToken) { (result) in
+                if let userInfo = data as? UserProfile, let serverID = userInfo.userInfo?.user_id, let serverToken = userInfo.userInfo?.token  {
+                    SnapXEatsLoginHelper.shared.getUserProfileData(serverID: serverID, serverToken: serverToken, accessToken: accessToken) { (result) in
                         if let userId = accessToken.userId {
                             SnapXEatsLoginHelper.shared.saveloginInfo(userId: userId, plateform: SnapXEatsConstant.platFormFB)
                         }

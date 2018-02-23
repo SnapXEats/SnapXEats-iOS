@@ -9,9 +9,9 @@
 import Foundation
 
 enum RatingPreferences: Int {
-    case threeStar = 1
-    case fourStar = 2
-    case fiveStar = 3
+    case threeStar = 3
+    case fourStar = 4
+    case fiveStar = 5
 }
 
 enum PricingPreference: Int {
@@ -27,16 +27,40 @@ enum SortByPreference: Int {
     case rating = 1
 }
 
-class SelectedPreference {
-    var location = SnapXEatsLocation ()
-    var selectedCuisine = [String]()
+class LoginUserPreferences {
+    
+    static let shared = LoginUserPreferences()
+    private init() {}
     var ratingPreference: RatingPreferences?
     var pricingPreference: PricingPreference = .single
     var sortByPreference: SortByPreference?
     var distancePreference = 0 // 0 is same as Auto. Other distances are in miles
+    var isDirtyPreference = false
+    
+    lazy var isLoggedIn = {
+        return SnapXEatsLoginHelper.shared.isUserLoggedIn()
+    }()
+    
     lazy var loginUserID = {
         return SnapXEatsLoginHelper.shared.getLoggedInUserID()
     }()
+    
+    lazy var loginServerToken = {
+        return SnapXEatsLoginHelper.shared.getLoginUserServerToken()
+    }()
+    
+    lazy var fbInstagramAccessToken = {
+        return SnapXEatsLoginHelper.shared.getLoginUserFBInstagramAccessToken()
+    }()
+    
+    lazy var firstTimeUser = {
+        return SnapXEatsLoginHelper.shared.firstTimeUser()
+    }()
+}
+
+class SelectedPreference {
+    var location = SnapXEatsLocation ()
+    var selectedCuisine = [String]()
     
     func getLatitude() -> (Decimal, Decimal) {
         let lat  =  40.4862157

@@ -18,6 +18,7 @@ protocol LocationPresentation: class {
     func closeLocationView(selectedPreference: SelectedPreference, parent: UINavigationController)
         func selectLocation()
         func cuisinePreferenceRequest(selectedPreference: SelectedPreference)
+        func updatedDrawerState(state: KYDrawerController.DrawerState)
 }
 
 protocol LocationRequestFomatter: class {
@@ -37,4 +38,5 @@ protocol LocationInteractorOutput: Response {
 
 protocol LocationWireframe: class, RootWireFrame {
     func loadLocationModule () -> UINavigationController
+    func updatedDrawerState(state: KYDrawerController.DrawerState)
 }

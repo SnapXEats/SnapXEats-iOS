@@ -9,10 +9,17 @@
 import UIKit
 import AlamofireImage
 
-class DrawerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class DrawerViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    // MARK: Properties
+    
+    var presenter: DrawerPresentation?
+    
+    let loginUserPreference = LoginUserPreferences.shared
     
     var navigationOptions = [SnapXEatsPageTitles.restaurants, SnapXEatsPageTitles.wishlist, SnapXEatsPageTitles.preferences, SnapXEatsPageTitles.foodJourney, SnapXEatsPageTitles.rewards]
     
+    var screenIndex: Int = 0
     @IBOutlet weak var navigationOptionTable: UITableView!
     @IBOutlet weak var userInfoView: UIView!
     @IBOutlet weak var userImageView: UIImageView!
@@ -25,7 +32,7 @@ class DrawerViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let Ok = UIAlertAction(title: SnapXButtonTitle.ok, style: UIAlertActionStyle.default, handler:  {action in
             SnapXEatsLoginHelper.shared.deleteLoginData()
             RootRouter.shared.presentScreen(screens: .login)})
-        UIAlertController.presentAlertInViewController(self, title: LoginAlert.logOutTitle , message: LoginAlert.logOutMessage, actions: [cancel, Ok], completion: nil)
+        UIAlertController.presentAlertInViewController(self, title: AlertTitle.logOutTitle , message: AlertMessage.logOutMessage, actions: [cancel, Ok], completion: nil)
         
     }
     
@@ -35,8 +42,14 @@ class DrawerViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureView()
-        registerNibsForCells()
+        initView()
+    }
+    
+    override func success(result: Any?) {
+        if let _ = result as? Bool {
+            loginUserPreference.isDirtyPreference = false
+            presentScreen(index: screenIndex)
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -82,16 +95,64 @@ class DrawerViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let router = RootRouter.shared
-        router.drawerController.setDrawerState(.closed, animated: true)
-        
-        switch indexPath.row {
+        if loginUserPreference.isDirtyPreference {
+            showPreferenceSaveDialog(index: indexPath.row)
+        } else {
+            presentScreen(index: indexPath.row)
+        }
+    }
+    
+    private func presentScreen(index: Int) {
+        switch index {
         case 0:
-            router.presentScreen(screens: .location)
+            presenter?.presentScreen(screen: .location, drawerState: .closed)
         case 2:
-            router.presentScreen(screens: .userPreference)
+            presenter?.presentScreen(screen: .userPreference, drawerState: .closed)
         default:
             break
         }
+    }
+    
+}
+
+extension DrawerViewController: BaseView {
+    func initView() {
+        configureView()
+        registerNibsForCells()
+    }
+    
+    private func presentNextScreen(index: Int) {
+        screenIndex = index
+        if  checkRechability() && loginUserPreference.isLoggedIn {
+                showLoading()
+                loginUserPreference.firstTimeUser ? presenter?.sendUserPreference(preference: loginUserPreference)
+                    : presenter?.updateUserPreference(preference: loginUserPreference)
+            }
+            else {
+                 presentScreen(index: index)
+            }
+
+    }
+    
+    private func showPreferenceSaveDialog(index: Int) {
+        let save =  setSaveButton { [weak self] in
+                self?.presentNextScreen(index: index)
+        }
+        
+        let discard = setDiscardButton(index: index) { [weak self] in
+            self?.loginUserPreference.isDirtyPreference = false
+            self?.presentScreen(index: index)
+        }
+        
+        UIAlertController.presentAlertInViewController(self, title: AlertTitle.preferenceTitle , message: AlertMessage.preferenceMessage, actions: [discard, save], completion: nil)
+    }
+    
+    private func setDiscardButton(index: Int, completionHandler: @escaping () ->()) -> UIAlertAction {
+        return UIAlertAction(title: SnapXButtonTitle.discard, style: UIAlertActionStyle.default, handler: {action in completionHandler()})
+        
+    }
+    
+    private func setSaveButton(completionHandler: @escaping () ->()) -> UIAlertAction {
+        return UIAlertAction(title: SnapXButtonTitle.save, style: UIAlertActionStyle.default, handler:  {action in completionHandler()})
     }
 }

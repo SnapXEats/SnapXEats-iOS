@@ -38,12 +38,9 @@ class LocationRouter {
 }
 
 extension LocationRouter: LocationWireframe {
-    
-//    func loadLocationModule () -> LocationView {
-//        let viewController = UIStoryboard.loadViewController() as LocationViewController
-//        initView(viewController: viewController)
-//        return viewController
-//    }
+    func updatedDrawerState(state: KYDrawerController.DrawerState) {
+        RootRouter.shared.updateDrawerState(state: state)
+    }
     
     func loadLocationModule () -> UINavigationController {
         

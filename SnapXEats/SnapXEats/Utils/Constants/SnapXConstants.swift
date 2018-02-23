@@ -62,6 +62,7 @@ enum SnapXEatsStoryboardIdentifier {
     static let userPreferenceNavigationControllerID = "UserPreferenceNavigationController"
     static let cusineAndFoodPreferencesViewControllerID = "CusineAndFoodPreferencesViewControllerID"
     static let restaurantTimingsViewController = "RestaurantTimingsViewController"
+    static let drawerViewController = "DrawerViewController"
 }
 
 enum SnapXEatsLocationConstant {
@@ -77,6 +78,7 @@ enum SnapXEatsWebServicePath {
     static let  cuisinetypesURL = "/api/v1/cuisine"
     static let  snapXEatsUser = "/api/v1/users"
     static let  restaurantDetails = "/api/v1/restaurant"
+    static let  userPreferene = "/api/v1/userPreferences"
 }
 
 enum SnapXEatsImageNames {
@@ -132,11 +134,16 @@ enum SnapXEatsWebServiceParameterKeys {
     static let longitude = "longitude"
     static let cuisineArray = "cuisineArray"
     static let authorization = "Authorization"
+    static let BearerString = "Bearer "
 }
 enum SnapXButtonTitle {
     static let ok = "Ok"
     static let cancel = "Cancel"
     static let settings = "Settings"
+    static let save = "Save"
+    static let discard = "Discard"
+    static let yes = "YES"
+    static let notnow = "Not Now"
 }
 
 enum SnapXEatsAppDefaults {
@@ -176,13 +183,37 @@ enum SnapXEatsDirectionConstants {
     static let durationTextPrefix = " Away"
 }
 
-enum SnapXEatsAlertMessages {
+enum AlertMessage {
+    static var messageNoInternet = "SnapXEats required internet connection to process your request. Please enable your internet access."
+    static var messageSuccess = "Request Succesful"
+    static var loginError = "Server Error during process your request"
+    static var cancelRequest = "User canceled request"
+    static var logOutMessage = "Do you really want to Logout of SnapXEats"
+    static let preferenceMessage = "You have made some changes to your preferences, would you like save them."
     static let uberRedirectConfirmation = "Are you sure you want to book an Uber ride?"
     static let uberInstallConfirmation = "You need to install the uber app from app store to book a ride. Do you want to install it now?"
 }
 
-enum SnapXEatsAlertButtonTitles {
-    static let yes = "YES"
-    static let notnow = "Not Now"
+enum AlertTitle {
+    static let loginTitle = "Error"
+    static let preferenceTitle = "Preference Error"
+    static var logOutTitle = "LogOut"
+}
+
+enum PreferecneConstant {
+    static let restaurant_rating = "restaurant_rating"
+    static let restaurant_price  = "restaurant_price"
+    static let restaurant_distance = "restaurant_distance"
+    static let sort_by_rating = "sort_by_rating"
+    static let sort_by_distance = "sort_by_distance"
+    static let user_food_preferences = "user_food_preferences"
+    static let food_type_info_id = "food_type_info_id"
+    static let is_food_like = "is_food_like"
+    static let is_food_favourite = "is_food_favourite"
+    
+    static let user_cuisine_preferences = "user_cuisine_preferences"
+    static let cuisine_info_id = "cuisine_info_id"
+    static let is_cuisine_like = "is_cuisine_like"
+    static let is_cuisine_favourite = "is_cuisine_favourite"
 }
 
