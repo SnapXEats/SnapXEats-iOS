@@ -16,13 +16,14 @@ class RestaurantDetailsRouter {
     weak var view: UIViewController?
 
     private init() {}
-    static let singleInstance = RestaurantDetailsRouter()
+    static let shared = RestaurantDetailsRouter()
 
     func loadRestaurantDetailsModule() -> RestaurantDetailsViewController {
         let viewController = UIStoryboard.loadViewController() as RestaurantDetailsViewController
-        let presenter = RestaurantDetailsPresenter()
-        let router = RestaurantDetailsRouter()
-        let interactor = RestaurantDetailsInteractor()
+        
+        let presenter = RestaurantDetailsPresenter.shared
+        let router = RestaurantDetailsRouter.shared
+        let interactor = RestaurantDetailsInteractor.shared
 
         viewController.presenter =  presenter
 

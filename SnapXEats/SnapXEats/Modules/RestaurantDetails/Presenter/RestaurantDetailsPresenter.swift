@@ -15,11 +15,18 @@ class RestaurantDetailsPresenter {
     weak var view: RestaurantDetailsView?
     var router: RestaurantDetailsWireframe?
     var interactor: RestaurantDetailsRequestFormatter?
+    
+    private init() {}
+    static let shared = RestaurantDetailsPresenter()
 }
 
 extension RestaurantDetailsPresenter: RestaurantDetailsPresentation {
     func restaurantDetailsRequest(restaurantId: String) {
         interactor?.getRestaurantDetailsRequest(restaurant_id: restaurantId)
+    }
+    
+    func drivingDirectionsRequest(origin: String, destination: String) {
+        interactor?.getDrivingDirectionsFor(origin: origin, destination: destination)
     }
 }
 

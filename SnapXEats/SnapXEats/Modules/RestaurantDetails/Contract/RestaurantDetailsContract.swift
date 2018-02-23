@@ -15,6 +15,7 @@ protocol RestaurantDetailsView: class, BaseView {
 
 protocol RestaurantDetailsPresentation: class {
     func restaurantDetailsRequest(restaurantId: String)
+    func drivingDirectionsRequest(origin: String, destination: String)
 }
 
 protocol RestaurantDetailsUseCase: class {
@@ -31,12 +32,15 @@ protocol RestaurantDetailsWireframe: class {
 
 protocol RestaurantDetailsRequestFormatter: class {
     func getRestaurantDetailsRequest(restaurant_id: String)
+    func getDrivingDirectionsFor(origin: String, destination: String)
 }
 
 protocol RestaurantDetailsWebService: class {
     func getRestaurantDetails(forPath: String)
+    func getDrivingDirectionsRequest(forPath: String)
 }
 
 protocol RestaurantDetailsObjectMapper: class {
     func restaurantDetails(data: Result<RestaurantDetailsItem>)
+    func drivingDirectionDetails(data: Result<DrivingDirections>)
 }

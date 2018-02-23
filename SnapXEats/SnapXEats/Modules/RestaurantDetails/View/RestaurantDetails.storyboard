@@ -131,8 +131,8 @@
                                                         <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="deviceRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 Mins Away" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3R-Xp-Zel">
-                                                        <rect key="frame" x="298" y="12.5" width="63" height="25"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3R-Xp-Zel">
+                                                        <rect key="frame" x="361" y="12.5" width="0.0" height="25"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="10"/>
                                                         <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="deviceRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -151,6 +151,12 @@
                                                     <constraint firstItem="wL1-L7-KfJ" firstAttribute="centerY" secondItem="dgd-ax-5Jc" secondAttribute="centerY" id="yZs-QS-gl4"/>
                                                 </constraints>
                                             </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m9O-Xr-Lce">
+                                                <rect key="frame" x="0.0" y="470" width="131" height="50"/>
+                                                <connections>
+                                                    <action selector="uberButtonAction:" destination="2ez-hK-vzS" eventType="touchUpInside" id="8CY-zB-L9K"/>
+                                                </connections>
+                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check Specialities" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQn-M8-WrE">
                                                 <rect key="frame" x="20" y="539" width="116" height="18.5"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
@@ -211,11 +217,15 @@
                                             <constraint firstAttribute="trailing" secondItem="dgd-ax-5Jc" secondAttribute="trailing" id="TOh-hM-UgF"/>
                                             <constraint firstItem="dq6-am-2eX" firstAttribute="centerY" secondItem="gPh-m1-gH0" secondAttribute="centerY" constant="2" id="ahk-Fp-Myi"/>
                                             <constraint firstItem="8Yg-nJ-4xU" firstAttribute="top" secondItem="642-at-qQE" secondAttribute="bottom" constant="20" id="bWc-PJ-BXz"/>
+                                            <constraint firstItem="m9O-Xr-Lce" firstAttribute="trailing" secondItem="9nd-dU-MzJ" secondAttribute="trailing" constant="10" id="cC0-Uf-RAg"/>
+                                            <constraint firstItem="dgd-ax-5Jc" firstAttribute="leading" secondItem="m9O-Xr-Lce" secondAttribute="leading" id="dG7-CX-NAN"/>
                                             <constraint firstItem="UpG-YB-7ky" firstAttribute="top" secondItem="Ma9-91-AsJ" secondAttribute="bottom" constant="15" id="dZV-Hz-OcT"/>
                                             <constraint firstItem="Hs4-i9-BwS" firstAttribute="top" secondItem="8Yg-nJ-4xU" secondAttribute="bottom" constant="7" id="f2t-LP-h27"/>
                                             <constraint firstItem="dgd-ax-5Jc" firstAttribute="leading" secondItem="rej-Yn-WrV" secondAttribute="leading" id="fUr-wC-4r8"/>
                                             <constraint firstItem="U4V-eE-jUb" firstAttribute="top" secondItem="8Yg-nJ-4xU" secondAttribute="top" id="fdn-fT-bBt"/>
+                                            <constraint firstItem="dgd-ax-5Jc" firstAttribute="top" secondItem="m9O-Xr-Lce" secondAttribute="top" id="i17-s9-PLb"/>
                                             <constraint firstAttribute="trailing" secondItem="FsQ-Zk-rIl" secondAttribute="trailing" constant="10" id="i5w-AY-6iR"/>
+                                            <constraint firstItem="dgd-ax-5Jc" firstAttribute="bottom" secondItem="m9O-Xr-Lce" secondAttribute="bottom" id="iR8-GZ-LWT"/>
                                             <constraint firstItem="U4V-eE-jUb" firstAttribute="width" secondItem="8Yg-nJ-4xU" secondAttribute="width" id="jS3-Uu-AlD"/>
                                             <constraint firstItem="Ma9-91-AsJ" firstAttribute="top" secondItem="rej-Yn-WrV" secondAttribute="top" id="kMl-pX-f1e"/>
                                             <constraint firstItem="U4V-eE-jUb" firstAttribute="leading" secondItem="8Yg-nJ-4xU" secondAttribute="trailing" constant="28" id="pNI-Fo-sRY"/>
@@ -253,6 +263,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <size key="freeformSize" width="375" height="867"/>
                     <connections>
+                        <outlet property="durationLabel" destination="y3R-Xp-Zel" id="FNw-Fm-LVU"/>
                         <outlet property="restaurantAddressLabel" destination="396-eL-bmq" id="O6f-p6-Yi0"/>
                         <outlet property="restaurantNameLabel" destination="UpG-YB-7ky" id="QEA-Vq-vdp"/>
                         <outlet property="restaurantTimingButton" destination="642-at-qQE" id="sWu-08-Eu5"/>

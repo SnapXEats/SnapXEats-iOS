@@ -164,3 +164,25 @@ enum SnapXEatsConstant {
     static let firstTimeUser = "firstTimeUser"
 }
 
+enum UberAppConstants {
+    static let appstoreURL = "itms-apps://itunes.apple.com/us/app/uber/id368677368?mt=8"
+    static let urlscheme = "uber://"
+}
+
+enum SnapXEatsDirectionConstants {
+    static let pingExamValidatedString = "Congratulations! Your exam has been validated. You have %@ to start this exam.\n\n"
+    static let directionApiUrl = "https://maps.googleapis.com/maps/api/directions/json?mode=driving&key=%@&origin=%@&destination=%@"
+    static let apiKey = "AIzaSyA0wc__o_uvrQwR-Z_L-DzD3OlwPMmyG34"
+    static let durationTextPrefix = " Away"
+}
+
+enum SnapXEatsAlertMessages {
+    static let uberRedirectConfirmation = "Are you sure you want to book an Uber ride?"
+    static let uberInstallConfirmation = "You need to install the uber app from app store to book a ride. Do you want to install it now?"
+}
+
+enum SnapXEatsAlertButtonTitles {
+    static let yes = "YES"
+    static let notnow = "Not Now"
+}
+

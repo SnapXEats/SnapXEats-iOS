@@ -18,9 +18,11 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
     @IBOutlet var restaurantAddressLabel: UILabel!
     @IBOutlet var restaurantTimingButton: UIButton!
     @IBOutlet var restaurantTimingLabel: UILabel!
+    @IBOutlet var durationLabel: UILabel!
     
-    let weekDays = ["Monday": 1, "Tuesday":2, "Wednesday":3, "Thursday":4, "Friday":5, "Saturday":6, "Sunday":7]
-    enum restaurantTimingConstants {
+    private let weekDays = ["Monday": 1, "Tuesday":2, "Wednesday":3, "Thursday":4, "Friday":5, "Saturday":6, "Sunday":7]
+    private let durationTrailingText = " Away"
+    private enum restaurantTimingConstants {
         static let open = "Open Today"
         static let close = "Closed Now"
     }
@@ -30,7 +32,11 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
     var slideshow =  ImageSlideshow()
     var specialities = [RestaurantSpeciality]()
     var restaurantDetails: RestaurantDetails?
-    
+    private var shouldLoadData: Bool {
+        get {
+            return checkRechability() && restaurantDetails == nil
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,14 +51,35 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        registerNotification()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        getRestaurantDetails()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unRegisterNotification()
+    }
+    
+    @objc override func internetConnected() {
         getRestaurantDetails()
     }
     
     override func success(result: Any?) {
-        hideLoading()
         if let result = result as? RestaurantDetailsItem {
+            hideLoading()
             restaurantDetails = result.restaurantDetails
             showRestaurantDetails()
+            
+            // User should not be blocked for this activity to complete so tSpinner is hidden before this API Call
+            self.getDrivingDirectionsInfo()
+        } else if let result = result as? DrivingDirections {
+            if let duration = result.routes.first?.legs.first?.duration {
+                durationLabel.text = duration.text + SnapXEatsDirectionConstants.durationTextPrefix
+            }
         }
     }
     
@@ -70,12 +97,33 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
         
     }
     
+    @IBAction func uberButtonAction(_ sender: UIButton) {
+        if let url = URL(string: UberAppConstants.urlscheme), UIApplication.shared.canOpenURL(url) {
+            showConfirmationPopupwithMessage(message: SnapXEatsAlertMessages.uberRedirectConfirmation, forURL: url)
+        } else {
+            if let appstoreURL = URL(string: UberAppConstants.appstoreURL) {
+                showConfirmationPopupwithMessage(message: SnapXEatsAlertMessages.uberInstallConfirmation, forURL: appstoreURL)
+            }
+        }
+    }
+    
     @IBAction func timingButtonAction(_ sender: UIButton) {
         showRestaurantTimingsPopover(onView: sender)
     }
     
+    private func showConfirmationPopupwithMessage(message: String, forURL url: URL) {
+        let confirmationAlert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: SnapXEatsAlertButtonTitles.yes, style: .default) { (_) in
+            UIApplication.shared.openURL(url)
+        }
+        let rejectAction = UIAlertAction(title: SnapXEatsAlertButtonTitles.notnow, style: .default, handler: nil)
+        confirmationAlert.addAction(rejectAction)
+        confirmationAlert.addAction(confirmAction)
+        self.present(confirmationAlert, animated: true, completion: nil)
+    }
+    
     private func getRestaurantDetails() {
-        if let restaurantId = restaurant.restaurant_info_id {
+        if let restaurantId = restaurant.restaurant_info_id, shouldLoadData == true {
             showLoading()
             presenter?.restaurantDetailsRequest(restaurantId:restaurantId)
         }
@@ -131,6 +179,14 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
             popController.popoverPresentationController?.sourceView = sender
             popController.popoverPresentationController?.sourceRect = sender.bounds
             self.present(popController, animated: true, completion: nil)
+        }
+    }
+    
+    private func getDrivingDirectionsInfo() {
+        if let details = restaurantDetails, let restaurantLat = details.latitude, let restaurantLong = details.longitude  {
+            let origin = "\(SelectedPreference.shared.location.latitude),\(SelectedPreference.shared.location.longitude)"
+            let destination = "\(restaurantLat),\(restaurantLong)"
+            presenter?.drivingDirectionsRequest(origin: origin, destination: destination)
         }
     }
 }
