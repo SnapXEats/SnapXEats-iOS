@@ -85,6 +85,9 @@ enum SnapXEatsImageNames {
     static let navigationSearch = "navigation_search_icon"
     static let placeholder_cuisine = "placeholder_cuisine"
     static let profile_placeholder = "profile_placeholder"
+    static let likeitOverlay = "likeit"
+    static let notnowOverlay = "notnow"
+    static let trylaterOverlay = "trylater"
 }
 
 
@@ -125,6 +128,8 @@ enum SnapXEatsNibNames {
     static let navigationMenuTableViewCell = "NavigationMenuTableViewCell"
     static let preferenceTypeCollectionViewCell = "PreferenceTypeCollectionViewCell"
     static let restaurantSpecialityCollectionViewCell = "RestaurantSpecialityCollectionViewCell"
+    static let foodCardOverlayView = "foodCardOverlayView"
+    static let foodCardView = "FoodCardView"
 }
 
 enum SnapXEatsWebServiceParameterKeys {
