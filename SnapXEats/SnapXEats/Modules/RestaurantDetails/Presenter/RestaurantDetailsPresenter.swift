@@ -15,6 +15,9 @@ class RestaurantDetailsPresenter {
     weak var view: RestaurantDetailsView?
     var router: RestaurantDetailsWireframe?
     var interactor: RestaurantDetailsRequestFormatter?
+    
+    private init() {}
+    static let shared = RestaurantDetailsPresenter()
 }
 
 extension RestaurantDetailsPresenter: RestaurantDetailsPresentation {

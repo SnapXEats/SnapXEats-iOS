@@ -106,7 +106,7 @@ class RootRouter: NSObject {
     }
     
     private func pushRestaurantDetailsScreen(onNavigationController parentController: UINavigationController, forRestaurant restaurant: Restaurant) {
-        let restaurantDetailsVC = RestaurantDetailsRouter.singleInstance.loadRestaurantDetailsModule()
+        let restaurantDetailsVC = RestaurantDetailsRouter.shared.loadRestaurantDetailsModule()
         restaurantDetailsVC.restaurant = restaurant
         parentController.pushViewController(restaurantDetailsVC, animated: true)
     }

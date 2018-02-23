@@ -13,6 +13,9 @@ class RestaurantDetailsInteractor {
 
     // MARK: Properties
     var output: RestaurantDetailsInteractorOutput?
+    
+    private init() {}
+    static let shared = RestaurantDetailsInteractor()
 }
 
 extension RestaurantDetailsInteractor: RestaurantDetailsRequestFormatter {
