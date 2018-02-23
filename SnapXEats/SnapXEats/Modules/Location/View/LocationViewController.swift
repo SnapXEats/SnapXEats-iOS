@@ -73,8 +73,9 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     
     @IBAction func menuButtonTapped(_ sender: Any) {
         //Menu Button Action
-        let router = RootRouter.shared
-        router.drawerController.setDrawerState(.opened, animated: true)
+        presenter?.updatedDrawerState(state: .opened)
+       // let router = RootRouter.shared
+       // router.drawerController.setDrawerState(.opened, animated: true)
     }
     
     private func configureView() {

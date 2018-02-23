@@ -29,7 +29,7 @@ class SnapXEatsLoginHelper {
     static let shared = SnapXEatsLoginHelper()
     private init() {}
     
-    private func saveFBLoginData(serverID: String, accessToken: AccessToken, response: [String : Any]?) {
+    private func saveFBLoginData(serverID: String, serverToken: String, accessToken: AccessToken, response: [String : Any]?) {
         if let dict = response, let userID =  dict[FBLoginConstant.loginId] as? String,
             let userName = dict[FBLoginConstant.loginName] as? String,
             let email = dict[FBLoginConstant.email] as? String,
@@ -39,6 +39,7 @@ class SnapXEatsLoginHelper {
             let fblogin = UserLogin()
             fblogin.Id = userID
             fblogin.serverUserID = serverID
+            fblogin.serverUserToken = serverToken
             fblogin.name = userName
             fblogin.email = email
             fblogin.imageURL = imageURL
@@ -48,12 +49,12 @@ class SnapXEatsLoginHelper {
         }
     }
     
-    func getUserProfileData(serverID: String, accessToken: AccessToken,  completionHandler: @escaping (_ result: NetworkResult) -> ()) {
+    func getUserProfileData(serverID: String, serverToken: String, accessToken: AccessToken,  completionHandler: @escaping (_ result: NetworkResult) -> ()) {
         let connection = GraphRequestConnection()
         connection.add(GraphRequest(graphPath: "/me" , parameters : ["fields" : "\(FBLoginConstant.email), \(FBLoginConstant.loginId), \(FBLoginConstant.loginName), \(FBLoginConstant.pictureSizeSmall)"])) {[weak self] httpResponse, result in
             switch result {
             case .success(let response):
-                self?.saveFBLoginData(serverID: serverID, accessToken: accessToken, response: response.dictionaryValue)
+                self?.saveFBLoginData(serverID: serverID, serverToken: serverToken, accessToken: accessToken, response: response.dictionaryValue)
                 completionHandler(.success(data: accessToken))
                 
             case .failed(_):
@@ -107,6 +108,21 @@ class SnapXEatsLoginHelper {
         return getLoggedInUserID() != SnapXEatsConstant.emptyString
     }
     
+    func getLoginUserServerToken() -> String? {
+        let loginId = getLoggedInUserID()
+        if loginId != SnapXEatsConstant.emptyString, let loginInfo = getUserLoginInfo(id: loginId) {
+            return loginInfo.serverUserToken
+        }
+        return nil
+    }
+    
+    func getLoginUserFBInstagramAccessToken() -> String? {
+        let loginId = getLoggedInUserID()
+        if loginId != SnapXEatsConstant.emptyString, let loginInfo = getUserLoginInfo(id: loginId) {
+            return loginInfo.accessToken
+        }
+        return nil
+    }
     
     private func getUserLoginInfo(id: String) -> UserLogin? {
         return UserLogin.getUserProfile(id: id)

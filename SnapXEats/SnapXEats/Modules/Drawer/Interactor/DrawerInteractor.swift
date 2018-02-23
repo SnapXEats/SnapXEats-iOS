@@ -1,25 +1,32 @@
 //
-//  UserPreferenceInteractor.swift
-//  SnapXEats
+//  DrawerInteractor.swift
+//  
 //
-//  Created by Durgesh Trivedi on 01/02/18.
-//  Copyright © 2018 SnapXEats. All rights reserved.
+//  Created by Durgesh Trivedi on 22/02/18.
+//  
 //
 
 import Foundation
 import ObjectMapper
 import Alamofire
 
-class UserPreferenceInteractor {
+class DrawerInteractor {
 
+    static let shared = DrawerInteractor()
+    private init(){}
     // MARK: Properties
-    var output: UserPreferenceInteractorOutput?
-    static let shared = UserPreferenceInteractor()
-    private init() {}
+
+    var output: DrawerInteractorOutput?
 }
 
-extension UserPreferenceInteractor: UserPreferenceInteractorIntput {
+extension DrawerInteractor: DrawerUseCase {
+    // TODO: Implement use case methods
+}
 
+
+
+extension DrawerInteractor: DrawerInteractorIntput {
+    
     func saveUserPreference(loginUserPreferences : LoginUserPreferences) {
         PreferenceHelper.shared.saveUserPrefernce(preference: loginUserPreferences)
     }
@@ -31,7 +38,7 @@ extension UserPreferenceInteractor: UserPreferenceInteractorIntput {
     }
 }
 
-extension UserPreferenceInteractor: UserPreferenceRequestFormatter {
+extension DrawerInteractor: DrawerRequestFormatter {
     func sendUserPreference(preference: LoginUserPreferences) {
         PreferenceHelper.shared.saveUserPrefernce(preference: preference)
         if let prefernce = PreferenceHelper.shared.getUserPrefernce(userID: preference.loginUserID){
@@ -50,13 +57,13 @@ extension UserPreferenceInteractor: UserPreferenceRequestFormatter {
     
 }
 
-extension UserPreferenceInteractor: UserPreferenceWebService {
+extension DrawerInteractor: DrawerWebService {
     
     func sendUserPreferences(forPath: String, withParameters: [String: Any]) {
         SnapXEatsApi.snapXPostRequestWithParameters(path: forPath, parameters: withParameters) { [weak self] (response: DefaultDataResponse) in
             if let statusCode = response.response?.statusCode {
-            SnapXEatsLoginHelper.shared.setNotAFirstTimeUser()
-            self?.userPreferenceResult(code: statusCode)
+                SnapXEatsLoginHelper.shared.setNotAFirstTimeUser()
+                self?.userPreferenceResult(code: statusCode)
             } else {
                 self?.output?.response(result: NetworkResult.noInternet)
             }
@@ -74,10 +81,10 @@ extension UserPreferenceInteractor: UserPreferenceWebService {
     }
 }
 
-extension UserPreferenceInteractor: UserPreferenceObjectMapper {
+extension DrawerInteractor: DrawerObjectMapper {
     
     func userPreferenceResult(code: Int) {
-         code == 200 ? output?.response(result: .success(data: true))
+        code == 200 ? output?.response(result: .success(data: true))
             :output?.response(result: NetworkResult.noInternet)
     }
     

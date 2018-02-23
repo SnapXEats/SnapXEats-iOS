@@ -17,7 +17,7 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
     var preferenceType: PreferenceType!
     var presenter: FoodAndCuisinePreferencePresentation?
     var preferenceItems = [PreferenceItem]()
-    let selectedPrefernce = SelectedPreference.shared
+    let loginUserPreferences = LoginUserPreferences.shared
     
     @IBOutlet weak var preferencesCollectionView: UICollectionView!
     
@@ -51,11 +51,11 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
     }
     
     private func savePreference() {
-        presenter?.savePreferecne(type: preferenceType, usierID: selectedPrefernce.loginUserID, preferencesItems: preferenceItems)
+        presenter?.savePreferecne(type: preferenceType, usierID: loginUserPreferences.loginUserID, preferencesItems: preferenceItems)
     }
     
     private func getSavedPreferecne() {
-        presenter?.getSavedPreferecne(usierID: selectedPrefernce.loginUserID, type: preferenceType, preferenceItems: preferenceItems)
+        presenter?.getSavedPreferecne(usierID: loginUserPreferences.loginUserID, type: preferenceType, preferenceItems: preferenceItems)
     }
     @IBAction func resetButtonAction(_: Any) {
         for item in preferenceItems {
@@ -110,6 +110,7 @@ extension FoodAndCuisinePreferencesViewController: FoodAndCuisinePreferenceView 
                 item.isFavourite = false
                 preferenceItems[selectedIndexPath.row] = item
                 preferencesCollectionView.reloadItems(at: [selectedIndexPath])
+                loginUserPreferences.isDirtyPreference = true
             }
         }
     }
@@ -123,6 +124,7 @@ extension FoodAndCuisinePreferencesViewController: FoodAndCuisinePreferenceView 
             item.isFavourite = true
             preferenceItems[selectedIndexPath.row] = item
             preferencesCollectionView.reloadItems(at: [selectedIndexPath])
+            loginUserPreferences.isDirtyPreference = true
         }
     }
 }

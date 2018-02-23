@@ -15,9 +15,8 @@ enum Screens {
 }
 
 class RootRouter: NSObject {
-    var window: UIWindow?
-    var drawerController: KYDrawerController!
-    
+    private var window: UIWindow?
+    private var drawerController: KYDrawerController!
     private override init() {
         
     }
@@ -111,6 +110,14 @@ class RootRouter: NSObject {
         parentController.pushViewController(restaurantDetailsVC, animated: true)
     }
     
+    func updateDrawerState(state: KYDrawerController.DrawerState) {
+         drawerController.setDrawerState(state, animated: true)
+    }
+    
+    func presentScreen(screen: Screens, drawerState: KYDrawerController.DrawerState) {
+        drawerController.setDrawerState(drawerState, animated: true)
+        presentScreen(screens: screen)
+    }
     func presentScreen(screens: Screens) {
         switch screens {
         case .firsTimeUser:
@@ -148,14 +155,9 @@ class RootRouter: NSObject {
     
     private func updateDrawerWithMainController(mainVC: UINavigationController) {
         drawerController = KYDrawerController(drawerDirection: .left, drawerWidth: (0.61 * UIScreen.main.bounds.width))
-        let drawerVC = loadDrawerMenu()
+        let drawerVC = DrawerRouter.shared.loadDrawerMenu()
         drawerController.mainViewController = mainVC
         drawerController.drawerViewController = drawerVC
     }
-    
-    func loadDrawerMenu() -> DrawerViewController {
-        let storyboard = UIStoryboard(name: SnapXEatsStoryboard.foodCardsStoryboard, bundle: nil)
-        let drawerVC = storyboard.instantiateViewController(withIdentifier: "drawerviewcontroller") as! DrawerViewController
-        return drawerVC
-    }
+
 }

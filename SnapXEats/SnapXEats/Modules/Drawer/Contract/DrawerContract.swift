@@ -1,54 +1,56 @@
 //
-//  UserPreferenceContract.swift
-//  SnapXEats
+//  DrawerContract.swift
+//  
 //
-//  Created by Durgesh Trivedi on 01/02/18.
-//  Copyright © 2018 SnapXEats. All rights reserved.
+//  Created by Durgesh Trivedi on 22/02/18.
+//  
 //
 
 import Foundation
 import UIKit
-import Alamofire
 
-protocol UserPreferenceView: BaseView {
-    // TODO: Declare view methods
+protocol DrawerView: BaseView {
+    var presenter: DrawerPresentation? { set get }
 }
 
-protocol UserPreferencePresentation: UserPreferenceUseCase {
-    func presentFoodAndCuisinePreferences(preferenceType: PreferenceType, parent: UINavigationController)
+protocol DrawerPresentation: DrawerUseCase {
+    func presentScreen(screen: Screens, drawerState: KYDrawerController.DrawerState)
     func presnetScreen(screen: Screens, parent: UINavigationController)
 }
 
-protocol UserPreferenceUseCase: class {
+
+protocol DrawerInteractorOutput: Response {
+    // TODO: Declare interactor output methods
+}
+
+
+protocol DrawerWireframe: RootWireFrame {
+    func presentScreen(screen: Screens, drawerState: KYDrawerController.DrawerState)
+}
+
+
+protocol DrawerUseCase: class {
     func saveUserPreference(loginUserPreferences: LoginUserPreferences)
     func getUserPreference(userID: String)
     func sendUserPreference(preference: LoginUserPreferences)
     func updateUserPreference(preference: LoginUserPreferences)
 }
 
-protocol UserPreferenceInteractorIntput: UserPreferenceRequestFormatter {
+protocol DrawerInteractorIntput: DrawerRequestFormatter {
     func saveUserPreference(loginUserPreferences: LoginUserPreferences)
     func getUserPreference(userID: String)
 }
 
-protocol UserPreferenceWireframe: class, RootWireFrame {
-    // TODO: Declare wireframe methods
-}
-
-protocol UserPreferenceInteractorOutput: Response {
-    
-}
-
-protocol UserPreferenceRequestFormatter: class {
+protocol DrawerRequestFormatter: class {
     func sendUserPreference(preference: LoginUserPreferences)
     func updateUserPreference(preference: LoginUserPreferences)
 }
 
-protocol UserPreferenceWebService: class {
+protocol DrawerWebService: class {
     func sendUserPreferences(forPath: String, withParameters: [String: Any])
     func updateUserPreferences(forPath: String, withParameters: [String: Any])
 }
 
-protocol UserPreferenceObjectMapper: class {
+protocol DrawerObjectMapper: class {
     func userPreferenceResult(code: Int)
 }
