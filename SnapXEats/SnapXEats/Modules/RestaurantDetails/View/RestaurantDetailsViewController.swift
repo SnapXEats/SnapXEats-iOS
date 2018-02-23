@@ -18,9 +18,11 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
     @IBOutlet var restaurantAddressLabel: UILabel!
     @IBOutlet var restaurantTimingButton: UIButton!
     @IBOutlet var restaurantTimingLabel: UILabel!
+    @IBOutlet var durationLabel: UILabel!
     
-    let weekDays = ["Monday": 1, "Tuesday":2, "Wednesday":3, "Thursday":4, "Friday":5, "Saturday":6, "Sunday":7]
-    enum restaurantTimingConstants {
+    private let weekDays = ["Monday": 1, "Tuesday":2, "Wednesday":3, "Thursday":4, "Friday":5, "Saturday":6, "Sunday":7]
+    private let durationTrailingText = " Away"
+    private enum restaurantTimingConstants {
         static let open = "Open Today"
         static let close = "Closed Now"
     }
@@ -49,10 +51,17 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
     }
     
     override func success(result: Any?) {
-        hideLoading()
         if let result = result as? RestaurantDetailsItem {
+            hideLoading()
             restaurantDetails = result.restaurantDetails
             showRestaurantDetails()
+            
+            // User should not be blocked for this activity to complete so tSpinner is hidden before this API Call
+            self.getDrivingDirectionsInfo()
+        } else if let result = result as? DrivingDirections {
+            if let duration = result.routes.first?.legs.first?.duration {
+                durationLabel.text = duration.text + SnapXEatsDirectionConstants.durationTextPrefix
+            }
         }
     }
     
@@ -141,6 +150,14 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
             popController.popoverPresentationController?.sourceView = sender
             popController.popoverPresentationController?.sourceRect = sender.bounds
             self.present(popController, animated: true, completion: nil)
+        }
+    }
+    
+    private func getDrivingDirectionsInfo() {
+        if let details = restaurantDetails, let restaurantLat = details.latitude, let restaurantLong = details.longitude  {
+            let origin = "\(SelectedPreference.shared.location.latitude),\(SelectedPreference.shared.location.longitude)"
+            let destination = "\(restaurantLat),\(restaurantLong)"
+            presenter?.drivingDirectionsRequest(origin: origin, destination: destination)
         }
     }
 }

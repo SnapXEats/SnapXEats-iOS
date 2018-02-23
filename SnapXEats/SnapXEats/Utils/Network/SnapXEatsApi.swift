@@ -50,4 +50,9 @@ class SnapXEatsApi {
         Alamofire.request(path, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseObject( completionHandler: completionHandler)
         
     }
+    
+    static func googleRequestObject<T: Mappable>(path: String, completionHandler:  @escaping (DataResponse<T>) -> ()) {
+        Alamofire.request(path).responseObject( completionHandler: completionHandler)
+        
+    }
 }

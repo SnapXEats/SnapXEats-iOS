@@ -21,6 +21,10 @@ extension RestaurantDetailsPresenter: RestaurantDetailsPresentation {
     func restaurantDetailsRequest(restaurantId: String) {
         interactor?.getRestaurantDetailsRequest(restaurant_id: restaurantId)
     }
+    
+    func drivingDirectionsRequest(origin: String, destination: String) {
+        interactor?.getDrivingDirectionsFor(origin: origin, destination: destination)
+    }
 }
 
 extension RestaurantDetailsPresenter: RestaurantDetailsInteractorOutput {

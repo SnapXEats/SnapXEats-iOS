@@ -169,3 +169,10 @@ enum UberAppConstants {
     static let urlscheme = "uber://"
 }
 
+enum SnapXEatsDirectionConstants {
+    static let pingExamValidatedString = "Congratulations! Your exam has been validated. You have %@ to start this exam.\n\n"
+    static let directionApiUrl = "https://maps.googleapis.com/maps/api/directions/json?mode=driving&key=%@&origin=%@&destination=%@"
+    static let apiKey = "AIzaSyA0wc__o_uvrQwR-Z_L-DzD3OlwPMmyG34"
+    static let durationTextPrefix = " Away"
+}
+

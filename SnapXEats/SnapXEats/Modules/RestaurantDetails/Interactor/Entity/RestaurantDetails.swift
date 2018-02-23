@@ -50,6 +50,9 @@ class RestaurantDetails: Mappable {
         rating         <- map["restaurant_rating"]
         specialities   <- map["restaurant_speciality"]
         timings        <- map["restaurant_timings"]
+        latitude      <- map["location_lat"]
+        longitude      <- map["location_long"]
+        
     }
 }
 
