@@ -32,7 +32,11 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
     var slideshow =  ImageSlideshow()
     var specialities = [RestaurantSpeciality]()
     var restaurantDetails: RestaurantDetails?
-    
+    private var shouldLoadData: Bool {
+        get {
+            return checkRechability() && restaurantDetails == nil
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +51,20 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        registerNotification()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        getRestaurantDetails()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unRegisterNotification()
+    }
+    
+    @objc override func internetConnected() {
         getRestaurantDetails()
     }
     
@@ -105,7 +123,7 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
     }
     
     private func getRestaurantDetails() {
-        if let restaurantId = restaurant.restaurant_info_id {
+        if let restaurantId = restaurant.restaurant_info_id, shouldLoadData == true {
             showLoading()
             presenter?.restaurantDetailsRequest(restaurantId:restaurantId)
         }
