@@ -176,3 +176,13 @@ enum SnapXEatsDirectionConstants {
     static let durationTextPrefix = " Away"
 }
 
+enum SnapXEatsAlertMessages {
+    static let uberRedirectConfirmation = "Are you sure you want to book an Uber ride?"
+    static let uberInstallConfirmation = "You need to install the uber app from app store to book a ride. Do you want to install it now?"
+}
+
+enum SnapXEatsAlertButtonTitles {
+    static let yes = "YES"
+    static let notnow = "Not Now"
+}
+

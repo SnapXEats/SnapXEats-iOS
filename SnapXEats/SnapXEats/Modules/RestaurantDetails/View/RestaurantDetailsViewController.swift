@@ -81,16 +81,27 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
     
     @IBAction func uberButtonAction(_ sender: UIButton) {
         if let url = URL(string: UberAppConstants.urlscheme), UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.openURL(url)
+            showConfirmationPopupwithMessage(message: SnapXEatsAlertMessages.uberRedirectConfirmation, forURL: url)
         } else {
             if let appstoreURL = URL(string: UberAppConstants.appstoreURL) {
-                UIApplication.shared.openURL(appstoreURL)
+                showConfirmationPopupwithMessage(message: SnapXEatsAlertMessages.uberInstallConfirmation, forURL: appstoreURL)
             }
         }
     }
     
     @IBAction func timingButtonAction(_ sender: UIButton) {
         showRestaurantTimingsPopover(onView: sender)
+    }
+    
+    private func showConfirmationPopupwithMessage(message: String, forURL url: URL) {
+        let confirmationAlert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: SnapXEatsAlertButtonTitles.yes, style: .default) { (_) in
+            UIApplication.shared.openURL(url)
+        }
+        let rejectAction = UIAlertAction(title: SnapXEatsAlertButtonTitles.notnow, style: .default, handler: nil)
+        confirmationAlert.addAction(rejectAction)
+        confirmationAlert.addAction(confirmAction)
+        self.present(confirmationAlert, animated: true, completion: nil)
     }
     
     private func getRestaurantDetails() {
