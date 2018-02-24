@@ -19,6 +19,7 @@ class PreferenceItem {
     var isLiked: Bool = true
     var isFavourite: Bool = true
     var itemID: String?
+    var preferencesId = 0
     
     init(type: PreferenceType) {
         self.type = type
@@ -50,5 +51,7 @@ class FoodItem: PreferenceItem, Mappable {
         foodItemName        <- map["food_name"]
         isLiked             <- map["is_food_like"]
         isFavourite         <- map["is_food_favourite"]
+        preferencesId       <- map["user_food_preferences_id"]
+        
     }
 }

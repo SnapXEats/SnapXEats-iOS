@@ -23,7 +23,6 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
     var sortByFilter: SortByPreference = .distance
     var selectedDistance = 1
     
-    
     @IBOutlet weak var sampleLabel: UILabel!
     @IBOutlet weak var pricingFilter: BetterSegmentedControl!
     @IBOutlet weak var distanceFilter: BetterSegmentedControl!
@@ -55,13 +54,14 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
     
     @IBAction func applyButtonAction(_: Any) {
         // Apply Button Action
-        
         if  loginUserPreference.isDirtyPreference {
             saveChanges()
-            if checkRechability() && loginUserPreference.isLoggedIn {
-                showLoading()
-                loginUserPreference.firstTimeUser ? presenter?.sendUserPreference(preference: loginUserPreference)
-                    : presenter?.updateUserPreference(preference: loginUserPreference)
+            if loginUserPreference.isLoggedIn {
+                if  checkRechability() {
+                    showLoading()
+                    loginUserPreference.firstTimeUser ? presenter?.sendUserPreference(preference: loginUserPreference)
+                        : presenter?.updateUserPreference(preference: loginUserPreference)
+                }
             }
             else {
                 presentNextScreen()

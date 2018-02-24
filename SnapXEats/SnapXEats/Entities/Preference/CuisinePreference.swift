@@ -51,8 +51,9 @@ class Cuisine: PreferenceItem, Mappable {
             itemID                <- map["cuisine_info_id"]
             cuisineImageURL       <- map["cuisine_image_url"]
             cuisineName           <- map["cuisine_name"]
-            isLiked              <- map["is_cuisine_like"]
-            isFavourite          <- map["is_cuisine_favourite"]
+            isLiked               <- map["is_cuisine_like"]
+            isFavourite           <- map["is_cuisine_favourite"]
+            preferencesId         <- map["user_cuisine_preferences_id"]
         }
     }
    

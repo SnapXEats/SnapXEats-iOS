@@ -27,7 +27,7 @@ enum SortByPreference: Int {
     case rating = 1
 }
 
-class LoginUserPreferences {
+class LoginUserPreferences: UserPreferences {
     
     static let shared = LoginUserPreferences()
     private init() {}
