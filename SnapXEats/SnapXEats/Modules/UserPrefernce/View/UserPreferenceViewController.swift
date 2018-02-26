@@ -81,9 +81,11 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
     
     private func showFoodCuisinePreferenceSelectStatus() {
         let userId = loginUserPreference.loginUserID
-        if let preference = PreferenceHelper.shared.getUserPrefernce(userID: userId) {
-            cuisinePreferenceSelected.isHidden = SetUserPreference.isCuisinePreferenceSet(prefernce: preference) ? false : true
-            foodPreferenceSelected.isHidden = SetUserPreference.isFoodPreferenceSet(prefernce: preference) ? false : true
+        let preferenceHelper = PreferenceHelper.shared
+        
+        if let preference = preferenceHelper.getUserPrefernce(userID: userId) {
+            cuisinePreferenceSelected.isHidden = preferenceHelper.isCuisinePreferenceSet(cuisinePreference: preference.cuisinePreference) ? false : true
+            foodPreferenceSelected.isHidden = preferenceHelper.isFoodPreferenceSet(foodPreference: preference.foodPreference) ? false : true
         } else {
             cuisinePreferenceSelected.isHidden = true
             foodPreferenceSelected.isHidden = true
