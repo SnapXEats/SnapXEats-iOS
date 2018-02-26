@@ -35,6 +35,25 @@ class SetUserPreference: Object {
         }
     }
     
+    static func isFoodPreferenceSet(prefernce: SetUserPreference) -> Bool {
+        for foodPre in prefernce.foodPreference {
+            if foodPre.like == true || foodPre.favourite == true {
+                return true
+            }
+        }
+        return false
+    }
+    
+    static func isCuisinePreferenceSet(prefernce: SetUserPreference) -> Bool {
+        for cuisinePre in prefernce.cuisinePreference {
+            if cuisinePre.like == true || cuisinePre.favourite == true {
+                return true
+            }
+        }
+        return false
+    }
+    
+    
     static func getUserPrefernce(userID: String) -> SetUserPreference?  {
         // Get the default Realm
         let realm = try! Realm()
