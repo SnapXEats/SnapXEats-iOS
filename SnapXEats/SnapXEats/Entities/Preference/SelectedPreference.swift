@@ -27,7 +27,7 @@ enum SortByPreference: Int {
     case rating = 1
 }
 
-class LoginUserPreferences: UserPreferences {
+class LoginUserPreferences {
     
     static let shared = LoginUserPreferences()
     private init() {}
@@ -35,27 +35,41 @@ class LoginUserPreferences: UserPreferences {
     var pricingPreference: PricingPreference = .single
     var sortByPreference: SortByPreference?
     var distancePreference = 0 // 0 is same as Auto. Other distances are in miles
+    
+    var foodPreference = [FoodItem]()
+    var cuisinePreference = [CuisineItem]()
+    
     var isDirtyPreference = false
     
-    lazy var isLoggedIn = {
+     var isLoggedIn = {
         return SnapXEatsLoginHelper.shared.isUserLoggedIn()
     }()
     
-    lazy var loginUserID = {
+    var loginUserID = {
         return SnapXEatsLoginHelper.shared.getLoggedInUserID()
     }()
     
-    lazy var loginServerToken = {
+    var loginServerToken = {
         return SnapXEatsLoginHelper.shared.getLoginUserServerToken()
     }()
     
-    lazy var fbInstagramAccessToken = {
+    var fbInstagramAccessToken = {
         return SnapXEatsLoginHelper.shared.getLoginUserFBInstagramAccessToken()
     }()
     
-    lazy var firstTimeUser = {
+    var firstTimeUser = {
         return SnapXEatsLoginHelper.shared.firstTimeUser()
     }()
+    
+//    func reset() {
+//        ratingPreference = nil
+//        pricingPreference = nil
+//        sortByPreference = nil
+//        distancePreference = 0
+//        isDirtyPreference = false
+//        isLoggedIn = false
+//        loginUserID = Snap
+//    }
 }
 
 class SelectedPreference {

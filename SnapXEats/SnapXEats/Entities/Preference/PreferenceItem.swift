@@ -16,11 +16,14 @@ enum PreferenceType: Int {
 
 class PreferenceItem {
     var type: PreferenceType?
-    var isLiked: Bool = true
-    var isFavourite: Bool = true
+    var isLiked: Bool = false
+    var isFavourite: Bool = false
     var itemID: String?
     var preferencesId = 0
+    var imageURL: String?
+    var name: String?
     
+    init() {}
     init(type: PreferenceType) {
         self.type = type
     }
@@ -38,20 +41,36 @@ class FoodPreference: Mappable {
 }
 
 class FoodItem: PreferenceItem, Mappable {
-    var foodItemImageURL: String?
-    var foodItemName: String?
     
+    override init() {super.init()}
     required init?(map: Map) {
         super.init(type: .food)
     }
     
     func mapping(map: Map) {
-        itemID          <- map["food_type_info_id"]
-        foodItemImageURL     <- map["food_image_url"]
-        foodItemName        <- map["food_name"]
+        itemID              <- map["food_type_info_id"]
+        imageURL            <- map["food_image_url"]
+        name                <- map["food_name"]
         isLiked             <- map["is_food_like"]
         isFavourite         <- map["is_food_favourite"]
-        preferencesId       <- map["user_food_preferences_id"]
+        preferencesId       <- map["user__preferences_id"]
         
+    }
+}
+
+class CuisineItem: PreferenceItem, Mappable {
+    override init() {super.init()}
+    required init?(map: Map) {
+        super.init(type: .cuisine)
+    }
+    
+    // Mappable
+    func mapping(map: Map) {
+        itemID                <- map["cuisine_info_id"]
+        imageURL              <- map["cuisine_image_url"]
+        name                  <- map["cuisine_name"]
+        isLiked               <- map["is_cuisine_like"]
+        isFavourite           <- map["is_cuisine_favourite"]
+        preferencesId         <- map["user_cuisine_preferences_id"]
     }
 }

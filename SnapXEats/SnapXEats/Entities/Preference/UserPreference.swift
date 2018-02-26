@@ -11,7 +11,7 @@
 import Foundation
 import ObjectMapper
 
-class UserPreferences: Mappable {
+class UserPreferences {
     var restaurant_rating = SnapXEatsConstant.emptyString
     var restaurant_price = SnapXEatsConstant.emptyString
     var restaurant_distance = SnapXEatsConstant.emptyString
@@ -21,24 +21,19 @@ class UserPreferences: Mappable {
     var foodPreference = [UserFoodPreferences]()
     var cuisinePreference = [UserCuisinePreferences]()
     
+    init() {}
     required init?(map: Map) {
     }
     
-    func mapping(map: Map) {
-        restaurant_rating   <- map["restaurant_rating"]
-        restaurant_price    <- map["restaurant_price"]
-        restaurant_distance <- map["restaurant_distance"]
-        sort_by_distance    <- map["sort_by_distance"]
-        sort_by_rating      <- map["sort_by_rating"]
-        foodPreference      <- map["user_food_preferences"]
-    }
+
 }
 
-class UserFoodPreferences: Mappable {
+class UserFoodPreferences {
     var food_type_info_id = SnapXEatsConstant.emptyString
     var isliked = true
     var isFavourite = true
-    
+    var preferenceId = 0
+    init() {}
     required init?(map: Map) {
     }
     
@@ -46,6 +41,7 @@ class UserFoodPreferences: Mappable {
         food_type_info_id    <- map["food_type_info_id"]
         isliked              <- map["is_food_like"]
         isFavourite          <- map["is_food_favourite"]
+        preferenceId         <- map["user__preferences_id"]
     }
 }
 
@@ -53,6 +49,9 @@ class UserCuisinePreferences: Mappable {
     var cuisine_info_id = SnapXEatsConstant.emptyString
     var isliked = true
     var isFavourite = true
+    var preferecneId = 0
+    
+    init() {}
     
     required init?(map: Map) {
     }
@@ -61,5 +60,6 @@ class UserCuisinePreferences: Mappable {
         cuisine_info_id      <- map["cuisine_info_id"]
         isliked              <- map["is_food_like"]
         isFavourite          <- map["is_food_favourite"]
+        preferecneId         <- map["user__preferences_id"]
     }
 }

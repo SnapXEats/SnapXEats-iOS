@@ -11,7 +11,7 @@ import ObjectMapper
 
 class CuisinePreference: Mappable {
     
-    var cuisineList = [Cuisine]()
+    var cuisineList = [CuisineItem]()
     
     var userSelectedCuisinePreference = [UserSelectedCuisinePreference]()
     
@@ -26,7 +26,7 @@ class CuisinePreference: Mappable {
 
 class UserSelectedCuisinePreference : Mappable {
     
-    var cuisineList = [Cuisine]()
+    var cuisineList = [CuisineItem]()
     
     required init?(map: Map) {
     }
@@ -36,25 +36,3 @@ class UserSelectedCuisinePreference : Mappable {
         cuisineList <- map["userPreSelectedCuisines"]
     }
 }
-class Cuisine: PreferenceItem, Mappable {
-        var cuisineId: String?
-        var cuisineImageURL: String?
-        var cuisineName: String?
-        var cuisentImage: UIImage?
-    
-        required init?(map: Map) {
-            super.init(type: .cuisine)
-        }
-    
-        // Mappable
-        func mapping(map: Map) {
-            itemID                <- map["cuisine_info_id"]
-            cuisineImageURL       <- map["cuisine_image_url"]
-            cuisineName           <- map["cuisine_name"]
-            isLiked               <- map["is_cuisine_like"]
-            isFavourite           <- map["is_cuisine_favourite"]
-            preferencesId         <- map["user_cuisine_preferences_id"]
-        }
-    }
-   
-

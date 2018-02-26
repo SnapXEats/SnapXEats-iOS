@@ -15,7 +15,7 @@ import CoreLocation
 class LocationViewController: BaseViewController, StoryboardLoadable {
     
     // MARK: Properties
-    private var cuiseItems = [Cuisine]()
+    private var cuiseItems = [CuisineItem]()
     private let itemsPerRow: CGFloat = 2
     private let defaultLocationTitle = "Select Location"
     private let locationTitleTopInset: CGFloat = 5
@@ -120,7 +120,7 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     private func setCuisinePreferences() {
         for (_, index) in selectedCuisineIndexes.enumerated() {
             let cuisine = cuiseItems[(index as! Int)]
-            selectedPreference.selectedCuisine.append(cuisine.cuisineName ?? "")
+            selectedPreference.selectedCuisine.append(cuisine.name ?? "")
         }
     }
     
