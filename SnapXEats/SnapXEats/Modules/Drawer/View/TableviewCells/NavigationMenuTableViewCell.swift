@@ -23,6 +23,7 @@ class NavigationMenuTableViewCell: UITableViewCell {
         optionLabel.text = title
         wishlistCountView.isHidden = !showCount
         let currentUserId = LoginUserPreferences.shared.loginUserID
-        wishlistCountLabel.text = "\(FoodCardActions.getWishlistCountForUser(userID: currentUserId))"
+        // Only Retrive wishlist count if it is to be shown(Only for one cell)
+        wishlistCountLabel.text = (showCount == true) ? "\(FoodCardActions.getWishlistCountForUser(userID: currentUserId))" : ""
     }
 }
