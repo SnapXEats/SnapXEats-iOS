@@ -48,6 +48,16 @@ class FoodCardActions: Object {
             }
         }
     }
+    
+    static func getWishlistCountForUser(userID: String) -> Int {
+        if userID != SnapXEatsConstant.emptyString {
+            if let currentFoodCardActions = getCurrentActionsForUser(userID: userID) {
+                let currentWishList = currentFoodCardActions.wishListItems
+                return currentWishList.count
+            }
+        }
+        return 0
+    }
 }
 
 class UserFoodCard: Object {
