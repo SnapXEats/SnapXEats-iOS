@@ -443,6 +443,13 @@
                                                             <action selector="selectPreferencesActionWithSender:" destination="Ipe-nt-eOg" eventType="touchUpInside" id="qqa-33-KTa"/>
                                                         </connections>
                                                     </button>
+                                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="preferenceSelect" translatesAutoresizingMaskIntoConstraints="NO" id="voe-Bj-6ih">
+                                                        <rect key="frame" x="105" y="61" width="16" height="16"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="16" id="at4-vt-1HU"/>
+                                                            <constraint firstAttribute="height" constant="16" id="eDj-3c-57Z"/>
+                                                        </constraints>
+                                                    </imageView>
                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EId-fn-6e7">
                                                         <rect key="frame" x="132" y="61" width="96" height="81"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -460,6 +467,13 @@
                                                             <action selector="selectPreferencesActionWithSender:" destination="Ipe-nt-eOg" eventType="touchUpInside" id="cDd-kS-Thf"/>
                                                         </connections>
                                                     </button>
+                                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="preferenceSelect" translatesAutoresizingMaskIntoConstraints="NO" id="CyB-xz-qWU">
+                                                        <rect key="frame" x="212" y="61" width="16" height="16"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="16" id="qC1-rd-e8K"/>
+                                                            <constraint firstAttribute="height" constant="16" id="yv1-c3-KJ8"/>
+                                                        </constraints>
+                                                    </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -467,7 +481,11 @@
                                                     <constraint firstItem="0S9-Ax-2FB" firstAttribute="top" secondItem="Gu2-Z6-2cZ" secondAttribute="bottom" constant="15" id="3dl-eQ-XJD"/>
                                                     <constraint firstItem="EId-fn-6e7" firstAttribute="top" secondItem="0S9-Ax-2FB" secondAttribute="top" id="3fE-W1-CuO"/>
                                                     <constraint firstAttribute="bottom" secondItem="0S9-Ax-2FB" secondAttribute="bottom" constant="10" id="E6a-fy-buE"/>
+                                                    <constraint firstItem="voe-Bj-6ih" firstAttribute="trailing" secondItem="0S9-Ax-2FB" secondAttribute="trailing" id="IGc-50-DG6"/>
+                                                    <constraint firstItem="voe-Bj-6ih" firstAttribute="top" secondItem="0S9-Ax-2FB" secondAttribute="top" id="M66-0q-xEz"/>
                                                     <constraint firstItem="Gu2-Z6-2cZ" firstAttribute="top" secondItem="Rqw-2e-RQk" secondAttribute="top" constant="30" id="OkD-R8-3oz"/>
+                                                    <constraint firstItem="CyB-xz-qWU" firstAttribute="trailing" secondItem="EId-fn-6e7" secondAttribute="trailing" id="UhY-F1-DFX"/>
+                                                    <constraint firstItem="CyB-xz-qWU" firstAttribute="top" secondItem="EId-fn-6e7" secondAttribute="top" id="YUt-DP-P7b"/>
                                                     <constraint firstItem="EId-fn-6e7" firstAttribute="leading" secondItem="0S9-Ax-2FB" secondAttribute="trailing" constant="11" id="uR6-ah-zFI"/>
                                                     <constraint firstItem="0S9-Ax-2FB" firstAttribute="leading" secondItem="Gu2-Z6-2cZ" secondAttribute="leading" id="yhT-dJ-Ab9"/>
                                                 </constraints>
@@ -523,10 +541,12 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <size key="freeformSize" width="375" height="750"/>
                     <connections>
+                        <outlet property="cuisinePreferenceSelected" destination="voe-Bj-6ih" id="RL3-38-sKB"/>
                         <outlet property="distanceFilter" destination="WvX-3E-08u" id="IPG-M8-4fV"/>
                         <outlet property="distanceRadioButton" destination="f8k-vm-FT1" id="Fsy-b9-Mih"/>
                         <outlet property="distanceRangeContainerView" destination="H3S-CZ-Ppl" id="fQe-Un-ddl"/>
                         <outlet property="fiveStarRatingButton" destination="Lcf-Xt-wAI" id="HTL-Ig-P1V"/>
+                        <outlet property="foodPreferenceSelected" destination="CyB-xz-qWU" id="FUP-L6-cF8"/>
                         <outlet property="fourStarRatingButton" destination="4hD-sS-awB" id="f2Q-rI-VSx"/>
                         <outlet property="priceRangeContainerView" destination="EIT-Jr-saL" id="5bH-ZG-f29"/>
                         <outlet property="pricingFilter" destination="uge-MK-fia" id="ldl-ks-zU2"/>
@@ -538,7 +558,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gw8-3w-eR3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="433" y="36"/>
+            <point key="canvasLocation" x="432.80000000000001" y="35.982008995502248"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zHY-pZ-3Sm">
@@ -655,6 +675,7 @@
         <image name="5star_selected" width="115" height="91"/>
         <image name="cuisine_icon" width="20" height="20"/>
         <image name="food_icon" width="24" height="13"/>
+        <image name="preferenceSelect" width="16" height="16"/>
         <image name="radio_button" width="15" height="15"/>
         <image name="radio_button_selected" width="15" height="15"/>
     </resources>
