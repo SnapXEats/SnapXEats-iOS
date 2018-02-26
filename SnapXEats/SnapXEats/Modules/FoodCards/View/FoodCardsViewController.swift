@@ -11,6 +11,7 @@ import UIKit
 import Koloda
 
 struct FoodCard {
+    var id: String
     var name: String
     var imageURL: String
     var restaurant: Restaurant
@@ -81,7 +82,7 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
         for restaurant in restaurants {
              let dishes = restaurant.restaurantDishes
                 for dishitem in dishes {
-                    let foodCard = FoodCard(name: restaurant.restaurant_name!, imageURL: dishitem.dish_image_url!, restaurant: restaurant)
+                    let foodCard = FoodCard(id: dishitem.restaurant_dish_id!, name: restaurant.restaurant_name!, imageURL: dishitem.dish_image_url!, restaurant: restaurant)
                     self.foodCards.append(foodCard)
                 }
         }
@@ -162,6 +163,11 @@ extension FoodCardsViewController {
     
     private func upSwipeActionForIndex(index: Int) {
         // Up Swipe Action
+        let currentFoodCard = foodCards[index]
+        let userId = LoginUserPreferences.shared.loginUserID
+        let foodCard = UserFoodCard()
+        foodCard.Id = currentFoodCard.id
+        FoodCardActions.addToWishList(foodCardItem: foodCard, userID: userId)
     }
     
     private func gotoRestaurantDetailsForFoodCard(foodCard: FoodCard) {

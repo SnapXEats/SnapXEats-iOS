@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7E0CBBB5202435E4009E56AE /* UserPreference.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E0CBBB4202435E4009E56AE /* UserPreference.storyboard */; };
+		7E2C64B3204401E600DAB44A /* FoodCardActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C64B2204401E600DAB44A /* FoodCardActions.swift */; };
 		7E5946972020BD02006702AF /* SearchPlacesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5946952020BD02006702AF /* SearchPlacesTableViewCell.swift */; };
 		7E5946982020BD02006702AF /* SearchPlacesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5946962020BD02006702AF /* SearchPlacesTableViewCell.xib */; };
 		7E5C057E2017A6DC000B5C33 /* SavedLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C057C2017A6DC000B5C33 /* SavedLocationTableViewCell.swift */; };
@@ -174,6 +175,7 @@
 /* Begin PBXFileReference section */
 		18C81282DCA92A76FE981E2D /* Pods-SnapXEats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapXEats.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SnapXEats/Pods-SnapXEats.debug.xcconfig"; sourceTree = "<group>"; };
 		7E0CBBB4202435E4009E56AE /* UserPreference.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserPreference.storyboard; sourceTree = "<group>"; };
+		7E2C64B2204401E600DAB44A /* FoodCardActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCardActions.swift; sourceTree = "<group>"; };
 		7E5946952020BD02006702AF /* SearchPlacesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlacesTableViewCell.swift; sourceTree = "<group>"; };
 		7E5946962020BD02006702AF /* SearchPlacesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchPlacesTableViewCell.xib; sourceTree = "<group>"; };
 		7E5C057C2017A6DC000B5C33 /* SavedLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationTableViewCell.swift; sourceTree = "<group>"; };
@@ -361,6 +363,14 @@
 				C272160BBB123BC8E63B160D /* Pods-SnapXEats.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		7E2C64B1204401D000DAB44A /* FoodCard */ = {
+			isa = PBXGroup;
+			children = (
+				7E2C64B2204401E600DAB44A /* FoodCardActions.swift */,
+			);
+			path = FoodCard;
 			sourceTree = "<group>";
 		};
 		7E5C057B2017A6A3000B5C33 /* SelectLocationCells */ = {
@@ -976,6 +986,7 @@
 		9D8E88D91FFD28C50066A1D9 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				7E2C64B1204401D000DAB44A /* FoodCard */,
 				9DDC3AF020358E9600A7F181 /* Login */,
 				9D8E88DA1FFD28C50066A1D9 /* Preference */,
 				9D8E88DC1FFD28C50066A1D9 /* UserProfile */,
@@ -1585,6 +1596,7 @@
 				7E5E7FDF203AF7EE00009A56 /* ImageSlideshowItem.swift in Sources */,
 				9D0D712C203859C80077FA7A /* UserLogin.swift in Sources */,
 				7E5C058220185F34000B5C33 /* SavedAddressHeaderViewCell.swift in Sources */,
+				7E2C64B3204401E600DAB44A /* FoodCardActions.swift in Sources */,
 				7E5E7FF0203C0E6000009A56 /* RestaurantSpecialityCollectionViewCell.swift in Sources */,
 				9D0D715E203F144F0077FA7A /* DrawerContract.swift in Sources */,
 				9DB02A6F2010805F0061FC0C /* LocationPresenter.swift in Sources */,
