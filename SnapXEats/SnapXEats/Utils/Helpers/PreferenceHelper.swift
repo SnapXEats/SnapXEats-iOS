@@ -36,6 +36,7 @@ class PreferenceHelper {
                 foodPreference.Id = itemId
                 foodPreference.like = preferenceItem.isLiked
                 foodPreference.favourite = preferenceItem.isFavourite
+                foodPreference.preferenceId = preferenceItem.preferencesId
                 foodPreferences.append(foodPreference)
             }
         }
@@ -50,6 +51,7 @@ class PreferenceHelper {
                 cuisinePreference.Id = itemId
                 cuisinePreference.like = preferenceItem.isLiked
                 cuisinePreference.favourite = preferenceItem.isFavourite
+                cuisinePreference.preferenceId = preferenceItem.preferencesId
                 cuisinePreferences.append(cuisinePreference)
             }
         }
@@ -63,6 +65,7 @@ class PreferenceHelper {
                 if  foodPrefernce.Id == preferenceItem.itemID {
                     preferenceItem.isLiked = foodPrefernce.like
                     preferenceItem.isFavourite = foodPrefernce.favourite
+                    preferenceItem.preferencesId = foodPrefernce.preferenceId
                     return true
                 }
                 return false
@@ -78,6 +81,7 @@ class PreferenceHelper {
                 if  cuisinePreference.Id == preferenceItem.itemID {
                     preferenceItem.isLiked = cuisinePreference.like
                     preferenceItem.isFavourite = cuisinePreference.favourite
+                    preferenceItem.preferencesId = cuisinePreference.preferenceId
                     return true
                 }
                 return false

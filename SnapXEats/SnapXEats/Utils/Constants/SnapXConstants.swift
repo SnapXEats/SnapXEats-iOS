@@ -206,14 +206,17 @@ enum PreferecneConstant {
     static let restaurant_distance = "restaurant_distance"
     static let sort_by_rating = "sort_by_rating"
     static let sort_by_distance = "sort_by_distance"
+    
     static let user_food_preferences = "user_food_preferences"
     static let food_type_info_id = "food_type_info_id"
     static let is_food_like = "is_food_like"
     static let is_food_favourite = "is_food_favourite"
+    static let user_food_preferences_id = "user_food_preferences_id"
     
     static let user_cuisine_preferences = "user_cuisine_preferences"
     static let cuisine_info_id = "cuisine_info_id"
     static let is_cuisine_like = "is_cuisine_like"
     static let is_cuisine_favourite = "is_cuisine_favourite"
+    static let user_cuisine_preferences_id = "user_cuisine_preferences_id"
 }
 

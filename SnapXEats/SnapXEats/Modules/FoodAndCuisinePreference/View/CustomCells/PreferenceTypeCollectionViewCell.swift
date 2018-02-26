@@ -23,14 +23,14 @@ class PreferenceTypeCollectionViewCell: UICollectionViewCell {
     func configurePreferenceItemCell(preferenceItem: PreferenceItem, preferencetype: PreferenceType) {
         
         if let item = preferenceItem as? FoodItem {
-            preferenceItemNameLabel.text = item.foodItemName
-            if let imagURL = item.foodItemImageURL, let url = URL(string: imagURL) {
+            preferenceItemNameLabel.text = item.name
+            if let imagURL = item.imageURL, let url = URL(string: imagURL) {
                 let placeholderImage = UIImage(named: SnapXEatsImageNames.placeholder_cuisine)!
                 preferenceItemImage.af_setImage(withURL: url, placeholderImage: placeholderImage)
             }
-        } else if let item = preferenceItem as? Cuisine {
-            preferenceItemNameLabel.text = item.cuisineName
-            if let imagURL = item.cuisineImageURL {
+        } else if let item = preferenceItem as? CuisineItem {
+            preferenceItemNameLabel.text = item.name
+            if let imagURL = item.imageURL {
                 let url = URL(string: imagURL)!
                 let placeholderImage = UIImage(named: SnapXEatsImageNames.placeholder_cuisine)!
                 preferenceItemImage.af_setImage(withURL: url, placeholderImage: placeholderImage)

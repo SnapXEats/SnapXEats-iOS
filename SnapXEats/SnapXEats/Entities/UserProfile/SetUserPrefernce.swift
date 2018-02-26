@@ -89,14 +89,15 @@ class SetUserPreference: Object {
     }
 }
 
-class UserFoodPreference: Object {
+class Prefernces: Object {
     @objc dynamic var Id: String = SnapXEatsConstant.emptyString
     @objc dynamic var like = false
     @objc dynamic var favourite = false
+    @objc dynamic var preferenceId = 0
 }
 
-class UserCuisinePreference: Object {
-    @objc dynamic var Id: String = SnapXEatsConstant.emptyString
-    @objc dynamic var like = false
-    @objc dynamic var favourite = false
+class UserFoodPreference: Prefernces {
+}
+
+class UserCuisinePreference: Prefernces {
 }

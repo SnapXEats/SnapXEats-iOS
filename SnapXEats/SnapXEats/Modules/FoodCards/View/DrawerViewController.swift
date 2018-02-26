@@ -123,20 +123,22 @@ extension DrawerViewController: BaseView {
     
     private func presentNextScreen(index: Int) {
         screenIndex = index
-        if  checkRechability() && loginUserPreference.isLoggedIn {
+        if  loginUserPreference.isLoggedIn {
+            if  checkRechability() {
                 showLoading()
                 loginUserPreference.firstTimeUser ? presenter?.sendUserPreference(preference: loginUserPreference)
                     : presenter?.updateUserPreference(preference: loginUserPreference)
             }
-            else {
-                 presentScreen(index: index)
-            }
-
+        }
+        else {
+            presentScreen(index: index)
+        }
+        
     }
     
     private func showPreferenceSaveDialog(index: Int) {
         let save =  setSaveButton { [weak self] in
-                self?.presentNextScreen(index: index)
+            self?.presentNextScreen(index: index)
         }
         
         let discard = setDiscardButton(index: index) { [weak self] in

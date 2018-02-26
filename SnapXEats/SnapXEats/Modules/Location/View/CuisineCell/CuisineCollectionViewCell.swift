@@ -22,9 +22,9 @@ class CuisineCollectionViewCell: UICollectionViewCell {
         cellContainerView.addShadow()
     }
     
-    func configureCell(cuisineItem: Cuisine, isSelected:Bool) {
-        cuisineLabel.text = cuisineItem.cuisineName
-        if let imagURL = cuisineItem.cuisineImageURL {
+    func configureCell(cuisineItem: CuisineItem, isSelected:Bool) {
+        cuisineLabel.text = cuisineItem.name
+        if let imagURL = cuisineItem.imageURL {
         let url = URL(string: imagURL)!
             let placeholderImage = UIImage(named: SnapXEatsImageNames.placeholder_cuisine)!
             cuisineImage.af_setImage(withURL: url, placeholderImage: placeholderImage)
