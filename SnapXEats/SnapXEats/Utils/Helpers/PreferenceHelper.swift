@@ -16,6 +16,24 @@ class PreferenceHelper {
     var loginPreferecne = SelectedPreference.shared.loginUserPreference
     private init() {}
     
+    func isFoodPreferenceSet(foodPreference: List<UserFoodPreference>) -> Bool {
+        for foodPre in foodPreference {
+            if foodPre.like || foodPre.favourite {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func isCuisinePreferenceSet(cuisinePreference: List<UserCuisinePreference>) -> Bool {
+        for cuisinePre in cuisinePreference {
+            if cuisinePre.like || cuisinePre.favourite {
+                return true
+            }
+        }
+        return false
+    }
+    
     func saveUserPrefernce(preference: LoginUserPreferences) {
         let setPreference = SetUserPreference()
         setPreference.distancePreference = preference.distancePreference
