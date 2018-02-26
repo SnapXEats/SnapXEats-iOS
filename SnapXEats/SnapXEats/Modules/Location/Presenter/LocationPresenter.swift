@@ -22,6 +22,10 @@ class LocationPresenter {
 }
 
 extension LocationPresenter: LocationPresentation {
+    func updatedDrawerState(state: KYDrawerController.DrawerState) {
+        router?.updatedDrawerState(state: state)
+    }
+    
     
     // TODO: implement presentation methodsiewController
     func closeLocationView(selectedPreference: SelectedPreference, parent: UINavigationController) {

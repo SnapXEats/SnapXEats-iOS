@@ -41,31 +41,57 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
     @IBOutlet weak var selectCuisineButton: UIButton!
     @IBOutlet weak var selectFoodButton: UIButton!
     
-    let selectedPreference = SelectedPreference.shared
+    let loginUserPreference = LoginUserPreferences.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidLoad()
+        saveChanges()
+    }
+    
     @IBAction func applyButtonAction(_: Any) {
         // Apply Button Action
-        saveChanges()
+        
+        if  loginUserPreference.isDirtyPreference {
+            saveChanges()
+            if checkRechability() && loginUserPreference.isLoggedIn {
+                showLoading()
+                loginUserPreference.firstTimeUser ? presenter?.sendUserPreference(preference: loginUserPreference)
+                    : presenter?.updateUserPreference(preference: loginUserPreference)
+            }
+            else {
+                presentNextScreen()
+            }
+        } else {
+            presentNextScreen()
+        }
+    }
+    
+    private func presentNextScreen() {
+        if let parentNVController = self.navigationController {
+            presenter?.presnetScreen(screen: .location, parent: parentNVController)
+        }
     }
     
     @IBAction func radioButtonSelected(sender: UIButton) {
         if sender == distanceRadioButton && sender.isSelected == false {
-           setButtonState(sortByPreference: .distance)
+            loginUserPreference.isDirtyPreference = true
+            setButtonState(sortByPreference: .distance)
         }
         
         if sender == ratingsRadioButton && sender.isSelected == false {
+            loginUserPreference.isDirtyPreference = true
             setButtonState(sortByPreference: .rating)
         }
     }
     
     @IBAction func selectPreferencesAction(sender: UIButton) {
         saveChanges()
-        presenter?.saveUserPreference(selectedPreference: selectedPreference)
+        presenter?.saveUserPreference(loginUserPreferences: loginUserPreference)
         if let preferenceType = PreferenceType(rawValue: sender.tag), let parentNVController = self.navigationController {
             presenter?.presentFoodAndCuisinePreferences(preferenceType: preferenceType, parent: parentNVController)
         }
@@ -74,12 +100,15 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
     @IBAction func starRatingSelected(sender: UIButton) {
         switch sender {
         case fiveStarRatingButton:
+            loginUserPreference.isDirtyPreference = true
             setButtonState(ratingPreferences: .fiveStar)
             
         case fourStarRatingButton:
-             setButtonState(ratingPreferences: .fourStar)
+            loginUserPreference.isDirtyPreference = true
+            setButtonState(ratingPreferences: .fourStar)
             
         case threeStarRatingButton:
+            loginUserPreference.isDirtyPreference = true
             setButtonState(ratingPreferences: .threeStar)
             
         default: break
@@ -105,7 +134,7 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
             fourStarRatingButton.isSelected = false
             fiveStarRatingButton.isSelected = false
             threeStarRatingButton.isSelected = true
-
+            
         }
     }
     
@@ -122,10 +151,10 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
         }
     }
     private func saveChanges() {
-        selectedPreference.ratingPreference = selectedRating
-        selectedPreference.pricingPreference = selectedPrice
-        selectedPreference.sortByPreference = sortByFilter
-        selectedPreference.distancePreference = selectedDistance
+        loginUserPreference.ratingPreference = selectedRating
+        loginUserPreference.pricingPreference = selectedPrice
+        loginUserPreference.sortByPreference = sortByFilter
+        loginUserPreference.distancePreference = selectedDistance
     }
     
     override func success(result: Any?) {
@@ -136,7 +165,11 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
             setButtonState(sortByPreference: sortPrefernce)
             setPriceIndex(index: prefernce.pricingPreference)
             setDistanceIndex(index: prefernce.distancePreference)
+        } else if let _ = result as? Bool, let parentNVController = self.navigationController {
+            loginUserPreference.isDirtyPreference = false
+            presenter?.presnetScreen(screen: .location, parent: parentNVController)
         }
+        
     }
 }
 
@@ -176,7 +209,7 @@ extension UserPreferenceViewController: UserPreferenceView {
     }
     
     func getUserPrefernces() {
-        presenter?.getUserPreference(userID: selectedPreference.loginUserID)
+        presenter?.getUserPreference(userID: loginUserPreference.loginUserID)
     }
 }
 
@@ -184,6 +217,7 @@ extension UserPreferenceViewController: UserPreferenceView {
 extension UserPreferenceViewController {
     
     @IBAction func pricingSelectedAction(sender: UIButton) {
+        loginUserPreference.isDirtyPreference = true
         setPriceIndex(index: sender.tag)
     }
     
@@ -206,12 +240,13 @@ extension UserPreferenceViewController {
     }
     
     @IBAction func DistanceSelectedAction(sender: UIButton) {
+        loginUserPreference.isDirtyPreference = true
         setDistanceIndex(index: sender.tag)
     }
     
     private func setDistanceIndex(index: Int) {
         do {
-             try distanceFilter.setIndex(UInt(index - 1), animated: true)
+            try distanceFilter.setIndex(UInt(index - 1), animated: true)
         } catch {
             print("Error in Setting Index for Distance filter")
         }

@@ -42,8 +42,7 @@ protocol FoodAndCuisinePreferenceRequestFormatter: class {
 }
 
 protocol FoodAndCuisinePreferenceWebService: class {
-    func getFoodItemPreferences(forPath: String)
-    func getCuisinePreferences(forPath: String)
+    func sendUserPreferences(forPath: String, withParameters: [String: Any])
 }
 
 protocol FoodAndCuisinePreferenceObjectMapper: class {

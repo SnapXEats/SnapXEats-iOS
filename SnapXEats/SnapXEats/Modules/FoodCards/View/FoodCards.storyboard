@@ -139,7 +139,7 @@
         <!--Drawer View Controller-->
         <scene sceneID="kpx-mb-JDD">
             <objects>
-                <viewController storyboardIdentifier="drawerviewcontroller" id="Ez3-hg-TLH" customClass="DrawerViewController" customModule="SnapXEats" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DrawerViewController" id="Ez3-hg-TLH" customClass="DrawerViewController" customModule="SnapXEats" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ffM-ki-gaH"/>
                         <viewControllerLayoutGuide type="bottom" id="LQk-f5-1sx"/>

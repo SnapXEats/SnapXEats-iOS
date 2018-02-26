@@ -24,18 +24,27 @@ extension UserPreferencePresenter: UserPreferencePresentation {
     func presentFoodAndCuisinePreferences(preferenceType: PreferenceType, parent: UINavigationController) {
         router?.presentScreen(screen: .foodAndCusinePreferences(preferenceType: preferenceType, parentController: parent))
     }
+    
+    func presnetScreen(screen: Screens, parent: UINavigationController) {
+        router?.presentScreen(screen: .location)
+    }
 }
 
 extension UserPreferencePresenter: UserPreferenceInteractorOutput {
 }
 
 extension UserPreferencePresenter {
-    func saveUserPreference(selectedPreference: SelectedPreference) {
-        interactor?.saveUserPreference(selectedPreference: selectedPreference)
+    func saveUserPreference(loginUserPreferences: LoginUserPreferences) {
+        interactor?.saveUserPreference(loginUserPreferences: loginUserPreferences)
     }
     
     func getUserPreference(userID: String) {
         interactor?.getUserPreference(userID: userID)
     }
-
+    func sendUserPreference(preference: LoginUserPreferences) {
+        interactor?.sendUserPreference(preference: preference)
+    }
+    func updateUserPreference(preference: LoginUserPreferences) {
+        interactor?.updateUserPreference(preference: preference)
+    }
 }

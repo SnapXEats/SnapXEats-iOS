@@ -28,6 +28,10 @@ extension FoodAndCuisinePreferenceInteractor: FoodAndCuisinePreferenceRequestFor
 }
 
 extension FoodAndCuisinePreferenceInteractor: FoodAndCuisinePreferenceWebService {
+    func sendUserPreferences(forPath: String, withParameters: [String : Any]) {
+        
+    }
+    
     
     func getFoodItemPreferences(forPath: String) {
         SnapXEatsApi.snapXRequestObject(path: forPath) { [weak self] (response: DataResponse<FoodPreference>) in

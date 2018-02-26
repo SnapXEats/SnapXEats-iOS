@@ -14,7 +14,7 @@ class PreferenceHelper {
     static let shared = PreferenceHelper ()
     private init() {}
     
-    func saveUserPrefernce(preference: SelectedPreference) {
+    func saveUserPrefernce(preference: LoginUserPreferences) {
         let setPreference = SetUserPreference()
         setPreference.distancePreference = preference.distancePreference
         setPreference.pricingPreference =  preference.pricingPreference.rawValue
@@ -67,7 +67,7 @@ class PreferenceHelper {
                 }
                 return false
             })
-
+            
         }
     }
     
@@ -85,4 +85,38 @@ class PreferenceHelper {
             
         }
     }
+    
+    func getJSONDataUserPrefernce(prefernce: SetUserPreference) -> [String: Any] {
+        return [PreferecneConstant.restaurant_rating: prefernce.ratingPreference,
+                PreferecneConstant.restaurant_price: prefernce.pricingPreference,
+                PreferecneConstant.restaurant_distance: prefernce.distancePreference,
+                PreferecneConstant.sort_by_rating: prefernce.sortByPreference == 0 ? true : false,
+                PreferecneConstant.sort_by_distance: prefernce.sortByPreference == 1 ? true : false,
+                PreferecneConstant.user_cuisine_preferences: getJSONDataCuisinePrefernce(cuisinePrerferecne: prefernce.cuisinePreference),
+                PreferecneConstant.user_food_preferences: getJSONDataFoodPrefernce(foodPrerferecne: prefernce.foodPreference),
+        ]
+    }
+    
+    private func getJSONDataCuisinePrefernce(cuisinePrerferecne: List<UserCuisinePreference>) -> [[String:Any]] {
+        var cuisinePref = [[String:Any]]()
+        for  cuisine in cuisinePrerferecne {
+            let pref: [String: Any] = [PreferecneConstant.food_type_info_id : cuisine.Id,
+                                       PreferecneConstant.is_food_like : cuisine.favourite,
+                                       PreferecneConstant.is_food_favourite : cuisine.like]
+            cuisinePref.append(pref)
+        }
+        return cuisinePref
+    }
+    
+    private func getJSONDataFoodPrefernce(foodPrerferecne: List<UserFoodPreference>) -> [[String:Any]] {
+        var foodPref = [[String:Any]]()
+        for  food in foodPrerferecne {
+            let pref: [String: Any] = [PreferecneConstant.food_type_info_id : food.Id,
+                                       PreferecneConstant.is_food_like : food.favourite,
+                                       PreferecneConstant.is_food_favourite : food.like]
+            foodPref.append(pref)
+        }
+        return foodPref
+    }
 }
+
