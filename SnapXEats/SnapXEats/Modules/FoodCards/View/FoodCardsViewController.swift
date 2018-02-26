@@ -153,21 +153,28 @@ extension FoodCardsViewController {
     }
     
     private func rightSwipeActionForIndex(index: Int) {
+        //Add FoodCard to Liked items List
+        let userId = LoginUserPreferences.shared.loginUserID
+        let userFoodCard = createUserFoodCardItem(fromIndex: index)
+        FoodCardActions.addToLikedList(foodCardItem: userFoodCard, userID: userId)
+        
+        // Goto Restaurant Details page with selected Foodcard
         let currentFoodCard = foodCards[index]
         gotoRestaurantDetailsForFoodCard(foodCard: currentFoodCard)
     }
     
     private func leftSwipeActionForIndex(index: Int) {
-        // Left Swipe Action
+        //Add FoodCard to DisLiked items List
+        let userId = LoginUserPreferences.shared.loginUserID
+        let userFoodCard = createUserFoodCardItem(fromIndex: index)
+        FoodCardActions.addToDisLikedList(foodCardItem: userFoodCard, userID: userId)
     }
     
     private func upSwipeActionForIndex(index: Int) {
-        // Up Swipe Action
-        let currentFoodCard = foodCards[index]
+        //Add FoodCard to Wishlist
         let userId = LoginUserPreferences.shared.loginUserID
-        let foodCard = UserFoodCard()
-        foodCard.Id = currentFoodCard.id
-        FoodCardActions.addToWishList(foodCardItem: foodCard, userID: userId)
+        let userFoodCard = createUserFoodCardItem(fromIndex: index)
+        FoodCardActions.addToWishList(foodCardItem: userFoodCard, userID: userId)
     }
     
     private func gotoRestaurantDetailsForFoodCard(foodCard: FoodCard) {
@@ -176,5 +183,12 @@ extension FoodCardsViewController {
             let selectedRestaurant = foodCard.restaurant
             presenter?.gotoRestaurantDetails(selectedRestaurant: selectedRestaurant, parent: parent)
         }
+    }
+    
+    private func createUserFoodCardItem(fromIndex index: Int) -> UserFoodCard {
+        let currentFoodCard = foodCards[index]
+        let foodCard = UserFoodCard()
+        foodCard.Id = currentFoodCard.id
+        return foodCard
     }
 }
