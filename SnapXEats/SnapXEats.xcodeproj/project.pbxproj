@@ -668,15 +668,6 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
-		9D2C484B2020709600FD8B1C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				9D3FC4D72011C94A001A4264 /* CuisinePreference.swift */,
-				9D2C484C202073A700FD8B1C /* SelectedPreference.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		9D3FC4DD20120BBC001A4264 /* CuisineCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1001,6 +992,8 @@
 		9D8E88DA1FFD28C50066A1D9 /* Preference */ = {
 			isa = PBXGroup;
 			children = (
+				9D3FC4D72011C94A001A4264 /* CuisinePreference.swift */,
+				9D2C484C202073A700FD8B1C /* SelectedPreference.swift */,
 				7E791F1B2032D8D600FA887D /* PreferenceItem.swift */,
 				9D0D7151203ED8810077FA7A /* UserPreference.swift */,
 			);
@@ -1217,7 +1210,6 @@
 		9DB02A6A2010805F0061FC0C /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
-				9D2C484B2020709600FD8B1C /* Model */,
 				9DB02A6B2010805F0061FC0C /* LocationInteractor.swift */,
 			);
 			path = Interactor;

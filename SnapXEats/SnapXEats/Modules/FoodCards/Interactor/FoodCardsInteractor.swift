@@ -21,16 +21,18 @@ class FoodCardsInteractor {
 }
 
 extension FoodCardsInteractor: FoodCardsRequestFomatter {
-    func sendFoodCardRequest(selectedPreferences: SelectedPreference) {
-        // For testing this values are hardcoded
-        let lat = selectedPreferences.getLatitude()
-        
-        let requestParameter: [String: Any] = [
-            SnapXEatsWebServiceParameterKeys.latitude  : lat.0, //selectedPreferences?.location.latitude ?? 0.0,
-            SnapXEatsWebServiceParameterKeys.longitude : lat.1,// selectedPreferences?.location.longitude ?? 0.0,
-            SnapXEatsWebServiceParameterKeys.cuisineArray : selectedPreferences.selectedCuisine
-        ]
-        getFoodCardDishesRequest(forPath: SnapXEatsWebServicePath.dishesURL, withParameters: requestParameter)
+    func sendFoodCardRequest(selectedPreference: SelectedPreference) {
+        let loginPreference = selectedPreference.loginUserPreference
+        let paraMeter = loginPreference.isLoggedIn ? createParameterLoggedInUser () : createParameterNonLoggedInUser()
+        getFoodCardDishesRequest(forPath: SnapXEatsWebServicePath.dishesURL, withParameters: paraMeter)
+    }
+    
+    private func createParameterLoggedInUser() -> [String: Any] {
+        return PreferenceHelper.shared.createParameterLoggedInUser()
+    }
+    
+    private func createParameterNonLoggedInUser() -> [String: Any] {
+         return PreferenceHelper.shared.createParameterNonLoggedInUser()
     }
     
     func sendUserGestures(gestures: [String: Any]) {

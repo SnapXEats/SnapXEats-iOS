@@ -14,9 +14,9 @@ class SetUserPreference: Object {
     
     @objc dynamic var userID = SnapXEatsConstant.emptyString
     @objc dynamic var ratingPreference = 0
-    @objc dynamic var pricingPreference = 0
+    @objc dynamic var pricingPreference = 1 // Default is 1 auto
     @objc dynamic var sortByPreference = 0
-    @objc dynamic var distancePreference = 0 // 0 is same as Auto. Other distances are in miles
+    @objc dynamic var distancePreference = 1 // default distance in 1 Mile
     let foodPreference = List<UserFoodPreference>()
     let cuisinePreference = List<UserCuisinePreference>()
     
@@ -89,14 +89,15 @@ class SetUserPreference: Object {
     }
 }
 
-class UserFoodPreference: Object {
+class Prefernces: Object {
     @objc dynamic var Id: String = SnapXEatsConstant.emptyString
     @objc dynamic var like = false
     @objc dynamic var favourite = false
+    @objc dynamic var preferenceId = 0
 }
 
-class UserCuisinePreference: Object {
-    @objc dynamic var Id: String = SnapXEatsConstant.emptyString
-    @objc dynamic var like = false
-    @objc dynamic var favourite = false
+class UserFoodPreference: Prefernces {
+}
+
+class UserCuisinePreference: Prefernces {
 }

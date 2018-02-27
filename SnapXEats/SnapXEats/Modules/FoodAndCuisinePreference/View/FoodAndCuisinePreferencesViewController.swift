@@ -18,7 +18,7 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
     var presenter: FoodAndCuisinePreferencePresentation?
     var preferenceItems = [PreferenceItem]()
     let loginUserPreferences = LoginUserPreferences.shared
-    
+    var isDirtyPreferecne = false
     @IBOutlet weak var preferencesCollectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -39,10 +39,9 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
             preferenceItems = result.cuisineList
             getSavedPreferecne()
         } else if let result = result as? Bool, result == true {
-             hideLoading()
-             preferencesCollectionView.reloadData()
+            hideLoading()
+            preferencesCollectionView.reloadData()
         }
-        
     }
     
     @IBAction func doneButtonAction(_: Any) {
@@ -51,11 +50,21 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
     }
     
     private func savePreference() {
-        presenter?.savePreferecne(type: preferenceType, usierID: loginUserPreferences.loginUserID, preferencesItems: preferenceItems)
+        if loginUserPreferences.isLoggedIn && isDirtyPreferecne {
+            presenter?.savePreferecne(type: preferenceType, usierID: loginUserPreferences.loginUserID, preferencesItems: preferenceItems)
+        } else {
+            savePrefernceData()
+        }
     }
     
     private func getSavedPreferecne() {
-        presenter?.getSavedPreferecne(usierID: loginUserPreferences.loginUserID, type: preferenceType, preferenceItems: preferenceItems)
+        if loginUserPreferences.isLoggedIn {
+            presenter?.getSavedPreferecne(usierID: loginUserPreferences.loginUserID, type: preferenceType, preferenceItems: preferenceItems)
+        } else {
+            hideLoading()
+            loadPrefernceData()
+            preferencesCollectionView.reloadData()
+        }
     }
     @IBAction func resetButtonAction(_: Any) {
         for item in preferenceItems {
@@ -68,6 +77,124 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
     private func getPreferences() {
         showLoading()
         presenter?.preferenceItemRequest(preferenceType: preferenceType)
+    }
+    
+    private func loadPrefernceData() {
+        if preferenceItems.count > 0 {
+            preferenceType == .cuisine ? loadCuisineData() : loadFoodData()
+        }
+    }
+    
+    private func savePrefernceData() {
+        if preferenceItems.count > 0 && isDirtyPreferecne {
+            preferenceType == .cuisine ? updateCuisineData() : updateFoodData()
+             loginUserPreferences.isDirtyPreference = true
+             isDirtyPreferecne = false
+        }
+    }
+    
+    private func loadCuisineData() {
+        for cuisineData in loginUserPreferences.cuisinePreference {
+            preferenceItems.filter({ (preference) -> Bool in
+                if cuisineData.itemID == preference.itemID && (cuisineData.isLiked || cuisineData.isFavourite) {
+                    preference.isLiked = cuisineData.isLiked
+                    preference.isFavourite = cuisineData.isFavourite
+                    return true
+                }
+                return false
+            })
+        }
+    }
+    
+    private func loadFoodData() {
+        for foodData in loginUserPreferences.foodPreference {
+            preferenceItems.filter({ (preference) -> Bool in
+                if foodData.itemID == preference.itemID && (foodData.isLiked || foodData.isFavourite) {
+                    preference.isLiked = foodData.isLiked
+                    preference.isFavourite = foodData.isFavourite
+                    return true
+                }
+                return false
+            })
+        }
+    }
+    
+    private func updateFoodData() {
+        if isDirtyPreferecne {
+            if loginUserPreferences.foodPreference.count > 0 {
+                for foodPreference in loginUserPreferences.foodPreference {
+                    preferenceItems.filter({ (preference) -> Bool in
+                        guard  let Id = preference.itemID, foodPreference.itemID == Id else {
+                            if preference.isLiked || preference.isFavourite {
+                                let foodItem = FoodItem()
+                                foodItem.itemID = preference.itemID ?? ""
+                                foodItem.isLiked = preference.isLiked
+                                foodItem.isFavourite = preference.isFavourite
+                                loginUserPreferences.foodPreference.append(foodItem)
+                            }
+                            return false
+                        }
+                        foodPreference.isLiked = preference.isLiked
+                        foodPreference.isFavourite = preference.isFavourite
+                        return true
+                    })
+                    
+                }
+            } else {
+                saveFoodData() //This is for first time user after skip
+            }
+        }
+    }
+    
+    private func saveFoodData() {
+        for preference in preferenceItems {
+            if let Id = preference.itemID, preference.isLiked || preference.isFavourite {
+                let foodItem = FoodItem()
+                foodItem.itemID = Id
+                foodItem.isLiked = preference.isLiked
+                foodItem.isFavourite = preference.isFavourite
+                loginUserPreferences.foodPreference.append(foodItem)
+            }
+        }
+    }
+    
+    private func updateCuisineData() {
+        if isDirtyPreferecne {
+            if loginUserPreferences.cuisinePreference.count > 0 {
+                for cuisinePrefercne in loginUserPreferences.cuisinePreference {
+                    preferenceItems.filter({ (preference) -> Bool in
+                        guard  let Id = preference.itemID, cuisinePrefercne.itemID == Id else {
+                            if preference.isLiked || preference.isFavourite {
+                                let cuisineItem = CuisineItem()
+                                cuisineItem.itemID = preference.itemID ?? ""
+                                cuisineItem.isLiked = preference.isLiked
+                                cuisineItem.isFavourite = preference.isFavourite
+                                loginUserPreferences.cuisinePreference.append(cuisineItem)
+                            }
+                            return false
+                        }
+                        cuisinePrefercne.isLiked = preference.isLiked
+                        cuisinePrefercne.isFavourite = preference.isFavourite
+                        return true
+                    })
+                    
+                }
+            } else {
+                saveCuisineData() //This is for first time user after skip
+            }
+        }
+    }
+    
+    private func saveCuisineData() {
+        for preference in preferenceItems {
+            if let Id = preference.itemID, preference.isLiked || preference.isFavourite {
+                let cuisineItem = CuisineItem()
+                cuisineItem.itemID = Id
+                cuisineItem.isLiked = preference.isLiked
+                cuisineItem.isFavourite = preference.isFavourite
+                loginUserPreferences.cuisinePreference.append(cuisineItem)
+            }
+        }
     }
 }
 
@@ -110,7 +237,7 @@ extension FoodAndCuisinePreferencesViewController: FoodAndCuisinePreferenceView 
                 item.isFavourite = false
                 preferenceItems[selectedIndexPath.row] = item
                 preferencesCollectionView.reloadItems(at: [selectedIndexPath])
-                loginUserPreferences.isDirtyPreference = true
+                isDirtyPreferecne = true
             }
         }
     }
@@ -124,7 +251,7 @@ extension FoodAndCuisinePreferencesViewController: FoodAndCuisinePreferenceView 
             item.isFavourite = true
             preferenceItems[selectedIndexPath.row] = item
             preferencesCollectionView.reloadItems(at: [selectedIndexPath])
-            loginUserPreferences.isDirtyPreference = true
+            isDirtyPreferecne = true
         }
     }
 }
@@ -152,6 +279,7 @@ extension FoodAndCuisinePreferencesViewController: UICollectionViewDelegate, UIC
         let item = preferenceItems[button.tag]
         item.isLiked = false
         item.isFavourite = false
+        isDirtyPreferecne = true
         preferenceItems[button.tag] = item
         preferencesCollectionView.reloadItems(at: [indexPath])
     }

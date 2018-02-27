@@ -12,6 +12,8 @@ import RealmSwift
 class PreferenceHelper {
     
     static let shared = PreferenceHelper ()
+    var selectedPreferecne = SelectedPreference.shared
+    var loginPreferecne = SelectedPreference.shared.loginUserPreference
     private init() {}
     
     func isFoodPreferenceSet(foodPreference: List<UserFoodPreference>) -> Bool {
@@ -37,7 +39,7 @@ class PreferenceHelper {
         setPreference.distancePreference = preference.distancePreference
         setPreference.pricingPreference =  preference.pricingPreference.rawValue
         setPreference.ratingPreference = preference.ratingPreference?.rawValue ?? 0
-        setPreference.sortByPreference = preference.sortByPreference?.rawValue ?? 0
+        setPreference.sortByPreference = preference.sortByPreference.rawValue
         setPreference.userID = preference.loginUserID
         SetUserPreference.saveUserPrefernce(prefernce: setPreference)
     }
@@ -50,28 +52,50 @@ class PreferenceHelper {
         let foodPreferences = List<UserFoodPreference>()
         for preferenceItem in preferencesItems {
             let foodPreference = UserFoodPreference()
-            if let itemId = preferenceItem.itemID {
+            if let itemId = preferenceItem.itemID, preferenceItem.isLiked == true || preferenceItem.isFavourite == true {
                 foodPreference.Id = itemId
                 foodPreference.like = preferenceItem.isLiked
                 foodPreference.favourite = preferenceItem.isFavourite
+                foodPreference.preferenceId = preferenceItem.preferencesId
                 foodPreferences.append(foodPreference)
+                saveFoodPreferecne(foodPref: foodPreference)
             }
         }
         SetUserPreference.updateFoodPrefernce(userID: usierID, foodPreference: foodPreferences)
+    }
+    
+    private func saveCuisinePreferecne(cuisinePreferecne: UserCuisinePreference) {
+        let cusinePrefercne: CuisineItem = CuisineItem()
+        cusinePrefercne.itemID = cuisinePreferecne.Id
+        cusinePrefercne.isLiked = cuisinePreferecne.like
+        cusinePrefercne.isFavourite = cuisinePreferecne.favourite
+        cusinePrefercne.preferencesId = cuisinePreferecne.preferenceId
+        loginPreferecne.cuisinePreference.append(cusinePrefercne)
     }
     
     func updateCuisinePreference(usierID: String, preferencesItems: [PreferenceItem]) {
         let cuisinePreferences = List<UserCuisinePreference>()
         for preferenceItem in preferencesItems {
             let cuisinePreference = UserCuisinePreference()
-            if let itemId = preferenceItem.itemID {
+            if let itemId = preferenceItem.itemID, preferenceItem.isLiked == true || preferenceItem.isFavourite == true {
                 cuisinePreference.Id = itemId
                 cuisinePreference.like = preferenceItem.isLiked
                 cuisinePreference.favourite = preferenceItem.isFavourite
+                cuisinePreference.preferenceId = preferenceItem.preferencesId
                 cuisinePreferences.append(cuisinePreference)
+                saveCuisinePreferecne(cuisinePreferecne: cuisinePreference) 
             }
         }
         SetUserPreference.updateCuisinePrefernce(userID: usierID, cuisinePreference: cuisinePreferences)
+    }
+    
+    private func saveFoodPreferecne(foodPref: UserFoodPreference) {
+        let fooPrefercne: FoodItem = FoodItem()
+        fooPrefercne.itemID = foodPref.Id
+        fooPrefercne.isLiked = foodPref.like
+        fooPrefercne.isFavourite = foodPref.favourite
+        fooPrefercne.preferencesId = foodPref.preferenceId
+        loginPreferecne.foodPreference.append(fooPrefercne)
     }
     
     func setSavedFoodPrefernce(savedPrefernce: SetUserPreference, preferenceItems: [PreferenceItem]){
@@ -81,6 +105,7 @@ class PreferenceHelper {
                 if  foodPrefernce.Id == preferenceItem.itemID {
                     preferenceItem.isLiked = foodPrefernce.like
                     preferenceItem.isFavourite = foodPrefernce.favourite
+                    preferenceItem.preferencesId = foodPrefernce.preferenceId
                     return true
                 }
                 return false
@@ -96,6 +121,7 @@ class PreferenceHelper {
                 if  cuisinePreference.Id == preferenceItem.itemID {
                     preferenceItem.isLiked = cuisinePreference.like
                     preferenceItem.isFavourite = cuisinePreference.favourite
+                    preferenceItem.preferencesId = cuisinePreference.preferenceId
                     return true
                 }
                 return false
@@ -104,37 +130,115 @@ class PreferenceHelper {
         }
     }
     
-    func getJSONDataUserPrefernce(prefernce: SetUserPreference) -> [String: Any] {
-        return [PreferecneConstant.restaurant_rating: prefernce.ratingPreference,
-                PreferecneConstant.restaurant_price: prefernce.pricingPreference,
-                PreferecneConstant.restaurant_distance: prefernce.distancePreference,
-                PreferecneConstant.sort_by_rating: prefernce.sortByPreference == 0 ? true : false,
-                PreferecneConstant.sort_by_distance: prefernce.sortByPreference == 1 ? true : false,
-                PreferecneConstant.user_cuisine_preferences: getJSONDataCuisinePrefernce(cuisinePrerferecne: prefernce.cuisinePreference),
-                PreferecneConstant.user_food_preferences: getJSONDataFoodPrefernce(foodPrerferecne: prefernce.foodPreference),
+    func getJSONDataUserPrefernce() -> [String: Any] {
+        return [PreferecneConstant.restaurant_rating: loginPreferecne.ratingPreference?.rawValue ?? 0,
+                PreferecneConstant.restaurant_price: loginPreferecne.pricingPreference.rawValue,
+                PreferecneConstant.restaurant_distance: loginPreferecne.distancePreference,
+                PreferecneConstant.sort_by_rating: loginPreferecne.sortByPreference.rawValue == 0 ? true : false,
+                PreferecneConstant.sort_by_distance: loginPreferecne.sortByPreference.rawValue == 1 ? true : false,
+                PreferecneConstant.user_cuisine_preferences: getJSONDataCuisinePrefernce(),
+                PreferecneConstant.user_food_preferences: getJSONDataFoodPrefernce(),
         ]
     }
     
-    private func getJSONDataCuisinePrefernce(cuisinePrerferecne: List<UserCuisinePreference>) -> [[String:Any]] {
+    
+    private func getJSONDataCuisinePrefernce() -> [[String:Any]] {
         var cuisinePref = [[String:Any]]()
-        for  cuisine in cuisinePrerferecne {
-            let pref: [String: Any] = [PreferecneConstant.food_type_info_id : cuisine.Id,
-                                       PreferecneConstant.is_food_like : cuisine.favourite,
-                                       PreferecneConstant.is_food_favourite : cuisine.like]
+        for  cuisine in loginPreferecne.cuisinePreference {
+            let pref: [String: Any] = [PreferecneConstant.food_type_info_id : cuisine.itemID ?? "",
+                                       PreferecneConstant.is_food_like : cuisine.isLiked,
+                                       PreferecneConstant.is_food_favourite : cuisine.isFavourite]
             cuisinePref.append(pref)
         }
         return cuisinePref
     }
     
-    private func getJSONDataFoodPrefernce(foodPrerferecne: List<UserFoodPreference>) -> [[String:Any]] {
+    private func getJSONDataFoodPrefernce() -> [[String:Any]] {
         var foodPref = [[String:Any]]()
-        for  food in foodPrerferecne {
-            let pref: [String: Any] = [PreferecneConstant.food_type_info_id : food.Id,
-                                       PreferecneConstant.is_food_like : food.favourite,
-                                       PreferecneConstant.is_food_favourite : food.like]
+        for  food in loginPreferecne.foodPreference {
+            let pref: [String: Any] = [PreferecneConstant.food_type_info_id : food.itemID ?? "",
+                                       PreferecneConstant.is_food_like : food.isLiked,
+                                       PreferecneConstant.is_food_favourite : food.isFavourite]
             foodPref.append(pref)
         }
         return foodPref
+    }
+    
+    private func getFoodPreferenceIdArray() -> [String] {
+        var preferecne = [String]()
+        for food in loginPreferecne.foodPreference {
+            if let id = food.itemID {
+                preferecne.append(id)
+            }
+        }
+        return preferecne
+    }
+    
+    private func getLoggedInUserFoodPreferenceIdArray(foodPreferecne: List<UserFoodPreference>) -> [String] {
+        var preferecne = [String]()
+        for food in foodPreferecne {
+            preferecne.append(food.Id)
+        }
+        return preferecne
+    }
+    
+    private func getNonLoggedInUserFoodPreferenceIdArray(foodPreferecne: [FoodItem]) -> [String] {
+        var preferecne = [String]()
+        for food in foodPreferecne {
+            if let id = food.itemID {
+                preferecne.append(id)
+            }
+        }
+        return preferecne
+    }
+    
+    private func getCuisinePreferenceIdArray() -> [String] {
+        var preferecne = [String]()
+        for cuisine in loginPreferecne.cuisinePreference {
+            if let id = cuisine.itemID {
+                preferecne.append(id)
+            }
+        }
+        return preferecne
+    }
+    
+    private func getpriceNonLoogedInPrefercne(value: Int) -> Int {
+        return loginPreferecne.pricingPreference.rawValue - 1  // The index start in view from 1 but server need it from 0 and in view defualt index for any Tag for view start with 0 and it was creating problem
+    }
+    
+     func createParameterLoggedInUser() -> [String: Any] {
+        let lat = selectedPreferecne.getLatitude()
+        
+        if let storedPrefernce = getUserPrefernce(userID: loginPreferecne.loginUserID) {
+            return [
+                SnapXEatsWebServiceParameterKeys.latitude  : lat.0, //selectedPreferences?.location.latitude ?? 0.0,
+                SnapXEatsWebServiceParameterKeys.longitude : lat.1,// selectedPreferences?.location.longitude ?? 0.0,
+                PreferecneConstant.restaurant_distance: storedPrefernce.distancePreference,
+                PreferecneConstant.restaurant_price: getpriceNonLoogedInPrefercne(value: storedPrefernce.pricingPreference),
+                PreferecneConstant.restaurant_rating: storedPrefernce.ratingPreference,
+                PreferecneConstant.sort_by_distance: storedPrefernce.sortByPreference == 0 ? true : false,
+                PreferecneConstant.sort_by_rating: storedPrefernce.sortByPreference == 1 ? true : false,
+                SnapXEatsWebServiceParameterKeys.cuisineArray : selectedPreferecne.selectedCuisine,
+                SnapXEatsWebServiceParameterKeys.foodArray:getLoggedInUserFoodPreferenceIdArray(foodPreferecne: storedPrefernce.foodPreference)
+                
+            ]
+        }
+        return [:]
+    }
+    
+    func createParameterNonLoggedInUser() -> [String: Any] {
+        let lat = selectedPreferecne.getLatitude()
+            return [
+                SnapXEatsWebServiceParameterKeys.latitude  : lat.0, //selectedPreferences?.location.latitude ?? 0.0,
+                SnapXEatsWebServiceParameterKeys.longitude : lat.1,// selectedPreferences?.location.longitude ?? 0.0,
+                PreferecneConstant.restaurant_distance: loginPreferecne.distancePreference,
+                PreferecneConstant.restaurant_price: getpriceNonLoogedInPrefercne(value: loginPreferecne.pricingPreference.rawValue),
+                PreferecneConstant.restaurant_rating: loginPreferecne.ratingPreference?.rawValue ?? 0,
+                PreferecneConstant.sort_by_distance: loginPreferecne.sortByPreference.rawValue == 0 ? true : false,
+                PreferecneConstant.sort_by_rating: loginPreferecne.sortByPreference.rawValue == 1 ? true : false, // default true for distance
+                SnapXEatsWebServiceParameterKeys.cuisineArray : selectedPreferecne.selectedCuisine,
+                SnapXEatsWebServiceParameterKeys.foodArray: getNonLoggedInUserFoodPreferenceIdArray(foodPreferecne: loginPreferecne.foodPreference)
+            ]
     }
 }
 
