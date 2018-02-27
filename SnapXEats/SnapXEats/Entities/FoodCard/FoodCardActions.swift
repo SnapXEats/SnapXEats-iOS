@@ -125,6 +125,19 @@ class FoodCardActions: Object {
             }
         }
     }
+    
+    static func resetLocalFoodCardActions(userID: String) {
+        if userID != SnapXEatsConstant.emptyString {
+            if let currentFoodCardActions = getCurrentActionsForUser(userID: userID) {
+            
+                let realm = try! Realm()
+                try! realm.write {
+                    currentFoodCardActions.likedItems.removeAll()
+                    currentFoodCardActions.disLikedItems.removeAll()
+                }
+            }
+        }
+    }
 }
 
 class UserFoodCard: Object {

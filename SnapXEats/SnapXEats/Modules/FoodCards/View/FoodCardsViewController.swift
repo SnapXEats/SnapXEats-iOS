@@ -43,9 +43,8 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     
     @IBAction func undoButtonAction(_ sender: Any) {
         kolodaView.revertAction()
-        let userId = LoginUserPreferences.shared.loginUserID
         let userFoodCard = createUserFoodCardItem(fromIndex: kolodaView.currentCardIndex)
-        FoodCardActions.removeFromDislikeList(foodCardItem: userFoodCard, userID: userId)
+        FoodCardActionHelper.shared.removeFromDislikeList(foodCardItem: userFoodCard)
     }
     
     @IBAction func disLikeButtonAction(_ sender: Any) {
@@ -88,6 +87,7 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     override func  success(result: Any?) {
         //selectedPrefernce?.resetData() // Reset the data once request completed
         if let _ = result as? Bool {
+            FoodCardActionHelper.shared.resetLocalFoodCardActions()
             presenter?.getFoodCards(selectedPreferences: selectedPrefernce!)
         } else if let dishInfo = result as?  DishInfo, let restaurants = dishInfo.restaurants, restaurants.count > 0  {
             setFoodCardDetails(restaurants: restaurants)
@@ -166,7 +166,7 @@ extension FoodCardsViewController {
         if loadFoodCard {
             showLoading()
             // Send Food Card Gestures Request First if there are any Gestures pending and then Load Food cards
-            if let foodCardActions = FoodCardActions.getCurrentActionsForUser(userID: LoginUserPreferences.shared.loginUserID) {
+            if let foodCardActions = FoodCardActionHelper.shared.getCurrentActionsForUser() {
                 sendUserGesturesToServer(foodCardActions: foodCardActions)
             } else {
                 presenter?.getFoodCards(selectedPreferences: selectedPrefernce!)
@@ -181,9 +181,8 @@ extension FoodCardsViewController {
     
     private func rightSwipeActionForIndex(index: Int) {
         //Add FoodCard to Liked items List
-        let userId = LoginUserPreferences.shared.loginUserID
         let userFoodCard = createUserFoodCardItem(fromIndex: index)
-        FoodCardActions.addToLikedList(foodCardItem: userFoodCard, userID: userId)
+        FoodCardActionHelper.shared.addToLikedList(foodCardItem: userFoodCard)
         
         // Goto Restaurant Details page with selected Foodcard
         let currentFoodCard = foodCards[index]
@@ -192,16 +191,14 @@ extension FoodCardsViewController {
     
     private func leftSwipeActionForIndex(index: Int) {
         //Add FoodCard to DisLiked items List
-        let userId = LoginUserPreferences.shared.loginUserID
         let userFoodCard = createUserFoodCardItem(fromIndex: index)
-        FoodCardActions.addToDisLikedList(foodCardItem: userFoodCard, userID: userId)
+        FoodCardActionHelper.shared.addToDisLikedList(foodCardItem: userFoodCard)
     }
     
     private func upSwipeActionForIndex(index: Int) {
         //Add FoodCard to Wishlist
-        let userId = LoginUserPreferences.shared.loginUserID
         let userFoodCard = createUserFoodCardItem(fromIndex: index)
-        FoodCardActions.addToWishList(foodCardItem: userFoodCard, userID: userId)
+        FoodCardActionHelper.shared.addToWishList(foodCardItem: userFoodCard)
     }
     
     private func gotoRestaurantDetailsForFoodCard(foodCard: FoodCard, showMoreInfo: Bool = false) {
