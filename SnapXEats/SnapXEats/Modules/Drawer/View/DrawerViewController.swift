@@ -31,10 +31,11 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
         if loginUserPreference.isLoggedIn {
         let cancel = UIAlertAction(title: SnapXButtonTitle.cancel, style: UIAlertActionStyle.default, handler: nil)
         let Ok = UIAlertAction(title: SnapXButtonTitle.ok, style: UIAlertActionStyle.default, handler:  {[weak self] action in
-            SnapXEatsLoginHelper.shared.deleteLoginData()
+            SnapXEatsLoginHelper.shared.resetData()
             self?.presenter?.presentScreen(screen: .login, drawerState: .closed)})
         UIAlertController.presentAlertInViewController(self, title: AlertTitle.logOutTitle , message: AlertMessage.logOutMessage, actions: [cancel, Ok], completion: nil)
         } else {
+            SnapXEatsLoginHelper.shared.resetData()
             presenter?.presentScreen(screen: .login, drawerState: .closed)
         }
         
