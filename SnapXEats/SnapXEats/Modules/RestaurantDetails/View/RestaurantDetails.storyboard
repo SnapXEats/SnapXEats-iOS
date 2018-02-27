@@ -10,6 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Roboto-Italic.ttf">
+            <string>Roboto-Italic</string>
+        </array>
         <array key="Roboto-Medium.ttf">
             <string>Roboto-Medium</string>
         </array>
@@ -192,6 +195,56 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kBW-nd-luK">
+                                                <rect key="frame" x="0.0" y="382" width="375" height="317"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L28-34-oil">
+                                                        <rect key="frame" x="20" y="0.0" width="61" height="18.5"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
+                                                        <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="20" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OjR-Jx-Bcb">
+                                                        <rect key="frame" x="20" y="26" width="335" height="100"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="100" id="GMS-fu-Jo1"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="2ez-hK-vzS" id="xjY-WC-80g"/>
+                                                            <outlet property="delegate" destination="2ez-hK-vzS" id="Ouh-Ff-Dws"/>
+                                                        </connections>
+                                                    </tableView>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hiz-HJ-Yox">
+                                                        <rect key="frame" x="20" y="143" width="335" height="1"/>
+                                                        <color key="backgroundColor" red="0.88627450980392153" green="0.88627450980392153" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="1" id="gDR-JI-kAH"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo Taken on" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2v-kv-u7H">
+                                                        <rect key="frame" x="20" y="164" width="335" height="14.5"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Italic" family="Roboto" pointSize="12"/>
+                                                        <color key="textColor" red="0.36470588235294116" green="0.36470588235294116" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="OjR-Jx-Bcb" secondAttribute="trailing" constant="20" id="09v-xm-9jJ"/>
+                                                    <constraint firstItem="Hiz-HJ-Yox" firstAttribute="trailing" secondItem="OjR-Jx-Bcb" secondAttribute="trailing" id="38Q-uz-K3M"/>
+                                                    <constraint firstItem="OjR-Jx-Bcb" firstAttribute="top" secondItem="L28-34-oil" secondAttribute="bottom" constant="8" id="5Ad-vj-VJg"/>
+                                                    <constraint firstItem="Z2v-kv-u7H" firstAttribute="trailing" secondItem="Hiz-HJ-Yox" secondAttribute="trailing" id="65n-AF-mL6"/>
+                                                    <constraint firstItem="Z2v-kv-u7H" firstAttribute="top" secondItem="Hiz-HJ-Yox" secondAttribute="bottom" constant="20" id="Dr1-VE-QhC"/>
+                                                    <constraint firstItem="L28-34-oil" firstAttribute="leading" secondItem="kBW-nd-luK" secondAttribute="leading" constant="20" id="IOx-kR-l42"/>
+                                                    <constraint firstItem="Z2v-kv-u7H" firstAttribute="leading" secondItem="Hiz-HJ-Yox" secondAttribute="leading" id="Sgy-T0-8LF"/>
+                                                    <constraint firstItem="Hiz-HJ-Yox" firstAttribute="top" secondItem="OjR-Jx-Bcb" secondAttribute="bottom" constant="17" id="aJM-As-T8G"/>
+                                                    <constraint firstItem="L28-34-oil" firstAttribute="top" secondItem="kBW-nd-luK" secondAttribute="top" id="coQ-fM-0BO"/>
+                                                    <constraint firstItem="OjR-Jx-Bcb" firstAttribute="leading" secondItem="L28-34-oil" secondAttribute="leading" id="kou-ID-XRo"/>
+                                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Z2v-kv-u7H" secondAttribute="bottom" constant="20" id="oaC-Qg-LYw"/>
+                                                    <constraint firstItem="Hiz-HJ-Yox" firstAttribute="leading" secondItem="OjR-Jx-Bcb" secondAttribute="leading" id="z3C-up-Ym5"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -204,6 +257,7 @@
                                             <constraint firstItem="396-eL-bmq" firstAttribute="top" secondItem="UpG-YB-7ky" secondAttribute="bottom" constant="11" id="82k-mk-tO2"/>
                                             <constraint firstAttribute="trailing" secondItem="Ma9-91-AsJ" secondAttribute="trailing" id="8BJ-zC-mfE"/>
                                             <constraint firstItem="FsQ-Zk-rIl" firstAttribute="leading" secondItem="GQn-M8-WrE" secondAttribute="leading" id="CVz-i9-7aS"/>
+                                            <constraint firstAttribute="trailing" secondItem="kBW-nd-luK" secondAttribute="trailing" id="H3j-gy-Pg2"/>
                                             <constraint firstItem="dgd-ax-5Jc" firstAttribute="top" secondItem="Hs4-i9-BwS" secondAttribute="bottom" constant="22" id="JEW-KW-jt4"/>
                                             <constraint firstItem="UpG-YB-7ky" firstAttribute="leading" secondItem="rej-Yn-WrV" secondAttribute="leading" constant="20" id="Jia-c1-6aX"/>
                                             <constraint firstItem="dq6-am-2eX" firstAttribute="leading" secondItem="gPh-m1-gH0" secondAttribute="trailing" constant="10" id="KE3-rm-dbV"/>
@@ -214,12 +268,15 @@
                                             <constraint firstItem="GQn-M8-WrE" firstAttribute="leading" secondItem="UpG-YB-7ky" secondAttribute="leading" id="PXq-SV-XTz"/>
                                             <constraint firstItem="dq6-am-2eX" firstAttribute="trailing" secondItem="642-at-qQE" secondAttribute="trailing" id="Pjc-FW-5ef"/>
                                             <constraint firstItem="396-eL-bmq" firstAttribute="trailing" secondItem="UpG-YB-7ky" secondAttribute="trailing" id="RCO-lG-wfz"/>
+                                            <constraint firstItem="kBW-nd-luK" firstAttribute="leading" secondItem="rej-Yn-WrV" secondAttribute="leading" id="Rsd-Ar-Ssx"/>
                                             <constraint firstAttribute="trailing" secondItem="dgd-ax-5Jc" secondAttribute="trailing" id="TOh-hM-UgF"/>
+                                            <constraint firstItem="kBW-nd-luK" firstAttribute="top" secondItem="gPh-m1-gH0" secondAttribute="bottom" constant="20" id="aOb-5d-NwP"/>
                                             <constraint firstItem="dq6-am-2eX" firstAttribute="centerY" secondItem="gPh-m1-gH0" secondAttribute="centerY" constant="2" id="ahk-Fp-Myi"/>
                                             <constraint firstItem="8Yg-nJ-4xU" firstAttribute="top" secondItem="642-at-qQE" secondAttribute="bottom" constant="20" id="bWc-PJ-BXz"/>
                                             <constraint firstItem="m9O-Xr-Lce" firstAttribute="trailing" secondItem="9nd-dU-MzJ" secondAttribute="trailing" constant="10" id="cC0-Uf-RAg"/>
                                             <constraint firstItem="dgd-ax-5Jc" firstAttribute="leading" secondItem="m9O-Xr-Lce" secondAttribute="leading" id="dG7-CX-NAN"/>
                                             <constraint firstItem="UpG-YB-7ky" firstAttribute="top" secondItem="Ma9-91-AsJ" secondAttribute="bottom" constant="15" id="dZV-Hz-OcT"/>
+                                            <constraint firstAttribute="bottom" secondItem="kBW-nd-luK" secondAttribute="bottom" id="dc4-Ve-g6v"/>
                                             <constraint firstItem="Hs4-i9-BwS" firstAttribute="top" secondItem="8Yg-nJ-4xU" secondAttribute="bottom" constant="7" id="f2t-LP-h27"/>
                                             <constraint firstItem="dgd-ax-5Jc" firstAttribute="leading" secondItem="rej-Yn-WrV" secondAttribute="leading" id="fUr-wC-4r8"/>
                                             <constraint firstItem="U4V-eE-jUb" firstAttribute="top" secondItem="8Yg-nJ-4xU" secondAttribute="top" id="fdn-fT-bBt"/>
@@ -264,6 +321,8 @@
                     <size key="freeformSize" width="375" height="867"/>
                     <connections>
                         <outlet property="durationLabel" destination="y3R-Xp-Zel" id="FNw-Fm-LVU"/>
+                        <outlet property="moreInfoTableView" destination="OjR-Jx-Bcb" id="leW-Wc-LAq"/>
+                        <outlet property="moreInfoView" destination="kBW-nd-luK" id="Atg-6e-ZPO"/>
                         <outlet property="restaurantAddressLabel" destination="396-eL-bmq" id="O6f-p6-Yi0"/>
                         <outlet property="restaurantNameLabel" destination="UpG-YB-7ky" id="QEA-Vq-vdp"/>
                         <outlet property="restaurantTimingButton" destination="642-at-qQE" id="sWu-08-Eu5"/>

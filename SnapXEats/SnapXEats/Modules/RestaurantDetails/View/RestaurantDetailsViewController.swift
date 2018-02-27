@@ -20,6 +20,9 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
     @IBOutlet var restaurantTimingLabel: UILabel!
     @IBOutlet var durationLabel: UILabel!
     
+    @IBOutlet var moreInfoView: UIView!
+    @IBOutlet var moreInfoTableView: UITableView!
+    
     private let weekDays = ["Monday": 1, "Tuesday":2, "Wednesday":3, "Thursday":4, "Friday":5, "Saturday":6, "Sunday":7]
     private let durationTrailingText = " Away"
     private enum restaurantTimingConstants {
@@ -32,6 +35,8 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
     var slideshow =  ImageSlideshow()
     var specialities = [RestaurantSpeciality]()
     var restaurantDetails: RestaurantDetails?
+    var showMoreInfo = false
+    
     private var shouldLoadData: Bool {
         get {
             return checkRechability() && restaurantDetails == nil
@@ -201,11 +206,15 @@ extension RestaurantDetailsViewController: RestaurantDetailsView {
     func initView() {
         customizeNavigationItem(title: SnapXEatsPageTitles.restaurantDetail, isDetailPage: true)
         registerCellForNib()
+        moreInfoView.isHidden =  (showMoreInfo == true) ? false : true
     }
     
     private func registerCellForNib() {
         let nib = UINib(nibName: SnapXEatsNibNames.restaurantSpecialityCollectionViewCell, bundle: nil)
         specialityCollectionView.register(nib, forCellWithReuseIdentifier: SnapXEatsCellResourceIdentifiler.restaurantSpeciality)
+        
+        let tableViewCellNib = UINib(nibName: SnapXEatsNibNames.moreInfoTableViewCell, bundle: nil)
+        moreInfoTableView.register(tableViewCellNib, forCellReuseIdentifier: SnapXEatsCellResourceIdentifiler.moreInfoTableView)
     }
     
     func setupImageSlideshowWithPhotos(photos: [RestaurantPhoto]) {
@@ -225,6 +234,20 @@ extension RestaurantDetailsViewController: RestaurantDetailsView {
         slideshow.currentPageChanged = { (index) in
             self.slideshowCountLabel.text = "\(index+1)/\(inputsources.count)"
         }
+    }
+}
+extension RestaurantDetailsViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: SnapXEatsCellResourceIdentifiler.moreInfoTableView, for: indexPath) as! MoreInfoTableViewCell
+        return cell
     }
 }
 

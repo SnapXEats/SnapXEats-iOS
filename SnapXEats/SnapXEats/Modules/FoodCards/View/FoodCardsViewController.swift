@@ -143,7 +143,7 @@ extension FoodCardsViewController: KolodaViewDelegate, KolodaViewDataSource {
     
     func koloda(_ koloda: KolodaView, didSelectCardAt index: Int) {
         let currentFoodCard = foodCards[index]
-        gotoRestaurantDetailsForFoodCard(foodCard: currentFoodCard)
+        gotoRestaurantDetailsForFoodCard(foodCard: currentFoodCard, showMoreInfo: true)
     }
     
     func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
@@ -204,11 +204,11 @@ extension FoodCardsViewController {
         FoodCardActions.addToWishList(foodCardItem: userFoodCard, userID: userId)
     }
     
-    private func gotoRestaurantDetailsForFoodCard(foodCard: FoodCard) {
+    private func gotoRestaurantDetailsForFoodCard(foodCard: FoodCard, showMoreInfo: Bool = false) {
         // Restaurant Detail Action
         if let parent = self.navigationController {
             let selectedRestaurant = foodCard.restaurant
-            presenter?.gotoRestaurantDetails(selectedRestaurant: selectedRestaurant, parent: parent)
+            presenter?.gotoRestaurantDetails(selectedRestaurant: selectedRestaurant, parent: parent, showMoreInfo: showMoreInfo)
         }
     }
     

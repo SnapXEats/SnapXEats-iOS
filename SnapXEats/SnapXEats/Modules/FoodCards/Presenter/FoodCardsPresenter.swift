@@ -30,8 +30,8 @@ extension FoodCardsPresenter: FoodCardsPresentation {
         router?.presentScreen(screen: .location)
     }
     
-    func gotoRestaurantDetails(selectedRestaurant: Restaurant, parent: UINavigationController) {
-        router?.presentScreen(screen: .restaurantDetails(restaurant: selectedRestaurant, parentController: parent))
+    func gotoRestaurantDetails(selectedRestaurant: Restaurant, parent: UINavigationController, showMoreInfo: Bool) {
+        router?.presentScreen(screen: .restaurantDetails(restaurant: selectedRestaurant, parentController: parent, showMoreInfo: showMoreInfo))
     }
     
     func sendUserGestures(gestures: [String: Any]) {
