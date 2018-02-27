@@ -145,7 +145,8 @@ class SnapXEatsLoginHelper {
         return fbLoggedIn
     }
     
-    func deleteLoginData() {
+    func resetData() {
+        SelectedPreference.shared.reset()
         UserDefaults.standard.removeObject(forKey: SnapXEatsConstant.snapXLoginData)
         UserLogin.deleteStoredLogedInUser()
     }

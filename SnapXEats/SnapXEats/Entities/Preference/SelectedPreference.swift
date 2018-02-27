@@ -41,40 +41,40 @@ class LoginUserPreferences {
     
     var isDirtyPreference = false
     
-     var isLoggedIn = {
+    var isLoggedIn: Bool {
         return SnapXEatsLoginHelper.shared.isUserLoggedIn()
-    }()
+    }
     
-    var loginUserID = {
+    var loginUserID: String {
         return SnapXEatsLoginHelper.shared.getLoggedInUserID()
-    }()
+    }
     
-    var loginServerToken = {
+    var loginServerToken: String? {
         return SnapXEatsLoginHelper.shared.getLoginUserServerToken()
-    }()
+    }
     
-    var fbInstagramAccessToken = {
-        return SnapXEatsLoginHelper.shared.getLoginUserFBInstagramAccessToken()
-    }()
+    var fbInstagramAccessToken: String? {
+        return SnapXEatsLoginHelper.shared.getLoginUserFBInstagramAccessToken() 
+    }
     
-    var firstTimeUser = {
-        return SnapXEatsLoginHelper.shared.firstTimeUser()
-    }()
+    var firstTimeUser: Bool {
+        return SnapXEatsLoginHelper.shared.firstTimeUser() 
+    }
     
     var loggedInUserPreference = { () -> SetUserPreference? in
         let loginUserID =  SnapXEatsLoginHelper.shared.getLoggedInUserID()
         return PreferenceHelper.shared.getUserPrefernce(userID: loginUserID)
     }
     
-//    func reset() {
-//        ratingPreference = nil
-//        pricingPreference = nil
-//        sortByPreference = nil
-//        distancePreference = 0
-//        isDirtyPreference = false
-//        isLoggedIn = false
-//        loginUserID = Snap
-//    }
+    func reset() {
+        ratingPreference = nil
+        pricingPreference = .auto
+        sortByPreference = .distance
+        distancePreference = 1
+        isDirtyPreference = false
+        foodPreference.removeAll()
+        cuisinePreference.removeAll()
+    }
 }
 
 class SelectedPreference {
@@ -87,11 +87,12 @@ class SelectedPreference {
         return (NSDecimalNumber(floatLiteral: lat).decimalValue, NSDecimalNumber(floatLiteral: long).decimalValue)
     }
 
-    func resetData() {
+    func reset() {
         location.latitude = 0.0
         location.longitude = 0.0
-        location.locationName = ""
+        location.locationName = SnapXEatsConstant.emptyString
         selectedCuisine.removeAll()
+        loginUserPreference.reset()
     }
     
     static let shared = SelectedPreference()
