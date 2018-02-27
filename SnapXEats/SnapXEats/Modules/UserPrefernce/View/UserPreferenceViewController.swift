@@ -64,11 +64,16 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
         // Apply Button Action
         if  loginUserPreference.isDirtyPreference {
             saveChanges()
+            if loginUserPreference.isLoggedIn {
                 if  checkRechability() {
                     showLoading()
                     loginUserPreference.firstTimeUser ? presenter?.sendUserPreference(preference: loginUserPreference)
                         : presenter?.updateUserPreference(preference: loginUserPreference)
                 }
+            } else {
+                loginUserPreference.isDirtyPreference = false
+                presentNextScreen()
+            }
         } else {
             presentNextScreen()
         }

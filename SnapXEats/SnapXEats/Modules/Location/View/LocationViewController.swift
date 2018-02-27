@@ -120,7 +120,7 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     private func setCuisinePreferences() {
         for (_, index) in selectedCuisineIndexes.enumerated() {
             let cuisine = cuiseItems[(index as! Int)]
-            selectedPreference.selectedCuisine.append(cuisine.name ?? "")
+            selectedPreference.selectedCuisine.append(cuisine.itemID ?? "")
         }
     }
     

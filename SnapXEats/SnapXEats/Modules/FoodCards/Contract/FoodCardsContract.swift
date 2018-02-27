@@ -24,7 +24,7 @@ protocol FoodCardsPresentation: class {
 }
 
 protocol FoodCardsRequestFomatter: class {
-    func sendFoodCardRequest(selectedPreferences: SelectedPreference)
+    func sendFoodCardRequest(selectedPreference: SelectedPreference)
 }
 
 protocol FoodCardsWebService: class {

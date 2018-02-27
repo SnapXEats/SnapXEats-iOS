@@ -32,9 +32,9 @@ class LoginUserPreferences {
     static let shared = LoginUserPreferences()
     private init() {}
     var ratingPreference: RatingPreferences?
-    var pricingPreference: PricingPreference = .single
-    var sortByPreference: SortByPreference?
-    var distancePreference = 0 // 0 is same as Auto. Other distances are in miles
+    var pricingPreference: PricingPreference = .auto
+    var sortByPreference: SortByPreference = .distance
+    var distancePreference = 1 // default  distances  in 1 miles
     
     var foodPreference = [FoodItem]()
     var cuisinePreference = [CuisineItem]()
@@ -61,6 +61,11 @@ class LoginUserPreferences {
         return SnapXEatsLoginHelper.shared.firstTimeUser()
     }()
     
+    var loggedInUserPreference = { () -> SetUserPreference? in
+        let loginUserID =  SnapXEatsLoginHelper.shared.getLoggedInUserID()
+        return PreferenceHelper.shared.getUserPrefernce(userID: loginUserID)
+    }
+    
 //    func reset() {
 //        ratingPreference = nil
 //        pricingPreference = nil
@@ -75,7 +80,7 @@ class LoginUserPreferences {
 class SelectedPreference {
     var location = SnapXEatsLocation ()
     var selectedCuisine = [String]()
-    
+    var loginUserPreference = LoginUserPreferences.shared
     func getLatitude() -> (Decimal, Decimal) {
         let lat  =  40.4862157
         let long = -74.4518188
