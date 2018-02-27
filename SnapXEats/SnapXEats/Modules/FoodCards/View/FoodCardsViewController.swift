@@ -123,7 +123,7 @@ extension FoodCardsViewController: KolodaViewDelegate, KolodaViewDataSource {
     }
     
     func kolodaSpeedThatCardShouldDrag(_ koloda: KolodaView) -> DragSpeed {
-        return .fast
+        return .moderate
     }
     
     func koloda(_ koloda: KolodaView, allowedDirectionsForIndex index: Int) -> [SwipeResultDirection] {
