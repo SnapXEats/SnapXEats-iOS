@@ -24,8 +24,8 @@ extension DrawerPresenter: DrawerPresentation {
         router?.presentScreen(screen: screen, drawerState: drawerState)
     }
     
-    func presnetScreen(screen: Screens, parent: UINavigationController) {
-        router?.presentScreen(screen: .location)
+    func presnetScreen(screen: Screens) {
+        router?.presentScreen(screen: screen)
     }
 }
 
