@@ -52,7 +52,8 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        showFoodCuisinePreferenceSelectStatus()
+        loginUserPreference.isLoggedIn ? showFoodCuisinePreferenceSelectStatus()
+        : showNonLoggedInFoodCuisinePreferenceSelectStatus()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -90,6 +91,29 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
             cuisinePreferenceSelected.isHidden = true
             foodPreferenceSelected.isHidden = true
         }
+    }
+    
+    private func showNonLoggedInFoodCuisinePreferenceSelectStatus() {
+        cuisinePreferenceSelected.isHidden = isCuisinePrefercneDirty()  == true ? false : true
+        foodPreferenceSelected.isHidden =  isFoodPrefercneDirty() == true ? false : true
+    }
+    
+    private func isFoodPrefercneDirty () -> Bool {
+        for foodPref in loginUserPreference.foodPreference {
+            if foodPref.isLiked || foodPref.isFavourite {
+                return true
+            }
+        }
+        return false
+    }
+    
+    private func isCuisinePrefercneDirty () -> Bool {
+        for cuisinePref in loginUserPreference.cuisinePreference {
+            if cuisinePref.isLiked || cuisinePref.isFavourite {
+                return true
+            }
+        }
+        return false
     }
     
     private func presentNextScreen() {
