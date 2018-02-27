@@ -41,8 +41,20 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
         }
     }
     
-    @IBAction func refreshScreen(_ sender: Any) {
-       // presenter?.refreshFoodCards()
+    @IBAction func undoButtonAction(_ sender: Any) {
+       kolodaView.revertAction()
+    }
+    
+    @IBAction func disLikeButtonAction(_ sender: Any) {
+        kolodaView.swipe(.left)
+    }
+    
+    @IBAction func favouriteButtonAction(_ sender: Any) {
+        kolodaView.swipe(.right)
+    }
+    
+    @IBAction func starButtonAction(_ sender: Any) {
+        kolodaView.swipe(.up)
     }
     
     @IBAction func searchButtonAction(_: Any) {
