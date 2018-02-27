@@ -24,6 +24,7 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     var presenter: FoodCardsPresentation?
     
     @IBOutlet weak var kolodaView: KolodaView!
+    @IBOutlet weak var undoButton: UIButton!
     
     private var locationEnabled: Bool {
         get {
@@ -147,8 +148,11 @@ extension FoodCardsViewController: KolodaViewDelegate, KolodaViewDataSource {
     }
     
     func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
+        undoButton.isEnabled = false
         switch direction {
-        case .left: leftSwipeActionForIndex(index: index)
+        case .left:
+            leftSwipeActionForIndex(index: index)
+            undoButton.isEnabled = true
         case .right: rightSwipeActionForIndex(index: index)
         case .up: upSwipeActionForIndex(index: index)
         default: break
