@@ -10,6 +10,8 @@ import UIKit
 
 class MoreInfoTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var amenityNameLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
