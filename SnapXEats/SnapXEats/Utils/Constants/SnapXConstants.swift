@@ -79,6 +79,7 @@ enum SnapXEatsWebServicePath {
     static let  snapXEatsUser = "/api/v1/users"
     static let  restaurantDetails = "/api/v1/restaurant"
     static let  userPreferene = "/api/v1/userPreferences"
+    static let  userGesture = "/api/v1/userGesture"
 }
 
 enum SnapXEatsImageNames {
@@ -226,5 +227,12 @@ enum PreferecneConstant {
     static let is_cuisine_like = "is_cuisine_like"
     static let is_cuisine_favourite = "is_cuisine_favourite"
     static let user_cuisine_preferences_id = "user_cuisine_preferences_id"
+}
+
+enum UserGestureJSONKeys {
+    static let like_dish_array = "like_dish_array"
+    static let dislike_dish_array = "dislike_dish_array"
+    static let wishlist_dish_array = "wishlist_dish_array"
+    static let restaurant_dish_id = "restaurant_dish_id"
 }
 

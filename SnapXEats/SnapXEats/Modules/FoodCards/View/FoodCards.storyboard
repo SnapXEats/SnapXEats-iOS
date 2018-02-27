@@ -59,7 +59,7 @@
                                         </constraints>
                                         <state key="normal" image="undo"/>
                                         <connections>
-                                            <action selector="refreshScreen:" destination="PVr-ZQ-ZIz" eventType="touchUpInside" id="xZM-DA-Qdb"/>
+                                            <action selector="undoButtonAction:" destination="PVr-ZQ-ZIz" eventType="touchUpInside" id="xuU-BA-wEB"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6O6-Ad-9oa">
@@ -72,6 +72,9 @@
                                         <state key="normal" image="cross">
                                             <color key="titleColor" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="disLikeButtonAction:" destination="PVr-ZQ-ZIz" eventType="touchUpInside" id="f4d-1E-Gfk"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xjo-O2-KrF">
                                         <rect key="frame" x="146" y="3" width="64" height="64"/>
@@ -83,6 +86,9 @@
                                         <state key="normal" image="heart">
                                             <color key="titleColor" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="favouriteButtonAction:" destination="PVr-ZQ-ZIz" eventType="touchUpInside" id="KPG-ac-f79"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUt-w3-E1e">
                                         <rect key="frame" x="224" y="16.5" width="38" height="38"/>
@@ -90,6 +96,9 @@
                                         <state key="normal" title="*" image="star">
                                             <color key="titleColor" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="starButtonAction:" destination="PVr-ZQ-ZIz" eventType="touchUpInside" id="8E7-UA-7Ou"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

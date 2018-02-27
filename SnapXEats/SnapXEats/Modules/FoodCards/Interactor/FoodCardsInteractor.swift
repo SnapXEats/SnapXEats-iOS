@@ -34,6 +34,10 @@ extension FoodCardsInteractor: FoodCardsRequestFomatter {
     private func createParameterNonLoggedInUser() -> [String: Any] {
          return PreferenceHelper.shared.createParameterNonLoggedInUser()
     }
+    
+    func sendUserGestures(gestures: [String: Any]) {
+        sendUserGesturesRequest(forPath: SnapXEatsWebServicePath.userGesture, withParameters: gestures)
+    }
 }
 
 extension FoodCardsInteractor: FoodCardsWebService {
@@ -41,6 +45,16 @@ extension FoodCardsInteractor: FoodCardsWebService {
         SnapXEatsApi.snapXRequestObjectWithParameters(path: forPath, parameters: withParameters) { [weak self](response: DataResponse<DishInfo>) in
             let foodCardsResult = response.result
             self?.restaurantsDetail(data: foodCardsResult)
+        }
+    }
+    
+    func sendUserGesturesRequest(forPath: String, withParameters: [String: Any]) {
+        SnapXEatsApi.snapXPostRequestWithParameters(path: forPath, parameters: withParameters) { [weak self] (response: DefaultDataResponse) in
+            if let statusCode = response.response?.statusCode {
+                self?.userGesturesResult(code: statusCode)
+            } else {
+                self?.output?.response(result: NetworkResult.noInternet)
+            }
         }
     }
 }
@@ -56,7 +70,11 @@ extension FoodCardsInteractor: FoodCardsObjectMapper {
         output?.response(result: NetworkResult.noInternet)
         }
     }
-
+    
+    func userGesturesResult(code: Int) {
+        code == 200 ? output?.response(result: .success(data: true))
+            :output?.response(result: NetworkResult.noInternet)
+    }
 }
 
 

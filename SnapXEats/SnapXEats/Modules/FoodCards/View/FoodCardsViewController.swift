@@ -11,6 +11,7 @@ import UIKit
 import Koloda
 
 struct FoodCard {
+    var id: String
     var name: String
     var imageURL: String
     var restaurant: Restaurant
@@ -40,8 +41,23 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
         }
     }
     
-    @IBAction func refreshScreen(_ sender: Any) {
-       // presenter?.refreshFoodCards()
+    @IBAction func undoButtonAction(_ sender: Any) {
+        kolodaView.revertAction()
+        let userId = LoginUserPreferences.shared.loginUserID
+        let userFoodCard = createUserFoodCardItem(fromIndex: kolodaView.currentCardIndex)
+        FoodCardActions.removeFromDislikeList(foodCardItem: userFoodCard, userID: userId)
+    }
+    
+    @IBAction func disLikeButtonAction(_ sender: Any) {
+        kolodaView.swipe(.left)
+    }
+    
+    @IBAction func favouriteButtonAction(_ sender: Any) {
+        kolodaView.swipe(.right)
+    }
+    
+    @IBAction func starButtonAction(_ sender: Any) {
+        kolodaView.swipe(.up)
     }
     
     @IBAction func searchButtonAction(_: Any) {
@@ -71,7 +87,9 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     
     override func  success(result: Any?) {
         //selectedPrefernce?.resetData() // Reset the data once request completed
-        if let dishInfo = result as?  DishInfo, let restaurants = dishInfo.restaurants, restaurants.count > 0  {
+        if let _ = result as? Bool {
+            presenter?.getFoodCards(selectedPreferences: selectedPrefernce!)
+        } else if let dishInfo = result as?  DishInfo, let restaurants = dishInfo.restaurants, restaurants.count > 0  {
             setFoodCardDetails(restaurants: restaurants)
         }
     }
@@ -81,7 +99,7 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
         for restaurant in restaurants {
              let dishes = restaurant.restaurantDishes
                 for dishitem in dishes {
-                    let foodCard = FoodCard(name: restaurant.restaurant_name!, imageURL: dishitem.dish_image_url!, restaurant: restaurant)
+                    let foodCard = FoodCard(id: dishitem.restaurant_dish_id!, name: restaurant.restaurant_name!, imageURL: dishitem.dish_image_url!, restaurant: restaurant)
                     self.foodCards.append(foodCard)
                 }
         }
@@ -147,21 +165,43 @@ extension FoodCardsViewController {
     func showFoodCard() {
         if loadFoodCard {
             showLoading()
-            presenter?.getFoodCards(selectedPreferences: selectedPrefernce!)
+            // Send Food Card Gestures Request First if there are any Gestures pending and then Load Food cards
+            if let foodCardActions = FoodCardActions.getCurrentActionsForUser(userID: LoginUserPreferences.shared.loginUserID) {
+                sendUserGesturesToServer(foodCardActions: foodCardActions)
+            } else {
+                presenter?.getFoodCards(selectedPreferences: selectedPrefernce!)
+            }
         }
+    }
+
+    private func sendUserGesturesToServer(foodCardActions: FoodCardActions) {
+        let gestureParameters = FoodCardActionHelper.shared.getJSONDataForGestures(foodCardActions: foodCardActions)
+        presenter?.sendUserGestures(gestures: gestureParameters)
     }
     
     private func rightSwipeActionForIndex(index: Int) {
+        //Add FoodCard to Liked items List
+        let userId = LoginUserPreferences.shared.loginUserID
+        let userFoodCard = createUserFoodCardItem(fromIndex: index)
+        FoodCardActions.addToLikedList(foodCardItem: userFoodCard, userID: userId)
+        
+        // Goto Restaurant Details page with selected Foodcard
         let currentFoodCard = foodCards[index]
         gotoRestaurantDetailsForFoodCard(foodCard: currentFoodCard)
     }
     
     private func leftSwipeActionForIndex(index: Int) {
-        // Left Swipe Action
+        //Add FoodCard to DisLiked items List
+        let userId = LoginUserPreferences.shared.loginUserID
+        let userFoodCard = createUserFoodCardItem(fromIndex: index)
+        FoodCardActions.addToDisLikedList(foodCardItem: userFoodCard, userID: userId)
     }
     
     private func upSwipeActionForIndex(index: Int) {
-        // Up Swipe Action
+        //Add FoodCard to Wishlist
+        let userId = LoginUserPreferences.shared.loginUserID
+        let userFoodCard = createUserFoodCardItem(fromIndex: index)
+        FoodCardActions.addToWishList(foodCardItem: userFoodCard, userID: userId)
     }
     
     private func gotoRestaurantDetailsForFoodCard(foodCard: FoodCard) {
@@ -170,5 +210,12 @@ extension FoodCardsViewController {
             let selectedRestaurant = foodCard.restaurant
             presenter?.gotoRestaurantDetails(selectedRestaurant: selectedRestaurant, parent: parent)
         }
+    }
+    
+    private func createUserFoodCardItem(fromIndex index: Int) -> UserFoodCard {
+        let currentFoodCard = foodCards[index]
+        let foodCard = UserFoodCard()
+        foodCard.Id = currentFoodCard.id
+        return foodCard
     }
 }

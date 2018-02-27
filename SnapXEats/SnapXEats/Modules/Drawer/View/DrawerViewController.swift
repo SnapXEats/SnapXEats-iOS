@@ -49,6 +49,12 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
         initView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // To refresh the Wishlist Count on Evrytime Drawer loads
+        navigationOptionTable.reloadData()
+    }
+    
     override func success(result: Any?) {
         if let _ = result as? Bool {
             loginUserPreference.isDirtyPreference = false

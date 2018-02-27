@@ -13,7 +13,6 @@ class NavigationMenuTableViewCell: UITableViewCell {
     @IBOutlet weak var optionLabel: UILabel!
     @IBOutlet weak var wishlistCountView: UIView!
     @IBOutlet weak var wishlistCountLabel: UILabel!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -23,5 +22,8 @@ class NavigationMenuTableViewCell: UITableViewCell {
         wishlistCountView.layer.cornerRadius = 6.0
         optionLabel.text = title
         wishlistCountView.isHidden = !showCount
+        let currentUserId = LoginUserPreferences.shared.loginUserID
+        // Only Retrive wishlist count if it is to be shown(Only for one cell)
+        wishlistCountLabel.text = (showCount == true) ? "\(FoodCardActions.getWishlistCountForUser(userID: currentUserId))" : ""
     }
 }

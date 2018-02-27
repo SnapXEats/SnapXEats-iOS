@@ -33,6 +33,10 @@ extension FoodCardsPresenter: FoodCardsPresentation {
     func gotoRestaurantDetails(selectedRestaurant: Restaurant, parent: UINavigationController) {
         router?.presentScreen(screen: .restaurantDetails(restaurant: selectedRestaurant, parentController: parent))
     }
+    
+    func sendUserGestures(gestures: [String: Any]) {
+        interactor?.sendUserGestures(gestures: gestures)
+    }
 }
 
 extension FoodCardsPresenter: FoodCardsInteractorOutput {
