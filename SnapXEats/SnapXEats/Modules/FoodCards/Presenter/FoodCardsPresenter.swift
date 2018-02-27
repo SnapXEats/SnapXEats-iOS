@@ -23,7 +23,7 @@ class FoodCardsPresenter {
 extension FoodCardsPresenter: FoodCardsPresentation {
     
     func getFoodCards(selectedPreferences: SelectedPreference) {
-        interactor?.sendFoodCardRequest(selectedPreferences: selectedPreferences)
+        interactor?.sendFoodCardRequest(selectedPreference: selectedPreferences)
     }
     
     func refreshFoodCards() {

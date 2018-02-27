@@ -133,6 +133,7 @@ enum SnapXEatsWebServiceParameterKeys {
     static let latitude = "latitude"
     static let longitude = "longitude"
     static let cuisineArray = "cuisineArray"
+    static let foodArray = "foodArray"
     static let authorization = "Authorization"
     static let BearerString = "Bearer "
 }

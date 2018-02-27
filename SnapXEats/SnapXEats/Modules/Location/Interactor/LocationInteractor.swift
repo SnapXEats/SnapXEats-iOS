@@ -32,7 +32,6 @@ extension LocationInteractor: LocationRequestFomatter {
         let requestParameters: [String: Any] = [
             SnapXEatsWebServiceParameterKeys.latitude: lat.0,
             SnapXEatsWebServiceParameterKeys.longitude: lat.1,
-            SnapXEatsWebServiceParameterKeys.authorization: ""
         ]
         getCuisinesRequest(forPath: SnapXEatsWebServicePath.cuisinePreferenceURL, withParameters: requestParameters)
     }
