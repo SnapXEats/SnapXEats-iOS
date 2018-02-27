@@ -15,7 +15,7 @@ protocol DrawerView: BaseView {
 
 protocol DrawerPresentation: DrawerUseCase {
     func presentScreen(screen: Screens, drawerState: KYDrawerController.DrawerState)
-    func presnetScreen(screen: Screens, parent: UINavigationController)
+    func presnetScreen(screen: Screens)
 }
 
 

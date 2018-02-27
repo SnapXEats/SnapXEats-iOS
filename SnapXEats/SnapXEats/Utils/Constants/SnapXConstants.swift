@@ -150,6 +150,8 @@ enum SnapXButtonTitle {
     static let discard = "Discard"
     static let yes = "YES"
     static let notnow = "Not Now"
+    static let loginOut = "Log Out"
+    static let loginIn = "Log In"
 }
 
 enum SnapXEatsAppDefaults {

@@ -28,11 +28,15 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var logoutButton: UIButton!
     
     @IBAction func logoutButtonAction(sender: UIButton) {
+        if loginUserPreference.isLoggedIn {
         let cancel = UIAlertAction(title: SnapXButtonTitle.cancel, style: UIAlertActionStyle.default, handler: nil)
-        let Ok = UIAlertAction(title: SnapXButtonTitle.ok, style: UIAlertActionStyle.default, handler:  {action in
+        let Ok = UIAlertAction(title: SnapXButtonTitle.ok, style: UIAlertActionStyle.default, handler:  {[weak self] action in
             SnapXEatsLoginHelper.shared.deleteLoginData()
-            RootRouter.shared.presentScreen(screens: .login)})
+            self?.presenter?.presentScreen(screen: .login, drawerState: .closed)})
         UIAlertController.presentAlertInViewController(self, title: AlertTitle.logOutTitle , message: AlertMessage.logOutMessage, actions: [cancel, Ok], completion: nil)
+        } else {
+            presenter?.presentScreen(screen: .login, drawerState: .closed)
+        }
         
     }
     
@@ -62,6 +66,8 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
         userImageView.layer.masksToBounds = true
         userImageView.layer.cornerRadius = userImageView.frame.width/2
         navigationOptionTable.tableFooterView = UIView()
+        let text = loginUserPreference.isLoggedIn ? SnapXButtonTitle.loginOut : SnapXButtonTitle.loginIn
+        logoutButton.setTitle(text, for: .normal)
         addUserInfo()
     }
     
