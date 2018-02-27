@@ -22,6 +22,7 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     // MARK: Constants
     var selectedPrefernce: SelectedPreference?
     var presenter: FoodCardsPresentation?
+    var undoCount = 0
     
     @IBOutlet weak var kolodaView: KolodaView!
     @IBOutlet weak var undoButton: UIButton!
@@ -43,9 +44,11 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     }
     
     @IBAction func undoButtonAction(_ sender: Any) {
+        undoCount -= 1
         kolodaView.revertAction()
         let userFoodCard = createUserFoodCardItem(fromIndex: kolodaView.currentCardIndex)
         FoodCardActionHelper.shared.removeFromDislikeList(foodCardItem: userFoodCard)
+        undoButton.isEnabled = undoCount == 0 ? false : true
     }
     
     @IBAction func disLikeButtonAction(_ sender: Any) {
@@ -194,6 +197,7 @@ extension FoodCardsViewController {
     }
     
     private func leftSwipeActionForIndex(index: Int) {
+        undoCount += 1
         //Add FoodCard to DisLiked items List
         let userFoodCard = createUserFoodCardItem(fromIndex: index)
         FoodCardActionHelper.shared.addToDisLikedList(foodCardItem: userFoodCard)
