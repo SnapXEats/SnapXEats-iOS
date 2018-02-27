@@ -42,7 +42,10 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     }
     
     @IBAction func undoButtonAction(_ sender: Any) {
-       kolodaView.revertAction()
+        kolodaView.revertAction()
+        let userId = LoginUserPreferences.shared.loginUserID
+        let userFoodCard = createUserFoodCardItem(fromIndex: kolodaView.currentCardIndex)
+        FoodCardActions.removeFromDislikeList(foodCardItem: userFoodCard, userID: userId)
     }
     
     @IBAction func disLikeButtonAction(_ sender: Any) {

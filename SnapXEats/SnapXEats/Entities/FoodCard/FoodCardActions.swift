@@ -108,6 +108,23 @@ class FoodCardActions: Object {
         }
         return 0
     }
+    
+    static func removeFromDislikeList(foodCardItem: UserFoodCard, userID: String) {
+        if userID != SnapXEatsConstant.emptyString {
+            if let currentFoodCardActions = getCurrentActionsForUser(userID: userID) {
+                let currentDislikedList = currentFoodCardActions.disLikedItems
+    
+                let realm = try! Realm()
+                try! realm.write {
+                    for (index, item) in currentDislikedList.enumerated() {
+                        if item.Id == foodCardItem.Id {
+                            currentDislikedList.remove(at: index)
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 class UserFoodCard: Object {
