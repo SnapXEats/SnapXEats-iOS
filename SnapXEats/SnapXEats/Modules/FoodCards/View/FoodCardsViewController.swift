@@ -19,8 +19,6 @@ struct FoodCard {
 class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     
     // MARK: Constants
-    private let foodCardNibName = "FoodCardView"
-    
     var selectedPrefernce: SelectedPreference?
     var presenter: FoodCardsPresentation?
     
@@ -110,8 +108,12 @@ extension FoodCardsViewController: KolodaViewDelegate, KolodaViewDataSource {
         return .fast
     }
     
+    func koloda(_ koloda: KolodaView, allowedDirectionsForIndex index: Int) -> [SwipeResultDirection] {
+        return [.left, .right, .up]
+    }
+    
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
-        let foodCardView = UINib(nibName: foodCardNibName, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! FoodCardView
+        let foodCardView = UINib(nibName: SnapXEatsNibNames.foodCardView, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! FoodCardView
         foodCardView.setupFoodCardView(CGRect(x: 0, y: 0, width: koloda.frame.width, height: koloda.frame.height), foodCardItem: foodCards[index])
         foodCardView.addShadow()
         return foodCardView
@@ -133,6 +135,10 @@ extension FoodCardsViewController: KolodaViewDelegate, KolodaViewDataSource {
         case .up: upSwipeActionForIndex(index: index)
         default: break
         }
+    }
+    
+    func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
+        return Bundle.main.loadNibNamed(SnapXEatsNibNames.foodCardOverlayView, owner: self, options: nil)?[0] as? foodCardOverlayView
     }
 }
 

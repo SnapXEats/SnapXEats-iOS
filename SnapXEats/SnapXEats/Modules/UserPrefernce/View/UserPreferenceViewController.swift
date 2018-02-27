@@ -40,11 +40,19 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
     @IBOutlet weak var selectCuisineButton: UIButton!
     @IBOutlet weak var selectFoodButton: UIButton!
     
+    @IBOutlet weak var cuisinePreferenceSelected: UIImageView!
+    @IBOutlet weak var foodPreferenceSelected: UIImageView!
+    
     let loginUserPreference = LoginUserPreferences.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        showFoodCuisinePreferenceSelectStatus()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -63,6 +71,19 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
                 }
         } else {
             presentNextScreen()
+        }
+    }
+    
+    private func showFoodCuisinePreferenceSelectStatus() {
+        let userId = loginUserPreference.loginUserID
+        let preferenceHelper = PreferenceHelper.shared
+        
+        if let preference = preferenceHelper.getUserPrefernce(userID: userId) {
+            cuisinePreferenceSelected.isHidden = preferenceHelper.isCuisinePreferenceSet(cuisinePreference: preference.cuisinePreference) ? false : true
+            foodPreferenceSelected.isHidden = preferenceHelper.isFoodPreferenceSet(foodPreference: preference.foodPreference) ? false : true
+        } else {
+            cuisinePreferenceSelected.isHidden = true
+            foodPreferenceSelected.isHidden = true
         }
     }
     
