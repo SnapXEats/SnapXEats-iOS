@@ -72,7 +72,9 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     
     override func  success(result: Any?) {
         //selectedPrefernce?.resetData() // Reset the data once request completed
-        if let dishInfo = result as?  DishInfo, let restaurants = dishInfo.restaurants, restaurants.count > 0  {
+        if let _ = result as? Bool {
+            presenter?.getFoodCards(selectedPreferences: selectedPrefernce!)
+        } else if let dishInfo = result as?  DishInfo, let restaurants = dishInfo.restaurants, restaurants.count > 0  {
             setFoodCardDetails(restaurants: restaurants)
         }
     }
@@ -148,8 +150,18 @@ extension FoodCardsViewController {
     func showFoodCard() {
         if loadFoodCard {
             showLoading()
-            presenter?.getFoodCards(selectedPreferences: selectedPrefernce!)
+            // Send Food Card Gestures Request First if there are any Gestures pending and then Load Food cards
+            if let foodCardActions = FoodCardActions.getCurrentActionsForUser(userID: LoginUserPreferences.shared.loginUserID) {
+                sendUserGesturesToServer(foodCardActions: foodCardActions)
+            } else {
+                presenter?.getFoodCards(selectedPreferences: selectedPrefernce!)
+            }
         }
+    }
+
+    private func sendUserGesturesToServer(foodCardActions: FoodCardActions) {
+        let gestureParameters = FoodCardActionHelper.shared.getJSONDataForGestures(foodCardActions: foodCardActions)
+        presenter?.sendUserGestures(gestures: gestureParameters)
     }
     
     private func rightSwipeActionForIndex(index: Int) {

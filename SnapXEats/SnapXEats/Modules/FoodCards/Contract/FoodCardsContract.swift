@@ -21,18 +21,23 @@ protocol FoodCardsPresentation: class {
     func refreshFoodCards()
     func getFoodCards(selectedPreferences: SelectedPreference)
     func gotoRestaurantDetails(selectedRestaurant: Restaurant, parent: UINavigationController)
+    func sendUserGestures(gestures: [String: Any])
 }
 
 protocol FoodCardsRequestFomatter: class {
     func sendFoodCardRequest(selectedPreferences: SelectedPreference)
+    func sendUserGestures(gestures: [String: Any])
 }
 
 protocol FoodCardsWebService: class {
      func getFoodCardDishesRequest(forPath: String, withParameters: [String: Any])
+    func sendUserGesturesRequest(forPath: String, withParameters: [String: Any])
 }
 
 protocol FoodCardsObjectMapper: class {
-     func restaurantsDetail(data: Result<DishInfo> )
+    func restaurantsDetail(data: Result<DishInfo> )
+    func userGesturesResult(code: Int)
+    
 }
 
 protocol FoodCardsInteractorOutput: Response {

@@ -48,6 +48,7 @@
 		7E791F192032CAB800FA887D /* PreferenceTypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E791F172032CAB800FA887D /* PreferenceTypeCollectionViewCell.xib */; };
 		7E791F1C2032D8D600FA887D /* PreferenceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E791F1B2032D8D600FA887D /* PreferenceItem.swift */; };
 		7E7A6E5A2036D2EE0026C305 /* SnapX_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7A6E592036D2EE0026C305 /* SnapX_White.png */; };
+		7E9394EC204456F900A80387 /* FoodCardActionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9394EB204456F900A80387 /* FoodCardActionHelper.swift */; };
 		7E9C0B912021DC5700BA999E /* SnapXEatsLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9C0B902021DC5700BA999E /* SnapXEatsLocation.swift */; };
 		7EAC86092019C7E300DE162A /* foodCard3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EAC86052019C7E200DE162A /* foodCard3.jpg */; };
 		7EAC860A2019C7E300DE162A /* foodCard2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EAC86062019C7E200DE162A /* foodCard2.jpg */; };
@@ -215,6 +216,7 @@
 		7E791F172032CAB800FA887D /* PreferenceTypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferenceTypeCollectionViewCell.xib; sourceTree = "<group>"; };
 		7E791F1B2032D8D600FA887D /* PreferenceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceItem.swift; sourceTree = "<group>"; };
 		7E7A6E592036D2EE0026C305 /* SnapX_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SnapX_White.png; sourceTree = "<group>"; };
+		7E9394EB204456F900A80387 /* FoodCardActionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCardActionHelper.swift; sourceTree = "<group>"; };
 		7E9C0B902021DC5700BA999E /* SnapXEatsLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEatsLocation.swift; sourceTree = "<group>"; };
 		7EAC86052019C7E200DE162A /* foodCard3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = foodCard3.jpg; sourceTree = "<group>"; };
 		7EAC86062019C7E200DE162A /* foodCard2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = foodCard2.jpg; sourceTree = "<group>"; };
@@ -874,6 +876,7 @@
 				9D8E88BA1FFD28C50066A1D9 /* ValidatorHelper.swift */,
 				9DDC3AEB2035553600A7F181 /* SnapXEatsLoginHelper.swift */,
 				9D0D713F203C633B0077FA7A /* PreferenceHelper.swift */,
+				7E9394EB204456F900A80387 /* FoodCardActionHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1570,6 +1573,7 @@
 				9D8E88F11FFD2BEC0066A1D9 /* BaseContract.swift in Sources */,
 				9D8E88F21FFD2BEC0066A1D9 /* BaseViewController.swift in Sources */,
 				9D0D7140203C633B0077FA7A /* PreferenceHelper.swift in Sources */,
+				7E9394EC204456F900A80387 /* FoodCardActionHelper.swift in Sources */,
 				9D0D714E203D99A80077FA7A /* FoodAndCuisinePreferenceRouter.swift in Sources */,
 				7E6FD41C2020A00F0058BFB8 /* SearchPlacePredictions.swift in Sources */,
 				9D0D713E203C2CFD0077FA7A /* SetUserPrefernce.swift in Sources */,
