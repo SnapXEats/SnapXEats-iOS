@@ -64,8 +64,9 @@ class SnapXEatsLoginHelper {
         connection.start()
     }
     
-    func saveloginInfo(userId: String, plateform: String) {
-        let loginData = [SnapXEatsConstant.loginID: userId, SnapXEatsConstant.social_platform: plateform, SnapXEatsConstant.snaXEatsFirstTimeUser: SnapXEatsConstant.firstTimeUser]
+    func saveloginInfo(userId: String, firstTimeLogin: Bool, plateform: String) {
+        let firstime = firstTimeLogin ? SnapXEatsConstant.firstTimeUser : SnapXEatsConstant.emptyString
+        let loginData = [SnapXEatsConstant.loginID: userId, SnapXEatsConstant.social_platform: plateform, SnapXEatsConstant.snaXEatsFirstTimeUser: firstime]
         UserDefaults.standard.set(loginData, forKey: SnapXEatsConstant.snapXLoginData)
     }
     

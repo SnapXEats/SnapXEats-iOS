@@ -48,6 +48,13 @@ class PreferenceHelper {
         return SetUserPreference.getUserPrefernce(userID: userID)
     }
     
+    func getUserSelectedCuisinePreferecne() -> List<UserCuisinePreference>? {
+        if let userInfo = SetUserPreference.getUserPrefernce(userID: loginPreferecne.loginUserID) {
+            return userInfo.cuisinePreference
+        }
+        return nil
+    }
+    
     func updateFoodPreference(usierID: String, preferencesItems: [PreferenceItem]) {
         let foodPreferences = List<UserFoodPreference>()
         for preferenceItem in preferencesItems {
@@ -132,10 +139,10 @@ class PreferenceHelper {
     
     func getJSONDataUserPrefernce() -> [String: Any] {
         return [PreferecneConstant.restaurant_rating: loginPreferecne.ratingPreference?.rawValue ?? 0,
-                PreferecneConstant.restaurant_price: loginPreferecne.pricingPreference.rawValue,
+                PreferecneConstant.restaurant_price: getpriceNonLoogedInPrefercne(value: loginPreferecne.pricingPreference.rawValue),
                 PreferecneConstant.restaurant_distance: loginPreferecne.distancePreference,
-                PreferecneConstant.sort_by_rating: loginPreferecne.sortByPreference.rawValue == 0 ? true : false,
-                PreferecneConstant.sort_by_distance: loginPreferecne.sortByPreference.rawValue == 1 ? true : false,
+                PreferecneConstant.sort_by_distance: loginPreferecne.sortByPreference.rawValue == 0 ? true : false,
+                PreferecneConstant.sort_by_rating: loginPreferecne.sortByPreference.rawValue == 1 ? true : false, // default true for distance
                 PreferecneConstant.user_cuisine_preferences: getJSONDataCuisinePrefernce(),
                 PreferecneConstant.user_food_preferences: getJSONDataFoodPrefernce(),
         ]
@@ -209,18 +216,12 @@ class PreferenceHelper {
      func createParameterLoggedInUser() -> [String: Any] {
         let lat = selectedPreferecne.getLatitude()
         
-        if let storedPrefernce = getUserPrefernce(userID: loginPreferecne.loginUserID) {
+        if loginPreferecne.isLoggedIn {
             return [
                 SnapXEatsWebServiceParameterKeys.latitude  : lat.0, //selectedPreferences?.location.latitude ?? 0.0,
                 SnapXEatsWebServiceParameterKeys.longitude : lat.1,// selectedPreferences?.location.longitude ?? 0.0,
-                PreferecneConstant.restaurant_distance: storedPrefernce.distancePreference,
-                PreferecneConstant.restaurant_price: getpriceNonLoogedInPrefercne(value: storedPrefernce.pricingPreference),
-                PreferecneConstant.restaurant_rating: storedPrefernce.ratingPreference,
-                PreferecneConstant.sort_by_distance: storedPrefernce.sortByPreference == 0 ? true : false,
-                PreferecneConstant.sort_by_rating: storedPrefernce.sortByPreference == 1 ? true : false,
                 SnapXEatsWebServiceParameterKeys.cuisineArray : selectedPreferecne.selectedCuisine,
-                SnapXEatsWebServiceParameterKeys.foodArray:getLoggedInUserFoodPreferenceIdArray(foodPreferecne: storedPrefernce.foodPreference)
-                
+
             ]
         }
         return [:]
@@ -234,11 +235,21 @@ class PreferenceHelper {
                 PreferecneConstant.restaurant_distance: loginPreferecne.distancePreference,
                 PreferecneConstant.restaurant_price: getpriceNonLoogedInPrefercne(value: loginPreferecne.pricingPreference.rawValue),
                 PreferecneConstant.restaurant_rating: loginPreferecne.ratingPreference?.rawValue ?? 0,
-                PreferecneConstant.sort_by_distance: loginPreferecne.sortByPreference.rawValue == 0 ? true : false,
-                PreferecneConstant.sort_by_rating: loginPreferecne.sortByPreference.rawValue == 1 ? true : false, // default true for distance
+                PreferecneConstant.sort_by_distance: loginPreferecne.sortByPreference.rawValue == 0 ? true : false, // default true for distance
+                PreferecneConstant.sort_by_rating: loginPreferecne.sortByPreference.rawValue == 1 ? true : false,
                 SnapXEatsWebServiceParameterKeys.cuisineArray : selectedPreferecne.selectedCuisine,
                 SnapXEatsWebServiceParameterKeys.foodArray: getNonLoggedInUserFoodPreferenceIdArray(foodPreferecne: loginPreferecne.foodPreference)
             ]
+    }
+    
+    func resetFoodPreferenceData() {
+        let userId = loginPreferecne.loginUserID
+        SetUserPreference.resetFoodPreference(userID: userId)
+    }
+    
+    func resetCuisinePreferenceData() {
+        let userId = loginPreferecne.loginUserID
+        SetUserPreference.resetCuisinePreference(userID: userId)
     }
 }
 

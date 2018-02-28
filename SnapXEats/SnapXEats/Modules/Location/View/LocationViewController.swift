@@ -25,7 +25,9 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     private let sectionInsets = UIEdgeInsets(top: 10.0, left: 20.0, bottom: 30.0, right: 20.0)
     var presenter: LocationPresentation?
     var selectedCuisineIndexes = NSMutableArray()
-    
+    let cuisinePrefernce = {
+        PreferenceHelper.shared.getUserSelectedCuisinePreferecne()
+    }()
     var currentView: UIViewController {
         get {
             return self
@@ -63,6 +65,7 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
         setLocationTitle(locationName: selectedPreference.location.locationName)
         registerNotification()
         sendCuiseRequest()
+        selectedPreference.selectedCuisine.removeAll()
     }
     
     @IBAction func setNewLocation(_ sender: Any) {
@@ -74,8 +77,6 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     @IBAction func menuButtonTapped(_ sender: Any) {
         //Menu Button Action
         presenter?.updatedDrawerState(state: .opened)
-       // let router = RootRouter.shared
-       // router.drawerController.setDrawerState(.opened, animated: true)
     }
     
     private func configureView() {
@@ -113,6 +114,8 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
         if let result = result as? CuisinePreference {
             hideLoading()
             cuiseItems = result.cuisineList
+            setUserSelectedFoodPrefercne()
+            enableDoneButton()
             cuisinCollectionView.reloadData()
         }
     }
@@ -120,13 +123,28 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     private func setCuisinePreferences() {
         for (_, index) in selectedCuisineIndexes.enumerated() {
             let cuisine = cuiseItems[(index as! Int)]
-            selectedPreference.selectedCuisine.append(cuisine.itemID ?? "")
+            if let cuisineId = cuisine.itemID {
+                selectedPreference.selectedCuisine.append(cuisineId)
+            }
         }
     }
     
     private func resetCollectionView() {
         selectedCuisineIndexes.removeAllObjects()
         cuisinCollectionView.reloadData()
+    }
+    
+    private func setUserSelectedFoodPrefercne() {
+        for (index, cuiseItem) in cuiseItems.enumerated() {
+            if let preferecne = cuisinePrefernce {
+                for cuisine in preferecne {
+                    if let id = cuiseItem.itemID , cuisine.Id == id {
+                        selectedCuisineIndexes.add(index)
+                    }
+                }
+            }
+        }
+        
     }
 }
 
@@ -246,7 +264,7 @@ extension LocationViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-
+        
         let paddingSpace: CGFloat = 5 + sectionInsets.left * 2
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow

@@ -16,7 +16,7 @@ import SwiftInstagram
 class LoginInteractor {
     
     // MARK: Properties
-    private var view : LoginViewController?
+    var view : LoginView?
     var output: LoginViewInteractorOutput?
     private init() {}
     static  var  singletenInstance = LoginInteractor()
@@ -26,9 +26,10 @@ class LoginInteractor {
 extension LoginInteractor: LoginViewInteractorInput {
     
     func sendFaceBookLoginRequest(view: LoginView?) {
-        if checkRechability() {
+        if  let view = view as? LoginViewController, checkRechability() {
             let loginManager = LoginManager()
-            loginManager.logIn(readPermissions: [ .publicProfile, .email, .userFriends, ], viewController: self.view) { [weak self] loginResult in
+           
+            loginManager.logIn(readPermissions: [ .publicProfile, .email, .userFriends, ], viewController: view) { [weak self] loginResult in
                 switch loginResult {
                 case .failed( _):
                     self?.output?.response(result: NetworkResult.error)
@@ -47,10 +48,10 @@ extension LoginInteractor: LoginViewInteractorInput {
         sendUserInfo(path: SnapXEatsWebServicePath.snapXEatsUser, accessToken: accessToken, platform: SnapXEatsConstant.platFormFB) {[weak self] result in
             switch result {
             case .success(let data):
-                if let userInfo = data as? UserProfile, let serverID = userInfo.userInfo?.user_id, let serverToken = userInfo.userInfo?.token  {
+                if let userInfo = data as? UserProfile, let serverID = userInfo.userInfo?.user_id, let serverToken = userInfo.userInfo?.token, let firstTimeUser = userInfo.userInfo?.first_time_login {
                     SnapXEatsLoginHelper.shared.getUserProfileData(serverID: serverID, serverToken: serverToken, accessToken: accessToken) { (result) in
                         if let userId = accessToken.userId {
-                            SnapXEatsLoginHelper.shared.saveloginInfo(userId: userId, plateform: SnapXEatsConstant.platFormFB)
+                            SnapXEatsLoginHelper.shared.saveloginInfo(userId: userId, firstTimeLogin: firstTimeUser, plateform: SnapXEatsConstant.platFormFB)
                         }
                         self?.output?.response(result: result)
                     }
@@ -99,8 +100,9 @@ extension LoginInteractor {
         sendInstagramUserInfo(path: SnapXEatsWebServicePath.snapXEatsUser, accessToken: accessToken, instagramUser: instagramUser, platform: SnapXEatsConstant.platFormInstagram) { [weak self] (result) in
             switch result {
             case .success(let data):
-                if let userInfo = data as? UserProfile, let serverID = userInfo.userInfo?.user_id, let serverToken = userInfo.userInfo?.token  {
-                    SnapXEatsLoginHelper.shared.saveloginInfo(userId: instagramUser.id, plateform: SnapXEatsConstant.platFormInstagram)
+                if let userInfo = data as? UserProfile, let serverID = userInfo.userInfo?.user_id, let serverToken = userInfo.userInfo?.token,
+                    let firstTimeUser = userInfo.userInfo?.first_time_login {
+                    SnapXEatsLoginHelper.shared.saveloginInfo(userId: instagramUser.id, firstTimeLogin: firstTimeUser, plateform: SnapXEatsConstant.platFormInstagram)
                     SnapXEatsLoginHelper.shared.saveInstagramLoginData(serverToken: serverToken, serverID: serverID, instagram: instagramUser)
                     completionHandler()
                     self?.output?.response(result: result)
