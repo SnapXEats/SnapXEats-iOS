@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class RestaurantDetailsPresenter {
 
@@ -27,6 +28,10 @@ extension RestaurantDetailsPresenter: RestaurantDetailsPresentation {
     
     func drivingDirectionsRequest(origin: String, destination: String) {
         interactor?.getDrivingDirectionsFor(origin: origin, destination: destination)
+    }
+    
+    func gotoRestaurantDirections(restaurantDetails: RestaurantDetails, parent: UINavigationController) {
+        router?.presentScreen(screen: .restaurantDirections(details: restaurantDetails, parentController: parent))
     }
 }
 

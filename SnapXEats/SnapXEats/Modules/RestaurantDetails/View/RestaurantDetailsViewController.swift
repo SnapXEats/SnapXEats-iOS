@@ -104,7 +104,9 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
     }
     
     @IBAction func directionButtonAction(_ sender: UIButton) {
-        
+        if let parent = self.navigationController, let details = restaurantDetails {
+            presenter?.gotoRestaurantDirections(restaurantDetails: details, parent: parent)
+        }
     }
     
     @IBAction func uberButtonAction(_ sender: UIButton) {

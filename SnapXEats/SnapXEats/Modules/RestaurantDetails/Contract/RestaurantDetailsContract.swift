@@ -16,6 +16,7 @@ protocol RestaurantDetailsView: class, BaseView {
 protocol RestaurantDetailsPresentation: class {
     func restaurantDetailsRequest(restaurantId: String)
     func drivingDirectionsRequest(origin: String, destination: String)
+    func gotoRestaurantDirections(restaurantDetails: RestaurantDetails, parent: UINavigationController)
 }
 
 protocol RestaurantDetailsUseCase: class {
@@ -26,7 +27,7 @@ protocol RestaurantDetailsInteractorOutput: Response {
     // TODO: Declare interactor output methods
 }
 
-protocol RestaurantDetailsWireframe: class {
+protocol RestaurantDetailsWireframe: class, RootWireFrame {
     // TODO: Declare wireframe methods
 }
 
