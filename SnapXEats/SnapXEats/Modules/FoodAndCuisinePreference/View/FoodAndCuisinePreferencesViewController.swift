@@ -19,11 +19,18 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
     var preferenceItems = [PreferenceItem]()
     let loginUserPreferences = LoginUserPreferences.shared
     var isDirtyPreferecne = false
+    
     @IBOutlet weak var preferencesCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
+    }
+    
+    override func internetConnected() {
+        if preferenceItems.count == 0 {
+            getPreferences()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,11 +74,47 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
         }
     }
     @IBAction func resetButtonAction(_: Any) {
+            showPreferenceResetDialog()
+    }
+    
+    private func resetPreferecne() {
         for item in preferenceItems {
             item.isFavourite = false
             item.isLiked = false
         }
+        loginUserPreferences.isLoggedIn ? resetLoggedInUserData() : resetNonLoggedInUserData()
         preferencesCollectionView.reloadData()
+    }
+    private func showPreferenceResetDialog() {
+        let ok =  setOkButton { [weak self] in
+            self?.resetPreferecne()
+        }
+        let cancel = setCancelButton {}
+
+        UIAlertController.presentAlertInViewController(self, title: AlertTitle.error , message: AlertMessage.preferecneRestMessage, actions: [cancel, ok], completion: nil)
+    }
+    
+    private func setCancelButton(completionHandler: @escaping () ->()) -> UIAlertAction {
+        return UIAlertAction(title: SnapXButtonTitle.cancel, style: UIAlertActionStyle.default, handler: {action in completionHandler()})
+        
+    }
+    
+    private func setOkButton(completionHandler: @escaping () ->()) -> UIAlertAction {
+        return UIAlertAction(title: SnapXButtonTitle.ok, style: UIAlertActionStyle.default, handler:  {action in completionHandler()})
+    }
+    
+    private func resetLoggedInUserData() {
+        isDirtyPreferecne = true
+        loginUserPreferences.isDirtyPreference = true
+        preferenceType == .cuisine ? PreferenceHelper.shared.resetCuisinePreferenceData()
+                                 : PreferenceHelper.shared.resetFoodPreferenceData()
+    }
+    
+    private func resetNonLoggedInUserData() {
+        isDirtyPreferecne = true
+        loginUserPreferences.isDirtyPreference = true
+        preferenceType == .cuisine ? loginUserPreferences.cuisinePreference.removeAll()
+                                    : loginUserPreferences.foodPreference.removeAll()
     }
     
     private func getPreferences() {

@@ -69,7 +69,7 @@ class SnapXEatsApi {
     
     static func snapXPutRequestWithParameters(path: String, parameters: [String: Any], completionHandler:  @escaping (DefaultDataResponse) -> ()) {
         let url = baseURL + path
-        Alamofire.request(url, method: .put, parameters: parameters, encoding: URLEncoding.default, headers: header).response { (data) in
+        Alamofire.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: header).response { (data) in
             completionHandler(data)
         }
     }

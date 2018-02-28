@@ -38,8 +38,9 @@ extension LoginRouter: LoginViewWireframe {
         let interactor = LoginInteractor.singletenInstance
         presenter.router = router
         presenter.interactor = interactor
-        // router.view = viewController
+        //router.view = viewController
         interactor.output = presenter
+        interactor.view = viewController
     }
     
     private func initInstagramView() -> LoginView {

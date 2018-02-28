@@ -29,11 +29,11 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
     
     @IBAction func logoutButtonAction(sender: UIButton) {
         if loginUserPreference.isLoggedIn {
-        let cancel = UIAlertAction(title: SnapXButtonTitle.cancel, style: UIAlertActionStyle.default, handler: nil)
-        let Ok = UIAlertAction(title: SnapXButtonTitle.ok, style: UIAlertActionStyle.default, handler:  {[weak self] action in
-            SnapXEatsLoginHelper.shared.resetData()
-            self?.presenter?.presentScreen(screen: .login, drawerState: .closed)})
-        UIAlertController.presentAlertInViewController(self, title: AlertTitle.logOutTitle , message: AlertMessage.logOutMessage, actions: [cancel, Ok], completion: nil)
+            let cancel = UIAlertAction(title: SnapXButtonTitle.cancel, style: UIAlertActionStyle.default, handler: nil)
+            let Ok = UIAlertAction(title: SnapXButtonTitle.ok, style: UIAlertActionStyle.default, handler:  {[weak self] action in
+                SnapXEatsLoginHelper.shared.resetData()
+                self?.presenter?.presentScreen(screen: .login, drawerState: .closed)})
+            UIAlertController.presentAlertInViewController(self, title: AlertTitle.logOutTitle , message: AlertMessage.logOutMessage, actions: [cancel, Ok], completion: nil)
         } else {
             SnapXEatsLoginHelper.shared.resetData()
             presenter?.presentScreen(screen: .login, drawerState: .closed)
@@ -107,12 +107,12 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if loginUserPreference.isDirtyPreference {
-            showPreferenceSaveDialog(index: indexPath.row)
-        } else {
-            presentScreen(index: indexPath.row)
-        }
+            if loginUserPreference.isDirtyPreference {
+                showPreferenceSaveDialog(index: indexPath.row)
+            } else {
+                presentScreen(index: indexPath.row)
+            }
+
     }
     
     private func presentScreen(index: Int) {
@@ -136,6 +136,7 @@ extension DrawerViewController: BaseView {
     
     private func presentNextScreen(index: Int) {
         screenIndex = index
+        
         if  loginUserPreference.isLoggedIn {
             if  checkRechability() {
                 showLoading()
@@ -146,28 +147,18 @@ extension DrawerViewController: BaseView {
         else {
             presentScreen(index: index)
         }
-        
     }
     
     private func showPreferenceSaveDialog(index: Int) {
-        let save =  setSaveButton { [weak self] in
+        let apply =  setApplyButton { [weak self] in
             self?.presentNextScreen(index: index)
         }
         
-        let discard = setDiscardButton(index: index) { [weak self] in
-            self?.loginUserPreference.isDirtyPreference = false
-            self?.presentScreen(index: index)
-        }
-        
-        UIAlertController.presentAlertInViewController(self, title: AlertTitle.preferenceTitle , message: AlertMessage.preferenceMessage, actions: [discard, save], completion: nil)
+        UIAlertController.presentAlertInViewController(self, title: AlertTitle.preferenceTitle , message: AlertMessage.preferenceMessage, actions: [apply], completion: nil)
     }
     
-    private func setDiscardButton(index: Int, completionHandler: @escaping () ->()) -> UIAlertAction {
-        return UIAlertAction(title: SnapXButtonTitle.discard, style: UIAlertActionStyle.default, handler: {action in completionHandler()})
-        
-    }
     
-    private func setSaveButton(completionHandler: @escaping () ->()) -> UIAlertAction {
-        return UIAlertAction(title: SnapXButtonTitle.save, style: UIAlertActionStyle.default, handler:  {action in completionHandler()})
+    private func setApplyButton(completionHandler: @escaping () ->()) -> UIAlertAction {
+        return UIAlertAction(title: SnapXButtonTitle.apply, style: UIAlertActionStyle.default, handler:  {action in completionHandler()})
     }
 }
