@@ -19,19 +19,29 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
     @IBOutlet var restaurantTimingButton: UIButton!
     @IBOutlet var restaurantTimingLabel: UILabel!
     @IBOutlet var durationLabel: UILabel!
+    @IBOutlet var photoClickedDateLabel: UILabel!
+    
+    @IBOutlet var moreInfoView: UIView!
+    @IBOutlet var amenitiesTableView: UITableView!
+    @IBOutlet var amenityTableHeightConstraint: NSLayoutConstraint!
     
     private let weekDays = ["Monday": 1, "Tuesday":2, "Wednesday":3, "Thursday":4, "Friday":5, "Saturday":6, "Sunday":7]
     private let durationTrailingText = " Away"
+    private let photoCreatedDatePrefix = "Photo taken on "
     private enum restaurantTimingConstants {
         static let open = "Open Today"
         static let close = "Closed Now"
     }
+    private let amenitiesTableRowHeight: CGFloat = 20
     
     var presenter: RestaurantDetailsPresentation?
     var restaurant: Restaurant!
     var slideshow =  ImageSlideshow()
     var specialities = [RestaurantSpeciality]()
     var restaurantDetails: RestaurantDetails?
+    var showMoreInfo = false
+    var amenities = [String]()
+    
     private var shouldLoadData: Bool {
         get {
             return checkRechability() && restaurantDetails == nil
@@ -138,6 +148,11 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
             setupImageSlideshowWithPhotos(photos: details.photos)
             restaurantTimingButton.isEnabled = details.timings.count > 0 ? true : false
             restaurantTimingLabel.text = getRestaurantTimingDisplayText(details: details)
+            if showMoreInfo {
+                amenities = details.restaurant_amenities
+                amenitiesTableView.reloadData()
+                amenityTableHeightConstraint.constant = CGFloat(amenities.count) * amenitiesTableRowHeight
+            }
         }
     }
     
@@ -201,11 +216,15 @@ extension RestaurantDetailsViewController: RestaurantDetailsView {
     func initView() {
         customizeNavigationItem(title: SnapXEatsPageTitles.restaurantDetail, isDetailPage: true)
         registerCellForNib()
+        moreInfoView.isHidden =  (showMoreInfo == true) ? false : true
     }
     
     private func registerCellForNib() {
         let nib = UINib(nibName: SnapXEatsNibNames.restaurantSpecialityCollectionViewCell, bundle: nil)
         specialityCollectionView.register(nib, forCellWithReuseIdentifier: SnapXEatsCellResourceIdentifiler.restaurantSpeciality)
+        
+        let tableViewCellNib = UINib(nibName: SnapXEatsNibNames.moreInfoTableViewCell, bundle: nil)
+        amenitiesTableView.register(tableViewCellNib, forCellReuseIdentifier: SnapXEatsCellResourceIdentifiler.moreInfoTableView)
     }
     
     func setupImageSlideshowWithPhotos(photos: [RestaurantPhoto]) {
@@ -221,10 +240,35 @@ extension RestaurantDetailsViewController: RestaurantDetailsView {
         slideshow.slideshowInterval = 0
         slideshow.pageControlPosition = .hidden
         slideshow.activityIndicator = DefaultActivityIndicator(style: .whiteLarge, color: .black)
-        self.slideshowCountLabel.text = "1/\(inputsources.count)"
-        slideshow.currentPageChanged = { (index) in
-            self.slideshowCountLabel.text = "\(index+1)/\(inputsources.count)"
+        
+        //Show details for First item which is by default selected
+        slideshowCountLabel.text = "1/\(inputsources.count)"
+        photoClickedDateLabel.text = photoCreatedDatePrefix + (formatDateFromString(datestr: photos[0].createDate ?? SnapXEatsAppDefaults.emptyString))
+        
+        // Call back of image changed event
+        slideshow.currentPageChanged = { [weak self] (index) in
+            self?.slideshowCountLabel.text = "\(index+1)/\(inputsources.count)"
+            self?.photoClickedDateLabel.text = self!.photoCreatedDatePrefix + (formatDateFromString(datestr: photos[0].createDate ?? SnapXEatsAppDefaults.emptyString))
         }
+    }
+}
+extension RestaurantDetailsViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return amenities.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return amenitiesTableRowHeight
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: SnapXEatsCellResourceIdentifiler.moreInfoTableView, for: indexPath) as! MoreInfoTableViewCell
+        cell.amenityNameLabel.text = amenities[indexPath.row]
+        return cell
     }
 }
 

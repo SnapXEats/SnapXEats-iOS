@@ -11,7 +11,7 @@ import FBSDKLoginKit
 import SwiftInstagram
 
 enum Screens {
-    case firsTimeUser, login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurant: Restaurant, parentController: UINavigationController)
+    case firsTimeUser, login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurant: Restaurant, parentController: UINavigationController, showMoreInfo: Bool)
 }
 
 class RootRouter: NSObject {
@@ -104,9 +104,10 @@ class RootRouter: NSObject {
         window?.rootViewController?.present(selectLocationViewController, animated: true, completion: nil)
     }
     
-    private func pushRestaurantDetailsScreen(onNavigationController parentController: UINavigationController, forRestaurant restaurant: Restaurant) {
+    private func pushRestaurantDetailsScreen(onNavigationController parentController: UINavigationController, forRestaurant restaurant: Restaurant, showMoreInfo: Bool) {
         let restaurantDetailsVC = RestaurantDetailsRouter.shared.loadRestaurantDetailsModule()
         restaurantDetailsVC.restaurant = restaurant
+        restaurantDetailsVC.showMoreInfo = showMoreInfo
         parentController.pushViewController(restaurantDetailsVC, animated: true)
     }
     
@@ -140,8 +141,8 @@ class RootRouter: NSObject {
             dissmissSelectLocationScreen()
         case .foodAndCusinePreferences(let preferenceType, let parentController):
             pushFoodAndCuisinePreferencesScreen(onNavigationController: parentController, withPreferenceType: preferenceType)
-        case .restaurantDetails(let restaurant, let parentController):
-            pushRestaurantDetailsScreen(onNavigationController: parentController, forRestaurant: restaurant)
+        case .restaurantDetails(let restaurant, let parentController, let showMoreInfo):
+            pushRestaurantDetailsScreen(onNavigationController: parentController, forRestaurant: restaurant, showMoreInfo: showMoreInfo)
             
         }
     }

@@ -32,14 +32,6 @@
 				<string>fb240700273135016</string>
 			</array>
 		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>prefs</string>
-			</array>
-		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>401</string>
@@ -57,15 +49,6 @@
 			</dict>
 		</array>
 	</dict>
-<key>CFBundleURLTypes</key>
-<array>
-  <dict>
-  <key>CFBundleURLSchemes</key>
-  <array>
-    <string>fb240700273135016</string>
-  </array>
-  </dict>
-</array>
 	<key>FacebookAppID</key>
 	<string>240700273135016</string>
 	<key>FacebookDisplayName</key>
@@ -80,7 +63,7 @@
 		<string>fb-messenger-api</string>
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
-        <string>uber</string>
+		<string>uber</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
@@ -103,6 +86,7 @@
 		<string>Roboto-Regular.ttf</string>
 		<string>Roboto-Medium.ttf</string>
 		<string>Roboto-Bold.ttf</string>
+		<string>Roboto-Italic.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>FlashScreen</string>

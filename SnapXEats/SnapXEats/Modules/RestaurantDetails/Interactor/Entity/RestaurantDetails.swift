@@ -33,6 +33,7 @@ class RestaurantDetails: Mappable {
     var rating: Double?
     var specialities = [RestaurantSpeciality]()
     var timings = [RestaurantTiming]()
+    var restaurant_amenities = [String]()
     
     required init?(map: Map) {
     }
@@ -52,18 +53,20 @@ class RestaurantDetails: Mappable {
         timings        <- map["restaurant_timings"]
         latitude      <- map["location_lat"]
         longitude      <- map["location_long"]
-        
+        restaurant_amenities  <- map["restaurant_amenities"]
     }
 }
 
 class RestaurantPhoto: Mappable {
     var imageURL: String?
+    var createDate: String?
     
     required init?(map: Map) {
     }
     
     func mapping(map: Map) {
         imageURL        <- map["dish_image_url"]
+        createDate      <- map["created_date"]
     }
 }
 

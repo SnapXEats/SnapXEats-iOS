@@ -50,7 +50,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D8N-1e-PCl">
                                 <rect key="frame" x="47" y="546" width="282" height="70"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6do-gt-WaK">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6do-gt-WaK">
                                         <rect key="frame" x="20" y="16" width="38" height="38"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -139,6 +139,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="kolodaView" destination="yZP-OQ-Zyj" id="wac-SE-htp"/>
+                        <outlet property="undoButton" destination="6do-gt-WaK" id="y7g-6A-7gN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rOa-bO-Hsq" userLabel="First Responder" sceneMemberID="firstResponder"/>

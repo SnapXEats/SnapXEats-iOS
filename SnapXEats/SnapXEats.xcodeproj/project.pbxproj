@@ -48,12 +48,12 @@
 		7E791F192032CAB800FA887D /* PreferenceTypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E791F172032CAB800FA887D /* PreferenceTypeCollectionViewCell.xib */; };
 		7E791F1C2032D8D600FA887D /* PreferenceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E791F1B2032D8D600FA887D /* PreferenceItem.swift */; };
 		7E7A6E5A2036D2EE0026C305 /* SnapX_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7A6E592036D2EE0026C305 /* SnapX_White.png */; };
+		7E83974120454DF600E71C6D /* MoreInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E83973F20454DF600E71C6D /* MoreInfoTableViewCell.swift */; };
+		7E83974220454DF600E71C6D /* MoreInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E83974020454DF600E71C6D /* MoreInfoTableViewCell.xib */; };
+		7E8397442045585100E71C6D /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E839743204557B000E71C6D /* Roboto-Italic.ttf */; };
+		7E8397462045713B00E71C6D /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8397452045713B00E71C6D /* DateFormatters.swift */; };
 		7E9394EC204456F900A80387 /* FoodCardActionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9394EB204456F900A80387 /* FoodCardActionHelper.swift */; };
 		7E9C0B912021DC5700BA999E /* SnapXEatsLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9C0B902021DC5700BA999E /* SnapXEatsLocation.swift */; };
-		7EAC86092019C7E300DE162A /* foodCard3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EAC86052019C7E200DE162A /* foodCard3.jpg */; };
-		7EAC860A2019C7E300DE162A /* foodCard2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EAC86062019C7E200DE162A /* foodCard2.jpg */; };
-		7EAC860B2019C7E300DE162A /* foodCard4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EAC86072019C7E300DE162A /* foodCard4.jpg */; };
-		7EAC860C2019C7E300DE162A /* foodCard1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EAC86082019C7E300DE162A /* foodCard1.jpg */; };
 		7EAC8610201A066B00DE162A /* FoodCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAC860F201A066B00DE162A /* FoodCardView.swift */; };
 		7EAC8612201A067A00DE162A /* FoodCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EAC8611201A067A00DE162A /* FoodCardView.xib */; };
 		7EB5921F2040048600CC6888 /* DrivingDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB5921E2040048600CC6888 /* DrivingDirections.swift */; };
@@ -215,12 +215,12 @@
 		7E791F172032CAB800FA887D /* PreferenceTypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferenceTypeCollectionViewCell.xib; sourceTree = "<group>"; };
 		7E791F1B2032D8D600FA887D /* PreferenceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceItem.swift; sourceTree = "<group>"; };
 		7E7A6E592036D2EE0026C305 /* SnapX_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SnapX_White.png; sourceTree = "<group>"; };
+		7E83973F20454DF600E71C6D /* MoreInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoTableViewCell.swift; sourceTree = "<group>"; };
+		7E83974020454DF600E71C6D /* MoreInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreInfoTableViewCell.xib; sourceTree = "<group>"; };
+		7E839743204557B000E71C6D /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		7E8397452045713B00E71C6D /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
 		7E9394EB204456F900A80387 /* FoodCardActionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCardActionHelper.swift; sourceTree = "<group>"; };
 		7E9C0B902021DC5700BA999E /* SnapXEatsLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEatsLocation.swift; sourceTree = "<group>"; };
-		7EAC86052019C7E200DE162A /* foodCard3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = foodCard3.jpg; sourceTree = "<group>"; };
-		7EAC86062019C7E200DE162A /* foodCard2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = foodCard2.jpg; sourceTree = "<group>"; };
-		7EAC86072019C7E300DE162A /* foodCard4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = foodCard4.jpg; sourceTree = "<group>"; };
-		7EAC86082019C7E300DE162A /* foodCard1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = foodCard1.jpg; sourceTree = "<group>"; };
 		7EAC860F201A066B00DE162A /* FoodCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCardView.swift; sourceTree = "<group>"; };
 		7EAC8611201A067A00DE162A /* FoodCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodCardView.xib; sourceTree = "<group>"; };
 		7EB5921E2040048600CC6888 /* DrivingDirections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingDirections.swift; sourceTree = "<group>"; };
@@ -492,6 +492,15 @@
 			path = CustomCells;
 			sourceTree = "<group>";
 		};
+		7E83973E20454DDB00E71C6D /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7E83973F20454DF600E71C6D /* MoreInfoTableViewCell.swift */,
+				7E83974020454DF600E71C6D /* MoreInfoTableViewCell.xib */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
 		7EAC860E201A061D00DE162A /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
@@ -534,6 +543,7 @@
 		9D0D7132203AAE1F0077FA7A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7E83973E20454DDB00E71C6D /* TableViewCell */,
 				7E5E7FED203C0E4200009A56 /* collectionCell */,
 				7E5E800A203D4B2F00009A56 /* RestaurantTimingViewController.swift */,
 				7E5E800E203D6A4000009A56 /* TimingTableViewCell.swift */,
@@ -734,6 +744,7 @@
 				9D8E88AF1FFD28C50066A1D9 /* DataManagers */,
 				9D8E88B41FFD28C50066A1D9 /* Protocols */,
 				9D8E88B81FFD28C50066A1D9 /* Helpers */,
+				7E8397452045713B00E71C6D /* DateFormatters.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1009,16 +1020,13 @@
 		9D8E88E01FFD2A6F0066A1D9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7EAC86082019C7E300DE162A /* foodCard1.jpg */,
-				7EAC86062019C7E200DE162A /* foodCard2.jpg */,
-				7EAC86052019C7E200DE162A /* foodCard3.jpg */,
-				7EAC86072019C7E300DE162A /* foodCard4.jpg */,
 				7E7A6E592036D2EE0026C305 /* SnapX_White.png */,
 				9DB7FE1E20061E8C00D0E816 /* BG@3x.png */,
 				9DB7FE1620061B1600D0E816 /* Roboto-Light.ttf */,
 				9DB7FE1520061B1600D0E816 /* Roboto-Medium.ttf */,
 				9DB7FE1420061B1600D0E816 /* Roboto-Regular.ttf */,
 				7E5C058620186C1A000B5C33 /* roboto.bold.ttf */,
+				7E839743204557B000E71C6D /* Roboto-Italic.ttf */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1398,10 +1406,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E8397442045585100E71C6D /* Roboto-Italic.ttf in Resources */,
+				7E83974220454DF600E71C6D /* MoreInfoTableViewCell.xib in Resources */,
 				7E5C058720186C36000B5C33 /* roboto.bold.ttf in Resources */,
-				7EAC86092019C7E300DE162A /* foodCard3.jpg in Resources */,
 				7E5946982020BD02006702AF /* SearchPlacesTableViewCell.xib in Resources */,
-				7EAC860B2019C7E300DE162A /* foodCard4.jpg in Resources */,
 				9DB7FE1720061B6200D0E816 /* Roboto-Light.ttf in Resources */,
 				7E5E7FC2203AD11200009A56 /* RestaurantDetails.storyboard in Resources */,
 				9DB7FE1820061B6200D0E816 /* Roboto-Medium.ttf in Resources */,
@@ -1415,14 +1423,12 @@
 				9D902BEA20172A2F00359DFD /* SelectLocation.storyboard in Resources */,
 				7EAC8612201A067A00DE162A /* FoodCardView.xib in Resources */,
 				7E0CBBB5202435E4009E56AE /* UserPreference.storyboard in Resources */,
-				7EAC860C2019C7E300DE162A /* foodCard1.jpg in Resources */,
 				9D3FC4DC2011E34D001A4264 /* CuisineCollectionViewCell.xib in Resources */,
 				9DEB5CF71FFE6D49003B9D4B /* FlashScreen.storyboard in Resources */,
 				7E5C057F2017A6DC000B5C33 /* SavedLocationTableViewCell.xib in Resources */,
 				9DEB5CF81FFE6D49003B9D4B /* Login.storyboard in Resources */,
 				7E7A6E5A2036D2EE0026C305 /* SnapX_White.png in Resources */,
 				7E5E7FD9203AF7EE00009A56 /* .gitkeep in Resources */,
-				7EAC860A2019C7E300DE162A /* foodCard2.jpg in Resources */,
 				7EB59221204049F400CC6888 /* foodCardOverlayView.xib in Resources */,
 				7E5E7FDB203AF7EE00009A56 /* ic_cross_white@3x.png in Resources */,
 				7E791F192032CAB800FA887D /* PreferenceTypeCollectionViewCell.xib in Resources */,
@@ -1569,6 +1575,7 @@
 				9D8E88F41FFD2BEC0066A1D9 /* UserProfile.swift in Sources */,
 				7E5C057E2017A6DC000B5C33 /* SavedLocationTableViewCell.swift in Sources */,
 				7E71FC092022CCAD00CA8467 /* KYEmbedMainControllerSegue.swift in Sources */,
+				7E8397462045713B00E71C6D /* DateFormatters.swift in Sources */,
 				9D902BE6201729E400359DFD /* SelectLocationViewController.swift in Sources */,
 				9D8E88F51FFD2BEC0066A1D9 /* Constants.swift in Sources */,
 				7EAC8610201A066B00DE162A /* FoodCardView.swift in Sources */,
@@ -1583,6 +1590,7 @@
 				9D902BCA20171AED00359DFD /* FoodCardsPresenter.swift in Sources */,
 				7E5E8011203D9AD700009A56 /* Date+Helpers.swift in Sources */,
 				9D3D1CE02006479500AAAB95 /* SnapXConstants.swift in Sources */,
+				7E83974120454DF600E71C6D /* MoreInfoTableViewCell.swift in Sources */,
 				7E9C0B912021DC5700BA999E /* SnapXEatsLocation.swift in Sources */,
 				9D8E88FA1FFD2BEC0066A1D9 /* UITextField+Border.swift in Sources */,
 				7E5E7FE2203AF7EE00009A56 /* UIImageView+Tools.swift in Sources */,

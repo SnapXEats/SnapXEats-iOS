@@ -28,4 +28,39 @@ class FoodCardActionHelper {
         }
         return foodItems
     }
+    
+    func resetLocalFoodCardActions() {
+        let userID = LoginUserPreferences.shared.loginUserID
+        FoodCardActions.resetLocalFoodCardActions(userID: userID)
+    }
+    
+    func getCurrentActionsForUser() -> FoodCardActions? {
+        let userID = LoginUserPreferences.shared.loginUserID
+        return FoodCardActions.getCurrentActionsForUser(userID: userID)
+    }
+    
+    func addToWishList(foodCardItem: UserFoodCard) {
+        let userID = LoginUserPreferences.shared.loginUserID
+        FoodCardActions.addToWishList(foodCardItem: foodCardItem, userID: userID)
+    }
+    
+    func addToLikedList(foodCardItem: UserFoodCard) {
+        let userID = LoginUserPreferences.shared.loginUserID
+        FoodCardActions.addToLikedList(foodCardItem: foodCardItem, userID: userID)
+    }
+    
+    func addToDisLikedList(foodCardItem: UserFoodCard) {
+        let userID = LoginUserPreferences.shared.loginUserID
+        FoodCardActions.addToDisLikedList(foodCardItem: foodCardItem, userID: userID)
+    }
+    
+    func removeFromDislikeList(foodCardItem: UserFoodCard) {
+        let userID = LoginUserPreferences.shared.loginUserID
+        FoodCardActions.removeFromDislikeList(foodCardItem: foodCardItem, userID: userID)
+    }
+    
+    func getWishlistCountForCurrentUser() -> Int {
+        let userID = LoginUserPreferences.shared.loginUserID
+        return FoodCardActions.getWishlistCountForUser(userID: userID)
+    }
 }
