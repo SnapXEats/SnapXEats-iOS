@@ -80,6 +80,7 @@ enum SnapXEatsWebServicePath {
     static let  restaurantDetails = "/api/v1/restaurant"
     static let  userPreferene = "/api/v1/userPreferences"
     static let  userGesture = "/api/v1/userGesture"
+    static let  logOut = "/api/v1/users/logout"
 }
 
 enum SnapXEatsImageNames {
@@ -110,11 +111,15 @@ enum SnapXEatsPlaceSearchRequestKeys {
 
 
 enum SnapXEatsPageTitles {
-    static let restaurants = "Restaurants"
+    static let home = "Home"
     static let wishlist = "Wishlist"
     static let preferences = "Preferences"
     static let foodJourney = "Food Journeys"
     static let rewards = "Rewards"
+    static let snapnshare = "snap-n-share"
+    static let smartPhotos = "Smart Photos"
+    static let restaurants = "Restaurants"
+    
     static let cusinePreferences = "Cuisine Preferences"
     static let foodPreferences = "Food Preferences"
     static let restaurantDetail = "Restaurant Info"

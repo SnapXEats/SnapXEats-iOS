@@ -62,7 +62,7 @@
                                             <action selector="undoButtonAction:" destination="PVr-ZQ-ZIz" eventType="touchUpInside" id="xuU-BA-wEB"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6O6-Ad-9oa">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6O6-Ad-9oa" userLabel="dislikeButton">
                                         <rect key="frame" x="72" y="2" width="66" height="66"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -76,7 +76,7 @@
                                             <action selector="disLikeButtonAction:" destination="PVr-ZQ-ZIz" eventType="touchUpInside" id="f4d-1E-Gfk"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xjo-O2-KrF">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xjo-O2-KrF" userLabel="likeButton">
                                         <rect key="frame" x="146" y="3" width="64" height="64"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -138,8 +138,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="disLikeButton" destination="6O6-Ad-9oa" id="kFg-AG-e5d"/>
                         <outlet property="kolodaView" destination="yZP-OQ-Zyj" id="wac-SE-htp"/>
+                        <outlet property="likeButton" destination="Xjo-O2-KrF" id="IbX-jW-yUy"/>
                         <outlet property="undoButton" destination="6do-gt-WaK" id="y7g-6A-7gN"/>
+                        <outlet property="wishListButton" destination="LUt-w3-E1e" id="viZ-Fa-CwV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rOa-bO-Hsq" userLabel="First Responder" sceneMemberID="firstResponder"/>

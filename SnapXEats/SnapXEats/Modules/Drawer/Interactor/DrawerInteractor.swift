@@ -39,25 +39,37 @@ extension DrawerInteractor: DrawerInteractorIntput {
 }
 
 extension DrawerInteractor: DrawerRequestFormatter {
+    
+    func sendlogOutRequest() {
+        sendlogOutRequest(path: SnapXEatsWebServicePath.logOut)
+    }
     func sendUserPreference(preference: LoginUserPreferences) {
         PreferenceHelper.shared.saveUserPrefernce(preference: preference)
-        if let prefernce = PreferenceHelper.shared.getUserPrefernce(userID: preference.loginUserID){
             let requestParameter = PreferenceHelper.shared.getJSONDataUserPrefernce()
             sendUserPreferences(forPath:SnapXEatsWebServicePath.userPreferene, withParameters: requestParameter)
-        }
+
     }
     
     func updateUserPreference(preference: LoginUserPreferences) {
         PreferenceHelper.shared.saveUserPrefernce(preference: preference)
-        if let prefernce = PreferenceHelper.shared.getUserPrefernce(userID: preference.loginUserID){
             let requestParameter = PreferenceHelper.shared.getJSONDataUserPrefernce()
             updateUserPreferences(forPath: SnapXEatsWebServicePath.userPreferene, withParameters: requestParameter)
-        }
     }
     
 }
 
 extension DrawerInteractor: DrawerWebService {
+
+    func sendlogOutRequest(path: String) {
+        SnapXEatsApi.snapXGetRequestWithParameters(path: path , parameters: [:]) { [weak self](response: DefaultDataResponse) in
+            if let statusCode = response.response?.statusCode {
+                SnapXEatsLoginHelper.shared.resetData()
+                self?.userPreferenceResult(code: statusCode)
+            } else {
+                self?.output?.response(result: NetworkResult.noInternet)
+            }
+        }
+    }
     
     func sendUserPreferences(forPath: String, withParameters: [String: Any]) {
         SnapXEatsApi.snapXPostRequestWithParameters(path: forPath, parameters: withParameters) { [weak self] (response: DefaultDataResponse) in
