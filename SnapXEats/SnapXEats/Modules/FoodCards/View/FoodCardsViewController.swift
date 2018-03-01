@@ -27,6 +27,9 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     @IBOutlet weak var kolodaView: KolodaView!
     @IBOutlet weak var undoButton: UIButton!
     
+    @IBOutlet weak var wishListButton: UIButton!
+    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var disLikeButton: UIButton!
     private var locationEnabled: Bool {
         get {
             guard let selectedPreference = selectedPrefernce else {
@@ -49,6 +52,7 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
         let userFoodCard = createUserFoodCardItem(fromIndex: kolodaView.currentCardIndex)
         FoodCardActionHelper.shared.removeFromDislikeList(foodCardItem: userFoodCard)
         undoButton.isEnabled = undoCount == 0 ? false : true
+        setButtonState()
     }
     
     @IBAction func disLikeButtonAction(_ sender: Any) {
@@ -97,6 +101,7 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
         } else if let dishInfo = result as?  DishInfo, let restaurants = dishInfo.restaurants, restaurants.count > 0  {
             setFoodCardDetails(restaurants: restaurants)
         }
+        setButtonState()
     }
     
     private func setFoodCardDetails(restaurants: [Restaurant]) {
@@ -157,14 +162,32 @@ extension FoodCardsViewController: KolodaViewDelegate, KolodaViewDataSource {
         case .left:
             leftSwipeActionForIndex(index: index)
             undoButton.isEnabled = true
-        case .right: rightSwipeActionForIndex(index: index)
+        case .right:
+            rightSwipeActionForIndex(index: index)
+            undoCount = 0
+            kolodaView.undoManager?.removeAllActions()
         case .up: upSwipeActionForIndex(index: index)
+            undoCount = 0
+            kolodaView.undoManager?.removeAllActions()
         default: break
         }
+        setButtonState()
     }
     
     func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
         return Bundle.main.loadNibNamed(SnapXEatsNibNames.foodCardOverlayView, owner: self, options: nil)?[0] as? foodCardOverlayView
+    }
+    
+    private func setButtonState() {
+        if  kolodaView.isRunOutOfCards {
+            likeButton.isEnabled = false
+            disLikeButton.isEnabled = false
+            wishListButton.isEnabled = false
+     }  else {
+        likeButton.isEnabled = true
+        disLikeButton.isEnabled = true
+        wishListButton.isEnabled = true
+        }
     }
 }
 

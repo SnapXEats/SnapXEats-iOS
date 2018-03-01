@@ -9,6 +9,18 @@
 import UIKit
 import AlamofireImage
 
+enum navigateScreen: Int {
+    case home = 0
+    case wishList
+    case showPreference
+    case foodJourney
+    case rewards
+    case snapnshare
+    case smartPhotos
+    case privacyPolicy
+    case showLogin
+
+}
 class DrawerViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: Properties
@@ -17,9 +29,9 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
     
     let loginUserPreference = LoginUserPreferences.shared
     
-    var navigationOptions = [SnapXEatsPageTitles.restaurants, SnapXEatsPageTitles.wishlist, SnapXEatsPageTitles.preferences, SnapXEatsPageTitles.foodJourney, SnapXEatsPageTitles.rewards]
+    var navigationOptions = [SnapXEatsPageTitles.home, SnapXEatsPageTitles.wishlist, SnapXEatsPageTitles.preferences, SnapXEatsPageTitles.foodJourney, SnapXEatsPageTitles.rewards, SnapXEatsPageTitles.snapnshare, SnapXEatsPageTitles.smartPhotos]
     
-    var screenIndex: Int = 0
+    var screenIndex: navigateScreen = .home
     @IBOutlet weak var navigationOptionTable: UITableView!
     @IBOutlet weak var userInfoView: UIView!
     @IBOutlet weak var userImageView: UIImageView!
@@ -31,9 +43,11 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
         if loginUserPreference.isLoggedIn {
             let cancel = UIAlertAction(title: SnapXButtonTitle.cancel, style: UIAlertActionStyle.default, handler: nil)
             let Ok = UIAlertAction(title: SnapXButtonTitle.ok, style: UIAlertActionStyle.default, handler:  {[weak self] action in
-                SnapXEatsLoginHelper.shared.resetData()
-                self?.presenter?.presentScreen(screen: .login, drawerState: .closed)})
+             self?.screenIndex = .showLogin
+             self?.showLoading()
+             self?.presenter?.sendlogOutRequest()})
             UIAlertController.presentAlertInViewController(self, title: AlertTitle.logOutTitle , message: AlertMessage.logOutMessage, actions: [cancel, Ok], completion: nil)
+            
         } else {
             SnapXEatsLoginHelper.shared.resetData()
             presenter?.presentScreen(screen: .login, drawerState: .closed)
@@ -107,20 +121,23 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let  screen = navigateScreen(rawValue: indexPath.row) ?? .home
             if loginUserPreference.isDirtyPreference {
-                showPreferenceSaveDialog(index: indexPath.row)
+                showPreferenceSaveDialog(screen: screen)
             } else {
-                presentScreen(index: indexPath.row)
+                presentScreen(index: screen)
             }
 
     }
     
-    private func presentScreen(index: Int) {
+    private func presentScreen(index: navigateScreen) {
         switch index {
-        case 0:
+        case .home:
             presenter?.presentScreen(screen: .location, drawerState: .closed)
-        case 2:
+        case .showPreference:
             presenter?.presentScreen(screen: .userPreference, drawerState: .closed)
+        case .showLogin:
+            presenter?.presentScreen(screen: .login, drawerState: .closed)
         default:
             break
         }
@@ -134,7 +151,7 @@ extension DrawerViewController: BaseView {
         registerNibsForCells()
     }
     
-    private func presentNextScreen(index: Int) {
+    private func presentNextScreen(index: navigateScreen) {
         screenIndex = index
         
         if  loginUserPreference.isLoggedIn {
@@ -149,9 +166,9 @@ extension DrawerViewController: BaseView {
         }
     }
     
-    private func showPreferenceSaveDialog(index: Int) {
+    private func showPreferenceSaveDialog(screen: navigateScreen) {
         let apply =  setApplyButton { [weak self] in
-            self?.presentNextScreen(index: index)
+            self?.presentNextScreen(index: screen)
         }
         
         UIAlertController.presentAlertInViewController(self, title: AlertTitle.preferenceTitle , message: AlertMessage.preferenceMessage, actions: [apply], completion: nil)

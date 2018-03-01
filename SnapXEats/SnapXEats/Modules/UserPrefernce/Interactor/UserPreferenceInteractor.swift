@@ -34,18 +34,14 @@ extension UserPreferenceInteractor: UserPreferenceInteractorIntput {
 extension UserPreferenceInteractor: UserPreferenceRequestFormatter {
     func sendUserPreference(preference: LoginUserPreferences) {
         PreferenceHelper.shared.saveUserPrefernce(preference: preference)
-        if let prefernce = PreferenceHelper.shared.getUserPrefernce(userID: preference.loginUserID){
             let requestParameter = PreferenceHelper.shared.getJSONDataUserPrefernce()
             sendUserPreferences(forPath:SnapXEatsWebServicePath.userPreferene, withParameters: requestParameter)
-        }
     }
     
     func updateUserPreference(preference: LoginUserPreferences) {
         PreferenceHelper.shared.saveUserPrefernce(preference: preference)
-        if let prefernce = PreferenceHelper.shared.getUserPrefernce(userID: preference.loginUserID){
             let requestParameter = PreferenceHelper.shared.getJSONDataUserPrefernce()
             updateUserPreferences(forPath: SnapXEatsWebServicePath.userPreferene, withParameters: requestParameter)
-        }
     }
     
 }

@@ -27,6 +27,10 @@ extension DrawerPresenter: DrawerPresentation {
     func presnetScreen(screen: Screens) {
         router?.presentScreen(screen: screen)
     }
+    
+    func sendlogOutRequest() {
+        interactor?.sendlogOutRequest()
+    }
 }
 
 extension DrawerPresenter: DrawerInteractorOutput {
@@ -34,7 +38,6 @@ extension DrawerPresenter: DrawerInteractorOutput {
 }
 
 extension DrawerPresenter: DrawerInteractorIntput {
-    // TODO: implement interactor output methods
 }
 
 
