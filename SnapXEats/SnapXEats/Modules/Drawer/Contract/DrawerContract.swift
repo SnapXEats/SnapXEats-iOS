@@ -29,26 +29,29 @@ protocol DrawerWireframe: RootWireFrame {
 }
 
 
-protocol DrawerUseCase: class {
+protocol DrawerUseCase: DrawerRequestFormatter {
     func saveUserPreference(loginUserPreferences: LoginUserPreferences)
     func getUserPreference(userID: String)
     func sendUserPreference(preference: LoginUserPreferences)
     func updateUserPreference(preference: LoginUserPreferences)
 }
 
-protocol DrawerInteractorIntput: DrawerRequestFormatter {
+protocol DrawerInteractorIntput {
     func saveUserPreference(loginUserPreferences: LoginUserPreferences)
     func getUserPreference(userID: String)
+
 }
 
 protocol DrawerRequestFormatter: class {
     func sendUserPreference(preference: LoginUserPreferences)
     func updateUserPreference(preference: LoginUserPreferences)
+    func sendlogOutRequest()
 }
 
 protocol DrawerWebService: class {
     func sendUserPreferences(forPath: String, withParameters: [String: Any])
     func updateUserPreferences(forPath: String, withParameters: [String: Any])
+    func sendlogOutRequest(path: String)
 }
 
 protocol DrawerObjectMapper: class {
