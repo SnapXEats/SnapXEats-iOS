@@ -8,11 +8,20 @@
 
 import Foundation
 import UIKit
+import MapKit
+
+// To Distingugish between Restaurant marker and Current Location Marker the
+class CurrentLocationAnnotation: MKPointAnnotation {
+}
 
 class RestaurantDirectionsViewController: BaseViewController, StoryboardLoadable {
 
     private let locationTitleLeftInsetMargin: CGFloat = 15.0
     private let locationTitleTopInset: CGFloat = 5
+    private let mapViewVisbileRectInsets: CGFloat = 40
+    private let routeLineWidth: CGFloat = 3.0
+    private let routeLineColor = UIColor.rgba(93.0, 93.0, 93.0, 1.0)
+    private let meterToMileMultiplier = 0.000621371
     
     @IBOutlet weak var ratingView: UIView!
     @IBOutlet weak var timingsButton: UIButton!
@@ -21,6 +30,7 @@ class RestaurantDirectionsViewController: BaseViewController, StoryboardLoadable
     @IBOutlet var pricingLabel: UILabel!
     @IBOutlet var distanceLabel: UILabel!
     @IBOutlet var ratingLabel: UILabel!
+    @IBOutlet var mapView: MKMapView!
     
     var presenter: RestaurantDirectionsPresentation?
     var restaurantDetails: RestaurantDetails!
@@ -37,6 +47,7 @@ class RestaurantDirectionsViewController: BaseViewController, StoryboardLoadable
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showRestaurantDetails()
+        setupMapViewWithDirections()
     }
     
     private func showRestaurantDetails() {
@@ -69,5 +80,83 @@ extension RestaurantDirectionsViewController: RestaurantDirectionsView {
         customizeNavigationItem(title: SnapXEatsPageTitles.directions, isDetailPage: true)
         ratingView.layer.cornerRadius = ratingView.frame.width/2
         addShareButtonOnNavigationItem()
+    }
+}
+
+//MARK: Mapview and Direction related Function
+extension RestaurantDirectionsViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = routeLineColor
+        renderer.lineWidth = routeLineWidth
+        return renderer
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "")
+        
+        // To distinguish between Current Location and Restaurant Marker
+        let imageName = (annotation is CurrentLocationAnnotation) ? SnapXEatsImageNames.current_location_marker_icon : SnapXEatsImageNames.marker_icon
+        annotationView.image = UIImage(named: imageName)
+        annotationView.canShowCallout = false
+        return annotationView
+    }
+    
+    private func setupMapViewWithDirections() {
+        guard let restaurantLatitude = restaurantDetails.latitude, let restaurantLongitude = restaurantDetails.longitude else {
+            return
+        }
+        
+        //TODO: Change this to actual Current Location in Future
+        let sourceLocation = CLLocationCoordinate2D(latitude: 40.4862157, longitude: -74.4518188)
+        let destinationLocation = CLLocationCoordinate2D(latitude: restaurantLatitude, longitude: restaurantLongitude)
+        
+        let sourcePlacemark = MKPlacemark(coordinate: sourceLocation, addressDictionary: nil)
+        let destinationPlacemark = MKPlacemark(coordinate: destinationLocation, addressDictionary: nil)
+        
+        // Create Annotations for Source and Destination
+        let sourceAnnotation = CurrentLocationAnnotation()
+        if let location = sourcePlacemark.location {
+            sourceAnnotation.coordinate = location.coordinate
+        }
+        
+        let destinationAnnotation = MKPointAnnotation()
+        if let location = destinationPlacemark.location {
+            destinationAnnotation.coordinate = location.coordinate
+        }
+        self.mapView.showAnnotations([sourceAnnotation,destinationAnnotation], animated: true )
+        mapView.showsCompass = true
+        
+        // Calculate the direction and Show Route
+        let sourceMapItem = MKMapItem(placemark: sourcePlacemark)
+        let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
+        calculateDirectionandShowOnMap(sourceMapItem: sourceMapItem, destinationMapItem: destinationMapItem)
+    }
+    
+    private func calculateDirectionandShowOnMap(sourceMapItem: MKMapItem, destinationMapItem: MKMapItem) {
+        let directionRequest = MKDirectionsRequest()
+        directionRequest.source = sourceMapItem
+        directionRequest.destination = destinationMapItem
+        directionRequest.transportType = .automobile
+        
+        let directions = MKDirections(request: directionRequest)
+        directions.calculate { [weak self] (response, error) -> Void in
+            guard let response = response else {
+                if let error = error {
+                    print("Error in Finding Routes: \(error)")
+                }
+                return
+            }
+            let route = response.routes[0]
+            self?.mapView.add((route.polyline), level: MKOverlayLevel.aboveRoads)
+            
+            // Show Distance in Miles
+            let distanceInMiles = response.routes[0].distance*self!.meterToMileMultiplier // Convert meters - miles
+            self?.distanceLabel.text = "\(distanceInMiles.rounded(toPlaces: 1)) mi"
+            
+            let rect = route.polyline.boundingMapRect
+            self?.mapView.setVisibleMapRect(rect, edgePadding: UIEdgeInsetsMake(self!.mapViewVisbileRectInsets, self!.mapViewVisbileRectInsets, self!.mapViewVisbileRectInsets, self!.mapViewVisbileRectInsets), animated: true)
+        }
     }
 }

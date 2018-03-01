@@ -92,6 +92,8 @@ enum SnapXEatsImageNames {
     static let notnowOverlay = "notnow"
     static let trylaterOverlay = "trylater"
     static let share = "share_icon"
+    static let current_location_marker_icon = "current_location_marker_icon"
+    static let marker_icon = "marker_icon"
 }
 
 
