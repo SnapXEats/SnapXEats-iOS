@@ -534,7 +534,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Apply" id="77Y-HN-Udo">
                             <color key="tintColor" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="applyButtonAction:" destination="Ipe-nt-eOg" id="Jtk-zn-LI1"/>
+                                <action selector="applyButtonAction:" destination="Ipe-nt-eOg" id="CGA-cD-bCe"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -649,7 +649,7 @@
                         <viewLayoutGuide key="safeArea" id="YLq-8v-JEv"/>
                     </view>
                     <navigationItem key="navigationItem" id="ofN-0W-r8a">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="pn4-pL-cxZ">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="pn4-pL-cxZ">
                             <color key="tintColor" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="doneButtonAction:" destination="61x-0n-vrb" id="T74-pc-Krc"/>

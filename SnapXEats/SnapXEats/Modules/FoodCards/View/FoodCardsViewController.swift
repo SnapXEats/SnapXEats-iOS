@@ -92,6 +92,7 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
         //selectedPrefernce?.resetData() // Reset the data once request completed
         if let _ = result as? Bool {
             FoodCardActionHelper.shared.resetLocalFoodCardActions()
+            showLoading()
             presenter?.getFoodCards(selectedPreferences: selectedPrefernce!)
         } else if let dishInfo = result as?  DishInfo, let restaurants = dishInfo.restaurants, restaurants.count > 0  {
             setFoodCardDetails(restaurants: restaurants)

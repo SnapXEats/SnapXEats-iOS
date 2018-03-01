@@ -35,6 +35,30 @@ class SetUserPreference: Object {
         }
     }
     
+    static func resetFoodPreference(userID: String){
+            if  let _ = getUserPrefernce(userID: userID), userID != SnapXEatsConstant.emptyString  {
+                // Get the default Realm
+                let realm = try! Realm()
+                if let userPref = getUserPrefernce(userID: userID)  {
+                    try! realm.write {
+                        userPref.foodPreference.removeAll()
+                    }
+                }
+        }
+    }
+    
+    static func resetCuisinePreference(userID: String){
+        if  let _ = getUserPrefernce(userID: userID), userID != SnapXEatsConstant.emptyString  {
+            // Get the default Realm
+            let realm = try! Realm()
+            if let userPref = getUserPrefernce(userID: userID)  {
+                try! realm.write {
+                    userPref.cuisinePreference.removeAll()
+                }
+            }
+        }
+    }
+    
     static func getUserPrefernce(userID: String) -> SetUserPreference?  {
         // Get the default Realm
         let realm = try! Realm()

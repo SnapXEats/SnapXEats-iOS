@@ -157,6 +157,7 @@ enum SnapXButtonTitle {
     static let notnow = "Not Now"
     static let loginOut = "Log Out"
     static let loginIn = "Log In"
+    static let apply = "Apply"
 }
 
 enum SnapXEatsAppDefaults {
@@ -197,20 +198,23 @@ enum SnapXEatsDirectionConstants {
 }
 
 enum AlertMessage {
-    static var messageNoInternet = "SnapXEats required internet connection to process your request. Please enable your internet access."
-    static var messageSuccess = "Request Succesful"
-    static var loginError = "Server Error during process your request"
-    static var cancelRequest = "User canceled request"
-    static var logOutMessage = "Do you really want to Logout of SnapXEats"
-    static let preferenceMessage = "You have made some changes to your preferences, would you like save them."
+    static let messageNoInternet = "SnapXEats required internet connection to process your request. Please enable your internet access."
+    static let messageSuccess = "Request Succesful"
+    static let loginError = "Server Error during process your request"
+    static let cancelRequest = "User canceled request"
+    static let logOutMessage = "Do you really want to Logout of SnapXEats"
+    static let preferenceMessage = "You have made some changes to your preferences, You need to apply them first."
     static let uberRedirectConfirmation = "Are you sure you want to book an Uber ride?"
     static let uberInstallConfirmation = "You need to install the uber app from app store to book a ride. Do you want to install it now?"
+    static let preferecneRestMessage = "Do you really want to reset you preferences. Please press Ok or Cancel."
 }
 
 enum AlertTitle {
     static let loginTitle = "Error"
     static let preferenceTitle = "Preference Error"
-    static var logOutTitle = "LogOut"
+    static let logOutTitle = "LogOut"
+    static let error = "Error"
+
 }
 
 enum PreferecneConstant {
