@@ -38,7 +38,7 @@ class PreferenceHelper {
         let setPreference = SetUserPreference()
         setPreference.distancePreference = preference.distancePreference
         setPreference.pricingPreference =  preference.pricingPreference.rawValue
-        setPreference.ratingPreference = preference.ratingPreference?.rawValue ?? 0
+        setPreference.ratingPreference = preference.ratingPreference.rawValue
         setPreference.sortByPreference = preference.sortByPreference.rawValue
         setPreference.userID = preference.loginUserID
         SetUserPreference.saveUserPrefernce(prefernce: setPreference)
@@ -138,7 +138,7 @@ class PreferenceHelper {
     }
     
     func getJSONDataUserPrefernce() -> [String: Any] {
-        return [PreferecneConstant.restaurant_rating: loginPreferecne.ratingPreference?.rawValue ?? 0,
+        return [PreferecneConstant.restaurant_rating: loginPreferecne.ratingPreference.rawValue,
                 PreferecneConstant.restaurant_price: getpriceNonLoogedInPrefercne(value: loginPreferecne.pricingPreference.rawValue),
                 PreferecneConstant.restaurant_distance: loginPreferecne.distancePreference,
                 PreferecneConstant.sort_by_distance: loginPreferecne.sortByPreference.rawValue == 0 ? true : false,
@@ -234,7 +234,7 @@ class PreferenceHelper {
                 SnapXEatsWebServiceParameterKeys.longitude : lat.1,// selectedPreferences?.location.longitude ?? 0.0,
                 PreferecneConstant.restaurant_distance: loginPreferecne.distancePreference,
                 PreferecneConstant.restaurant_price: getpriceNonLoogedInPrefercne(value: loginPreferecne.pricingPreference.rawValue),
-                PreferecneConstant.restaurant_rating: loginPreferecne.ratingPreference?.rawValue ?? 0,
+                PreferecneConstant.restaurant_rating: loginPreferecne.ratingPreference.rawValue,
                 PreferecneConstant.sort_by_distance: loginPreferecne.sortByPreference.rawValue == 0 ? true : false, // default true for distance
                 PreferecneConstant.sort_by_rating: loginPreferecne.sortByPreference.rawValue == 1 ? true : false,
                 SnapXEatsWebServiceParameterKeys.cuisineArray : selectedPreferecne.selectedCuisine,

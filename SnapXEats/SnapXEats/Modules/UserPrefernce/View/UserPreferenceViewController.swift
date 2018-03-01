@@ -179,7 +179,7 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
             fourStarRatingButton.isSelected = false
             fiveStarRatingButton.isSelected = false
             threeStarRatingButton.isSelected = true
-            
+        default : break
         }
     }
     
