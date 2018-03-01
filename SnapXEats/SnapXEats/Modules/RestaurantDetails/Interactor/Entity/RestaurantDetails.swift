@@ -9,6 +9,11 @@
 import Foundation
 import ObjectMapper
 
+private enum restaurantTimingConstants {
+    static let open = "Open Today"
+    static let close = "Closed Now"
+}
+
 class RestaurantDetailsItem: Mappable {
     var restaurantDetails: RestaurantDetails?
     
@@ -54,6 +59,22 @@ class RestaurantDetails: Mappable {
         latitude      <- map["location_lat"]
         longitude      <- map["location_long"]
         restaurant_amenities  <- map["restaurant_amenities"]
+    }
+    
+    func timingDisplayText() -> String {
+        var timingStr = SnapXEatsAppDefaults.emptyString
+        if self.isOpenNow == false {
+            return restaurantTimingConstants.close
+        } else if self.isOpenNow == true {
+            let today = Date().dayOfWeek()
+            for timing in self.timings {
+                if timing.day == today {
+                    timingStr = timing.time ?? SnapXEatsAppDefaults.emptyString
+                }
+            }
+            return restaurantTimingConstants.open + " " + timingStr
+        }
+        return SnapXEatsAppDefaults.emptyString
     }
 }
 

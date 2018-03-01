@@ -91,6 +91,7 @@ enum SnapXEatsImageNames {
     static let likeitOverlay = "likeit"
     static let notnowOverlay = "notnow"
     static let trylaterOverlay = "trylater"
+    static let share = "share_icon"
 }
 
 
@@ -118,6 +119,7 @@ enum SnapXEatsPageTitles {
     static let cusinePreferences = "Cuisine Preferences"
     static let foodPreferences = "Food Preferences"
     static let restaurantDetail = "Restaurant Info"
+    static let directions = "Directions"
 }
 
 enum SnapXEatsCellResourceIdentifiler {

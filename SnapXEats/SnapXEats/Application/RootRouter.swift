@@ -113,6 +113,7 @@ class RootRouter: NSObject {
     
     private func pushRestaurantDirectionsScreen(onNavigationController parentController: UINavigationController, withDetails details: RestaurantDetails) {
         let restaurantDetailsVC = RestaurantDirectionsRouter.shared.loadRestaurantDirectionsModule()
+        restaurantDetailsVC.restaurantDetails = details
         parentController.pushViewController(restaurantDetailsVC, animated: true)
     }
     

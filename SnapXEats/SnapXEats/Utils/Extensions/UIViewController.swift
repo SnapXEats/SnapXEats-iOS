@@ -101,10 +101,6 @@ extension UIViewController { // Navigation Item Customizations
         //Menu Button Action
         RootRouter.shared.updateDrawerState(state: .opened)
     }
-    
-    @objc func serarchButtonTapped() {
-        //Search Button Action
-    }
 }
 extension UIViewController: ReusableView { }
 

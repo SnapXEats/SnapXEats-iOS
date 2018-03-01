@@ -94,7 +94,7 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
         self.userLocation.setTitle("\(locationButtonTitle)", for: .normal)
         userLocation.titleLabel?.sizeToFit()
         let leftInset = (userLocation.titleLabel?.frame.size.width)! + locationTitleLeftInsetMargin
-        userLocation.imageEdgeInsets = UIEdgeInsetsMake(locationTitleTopInset, leftInset, 0, -leftInset);
+        userLocation.imageEdgeInsets = UIEdgeInsetsMake(locationTitleTopInset, leftInset, 0, -leftInset)
         if selectedPreference.location.locationName != locationName {
             selectedPreference.location.locationName = locationName
         }
