@@ -11,7 +11,7 @@ import FBSDKLoginKit
 import SwiftInstagram
 
 enum Screens {
-    case firsTimeUser, login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurant: Restaurant, parentController: UINavigationController, showMoreInfo: Bool)
+    case firsTimeUser, login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurant: Restaurant, parentController: UINavigationController, showMoreInfo: Bool), wishlist
 }
 
 class RootRouter: NSObject {
@@ -95,6 +95,12 @@ class RootRouter: NSObject {
         presentView(drawerController)
     }
     
+    private func presentWishlistScreen() {
+        let wishlistNvController = WishlistRouter.shared.loadWishlistModule()
+        updateDrawerWithMainController(mainVC: wishlistNvController)
+        presentView(drawerController)
+    }
+    
     private func dissmissSelectLocationScreen() {
         window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
@@ -143,7 +149,8 @@ class RootRouter: NSObject {
             pushFoodAndCuisinePreferencesScreen(onNavigationController: parentController, withPreferenceType: preferenceType)
         case .restaurantDetails(let restaurant, let parentController, let showMoreInfo):
             pushRestaurantDetailsScreen(onNavigationController: parentController, forRestaurant: restaurant, showMoreInfo: showMoreInfo)
-            
+        case .wishlist:
+            presentWishlistScreen()
         }
     }
     
