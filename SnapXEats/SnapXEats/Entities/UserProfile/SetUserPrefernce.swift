@@ -13,7 +13,7 @@ import RealmSwift
 class SetUserPreference: Object {
     
     @objc dynamic var userID = SnapXEatsConstant.emptyString
-    @objc dynamic var ratingPreference = 0
+    @objc dynamic var ratingPreference = 0 // default is all rating
     @objc dynamic var pricingPreference = 1 // Default is 1 auto
     @objc dynamic var sortByPreference = 0
     @objc dynamic var distancePreference = 1 // default distance in 1 Mile

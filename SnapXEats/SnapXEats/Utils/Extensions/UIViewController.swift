@@ -67,6 +67,7 @@ extension UIViewController { // Navigation Item Customizations
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationItem.backBarButtonItem?.title = nil
         self.navigationItem.title = title
+        self.navigationController?.navigationBar.addShadow()
         
         
         if isDetailPage == false {

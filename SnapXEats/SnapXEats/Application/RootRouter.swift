@@ -11,7 +11,7 @@ import FBSDKLoginKit
 import SwiftInstagram
 
 enum Screens {
-    case firsTimeUser, login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurant: Restaurant, parentController: UINavigationController, showMoreInfo: Bool), restaurantDirections(details: RestaurantDetails, parentController: UINavigationController)
+    case firsTimeUser, login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurant: Restaurant, parentController: UINavigationController, showMoreInfo: Bool), restaurantDirections(details: RestaurantDetails, parentController: UINavigationController), wishlist
 }
 
 class RootRouter: NSObject {
@@ -95,6 +95,12 @@ class RootRouter: NSObject {
         presentView(drawerController)
     }
     
+    private func presentWishlistScreen() {
+        let wishlistNvController = WishlistRouter.shared.loadWishlistModule()
+        updateDrawerWithMainController(mainVC: wishlistNvController)
+        presentView(drawerController)
+    }
+    
     private func dissmissSelectLocationScreen() {
         window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
@@ -151,6 +157,8 @@ class RootRouter: NSObject {
             pushRestaurantDetailsScreen(onNavigationController: parentController, forRestaurant: restaurant, showMoreInfo: showMoreInfo)
         case .restaurantDirections(let details, let parentController):
             pushRestaurantDirectionsScreen(onNavigationController: parentController, withDetails: details)
+        case .wishlist:
+            presentWishlistScreen()
         }
     }
     

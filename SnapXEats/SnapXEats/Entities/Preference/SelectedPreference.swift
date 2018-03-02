@@ -9,6 +9,7 @@
 import Foundation
 
 enum RatingPreferences: Int {
+    case defaultStart = 0
     case threeStar = 3
     case fourStar = 4
     case fiveStar = 5
@@ -46,7 +47,7 @@ class LoginUserPreferences {
     
     static let shared = LoginUserPreferences()
     private init() {}
-    var ratingPreference: RatingPreferences?
+    var ratingPreference: RatingPreferences = .defaultStart
     var pricingPreference: PricingPreference = .auto
     var sortByPreference: SortByPreference = .distance
     var distancePreference = 1 // default  distances  in 1 miles
@@ -82,7 +83,7 @@ class LoginUserPreferences {
     }
     
     func reset() {
-        ratingPreference = nil
+        ratingPreference = .defaultStart
         pricingPreference = .auto
         sortByPreference = .distance
         distancePreference = 1
