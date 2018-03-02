@@ -49,6 +49,7 @@ enum SnapXEatsStoryboard {
     static let locationStoryboard = "Location"
     static let foodCardsStoryboard = "FoodCards"
     static let userPreferenceStoryboard = "UserPreference"
+    static let wishlist = "Wishlist"
 }
 
 enum SnapXEatsStoryboardIdentifier {
@@ -63,6 +64,7 @@ enum SnapXEatsStoryboardIdentifier {
     static let cusineAndFoodPreferencesViewControllerID = "CusineAndFoodPreferencesViewControllerID"
     static let restaurantTimingsViewController = "RestaurantTimingsViewController"
     static let drawerViewController = "DrawerViewController"
+    static let wishlistNavigationControllerID = "WishlistNavigationController"
 }
 
 enum SnapXEatsLocationConstant {
@@ -131,6 +133,7 @@ enum SnapXEatsCellResourceIdentifiler {
     static let restaurantSpeciality = "RestaurantSpecialityCell"
     static let restaurantTiming = "restaurantTimingCell"
     static let moreInfoTableView = "moreInfoTableViewCell"
+    static let wishlistTableView = "wishlistTableViewCell"
 }
 
 enum SnapXEatsNibNames {
@@ -140,6 +143,7 @@ enum SnapXEatsNibNames {
     static let foodCardOverlayView = "foodCardOverlayView"
     static let foodCardView = "FoodCardView"
     static let moreInfoTableViewCell = "MoreInfoTableViewCell"
+    static let wishlistItemTableViewCell = "WishlistItemTableViewCell"
 }
 
 enum SnapXEatsWebServiceParameterKeys {

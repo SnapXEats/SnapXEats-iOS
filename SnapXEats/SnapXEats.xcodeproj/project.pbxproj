@@ -39,6 +39,14 @@
 		7E5E800C203D4B3000009A56 /* RestaurantTimingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5E800A203D4B2F00009A56 /* RestaurantTimingViewController.swift */; };
 		7E5E800F203D6A4000009A56 /* TimingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5E800E203D6A4000009A56 /* TimingTableViewCell.swift */; };
 		7E5E8011203D9AD700009A56 /* Date+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5E8010203D9AD700009A56 /* Date+Helpers.swift */; };
+		7E673B13204961C9005D19DC /* WishlistInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E673B05204961C8005D19DC /* WishlistInteractor.swift */; };
+		7E673B14204961C9005D19DC /* WishlistRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E673B07204961C8005D19DC /* WishlistRouter.swift */; };
+		7E673B15204961C9005D19DC /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E673B09204961C8005D19DC /* WishlistViewController.swift */; };
+		7E673B18204961C9005D19DC /* WishlistContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E673B10204961C9005D19DC /* WishlistContract.swift */; };
+		7E673B19204961C9005D19DC /* WishlistPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E673B12204961C9005D19DC /* WishlistPresenter.swift */; };
+		7E673B1B2049622F005D19DC /* Wishlist.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E673B1A2049622F005D19DC /* Wishlist.storyboard */; };
+		7E673B1F204968D2005D19DC /* WishlistItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E673B1D204968D2005D19DC /* WishlistItemTableViewCell.swift */; };
+		7E673B20204968D2005D19DC /* WishlistItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E673B1E204968D2005D19DC /* WishlistItemTableViewCell.xib */; };
 		7E6FD41C2020A00F0058BFB8 /* SearchPlacePredictions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6FD41B2020A00F0058BFB8 /* SearchPlacePredictions.swift */; };
 		7E71FC072022CCAD00CA8467 /* KYDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E71FC042022CCAD00CA8467 /* KYDrawerController.swift */; };
 		7E71FC082022CCAD00CA8467 /* KYEmbedDrawerControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E71FC052022CCAD00CA8467 /* KYEmbedDrawerControllerSegue.swift */; };
@@ -206,6 +214,14 @@
 		7E5E800A203D4B2F00009A56 /* RestaurantTimingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantTimingViewController.swift; sourceTree = "<group>"; };
 		7E5E800E203D6A4000009A56 /* TimingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimingTableViewCell.swift; path = SnapXEats/Modules/RestaurantDetails/View/TimingTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		7E5E8010203D9AD700009A56 /* Date+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Helpers.swift"; sourceTree = "<group>"; };
+		7E673B05204961C8005D19DC /* WishlistInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistInteractor.swift; sourceTree = "<group>"; };
+		7E673B07204961C8005D19DC /* WishlistRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistRouter.swift; sourceTree = "<group>"; };
+		7E673B09204961C8005D19DC /* WishlistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistViewController.swift; sourceTree = "<group>"; };
+		7E673B10204961C9005D19DC /* WishlistContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistContract.swift; sourceTree = "<group>"; };
+		7E673B12204961C9005D19DC /* WishlistPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistPresenter.swift; sourceTree = "<group>"; };
+		7E673B1A2049622F005D19DC /* Wishlist.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wishlist.storyboard; sourceTree = "<group>"; };
+		7E673B1D204968D2005D19DC /* WishlistItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistItemTableViewCell.swift; sourceTree = "<group>"; };
+		7E673B1E204968D2005D19DC /* WishlistItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WishlistItemTableViewCell.xib; sourceTree = "<group>"; };
 		7E6FD41B2020A00F0058BFB8 /* SearchPlacePredictions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlacePredictions.swift; sourceTree = "<group>"; };
 		7E71FC042022CCAD00CA8467 /* KYDrawerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYDrawerController.swift; sourceTree = "<group>"; };
 		7E71FC052022CCAD00CA8467 /* KYEmbedDrawerControllerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYEmbedDrawerControllerSegue.swift; sourceTree = "<group>"; };
@@ -462,6 +478,69 @@
 				7EB5921E2040048600CC6888 /* DrivingDirections.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		7E673AE020496122005D19DC /* Wishlist */ = {
+			isa = PBXGroup;
+			children = (
+				7E673B0F204961C9005D19DC /* Contract */,
+				7E673B04204961C8005D19DC /* Interactor */,
+				7E673B11204961C9005D19DC /* Presenter */,
+				7E673B08204961C8005D19DC /* View */,
+				7E673B06204961C8005D19DC /* Router */,
+			);
+			path = Wishlist;
+			sourceTree = "<group>";
+		};
+		7E673B04204961C8005D19DC /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				7E673B05204961C8005D19DC /* WishlistInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		7E673B06204961C8005D19DC /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				7E673B07204961C8005D19DC /* WishlistRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		7E673B08204961C8005D19DC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7E673B1C204968AA005D19DC /* tableviewCells */,
+				7E673B09204961C8005D19DC /* WishlistViewController.swift */,
+				7E673B1A2049622F005D19DC /* Wishlist.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7E673B0F204961C9005D19DC /* Contract */ = {
+			isa = PBXGroup;
+			children = (
+				7E673B10204961C9005D19DC /* WishlistContract.swift */,
+			);
+			path = Contract;
+			sourceTree = "<group>";
+		};
+		7E673B11204961C9005D19DC /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				7E673B12204961C9005D19DC /* WishlistPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		7E673B1C204968AA005D19DC /* tableviewCells */ = {
+			isa = PBXGroup;
+			children = (
+				7E673B1D204968D2005D19DC /* WishlistItemTableViewCell.swift */,
+				7E673B1E204968D2005D19DC /* WishlistItemTableViewCell.xib */,
+			);
+			path = tableviewCells;
 			sourceTree = "<group>";
 		};
 		7E71FC022022CC6800CA8467 /* External Libraries */ = {
@@ -902,6 +981,7 @@
 				9D0D7153203F144E0077FA7A /* Drawer */,
 				9D0D712D203AAE1F0077FA7A /* RestaurantDetails */,
 				9DE7CE462023620500BBBFEC /* UserPrefernce */,
+				7E673AE020496122005D19DC /* Wishlist */,
 				9D0D7141203D998D0077FA7A /* FoodAndCuisinePreference */,
 				9D8E88CD1FFD28C50066A1D9 /* Base */,
 			);
@@ -1409,6 +1489,7 @@
 				7E8397442045585100E71C6D /* Roboto-Italic.ttf in Resources */,
 				7E83974220454DF600E71C6D /* MoreInfoTableViewCell.xib in Resources */,
 				7E5C058720186C36000B5C33 /* roboto.bold.ttf in Resources */,
+				7E673B20204968D2005D19DC /* WishlistItemTableViewCell.xib in Resources */,
 				7E5946982020BD02006702AF /* SearchPlacesTableViewCell.xib in Resources */,
 				9DB7FE1720061B6200D0E816 /* Roboto-Light.ttf in Resources */,
 				7E5E7FC2203AD11200009A56 /* RestaurantDetails.storyboard in Resources */,
@@ -1429,6 +1510,7 @@
 				9DEB5CF81FFE6D49003B9D4B /* Login.storyboard in Resources */,
 				7E7A6E5A2036D2EE0026C305 /* SnapX_White.png in Resources */,
 				7E5E7FD9203AF7EE00009A56 /* .gitkeep in Resources */,
+				7E673B1B2049622F005D19DC /* Wishlist.storyboard in Resources */,
 				7EB59221204049F400CC6888 /* foodCardOverlayView.xib in Resources */,
 				7E5E7FDB203AF7EE00009A56 /* ic_cross_white@3x.png in Resources */,
 				7E791F192032CAB800FA887D /* PreferenceTypeCollectionViewCell.xib in Resources */,
@@ -1576,6 +1658,7 @@
 				7E5C057E2017A6DC000B5C33 /* SavedLocationTableViewCell.swift in Sources */,
 				7E71FC092022CCAD00CA8467 /* KYEmbedMainControllerSegue.swift in Sources */,
 				7E8397462045713B00E71C6D /* DateFormatters.swift in Sources */,
+				7E673B15204961C9005D19DC /* WishlistViewController.swift in Sources */,
 				9D902BE6201729E400359DFD /* SelectLocationViewController.swift in Sources */,
 				9D8E88F51FFD2BEC0066A1D9 /* Constants.swift in Sources */,
 				7EAC8610201A066B00DE162A /* FoodCardView.swift in Sources */,
@@ -1589,8 +1672,10 @@
 				7E5E800C203D4B3000009A56 /* RestaurantTimingViewController.swift in Sources */,
 				9D902BCA20171AED00359DFD /* FoodCardsPresenter.swift in Sources */,
 				7E5E8011203D9AD700009A56 /* Date+Helpers.swift in Sources */,
+				7E673B1F204968D2005D19DC /* WishlistItemTableViewCell.swift in Sources */,
 				9D3D1CE02006479500AAAB95 /* SnapXConstants.swift in Sources */,
 				7E83974120454DF600E71C6D /* MoreInfoTableViewCell.swift in Sources */,
+				7E673B14204961C9005D19DC /* WishlistRouter.swift in Sources */,
 				7E9C0B912021DC5700BA999E /* SnapXEatsLocation.swift in Sources */,
 				9D8E88FA1FFD2BEC0066A1D9 /* UITextField+Border.swift in Sources */,
 				7E5E7FE2203AF7EE00009A56 /* UIImageView+Tools.swift in Sources */,
@@ -1612,6 +1697,7 @@
 				9DE7CE542023620500BBBFEC /* UserPreferenceInteractor.swift in Sources */,
 				9DCBE184201EF6F80030A0F9 /* SnapXEatsNetworkManager.swift in Sources */,
 				9D902BE5201729E400359DFD /* SelectLocationPresenter.swift in Sources */,
+				7E673B18204961C9005D19DC /* WishlistContract.swift in Sources */,
 				7E5E7FE3203AF7EE00009A56 /* ZoomAnimatedTransitioning.swift in Sources */,
 				9D0D7138203AAE1F0077FA7A /* RestaurantDetailsContract.swift in Sources */,
 				9D8E88FD1FFD2BEC0066A1D9 /* Results.swift in Sources */,
@@ -1625,7 +1711,9 @@
 				9D0D715F203F144F0077FA7A /* DrawerPresenter.swift in Sources */,
 				9D902BE8201729E400359DFD /* SelectLocationRouter.swift in Sources */,
 				7E5E800F203D6A4000009A56 /* TimingTableViewCell.swift in Sources */,
+				7E673B19204961C9005D19DC /* WishlistPresenter.swift in Sources */,
 				9D8E89021FFD2BEC0066A1D9 /* UIColor+Pallet.swift in Sources */,
+				7E673B13204961C9005D19DC /* WishlistInteractor.swift in Sources */,
 				9DB02A722010805F0061FC0C /* LocationRouter.swift in Sources */,
 				9D0D7161203F144F0077FA7A /* DrawerInteractor.swift in Sources */,
 				9D8E89031FFD2BEC0066A1D9 /* Double.swift in Sources */,

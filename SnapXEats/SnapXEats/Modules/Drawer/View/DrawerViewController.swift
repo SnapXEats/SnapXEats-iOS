@@ -138,11 +138,12 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
             presenter?.presentScreen(screen: .userPreference, drawerState: .closed)
         case .showLogin:
             presenter?.presentScreen(screen: .login, drawerState: .closed)
+        case .wishList:
+            presenter?.presentScreen(screen: .wishlist, drawerState: .closed)
         default:
             break
         }
     }
-    
 }
 
 extension DrawerViewController: BaseView {
