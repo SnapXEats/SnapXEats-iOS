@@ -133,6 +133,7 @@ enum SnapXEatsCellResourceIdentifiler {
     static let restaurantSpeciality = "RestaurantSpecialityCell"
     static let restaurantTiming = "restaurantTimingCell"
     static let moreInfoTableView = "moreInfoTableViewCell"
+    static let wishlistTableView = "wishlistTableViewCell"
 }
 
 enum SnapXEatsNibNames {
@@ -142,6 +143,7 @@ enum SnapXEatsNibNames {
     static let foodCardOverlayView = "foodCardOverlayView"
     static let foodCardView = "FoodCardView"
     static let moreInfoTableViewCell = "MoreInfoTableViewCell"
+    static let wishlistItemTableViewCell = "WishlistItemTableViewCell"
 }
 
 enum SnapXEatsWebServiceParameterKeys {

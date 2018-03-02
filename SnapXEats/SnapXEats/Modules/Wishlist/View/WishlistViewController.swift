@@ -15,6 +15,8 @@ class WishlistViewController: BaseViewController, StoryboardLoadable {
 
     var presenter: WishlistPresentation?
 
+    @IBOutlet var wishlistTableView: UITableView!
+    
     // MARK: Lifecycle
 
     override func viewDidLoad() {
@@ -26,5 +28,22 @@ class WishlistViewController: BaseViewController, StoryboardLoadable {
 extension WishlistViewController: WishlistView {
     func initView() {
         customizeNavigationItem(title: SnapXEatsPageTitles.wishlist, isDetailPage: false)
+        registerNibForCell()
+    }
+    
+    private func registerNibForCell() {
+        let tableViewCellNib = UINib(nibName: SnapXEatsNibNames.wishlistItemTableViewCell, bundle: nil)
+        wishlistTableView.register(tableViewCellNib, forCellReuseIdentifier: SnapXEatsCellResourceIdentifiler.wishlistTableView)
+    }
+}
+
+extension WishlistViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: SnapXEatsCellResourceIdentifiler.wishlistTableView, for: indexPath) as! WishlistItemTableViewCell
+        return cell
     }
 }
