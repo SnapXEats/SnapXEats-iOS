@@ -21,7 +21,10 @@ class WishlistPresenter {
 }
 
 extension WishlistPresenter: WishlistPresentation {
-    // TODO: implement presentation methods
+    func getWishListRestaurantDetails() {
+        interactor?.getWishListRestaurantDetails()
+    }
+
 }
 
 extension WishlistPresenter: WishlistInteractorOutput {

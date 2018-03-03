@@ -7,23 +7,39 @@
 //
 
 import Foundation
+import Alamofire
 
-protocol WishlistView: class, BaseView {
-    // TODO: Declare view methods
+
+protocol WishlistView: BaseView {
+      var presenter: WishlistPresentation? { set get }
 }
 
-protocol WishlistPresentation: class {
-    // TODO: Declare presentation methods
+protocol WishlistPresentation {
+        func getWishListRestaurantDetails() 
 }
 
-protocol WishlistUseCase: class {
-    // TODO: Declare use case methods
+protocol WishlistUseCase: WishlistRequestFormatter {
+    func sendUserWishList()
 }
 
-protocol WishlistInteractorOutput: class {
-    // TODO: Declare interactor output methods
+protocol WishlistInteractorOutput: Response {
+
 }
 
-protocol WishlistWireframe: class {
+protocol WishlistWireframe: RootWireFrame {
     // TODO: Declare wireframe methods
+}
+
+
+protocol WishlistRequestFormatter: class {
+     func getWishListRestaurantDetails()
+}
+
+protocol WishlistWebService: class {
+    func sendWishListDetailsRequest(path: String)
+    func sendUserGesturesRequest(forPath: String, withParameters: [String: Any], completionHandler: @escaping (_ response: DefaultDataResponse) -> ())
+}
+
+protocol WishlistObjectMapper: class {
+    func wishListDetails(data: Result<WishList>)
 }

@@ -73,7 +73,7 @@
 		9D0D713A203AAE1F0077FA7A /* RestaurantDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D7133203AAE1F0077FA7A /* RestaurantDetailsViewController.swift */; };
 		9D0D713B203AAE1F0077FA7A /* RestaurantDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D7135203AAE1F0077FA7A /* RestaurantDetailsInteractor.swift */; };
 		9D0D713C203AAE1F0077FA7A /* RestaurantDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D7137203AAE1F0077FA7A /* RestaurantDetailsRouter.swift */; };
-		9D0D713E203C2CFD0077FA7A /* SetUserPrefernce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D713D203C2CFD0077FA7A /* SetUserPrefernce.swift */; };
+		9D0D713E203C2CFD0077FA7A /* SetUserPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D713D203C2CFD0077FA7A /* SetUserPreference.swift */; };
 		9D0D7140203C633B0077FA7A /* PreferenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D713F203C633B0077FA7A /* PreferenceHelper.swift */; };
 		9D0D714C203D99A80077FA7A /* FoodAndCuisinePreferenceInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D7143203D99A70077FA7A /* FoodAndCuisinePreferenceInteractor.swift */; };
 		9D0D714E203D99A80077FA7A /* FoodAndCuisinePreferenceRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D7147203D99A80077FA7A /* FoodAndCuisinePreferenceRouter.swift */; };
@@ -158,6 +158,7 @@
 		9DB7FE1820061B6200D0E816 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1520061B1600D0E816 /* Roboto-Medium.ttf */; };
 		9DB7FE1920061B6200D0E816 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1420061B1600D0E816 /* Roboto-Regular.ttf */; };
 		9DB7FE1F20061E8C00D0E816 /* BG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1E20061E8C00D0E816 /* BG@3x.png */; };
+		9DBA865A204A95FB00C99841 /* WishList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBA8659204A95FB00C99841 /* WishList.swift */; };
 		9DCBE184201EF6F80030A0F9 /* SnapXEatsNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCBE183201EF6F80030A0F9 /* SnapXEatsNetworkManager.swift */; };
 		9DDC3AEC2035553600A7F181 /* SnapXEatsLoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDC3AEB2035553600A7F181 /* SnapXEatsLoginHelper.swift */; };
 		9DE7CE512023620500BBBFEC /* UserPreferenceContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE7CE482023620500BBBFEC /* UserPreferenceContract.swift */; };
@@ -249,7 +250,7 @@
 		9D0D7133203AAE1F0077FA7A /* RestaurantDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailsViewController.swift; sourceTree = "<group>"; };
 		9D0D7135203AAE1F0077FA7A /* RestaurantDetailsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailsInteractor.swift; sourceTree = "<group>"; };
 		9D0D7137203AAE1F0077FA7A /* RestaurantDetailsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailsRouter.swift; sourceTree = "<group>"; };
-		9D0D713D203C2CFD0077FA7A /* SetUserPrefernce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUserPrefernce.swift; sourceTree = "<group>"; };
+		9D0D713D203C2CFD0077FA7A /* SetUserPreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUserPreference.swift; sourceTree = "<group>"; };
 		9D0D713F203C633B0077FA7A /* PreferenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceHelper.swift; sourceTree = "<group>"; };
 		9D0D7143203D99A70077FA7A /* FoodAndCuisinePreferenceInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodAndCuisinePreferenceInteractor.swift; sourceTree = "<group>"; };
 		9D0D7147203D99A80077FA7A /* FoodAndCuisinePreferenceRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodAndCuisinePreferenceRouter.swift; sourceTree = "<group>"; };
@@ -343,6 +344,7 @@
 		9DB7FE1520061B1600D0E816 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		9DB7FE1620061B1600D0E816 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		9DB7FE1E20061E8C00D0E816 /* BG@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BG@3x.png"; sourceTree = "<group>"; };
+		9DBA8659204A95FB00C99841 /* WishList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishList.swift; sourceTree = "<group>"; };
 		9DCBE183201EF6F80030A0F9 /* SnapXEatsNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEatsNetworkManager.swift; sourceTree = "<group>"; };
 		9DDC3AEB2035553600A7F181 /* SnapXEatsLoginHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEatsLoginHelper.swift; sourceTree = "<group>"; };
 		9DE7CE482023620500BBBFEC /* UserPreferenceContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferenceContract.swift; sourceTree = "<group>"; };
@@ -484,9 +486,9 @@
 			isa = PBXGroup;
 			children = (
 				7E673B0F204961C9005D19DC /* Contract */,
-				7E673B04204961C8005D19DC /* Interactor */,
 				7E673B11204961C9005D19DC /* Presenter */,
 				7E673B08204961C8005D19DC /* View */,
+				7E673B04204961C8005D19DC /* Interactor */,
 				7E673B06204961C8005D19DC /* Router */,
 			);
 			path = Wishlist;
@@ -512,8 +514,8 @@
 			isa = PBXGroup;
 			children = (
 				7E673B1C204968AA005D19DC /* tableviewCells */,
-				7E673B09204961C8005D19DC /* WishlistViewController.swift */,
 				7E673B1A2049622F005D19DC /* Wishlist.storyboard */,
+				7E673B09204961C8005D19DC /* WishlistViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -537,8 +539,8 @@
 		7E673B1C204968AA005D19DC /* tableviewCells */ = {
 			isa = PBXGroup;
 			children = (
-				7E673B1D204968D2005D19DC /* WishlistItemTableViewCell.swift */,
 				7E673B1E204968D2005D19DC /* WishlistItemTableViewCell.xib */,
+				7E673B1D204968D2005D19DC /* WishlistItemTableViewCell.swift */,
 			);
 			path = tableviewCells;
 			sourceTree = "<group>";
@@ -1070,6 +1072,7 @@
 		9D8E88D91FFD28C50066A1D9 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				9DBA8658204A95E700C99841 /* Wishlist */,
 				7E2C64B1204401D000DAB44A /* FoodCard */,
 				9DDC3AF020358E9600A7F181 /* Login */,
 				9D8E88DA1FFD28C50066A1D9 /* Preference */,
@@ -1083,6 +1086,7 @@
 			children = (
 				9D3FC4D72011C94A001A4264 /* CuisinePreference.swift */,
 				9D2C484C202073A700FD8B1C /* SelectedPreference.swift */,
+				9D0D713D203C2CFD0077FA7A /* SetUserPreference.swift */,
 				7E791F1B2032D8D600FA887D /* PreferenceItem.swift */,
 			);
 			path = Preference;
@@ -1092,7 +1096,6 @@
 			isa = PBXGroup;
 			children = (
 				9D8E88DD1FFD28C50066A1D9 /* UserProfile.swift */,
-				9D0D713D203C2CFD0077FA7A /* SetUserPrefernce.swift */,
 			);
 			path = UserProfile;
 			sourceTree = "<group>";
@@ -1324,6 +1327,14 @@
 				9DB7FE102004F0EE00D0E816 /* Alert.swift */,
 			);
 			path = Alert;
+			sourceTree = "<group>";
+		};
+		9DBA8658204A95E700C99841 /* Wishlist */ = {
+			isa = PBXGroup;
+			children = (
+				9DBA8659204A95FB00C99841 /* WishList.swift */,
+			);
+			path = Wishlist;
 			sourceTree = "<group>";
 		};
 		9DDC3AF020358E9600A7F181 /* Login */ = {
@@ -1653,7 +1664,7 @@
 				7E9394EC204456F900A80387 /* FoodCardActionHelper.swift in Sources */,
 				9D0D714E203D99A80077FA7A /* FoodAndCuisinePreferenceRouter.swift in Sources */,
 				7E6FD41C2020A00F0058BFB8 /* SearchPlacePredictions.swift in Sources */,
-				9D0D713E203C2CFD0077FA7A /* SetUserPrefernce.swift in Sources */,
+				9D0D713E203C2CFD0077FA7A /* SetUserPreference.swift in Sources */,
 				9D8E88F41FFD2BEC0066A1D9 /* UserProfile.swift in Sources */,
 				7E5C057E2017A6DC000B5C33 /* SavedLocationTableViewCell.swift in Sources */,
 				7E71FC092022CCAD00CA8467 /* KYEmbedMainControllerSegue.swift in Sources */,
@@ -1725,6 +1736,7 @@
 				7E5946972020BD02006702AF /* SearchPlacesTableViewCell.swift in Sources */,
 				7EB5921F2040048600CC6888 /* DrivingDirections.swift in Sources */,
 				9D8E89051FFD2BEC0066A1D9 /* UICollectionViewCell.swift in Sources */,
+				9DBA865A204A95FB00C99841 /* WishList.swift in Sources */,
 				9D8E89061FFD2BEC0066A1D9 /* UIStoryboard.swift in Sources */,
 				9D8E89071FFD2BEC0066A1D9 /* ValidableUILabel.swift in Sources */,
 				9D902BC920171AED00359DFD /* FoodCardsContract.swift in Sources */,

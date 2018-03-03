@@ -21,7 +21,11 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
     let loginUserPreferences = LoginUserPreferences.shared
     var isDirtyPreferecne : Bool = false {
         willSet {
-            loginUserPreferences.isDirtyPreference = newValue
+            if preferenceType == .cuisine  {
+                loginUserPreferences.isDirtyCuisinePreference = newValue
+            } else {
+                loginUserPreferences.isDirtyFoodPreference = newValue
+            }
             self.navigationItem.rightBarButtonItem?.isEnabled = newValue
         }
     }
@@ -76,7 +80,7 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
         let newBackButton = UIBarButtonItem(title: "<", style: UIBarButtonItemStyle.plain, target: self, action: #selector(backAction))
         self.navigationItem.leftBarButtonItem = newBackButton
     }
-// Then handle the button selection
+    // Then handle the button selection
     @objc func backAction() {
         if  isDirtyPreferecne { showPreferenceIsDirtyDialog() }
         else { self.navigationController?.popViewController(animated: true) }
@@ -102,7 +106,7 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
         }
     }
     @IBAction func resetButtonAction(_: Any) {
-            showPreferenceResetDialog()
+        showPreferenceResetDialog()
     }
     
     private func enableRest()  {
@@ -129,10 +133,10 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
     private func showPreferenceResetDialog() {
         let ok =  setOkButton { [weak self] in
             self?.resetPreferecne()
-            self?.isDirtyPreferecne = false
+            self?.isDirtyPreferecne = true
         }
         let cancel = setCancelButton {}
-
+        
         UIAlertController.presentAlertInViewController(self, title: AlertTitle.error , message: AlertMessage.preferecneRestMessage, actions: [cancel, ok], completion: nil)
     }
     
@@ -147,15 +151,13 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
     
     private func resetLoggedInUserData() {
         isDirtyPreferecne = true
-        loginUserPreferences.isDirtyPreference = true
         presenter?.resetData(type: preferenceType)
     }
     
     private func resetNonLoggedInUserData() {
         isDirtyPreferecne = true
-        loginUserPreferences.isDirtyPreference = true
         preferenceType == .cuisine ? loginUserPreferences.cuisinePreference.removeAll()
-                                    : loginUserPreferences.foodPreference.removeAll()
+            : loginUserPreferences.foodPreference.removeAll()
     }
     
     private func getPreferences() {
@@ -172,8 +174,6 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
     private func savePrefernceData() {
         if preferenceItems.count > 0 && isDirtyPreferecne {
             preferenceType == .cuisine ? updateCuisineData() : updateFoodData()
-             loginUserPreferences.isDirtyPreference = true
-             isDirtyPreferecne = false
         }
     }
     
@@ -192,7 +192,7 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
     
     private func loadFoodData() {
         for foodData in loginUserPreferences.foodPreference {
-           _ = preferenceItems.filter({ (preference) -> Bool in
+            _ = preferenceItems.filter({ (preference) -> Bool in
                 if foodData.itemID == preference.itemID && (foodData.isLiked || foodData.isFavourite) {
                     preference.isLiked = foodData.isLiked
                     preference.isFavourite = foodData.isFavourite
@@ -207,7 +207,7 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
         if isDirtyPreferecne {
             if loginUserPreferences.foodPreference.count > 0 {
                 for foodPreference in loginUserPreferences.foodPreference {
-                  _ =  preferenceItems.filter({ (preference) -> Bool in
+                    _ =  preferenceItems.filter({ (preference) -> Bool in
                         guard  let Id = preference.itemID, foodPreference.itemID == Id else {
                             if preference.isLiked || preference.isFavourite {
                                 let foodItem = FoodItem()
@@ -246,7 +246,7 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
         if isDirtyPreferecne {
             if loginUserPreferences.cuisinePreference.count > 0 {
                 for cuisinePrefercne in loginUserPreferences.cuisinePreference {
-                   _ = preferenceItems.filter({ (preference) -> Bool in
+                    _ = preferenceItems.filter({ (preference) -> Bool in
                         guard  let Id = preference.itemID, cuisinePrefercne.itemID == Id else {
                             if preference.isLiked || preference.isFavourite {
                                 let cuisineItem = CuisineItem()
@@ -325,7 +325,7 @@ extension FoodAndCuisinePreferencesViewController: FoodAndCuisinePreferenceView 
                 isDirtyPreferecne = true
                 preferencesCollectionView.reloadItems(at: [selectedIndexPath])
                 
-
+                
             }
         }
     }
@@ -341,7 +341,7 @@ extension FoodAndCuisinePreferencesViewController: FoodAndCuisinePreferenceView 
             isDirtyPreferecne = true
             enableRest()
             preferencesCollectionView.reloadItems(at: [selectedIndexPath])
-
+            
         }
     }
 }
