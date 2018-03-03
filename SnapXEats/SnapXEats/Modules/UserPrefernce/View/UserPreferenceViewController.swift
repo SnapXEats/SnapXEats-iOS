@@ -44,10 +44,9 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
     @IBOutlet weak var foodPreferenceSelected: UIImageView!
     
     let loginUserPreference = LoginUserPreferences.shared
-    
     func enableBarButton (enable: Bool) {
-      loginUserPreference.isDirtyPreference = enable
-      self.navigationItem.rightBarButtonItem?.isEnabled = enable
+        loginUserPreference.isDirtyPreference = enable
+        self.navigationItem.rightBarButtonItem?.isEnabled = enable
     }
     
     override func viewDidLoad() {
@@ -57,9 +56,9 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        enableBarButton(enable: loginUserPreference.isDirtyPreference) // preferece can be dirty from cuisine and food preference
+        enableBarButton(enable: loginUserPreference.isDirty) // preferece can be dirty from cuisine and food preference
         loginUserPreference.isLoggedIn ? showFoodCuisinePreferenceSelectStatus()
-        : showNonLoggedInFoodCuisinePreferenceSelectStatus()
+            : showNonLoggedInFoodCuisinePreferenceSelectStatus()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -69,7 +68,7 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
     
     @IBAction func applyButtonAction(_: Any) {
         // Apply Button Action
-        if  loginUserPreference.isDirtyPreference {
+        if  loginUserPreference.isDirty {
             saveChanges()
             if loginUserPreference.isLoggedIn {
                 if  checkRechability() {
@@ -217,7 +216,7 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
             setPriceIndex(index: prefernce.pricingPreference)
             setDistanceIndex(index: prefernce.distancePreference)
         } else if let _ = result as? Bool, let parentNVController = self.navigationController {
-            enableBarButton(enable: false)
+            loginUserPreference.isDirty = false
             presenter?.presnetScreen(screen: .location, parent: parentNVController)
         }
         

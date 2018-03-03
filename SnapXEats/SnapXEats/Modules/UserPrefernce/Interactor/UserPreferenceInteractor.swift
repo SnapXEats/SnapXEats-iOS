@@ -51,7 +51,8 @@ extension UserPreferenceInteractor: UserPreferenceWebService {
     func sendUserPreferences(forPath: String, withParameters: [String: Any]) {
         SnapXEatsApi.snapXPostRequestWithParameters(path: forPath, parameters: withParameters) { [weak self] (response: DefaultDataResponse) in
             if let statusCode = response.response?.statusCode {
-            SnapXEatsLoginHelper.shared.setNotAFirstTimeUser()
+                if  statusCode == 200 {
+                    SnapXEatsLoginHelper.shared.setNotAFirstTimeUser() }
             self?.userPreferenceResult(code: statusCode)
             } else {
                 self?.output?.response(result: NetworkResult.noInternet)
@@ -73,8 +74,10 @@ extension UserPreferenceInteractor: UserPreferenceWebService {
 extension UserPreferenceInteractor: UserPreferenceObjectMapper {
     
     func userPreferenceResult(code: Int) {
-         code == 200 ? output?.response(result: .success(data: true))
-            :output?.response(result: NetworkResult.noInternet)
+          code == 200 ?
+            output?.response(result: .success(data: true))
+            : output?.response(result: NetworkResult.noInternet)
+
     }
     
 }

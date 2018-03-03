@@ -1,4 +1,4 @@
-//
+    //
 //  PreferenceHelper.swift
 //  SnapXEats
 //
@@ -78,7 +78,7 @@ class PreferenceHelper {
                 if  foodPrefernce.Id == preferenceItem.itemID {
                     preferenceItem.isLiked = foodPrefernce.like
                     preferenceItem.isFavourite = foodPrefernce.favourite
-                    preferenceItem.preferencesId = foodPrefernce.preferenceId
+                    preferenceItem.preferencesId = foodPrefernce.preferenceId 
                     return true
                 }
                 return false
@@ -130,7 +130,8 @@ class PreferenceHelper {
         for  cuisine in loginPreferecne.cuisinePreference {
             let pref: [String: Any] = [PreferecneConstant.cuisine_info_id : cuisine.itemID ?? "",
                                        PreferecneConstant.is_cuisine_like : cuisine.isLiked,
-                                       PreferecneConstant.is_cuisine_favourite : cuisine.isFavourite]
+                                       PreferecneConstant.is_cuisine_favourite : cuisine.isFavourite,
+                                       PreferecneConstant.user_cuisine_preferences_id : cuisine.preferencesId ?? ""]
             cuisinePref.append(pref)
         }
         return cuisinePref
@@ -142,7 +143,8 @@ class PreferenceHelper {
         for  food in loginPreferecne.foodPreference {
             let pref: [String: Any] = [PreferecneConstant.food_type_info_id : food.itemID ?? "",
                                        PreferecneConstant.is_food_like : food.isLiked,
-                                       PreferecneConstant.is_food_favourite : food.isFavourite]
+                                       PreferecneConstant.is_food_favourite : food.isFavourite,
+                                       PreferecneConstant.user_food_preferences_id : food.preferencesId ?? ""]
             foodPref.append(pref)
         }
         return foodPref

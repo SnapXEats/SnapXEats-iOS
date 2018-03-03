@@ -72,7 +72,7 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
     
     override func success(result: Any?) {
         if let _ = result as? Bool {
-            loginUserPreference.isDirtyPreference = false
+            loginUserPreference.isDirty = false
             presentScreen(index: screenIndex)
         }
     }
@@ -122,7 +122,7 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let  screen = navigateScreen(rawValue: indexPath.row) ?? .home
-            if loginUserPreference.isDirtyPreference {
+            if loginUserPreference.isDirty {
                 showPreferenceSaveDialog(screen: screen)
             } else {
                 presentScreen(index: screen)
