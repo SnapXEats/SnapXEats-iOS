@@ -18,7 +18,7 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
     }
     
     var presenter: UserPreferencePresentation?
-    var selectedRating:RatingPreferences?
+    var selectedRating:RatingPreferences = .defaultStart
     var selectedPrice:PricingPreference = .auto
     var sortByFilter: SortByPreference = .distance
     var selectedDistance = 1
@@ -45,6 +45,11 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
     
     let loginUserPreference = LoginUserPreferences.shared
     
+    func enableBarButton (enable: Bool) {
+      loginUserPreference.isDirtyPreference = enable
+      self.navigationItem.rightBarButtonItem?.isEnabled = enable
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
@@ -52,6 +57,7 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        enableBarButton(enable: loginUserPreference.isDirtyPreference) // preferece can be dirty from cuisine and food preference
         loginUserPreference.isLoggedIn ? showFoodCuisinePreferenceSelectStatus()
         : showNonLoggedInFoodCuisinePreferenceSelectStatus()
     }
@@ -72,7 +78,7 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
                         : presenter?.updateUserPreference(preference: loginUserPreference)
                 }
             } else {
-                loginUserPreference.isDirtyPreference = false
+                enableBarButton(enable: false)
                 presentNextScreen()
             }
         } else {
@@ -124,12 +130,12 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
     
     @IBAction func radioButtonSelected(sender: UIButton) {
         if sender == distanceRadioButton && sender.isSelected == false {
-            loginUserPreference.isDirtyPreference = true
+            enableBarButton(enable: true)
             setButtonState(sortByPreference: .distance)
         }
         
         if sender == ratingsRadioButton && sender.isSelected == false {
-            loginUserPreference.isDirtyPreference = true
+            enableBarButton(enable: true)
             setButtonState(sortByPreference: .rating)
         }
     }
@@ -145,15 +151,15 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
     @IBAction func starRatingSelected(sender: UIButton) {
         switch sender {
         case fiveStarRatingButton:
-            loginUserPreference.isDirtyPreference = true
+            enableBarButton(enable: true)
             setButtonState(ratingPreferences: .fiveStar)
             
         case fourStarRatingButton:
-            loginUserPreference.isDirtyPreference = true
+            enableBarButton(enable: true)
             setButtonState(ratingPreferences: .fourStar)
             
         case threeStarRatingButton:
-            loginUserPreference.isDirtyPreference = true
+            enableBarButton(enable: true)
             setButtonState(ratingPreferences: .threeStar)
             
         default: break
@@ -211,7 +217,7 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
             setPriceIndex(index: prefernce.pricingPreference)
             setDistanceIndex(index: prefernce.distancePreference)
         } else if let _ = result as? Bool, let parentNVController = self.navigationController {
-            loginUserPreference.isDirtyPreference = false
+            enableBarButton(enable: false)
             presenter?.presnetScreen(screen: .location, parent: parentNVController)
         }
         
@@ -236,7 +242,6 @@ extension UserPreferenceViewController: UserPreferenceView {
             SnapXEatsAppDefaults.emptyString,
             SnapXEatsAppDefaults.emptyString
         ]
-        
         selectCuisineButton.addShadow(width: 0.0, height: 0.0)
         selectFoodButton.addShadow(width: 0.0, height: 0.0)
         selectFoodButton.layer.cornerRadius = 3.0
@@ -262,7 +267,7 @@ extension UserPreferenceViewController: UserPreferenceView {
 extension UserPreferenceViewController {
     
     @IBAction func pricingSelectedAction(sender: UIButton) {
-        loginUserPreference.isDirtyPreference = true
+        enableBarButton(enable: true)
         setPriceIndex(index: sender.tag)
     }
     
@@ -285,7 +290,7 @@ extension UserPreferenceViewController {
     }
     
     @IBAction func DistanceSelectedAction(sender: UIButton) {
-        loginUserPreference.isDirtyPreference = true
+        enableBarButton(enable: true)
         setDistanceIndex(index: sender.tag)
     }
     
