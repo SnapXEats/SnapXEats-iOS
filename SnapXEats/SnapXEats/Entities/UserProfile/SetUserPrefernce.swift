@@ -36,14 +36,14 @@ class SetUserPreference: Object {
     }
     
     static func resetFoodPreference(userID: String){
-            if  let _ = getUserPrefernce(userID: userID), userID != SnapXEatsConstant.emptyString  {
-                // Get the default Realm
-                let realm = try! Realm()
-                if let userPref = getUserPrefernce(userID: userID)  {
-                    try! realm.write {
-                        userPref.foodPreference.removeAll()
-                    }
+        if  let _ = getUserPrefernce(userID: userID), userID != SnapXEatsConstant.emptyString  {
+            // Get the default Realm
+            let realm = try! Realm()
+            if let userPref = getUserPrefernce(userID: userID)  {
+                try! realm.write {
+                    userPref.foodPreference.removeAll()
                 }
+            }
         }
     }
     
@@ -71,38 +71,101 @@ class SetUserPreference: Object {
     static func updateUserPrefernce(storedPreference: SetUserPreference, newPreference: SetUserPreference) {
         // Get the default Realm
         let realm = try! Realm()
-            try! realm.write {
-                storedPreference.ratingPreference   = newPreference.ratingPreference
-                storedPreference.pricingPreference  = newPreference.pricingPreference
-                storedPreference.sortByPreference   = newPreference.sortByPreference
-                storedPreference.distancePreference = newPreference.distancePreference
-             }
+        try! realm.write {
+            storedPreference.ratingPreference   = newPreference.ratingPreference
+            storedPreference.pricingPreference  = newPreference.pricingPreference
+            storedPreference.sortByPreference   = newPreference.sortByPreference
+            storedPreference.distancePreference = newPreference.distancePreference
+        }
     }
     
-    static func updateFoodPrefernce(userID: String, foodPreference: List<UserFoodPreference>) {
+    static func updateFoodPrefernce(userID: String, preferencesItems: [PreferenceItem]) {
         // Get the default Realm
         let realm = try! Realm()
-        if let userPref = getUserPrefernce(userID: userID)  {
-            
+        if let userPreference = getUserPrefernce(userID: userID) {
+            let foodPreferences = userPreference.foodPreference
             try! realm.write {
-                userPref.foodPreference.removeAll()
-                userPref.foodPreference.append(objectsIn: foodPreference)
+                if foodPreferences.count > 0 {
+                    for preferenceItem in preferencesItems {
+                        var matched = false
+                        for food in foodPreferences {
+                            if let Id = preferenceItem.itemID, food.Id == Id {
+                                food.like = preferenceItem.isLiked
+                                food.favourite = preferenceItem.isFavourite
+                                matched = true
+                                break
+                            }
+                        }
+                        if matched == false {
+                            saveFoodPreferecne(foodPreferences: foodPreferences, preferenceItem: preferenceItem)
+                        }
+                        matched = false
+                    }
+                    
+                } else {
+                    for preferenceItem in preferencesItems {
+                        saveFoodPreferecne(foodPreferences: foodPreferences, preferenceItem: preferenceItem)
+                    }
+                }
             }
         }
     }
     
-    static func updateCuisinePrefernce(userID: String, cuisinePreference: List<UserCuisinePreference>) {
+    
+    static func saveFoodPreferecne(foodPreferences: List<UserFoodPreference>, preferenceItem: PreferenceItem) {
+        if let itemId = preferenceItem.itemID, preferenceItem.isLiked || preferenceItem.isFavourite {
+            let foodItem = UserFoodPreference()
+            foodItem.Id = itemId
+            foodItem.like = preferenceItem.isLiked
+            foodItem.favourite = preferenceItem.isFavourite
+            foodItem.preferenceId = preferenceItem.preferencesId
+            foodPreferences.append(foodItem)
+        }
+    }
+    
+    static func updateCuisinePrefernce(userID: String, preferencesItems: [PreferenceItem]) {
         // Get the default Realm
         let realm = try! Realm()
-        
-        if let userPref = getUserPrefernce(userID: userID)  {
+        if let userPreference = getUserPrefernce(userID: userID) {
+            let cuisinePreferences = userPreference.cuisinePreference
             try! realm.write {
-                userPref.cuisinePreference.removeAll()
-                userPref.cuisinePreference.append(objectsIn: cuisinePreference)
+                if cuisinePreferences.count > 0 {
+                    for preferenceItem in preferencesItems {
+                        var matched = false
+                        for cuisine in cuisinePreferences {
+                            if let Id = preferenceItem.itemID, cuisine.Id == Id {
+                                cuisine.like = preferenceItem.isLiked
+                                cuisine.favourite = preferenceItem.isFavourite
+                                matched = true
+                                break
+                            }
+                        }
+                        if matched == false {
+                            saveCuisinePreferecne(cuisinePreferences: cuisinePreferences, preferenceItem: preferenceItem)
+                        }
+                         matched = false
+                    }
+                    
+                } else {
+                    for preferenceItem in preferencesItems {
+                        saveCuisinePreferecne(cuisinePreferences: cuisinePreferences, preferenceItem: preferenceItem)
+                    }
+                }
             }
         }
     }
     
+    
+    static func saveCuisinePreferecne(cuisinePreferences: List<UserCuisinePreference>, preferenceItem: PreferenceItem) {
+        if let itemId = preferenceItem.itemID, preferenceItem.isLiked || preferenceItem.isFavourite {
+            let cuisineItem = UserCuisinePreference()
+            cuisineItem.Id = itemId
+            cuisineItem.like = preferenceItem.isLiked
+            cuisineItem.favourite = preferenceItem.isFavourite
+            cuisineItem.preferenceId = preferenceItem.preferencesId
+            cuisinePreferences.append(cuisineItem)
+        }
+    }
     static func deleteStoredLogedInUser() {
         // Get the default Realm
         let realm = try! Realm()
