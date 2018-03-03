@@ -78,7 +78,6 @@ class PreferenceHelper {
                 if  foodPrefernce.Id == preferenceItem.itemID {
                     preferenceItem.isLiked = foodPrefernce.like
                     preferenceItem.isFavourite = foodPrefernce.favourite
-                    preferenceItem.preferencesId = foodPrefernce.preferenceId 
                     return true
                 }
                 return false
@@ -94,7 +93,6 @@ class PreferenceHelper {
                 if  cuisinePreference.Id == preferenceItem.itemID {
                     preferenceItem.isLiked = cuisinePreference.like
                     preferenceItem.isFavourite = cuisinePreference.favourite
-                    preferenceItem.preferencesId = cuisinePreference.preferenceId
                     return true
                 }
                 return false
@@ -130,8 +128,7 @@ class PreferenceHelper {
         for  cuisine in loginPreferecne.cuisinePreference {
             let pref: [String: Any] = [PreferecneConstant.cuisine_info_id : cuisine.itemID ?? "",
                                        PreferecneConstant.is_cuisine_like : cuisine.isLiked,
-                                       PreferecneConstant.is_cuisine_favourite : cuisine.isFavourite,
-                                       PreferecneConstant.user_cuisine_preferences_id : cuisine.preferencesId ?? ""]
+                                       PreferecneConstant.is_cuisine_favourite : cuisine.isFavourite]
             cuisinePref.append(pref)
         }
         return cuisinePref
@@ -143,8 +140,7 @@ class PreferenceHelper {
         for  food in loginPreferecne.foodPreference {
             let pref: [String: Any] = [PreferecneConstant.food_type_info_id : food.itemID ?? "",
                                        PreferecneConstant.is_food_like : food.isLiked,
-                                       PreferecneConstant.is_food_favourite : food.isFavourite,
-                                       PreferecneConstant.user_food_preferences_id : food.preferencesId ?? ""]
+                                       PreferecneConstant.is_food_favourite : food.isFavourite]
             foodPref.append(pref)
         }
         return foodPref
@@ -159,7 +155,6 @@ class PreferenceHelper {
                 cuisine.itemID = storecuisne.Id
                 cuisine.isLiked = storecuisne.like
                 cuisine.isFavourite = storecuisne.favourite
-                cuisine.preferencesId = storecuisne.preferenceId
                 loginPreferecne.cuisinePreference.append(cuisine)
             }
         }
@@ -173,7 +168,6 @@ class PreferenceHelper {
                 food.itemID = storefood.Id
                 food.isLiked = storefood.like
                 food.isFavourite = storefood.favourite
-                food.preferencesId = storefood.preferenceId
                 loginPreferecne.foodPreference.append(food)
             }
         }

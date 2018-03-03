@@ -92,7 +92,6 @@ class SetUserPreference: Object {
                             if let Id = preferenceItem.itemID, food.Id == Id {
                                 food.like = preferenceItem.isLiked
                                 food.favourite = preferenceItem.isFavourite
-                                food.preferenceId = preferenceItem.preferencesId ?? ""
                                 matched = true
                                 break
                             }
@@ -119,7 +118,6 @@ class SetUserPreference: Object {
             foodItem.Id = itemId
             foodItem.like = preferenceItem.isLiked
             foodItem.favourite = preferenceItem.isFavourite
-            foodItem.preferenceId = preferenceItem.preferencesId ?? ""
             foodPreferences.append(foodItem)
         }
     }
@@ -137,7 +135,6 @@ class SetUserPreference: Object {
                             if let Id = preferenceItem.itemID, cuisine.Id == Id {
                                 cuisine.like = preferenceItem.isLiked
                                 cuisine.favourite = preferenceItem.isFavourite
-                                cuisine.preferenceId = preferenceItem.preferencesId ?? ""
                                 matched = true
                                 break
                             }
@@ -164,7 +161,6 @@ class SetUserPreference: Object {
             cuisineItem.Id = itemId
             cuisineItem.like = preferenceItem.isLiked
             cuisineItem.favourite = preferenceItem.isFavourite
-            cuisineItem.preferenceId = preferenceItem.preferencesId ?? ""
             cuisinePreferences.append(cuisineItem)
         }
     }
