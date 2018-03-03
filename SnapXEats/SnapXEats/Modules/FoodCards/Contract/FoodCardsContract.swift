@@ -36,7 +36,7 @@ protocol FoodCardsWebService: class {
 
 protocol FoodCardsObjectMapper: class {
     func restaurantsDetail(data: Result<DishInfo> )
-    func userGesturesResult(code: Int)
+    func userGesturesResult(result: Bool)
     
 }
 

@@ -11,7 +11,7 @@ import ObjectMapper
 import Alamofire
 
 class UserPreferenceInteractor {
-
+    
     // MARK: Properties
     var output: UserPreferenceInteractorOutput?
     static let shared = UserPreferenceInteractor()
@@ -19,7 +19,7 @@ class UserPreferenceInteractor {
 }
 
 extension UserPreferenceInteractor: UserPreferenceInteractorIntput {
-
+    
     func saveUserPreference(loginUserPreferences : LoginUserPreferences) {
         PreferenceHelper.shared.saveUserPrefernce(preference: loginUserPreferences)
     }
@@ -34,14 +34,14 @@ extension UserPreferenceInteractor: UserPreferenceInteractorIntput {
 extension UserPreferenceInteractor: UserPreferenceRequestFormatter {
     func sendUserPreference(preference: LoginUserPreferences) {
         PreferenceHelper.shared.saveUserPrefernce(preference: preference)
-            let requestParameter = PreferenceHelper.shared.getJSONDataUserPrefernce()
-            sendUserPreferences(forPath:SnapXEatsWebServicePath.userPreferene, withParameters: requestParameter)
+        let requestParameter = PreferenceHelper.shared.getJSONDataUserPrefernce()
+        sendUserPreferences(forPath:SnapXEatsWebServicePath.userPreferene, withParameters: requestParameter)
     }
     
     func updateUserPreference(preference: LoginUserPreferences) {
         PreferenceHelper.shared.saveUserPrefernce(preference: preference)
-            let requestParameter = PreferenceHelper.shared.getJSONDataUserPrefernce()
-            updateUserPreferences(forPath: SnapXEatsWebServicePath.userPreferene, withParameters: requestParameter)
+        let requestParameter = PreferenceHelper.shared.getJSONDataUserPrefernce()
+        updateUserPreferences(forPath: SnapXEatsWebServicePath.userPreferene, withParameters: requestParameter)
     }
     
 }
@@ -50,34 +50,27 @@ extension UserPreferenceInteractor: UserPreferenceWebService {
     
     func sendUserPreferences(forPath: String, withParameters: [String: Any]) {
         SnapXEatsApi.snapXPostRequestWithParameters(path: forPath, parameters: withParameters) { [weak self] (response: DefaultDataResponse) in
-            if let statusCode = response.response?.statusCode {
-                if  statusCode == 200 {
-                    SnapXEatsLoginHelper.shared.setNotAFirstTimeUser() }
-            self?.userPreferenceResult(code: statusCode)
-            } else {
-                self?.output?.response(result: NetworkResult.noInternet)
+            let result = response.isSuccess
+            if  result {
+                SnapXEatsLoginHelper.shared.setNotAFirstTimeUser()
+                
+            }
+            self?.userPreferenceResult(result: result)
+        }
+    }
+        
+        func updateUserPreferences(forPath: String, withParameters: [String: Any]) {
+            SnapXEatsApi.snapXPutRequestWithParameters(path: forPath, parameters: withParameters) { [weak self] (response: DefaultDataResponse) in
+                self?.userPreferenceResult(result: response.isSuccess)
             }
         }
     }
     
-    func updateUserPreferences(forPath: String, withParameters: [String: Any]) {
-        SnapXEatsApi.snapXPutRequestWithParameters(path: forPath, parameters: withParameters) { [weak self] (response: DefaultDataResponse) in
-            if let statusCode = response.response?.statusCode {
-                self?.userPreferenceResult(code: statusCode)
-            } else {
-                self?.output?.response(result: NetworkResult.noInternet)
-            }
+    extension UserPreferenceInteractor: UserPreferenceObjectMapper {
+        
+        func userPreferenceResult(result: Bool) {
+            result ? output?.response(result: .success(data: true))
+                : output?.response(result: NetworkResult.noInternet)
+            
         }
-    }
-}
-
-extension UserPreferenceInteractor: UserPreferenceObjectMapper {
-    
-    func userPreferenceResult(code: Int) {
-          code == 200 ?
-            output?.response(result: .success(data: true))
-            : output?.response(result: NetworkResult.noInternet)
-
-    }
-    
 }

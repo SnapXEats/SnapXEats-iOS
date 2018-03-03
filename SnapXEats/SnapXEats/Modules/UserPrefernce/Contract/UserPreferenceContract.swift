@@ -50,5 +50,5 @@ protocol UserPreferenceWebService: class {
 }
 
 protocol UserPreferenceObjectMapper: class {
-    func userPreferenceResult(code: Int)
+    func userPreferenceResult(result: Bool)
 }

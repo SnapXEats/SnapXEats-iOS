@@ -55,5 +55,5 @@ protocol DrawerWebService: class {
 }
 
 protocol DrawerObjectMapper: class {
-    func userPreferenceResult(code: Int)
+    func userPreferenceResult(result: Bool)
 }

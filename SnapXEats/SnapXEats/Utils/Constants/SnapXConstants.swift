@@ -83,6 +83,7 @@ enum SnapXEatsWebServicePath {
     static let  userPreferene = "/api/v1/userPreferences"
     static let  userGesture = "/api/v1/userGesture"
     static let  logOut = "/api/v1/users/logout"
+    static let  wishList = "/api/v1/userGesture/wishlist"
 }
 
 enum SnapXEatsImageNames {
