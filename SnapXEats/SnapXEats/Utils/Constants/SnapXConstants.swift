@@ -73,7 +73,7 @@ enum SnapXEatsLocationConstant {
 }
 enum SnapXEatsWebServicePath {
     static let  port = "3000"
-    static let  rootURL =  "http://ec2-18-216-193-78.us-east-2.compute.amazonaws.com:" + port
+    static let  rootURL =  "http://c4d30f54.ngrok.io" //"http://ec2-18-216-193-78.us-east-2.compute.amazonaws.com:" + port
     static let  cuisinePreferenceURL = "/api/v1/cuisine"
     static let  dishesURL = "/api/v1/dishes"
     static let  foodtypesURL = "/api/v1/foodTypes"
@@ -237,13 +237,12 @@ enum PreferecneConstant {
     static let food_type_info_id = "food_type_info_id"
     static let is_food_like = "is_food_like"
     static let is_food_favourite = "is_food_favourite"
-    static let user_food_preferences_id = "user_food_preferences_id"
+
     
     static let user_cuisine_preferences = "user_cuisine_preferences"
     static let cuisine_info_id = "cuisine_info_id"
     static let is_cuisine_like = "is_cuisine_like"
     static let is_cuisine_favourite = "is_cuisine_favourite"
-    static let user_cuisine_preferences_id = "user_cuisine_preferences_id"
 }
 
 enum UserGestureJSONKeys {
