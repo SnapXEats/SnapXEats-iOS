@@ -73,7 +73,7 @@ enum SnapXEatsLocationConstant {
 }
 enum SnapXEatsWebServicePath {
     static let  port = "3000"
-    static let  rootURL =  "http://c4d30f54.ngrok.io" //"http://ec2-18-216-193-78.us-east-2.compute.amazonaws.com:" + port
+    static let  rootURL =  "http://ec2-18-216-193-78.us-east-2.compute.amazonaws.com:" + port
     static let  cuisinePreferenceURL = "/api/v1/cuisine"
     static let  dishesURL = "/api/v1/dishes"
     static let  foodtypesURL = "/api/v1/foodTypes"
@@ -95,6 +95,7 @@ enum SnapXEatsImageNames {
     static let likeitOverlay = "likeit"
     static let notnowOverlay = "notnow"
     static let trylaterOverlay = "trylater"
+    static let backArrow = "back_arrow"
 }
 
 
