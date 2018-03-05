@@ -96,6 +96,7 @@ enum SnapXEatsImageNames {
     static let notnowOverlay = "notnow"
     static let trylaterOverlay = "trylater"
     static let backArrow = "back_arrow"
+    static let closeIcon = "close_icon"
 }
 
 
