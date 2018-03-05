@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 
-extension DataResponse {
+extension DefaultDataResponse {
     
     var isSuccess: Bool {
         get {

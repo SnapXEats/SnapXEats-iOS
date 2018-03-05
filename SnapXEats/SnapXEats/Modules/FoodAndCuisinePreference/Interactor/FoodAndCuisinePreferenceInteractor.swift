@@ -31,8 +31,7 @@ extension FoodAndCuisinePreferenceInteractor: FoodAndCuisinePreferenceWebService
     func sendUserPreferences(forPath: String, withParameters: [String : Any]) {
         
     }
-    
-    
+
     func getFoodItemPreferences(forPath: String) {
         SnapXEatsApi.snapXRequestObject(path: forPath) { [weak self] (response: DataResponse<FoodPreference>) in
             let foodPreferences = response.result
@@ -70,7 +69,10 @@ extension FoodAndCuisinePreferenceInteractor: FoodAndCuisinePreferenceObjectMapp
 }
 
 extension FoodAndCuisinePreferenceInteractor: FoodAndCuisinePreferenceInteractorInput {
-
+    func resetData(type: PreferenceType) {
+        type == .cuisine ? PreferenceHelper.shared.resetCuisinePreferenceData()
+            : PreferenceHelper.shared.resetFoodPreferenceData()
+    }
     
     func savePreferecne(type: PreferenceType, usierID: String, preferencesItems: [PreferenceItem]) {
      type == .cuisine ? PreferenceHelper.shared.updateCuisinePreference(usierID: usierID, preferencesItems: preferencesItems)

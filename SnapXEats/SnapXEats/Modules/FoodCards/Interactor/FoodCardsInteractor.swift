@@ -50,16 +50,12 @@ extension FoodCardsInteractor: FoodCardsWebService {
     
     func sendUserGesturesRequest(forPath: String, withParameters: [String: Any]) {
         SnapXEatsApi.snapXPostRequestWithParameters(path: forPath, parameters: withParameters) { [weak self] (response: DefaultDataResponse) in
-            if let statusCode = response.response?.statusCode {
-                self?.userGesturesResult(code: statusCode)
-            } else {
-                self?.output?.response(result: NetworkResult.noInternet)
-            }
+                self?.userGesturesResult(result: response.isSuccess)
         }
     }
 }
 
-extension FoodCardsInteractor: FoodCardsObjectMapper {
+extension FoodCardsInteractor: FoodCardsObjectMapper {    
 
     // TODO: Implement use case methods
     func restaurantsDetail(data: Result<DishInfo>) {
@@ -71,8 +67,8 @@ extension FoodCardsInteractor: FoodCardsObjectMapper {
         }
     }
     
-    func userGesturesResult(code: Int) {
-        code == 200 ? output?.response(result: .success(data: true))
+    func userGesturesResult(result: Bool) {
+        result ? output?.response(result: .success(data: true))
             :output?.response(result: NetworkResult.noInternet)
     }
 }

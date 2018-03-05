@@ -14,17 +14,28 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
     private let itemsPerRow: CGFloat = 2
     private let sectionInsets = UIEdgeInsets(top: 10.0, left: 20.0, bottom: 30.0, right: 20.0)
     
+    @IBOutlet weak var resetButton: UIButton!
     var preferenceType: PreferenceType!
     var presenter: FoodAndCuisinePreferencePresentation?
     var preferenceItems = [PreferenceItem]()
     let loginUserPreferences = LoginUserPreferences.shared
-    var isDirtyPreferecne = false
+    var isDirtyPreferecne : Bool = false {
+        willSet {
+            if preferenceType == .cuisine  {
+                loginUserPreferences.isDirtyCuisinePreference = newValue
+            } else {
+                loginUserPreferences.isDirtyFoodPreference = newValue
+            }
+            self.navigationItem.rightBarButtonItem?.isEnabled = newValue
+        }
+    }
     
     @IBOutlet weak var preferencesCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
+        isDirtyPreferecne = false 
     }
     
     override func internetConnected() {
@@ -47,6 +58,7 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
             getSavedPreferecne()
         } else if let result = result as? Bool, result == true {
             hideLoading()
+            enableRest()
             preferencesCollectionView.reloadData()
         }
     }
@@ -64,6 +76,26 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
         }
     }
     
+    private func enableBackButtonAction() {
+        let newBackButton = UIBarButtonItem(title: "<", style: UIBarButtonItemStyle.plain, target: self, action: #selector(backAction))
+        self.navigationItem.leftBarButtonItem = newBackButton
+    }
+    // Then handle the button selection
+    @objc func backAction() {
+        if  isDirtyPreferecne { showPreferenceIsDirtyDialog() }
+        else { self.navigationController?.popViewController(animated: true) }
+    }
+    
+    private func showPreferenceIsDirtyDialog() {
+        let ok =  setOkButton { }
+        let cancel = setCancelButton { [weak self] in
+            self?.isDirtyPreferecne = false
+            self?.navigationController?.popViewController(animated: true)
+        }
+        
+        UIAlertController.presentAlertInViewController(self, title: AlertTitle.error , message: AlertMessage.preferenceSaveMessage, actions: [cancel, ok], completion: nil)
+    }
+    
     private func getSavedPreferecne() {
         if loginUserPreferences.isLoggedIn {
             presenter?.getSavedPreferecne(usierID: loginUserPreferences.loginUserID, type: preferenceType, preferenceItems: preferenceItems)
@@ -74,7 +106,19 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
         }
     }
     @IBAction func resetButtonAction(_: Any) {
-            showPreferenceResetDialog()
+        showPreferenceResetDialog()
+    }
+    
+    private func enableRest()  {
+        var state = false
+        for item in preferenceItems {
+            if item.isLiked || item.isFavourite {
+                state = true
+                break
+            }
+        }
+        resetButton.isUserInteractionEnabled = state
+        resetButton.alpha = state == true ? 1.0 : 0.5
     }
     
     private func resetPreferecne() {
@@ -84,13 +128,15 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
         }
         loginUserPreferences.isLoggedIn ? resetLoggedInUserData() : resetNonLoggedInUserData()
         preferencesCollectionView.reloadData()
+        enableRest()
     }
     private func showPreferenceResetDialog() {
         let ok =  setOkButton { [weak self] in
             self?.resetPreferecne()
+            self?.isDirtyPreferecne = true
         }
         let cancel = setCancelButton {}
-
+        
         UIAlertController.presentAlertInViewController(self, title: AlertTitle.error , message: AlertMessage.preferecneRestMessage, actions: [cancel, ok], completion: nil)
     }
     
@@ -105,16 +151,13 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
     
     private func resetLoggedInUserData() {
         isDirtyPreferecne = true
-        loginUserPreferences.isDirtyPreference = true
-        preferenceType == .cuisine ? PreferenceHelper.shared.resetCuisinePreferenceData()
-                                 : PreferenceHelper.shared.resetFoodPreferenceData()
+        presenter?.resetData(type: preferenceType)
     }
     
     private func resetNonLoggedInUserData() {
         isDirtyPreferecne = true
-        loginUserPreferences.isDirtyPreference = true
         preferenceType == .cuisine ? loginUserPreferences.cuisinePreference.removeAll()
-                                    : loginUserPreferences.foodPreference.removeAll()
+            : loginUserPreferences.foodPreference.removeAll()
     }
     
     private func getPreferences() {
@@ -131,14 +174,12 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
     private func savePrefernceData() {
         if preferenceItems.count > 0 && isDirtyPreferecne {
             preferenceType == .cuisine ? updateCuisineData() : updateFoodData()
-             loginUserPreferences.isDirtyPreference = true
-             isDirtyPreferecne = false
         }
     }
     
     private func loadCuisineData() {
         for cuisineData in loginUserPreferences.cuisinePreference {
-            preferenceItems.filter({ (preference) -> Bool in
+            _ = preferenceItems.filter({ (preference) -> Bool in
                 if cuisineData.itemID == preference.itemID && (cuisineData.isLiked || cuisineData.isFavourite) {
                     preference.isLiked = cuisineData.isLiked
                     preference.isFavourite = cuisineData.isFavourite
@@ -151,7 +192,7 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
     
     private func loadFoodData() {
         for foodData in loginUserPreferences.foodPreference {
-            preferenceItems.filter({ (preference) -> Bool in
+            _ = preferenceItems.filter({ (preference) -> Bool in
                 if foodData.itemID == preference.itemID && (foodData.isLiked || foodData.isFavourite) {
                     preference.isLiked = foodData.isLiked
                     preference.isFavourite = foodData.isFavourite
@@ -166,7 +207,7 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
         if isDirtyPreferecne {
             if loginUserPreferences.foodPreference.count > 0 {
                 for foodPreference in loginUserPreferences.foodPreference {
-                    preferenceItems.filter({ (preference) -> Bool in
+                    _ =  preferenceItems.filter({ (preference) -> Bool in
                         guard  let Id = preference.itemID, foodPreference.itemID == Id else {
                             if preference.isLiked || preference.isFavourite {
                                 let foodItem = FoodItem()
@@ -205,7 +246,7 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
         if isDirtyPreferecne {
             if loginUserPreferences.cuisinePreference.count > 0 {
                 for cuisinePrefercne in loginUserPreferences.cuisinePreference {
-                    preferenceItems.filter({ (preference) -> Bool in
+                    _ = preferenceItems.filter({ (preference) -> Bool in
                         guard  let Id = preference.itemID, cuisinePrefercne.itemID == Id else {
                             if preference.isLiked || preference.isFavourite {
                                 let cuisineItem = CuisineItem()
@@ -247,6 +288,7 @@ extension FoodAndCuisinePreferencesViewController: FoodAndCuisinePreferenceView 
         customizeNavigationItem(title: pageTitle, isDetailPage: true)
         registerCellForNib()
         addGestureRecognizersForCollectionView()
+        enableBackButtonAction()
     }
     
     private func registerCellForNib() {
@@ -279,8 +321,11 @@ extension FoodAndCuisinePreferencesViewController: FoodAndCuisinePreferenceView 
                 item.isLiked = true
                 item.isFavourite = false
                 preferenceItems[selectedIndexPath.row] = item
-                preferencesCollectionView.reloadItems(at: [selectedIndexPath])
+                enableRest()
                 isDirtyPreferecne = true
+                preferencesCollectionView.reloadItems(at: [selectedIndexPath])
+                
+                
             }
         }
     }
@@ -293,8 +338,10 @@ extension FoodAndCuisinePreferencesViewController: FoodAndCuisinePreferenceView 
             item.isLiked = false
             item.isFavourite = true
             preferenceItems[selectedIndexPath.row] = item
-            preferencesCollectionView.reloadItems(at: [selectedIndexPath])
             isDirtyPreferecne = true
+            enableRest()
+            preferencesCollectionView.reloadItems(at: [selectedIndexPath])
+            
         }
     }
 }
@@ -324,6 +371,7 @@ extension FoodAndCuisinePreferencesViewController: UICollectionViewDelegate, UIC
         item.isFavourite = false
         isDirtyPreferecne = true
         preferenceItems[button.tag] = item
+        enableRest()
         preferencesCollectionView.reloadItems(at: [indexPath])
     }
 }

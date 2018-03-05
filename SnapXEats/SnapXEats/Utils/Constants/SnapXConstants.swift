@@ -73,7 +73,7 @@ enum SnapXEatsLocationConstant {
 }
 enum SnapXEatsWebServicePath {
     static let  port = "3000"
-    static let  rootURL = "http://ec2-18-216-193-78.us-east-2.compute.amazonaws.com:" + port
+    static let  rootURL =  "http://c4d30f54.ngrok.io" //"http://ec2-18-216-193-78.us-east-2.compute.amazonaws.com:" + port
     static let  cuisinePreferenceURL = "/api/v1/cuisine"
     static let  dishesURL = "/api/v1/dishes"
     static let  foodtypesURL = "/api/v1/foodTypes"
@@ -83,6 +83,7 @@ enum SnapXEatsWebServicePath {
     static let  userPreferene = "/api/v1/userPreferences"
     static let  userGesture = "/api/v1/userGesture"
     static let  logOut = "/api/v1/users/logout"
+    static let  wishList = "/api/v1/userGesture/wishlist"
 }
 
 enum SnapXEatsImageNames {
@@ -103,7 +104,7 @@ enum SnapXEatsImageNames {
 enum SnapXEatsPlaceSearchConstants {
     static let autocompleteApiUrl = "https://maps.googleapis.com/maps/api/place/autocomplete/json"
     static let apiKey = "AIzaSyBhb0GdrMqn4ge5QLgxkybQv66M6_bu7y0"
-    static let components = "country:in"
+    static let components = "country:us"
     static let detailsApiUrl = "https://maps.googleapis.com/maps/api/place/details/json"
 }
 
@@ -217,7 +218,8 @@ enum AlertMessage {
     static let preferenceMessage = "You have made some changes to your preferences, You need to apply them first."
     static let uberRedirectConfirmation = "Are you sure you want to book an Uber ride?"
     static let uberInstallConfirmation = "You need to install the uber app from app store to book a ride. Do you want to install it now?"
-    static let preferecneRestMessage = "Do you really want to reset you preferences. Please press Ok or Cancel."
+    static let preferecneRestMessage = "Do you really want to reset your preferences. Please press Ok or Cancel."
+    static let preferenceSaveMessage = "You have made some changes to your preferences, You need to save them first."
 }
 
 enum AlertTitle {
@@ -239,13 +241,12 @@ enum PreferecneConstant {
     static let food_type_info_id = "food_type_info_id"
     static let is_food_like = "is_food_like"
     static let is_food_favourite = "is_food_favourite"
-    static let user_food_preferences_id = "user_food_preferences_id"
+
     
     static let user_cuisine_preferences = "user_cuisine_preferences"
     static let cuisine_info_id = "cuisine_info_id"
     static let is_cuisine_like = "is_cuisine_like"
     static let is_cuisine_favourite = "is_cuisine_favourite"
-    static let user_cuisine_preferences_id = "user_cuisine_preferences_id"
 }
 
 enum UserGestureJSONKeys {

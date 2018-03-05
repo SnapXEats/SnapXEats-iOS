@@ -55,7 +55,19 @@ class LoginUserPreferences {
     var foodPreference = [FoodItem]()
     var cuisinePreference = [CuisineItem]()
     
+    var isDirtyFoodPreference = false
+    var isDirtyCuisinePreference = false
     var isDirtyPreference = false
+    var isDirty: Bool {
+        get {
+            return isDirtyCuisinePreference || isDirtyFoodPreference || isDirtyPreference
+        }
+        set {
+            isDirtyCuisinePreference = newValue
+            isDirtyFoodPreference = newValue
+            isDirtyPreference = newValue
+        }
+    }
     
     var isLoggedIn: Bool {
         return SnapXEatsLoginHelper.shared.isUserLoggedIn()
@@ -87,7 +99,7 @@ class LoginUserPreferences {
         pricingPreference = .auto
         sortByPreference = .distance
         distancePreference = 1
-        isDirtyPreference = false
+        isDirty = false
         foodPreference.removeAll()
         cuisinePreference.removeAll()
     }

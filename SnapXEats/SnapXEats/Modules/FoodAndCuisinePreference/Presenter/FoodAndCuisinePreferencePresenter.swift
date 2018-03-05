@@ -23,6 +23,10 @@ class FoodAndCuisinePreferencePresenter {
 }
 
 extension FoodAndCuisinePreferencePresenter: FoodAndCuisinePreferencePresentation {
+    func resetData(type: PreferenceType) {
+        interactor?.resetData(type: type)
+    }
+    
      func savePreferecne(type: PreferenceType, usierID: String, preferencesItems: [PreferenceItem]) {
         interactor?.savePreferecne(type: type, usierID: usierID, preferencesItems: preferencesItems)
     }

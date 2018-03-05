@@ -19,7 +19,6 @@ class PreferenceItem {
     var isLiked: Bool = false
     var isFavourite: Bool = false
     var itemID: String?
-    var preferencesId = 0
     var imageURL: String?
     var name: String?
     
@@ -53,7 +52,6 @@ class FoodItem: PreferenceItem, Mappable {
         name                <- map["food_name"]
         isLiked             <- map["is_food_like"]
         isFavourite         <- map["is_food_favourite"]
-        preferencesId       <- map["user__preferences_id"]
         
     }
 }
@@ -71,6 +69,5 @@ class CuisineItem: PreferenceItem, Mappable {
         name                  <- map["cuisine_name"]
         isLiked               <- map["is_cuisine_like"]
         isFavourite           <- map["is_cuisine_favourite"]
-        preferencesId         <- map["user_cuisine_preferences_id"]
     }
 }
