@@ -28,47 +28,56 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3iO-wZ-JMq">
-                        <rect key="frame" x="15" y="10" width="311" height="75.5"/>
+                        <rect key="frame" x="12" y="5" width="317" height="80.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_cuisine" translatesAutoresizingMaskIntoConstraints="NO" id="eIk-0i-uPh">
-                                <rect key="frame" x="15" y="13" width="50" height="50"/>
+                                <rect key="frame" x="18" y="19.5" width="42" height="42"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="GfI-zW-xJs"/>
-                                    <constraint firstAttribute="height" constant="50" id="WGc-XA-Lcy"/>
+                                    <constraint firstAttribute="width" constant="42" id="GfI-zW-xJs"/>
+                                    <constraint firstAttribute="height" constant="42" id="WGc-XA-Lcy"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oDK-Nj-kdM">
-                                <rect key="frame" x="80" y="13" width="216" height="18.5"/>
+                                <rect key="frame" x="68" y="19.5" width="229" height="18.5"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
                                 <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6BH-mv-T3t">
-                                <rect key="frame" x="80" y="34.5" width="216" height="16"/>
+                                <rect key="frame" x="68" y="40" width="229" height="16"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                 <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detail_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="syL-yw-igS">
+                                <rect key="frame" x="300" y="36" width="7" height="9"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="7" id="aEn-nZ-Dvj"/>
+                                    <constraint firstAttribute="height" constant="9" id="yA2-EP-92D"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="oDK-Nj-kdM" firstAttribute="leading" secondItem="eIk-0i-uPh" secondAttribute="trailing" constant="15" id="2pg-gf-H5S"/>
+                            <constraint firstItem="oDK-Nj-kdM" firstAttribute="leading" secondItem="eIk-0i-uPh" secondAttribute="trailing" constant="8" id="2pg-gf-H5S"/>
                             <constraint firstItem="eIk-0i-uPh" firstAttribute="centerY" secondItem="3iO-wZ-JMq" secondAttribute="centerY" id="4WE-ou-dnH"/>
-                            <constraint firstItem="6BH-mv-T3t" firstAttribute="top" secondItem="oDK-Nj-kdM" secondAttribute="bottom" constant="3" id="Al7-fY-5Xb"/>
+                            <constraint firstItem="6BH-mv-T3t" firstAttribute="top" secondItem="oDK-Nj-kdM" secondAttribute="bottom" constant="2" id="Al7-fY-5Xb"/>
                             <constraint firstItem="oDK-Nj-kdM" firstAttribute="top" secondItem="eIk-0i-uPh" secondAttribute="top" id="C2f-Hu-eR2"/>
-                            <constraint firstItem="eIk-0i-uPh" firstAttribute="leading" secondItem="3iO-wZ-JMq" secondAttribute="leading" constant="15" id="LdP-5N-cGg"/>
+                            <constraint firstItem="eIk-0i-uPh" firstAttribute="leading" secondItem="3iO-wZ-JMq" secondAttribute="leading" constant="18" id="LdP-5N-cGg"/>
+                            <constraint firstItem="syL-yw-igS" firstAttribute="centerY" secondItem="3iO-wZ-JMq" secondAttribute="centerY" id="ZV8-h6-THG"/>
                             <constraint firstItem="6BH-mv-T3t" firstAttribute="trailing" secondItem="oDK-Nj-kdM" secondAttribute="trailing" id="a8b-la-XTw"/>
                             <constraint firstItem="6BH-mv-T3t" firstAttribute="leading" secondItem="oDK-Nj-kdM" secondAttribute="leading" id="g9d-4W-KSs"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="6BH-mv-T3t" secondAttribute="bottom" constant="20" id="oRC-ju-mAE"/>
-                            <constraint firstAttribute="trailing" secondItem="oDK-Nj-kdM" secondAttribute="trailing" constant="15" id="uea-hB-kj7"/>
+                            <constraint firstAttribute="trailing" secondItem="syL-yw-igS" secondAttribute="trailing" constant="10" id="s7A-9l-Ieg"/>
+                            <constraint firstAttribute="trailing" secondItem="oDK-Nj-kdM" secondAttribute="trailing" constant="20" id="uea-hB-kj7"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="3iO-wZ-JMq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="IjK-we-JqW"/>
+                    <constraint firstItem="3iO-wZ-JMq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="IjK-we-JqW"/>
                     <constraint firstAttribute="bottom" secondItem="3iO-wZ-JMq" secondAttribute="bottom" constant="5" id="X8V-hY-78e"/>
-                    <constraint firstAttribute="trailing" secondItem="3iO-wZ-JMq" secondAttribute="trailing" constant="15" id="feg-5b-xlK"/>
-                    <constraint firstItem="3iO-wZ-JMq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="kdZ-B4-Gkn"/>
+                    <constraint firstAttribute="trailing" secondItem="3iO-wZ-JMq" secondAttribute="trailing" constant="12" id="feg-5b-xlK"/>
+                    <constraint firstItem="3iO-wZ-JMq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="kdZ-B4-Gkn"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -82,6 +91,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="detail_arrow" width="6" height="9"/>
         <image name="placeholder_cuisine" width="89" height="58"/>
     </resources>
 </document>
