@@ -77,7 +77,7 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
     }
     
     private func enableBackButtonAction() {
-        let newBackButton = UIBarButtonItem(title: "<", style: UIBarButtonItemStyle.plain, target: self, action: #selector(backAction))
+        let newBackButton = UIBarButtonItem(image: UIImage(named: SnapXEatsImageNames.backArrow), style: UIBarButtonItemStyle.plain, target: self, action: #selector(backAction))
         self.navigationItem.leftBarButtonItem = newBackButton
     }
     // Then handle the button selection
