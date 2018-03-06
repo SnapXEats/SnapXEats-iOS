@@ -16,11 +16,18 @@ class CurrentLocationAnnotation: MKPointAnnotation {
 
 class RestaurantDirectionsViewController: BaseViewController, StoryboardLoadable {
 
-    private let locationTitleLeftInsetMargin: CGFloat = 15.0
-    private let locationTitleTopInset: CGFloat = 5
-    private let mapViewVisbileRectInsets: CGFloat = 40
-    private let routeLineWidth: CGFloat = 3.0
-    private let routeLineColor = UIColor.rgba(93.0, 93.0, 93.0, 1.0)
+    private enum locationTitleInsets{
+        static let left: CGFloat = 15.0
+        static let top: CGFloat = 5.0
+    }
+    
+    private enum mapRouteConstants {
+        static let mapViewVisbileRectInsets: CGFloat = 40
+        static let routeLineWidth: CGFloat = 3.0
+        static let routeLineColor = UIColor.rgba(93.0, 93.0, 93.0, 1.0)
+        
+    }
+    
     private let meterToMileMultiplier = 0.000621371
     
     @IBOutlet weak var ratingView: UIView!
@@ -59,8 +66,8 @@ class RestaurantDirectionsViewController: BaseViewController, StoryboardLoadable
         restaurantAddressLabel.text = restaurantDetails.address ?? ""
         timingsButton.setTitle(restaurantDetails.timingDisplayText(), for: .normal)
         timingsButton.titleLabel?.sizeToFit()
-        let leftInset = (timingsButton.titleLabel?.frame.size.width)! + locationTitleLeftInsetMargin
-        timingsButton.imageEdgeInsets = UIEdgeInsetsMake(locationTitleTopInset, leftInset, 0, -leftInset)
+        let leftInset = (timingsButton.titleLabel?.frame.size.width)! + locationTitleInsets.left
+        timingsButton.imageEdgeInsets = UIEdgeInsetsMake(locationTitleInsets.top, leftInset, 0, -leftInset)
         timingsButton.isEnabled = restaurantDetails.timings.count > 0 ? true : false
         ratingLabel.text = "\(restaurantDetails.rating ?? 0.0)"
         if let price = restaurantDetails.price {
@@ -114,8 +121,8 @@ extension RestaurantDirectionsViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay)
-        renderer.strokeColor = routeLineColor
-        renderer.lineWidth = routeLineWidth
+        renderer.strokeColor = mapRouteConstants.routeLineColor
+        renderer.lineWidth = mapRouteConstants.routeLineWidth
         return renderer
     }
     
@@ -135,7 +142,8 @@ extension RestaurantDirectionsViewController: MKMapViewDelegate {
         }
         
         //TODO: Change this to actual Current Location in Future
-        let sourceLocation = CLLocationCoordinate2D(latitude: 40.4862157, longitude: -74.4518188)
+        let currentLocation = SelectedPreference.shared.getLatitude()
+        let sourceLocation = CLLocationCoordinate2D(latitude: Double(truncating: currentLocation.0 as NSNumber), longitude: Double(truncating: currentLocation.1 as NSNumber))
         let destinationLocation = CLLocationCoordinate2D(latitude: restaurantLatitude, longitude: restaurantLongitude)
         
         let sourcePlacemark = MKPlacemark(coordinate: sourceLocation, addressDictionary: nil)
@@ -182,7 +190,9 @@ extension RestaurantDirectionsViewController: MKMapViewDelegate {
             self?.distanceLabel.text = "\(distanceInMiles.rounded(toPlaces: 1)) mi"
             
             let rect = route.polyline.boundingMapRect
-            self?.mapView.setVisibleMapRect(rect, edgePadding: UIEdgeInsetsMake(self!.mapViewVisbileRectInsets, self!.mapViewVisbileRectInsets, self!.mapViewVisbileRectInsets, self!.mapViewVisbileRectInsets), animated: true)
+            let rectInsets = mapRouteConstants.mapViewVisbileRectInsets
+            self?.mapView.setVisibleMapRect(rect, edgePadding:
+                UIEdgeInsetsMake(rectInsets,rectInsets,rectInsets,rectInsets), animated: true)
         }
     }
 }
