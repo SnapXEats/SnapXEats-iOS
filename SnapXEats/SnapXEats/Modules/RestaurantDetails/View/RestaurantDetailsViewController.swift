@@ -25,7 +25,6 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
     @IBOutlet var amenitiesTableView: UITableView!
     @IBOutlet var amenityTableHeightConstraint: NSLayoutConstraint!
     
-    private let weekDays = ["Monday": 1, "Tuesday":2, "Wednesday":3, "Thursday":4, "Friday":5, "Saturday":6, "Sunday":7]
     private let durationTrailingText = " Away"
     private let photoCreatedDatePrefix = "Photo taken on "
     private enum restaurantTimingConstants {
@@ -104,7 +103,9 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
     }
     
     @IBAction func directionButtonAction(_ sender: UIButton) {
-        
+        if let parent = self.navigationController, let details = restaurantDetails {
+            presenter?.gotoRestaurantDirections(restaurantDetails: details, parent: parent)
+        }
     }
     
     @IBAction func uberButtonAction(_ sender: UIButton) {
@@ -173,18 +174,8 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
         return SnapXEatsAppDefaults.emptyString
     }
     
-    private func getSortedRestaurantTimings() -> [RestaurantTiming]? {
-        let sortedTimings = restaurantDetails?.timings.sorted(by: { (item1, item2) -> Bool in
-            if let weekdayInt1 = weekDays[item1.day!], let weekdayInt2 = weekDays[item2.day!] {
-                return weekdayInt1 < weekdayInt2
-            }
-            return false
-        })
-        return sortedTimings
-    }
-    
     private func showRestaurantTimingsPopover(onView sender: UIButton) {
-        if let timings = getSortedRestaurantTimings() {
+        if let timings = restaurantDetails?.sortedRestaurantTimings() {
             let popController = self.storyboard?.instantiateViewController(withIdentifier: SnapXEatsStoryboardIdentifier.restaurantTimingsViewController) as! RestaurantTimingViewController
             
             popController.timings = timings

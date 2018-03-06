@@ -21,6 +21,21 @@ enum PricingPreference: Int {
     case double
     case tripple
     case quadraple
+    
+    func displayText() -> String {
+        switch self {
+        case .auto:
+            return "$"
+        case .single:
+            return "$$"
+        case .double:
+            return "$$$"
+        case .tripple:
+            return "$$$$"
+        case .quadraple:
+            return "$$$$$"
+        }
+    }
 }
 
 enum SortByPreference: Int {

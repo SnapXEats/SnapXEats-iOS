@@ -11,7 +11,7 @@ import FBSDKLoginKit
 import SwiftInstagram
 
 enum Screens {
-    case firsTimeUser, login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurant: Restaurant, parentController: UINavigationController, showMoreInfo: Bool), wishlist
+    case firsTimeUser, login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurant: Restaurant, parentController: UINavigationController, showMoreInfo: Bool), restaurantDirections(details: RestaurantDetails, parentController: UINavigationController), wishlist
 }
 
 class RootRouter: NSObject {
@@ -117,6 +117,12 @@ class RootRouter: NSObject {
         parentController.pushViewController(restaurantDetailsVC, animated: true)
     }
     
+    private func pushRestaurantDirectionsScreen(onNavigationController parentController: UINavigationController, withDetails details: RestaurantDetails) {
+        let restaurantDetailsVC = RestaurantDirectionsRouter.shared.loadRestaurantDirectionsModule()
+        restaurantDetailsVC.restaurantDetails = details
+        parentController.pushViewController(restaurantDetailsVC, animated: true)
+    }
+    
     func updateDrawerState(state: KYDrawerController.DrawerState) {
          drawerController.setDrawerState(state, animated: true)
     }
@@ -149,6 +155,8 @@ class RootRouter: NSObject {
             pushFoodAndCuisinePreferencesScreen(onNavigationController: parentController, withPreferenceType: preferenceType)
         case .restaurantDetails(let restaurant, let parentController, let showMoreInfo):
             pushRestaurantDetailsScreen(onNavigationController: parentController, forRestaurant: restaurant, showMoreInfo: showMoreInfo)
+        case .restaurantDirections(let details, let parentController):
+            pushRestaurantDirectionsScreen(onNavigationController: parentController, withDetails: details)
         case .wishlist:
             presentWishlistScreen()
         }
