@@ -21,6 +21,14 @@ class WishlistPresenter {
 }
 
 extension WishlistPresenter: WishlistPresentation {
+    func deleteWishListItem(item: WishListItem) {
+        interactor?.removeWishListItem(item: item)
+    }
+    
+    func deleteWishListItems(items: [WishListItem]) {
+        interactor?.removeWishListItems(items: items)
+    }
+    
     func getWishListRestaurantDetails() {
         interactor?.getWishListRestaurantDetails()
     }

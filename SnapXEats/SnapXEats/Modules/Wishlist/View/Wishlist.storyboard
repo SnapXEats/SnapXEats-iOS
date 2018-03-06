@@ -40,7 +40,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="GlV-3m-Qqx">
                             <color key="tintColor" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="navigationRightBarButtonClicked:" destination="n2k-sO-foO" id="Nb6-04-PmI"/>
+                                <action selector="navigationRightBarButtonClicked:" destination="n2k-sO-foO" id="fm0-cf-k40"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

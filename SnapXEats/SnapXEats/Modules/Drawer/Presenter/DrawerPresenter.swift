@@ -20,6 +20,10 @@ class DrawerPresenter {
 }
 
 extension DrawerPresenter: DrawerPresentation {
+    func wishListCount() -> Int {
+        return interactor?.wishListCount() ?? 0
+    }
+    
     func presentScreen(screen: Screens, drawerState: KYDrawerController.DrawerState) {
         router?.presentScreen(screen: screen, drawerState: drawerState)
     }

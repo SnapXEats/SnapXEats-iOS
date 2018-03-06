@@ -18,7 +18,7 @@ class WishlistViewController: BaseViewController, StoryboardLoadable {
     
     // MARK: Properties
     var presenter: WishlistPresentation?
-    var wishItems = [WishListData]()
+    var wishItems = [WishListItem]()
     var isEditable = false
     var menuBarButtonItem: UIBarButtonItem?
     var selectedIndexes = NSMutableArray()
@@ -29,6 +29,9 @@ class WishlistViewController: BaseViewController, StoryboardLoadable {
         isEditable ? makeWishlistNonEditable() : makeWishlistEditable()
     }
     
+    private func enableBarButton() {
+        self.navigationItem.rightBarButtonItem?.isEnabled =  wishItems.count == 0 ? false : true
+    }
     // MARK: Lifecycle
 
     override func viewDidLoad() {
@@ -42,7 +45,7 @@ class WishlistViewController: BaseViewController, StoryboardLoadable {
     }
     
     private func sendWishListRequest() {
-        if checkRechability() {
+        if checkRechability() && !isProgressHUD {
             showLoading()
             presenter?.getWishListRestaurantDetails()
         }
@@ -53,6 +56,7 @@ class WishlistViewController: BaseViewController, StoryboardLoadable {
             if let listData = result.wishList {
              wishItems = listData
              wishlistTableView.reloadData()
+             enableBarButton()
             }
         }
     }
@@ -85,8 +89,29 @@ extension WishlistViewController: WishlistView {
         isEditable = false
         self.navigationItem.rightBarButtonItem?.title = navigationRightButtonTitles.edit
         self.navigationItem.leftBarButtonItem = menuBarButtonItem
-        selectedIndexes.removeAllObjects()
+        deleteWishListItems()
         wishlistTableView.reloadData()
+    }
+    
+    private func deleteWishListItems() {
+        var deleteWishList = [WishListItem]()
+        for (_, item) in selectedIndexes.enumerated() {
+            let deleteIndex  = item as! Int
+            let item = wishItems[deleteIndex]
+                deleteWishList.append(item)
+        }
+        removeItem(deleteWishList: deleteWishList)
+        presenter?.deleteWishListItems(items: deleteWishList)
+    }
+    
+    private func removeItem(deleteWishList: [WishListItem]) {
+        for  item in deleteWishList {
+            if let index = wishItems.enumerated().filter( { $0.element === item }).map({ $0.offset }).first {
+                wishItems.remove(at: index)
+            }
+        }
+         selectedIndexes.removeAllObjects()
+         enableBarButton()
     }
 }
 
@@ -108,6 +133,16 @@ extension WishlistViewController: UITableViewDelegate, UITableViewDataSource {
             selectedIndexes.contains(indexPath.row) ? selectedIndexes.remove(indexPath.row)
                 : selectedIndexes.add(indexPath.row)
             tableView.reloadRows(at: [indexPath], with: .none)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
+            // handle delete (by removing the data from your array and updating the tableview)
+                presenter?.deleteWishListItem(item: wishItems[indexPath.row])
+                wishItems.remove(at: indexPath.row) 
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                enableBarButton()
         }
     }
 }

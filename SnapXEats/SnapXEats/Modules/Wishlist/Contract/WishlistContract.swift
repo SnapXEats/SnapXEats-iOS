@@ -15,11 +15,15 @@ protocol WishlistView: BaseView {
 }
 
 protocol WishlistPresentation {
-        func getWishListRestaurantDetails() 
+        func getWishListRestaurantDetails()
+        func deleteWishListItem(item: WishListItem)
+        func deleteWishListItems(items: [WishListItem])
 }
 
 protocol WishlistUseCase: WishlistRequestFormatter {
     func sendUserWishList()
+    func removeWishListItem(item: WishListItem)
+    func removeWishListItems(items: [WishListItem])
 }
 
 protocol WishlistInteractorOutput: Response {
