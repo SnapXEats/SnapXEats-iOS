@@ -138,8 +138,8 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
             presenter?.presentScreen(screen: .userPreference, drawerState: .closed)
         case .showLogin:
             presenter?.presentScreen(screen: .login, drawerState: .closed)
-        case .wishList:
-            presenter?.presentScreen(screen: .wishlist, drawerState: .closed)
+        case .wishList: break //TODO: Uncomment this when ready with Wishlist.
+            //presenter?.presentScreen(screen: .wishlist, drawerState: .closed)
         default:
             break
         }
