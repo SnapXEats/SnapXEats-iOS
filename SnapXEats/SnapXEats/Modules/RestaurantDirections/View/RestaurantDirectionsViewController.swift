@@ -32,6 +32,10 @@ class RestaurantDirectionsViewController: BaseViewController, StoryboardLoadable
     @IBOutlet var ratingLabel: UILabel!
     @IBOutlet var mapView: MKMapView!
     
+    @IBAction func restaurantTimingButtonAction(_ sender: UIButton) {
+        showRestaurantTimingsPopover(onView: sender)
+    }
+    
     var presenter: RestaurantDirectionsPresentation?
     var restaurantDetails: RestaurantDetails!
     
@@ -72,6 +76,26 @@ class RestaurantDirectionsViewController: BaseViewController, StoryboardLoadable
     
     @objc func shareButtonAction() {
         //Share Button Action
+    }
+    
+    private func showRestaurantTimingsPopover(onView sender: UIButton) {
+        if let timings = restaurantDetails?.sortedRestaurantTimings() {
+            let popController = self.storyboard?.instantiateViewController(withIdentifier: SnapXEatsStoryboardIdentifier.restaurantTimingsViewController) as! RestaurantTimingViewController
+            
+            popController.timings = timings
+            popController.modalPresentationStyle = UIModalPresentationStyle.popover
+            popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
+            popController.popoverPresentationController?.delegate = self
+            popController.popoverPresentationController?.sourceView = sender
+            popController.popoverPresentationController?.sourceRect = sender.bounds
+            self.present(popController, animated: true, completion: nil)
+        }
+    }
+}
+
+extension RestaurantDirectionsViewController: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
     }
 }
 

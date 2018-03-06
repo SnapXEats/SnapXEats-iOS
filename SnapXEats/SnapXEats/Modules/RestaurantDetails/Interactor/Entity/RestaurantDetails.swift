@@ -14,6 +14,8 @@ private enum restaurantTimingConstants {
     static let close = "Closed Now"
 }
 
+private let weekDays = ["Monday": 1, "Tuesday":2, "Wednesday":3, "Thursday":4, "Friday":5, "Saturday":6, "Sunday":7]
+
 class RestaurantDetailsItem: Mappable {
     var restaurantDetails: RestaurantDetails?
     
@@ -75,6 +77,16 @@ class RestaurantDetails: Mappable {
             return restaurantTimingConstants.open + " " + timingStr
         }
         return SnapXEatsAppDefaults.emptyString
+    }
+    
+    func sortedRestaurantTimings() -> [RestaurantTiming]? {
+        let sortedTimings = self.timings.sorted(by: { (item1, item2) -> Bool in
+            if let weekdayInt1 = weekDays[item1.day!], let weekdayInt2 = weekDays[item2.day!] {
+                return weekdayInt1 < weekdayInt2
+            }
+            return false
+        })
+        return sortedTimings
     }
 }
 
