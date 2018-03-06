@@ -18,12 +18,11 @@ class WishlistItemTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        containerView.fullShadow(color: UIColor.rgba(202.0, 202.0, 202.0, 1), offSet: CGSize(width: 0, height: 0))
     }
     
-    func setWishListItem(item: WishListData) {
+    func setWishListItem(item: WishListData, isSelected: Bool) {
         wishlistItemName.text = item.restaurant_name
-        wishlistItemCity.text = item.restaurant_address
+        wishlistItemCity.text = item.restaurant_address + "   |   " + formatDateFromString(datestr: item.created_at)
         let placeholderImage = UIImage(named: SnapXEatsImageNames.placeholder_cuisine)!
         if (item.dish_image_url != "") {
             let url = URL(string: item.dish_image_url)!
@@ -31,5 +30,8 @@ class WishlistItemTableViewCell: UITableViewCell {
         } else {
             wishlistItemImageView.image = placeholderImage //UIImage(named: foodCardItem.imageName)
         }
+        
+        let shadowColor = isSelected ? UIColor.rgba(230.0, 118.0, 7.0, 1) : UIColor.rgba(202.0, 202.0, 202.0, 1)
+        containerView.fullShadow(color: shadowColor, offSet: CGSize(width: 0, height: 0))
     }
 }

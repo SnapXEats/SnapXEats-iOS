@@ -35,6 +35,8 @@ extension WishlistInteractor: WishlistRequestFormatter, WishlistUseCase {
                     self?.output?.response(result: NetworkResult.noInternet)
                 }
             }
+        } else {
+            self.sendWishListDetailsRequest(path: SnapXEatsWebServicePath.wishList)
         }
     }
 }

@@ -14,7 +14,7 @@ func formatDateFromString(datestr: String) -> String {
     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ" //Date Format from Server side
     
     if let currentDate = dateFormatter.date(from: datestr) {
-        dateFormatter.dateFormat = "dd MMM yyyy, HH:mm a"
+        dateFormatter.dateFormat = "dd MMM yyyy"
         formattedDate = dateFormatter.string(from: currentDate)
     }
     return formattedDate

@@ -75,7 +75,7 @@ extension UIView {
         self.layer.addSublayer(border)
     }
     
-    func fullShadow(color: UIColor, opacity: Float = 0.7, offSet: CGSize, radius: CGFloat = 1) {
+    func fullShadow(color: UIColor, opacity: Float = 0.7, offSet: CGSize, radius: CGFloat = 2) {
         layer.shadowColor = color.cgColor
         layer.shadowOpacity = opacity
         layer.shadowOffset = offSet

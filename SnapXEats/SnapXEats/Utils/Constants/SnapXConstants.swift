@@ -99,6 +99,7 @@ enum SnapXEatsImageNames {
     static let current_location_marker_icon = "current_location_marker_icon"
     static let marker_icon = "marker_icon"
     static let backArrow = "back_arrow"
+    static let closeIcon = "close_icon"
 }
 
 
