@@ -38,6 +38,22 @@ class FoodCardActionHelper {
         let userID = LoginUserPreferences.shared.loginUserID
         return FoodCardActions.getCurrentActionsForUser(userID: userID)
     }
+    func getJSONDataDeletedWishListItems() -> [String: Any] {
+        if let foodCardActions = getCurrentActionsForUser(), foodCardActions.wishListItems.count > 0 {
+            var deltedWishList = [[String:Any]]()
+            for actions in foodCardActions.wishListItems {
+                if actions.isDeleted  {
+                    let wishItem: [String: Any] = [UserGestureJSONKeys.restaurant_dish_id : actions.Id]
+                    deltedWishList.append(wishItem)
+                }
+            }
+            
+            if deltedWishList.count > 0 {
+                return [UserGestureJSONKeys.user_wishlist: deltedWishList]
+            }
+        }
+        return [:]
+    }
     
     func addToWishList(foodCardItem: UserFoodCard) {
         let userID = LoginUserPreferences.shared.loginUserID
@@ -57,6 +73,18 @@ class FoodCardActionHelper {
     func removeFromDislikeList(foodCardItem: UserFoodCard) {
         let userID = LoginUserPreferences.shared.loginUserID
         FoodCardActions.removeFromDislikeList(foodCardItem: foodCardItem, userID: userID)
+    }
+    
+    func removeMulipleItemFromWishList(foodCardItems: [WishListItem]) {
+        let userID = LoginUserPreferences.shared.loginUserID
+        for foodCardItem in foodCardItems {
+            FoodCardActions.removeFromWishList(foodCardItem: foodCardItem, userID: userID)
+        }
+    }
+    
+    func removeItemFromWishList(foodCardItem: WishListItem) {
+        let userID = LoginUserPreferences.shared.loginUserID
+        FoodCardActions.removeFromWishList(foodCardItem: foodCardItem, userID: userID)
     }
     
     func getWishlistCountForCurrentUser() -> Int {

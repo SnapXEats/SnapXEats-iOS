@@ -20,7 +20,7 @@ class WishlistItemTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    func setWishListItem(item: WishListData, isSelected: Bool) {
+    func setWishListItem(item: WishListItem, isSelected: Bool) {
         wishlistItemName.text = item.restaurant_name
         wishlistItemCity.text = item.restaurant_address + "   |   " + formatDateFromString(datestr: item.created_at)
         let placeholderImage = UIImage(named: SnapXEatsImageNames.placeholder_cuisine)!

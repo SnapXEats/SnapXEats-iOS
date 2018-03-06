@@ -139,7 +139,9 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
         case .showLogin:
             presenter?.presentScreen(screen: .login, drawerState: .closed)
         case .wishList:
-            presenter?.presentScreen(screen: .wishlist, drawerState: .closed)
+            if let count = presenter?.wishListCount(), count > 0 {
+                presenter?.presentScreen(screen: .wishlist, drawerState: .closed)
+            }
         default:
             break
         }

@@ -10,7 +10,7 @@ import Foundation
 import ObjectMapper
 
 class WishList: Mappable {
-    var wishList: [WishListData]?
+    var wishList: [WishListItem]?
     required init?(map: Map) {
     }
     
@@ -19,9 +19,10 @@ class WishList: Mappable {
     }
 }
 
-class WishListData: Mappable {
+class WishListItem: Mappable {
     
     var user_gesture_id = SnapXEatsConstant.emptyString
+    var restaurant_dish_id = SnapXEatsConstant.emptyString
     var restaurant_info_id = SnapXEatsConstant.emptyString
     var restaurant_name = SnapXEatsConstant.emptyString
     var restaurant_address = SnapXEatsConstant.emptyString
@@ -33,6 +34,7 @@ class WishListData: Mappable {
     
     func mapping(map: Map) {
         user_gesture_id     <- map["user_gesture_id"]
+        restaurant_dish_id  <- map["restaurant_dish_id"]
         restaurant_info_id  <- map["restaurant_info_id"]
         restaurant_name     <- map["restaurant_name"]
         restaurant_address  <- map["restaurant_address"]

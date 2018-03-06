@@ -257,5 +257,6 @@ enum UserGestureJSONKeys {
     static let dislike_dish_array = "dislike_dish_array"
     static let wishlist_dish_array = "wishlist_dish_array"
     static let restaurant_dish_id = "restaurant_dish_id"
+    static let user_wishlist = "user_wishlist"
 }
 

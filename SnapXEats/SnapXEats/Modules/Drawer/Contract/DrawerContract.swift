@@ -34,6 +34,7 @@ protocol DrawerUseCase: DrawerRequestFormatter {
     func getUserPreference(userID: String)
     func sendUserPreference(preference: LoginUserPreferences)
     func updateUserPreference(preference: LoginUserPreferences)
+    func wishListCount() -> Int
 }
 
 protocol DrawerInteractorIntput {
