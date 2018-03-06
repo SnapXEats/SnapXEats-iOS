@@ -11,7 +11,7 @@ import FBSDKLoginKit
 import SwiftInstagram
 
 enum Screens {
-    case firsTimeUser, login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurant: Restaurant, parentController: UINavigationController, showMoreInfo: Bool), restaurantDirections(details: RestaurantDetails, parentController: UINavigationController), wishlist
+    case firsTimeUser, login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurant: Restaurant, parentController: UINavigationController, showMoreInfo: Bool), restaurantDirections(details: RestaurantDetails, parentController: UINavigationController), wishlist, restaurantsMapView(parentController: UINavigationController)
 }
 
 class RootRouter: NSObject {
@@ -101,6 +101,11 @@ class RootRouter: NSObject {
         presentView(drawerController)
     }
     
+    private func pushRestaurantsMapView(onNavigationController parentController: UINavigationController) {
+        let restaurantMapsVC = RestaurantsMapViewRouter.shared.loadRestaurantsMapViewModule()
+        parentController.pushViewController(restaurantMapsVC, animated: true)
+    }
+    
     private func dissmissSelectLocationScreen() {
         window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
@@ -159,6 +164,8 @@ class RootRouter: NSObject {
             pushRestaurantDirectionsScreen(onNavigationController: parentController, withDetails: details)
         case .wishlist:
             presentWishlistScreen()
+        case .restaurantsMapView(let parentController):
+            pushRestaurantsMapView(onNavigationController: parentController)
         }
     }
     

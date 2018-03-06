@@ -31,7 +31,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yDu-HP-HSF">
-                                <rect key="frame" x="20" y="80" width="335" height="368.5"/>
+                                <rect key="frame" x="20" y="124" width="335" height="368.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yZP-OQ-Zyj" customClass="KolodaView" customModule="Koloda">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="368.5"/>
@@ -130,13 +130,14 @@
                         <viewLayoutGuide key="safeArea" id="4TV-Kl-tqH"/>
                     </view>
                     <navigationItem key="navigationItem" id="g0V-s3-Rqf">
-                        <barButtonItem key="rightBarButtonItem" image="navigation_search_icon" id="Tif-uD-TTq">
+                        <barButtonItem key="rightBarButtonItem" image="map_icon" id="Tif-uD-TTq">
                             <color key="tintColor" red="0.36470588235294116" green="0.36470588235294116" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="searchButtonAction:" destination="PVr-ZQ-ZIz" id="IHO-FC-kd2"/>
+                                <action selector="mapButtonAction:" destination="PVr-ZQ-ZIz" id="xT5-14-tLH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="disLikeButton" destination="6O6-Ad-9oa" id="kFg-AG-e5d"/>
                         <outlet property="kolodaView" destination="yZP-OQ-Zyj" id="wac-SE-htp"/>
@@ -330,7 +331,7 @@
     <resources>
         <image name="cross" width="65" height="64"/>
         <image name="heart" width="64" height="64"/>
-        <image name="navigation_search_icon" width="23" height="23"/>
+        <image name="map_icon" width="24" height="22"/>
         <image name="profile_placeholder" width="60" height="61"/>
         <image name="reward_points" width="16" height="12"/>
         <image name="star" width="38" height="38"/>

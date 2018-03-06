@@ -67,8 +67,10 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
         kolodaView.swipe(.up)
     }
     
-    @IBAction func searchButtonAction(_: Any) {
-        // Search Button Action
+    @IBAction func mapButtonAction(_: Any) {
+        if let parentNavigation = self.navigationController {
+            presenter?.gotoRestaurantsMapView(parent: parentNavigation)
+        }
     }
     
     override func viewDidLoad() {
