@@ -66,6 +66,9 @@
                                         <state key="normal" title="Open Today - 11 AM to 11 PM" image="down_arrow">
                                             <color key="titleColor" red="0.36470588235294116" green="0.36470588235294116" blue="0.36470588235294116" alpha="1" colorSpace="deviceRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="restaurantTimingButtonAction:" destination="4ap-la-Nks" eventType="touchUpInside" id="hh0-gs-DJ9"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WNo-k7-vAJ" userLabel="Bottom Border View">
                                         <rect key="frame" x="103" y="142" width="179" height="1"/>

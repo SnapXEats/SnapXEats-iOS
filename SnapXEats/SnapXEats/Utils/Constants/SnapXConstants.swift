@@ -50,6 +50,7 @@ enum SnapXEatsStoryboard {
     static let foodCardsStoryboard = "FoodCards"
     static let userPreferenceStoryboard = "UserPreference"
     static let wishlist = "Wishlist"
+    static let restarantDetails = "RestaurantDetails"
 }
 
 enum SnapXEatsStoryboardIdentifier {

@@ -61,6 +61,7 @@ class RestaurantDirectionsViewController: BaseViewController, StoryboardLoadable
         timingsButton.titleLabel?.sizeToFit()
         let leftInset = (timingsButton.titleLabel?.frame.size.width)! + locationTitleLeftInsetMargin
         timingsButton.imageEdgeInsets = UIEdgeInsetsMake(locationTitleTopInset, leftInset, 0, -leftInset)
+        timingsButton.isEnabled = restaurantDetails.timings.count > 0 ? true : false
         ratingLabel.text = "\(restaurantDetails.rating ?? 0.0)"
         if let price = restaurantDetails.price {
             pricingLabel.text = "\(PricingPreference(rawValue: price)?.displayText() ?? "")"
@@ -80,11 +81,12 @@ class RestaurantDirectionsViewController: BaseViewController, StoryboardLoadable
     
     private func showRestaurantTimingsPopover(onView sender: UIButton) {
         if let timings = restaurantDetails?.sortedRestaurantTimings() {
-            let popController = self.storyboard?.instantiateViewController(withIdentifier: SnapXEatsStoryboardIdentifier.restaurantTimingsViewController) as! RestaurantTimingViewController
+            let storyboard = UIStoryboard(name: SnapXEatsStoryboard.restarantDetails, bundle: nil)
+            let popController = storyboard.instantiateViewController(withIdentifier: SnapXEatsStoryboardIdentifier.restaurantTimingsViewController) as! RestaurantTimingViewController
             
             popController.timings = timings
             popController.modalPresentationStyle = UIModalPresentationStyle.popover
-            popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
+            popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.any
             popController.popoverPresentationController?.delegate = self
             popController.popoverPresentationController?.sourceView = sender
             popController.popoverPresentationController?.sourceRect = sender.bounds
