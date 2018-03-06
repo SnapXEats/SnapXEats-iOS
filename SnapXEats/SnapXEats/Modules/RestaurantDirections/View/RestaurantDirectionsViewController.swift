@@ -55,9 +55,23 @@ class RestaurantDirectionsViewController: BaseViewController, StoryboardLoadable
         initView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        registerNotification()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unRegisterNotification()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showRestaurantDetails()
+    }
+    
+    @objc override func internetConnected() {
+        // Internet is needed only to Show map Route. Other details are coming from earlier Screen
         setupMapViewWithDirections()
     }
     
@@ -73,6 +87,8 @@ class RestaurantDirectionsViewController: BaseViewController, StoryboardLoadable
         if let price = restaurantDetails.price {
             pricingLabel.text = "\(PricingPreference(rawValue: price)?.displayText() ?? "")"
         }
+        
+        setupMapViewWithDirections()
     }
     
     private func addShareButtonOnNavigationItem() {
@@ -163,9 +179,11 @@ extension RestaurantDirectionsViewController: MKMapViewDelegate {
         mapView.showsCompass = true
         
         // Calculate the direction and Show Route
-        let sourceMapItem = MKMapItem(placemark: sourcePlacemark)
-        let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
-        calculateDirectionandShowOnMap(sourceMapItem: sourceMapItem, destinationMapItem: destinationMapItem)
+        if checkRechability() {
+            let sourceMapItem = MKMapItem(placemark: sourcePlacemark)
+            let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
+            calculateDirectionandShowOnMap(sourceMapItem: sourceMapItem, destinationMapItem: destinationMapItem)
+        }
     }
     
     private func calculateDirectionandShowOnMap(sourceMapItem: MKMapItem, destinationMapItem: MKMapItem) {
