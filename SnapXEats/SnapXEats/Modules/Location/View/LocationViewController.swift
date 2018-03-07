@@ -25,8 +25,8 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     private let sectionInsets = UIEdgeInsets(top: 10.0, left: 20.0, bottom: 30.0, right: 20.0)
     var presenter: LocationPresentation?
     var selectedCuisineIndexes = NSMutableArray()
-    var cuisinePreference: List<UserCuisinePreference>? {
-        return PreferenceHelper.shared.getUserSelectedCuisinePreferecne()
+    var cuisinePreference: [CuisineItem] {
+        return PreferenceHelper.shared.getStoredCuisneList()
     }
     var currentView: UIViewController {
         get {
@@ -136,11 +136,9 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     
     private func setUserSelectedFoodPrefercne() {
         for (index, cuiseItem) in cuiseItems.enumerated() {
-            if let preferecne = cuisinePreference {
-                for cuisine in preferecne {
-                    if let id = cuiseItem.itemID , cuisine.Id == id {
-                        selectedCuisineIndexes.add(index)
-                    }
+            for cuisine in cuisinePreference {
+                if let id = cuiseItem.itemID , cuisine.itemID == id {
+                    selectedCuisineIndexes.add(index)
                 }
             }
         }
