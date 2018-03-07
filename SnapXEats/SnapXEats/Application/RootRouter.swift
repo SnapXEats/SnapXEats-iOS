@@ -11,7 +11,7 @@ import FBSDKLoginKit
 import SwiftInstagram
 
 enum Screens {
-    case firsTimeUser, login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurant: Restaurant, parentController: UINavigationController, showMoreInfo: Bool), restaurantDirections(details: RestaurantDetails, parentController: UINavigationController), wishlist, restaurantsMapView(parentController: UINavigationController)
+    case firsTimeUser, login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurant: Restaurant, parentController: UINavigationController, showMoreInfo: Bool), restaurantDirections(details: RestaurantDetails, parentController: UINavigationController), wishlist, restaurantsMapView(restaurants: [Restaurant], parentController: UINavigationController)
 }
 
 class RootRouter: NSObject {
@@ -101,8 +101,9 @@ class RootRouter: NSObject {
         presentView(drawerController)
     }
     
-    private func pushRestaurantsMapView(onNavigationController parentController: UINavigationController) {
+    private func pushRestaurantsMapView(onNavigationController parentController: UINavigationController, withRestaurants restaurants: [Restaurant]) {
         let restaurantMapsVC = RestaurantsMapViewRouter.shared.loadRestaurantsMapViewModule()
+        restaurantMapsVC.restaurants = restaurants
         parentController.pushViewController(restaurantMapsVC, animated: true)
     }
     
@@ -164,8 +165,8 @@ class RootRouter: NSObject {
             pushRestaurantDirectionsScreen(onNavigationController: parentController, withDetails: details)
         case .wishlist:
             presentWishlistScreen()
-        case .restaurantsMapView(let parentController):
-            pushRestaurantsMapView(onNavigationController: parentController)
+        case .restaurantsMapView(let restaurants, let parentController):
+            pushRestaurantsMapView(onNavigationController: parentController, withRestaurants: restaurants)
         }
     }
     

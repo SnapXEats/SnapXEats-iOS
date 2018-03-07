@@ -40,6 +40,8 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     }
     
     var  foodCards = [FoodCard]()
+    var restaurants = [Restaurant]()
+    
     private var loadFoodCard: Bool {
         get {
              return checkRechability() &&  foodCards.count == 0 && locationEnabled
@@ -69,7 +71,7 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     
     @IBAction func mapButtonAction(_: Any) {
         if let parentNavigation = self.navigationController {
-            presenter?.gotoRestaurantsMapView(parent: parentNavigation)
+            presenter?.gotoRestaurantsMapView(restaurants: restaurants, parent: parentNavigation)
         }
     }
     
@@ -101,6 +103,7 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
             showLoading()
             presenter?.getFoodCards(selectedPreferences: selectedPrefernce!)
         } else if let dishInfo = result as?  DishInfo, let restaurants = dishInfo.restaurants, restaurants.count > 0  {
+            self.restaurants = restaurants
             setFoodCardDetails(restaurants: restaurants)
         }
         setButtonState()
@@ -116,7 +119,7 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
                 }
         }
         kolodaView.reloadData()
-         hideLoading()
+        hideLoading()
     }
 }
 

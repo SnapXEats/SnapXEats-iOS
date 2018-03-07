@@ -38,8 +38,8 @@ extension FoodCardsPresenter: FoodCardsPresentation {
         interactor?.sendUserGestures(gestures: gestures)
     }
     
-    func gotoRestaurantsMapView(parent: UINavigationController) {
-        router?.presentScreen(screen: .restaurantsMapView(parentController: parent))
+    func gotoRestaurantsMapView(restaurants: [Restaurant], parent: UINavigationController) {
+        router?.presentScreen(screen: .restaurantsMapView(restaurants: restaurants, parentController: parent))
     }
 }
 
