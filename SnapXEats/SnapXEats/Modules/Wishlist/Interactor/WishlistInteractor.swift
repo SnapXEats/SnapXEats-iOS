@@ -52,8 +52,9 @@ extension WishlistInteractor: WishlistRequestFormatter, WishlistUseCase {
         
         let parameter = FoodCardActionHelper.shared.getJSONDataDeletedWishListItems()
         if parameter.count > 0 {
-            deltedWishListRequest(forPath: SnapXEatsWebServicePath.userGesture, withParameters: parameter) { [weak self] response in
+            deltedWishListRequest(forPath: SnapXEatsWebServicePath.wishList, withParameters: parameter) { [weak self] response in
                 if response.isSuccess {
+                    FoodCardActionHelper.shared.deleteItemFromWishList()
                     self?.sendUserWishList()
                 } else {
                     self?.output?.response(result: NetworkResult.noInternet)
