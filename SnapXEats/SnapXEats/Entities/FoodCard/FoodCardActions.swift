@@ -134,7 +134,7 @@ class FoodCardActions: Object {
     }
     
     
-    static func removeFromWishList(foodCardItem: WishListItem, userID: String) {
+    static func makeDirtyWishList(foodCardItem: WishListItem, userID: String) {
         if userID != SnapXEatsConstant.emptyString {
             DispatchQueue.global(qos: .background).async {
                 if let currentFoodCardActions = getCurrentActionsForUser(userID: userID) {
@@ -144,6 +144,26 @@ class FoodCardActions: Object {
                         for item in currentWishList {
                             if item.Id == foodCardItem.restaurant_dish_id {
                                 item.isDeleted = true
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    static func deleteWishList(userID: String) {
+        if userID != SnapXEatsConstant.emptyString {
+            DispatchQueue.global(qos: .background).async {
+                if let currentFoodCardActions = getCurrentActionsForUser(userID: userID) {
+                    let currentWishList = currentFoodCardActions.wishListItems
+                    let realm = try! Realm()
+                    try! realm.write {
+                        for item in currentWishList {
+                            if item.isDeleted == true {
+                                if let index = currentWishList.enumerated().filter( { $0.element.Id == item.Id }).map({ $0.offset }).first {
+                                    currentWishList.remove(at: index)
+                                }
                             }
                         }
                     }

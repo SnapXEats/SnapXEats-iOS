@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class WishlistViewController: BaseViewController, StoryboardLoadable {
-
+    
     private enum navigationRightButtonTitles {
         static let edit = "Edit"
         static let delete = "Delete"
@@ -26,14 +26,41 @@ class WishlistViewController: BaseViewController, StoryboardLoadable {
     @IBOutlet var wishlistTableView: UITableView!
     
     @IBAction func navigationRightBarButtonClicked(_ sender: Any) {
-        isEditable ? makeWishlistNonEditable() : makeWishlistEditable()
+        if  isEditable  {
+            selectedIndexes.count > 0 ?  showDeleteDialog() : makeWishlistNonEditable()
+        }
+        else {
+            makeWishlistEditable()
+        }
+    }
+    
+    private func showDeleteDialog() {
+        let ok =  setOkButton(title: SnapXButtonTitle.ok) { [weak self] in
+            self?.deleteWishListItems()
+            self?.makeWishlistNonEditable()
+        }
+        let cancel = setCancelButton { [weak self] in
+            self?.selectedIndexes.removeAllObjects()
+            self?.makeWishlistNonEditable()
+        }
+        
+        UIAlertController.presentAlertInViewController(self, title: AlertTitle.error , message: AlertMessage.deleteWishListMessage, actions: [cancel, ok], completion: nil)
+    }
+    
+    private func setCancelButton(completionHandler: @escaping () ->()) -> UIAlertAction {
+        return UIAlertAction(title: SnapXButtonTitle.cancel, style: UIAlertActionStyle.default, handler: {action in completionHandler()})
+        
+    }
+    
+    private func setOkButton(title: String, completionHandler: @escaping () ->()) -> UIAlertAction {
+        return UIAlertAction(title: title, style: UIAlertActionStyle.default, handler:  {action in completionHandler()})
     }
     
     private func enableBarButton() {
         self.navigationItem.rightBarButtonItem?.isEnabled =  wishItems.count == 0 ? false : true
     }
     // MARK: Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
@@ -54,9 +81,9 @@ class WishlistViewController: BaseViewController, StoryboardLoadable {
     override func success(result: Any?) {
         if let result = result as? WishList {
             if let listData = result.wishList {
-             wishItems = listData
-             wishlistTableView.reloadData()
-             enableBarButton()
+                wishItems = listData
+                wishlistTableView.reloadData()
+                enableBarButton()
             }
         }
     }
@@ -82,6 +109,7 @@ extension WishlistViewController: WishlistView {
     }
     
     @objc func cancelEditing() {
+        selectedIndexes.removeAllObjects()
         makeWishlistNonEditable()
     }
     
@@ -89,7 +117,6 @@ extension WishlistViewController: WishlistView {
         isEditable = false
         self.navigationItem.rightBarButtonItem?.title = navigationRightButtonTitles.edit
         self.navigationItem.leftBarButtonItem = menuBarButtonItem
-        deleteWishListItems()
         wishlistTableView.reloadData()
     }
     
@@ -98,7 +125,7 @@ extension WishlistViewController: WishlistView {
         for (_, item) in selectedIndexes.enumerated() {
             let deleteIndex  = item as! Int
             let item = wishItems[deleteIndex]
-                deleteWishList.append(item)
+            deleteWishList.append(item)
         }
         removeItem(deleteWishList: deleteWishList)
         presenter?.deleteWishListItems(items: deleteWishList)
@@ -110,8 +137,8 @@ extension WishlistViewController: WishlistView {
                 wishItems.remove(at: index)
             }
         }
-         selectedIndexes.removeAllObjects()
-         enableBarButton()
+        selectedIndexes.removeAllObjects()
+        enableBarButton()
     }
 }
 
@@ -133,16 +160,25 @@ extension WishlistViewController: UITableViewDelegate, UITableViewDataSource {
             selectedIndexes.contains(indexPath.row) ? selectedIndexes.remove(indexPath.row)
                 : selectedIndexes.add(indexPath.row)
             tableView.reloadRows(at: [indexPath], with: .none)
+        } else {
+            loadRestaurantDetails(item: wishItems[indexPath.row])
         }
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
             // handle delete (by removing the data from your array and updating the tableview)
-                presenter?.deleteWishListItem(item: wishItems[indexPath.row])
-                wishItems.remove(at: indexPath.row) 
-                tableView.deleteRows(at: [indexPath], with: .fade)
-                enableBarButton()
+            presenter?.deleteWishListItem(item: wishItems[indexPath.row])
+            wishItems.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            enableBarButton()
+        }
+    }
+    
+    func loadRestaurantDetails(item: WishListItem) {
+        // Restaurant Detail Action
+        if let parent = self.navigationController {
+            presenter?.gotoRestaurantDetails(selectedRestaurant: item.restaurant_info_id, parent: parent, showMoreInfo: false)
         }
     }
 }

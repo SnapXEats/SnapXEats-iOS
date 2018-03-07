@@ -24,7 +24,9 @@ class FoodCardActionHelper {
         var foodItems = [[String:Any]]()
         for  foodCard in foodCardItem {
             let foodItem: [String: Any] = [UserGestureJSONKeys.restaurant_dish_id : foodCard.Id]
-            foodItems.append(foodItem)
+            if !foodCard.isDeleted  {
+                foodItems.append(foodItem)
+            }
         }
         return foodItems
     }
@@ -78,13 +80,18 @@ class FoodCardActionHelper {
     func removeMulipleItemFromWishList(foodCardItems: [WishListItem]) {
         let userID = LoginUserPreferences.shared.loginUserID
         for foodCardItem in foodCardItems {
-            FoodCardActions.removeFromWishList(foodCardItem: foodCardItem, userID: userID)
+            FoodCardActions.makeDirtyWishList(foodCardItem: foodCardItem, userID: userID)
         }
+    }
+    
+    func deleteItemFromWishList() {
+        let userID = LoginUserPreferences.shared.loginUserID
+            FoodCardActions.deleteWishList(userID: userID)
     }
     
     func removeItemFromWishList(foodCardItem: WishListItem) {
         let userID = LoginUserPreferences.shared.loginUserID
-        FoodCardActions.removeFromWishList(foodCardItem: foodCardItem, userID: userID)
+        FoodCardActions.makeDirtyWishList(foodCardItem: foodCardItem, userID: userID)
     }
     
     func getWishlistCountForCurrentUser() -> Int {

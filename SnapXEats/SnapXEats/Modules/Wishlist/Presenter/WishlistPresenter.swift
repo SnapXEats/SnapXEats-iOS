@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class WishlistPresenter {
 
@@ -33,6 +34,9 @@ extension WishlistPresenter: WishlistPresentation {
         interactor?.getWishListRestaurantDetails()
     }
 
+    func gotoRestaurantDetails(selectedRestaurant: String, parent: UINavigationController, showMoreInfo: Bool) {
+        router?.presentScreen(screen: .restaurantDetails(restaurantID: selectedRestaurant, parentController: parent, showMoreInfo: showMoreInfo))
+    }
 }
 
 extension WishlistPresenter: WishlistInteractorOutput {

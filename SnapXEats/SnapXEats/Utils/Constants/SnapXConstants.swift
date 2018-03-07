@@ -223,6 +223,7 @@ enum AlertMessage {
     static let uberInstallConfirmation = "You need to install the uber app from app store to book a ride. Do you want to install it now?"
     static let preferecneRestMessage = "Do you really want to reset your preferences. Please press Ok or Cancel."
     static let preferenceSaveMessage = "You have made some changes to your preferences, You need to save them first."
+    static let deleteWishListMessage = "Do you really want to delete your selected wishlist Item, please press Ok or Cancel."
 }
 
 enum AlertTitle {
