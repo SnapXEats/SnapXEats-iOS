@@ -283,6 +283,7 @@ extension UserPreferenceViewController {
         selectedPrice = PricingPreference(rawValue: buttonTag) ?? .single
         for index in 1...pricingFilter.titles.count {
             if let button = priceRangeContainerView.viewWithTag(index) as? UIButton {
+                enableBarButton(enable: true)
                 button.setTitleColor(titleColorForFilterRangeAt(index: index, buttonTag: buttonTag), for: .normal)
             }
         }
@@ -305,6 +306,7 @@ extension UserPreferenceViewController {
         selectedDistance = Int(sender.index) + 1
         for index in 1...distanceFilter.titles.count {
             if let button = distanceRangeContainerView.viewWithTag(index) as? UIButton {
+                enableBarButton(enable: true)
                 button.setTitleColor(titleColorForFilterRangeAt(index: index, buttonTag: buttonTag), for: .normal)
             }
         }
