@@ -24,7 +24,9 @@ class FoodCardActionHelper {
         var foodItems = [[String:Any]]()
         for  foodCard in foodCardItem {
             let foodItem: [String: Any] = [UserGestureJSONKeys.restaurant_dish_id : foodCard.Id]
-            foodItems.append(foodItem)
+            if !foodCard.isDeleted  {
+                foodItems.append(foodItem)
+            }
         }
         return foodItems
     }

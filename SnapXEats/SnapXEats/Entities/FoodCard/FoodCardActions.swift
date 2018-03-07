@@ -159,9 +159,11 @@ class FoodCardActions: Object {
                     let currentWishList = currentFoodCardActions.wishListItems
                     let realm = try! Realm()
                     try! realm.write {
-                        for (index, item) in currentWishList.enumerated() {
-                            if item.isDeleted {
-                                currentWishList.remove(at: index)
+                        for item in currentWishList {
+                            if item.isDeleted == true {
+                                if let index = currentWishList.enumerated().filter( { $0.element.Id == item.Id }).map({ $0.offset }).first {
+                                    currentWishList.remove(at: index)
+                                }
                             }
                         }
                     }
