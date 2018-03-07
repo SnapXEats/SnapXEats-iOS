@@ -48,14 +48,29 @@ class PreferenceHelper {
         return SetUserPreference.getUserPrefernce(userID: userID)
     }
     
-    func getUserSelectedCuisinePreferecne() -> List<UserCuisinePreference>? {
+    func getStoredCuisneList() -> [CuisineItem] {
+        if loginPreferecne.isLoggedIn {
+            setUserCuisinePreferecne()
+        }
+        return loginPreferecne.cuisinePreference
+        
+    }
+    
+    func getStoredFoodList() -> [FoodItem] {
+        if loginPreferecne.isLoggedIn {
+            setUserFoodPreferecne()
+        }
+        return loginPreferecne.foodPreference
+    }
+    
+    private func getUserSelectedCuisinePreferecne() -> List<UserCuisinePreference>? {
         if let userInfo = SetUserPreference.getUserPrefernce(userID: loginPreferecne.loginUserID) {
             return userInfo.cuisinePreference
         }
         return nil
     }
     
-    func getUserSelectedFoodPreferecne() -> List<UserFoodPreference>? {
+    private func getUserSelectedFoodPreferecne() -> List<UserFoodPreference>? {
         if let userInfo = SetUserPreference.getUserPrefernce(userID: loginPreferecne.loginUserID) {
             return userInfo.foodPreference
         }

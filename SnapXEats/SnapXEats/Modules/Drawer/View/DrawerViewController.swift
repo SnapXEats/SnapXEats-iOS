@@ -156,7 +156,6 @@ extension DrawerViewController: BaseView {
     
     private func presentNextScreen(index: navigateScreen) {
         screenIndex = index
-        
         if  loginUserPreference.isLoggedIn {
             if  checkRechability() {
                 showLoading()
@@ -165,6 +164,7 @@ extension DrawerViewController: BaseView {
             }
         }
         else {
+            loginUserPreference.isDirty = false
             presentScreen(index: index)
         }
     }

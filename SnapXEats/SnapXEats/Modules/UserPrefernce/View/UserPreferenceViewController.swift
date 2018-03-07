@@ -77,6 +77,7 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
                         : presenter?.updateUserPreference(preference: loginUserPreference)
                 }
             } else {
+                loginUserPreference.isDirty = false
                 enableBarButton(enable: false)
                 presentNextScreen()
             }
