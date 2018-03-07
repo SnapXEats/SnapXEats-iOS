@@ -235,9 +235,8 @@ extension FoodCardsViewController {
     
     private func gotoRestaurantDetailsForFoodCard(foodCard: FoodCard, showMoreInfo: Bool = false) {
         // Restaurant Detail Action
-        if let parent = self.navigationController {
-            let selectedRestaurant = foodCard.restaurant
-            presenter?.gotoRestaurantDetails(selectedRestaurant: selectedRestaurant, parent: parent, showMoreInfo: showMoreInfo)
+        if let parent = self.navigationController, let restoId = foodCard.restaurant.restaurant_info_id {
+            presenter?.gotoRestaurantDetails(selectedRestaurant: restoId, parent: parent, showMoreInfo: showMoreInfo)
         }
     }
     

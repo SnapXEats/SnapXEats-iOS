@@ -11,7 +11,7 @@ import FBSDKLoginKit
 import SwiftInstagram
 
 enum Screens {
-    case firsTimeUser, login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurant: Restaurant, parentController: UINavigationController, showMoreInfo: Bool), restaurantDirections(details: RestaurantDetails, parentController: UINavigationController), wishlist
+    case firsTimeUser, login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurantID: String, parentController: UINavigationController, showMoreInfo: Bool), restaurantDirections(details: RestaurantDetails, parentController: UINavigationController), wishlist
 }
 
 class RootRouter: NSObject {
@@ -110,9 +110,9 @@ class RootRouter: NSObject {
         window?.rootViewController?.present(selectLocationViewController, animated: true, completion: nil)
     }
     
-    private func pushRestaurantDetailsScreen(onNavigationController parentController: UINavigationController, forRestaurant restaurant: Restaurant, showMoreInfo: Bool) {
+    private func pushRestaurantDetailsScreen(onNavigationController parentController: UINavigationController, forRestaurant restaurantID: String, showMoreInfo: Bool) {
         let restaurantDetailsVC = RestaurantDetailsRouter.shared.loadRestaurantDetailsModule()
-        restaurantDetailsVC.restaurant = restaurant
+        restaurantDetailsVC.restaurant_info_id = restaurantID
         restaurantDetailsVC.showMoreInfo = showMoreInfo
         parentController.pushViewController(restaurantDetailsVC, animated: true)
     }
@@ -153,8 +153,8 @@ class RootRouter: NSObject {
             dissmissSelectLocationScreen()
         case .foodAndCusinePreferences(let preferenceType, let parentController):
             pushFoodAndCuisinePreferencesScreen(onNavigationController: parentController, withPreferenceType: preferenceType)
-        case .restaurantDetails(let restaurant, let parentController, let showMoreInfo):
-            pushRestaurantDetailsScreen(onNavigationController: parentController, forRestaurant: restaurant, showMoreInfo: showMoreInfo)
+        case .restaurantDetails(let restaurantID, let parentController, let showMoreInfo):
+            pushRestaurantDetailsScreen(onNavigationController: parentController, forRestaurant: restaurantID, showMoreInfo: showMoreInfo)
         case .restaurantDirections(let details, let parentController):
             pushRestaurantDirectionsScreen(onNavigationController: parentController, withDetails: details)
         case .wishlist:

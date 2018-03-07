@@ -133,6 +133,8 @@ extension WishlistViewController: UITableViewDelegate, UITableViewDataSource {
             selectedIndexes.contains(indexPath.row) ? selectedIndexes.remove(indexPath.row)
                 : selectedIndexes.add(indexPath.row)
             tableView.reloadRows(at: [indexPath], with: .none)
+        } else {
+            loadRestaurantDetails(item: wishItems[indexPath.row])
         }
     }
     
@@ -143,6 +145,13 @@ extension WishlistViewController: UITableViewDelegate, UITableViewDataSource {
                 wishItems.remove(at: indexPath.row) 
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 enableBarButton()
+        }
+    }
+    
+    func loadRestaurantDetails(item: WishListItem) {
+        // Restaurant Detail Action
+        if let parent = self.navigationController {
+            presenter?.gotoRestaurantDetails(selectedRestaurant: item.restaurant_info_id, parent: parent, showMoreInfo: false)
         }
     }
 }

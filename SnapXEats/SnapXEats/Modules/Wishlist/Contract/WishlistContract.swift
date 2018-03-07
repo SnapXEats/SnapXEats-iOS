@@ -18,6 +18,7 @@ protocol WishlistPresentation {
         func getWishListRestaurantDetails()
         func deleteWishListItem(item: WishListItem)
         func deleteWishListItems(items: [WishListItem])
+        func gotoRestaurantDetails(selectedRestaurant: String, parent: UINavigationController, showMoreInfo: Bool)
 }
 
 protocol WishlistUseCase: WishlistRequestFormatter {
