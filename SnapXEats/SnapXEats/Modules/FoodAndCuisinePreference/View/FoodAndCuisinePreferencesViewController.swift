@@ -53,10 +53,10 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
     
     override func success(result: Any?) {
         if let result = result as? FoodPreference {
-            preferenceItems = result.foodItems
+            preferenceItems = result.foodItems.sorted { $0.name! < $1.name! }
             getSavedPreferecne()
         } else if let result = result as? CuisinePreference {
-            preferenceItems = result.cuisineList
+            preferenceItems = result.cuisineList.sorted { $0.name! < $1.name! }
             getSavedPreferecne()
         } else if let result = result as? Bool, result == true {
             hideLoading()
