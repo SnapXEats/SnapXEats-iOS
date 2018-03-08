@@ -34,7 +34,7 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
     private let amenitiesTableRowHeight: CGFloat = 20
     
     var presenter: RestaurantDetailsPresentation?
-    var restaurant: Restaurant!
+    var restaurant_info_id: String?
     var slideshow =  ImageSlideshow()
     var specialities = [RestaurantSpeciality]()
     var restaurantDetails: RestaurantDetails?
@@ -134,7 +134,7 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
     }
     
     private func getRestaurantDetails() {
-        if let restaurantId = restaurant.restaurant_info_id, shouldLoadData == true {
+        if let restaurantId = restaurant_info_id, shouldLoadData == true {
             showLoading()
             presenter?.restaurantDetailsRequest(restaurantId:restaurantId)
         }

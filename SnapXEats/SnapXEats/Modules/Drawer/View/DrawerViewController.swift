@@ -139,7 +139,9 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
         case .showLogin:
             presenter?.presentScreen(screen: .login, drawerState: .closed)
         case .wishList:
-            presenter?.presentScreen(screen: .wishlist, drawerState: .closed)
+            if let count = presenter?.wishListCount(), count > 0 {
+                presenter?.presentScreen(screen: .wishlist, drawerState: .closed)
+            }
         default:
             break
         }
@@ -154,7 +156,6 @@ extension DrawerViewController: BaseView {
     
     private func presentNextScreen(index: navigateScreen) {
         screenIndex = index
-        
         if  loginUserPreference.isLoggedIn {
             if  checkRechability() {
                 showLoading()
@@ -163,6 +164,7 @@ extension DrawerViewController: BaseView {
             }
         }
         else {
+            loginUserPreference.isDirty = false
             presentScreen(index: index)
         }
     }

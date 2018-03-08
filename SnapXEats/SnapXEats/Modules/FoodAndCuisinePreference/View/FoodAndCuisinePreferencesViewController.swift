@@ -87,7 +87,10 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
     }
     
     private func showPreferenceIsDirtyDialog() {
-        let ok =  setOkButton { }
+        let ok =  setOkButton(title: SnapXButtonTitle.save) { [weak self] in
+             self?.savePreference()
+            self?.navigationController?.popViewController(animated: true)
+        }
         let cancel = setCancelButton { [weak self] in
             self?.isDirtyPreferecne = false
             self?.navigationController?.popViewController(animated: true)
@@ -131,7 +134,7 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
         enableRest()
     }
     private func showPreferenceResetDialog() {
-        let ok =  setOkButton { [weak self] in
+        let ok =  setOkButton(title: SnapXButtonTitle.ok) { [weak self] in
             self?.resetPreferecne()
             self?.isDirtyPreferecne = true
         }
@@ -145,8 +148,8 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
         
     }
     
-    private func setOkButton(completionHandler: @escaping () ->()) -> UIAlertAction {
-        return UIAlertAction(title: SnapXButtonTitle.ok, style: UIAlertActionStyle.default, handler:  {action in completionHandler()})
+    private func setOkButton(title: String, completionHandler: @escaping () ->()) -> UIAlertAction {
+        return UIAlertAction(title: title, style: UIAlertActionStyle.default, handler:  {action in completionHandler()})
     }
     
     private func resetLoggedInUserData() {
@@ -205,28 +208,8 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
     
     private func updateFoodData() {
         if isDirtyPreferecne {
-            if loginUserPreferences.foodPreference.count > 0 {
-                for foodPreference in loginUserPreferences.foodPreference {
-                    _ =  preferenceItems.filter({ (preference) -> Bool in
-                        guard  let Id = preference.itemID, foodPreference.itemID == Id else {
-                            if preference.isLiked || preference.isFavourite {
-                                let foodItem = FoodItem()
-                                foodItem.itemID = preference.itemID ?? ""
-                                foodItem.isLiked = preference.isLiked
-                                foodItem.isFavourite = preference.isFavourite
-                                loginUserPreferences.foodPreference.append(foodItem)
-                            }
-                            return false
-                        }
-                        foodPreference.isLiked = preference.isLiked
-                        foodPreference.isFavourite = preference.isFavourite
-                        return true
-                    })
-                    
-                }
-            } else {
+                loginUserPreferences.foodPreference.removeAll()
                 saveFoodData() //This is for first time user after skip
-            }
         }
     }
     
@@ -244,29 +227,9 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
     
     private func updateCuisineData() {
         if isDirtyPreferecne {
-            if loginUserPreferences.cuisinePreference.count > 0 {
-                for cuisinePrefercne in loginUserPreferences.cuisinePreference {
-                    _ = preferenceItems.filter({ (preference) -> Bool in
-                        guard  let Id = preference.itemID, cuisinePrefercne.itemID == Id else {
-                            if preference.isLiked || preference.isFavourite {
-                                let cuisineItem = CuisineItem()
-                                cuisineItem.itemID = preference.itemID ?? ""
-                                cuisineItem.isLiked = preference.isLiked
-                                cuisineItem.isFavourite = preference.isFavourite
-                                loginUserPreferences.cuisinePreference.append(cuisineItem)
-                            }
-                            return false
-                        }
-                        cuisinePrefercne.isLiked = preference.isLiked
-                        cuisinePrefercne.isFavourite = preference.isFavourite
-                        return true
-                    })
-                    
-                }
-            } else {
+                loginUserPreferences.cuisinePreference.removeAll()
                 saveCuisineData() //This is for first time user after skip
             }
-        }
     }
     
     private func saveCuisineData() {
@@ -289,6 +252,7 @@ extension FoodAndCuisinePreferencesViewController: FoodAndCuisinePreferenceView 
         registerCellForNib()
         addGestureRecognizersForCollectionView()
         enableBackButtonAction()
+        enableRest()
     }
     
     private func registerCellForNib() {

@@ -21,8 +21,16 @@ class WishlistInteractor {
 
 
 extension WishlistInteractor: WishlistRequestFormatter, WishlistUseCase {
+    
+    func removeWishListItem(item: WishListItem) {
+        FoodCardActionHelper.shared.removeItemFromWishList(foodCardItem: item)
+    }
+    func removeWishListItems(items: [WishListItem]) {
+         FoodCardActionHelper.shared.removeMulipleItemFromWishList(foodCardItems: items)
+    }
+    
     func getWishListRestaurantDetails()  {
-        sendUserWishList()
+        sendWishListDeletedRequest() 
     }
     
     internal func sendUserWishList() {
@@ -39,6 +47,24 @@ extension WishlistInteractor: WishlistRequestFormatter, WishlistUseCase {
             self.sendWishListDetailsRequest(path: SnapXEatsWebServicePath.wishList)
         }
     }
+    
+    func sendWishListDeletedRequest() {
+        
+        let parameter = FoodCardActionHelper.shared.getJSONDataDeletedWishListItems()
+        if parameter.count > 0 {
+            deltedWishListRequest(forPath: SnapXEatsWebServicePath.wishList, withParameters: parameter) { [weak self] response in
+                if response.isSuccess {
+                    FoodCardActionHelper.shared.deleteItemFromWishList()
+                    self?.sendUserWishList()
+                } else {
+                    self?.output?.response(result: NetworkResult.noInternet)
+                }
+            }
+        } else {
+            sendUserWishList()
+        }
+    }
+    
 }
 
 extension WishlistInteractor: WishlistWebService {
@@ -51,6 +77,12 @@ extension WishlistInteractor: WishlistWebService {
     
     func sendUserGesturesRequest(forPath: String, withParameters: [String: Any], completionHandler: @escaping (_ response: DefaultDataResponse) -> ()) {
         SnapXEatsApi.snapXPostRequestWithParameters(path: forPath, parameters: withParameters) {(response: DefaultDataResponse) in
+            completionHandler(response)
+        }
+    }
+    
+    func deltedWishListRequest(forPath: String, withParameters: [String: Any], completionHandler: @escaping (_ response: DefaultDataResponse) -> ()) {
+        SnapXEatsApi.snapXDelteRequestWithParameters(path: forPath, parameters: withParameters) {(response: DefaultDataResponse) in
             completionHandler(response)
         }
     }

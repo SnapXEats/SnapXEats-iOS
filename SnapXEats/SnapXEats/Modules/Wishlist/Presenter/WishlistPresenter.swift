@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class WishlistPresenter {
 
@@ -21,10 +22,21 @@ class WishlistPresenter {
 }
 
 extension WishlistPresenter: WishlistPresentation {
+    func deleteWishListItem(item: WishListItem) {
+        interactor?.removeWishListItem(item: item)
+    }
+    
+    func deleteWishListItems(items: [WishListItem]) {
+        interactor?.removeWishListItems(items: items)
+    }
+    
     func getWishListRestaurantDetails() {
         interactor?.getWishListRestaurantDetails()
     }
 
+    func gotoRestaurantDetails(selectedRestaurant: String, parent: UINavigationController, showMoreInfo: Bool) {
+        router?.presentScreen(screen: .restaurantDetails(restaurantID: selectedRestaurant, parentController: parent, showMoreInfo: showMoreInfo))
+    }
 }
 
 extension WishlistPresenter: WishlistInteractorOutput {

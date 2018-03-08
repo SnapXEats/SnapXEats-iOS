@@ -20,7 +20,9 @@ class DrawerInteractor {
 }
 
 extension DrawerInteractor: DrawerUseCase {
-    // TODO: Implement use case methods
+    func wishListCount() -> Int {
+        return FoodCardActionHelper.shared.getWishlistCountForCurrentUser()
+    }
 }
 
 

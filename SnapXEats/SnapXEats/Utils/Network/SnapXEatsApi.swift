@@ -79,7 +79,13 @@ class SnapXEatsApi {
         Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: header).response { (data) in
             completionHandler(data)
         }
-        
+    }
+    
+    static func snapXDelteRequestWithParameters(path: String, parameters: [String: Any], completionHandler:  @escaping (DefaultDataResponse) -> ()) {
+        let url = baseURL + path
+        Alamofire.request(url, method: .delete, parameters: parameters, encoding: JSONEncoding.default, headers: header).response { (data) in
+            completionHandler(data)
+        }
     }
     
     static func googleRequestObjectWithParameters<T: Mappable>(path: String, parameters: [String: Any], completionHandler:  @escaping (DataResponse<T>) -> ()) {

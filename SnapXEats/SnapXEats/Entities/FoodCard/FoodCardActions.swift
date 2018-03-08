@@ -32,7 +32,13 @@ class FoodCardActions: Object {
                 
                 let realm = try! Realm()
                 try! realm.write {
-                    currentWishList.append(foodCardItem)
+                    let hasItem = currentWishList.filter({ (foodCard) -> Bool in
+                        foodCard.Id == foodCardItem.Id ? true : false
+                    })
+                    if hasItem.count == 0 {
+                        currentWishList.append(foodCardItem)
+                    }
+                    
                 }
             } else {
                 let currentWishList = List<UserFoodCard>()
@@ -100,20 +106,21 @@ class FoodCardActions: Object {
     }
     
     static func getWishlistCountForUser(userID: String) -> Int {
+        var count = 0
         if userID != SnapXEatsConstant.emptyString {
             if let currentFoodCardActions = getCurrentActionsForUser(userID: userID) {
-                let currentWishList = currentFoodCardActions.wishListItems
-                return currentWishList.count
+                for item in  currentFoodCardActions.wishListItems {
+                    if !item.isDeleted  {count+=1}
+                }
             }
         }
-        return 0
+        return count
     }
     
     static func removeFromDislikeList(foodCardItem: UserFoodCard, userID: String) {
         if userID != SnapXEatsConstant.emptyString {
             if let currentFoodCardActions = getCurrentActionsForUser(userID: userID) {
                 let currentDislikedList = currentFoodCardActions.disLikedItems
-    
                 let realm = try! Realm()
                 try! realm.write {
                     for (index, item) in currentDislikedList.enumerated() {
@@ -126,10 +133,49 @@ class FoodCardActions: Object {
         }
     }
     
+    
+    static func makeDirtyWishList(foodCardItem: WishListItem, userID: String) {
+        if userID != SnapXEatsConstant.emptyString {
+            DispatchQueue.global(qos: .background).async {
+                if let currentFoodCardActions = getCurrentActionsForUser(userID: userID) {
+                    let currentWishList = currentFoodCardActions.wishListItems
+                    let realm = try! Realm()
+                    try! realm.write {
+                        for item in currentWishList {
+                            if item.Id == foodCardItem.restaurant_dish_id {
+                                item.isDeleted = true
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    static func deleteWishList(userID: String) {
+        if userID != SnapXEatsConstant.emptyString {
+            DispatchQueue.global(qos: .background).async {
+                if let currentFoodCardActions = getCurrentActionsForUser(userID: userID) {
+                    let currentWishList = currentFoodCardActions.wishListItems
+                    let realm = try! Realm()
+                    try! realm.write {
+                        for item in currentWishList {
+                            if item.isDeleted == true {
+                                if let index = currentWishList.enumerated().filter( { $0.element.Id == item.Id }).map({ $0.offset }).first {
+                                    currentWishList.remove(at: index)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     static func resetLocalFoodCardActions(userID: String) {
         if userID != SnapXEatsConstant.emptyString {
             if let currentFoodCardActions = getCurrentActionsForUser(userID: userID) {
-            
+                
                 let realm = try! Realm()
                 try! realm.write {
                     currentFoodCardActions.likedItems.removeAll()
@@ -142,4 +188,5 @@ class FoodCardActions: Object {
 
 class UserFoodCard: Object {
     @objc dynamic var Id: String = SnapXEatsConstant.emptyString
+    @objc dynamic var isDeleted: Bool = false
 }

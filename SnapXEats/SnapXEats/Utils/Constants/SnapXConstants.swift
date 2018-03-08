@@ -228,6 +228,7 @@ enum AlertMessage {
     static let uberInstallConfirmation = "You need to install the uber app from app store to book a ride. Do you want to install it now?"
     static let preferecneRestMessage = "Do you really want to reset your preferences. Please press Ok or Cancel."
     static let preferenceSaveMessage = "You have made some changes to your preferences, You need to save them first."
+    static let deleteWishListMessage = "Do you really want to delete your selected wishlist Item, please press Ok or Cancel."
 }
 
 enum AlertTitle {
@@ -262,5 +263,6 @@ enum UserGestureJSONKeys {
     static let dislike_dish_array = "dislike_dish_array"
     static let wishlist_dish_array = "wishlist_dish_array"
     static let restaurant_dish_id = "restaurant_dish_id"
+    static let user_wishlist = "user_wishlist"
 }
 

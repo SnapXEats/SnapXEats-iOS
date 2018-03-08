@@ -27,15 +27,18 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     @IBOutlet weak var kolodaView: KolodaView!
     @IBOutlet weak var undoButton: UIButton!
     
+    @objc private func enableUnDo() {
+         self.undoButton.isEnabled = undoCount == 0 ? false : true
+    }
     @IBOutlet weak var wishListButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var disLikeButton: UIButton!
     private var locationEnabled: Bool {
         get {
             guard let selectedPreference = selectedPrefernce else {
-               return false
+                return false
             }
-             return (selectedPreference.location.latitude != 0.0 && selectedPreference.location.longitude != 0.0)
+            return (selectedPreference.location.latitude != 0.0 && selectedPreference.location.longitude != 0.0)
         }
     }
     
@@ -44,16 +47,17 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     
     private var loadFoodCard: Bool {
         get {
-             return checkRechability() &&  foodCards.count == 0 && locationEnabled
+            return checkRechability() &&  foodCards.count == 0 && locationEnabled
         }
     }
     
     @IBAction func undoButtonAction(_ sender: Any) {
+        self.undoButton.isEnabled = false
         undoCount -= 1
         kolodaView.revertAction()
         let userFoodCard = createUserFoodCardItem(fromIndex: kolodaView.currentCardIndex)
         FoodCardActionHelper.shared.removeFromDislikeList(foodCardItem: userFoodCard)
-        undoButton.isEnabled = undoCount == 0 ? false : true
+       Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(FoodCardsViewController.enableUnDo), userInfo: nil, repeats: false)
         setButtonState()
     }
     
@@ -81,11 +85,11 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-         registerNotification()
+        registerNotification()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-         showFoodCard()
+        showFoodCard()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -93,7 +97,7 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     }
     
     @objc override func internetConnected() {
-           showFoodCard()
+        showFoodCard()
     }
     
     override func  success(result: Any?) {
@@ -112,11 +116,11 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     private func setFoodCardDetails(restaurants: [Restaurant]) {
         self.foodCards.removeAll()
         for restaurant in restaurants {
-             let dishes = restaurant.restaurantDishes
-                for dishitem in dishes {
-                    let foodCard = FoodCard(id: dishitem.restaurant_dish_id!, name: restaurant.restaurant_name!, imageURL: dishitem.dish_image_url!, restaurant: restaurant)
-                    self.foodCards.append(foodCard)
-                }
+            let dishes = restaurant.restaurantDishes
+            for dishitem in dishes {
+                let foodCard = FoodCard(id: dishitem.restaurant_dish_id!, name: restaurant.restaurant_name!, imageURL: dishitem.dish_image_url!, restaurant: restaurant)
+                self.foodCards.append(foodCard)
+            }
         }
         kolodaView.reloadData()
         hideLoading()
@@ -128,6 +132,7 @@ extension FoodCardsViewController: FoodCardsView {
         customizeNavigationItem(title: SnapXEatsPageTitles.restaurants, isDetailPage: true)
         kolodaView.dataSource = self
         kolodaView.delegate = self
+        setButtonState()
     }
 }
 
@@ -172,8 +177,8 @@ extension FoodCardsViewController: KolodaViewDelegate, KolodaViewDataSource {
             undoCount = 0
             kolodaView.undoManager?.removeAllActions()
         case .up: upSwipeActionForIndex(index: index)
-            undoCount = 0
-            kolodaView.undoManager?.removeAllActions()
+        undoCount = 0
+        kolodaView.undoManager?.removeAllActions()
         default: break
         }
         setButtonState()
@@ -188,10 +193,10 @@ extension FoodCardsViewController: KolodaViewDelegate, KolodaViewDataSource {
             likeButton.isEnabled = false
             disLikeButton.isEnabled = false
             wishListButton.isEnabled = false
-     }  else {
-        likeButton.isEnabled = true
-        disLikeButton.isEnabled = true
-        wishListButton.isEnabled = true
+        }  else {
+            likeButton.isEnabled = true
+            disLikeButton.isEnabled = true
+            wishListButton.isEnabled = true
         }
     }
 }
@@ -209,7 +214,7 @@ extension FoodCardsViewController {
             }
         }
     }
-
+    
     private func sendUserGesturesToServer(foodCardActions: FoodCardActions) {
         let gestureParameters = FoodCardActionHelper.shared.getJSONDataForGestures(foodCardActions: foodCardActions)
         presenter?.sendUserGestures(gestures: gestureParameters)
@@ -240,9 +245,8 @@ extension FoodCardsViewController {
     
     private func gotoRestaurantDetailsForFoodCard(foodCard: FoodCard, showMoreInfo: Bool = false) {
         // Restaurant Detail Action
-        if let parent = self.navigationController {
-            let selectedRestaurant = foodCard.restaurant
-            presenter?.gotoRestaurantDetails(selectedRestaurant: selectedRestaurant, parent: parent, showMoreInfo: showMoreInfo)
+        if let parent = self.navigationController, let restoId = foodCard.restaurant.restaurant_info_id {
+            presenter?.gotoRestaurantDetails(selectedRestaurant: restoId, parent: parent, showMoreInfo: showMoreInfo)
         }
     }
     
