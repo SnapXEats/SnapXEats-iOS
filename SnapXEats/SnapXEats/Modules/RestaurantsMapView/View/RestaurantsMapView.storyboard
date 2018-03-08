@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Restaurants Map View View Controller-->
+        <!--Data Source-->
         <scene sceneID="7NG-vX-Mci">
             <objects>
                 <viewController storyboardIdentifier="RestaurantsMapViewViewController" id="aXV-UF-7bG" customClass="RestaurantsMapViewViewController" customModule="SnapXEats" customModuleProvider="target" sceneMemberID="viewController">
@@ -25,19 +25,47 @@
                                     <outlet property="delegate" destination="aXV-UF-7bG" id="QoC-yD-Ku5"/>
                                 </connections>
                             </mapView>
+                            <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UJc-O5-oAX">
+                                <rect key="frame" x="0.0" y="487" width="375" height="180"/>
+                                <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wOM-VN-IX4" customClass="FSPagerView" customModule="FSPagerView">
+                                <rect key="frame" x="0.0" y="487" width="375" height="180"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="bws-sF-IRb"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="itemSize">
+                                        <size key="value" width="230" height="160"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="dataSource" destination="aXV-UF-7bG" id="c5C-yq-toS"/>
+                                    <outlet property="delegate" destination="aXV-UF-7bG" id="Akw-6t-TC0"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="mWW-7k-IYp" firstAttribute="bottom" secondItem="pT1-tP-Cbe" secondAttribute="bottom" id="831-hL-ffz"/>
+                            <constraint firstItem="UJc-O5-oAX" firstAttribute="leading" secondItem="mWW-7k-IYp" secondAttribute="leading" id="9Hp-7I-wAz"/>
                             <constraint firstItem="mWW-7k-IYp" firstAttribute="trailing" secondItem="pT1-tP-Cbe" secondAttribute="trailing" id="QQ8-H6-QIx"/>
+                            <constraint firstItem="UJc-O5-oAX" firstAttribute="bottom" secondItem="wOM-VN-IX4" secondAttribute="bottom" id="TKR-nw-Exr"/>
                             <constraint firstItem="pT1-tP-Cbe" firstAttribute="leading" secondItem="mWW-7k-IYp" secondAttribute="leading" id="WiG-xe-eSQ"/>
                             <constraint firstItem="pT1-tP-Cbe" firstAttribute="top" secondItem="mWW-7k-IYp" secondAttribute="top" id="YY7-hs-29c"/>
+                            <constraint firstItem="wOM-VN-IX4" firstAttribute="top" secondItem="UJc-O5-oAX" secondAttribute="top" id="YnB-9A-nOc"/>
+                            <constraint firstItem="mWW-7k-IYp" firstAttribute="trailing" secondItem="UJc-O5-oAX" secondAttribute="trailing" id="gZk-HM-8xU"/>
+                            <constraint firstItem="wOM-VN-IX4" firstAttribute="leading" secondItem="mWW-7k-IYp" secondAttribute="leading" id="q7c-n5-2OJ"/>
+                            <constraint firstItem="wOM-VN-IX4" firstAttribute="trailing" secondItem="mWW-7k-IYp" secondAttribute="trailing" id="qJZ-R3-QQW"/>
+                            <constraint firstItem="wOM-VN-IX4" firstAttribute="bottom" secondItem="mWW-7k-IYp" secondAttribute="bottom" id="s77-c2-PeW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mWW-7k-IYp"/>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="mapView" destination="pT1-tP-Cbe" id="xsd-np-y80"/>
+                        <outlet property="pagerView" destination="wOM-VN-IX4" id="G5m-os-38i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ygX-KQ-wgq" userLabel="First Responder" sceneMemberID="firstResponder"/>

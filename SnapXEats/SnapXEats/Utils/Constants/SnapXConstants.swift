@@ -99,6 +99,7 @@ enum SnapXEatsImageNames {
     static let share = "share_icon"
     static let current_location_marker_icon = "current_location_marker_icon"
     static let marker_icon = "marker_icon"
+    static let marker_icon_selected = "marker_icon_selected"
     static let backArrow = "back_arrow"
     static let closeIcon = "close_icon"
 }
@@ -142,6 +143,7 @@ enum SnapXEatsCellResourceIdentifiler {
     static let restaurantTiming = "restaurantTimingCell"
     static let moreInfoTableView = "moreInfoTableViewCell"
     static let wishlistTableView = "wishlistTableViewCell"
+    static let restaurantCollectionView = "restaurantCell"
 }
 
 enum SnapXEatsNibNames {
@@ -152,6 +154,7 @@ enum SnapXEatsNibNames {
     static let foodCardView = "FoodCardView"
     static let moreInfoTableViewCell = "MoreInfoTableViewCell"
     static let wishlistItemTableViewCell = "WishlistItemTableViewCell"
+    static let restaurantCollectionViewCell = "RestaurantCollectionViewCell"
 }
 
 enum SnapXEatsWebServiceParameterKeys {
@@ -177,6 +180,8 @@ enum SnapXButtonTitle {
 
 enum SnapXEatsAppDefaults {
     static let emptyString = ""
+    static let meterToMileMultiplier = 0.000621371
+    static let restaurantDistance = "%.1f mi"
 }
 
 enum SnapXEatsSettingsURL {
