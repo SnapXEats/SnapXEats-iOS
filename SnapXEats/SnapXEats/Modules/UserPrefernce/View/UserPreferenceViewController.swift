@@ -56,9 +56,9 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        enableBarButton(enable: loginUserPreference.isDirty) // preferece can be dirty from cuisine and food preference
         loginUserPreference.isLoggedIn ? showFoodCuisinePreferenceSelectStatus()
             : showNonLoggedInFoodCuisinePreferenceSelectStatus()
+        enableBarButton(enable: loginUserPreference.isDirty) // preferece can be dirty from cuisine and food preference
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -102,6 +102,11 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
     private func showNonLoggedInFoodCuisinePreferenceSelectStatus() {
         cuisinePreferenceSelected.isHidden = isCuisinePrefercneDirty()  == true ? false : true
         foodPreferenceSelected.isHidden =  isFoodPrefercneDirty() == true ? false : true
+        setButtonState(ratingPreferences: loginUserPreference.ratingPreference)
+        setButtonState(sortByPreference: loginUserPreference.sortByPreference)
+        setPriceIndex(index: loginUserPreference.pricingPreference.rawValue)
+        setDistanceIndex(index: loginUserPreference.distancePreference)
+        enableBarButton(enable: false) // this is first time load of data,so price and distance make the state dirty, so we need to reset it.
     }
     
     private func isFoodPrefercneDirty () -> Bool {
@@ -216,7 +221,8 @@ class UserPreferenceViewController: BaseViewController, StoryboardLoadable {
             setButtonState(sortByPreference: sortPrefernce)
             setPriceIndex(index: prefernce.pricingPreference)
             setDistanceIndex(index: prefernce.distancePreference)
-        } else if let _ = result as? Bool, let parentNVController = self.navigationController {
+            enableBarButton(enable: false) // this is first time load of data from DB,so price and distance make the state dirty, so we need to reset it.
+         } else if let _ = result as? Bool, let parentNVController = self.navigationController {
             loginUserPreference.isDirty = false
             presenter?.presnetScreen(screen: .location, parent: parentNVController)
         }

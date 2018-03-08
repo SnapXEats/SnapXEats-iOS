@@ -21,10 +21,12 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
     let loginUserPreferences = LoginUserPreferences.shared
     var isDirtyPreferecne : Bool = false {
         willSet {
-            if preferenceType == .cuisine  {
-                loginUserPreferences.isDirtyCuisinePreference = newValue
-            } else {
-                loginUserPreferences.isDirtyFoodPreference = newValue
+            if newValue == true {
+                if preferenceType == .cuisine  {
+                    loginUserPreferences.isDirtyCuisinePreference = newValue
+                } else {
+                    loginUserPreferences.isDirtyFoodPreference = newValue
+                }
             }
             self.navigationItem.rightBarButtonItem?.isEnabled = newValue
         }
@@ -51,10 +53,10 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
     
     override func success(result: Any?) {
         if let result = result as? FoodPreference {
-            preferenceItems = result.foodItems
+            preferenceItems = result.foodItems.sorted { $0.name! < $1.name! }
             getSavedPreferecne()
         } else if let result = result as? CuisinePreference {
-            preferenceItems = result.cuisineList
+            preferenceItems = result.cuisineList.sorted { $0.name! < $1.name! }
             getSavedPreferecne()
         } else if let result = result as? Bool, result == true {
             hideLoading()
@@ -88,7 +90,7 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
     
     private func showPreferenceIsDirtyDialog() {
         let ok =  setOkButton(title: SnapXButtonTitle.save) { [weak self] in
-             self?.savePreference()
+            self?.savePreference()
             self?.navigationController?.popViewController(animated: true)
         }
         let cancel = setCancelButton { [weak self] in
@@ -208,8 +210,8 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
     
     private func updateFoodData() {
         if isDirtyPreferecne {
-                loginUserPreferences.foodPreference.removeAll()
-                saveFoodData() //This is for first time user after skip
+            loginUserPreferences.foodPreference.removeAll()
+            saveFoodData() //This is for first time user after skip
         }
     }
     
@@ -227,9 +229,9 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
     
     private func updateCuisineData() {
         if isDirtyPreferecne {
-                loginUserPreferences.cuisinePreference.removeAll()
-                saveCuisineData() //This is for first time user after skip
-            }
+            loginUserPreferences.cuisinePreference.removeAll()
+            saveCuisineData() //This is for first time user after skip
+        }
     }
     
     private func saveCuisineData() {
