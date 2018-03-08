@@ -133,6 +133,8 @@ extension RestaurantsMapViewViewController: MKMapViewDelegate {
         let imageName = (annotation is CurrentLocationAnnotation) ? SnapXEatsImageNames.current_location_marker_icon : SnapXEatsImageNames.marker_icon
         annotationView.image = UIImage(named: imageName)
         annotationView.canShowCallout = false
+        // Avoid changing image of CurrentLocation marker
+        annotationView.isEnabled = (annotation is CurrentLocationAnnotation) ? false : true
         return annotationView
     }
     
@@ -172,7 +174,9 @@ extension RestaurantsMapViewViewController: FSPagerViewDelegate, FSPagerViewData
     
     func pagerViewWillEndDragging(_ pagerView: FSPagerView, targetIndex: Int) {
         // Programatically Select Annotation at dragged Index
-        mapView.selectAnnotation(annotations[targetIndex], animated: true)
+        if targetIndex < annotations.count && targetIndex >= 0 {
+            mapView.selectAnnotation(annotations[targetIndex], animated: true)
+        }
     }
     
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {

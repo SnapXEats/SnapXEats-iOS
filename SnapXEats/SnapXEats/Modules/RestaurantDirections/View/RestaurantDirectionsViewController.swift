@@ -25,7 +25,7 @@ class RestaurantDirectionsViewController: BaseViewController, StoryboardLoadable
         static let mapViewVisbileRectInsets: CGFloat = 40
         static let routeLineWidth: CGFloat = 3.0
         static let routeLineColor = UIColor.rgba(93.0, 93.0, 93.0, 1.0)
-        
+        static let redirectMapURL = "http://maps.apple.com/?saddr=%@&daddr=%@"
     }
     
     @IBOutlet weak var ratingView: UIView!
@@ -39,6 +39,10 @@ class RestaurantDirectionsViewController: BaseViewController, StoryboardLoadable
     
     @IBAction func restaurantTimingButtonAction(_ sender: UIButton) {
         showRestaurantTimingsPopover(onView: sender)
+    }
+    
+    @IBAction func mapRedirectButtonAction(_ sender: UIButton) {
+        redirectToMapsApp()
     }
     
     var presenter: RestaurantDirectionsPresentation?
@@ -114,6 +118,23 @@ class RestaurantDirectionsViewController: BaseViewController, StoryboardLoadable
             self.present(popController, animated: true, completion: nil)
         }
     }
+    
+    private func redirectToMapsApp() {
+        guard let restaurantLatitude = restaurantDetails.latitude, let restaurantLongitude = restaurantDetails.longitude else {
+            return
+        }
+        
+        let currentLocation = SelectedPreference.shared.getLatitude()
+        let sourceAddress = "\(Double(truncating: currentLocation.0 as NSNumber)),\(Double(truncating: currentLocation.1 as NSNumber))"
+        let destinationAddress = "\(restaurantLatitude),\(restaurantLongitude)"
+        
+        let directionsURL = String(format:mapRouteConstants.redirectMapURL, sourceAddress, destinationAddress)
+        
+        guard let url = URL(string: directionsURL) else {
+            return
+        }
+        UIApplication.shared.openURL(url)
+    }
 }
 
 extension RestaurantDirectionsViewController: UIPopoverPresentationControllerDelegate {
@@ -126,7 +147,7 @@ extension RestaurantDirectionsViewController: RestaurantDirectionsView {
     func initView() {
         customizeNavigationItem(title: SnapXEatsPageTitles.directions, isDetailPage: true)
         ratingView.layer.cornerRadius = ratingView.frame.width/2
-        addShareButtonOnNavigationItem()
+        //addShareButtonOnNavigationItem()
     }
 }
 
