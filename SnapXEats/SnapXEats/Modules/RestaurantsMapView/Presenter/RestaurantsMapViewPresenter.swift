@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class RestaurantsMapViewPresenter {
 
@@ -18,7 +19,9 @@ class RestaurantsMapViewPresenter {
 }
 
 extension RestaurantsMapViewPresenter: RestaurantsMapViewPresentation {
-    // TODO: implement presentation methods
+    func gotoRestaurantInfo(selectedRestaurant: String, parent: UINavigationController, showMoreInfo: Bool) {
+        router?.presentScreen(screen: .restaurantDetails(restaurantID: selectedRestaurant, parentController: parent, showMoreInfo: showMoreInfo))
+    }
 }
 
 extension RestaurantsMapViewPresenter: RestaurantsMapViewInteractorOutput {

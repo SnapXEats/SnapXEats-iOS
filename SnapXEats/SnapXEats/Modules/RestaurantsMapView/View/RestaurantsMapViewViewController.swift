@@ -46,35 +46,37 @@ class RestaurantsMapViewViewController: BaseViewController, StoryboardLoadable {
     }
     
     private func showRestaurantsOnMap() {
-        for restaurant in restaurants {
-            let restaurantCoordinates = CLLocationCoordinate2D(latitude: restaurant.latitude, longitude: restaurant.longitude)
-            let locationPlacemark = MKPlacemark(coordinate: restaurantCoordinates, addressDictionary: nil)
-            let locationAnnotation = MKPointAnnotation()
-            if let location = locationPlacemark.location {
-                locationAnnotation.coordinate = location.coordinate
+        if self.mapView.annotations.count == 0 { // TO Avod replotting of markers on coming back from next screen
+            for restaurant in restaurants {
+                let restaurantCoordinates = CLLocationCoordinate2D(latitude: restaurant.latitude, longitude: restaurant.longitude)
+                let locationPlacemark = MKPlacemark(coordinate: restaurantCoordinates, addressDictionary: nil)
+                let locationAnnotation = MKPointAnnotation()
+                if let location = locationPlacemark.location {
+                    locationAnnotation.coordinate = location.coordinate
+                }
+                locationAnnotation.title = restaurant.restaurant_name
+                annotations.append(locationAnnotation)
             }
-            locationAnnotation.title = restaurant.restaurant_name
-            annotations.append(locationAnnotation)
+            
+            let currentLocationCoordinates = SelectedPreference.shared.getLatitude()
+            let currentLocation = CLLocationCoordinate2D(latitude: Double(truncating: currentLocationCoordinates.0 as NSNumber), longitude: Double(truncating: currentLocationCoordinates.1 as NSNumber))
+            
+            let currentLocationPlacemark = MKPlacemark(coordinate: currentLocation, addressDictionary: nil)
+            let currentLocationAnnotation = CurrentLocationAnnotation()
+            if let location = currentLocationPlacemark.location {
+                currentLocationAnnotation.coordinate = location.coordinate
+            }
+            annotations.append(currentLocationAnnotation)
+            self.mapView.showAnnotations(annotations, animated: true )
+            
+            //Show Overlay Circle on Map with Specified Radius
+            let distancePreference = LoginUserPreferences.shared.distancePreference
+            let radiusInMeters = Int(Double(distancePreference) * SnapXEatsAppDefaults.milesToMetersMultiplier)
+            addOverlayWithLocation(location: currentLocation, radius: CLLocationDistance(radiusInMeters))
+            
+            // Show First Restaurant selected on Map by Default
+            self.mapView.selectAnnotation(annotations[0], animated: true)
         }
-        
-        let currentLocationCoordinates = SelectedPreference.shared.getLatitude()
-        let currentLocation = CLLocationCoordinate2D(latitude: Double(truncating: currentLocationCoordinates.0 as NSNumber), longitude: Double(truncating: currentLocationCoordinates.1 as NSNumber))
-        
-        let currentLocationPlacemark = MKPlacemark(coordinate: currentLocation, addressDictionary: nil)
-        let currentLocationAnnotation = CurrentLocationAnnotation()
-        if let location = currentLocationPlacemark.location {
-            currentLocationAnnotation.coordinate = location.coordinate
-        }
-        annotations.append(currentLocationAnnotation)
-        self.mapView.showAnnotations(annotations, animated: true )
-        
-        //Show Overlay Circle on Map with Specified Radius
-        let distancePreference = LoginUserPreferences.shared.distancePreference
-        let radiusInMeters = Int(Double(distancePreference) * 1609.344)
-        addOverlayWithLocation(location: currentLocation, radius: CLLocationDistance(radiusInMeters))
-
-        // Show First Restaurant selected on Map by Default
-        self.mapView.selectAnnotation(annotations[0], animated: true)
     }
     
     private func addOverlayWithLocation(location: CLLocationCoordinate2D, radius: CLLocationDistance ) {
@@ -127,7 +129,7 @@ extension RestaurantsMapViewViewController: RestaurantsMapViewView {
 
 extension RestaurantsMapViewViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "")
+        let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: SnapXEatsAppDefaults.emptyString)
         let imageName = (annotation is CurrentLocationAnnotation) ? SnapXEatsImageNames.current_location_marker_icon : SnapXEatsImageNames.marker_icon
         annotationView.image = UIImage(named: imageName)
         annotationView.canShowCallout = false
@@ -171,5 +173,12 @@ extension RestaurantsMapViewViewController: FSPagerViewDelegate, FSPagerViewData
     func pagerViewWillEndDragging(_ pagerView: FSPagerView, targetIndex: Int) {
         // Programatically Select Annotation at dragged Index
         mapView.selectAnnotation(annotations[targetIndex], animated: true)
+    }
+    
+    func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
+        let restaurant = restaurants[index]
+        if let parent = self.navigationController, let restaurantId = restaurant.restaurant_info_id {
+            presenter?.gotoRestaurantInfo(selectedRestaurant: restaurantId, parent: parent, showMoreInfo: true)
+        }
     }
 }

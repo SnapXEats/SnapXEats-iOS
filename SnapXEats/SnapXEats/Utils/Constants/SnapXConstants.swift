@@ -182,6 +182,7 @@ enum SnapXEatsAppDefaults {
     static let emptyString = ""
     static let meterToMileMultiplier = 0.000621371
     static let restaurantDistance = "%.1f mi"
+    static let milesToMetersMultiplier = 1609.344
 }
 
 enum SnapXEatsSettingsURL {

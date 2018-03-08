@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
-protocol RestaurantsMapViewView: class, BaseView {
+protocol RestaurantsMapViewView: BaseView {
     // TODO: Declare view methods
 }
 
 protocol RestaurantsMapViewPresentation: class {
-    // TODO: Declare presentation methods
+    func gotoRestaurantInfo(selectedRestaurant: String, parent: UINavigationController, showMoreInfo: Bool)
 }
 
 protocol RestaurantsMapViewUseCase: class {
@@ -24,6 +25,6 @@ protocol RestaurantsMapViewInteractorOutput: class {
     // TODO: Declare interactor output methods
 }
 
-protocol RestaurantsMapViewWireframe: class {
+protocol RestaurantsMapViewWireframe: class, RootWireFrame {
     // TODO: Declare wireframe methods
 }
