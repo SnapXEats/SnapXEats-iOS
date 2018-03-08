@@ -126,7 +126,7 @@ enum SnapXEatsPageTitles {
     static let preferences = "Preferences"
     static let foodJourney = "Food Journeys"
     static let rewards = "Rewards"
-    static let snapnshare = "snap-n-share"
+    static let snapnshare = "Snap-N-Share"
     static let smartPhotos = "Smart Photos"
     static let restaurants = "Restaurants"
     
