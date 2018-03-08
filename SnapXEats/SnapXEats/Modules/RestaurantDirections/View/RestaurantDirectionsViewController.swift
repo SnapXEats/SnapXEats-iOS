@@ -147,7 +147,7 @@ extension RestaurantDirectionsViewController: RestaurantDirectionsView {
     func initView() {
         customizeNavigationItem(title: SnapXEatsPageTitles.directions, isDetailPage: true)
         ratingView.layer.cornerRadius = ratingView.frame.width/2
-        addShareButtonOnNavigationItem()
+        //addShareButtonOnNavigationItem()
     }
 }
 
