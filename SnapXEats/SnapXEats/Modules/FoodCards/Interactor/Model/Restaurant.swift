@@ -28,6 +28,9 @@ class Restaurant: Mappable {
 	var restaurant_info_id: String?
 	var restaurant_name: String?
 	var restaurantDishes =  [RestaurantDishes]()
+    var latitude: Double = 0.0
+    var longitude: Double = 0.0
+    var price: Int?
 
     required init?(map: Map) {
     }
@@ -37,6 +40,9 @@ class Restaurant: Mappable {
         restaurant_info_id  <- map["restaurant_info_id"]
         restaurant_name     <- map["restaurant_name"]
         restaurantDishes    <- map["restaurantDishes"]
+        latitude           <- map["location_lat"]
+        longitude          <- map["location_long"]
+        price              <- map["restaurant_price"]
     }
 }
 

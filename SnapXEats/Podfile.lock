@@ -34,6 +34,7 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.29.0):
     - FBSDKCoreKit
+  - FSPagerView (0.7.1)
   - KeychainSwift (7.0.1)
   - Koloda (4.3.1):
     - pop (~> 1.0)
@@ -60,6 +61,7 @@ DEPENDENCIES:
   - FacebookCore
   - FacebookLogin
   - FacebookShare
+  - FSPagerView
   - KeychainSwift (~> 7.0)
   - Koloda (~> 4.3.1)
   - MBProgressHUD (~> 1.0.0)
@@ -83,6 +85,7 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 6f139173dc63a1deaff4430a55f2fe5bb222d2af
   FBSDKLoginKit: 56a057ca6822535ea0faa25f57a7c41edb697fd4
   FBSDKShareKit: 18a2cd118aef11dd657fe7e8b64bae5c719088b2
+  FSPagerView: 958aba39684e1573755ddcfcc29f7eebb8413cee
   KeychainSwift: 7e15d26b1d6fc504a5eadb89a3e8ab17b2d3573a
   Koloda: 0d39b2aa188ccd1fac48d752acaf9802e683c625
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
@@ -94,6 +97,6 @@ SPEC CHECKSUMS:
   SwiftInstagram: 90d5c143d8ebe1c790e06a138b8da3c8f2a9ba16
   UIColor_Hex_Swift: 95f718452092a3efc8a827dffd2c04d3237be02d
 
-PODFILE CHECKSUM: 1bd252a39562b55c5358978122640242d50b18fc
+PODFILE CHECKSUM: 6e99b125db84748eb8379b80a17c1e197c864308
 
 COCOAPODS: 1.4.0

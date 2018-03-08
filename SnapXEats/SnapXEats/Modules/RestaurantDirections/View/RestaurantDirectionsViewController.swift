@@ -28,8 +28,6 @@ class RestaurantDirectionsViewController: BaseViewController, StoryboardLoadable
         
     }
     
-    private let meterToMileMultiplier = 0.000621371
-    
     @IBOutlet weak var ratingView: UIView!
     @IBOutlet weak var timingsButton: UIButton!
     @IBOutlet var restaurantNameLabel: UILabel!
@@ -146,7 +144,7 @@ extension RestaurantDirectionsViewController: MKMapViewDelegate {
         let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "")
         
         // To distinguish between Current Location and Restaurant Marker
-        let imageName = (annotation is CurrentLocationAnnotation) ? SnapXEatsImageNames.current_location_marker_icon : SnapXEatsImageNames.marker_icon
+        let imageName = (annotation is CurrentLocationAnnotation) ? SnapXEatsImageNames.current_location_marker_icon : SnapXEatsImageNames.marker_icon_selected
         annotationView.image = UIImage(named: imageName)
         annotationView.canShowCallout = false
         return annotationView
@@ -204,8 +202,8 @@ extension RestaurantDirectionsViewController: MKMapViewDelegate {
             self?.mapView.add((route.polyline), level: MKOverlayLevel.aboveRoads)
             
             // Show Distance in Miles
-            let distanceInMiles = response.routes[0].distance*self!.meterToMileMultiplier // Convert meters - miles
-            self?.distanceLabel.text = "\(distanceInMiles.rounded(toPlaces: 1)) mi"
+            let distanceInMiles = response.routes[0].distance*SnapXEatsAppDefaults.meterToMileMultiplier // Convert meters - miles
+            self?.distanceLabel.text = String(format:SnapXEatsAppDefaults.restaurantDistance, distanceInMiles)
             
             let rect = route.polyline.boundingMapRect
             let rectInsets = mapRouteConstants.mapViewVisbileRectInsets
