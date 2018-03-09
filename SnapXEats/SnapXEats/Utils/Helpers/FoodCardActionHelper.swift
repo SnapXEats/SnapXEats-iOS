@@ -62,6 +62,11 @@ class FoodCardActionHelper {
         FoodCardActions.addToWishList(foodCardItem: foodCardItem, userID: userID)
     }
     
+    func addWishListWhenLogin(wishList: [WishStoredList]) {
+         let userID = LoginUserPreferences.shared.loginUserID
+        FoodCardActions.addWishList(wishList: wishList, userID: userID)
+    }
+    
     func addToLikedList(foodCardItem: UserFoodCard) {
         let userID = LoginUserPreferences.shared.loginUserID
         FoodCardActions.addToLikedList(foodCardItem: foodCardItem, userID: userID)

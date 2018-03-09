@@ -43,8 +43,9 @@ extension DrawerInteractor: DrawerInteractorIntput {
 extension DrawerInteractor: DrawerRequestFormatter {
     
     func sendlogOutRequest() {
-        sendlogOutRequest(path: SnapXEatsWebServicePath.logOut)
+        sendWishListDeletedRequest()
     }
+    
     func sendUserPreference(preference: LoginUserPreferences) {
         PreferenceHelper.shared.saveUserPrefernce(preference: preference)
         let requestParameter = PreferenceHelper.shared.getJSONDataUserPrefernce()
@@ -56,6 +57,38 @@ extension DrawerInteractor: DrawerRequestFormatter {
         PreferenceHelper.shared.saveUserPrefernce(preference: preference)
         let requestParameter = PreferenceHelper.shared.getJSONDataUserPrefernce()
         updateUserPreferences(forPath: SnapXEatsWebServicePath.userPreferene, withParameters: requestParameter)
+    }
+    
+    
+    private func sendWishListDeletedRequest() {
+        let parameter = FoodCardActionHelper.shared.getJSONDataDeletedWishListItems()
+        if parameter.count > 0 {
+            deltedWishListRequest(forPath: SnapXEatsWebServicePath.wishList, withParameters: parameter) { [weak self] response in
+                if response.isSuccess {
+                    FoodCardActionHelper.shared.deleteItemFromWishList()
+                    self?.sendUserWishList()
+                } else {
+                    self?.output?.response(result: NetworkResult.noInternet)
+                }
+            }
+        } else {
+            sendUserWishList()
+        }
+    }
+    
+   private func sendUserWishList() {
+        if let foodActions = FoodCardActionHelper.shared.getCurrentActionsForUser() {
+            let parameters = FoodCardActionHelper.shared.getJSONDataForGestures(foodCardActions: foodActions)
+            sendUserGesturesRequest(forPath: SnapXEatsWebServicePath.userGesture, withParameters: parameters) { [weak self] response in
+                if response.isSuccess {
+                    self?.sendlogOutRequest(path: SnapXEatsWebServicePath.logOut)
+                } else {
+                    self?.output?.response(result: NetworkResult.noInternet)
+                }
+            }
+        } else {
+            sendlogOutRequest(path: SnapXEatsWebServicePath.logOut)
+        }
     }
     
 }
@@ -84,6 +117,19 @@ extension DrawerInteractor: DrawerWebService {
             self?.userPreferenceResult(result: response.isSuccess)
         }
     }
+    
+    func deltedWishListRequest(forPath: String, withParameters: [String: Any], completionHandler: @escaping (_ response: DefaultDataResponse) -> ()) {
+        SnapXEatsApi.snapXDelteRequestWithParameters(path: forPath, parameters: withParameters) {(response: DefaultDataResponse) in
+            completionHandler(response)
+        }
+    }
+    
+    func sendUserGesturesRequest(forPath: String, withParameters: [String: Any], completionHandler: @escaping (_ response: DefaultDataResponse) -> ()) {
+        SnapXEatsApi.snapXPostRequestWithParameters(path: forPath, parameters: withParameters) {(response: DefaultDataResponse) in
+            completionHandler(response)
+        }
+    }
+    
 }
 
 extension DrawerInteractor: DrawerObjectMapper {

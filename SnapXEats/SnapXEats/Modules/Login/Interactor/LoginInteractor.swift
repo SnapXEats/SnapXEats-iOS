@@ -52,6 +52,7 @@ extension LoginInteractor: LoginViewInteractorInput {
                     SnapXEatsLoginHelper.shared.getUserProfileData(serverID: serverID, serverToken: serverToken, accessToken: accessToken) { (result) in
                         if let userId = accessToken.userId {
                             SnapXEatsLoginHelper.shared.saveloginInfo(userId: userId, firstTimeLogin: firstTimeUser, plateform: SnapXEatsConstant.platFormFB)
+                             self?.saveWishList(userInfo: userInfo)
                         }
                         self?.output?.response(result: result)
                     }
@@ -104,6 +105,7 @@ extension LoginInteractor {
                     let firstTimeUser = userInfo.userInfo?.first_time_login {
                     SnapXEatsLoginHelper.shared.saveloginInfo(userId: instagramUser.id, firstTimeLogin: firstTimeUser, plateform: SnapXEatsConstant.platFormInstagram)
                     SnapXEatsLoginHelper.shared.saveInstagramLoginData(serverToken: serverToken, serverID: serverID, instagram: instagramUser)
+                    self?.saveWishList(userInfo: userInfo)
                     completionHandler()
                     self?.output?.response(result: result)
                 }
@@ -112,6 +114,12 @@ extension LoginInteractor {
                 self?.output?.response(result: .noInternet)
             default: break
             }
+        }
+    }
+    
+    private func saveWishList(userInfo: UserProfile?) {
+        if let list = userInfo?.userInfo?.wishList, list.count > 0 {
+            FoodCardActionHelper.shared.addWishListWhenLogin(wishList: list)
         }
     }
     
