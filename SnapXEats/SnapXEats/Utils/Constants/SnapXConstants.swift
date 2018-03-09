@@ -126,7 +126,7 @@ enum SnapXEatsPageTitles {
     static let preferences = "Preferences"
     static let foodJourney = "Food Journeys"
     static let rewards = "Rewards"
-    static let snapnshare = "Snap-N-Share"
+    static let snapnshare = "Snap-n-Share"
     static let smartPhotos = "Smart Photos"
     static let restaurants = "Restaurants"
     
@@ -230,6 +230,7 @@ enum AlertMessage {
     static let preferecneRestMessage = "Do you really want to reset your preferences. Please press Ok or Cancel."
     static let preferenceSaveMessage = "You have made some changes to your preferences, You need to save them first."
     static let deleteWishListMessage = "Do you really want to delete your selected wishlist Item, please press Ok or Cancel."
+    static let wishlistForNonLoggedinUser = "Please Login to see the Wishlist."
 }
 
 enum AlertTitle {
@@ -237,7 +238,7 @@ enum AlertTitle {
     static let preferenceTitle = "Preference Error"
     static let logOutTitle = "LogOut"
     static let error = "Error"
-
+    static let wishlist = "Wishlist"
 }
 
 enum PreferecneConstant {
@@ -265,5 +266,10 @@ enum UserGestureJSONKeys {
     static let wishlist_dish_array = "wishlist_dish_array"
     static let restaurant_dish_id = "restaurant_dish_id"
     static let user_wishlist = "user_wishlist"
+}
+
+enum SnapXNonLoggedInUserConstants {
+    static let message = "Log-In to SnapXEats and Earn Reward Points"
+    static let highlightText = "SnapXEats"
 }
 
