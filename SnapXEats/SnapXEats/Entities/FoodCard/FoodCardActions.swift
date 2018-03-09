@@ -26,31 +26,54 @@ class FoodCardActions: Object {
     
     static func addToWishList(foodCardItem: UserFoodCard, userID: String) {
         // Get the default Realm
-        if userID != SnapXEatsConstant.emptyString {
-            if let currentFoodCardActions = getCurrentActionsForUser(userID: userID) {
-                let currentWishList = currentFoodCardActions.wishListItems
-                
-                let realm = try! Realm()
-                try! realm.write {
-                    let hasItem = currentWishList.filter({ (foodCard) -> Bool in
-                        foodCard.Id == foodCardItem.Id ? true : false
-                    })
-                    if hasItem.count == 0 {
-                        currentWishList.append(foodCardItem)
-                    }
+        DispatchQueue.global(qos: .background).async {
+            if userID != SnapXEatsConstant.emptyString {
+                if let currentFoodCardActions = getCurrentActionsForUser(userID: userID) {
+                    let currentWishList = currentFoodCardActions.wishListItems
                     
+                    let realm = try! Realm()
+                    try! realm.write {
+                        let hasItem = currentWishList.filter({ (foodCard) -> Bool in
+                            foodCard.Id == foodCardItem.Id ? true : false
+                        })
+                        if hasItem.count == 0 {
+                            currentWishList.append(foodCardItem)
+                        }
+                        
+                    }
+                } else {
+                    let currentWishList = List<UserFoodCard>()
+                    let foodCardaction = FoodCardActions()
+                    foodCardaction.userID = userID
+                    currentWishList.append(foodCardItem)
+                    foodCardaction.wishListItems = currentWishList
+                    
+                    let realm = try! Realm()
+                    try! realm.write {
+                        realm.add(foodCardaction)
+                    }
                 }
-            } else {
-                let currentWishList = List<UserFoodCard>()
-                let foodCardaction = FoodCardActions()
-                foodCardaction.userID = userID
-                currentWishList.append(foodCardItem)
-                foodCardaction.wishListItems = currentWishList
+            }
+        }
+    }
+    
+    static func addWishList(wishList: [WishStoredList], userID: String) {
+        DispatchQueue.global(qos: .background).async {
+            let realm = try! Realm()
+            let currentWishList = List<UserFoodCard>()
+            let foodCardaction = FoodCardActions()
+            foodCardaction.userID = userID
+            for item in wishList {
+                if let Id = item.restaurant_dish_id {
+                    let foodItem = UserFoodCard()
+                    foodItem.Id = Id
+                    currentWishList.append(foodItem)
+                }
+            }
+            try! realm.write {
                 
-                let realm = try! Realm()
-                try! realm.write {
-                    realm.add(foodCardaction)
-                }
+                foodCardaction.wishListItems = currentWishList
+                realm.add(foodCardaction)
             }
         }
     }
