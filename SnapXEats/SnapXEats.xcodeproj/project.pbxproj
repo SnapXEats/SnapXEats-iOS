@@ -18,6 +18,7 @@
 		7E491D24204E920E004445E2 /* RestaurantsMapViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E491D1E204E920E004445E2 /* RestaurantsMapViewRouter.swift */; };
 		7E491D25204E920E004445E2 /* RestaurantsMapViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E491D20204E920E004445E2 /* RestaurantsMapViewViewController.swift */; };
 		7E491D27204E9314004445E2 /* RestaurantsMapView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E491D26204E9314004445E2 /* RestaurantsMapView.storyboard */; };
+		7E5328B820526FA20043539D /* NSMutableAttributedString+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5328B720526FA20043539D /* NSMutableAttributedString+Helper.swift */; };
 		7E5946972020BD02006702AF /* SearchPlacesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5946952020BD02006702AF /* SearchPlacesTableViewCell.swift */; };
 		7E5946982020BD02006702AF /* SearchPlacesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5946962020BD02006702AF /* SearchPlacesTableViewCell.xib */; };
 		7E5C057E2017A6DC000B5C33 /* SavedLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C057C2017A6DC000B5C33 /* SavedLocationTableViewCell.swift */; };
@@ -208,6 +209,7 @@
 		7E491D1E204E920E004445E2 /* RestaurantsMapViewRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantsMapViewRouter.swift; sourceTree = "<group>"; };
 		7E491D20204E920E004445E2 /* RestaurantsMapViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantsMapViewViewController.swift; sourceTree = "<group>"; };
 		7E491D26204E9314004445E2 /* RestaurantsMapView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RestaurantsMapView.storyboard; sourceTree = "<group>"; };
+		7E5328B720526FA20043539D /* NSMutableAttributedString+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Helper.swift"; sourceTree = "<group>"; };
 		7E5946952020BD02006702AF /* SearchPlacesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlacesTableViewCell.swift; sourceTree = "<group>"; };
 		7E5946962020BD02006702AF /* SearchPlacesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchPlacesTableViewCell.xib; sourceTree = "<group>"; };
 		7E5C057C2017A6DC000B5C33 /* SavedLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationTableViewCell.swift; sourceTree = "<group>"; };
@@ -1012,6 +1014,7 @@
 				9D8E88A11FFD28C50066A1D9 /* UIStoryboard.swift */,
 				7E5C058420186846000B5C33 /* UISearchbar+helper.swift */,
 				7E5E8010203D9AD700009A56 /* Date+Helpers.swift */,
+				7E5328B720526FA20043539D /* NSMutableAttributedString+Helper.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1813,6 +1816,7 @@
 				9D8E88F21FFD2BEC0066A1D9 /* BaseViewController.swift in Sources */,
 				9D0D7140203C633B0077FA7A /* PreferenceHelper.swift in Sources */,
 				7E9394EC204456F900A80387 /* FoodCardActionHelper.swift in Sources */,
+				7E5328B820526FA20043539D /* NSMutableAttributedString+Helper.swift in Sources */,
 				9D0D714E203D99A80077FA7A /* FoodAndCuisinePreferenceRouter.swift in Sources */,
 				7E6FD41C2020A00F0058BFB8 /* SearchPlacePredictions.swift in Sources */,
 				9D0D713E203C2CFD0077FA7A /* SetUserPreference.swift in Sources */,

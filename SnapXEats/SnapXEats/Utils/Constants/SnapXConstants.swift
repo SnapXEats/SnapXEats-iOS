@@ -267,3 +267,8 @@ enum UserGestureJSONKeys {
     static let user_wishlist = "user_wishlist"
 }
 
+enum SnapXNonLoggedInUserConstants {
+    static let message = "Log-In to SnapXEats and Earn Reward Points"
+    static let highlightText = "SnapXEats"
+}
+
