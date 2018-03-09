@@ -19,7 +19,6 @@ enum navigateScreen: Int {
     case smartPhotos
     case privacyPolicy
     case showLogin
-
 }
 class DrawerViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -36,8 +35,9 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var userInfoView: UIView!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
-    
     @IBOutlet weak var logoutButton: UIButton!
+    @IBOutlet weak var nonLoggedInUserMessageLabel: UILabel!
+    @IBOutlet weak var loggedInUserInfoView: UIView!
     
     @IBAction func logoutButtonAction(sender: UIButton) {
         if loginUserPreference.isLoggedIn {
@@ -52,7 +52,6 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
             SnapXEatsLoginHelper.shared.resetData()
             presenter?.presentScreen(screen: .login, drawerState: .closed)
         }
-        
     }
     
     @IBAction func privacyPolicyButtonAction(sender: UIButton) {
@@ -87,8 +86,26 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
         userImageView.layer.masksToBounds = true
         userImageView.layer.cornerRadius = userImageView.frame.width/2
         navigationOptionTable.tableFooterView = UIView()
-        let text = loginUserPreference.isLoggedIn ? SnapXButtonTitle.loginOut : SnapXButtonTitle.loginIn
-        logoutButton.setTitle(text, for: .normal)
+        
+        // Set up multicolor Message for Non Logged In User
+        let nonLoggedInUserMessage = NSMutableAttributedString(string: SnapXNonLoggedInUserConstants.message)
+        nonLoggedInUserMessage.setColorForText(SnapXNonLoggedInUserConstants.highlightText, with: UIColor.rgba(230.0, 118.0, 7.0, 1.0))
+        nonLoggedInUserMessageLabel.attributedText = nonLoggedInUserMessage
+        
+        userImageView.image = UIImage(named: SnapXEatsImageNames.profile_placeholder)
+        loginUserPreference.isLoggedIn ? configureLoggedInUserInfoView() : configureNonLoggedInUserInfoView()
+    }
+    
+    private func configureNonLoggedInUserInfoView() {
+        loggedInUserInfoView.isHidden = true
+        nonLoggedInUserMessageLabel.isHidden = false
+        logoutButton.setTitle(SnapXButtonTitle.loginIn, for: .normal)
+    }
+    
+    private func configureLoggedInUserInfoView() {
+        loggedInUserInfoView.isHidden = false
+        nonLoggedInUserMessageLabel.isHidden = true
+        logoutButton.setTitle(SnapXButtonTitle.loginOut, for: .normal)
         addUserInfo()
     }
     
