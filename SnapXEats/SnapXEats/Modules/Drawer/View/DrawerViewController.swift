@@ -156,9 +156,7 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
         case .showLogin:
             presenter?.presentScreen(screen: .login, drawerState: .closed)
         case .wishList:
-            if let count = presenter?.wishListCount(), count > 0 {
-                presenter?.presentScreen(screen: .wishlist, drawerState: .closed)
-            }
+            loginUserPreference.isLoggedIn ? showWishListForLoggedInUser() : showWishlistForNonLoggedInUser()
         default:
             break
         }
@@ -194,8 +192,18 @@ extension DrawerViewController: BaseView {
         UIAlertController.presentAlertInViewController(self, title: AlertTitle.preferenceTitle , message: AlertMessage.preferenceMessage, actions: [apply], completion: nil)
     }
     
-    
     private func setApplyButton(completionHandler: @escaping () ->()) -> UIAlertAction {
         return UIAlertAction(title: SnapXButtonTitle.apply, style: UIAlertActionStyle.default, handler:  {action in completionHandler()})
+    }
+    
+    private func showWishListForLoggedInUser() {
+        if let count = presenter?.wishListCount(), count > 0 {
+            presenter?.presentScreen(screen: .wishlist, drawerState: .closed)
+        }
+    }
+    
+    private func showWishlistForNonLoggedInUser() {
+        let okAction = UIAlertAction(title: SnapXButtonTitle.ok, style: .default, handler: nil)
+        UIAlertController.presentAlertInViewController(self, title: AlertTitle.wishlist, message: AlertMessage.wishlistForNonLoggedinUser, actions: [okAction], completion: nil)
     }
 }

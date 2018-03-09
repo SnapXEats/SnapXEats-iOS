@@ -230,6 +230,7 @@ enum AlertMessage {
     static let preferecneRestMessage = "Do you really want to reset your preferences. Please press Ok or Cancel."
     static let preferenceSaveMessage = "You have made some changes to your preferences, You need to save them first."
     static let deleteWishListMessage = "Do you really want to delete your selected wishlist Item, please press Ok or Cancel."
+    static let wishlistForNonLoggedinUser = "Please Login to see the Wishlist."
 }
 
 enum AlertTitle {
@@ -237,7 +238,7 @@ enum AlertTitle {
     static let preferenceTitle = "Preference Error"
     static let logOutTitle = "LogOut"
     static let error = "Error"
-
+    static let wishlist = "Wishlist"
 }
 
 enum PreferecneConstant {

@@ -27,9 +27,10 @@ class NavigationMenuTableViewCell: UITableViewCell {
             : UIColor.rgba(72.0, 72.0, 72.0, 1.0)
         optionLabel.textColor = textColor
         optionLabel.text = title
-        wishlistCountView.isHidden = !showCount
+
     
-        // Only Retrive wishlist count if it is to be shown(Only for one cell)
-        wishlistCountLabel.text = (showCount == true) ? "\(FoodCardActionHelper.shared.getWishlistCountForCurrentUser())" : ""
+        // Only Retrive wishlist count if it is to be shown(Only for one cell) and if User is logged
+        wishlistCountView.isHidden = showCount == true && LoginUserPreferences.shared.isLoggedIn ? false : true
+        wishlistCountLabel.text = showCount == true && LoginUserPreferences.shared.isLoggedIn ? "\(FoodCardActionHelper.shared.getWishlistCountForCurrentUser())" : ""
     }
 }
