@@ -66,7 +66,7 @@ extension LoginInteractor: LoginViewInteractorInput {
                     if let userId = accessToken.userId {
                         SnapXEatsLoginHelper.shared.saveloginInfo(userId: userId, firstTimeLogin: firstTimeUser, plateform: SnapXEatsConstant.platFormFB)
                         self?.saveWishList(userInfo: userInfo)
-                        self?.getStoredUserPreference()
+                        self?.sendUserPreferenceRequest(path: SnapXEatsWebServicePath.userPreferene, completionHandler: nil)
                     } else {
                         self?.output?.response(result: .error)
                     }
@@ -79,9 +79,6 @@ extension LoginInteractor: LoginViewInteractorInput {
         }
     }
     
-    private func getStoredUserPreference() {
-        sendUserPreferenceRequest(path: SnapXEatsWebServicePath.userPreferene)
-    }
 }
 
 extension LoginInteractor {
@@ -107,21 +104,29 @@ extension LoginInteractor {
         }
     }
     
-    func sendUserPreferenceRequest(path: String) {
-        SnapXEatsApi.snapXRequestObjectWithParameters(path: path, parameters: [:]) {[weak self] (response: DataResponse<StoredUserPreference>) in
+    func sendUserPreferenceRequest(path: String, completionHandler: (()-> ())?) {
+        SnapXEatsApi.snapXRequestObjectWithParameters(path: path, parameters: [:]) {[weak self] (response: DataResponse<FirstTimeUserPreference>) in
             let result = response.result
-            self?.preferenceDetails(data: result)
+            self?.preferenceDetails(data: result, completionHandler: completionHandler)
         }
     }
     
     
     // TODO: Implement use case methods
-    func preferenceDetails(data: Result<StoredUserPreference>) {
+    func preferenceDetails(data: Result<FirstTimeUserPreference>, completionHandler: (()-> ())?) {
         switch data {
         case .success(let value):
-            PreferenceHelper.shared.saveFirstTimeLoginPreferecne(storedPreferecne: value)
+            if let preferecne = value.userPreferences {
+                PreferenceHelper.shared.saveFirstTimeLoginPreferecne(storedPreferecne: preferecne)
+                if  let completion = completionHandler {
+                    completion()
+                }
+            }
             output?.response(result: .success(data: value))
         case .failure( _):
+            if  let completion = completionHandler {
+                completion()
+            }
             output?.response(result: NetworkResult.noInternet)
         }
     }
@@ -142,8 +147,7 @@ extension LoginInteractor {
                     SnapXEatsLoginHelper.shared.saveloginInfo(userId: instagramUser.id, firstTimeLogin: firstTimeUser, plateform: SnapXEatsConstant.platFormInstagram)
                     SnapXEatsLoginHelper.shared.saveInstagramLoginData(serverToken: serverToken, serverID: serverID, instagram: instagramUser)
                     self?.saveWishList(userInfo: userInfo)
-                    completionHandler()
-                    self?.output?.response(result: result)
+                    self?.sendUserPreferenceRequest(path: SnapXEatsWebServicePath.userPreferene, completionHandler: completionHandler)
                 }
             case .noInternet:
                 completionHandler()

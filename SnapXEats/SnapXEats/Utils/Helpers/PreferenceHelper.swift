@@ -47,7 +47,8 @@ class PreferenceHelper {
     func saveFirstTimeLoginPreferecne(storedPreferecne: StoredUserPreference) {
         let setPreference = SetUserPreference()
         setPreference.distancePreference = storedPreferecne.distancePreference
-        setPreference.pricingPreference = storedPreferecne.pricingPreference
+        setPreference.pricingPreference = storedPreferecne.pricingPreference + 1  // we need to increase the index by 1 to use it within app on UI for tags
+        // we are also decreasing the value by 1 when sending it to server
         setPreference.ratingPreference = storedPreferecne.ratingPreference
         if storedPreferecne.sort_by_rating {
              setPreference.sortByPreference = 1
@@ -56,7 +57,9 @@ class PreferenceHelper {
         if storedPreferecne.sort_by_distance {
             setPreference.sortByPreference = 0
         }
-
+        
+        let userID = SnapXEatsLoginHelper.shared.getLoggedInUserID()
+        setPreference.userID = userID
         SetUserPreference.saveUserPrefernce(prefernce: setPreference)
         
         var foodItems = [PreferenceItem] ()
@@ -64,18 +67,18 @@ class PreferenceHelper {
              let food = PreferenceItem()
                 food.itemID = foodPreference.Id
                 food.isLiked = foodPreference.isliked
-                food.isLiked = foodPreference.isFavourite
+                food.isFavourite = foodPreference.isFavourite
                 foodItems.append(food)
         }
         
-        updateFoodPreference(usierID: SnapXEatsLoginHelper.shared.getLoggedInUserID(), preferencesItems: foodItems)
+        updateFoodPreference(usierID: userID, preferencesItems: foodItems)
         
         var cuisineItems = [PreferenceItem] ()
         for cuisinePreference in  storedPreferecne.cuisinePreference {
             let cuisine = PreferenceItem()
             cuisine.itemID = cuisinePreference.Id
             cuisine.isLiked = cuisinePreference.isliked
-            cuisine.isLiked = cuisinePreference.isFavourite
+            cuisine.isFavourite = cuisinePreference.isFavourite
             cuisineItems.append(cuisine)
         }
         
