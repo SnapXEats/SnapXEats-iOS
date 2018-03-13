@@ -44,6 +44,44 @@ class PreferenceHelper {
         SetUserPreference.saveUserPrefernce(prefernce: setPreference)
     }
     
+    func saveFirstTimeLoginPreferecne(storedPreferecne: StoredUserPreference) {
+        let setPreference = SetUserPreference()
+        setPreference.distancePreference = storedPreferecne.distancePreference
+        setPreference.pricingPreference = storedPreferecne.pricingPreference
+        setPreference.ratingPreference = storedPreferecne.ratingPreference
+        if storedPreferecne.sort_by_rating {
+             setPreference.sortByPreference = 1
+        }
+        
+        if storedPreferecne.sort_by_distance {
+            setPreference.sortByPreference = 0
+        }
+
+        SetUserPreference.saveUserPrefernce(prefernce: setPreference)
+        
+        var foodItems = [PreferenceItem] ()
+        for foodPreference in  storedPreferecne.foodPreference {
+             let food = PreferenceItem()
+                food.itemID = foodPreference.Id
+                food.isLiked = foodPreference.isliked
+                food.isLiked = foodPreference.isFavourite
+                foodItems.append(food)
+        }
+        
+        updateFoodPreference(usierID: SnapXEatsLoginHelper.shared.getLoggedInUserID(), preferencesItems: foodItems)
+        
+        var cuisineItems = [PreferenceItem] ()
+        for cuisinePreference in  storedPreferecne.cuisinePreference {
+            let cuisine = PreferenceItem()
+            cuisine.itemID = cuisinePreference.Id
+            cuisine.isLiked = cuisinePreference.isliked
+            cuisine.isLiked = cuisinePreference.isFavourite
+            cuisineItems.append(cuisine)
+        }
+        
+        updateCuisinePreference(usierID: SnapXEatsLoginHelper.shared.getLoggedInUserID(), preferencesItems: cuisineItems)
+    }
+    
     func getUserPrefernce(userID: String) -> SetUserPreference? {
         return SetUserPreference.getUserPrefernce(userID: userID)
     }
