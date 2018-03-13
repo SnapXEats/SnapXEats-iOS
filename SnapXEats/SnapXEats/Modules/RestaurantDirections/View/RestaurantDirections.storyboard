@@ -51,19 +51,19 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O1l-yR-mpw" userLabel="Top Border View">
-                                        <rect key="frame" x="103" y="108" width="179" height="1"/>
+                                        <rect key="frame" x="129.5" y="108" width="126" height="1"/>
                                         <color key="backgroundColor" red="0.88627450980392153" green="0.88627450980392153" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="lgp-3h-QXc"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kpd-QZ-mDc">
-                                        <rect key="frame" x="103" y="108" width="169" height="35"/>
+                                        <rect key="frame" x="129.5" y="108" width="116" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="Zzl-Jk-Kmx"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
-                                        <state key="normal" title="Open Today - 11 AM to 11 PM" image="down_arrow">
+                                        <state key="normal" title="Restaurant Timings" image="down_arrow">
                                             <color key="titleColor" red="0.36470588235294116" green="0.36470588235294116" blue="0.36470588235294116" alpha="1" colorSpace="deviceRGB"/>
                                         </state>
                                         <connections>
@@ -71,7 +71,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WNo-k7-vAJ" userLabel="Bottom Border View">
-                                        <rect key="frame" x="103" y="142" width="179" height="1"/>
+                                        <rect key="frame" x="129.5" y="142" width="126" height="1"/>
                                         <color key="backgroundColor" red="0.88627450980392153" green="0.88627450980392153" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="3c6-VD-b0Z"/>

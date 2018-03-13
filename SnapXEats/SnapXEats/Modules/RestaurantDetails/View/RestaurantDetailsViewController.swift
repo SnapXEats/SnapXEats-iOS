@@ -258,6 +258,7 @@ extension RestaurantDetailsViewController: UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SnapXEatsCellResourceIdentifiler.moreInfoTableView, for: indexPath) as! MoreInfoTableViewCell
+        cell.selectionStyle = .none
         cell.amenityNameLabel.text = amenities[indexPath.row]
         return cell
     }

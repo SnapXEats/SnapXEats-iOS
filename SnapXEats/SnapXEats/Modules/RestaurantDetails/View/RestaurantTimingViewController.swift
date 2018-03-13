@@ -17,6 +17,16 @@ class RestaurantTimingViewController: UIViewController {
     // MARK: - Variables
     var timings = [RestaurantTiming]()
     fileprivate let rowHeight: CGFloat = 25
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+            configureView()
+    }
+    
+    private func configureView() {
+        timingsTableView.estimatedRowHeight = 60.0
+        timingsTableView.rowHeight = UITableViewAutomaticDimension
+    }
 }
 
 // MARK: - Table view delegate methods
@@ -25,13 +35,10 @@ extension RestaurantTimingViewController: UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return timings.count
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return rowHeight
-    }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SnapXEatsCellResourceIdentifiler.restaurantTiming, for: indexPath) as! TimingTableViewCell
+        cell.selectionStyle = .none
         cell.clockImageView.isHidden = indexPath.row == 0 ? false : true
         cell.dayLabel.text = timings[indexPath.row].day ?? SnapXEatsAppDefaults.emptyString
         cell.timeLabel.text = timings[indexPath.row].time ?? SnapXEatsAppDefaults.emptyString
