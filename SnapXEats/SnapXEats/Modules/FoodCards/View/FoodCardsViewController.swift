@@ -90,6 +90,7 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     
     override func viewDidAppear(_ animated: Bool) {
         showFoodCard()
+        enableUnDo()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -174,11 +175,10 @@ extension FoodCardsViewController: KolodaViewDelegate, KolodaViewDataSource {
             undoButton.isEnabled = true
         case .right:
             rightSwipeActionForIndex(index: index)
+        case .up:
+            upSwipeActionForIndex(index: index)
             undoCount = 0
             kolodaView.undoManager?.removeAllActions()
-        case .up: upSwipeActionForIndex(index: index)
-        undoCount = 0
-        kolodaView.undoManager?.removeAllActions()
         default: break
         }
         setButtonState()
@@ -228,6 +228,9 @@ extension FoodCardsViewController {
         // Goto Restaurant Details page with selected Foodcard
         let currentFoodCard = foodCards[index]
         gotoRestaurantDetailsForFoodCard(foodCard: currentFoodCard)
+        
+        // Undo on Right Swipe to show card again when user comes back from Detail
+        kolodaView.revertAction()
     }
     
     private func leftSwipeActionForIndex(index: Int) {
