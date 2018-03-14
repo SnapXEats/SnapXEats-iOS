@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import MapKit
+import CoreLocation
 
 // To Distingugish between Restaurant marker and Current Location Marker the
 class CurrentLocationAnnotation: MKPointAnnotation {
@@ -25,7 +26,7 @@ class RestaurantDirectionsViewController: BaseViewController, StoryboardLoadable
         static let mapViewVisbileRectInsets: CGFloat = 40
         static let routeLineWidth: CGFloat = 3.0
         static let routeLineColor = UIColor.rgba(93.0, 93.0, 93.0, 1.0)
-        static let redirectMapURL = "http://maps.apple.com/?saddr=%@&daddr=%@"
+        static let distanceFilterInMeters: Double = 10
     }
     
     @IBOutlet weak var ratingView: UIView!
@@ -41,16 +42,9 @@ class RestaurantDirectionsViewController: BaseViewController, StoryboardLoadable
         showRestaurantTimingsPopover(onView: sender)
     }
     
-    @IBAction func mapRedirectButtonAction(_ sender: UIButton) {
-        redirectToMapsApp()
-    }
-    
     var presenter: RestaurantDirectionsPresentation?
     var restaurantDetails: RestaurantDetails!
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-    }
+    var locationManager =  CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,23 +112,6 @@ class RestaurantDirectionsViewController: BaseViewController, StoryboardLoadable
             self.present(popController, animated: true, completion: nil)
         }
     }
-    
-    private func redirectToMapsApp() {
-        guard let restaurantLatitude = restaurantDetails.latitude, let restaurantLongitude = restaurantDetails.longitude else {
-            return
-        }
-        
-        let currentLocation = SelectedPreference.shared.getLatitude()
-        let sourceAddress = "\(Double(truncating: currentLocation.0 as NSNumber)),\(Double(truncating: currentLocation.1 as NSNumber))"
-        let destinationAddress = "\(restaurantLatitude),\(restaurantLongitude)"
-        
-        let directionsURL = String(format:mapRouteConstants.redirectMapURL, sourceAddress, destinationAddress)
-        
-        guard let url = URL(string: directionsURL) else {
-            return
-        }
-        UIApplication.shared.openURL(url)
-    }
 }
 
 extension RestaurantDirectionsViewController: UIPopoverPresentationControllerDelegate {
@@ -185,7 +162,7 @@ extension RestaurantDirectionsViewController: MKMapViewDelegate {
         let destinationPlacemark = MKPlacemark(coordinate: destinationLocation, addressDictionary: nil)
         
         // Create Annotations for Source and Destination
-        let sourceAnnotation = CurrentLocationAnnotation()
+        let sourceAnnotation = MKPointAnnotation()
         if let location = sourcePlacemark.location {
             sourceAnnotation.coordinate = location.coordinate
         }
@@ -197,7 +174,7 @@ extension RestaurantDirectionsViewController: MKMapViewDelegate {
         self.mapView.showAnnotations([sourceAnnotation,destinationAnnotation], animated: true )
         mapView.showsCompass = true
         
-        // Calculate the direction and Show Route
+        // Calculate the direction and Show Route with Navigation
         if checkRechability() {
             let sourceMapItem = MKMapItem(placemark: sourcePlacemark)
             let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
@@ -230,6 +207,47 @@ extension RestaurantDirectionsViewController: MKMapViewDelegate {
             let rectInsets = mapRouteConstants.mapViewVisbileRectInsets
             self?.mapView.setVisibleMapRect(rect, edgePadding:
                 UIEdgeInsetsMake(rectInsets,rectInsets,rectInsets,rectInsets), animated: true)
+            
+            // Start Map Navigation
+            self?.startNavigationOnMap()
         }
+    }
+    
+    private func startNavigationOnMap() {
+        let status = CLLocationManager.authorizationStatus()
+        let locationStatusRestricted = (status  == .denied ||  status  == .restricted)
+        let locationServicesEnabled = CLLocationManager.locationServicesEnabled()
+
+        if (locationServicesEnabled == false || locationStatusRestricted) {
+            showNavigationFailureAlert()
+        } else {
+            self.locationManager.delegate = self
+            self.locationManager.distanceFilter = mapRouteConstants.distanceFilterInMeters
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            self.locationManager.startUpdatingLocation()
+        }
+    }
+    
+    private func showNavigationFailureAlert() {
+        let navigationFailedAlert = UIAlertController(title: AlertTitle.navigationFailureError, message: AlertMessage.navigationFailureError, preferredStyle: .alert)
+        navigationFailedAlert.addAction(UIAlertAction(title: SnapXButtonTitle.ok, style: .default, handler: nil))
+        self.present(navigationFailedAlert, animated: true, completion: nil)
+    }
+}
+
+extension RestaurantDirectionsViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let newLocation = locations[0]
+        // Remove Earlier Annotations
+        for annotation in mapView.annotations {
+            if let clAnnotation = annotation as? CurrentLocationAnnotation {
+                mapView.removeAnnotation(clAnnotation)
+            }
+        }
+        
+        // Add Annotation with updated Location
+        let clAnnotation = CurrentLocationAnnotation()
+        clAnnotation.coordinate = newLocation.coordinate
+        self.mapView.addAnnotation(clAnnotation)
     }
 }
