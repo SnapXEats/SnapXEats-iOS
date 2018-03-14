@@ -142,6 +142,7 @@
                         <outlet property="disLikeButton" destination="6O6-Ad-9oa" id="kFg-AG-e5d"/>
                         <outlet property="kolodaView" destination="yZP-OQ-Zyj" id="wac-SE-htp"/>
                         <outlet property="likeButton" destination="Xjo-O2-KrF" id="IbX-jW-yUy"/>
+                        <outlet property="mapButton" destination="Tif-uD-TTq" id="gnJ-dU-pBu"/>
                         <outlet property="undoButton" destination="6do-gt-WaK" id="y7g-6A-7gN"/>
                         <outlet property="wishListButton" destination="LUt-w3-E1e" id="viZ-Fa-CwV"/>
                     </connections>
