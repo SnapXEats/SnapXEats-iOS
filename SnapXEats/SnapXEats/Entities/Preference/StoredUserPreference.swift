@@ -21,6 +21,17 @@ import Foundation
 import Foundation
 import ObjectMapper
 
+class FirstTimeUserPreference: Mappable {
+    
+    var userPreferences: StoredUserPreference?
+    
+    required init?(map: Map) {
+    }
+
+    func mapping(map: Map) {
+        userPreferences <- map["userPreferences"]
+    }
+}
 class StoredUserPreference: Mappable {
 
     var ratingPreference = 0
@@ -29,56 +40,51 @@ class StoredUserPreference: Mappable {
     var sort_by_distance = false
     var sort_by_rating = false
     
-    
     var foodPreference = [StoredFoodPreference]()
     var cuisinePreference = [StoredCuisinePreference]()
     
     required init?(map: Map) {
-        
     }
     
     func mapping(map: Map) {
-        foodPreference      <- map["userCuisinePreferences"]
-        cuisinePreference   <- map["userFoodPreferences"]
+        ratingPreference    <- map["restaurant_rating"]
+        pricingPreference   <- map["restaurant_price"]
+        distancePreference  <- map["restaurant_distance"]
+        sort_by_distance    <- map["sort_by_distance"]
+        sort_by_rating      <- map["sort_by_rating"]
+        foodPreference      <- map["userFoodPreferences"]
+        cuisinePreference   <- map["userCuisinePreferences"]
     }
 
 }
 
-class StoredPreferecne: Mappable {
-
+class StoredPreference {
     var Id: String?
     var isliked = false
     var isFavourite = false
-    
+    init() {}
+}
+
+class StoredFoodPreference: StoredPreference, Mappable {
+
     required init?(map: Map) {
     }
     
     func mapping(map: Map) {
-    }
-}
-
-class StoredFoodPreference: StoredPreferecne {
-
-    required init?(map: Map) {
-        super.init(map: map)
-    }
-    
-    override func mapping(map: Map) {
         Id                   <- map["food_type_info_id"]
         isliked              <- map["is_food_like"]
         isFavourite          <- map["is_food_favourite"]
     }
 }
 
-class StoredCuisinePreference: StoredPreferecne {
+class StoredCuisinePreference: StoredPreference, Mappable {
     
     required init?(map: Map) {
-        super.init(map: map)
     }
     
-    override func mapping(map: Map) {
+     func mapping(map: Map) {
         Id                   <- map["cuisine_info_id"]
-        isliked              <- map["is_food_like"]
-        isFavourite          <- map["is_food_favourite"]
+        isliked              <- map["is_cuisine_like"]
+        isFavourite          <- map["is_cuisine_favourite"]
     }
 }
