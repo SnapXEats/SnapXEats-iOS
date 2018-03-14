@@ -166,25 +166,12 @@
                                     <constraint firstItem="71O-4i-rjT" firstAttribute="top" secondItem="ODO-uw-C0q" secondAttribute="bottom" constant="4" id="pEg-Cf-WE3"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oet-fb-9o7">
-                                <rect key="frame" x="312" y="421" width="58" height="58"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="58" id="WOj-2a-g6K"/>
-                                    <constraint firstAttribute="height" constant="58" id="j3r-fT-mZv"/>
-                                </constraints>
-                                <state key="normal" image="map_redirect"/>
-                                <connections>
-                                    <action selector="mapRedirectButtonAction:" destination="4ap-la-Nks" eventType="touchUpInside" id="PJ2-9B-r61"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="pJZ-rM-WbP" firstAttribute="top" secondItem="Oet-fb-9o7" secondAttribute="bottom" constant="5" id="K0Z-9x-c7U"/>
                             <constraint firstItem="pJZ-rM-WbP" firstAttribute="leading" secondItem="VnB-D0-aBx" secondAttribute="leading" id="KTz-aF-AqJ"/>
                             <constraint firstItem="pJZ-rM-WbP" firstAttribute="top" secondItem="2MW-jt-g3z" secondAttribute="bottom" id="Wu6-KI-NtI"/>
                             <constraint firstItem="gNB-0q-fWG" firstAttribute="centerX" secondItem="9Er-P0-W80" secondAttribute="centerX" id="bcC-37-1d4"/>
-                            <constraint firstItem="VnB-D0-aBx" firstAttribute="trailing" secondItem="Oet-fb-9o7" secondAttribute="trailing" constant="5" id="cJu-gc-h5P"/>
                             <constraint firstItem="pJZ-rM-WbP" firstAttribute="bottom" secondItem="VnB-D0-aBx" secondAttribute="bottom" id="gcS-lv-zGQ"/>
                             <constraint firstItem="2MW-jt-g3z" firstAttribute="trailing" secondItem="VnB-D0-aBx" secondAttribute="trailing" id="gqb-uy-8fp"/>
                             <constraint firstItem="pJZ-rM-WbP" firstAttribute="trailing" secondItem="VnB-D0-aBx" secondAttribute="trailing" id="iw5-Vh-sRV"/>
@@ -213,7 +200,6 @@
     </scenes>
     <resources>
         <image name="down_arrow" width="9" height="6"/>
-        <image name="map_redirect" width="48" height="48"/>
         <image name="rating_icon" width="11" height="10"/>
         <image name="seperator_dot_icon" width="6" height="6"/>
     </resources>

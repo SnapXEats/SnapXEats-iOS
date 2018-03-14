@@ -231,6 +231,7 @@ enum AlertMessage {
     static let preferenceSaveMessage = "You have made some changes to your preferences, You need to save them first."
     static let deleteWishListMessage = "Do you really want to delete your selected wishlist Item, please press Ok or Cancel."
     static let wishlistForNonLoggedinUser = "Please Login to see the Wishlist."
+    static let navigationFailureError = "We are not able to detect your current location so Navigation on the Map won't work"
 }
 
 enum AlertTitle {
@@ -239,6 +240,7 @@ enum AlertTitle {
     static let logOutTitle = "LogOut"
     static let error = "Error"
     static let wishlist = "Wishlist"
+    static let navigationFailureError = "Navigation Error"
 }
 
 enum PreferecneConstant {
