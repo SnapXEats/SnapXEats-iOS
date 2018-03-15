@@ -11,7 +11,7 @@ import FBSDKLoginKit
 import SwiftInstagram
 
 enum Screens {
-    case firsTimeUser, login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurantID: String, parentController: UINavigationController, showMoreInfo: Bool), restaurantDirections(details: RestaurantDetails, parentController: UINavigationController), wishlist, restaurantsMapView(restaurants: [Restaurant], parentController: UINavigationController)
+    case firsTimeUser, login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurantID: String, parentController: UINavigationController, showMoreInfo: Bool), restaurantDirections(details: RestaurantDetails, parentController: UINavigationController), wishlist, restaurantsMapView(restaurants: [Restaurant], parentController: UINavigationController), snapNShareHome
 }
 
 class RootRouter: NSObject {
@@ -107,6 +107,12 @@ class RootRouter: NSObject {
         parentController.pushViewController(restaurantMapsVC, animated: true)
     }
     
+    private func presentSnapNShareHomeScreen() {
+        let snapNShareHomeVC = SnapNShareHomeRouter.shared.loadSnapNShareHomeModule()
+        updateDrawerWithMainController(mainVC: snapNShareHomeVC)
+        presentView(drawerController)
+    }
+    
     private func dissmissSelectLocationScreen() {
         window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
@@ -167,6 +173,8 @@ class RootRouter: NSObject {
             presentWishlistScreen()
         case .restaurantsMapView(let restaurants, let parentController):
             pushRestaurantsMapView(onNavigationController: parentController, withRestaurants: restaurants)
+        case .snapNShareHome:
+            presentSnapNShareHomeScreen()
         }
     }
     

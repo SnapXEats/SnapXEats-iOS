@@ -157,6 +157,8 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
             presenter?.presentScreen(screen: .login, drawerState: .closed)
         case .wishList:
             loginUserPreference.isLoggedIn ? showWishListForLoggedInUser() : showWishlistForNonLoggedInUser()
+        case .snapnshare:
+            presenter?.presnetScreen(screen: .snapNShareHome)
         default:
             break
         }
