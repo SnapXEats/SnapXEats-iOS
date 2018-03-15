@@ -26,6 +26,7 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
     
     @IBOutlet weak var kolodaView: KolodaView!
     @IBOutlet weak var undoButton: UIButton!
+    @IBOutlet weak var mapButton: UIBarButtonItem!
     
     @objc private func enableUnDo() {
          self.undoButton.isEnabled = undoCount == 0 ? false : true
@@ -193,10 +194,12 @@ extension FoodCardsViewController: KolodaViewDelegate, KolodaViewDataSource {
             likeButton.isEnabled = false
             disLikeButton.isEnabled = false
             wishListButton.isEnabled = false
+            mapButton.isEnabled = false
         }  else {
             likeButton.isEnabled = true
             disLikeButton.isEnabled = true
             wishListButton.isEnabled = true
+            mapButton.isEnabled = true
         }
     }
 }
@@ -242,10 +245,10 @@ extension FoodCardsViewController {
     
     private func upSwipeActionForIndex(index: Int) {
         //Add FoodCard to Wishlist
-        let userFoodCard = createUserFoodCardItem(fromIndex: index)
-        FoodCardActionHelper.shared.addToWishList(foodCardItem: userFoodCard)
-    }
-    
+            let userFoodCard = createUserFoodCardItem(fromIndex: index)
+            FoodCardActionHelper.shared.addToWishList(foodCardItem: userFoodCard)
+        }
+       
     private func gotoRestaurantDetailsForFoodCard(foodCard: FoodCard, showMoreInfo: Bool = false) {
         // Restaurant Detail Action
         if let parent = self.navigationController, let restoId = foodCard.restaurant.restaurant_info_id {
