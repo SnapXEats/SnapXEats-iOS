@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftyStarRatingView
 
 class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
 
@@ -16,7 +17,9 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
     var snapPhoto: UIImage!
     
     @IBOutlet var snapPhotoImageView: UIImageView!
-    
+    @IBOutlet var starRatingView: SwiftyStarRatingView!
+    @IBOutlet var reviewTextView: UITextView!
+
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,5 +62,22 @@ extension SnapNSharePhotoViewController: SnapNSharePhotoView {
         customizeNavigationItem(title: SnapXEatsPageTitles.snapnshare, isDetailPage: true)
         addShareButtonOnNavigationItem()
         snapPhotoImageView.image = snapPhoto
+        starRatingView.addTarget(self, action: #selector(ratingsChanged), for: .valueChanged)
+        reviewTextView.text = "Write what you feel about dish"
+        reviewTextView.textColor = UIColor.lightGray
+    }
+    
+    @objc func ratingsChanged() {
     }
 }
+
+extension SnapNSharePhotoViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = SnapXEatsAppDefaults.emptyString
+            textView.textColor = UIColor.black
+        }
+    }
+}
+
+
