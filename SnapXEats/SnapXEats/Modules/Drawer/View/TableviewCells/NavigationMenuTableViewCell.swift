@@ -23,7 +23,7 @@ class NavigationMenuTableViewCell: UITableViewCell {
         wishlistCountView.layer.cornerRadius = 6.0
         
         // show SnapShare and Smart Photos options disabled
-        let textColor = (title == SnapXEatsPageTitles.snapnshare || title == SnapXEatsPageTitles.smartPhotos) ? UIColor.rgba(157.0, 157.0, 157.0, 1.0)
+        let textColor = (title == SnapXEatsPageTitles.smartPhotos) ? UIColor.rgba(157.0, 157.0, 157.0, 1.0)
             : UIColor.rgba(72.0, 72.0, 72.0, 1.0)
         optionLabel.textColor = textColor
         optionLabel.text = title

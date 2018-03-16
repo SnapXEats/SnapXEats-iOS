@@ -80,6 +80,8 @@
 	<string>Will you allow SnapXEats app to always use your location to show you cuisines based on your  preferences</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>SnapXEats want to use your location to show cuisine based on your preferences</string>
+	<key>NSCameraUsageDescription</key>
+	<string>SnapXEats want to use your Camera to take SnapNShare Photos</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Roboto-Light.ttf</string>
