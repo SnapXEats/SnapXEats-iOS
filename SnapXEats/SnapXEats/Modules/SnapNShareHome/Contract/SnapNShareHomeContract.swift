@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
 protocol SnapNShareHomeView: class, BaseView {
     // TODO: Declare view methods
 }
 
 protocol SnapNShareHomePresentation: class {
-    // TODO: Declare presentation methods
+    func gotoSnapNSharePhotoView(parent: UINavigationController, withPhoto photo: UIImage)
 }
 
 protocol SnapNShareHomeUseCase: class {
@@ -24,6 +25,6 @@ protocol SnapNShareHomeInteractorOutput: class {
     // TODO: Declare interactor output methods
 }
 
-protocol SnapNShareHomeWireframe: class {
+protocol SnapNShareHomeWireframe: RootWireFrame {
     // TODO: Declare wireframe methods
 }

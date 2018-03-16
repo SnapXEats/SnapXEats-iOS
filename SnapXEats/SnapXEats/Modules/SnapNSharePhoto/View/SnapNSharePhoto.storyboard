@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--SnapN Share Photo View Controller-->
+        <scene sceneID="9ok-8o-jN2">
+            <objects>
+                <viewController storyboardIdentifier="SnapNSharePhotoViewController" id="aUM-Ki-p5D" customClass="SnapNSharePhotoViewController" customModule="SnapXEats" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1qB-WC-JTC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WPX-je-50F">
+                                <rect key="frame" x="0.0" y="64" width="320" height="320"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="WPX-je-50F" secondAttribute="height" multiplier="12:12" id="mlV-Ns-0E2"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KGd-jZ-hHL">
+                                <rect key="frame" x="0.0" y="384" width="320" height="80"/>
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="eIn-yE-qY8"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zfh-ld-l7E">
+                                <rect key="frame" x="40" y="498" width="240" height="50"/>
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="SHx-7f-WSu"/>
+                                    <constraint firstAttribute="width" constant="240" id="qJg-Jb-UCI"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WPX-je-50F" firstAttribute="trailing" secondItem="E3W-1M-5RX" secondAttribute="trailing" id="6cl-pe-IGH"/>
+                            <constraint firstItem="WPX-je-50F" firstAttribute="leading" secondItem="E3W-1M-5RX" secondAttribute="leading" id="8sX-Ql-KCu"/>
+                            <constraint firstItem="E3W-1M-5RX" firstAttribute="bottom" secondItem="Zfh-ld-l7E" secondAttribute="bottom" constant="20" id="X6k-AY-6f3"/>
+                            <constraint firstItem="WPX-je-50F" firstAttribute="top" secondItem="E3W-1M-5RX" secondAttribute="top" id="eCh-0v-NSe"/>
+                            <constraint firstItem="KGd-jZ-hHL" firstAttribute="top" secondItem="WPX-je-50F" secondAttribute="bottom" id="gG4-oL-eVW"/>
+                            <constraint firstItem="Zfh-ld-l7E" firstAttribute="centerX" secondItem="1qB-WC-JTC" secondAttribute="centerX" id="hzF-lS-bAb"/>
+                            <constraint firstItem="E3W-1M-5RX" firstAttribute="trailing" secondItem="KGd-jZ-hHL" secondAttribute="trailing" id="uGq-BC-Uz0"/>
+                            <constraint firstItem="KGd-jZ-hHL" firstAttribute="leading" secondItem="E3W-1M-5RX" secondAttribute="leading" id="vnk-wU-9UT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="E3W-1M-5RX"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="snapPhotoImageView" destination="WPX-je-50F" id="h4X-dL-JYK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JPf-hm-EPS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="133.125" y="165.8450704225352"/>
+        </scene>
+    </scenes>
+</document>

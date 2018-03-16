@@ -7,11 +7,11 @@
 //
 
 import Foundation
+import UIKit
 
 class SnapNShareHomePresenter {
 
     // MARK: Properties
-
     weak var view: SnapNShareHomeView?
     var router: SnapNShareHomeWireframe?
     var interactor: SnapNShareHomeUseCase?
@@ -21,7 +21,9 @@ class SnapNShareHomePresenter {
 }
 
 extension SnapNShareHomePresenter: SnapNShareHomePresentation {
-    // TODO: implement presentation methods
+    func gotoSnapNSharePhotoView(parent: UINavigationController, withPhoto photo: UIImage) {
+        router?.presentScreen(screen: .snapNSharePhoto(photo: photo, iparentController: parent))
+    }
 }
 
 extension SnapNShareHomePresenter: SnapNShareHomeInteractorOutput {
