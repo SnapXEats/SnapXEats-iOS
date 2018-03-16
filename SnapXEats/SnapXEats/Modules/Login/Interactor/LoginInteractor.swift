@@ -130,62 +130,10 @@ extension LoginInteractor {
             output?.response(result: NetworkResult.noInternet)
         }
     }
-}
-
-extension LoginInteractor {
-    
-    func sendInstagramRequest(request: URLRequest) -> Bool {
-        return  false //checkRechability() ? checkRequestForCallbackURL(request: request) : false
-    }
-    
-    func updateInstagramUserData(accessToken: String, instagramUser: InstagramUser, completionHandler: @escaping ()-> ()) {
-        sendInstagramUserInfo(path: SnapXEatsWebServicePath.snapXEatsUser, accessToken: accessToken, instagramUser: instagramUser, platform: SnapXEatsConstant.platFormInstagram) { [weak self] (result) in
-            switch result {
-            case .success(let data):
-                if let userInfo = data as? UserProfile, let serverID = userInfo.userInfo?.user_id, let serverToken = userInfo.userInfo?.token,
-                    let firstTimeUser = userInfo.userInfo?.first_time_login {
-                    SnapXEatsLoginHelper.shared.saveloginInfo(userId: instagramUser.id, firstTimeLogin: firstTimeUser, plateform: SnapXEatsConstant.platFormInstagram)
-                    SnapXEatsLoginHelper.shared.saveInstagramLoginData(serverToken: serverToken, serverID: serverID, instagram: instagramUser)
-                    self?.saveWishList(userInfo: userInfo)
-                    self?.sendUserPreferenceRequest(path: SnapXEatsWebServicePath.userPreferene, completionHandler: completionHandler)
-                }
-            case .noInternet:
-                completionHandler()
-                self?.output?.response(result: .noInternet)
-            default: break
-            }
-        }
-    }
     
     private func saveWishList(userInfo: UserProfile?) {
         if let list = userInfo?.userInfo?.wishList, list.count > 0 {
             FoodCardActionHelper.shared.addWishListWhenLogin(wishList: list)
-        }
-    }
-    
-    func getInstagramUserData(completionHandler: @escaping ()-> ()) {
-        let instagramApi = Instagram.shared
-        if checkRechability()  {
-            view?.showLoading()
-            instagramApi.user("self", success: { (instagram) in
-                if let accessToken = instagramApi.retrieveAccessToken() {
-                    self.updateInstagramUserData(accessToken: accessToken, instagramUser: instagram, completionHandler: completionHandler)
-                }
-            }) {[weak self](error) in
-                self?.output?.response(result: .noInternet)
-            }
-        }
-    }
-    
-    func sendInstagramUserInfo(path: String, accessToken: String, instagramUser: InstagramUser, platform: String, completionHandler: @escaping (_ result: NetworkResult) -> ()) {
-        let parameter:[String: String] = [SnapXEatsConstant.userLoginToken : accessToken,
-                                          SnapXEatsConstant.social_platform : platform,
-                                          SnapXEatsConstant.social_id: instagramUser.id
-            
-        ]
-        SnapXEatsApi.snapXPostRequestObjectWithParameters(path: path, parameters: parameter) { [weak self] (response: DataResponse<UserProfile>) in
-            let result = response.result
-            self?.sendUserInfoSuccess(data: result, completionHandler: completionHandler)
         }
     }
     
@@ -197,5 +145,4 @@ extension LoginInteractor {
             return true
         }
     }
-    
 }

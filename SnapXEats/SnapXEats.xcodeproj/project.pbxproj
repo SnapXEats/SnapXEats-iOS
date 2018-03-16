@@ -178,13 +178,17 @@
 		9D902BEC201736B500359DFD /* FoodCards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D902BEB201736B500359DFD /* FoodCards.storyboard */; };
 		9D955D2B2028A91A0007CB01 /* SnapXEatsUserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D955D2A2028A91A0007CB01 /* SnapXEatsUserLocation.swift */; };
 		9D9868D92023202B003E82F6 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9868D62023202B003E82F6 /* Restaurant.swift */; };
+		9DAF6F6A205AAA26003001B5 /* InstagramLoginContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAF6F61205AAA26003001B5 /* InstagramLoginContract.swift */; };
+		9DAF6F6B205AAA26003001B5 /* InstagramLoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAF6F63205AAA26003001B5 /* InstagramLoginPresenter.swift */; };
+		9DAF6F6C205AAA26003001B5 /* InstagramLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAF6F65205AAA26003001B5 /* InstagramLoginViewController.swift */; };
+		9DAF6F6D205AAA26003001B5 /* InstagramLoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAF6F67205AAA26003001B5 /* InstagramLoginInteractor.swift */; };
+		9DAF6F6E205AAA26003001B5 /* InstagramLoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAF6F69205AAA26003001B5 /* InstagramLoginRouter.swift */; };
 		9DB02A6E2010805F0061FC0C /* LocationContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB02A652010805F0061FC0C /* LocationContract.swift */; };
 		9DB02A6F2010805F0061FC0C /* LocationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB02A672010805F0061FC0C /* LocationPresenter.swift */; };
 		9DB02A702010805F0061FC0C /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB02A692010805F0061FC0C /* LocationViewController.swift */; };
 		9DB02A712010805F0061FC0C /* LocationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB02A6B2010805F0061FC0C /* LocationInteractor.swift */; };
 		9DB02A722010805F0061FC0C /* LocationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB02A6D2010805F0061FC0C /* LocationRouter.swift */; };
 		9DB02A76201084730061FC0C /* Location.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DB02A75201084730061FC0C /* Location.storyboard */; };
-		9DB7FE0B1FFFAC3800D0E816 /* InstagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7FE0A1FFFAC3800D0E816 /* InstagramViewController.swift */; };
 		9DB7FE0E2004BC9D00D0E816 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7FE0D2004BC9D00D0E816 /* Network.swift */; };
 		9DB7FE112004F0EE00D0E816 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7FE102004F0EE00D0E816 /* Alert.swift */; };
 		9DB7FE132005F96A00D0E816 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE122005F96A00D0E816 /* Assets.xcassets */; };
@@ -398,13 +402,17 @@
 		9D902BED20177EFF00359DFD /* SnapXEats.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SnapXEats.entitlements; sourceTree = "<group>"; };
 		9D955D2A2028A91A0007CB01 /* SnapXEatsUserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEatsUserLocation.swift; sourceTree = "<group>"; };
 		9D9868D62023202B003E82F6 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		9DAF6F61205AAA26003001B5 /* InstagramLoginContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramLoginContract.swift; sourceTree = "<group>"; };
+		9DAF6F63205AAA26003001B5 /* InstagramLoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramLoginPresenter.swift; sourceTree = "<group>"; };
+		9DAF6F65205AAA26003001B5 /* InstagramLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramLoginViewController.swift; sourceTree = "<group>"; };
+		9DAF6F67205AAA26003001B5 /* InstagramLoginInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramLoginInteractor.swift; sourceTree = "<group>"; };
+		9DAF6F69205AAA26003001B5 /* InstagramLoginRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramLoginRouter.swift; sourceTree = "<group>"; };
 		9DB02A652010805F0061FC0C /* LocationContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationContract.swift; sourceTree = "<group>"; };
 		9DB02A672010805F0061FC0C /* LocationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPresenter.swift; sourceTree = "<group>"; };
 		9DB02A692010805F0061FC0C /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		9DB02A6B2010805F0061FC0C /* LocationInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationInteractor.swift; sourceTree = "<group>"; };
 		9DB02A6D2010805F0061FC0C /* LocationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationRouter.swift; sourceTree = "<group>"; };
 		9DB02A75201084730061FC0C /* Location.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Location.storyboard; sourceTree = "<group>"; };
-		9DB7FE0A1FFFAC3800D0E816 /* InstagramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramViewController.swift; sourceTree = "<group>"; };
 		9DB7FE0D2004BC9D00D0E816 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		9DB7FE102004F0EE00D0E816 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		9DB7FE122005F96A00D0E816 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -1321,6 +1329,7 @@
 			isa = PBXGroup;
 			children = (
 				9D8E88C01FFD28C50066A1D9 /* Login */,
+				9DAF6F5F205AAA26003001B5 /* InstagramLogin */,
 				9DB02A632010805F0061FC0C /* Location */,
 				9D902BD9201729E300359DFD /* SelectLocation */,
 				9D902BBE20171AED00359DFD /* FoodCards */,
@@ -1372,7 +1381,6 @@
 			children = (
 				9D8E88C61FFD28C50066A1D9 /* Login.storyboard */,
 				9D8E88C71FFD28C50066A1D9 /* LoginViewController.swift */,
-				9DB7FE0A1FFFAC3800D0E816 /* InstagramViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1605,6 +1613,59 @@
 				9D9868D62023202B003E82F6 /* Restaurant.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		9DAF6F5F205AAA26003001B5 /* InstagramLogin */ = {
+			isa = PBXGroup;
+			children = (
+				9DAF6F60205AAA26003001B5 /* Contract */,
+				9DAF6F62205AAA26003001B5 /* Presenter */,
+				9DAF6F64205AAA26003001B5 /* View */,
+				9DAF6F66205AAA26003001B5 /* Interactor */,
+				9DAF6F68205AAA26003001B5 /* Router */,
+			);
+			name = InstagramLogin;
+			path = SnapXEats/Modules/InstagramLogin;
+			sourceTree = SOURCE_ROOT;
+		};
+		9DAF6F60205AAA26003001B5 /* Contract */ = {
+			isa = PBXGroup;
+			children = (
+				9DAF6F61205AAA26003001B5 /* InstagramLoginContract.swift */,
+			);
+			path = Contract;
+			sourceTree = "<group>";
+		};
+		9DAF6F62205AAA26003001B5 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				9DAF6F63205AAA26003001B5 /* InstagramLoginPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		9DAF6F64205AAA26003001B5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9DAF6F65205AAA26003001B5 /* InstagramLoginViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9DAF6F66205AAA26003001B5 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				9DAF6F67205AAA26003001B5 /* InstagramLoginInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		9DAF6F68205AAA26003001B5 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				9DAF6F69205AAA26003001B5 /* InstagramLoginRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		9DB02A632010805F0061FC0C /* Location */ = {
@@ -2011,7 +2072,6 @@
 				7E5E7FF4203C312400009A56 /* RestaurantDetails.swift in Sources */,
 				7E5E7FDD203AF7EE00009A56 /* FullScreenSlideshowViewController.swift in Sources */,
 				9D902BE4201729E400359DFD /* SelectLocationContract.swift in Sources */,
-				9DB7FE0B1FFFAC3800D0E816 /* InstagramViewController.swift in Sources */,
 				9D8E88EE1FFD2BEC0066A1D9 /* LoginInteractor.swift in Sources */,
 				7E2C64BD2044253400DAB44A /* NavigationMenuTableViewCell.swift in Sources */,
 				9D0D713C203AAE1F0077FA7A /* RestaurantDetailsRouter.swift in Sources */,
@@ -2076,6 +2136,7 @@
 				9D0D7150203D99A80077FA7A /* FoodAndCuisinePreferenceContract.swift in Sources */,
 				9DE7CE512023620500BBBFEC /* UserPreferenceContract.swift in Sources */,
 				9D8E88FB1FFD2BEC0066A1D9 /* UICollectionView.swift in Sources */,
+				9DAF6F6E205AAA26003001B5 /* InstagramLoginRouter.swift in Sources */,
 				7E5E7FE0203AF7EE00009A56 /* InputSource.swift in Sources */,
 				9DDC3AEC2035553600A7F181 /* SnapXEatsLoginHelper.swift in Sources */,
 				9D8E88FC1FFD2BEC0066A1D9 /* DataResponse.swift in Sources */,
@@ -2091,6 +2152,7 @@
 				9D8E88FF1FFD2BEC0066A1D9 /* UITableViewCell.swift in Sources */,
 				9D8E89001FFD2BEC0066A1D9 /* String.swift in Sources */,
 				7E71FC072022CCAD00CA8467 /* KYDrawerController.swift in Sources */,
+				9DAF6F6A205AAA26003001B5 /* InstagramLoginContract.swift in Sources */,
 				9D8E89011FFD2BEC0066A1D9 /* UIViewController.swift in Sources */,
 				7E539B7620593A01002C3E55 /* SnapNShareHomeViewController.swift in Sources */,
 				9D0D713B203AAE1F0077FA7A /* RestaurantDetailsInteractor.swift in Sources */,
@@ -2103,6 +2165,7 @@
 				7E673B19204961C9005D19DC /* WishlistPresenter.swift in Sources */,
 				7E673B13204961C9005D19DC /* WishlistInteractor.swift in Sources */,
 				9DB02A722010805F0061FC0C /* LocationRouter.swift in Sources */,
+				9DAF6F6B205AAA26003001B5 /* InstagramLoginPresenter.swift in Sources */,
 				9D0498D82052BEF300BD4EDB /* StoredUserPreference.swift in Sources */,
 				9D0D7161203F144F0077FA7A /* DrawerInteractor.swift in Sources */,
 				9D8E89031FFD2BEC0066A1D9 /* Double.swift in Sources */,
@@ -2122,6 +2185,7 @@
 				7E791F122032B4A500FA887D /* FoodAndCuisinePreferencesViewController.swift in Sources */,
 				7E491D22204E920E004445E2 /* RestaurantsMapViewInteractor.swift in Sources */,
 				7E539B7220593A01002C3E55 /* SnapNShareHomeContract.swift in Sources */,
+				9DAF6F6C205AAA26003001B5 /* InstagramLoginViewController.swift in Sources */,
 				9D8E89081FFD2BEC0066A1D9 /* RoundedTextField.swift in Sources */,
 				9D902BCB20171AED00359DFD /* FoodCardsViewController.swift in Sources */,
 				9D0D713A203AAE1F0077FA7A /* RestaurantDetailsViewController.swift in Sources */,
@@ -2129,6 +2193,7 @@
 				9D8E89091FFD2BEC0066A1D9 /* RoundedPinkButton.swift in Sources */,
 				9D0D714F203D99A80077FA7A /* FoodAndCuisinePreferencePresenter.swift in Sources */,
 				7E491D24204E920E004445E2 /* RestaurantsMapViewRouter.swift in Sources */,
+				9DAF6F6D205AAA26003001B5 /* InstagramLoginInteractor.swift in Sources */,
 				9D8E890A1FFD2BEC0066A1D9 /* SimpleCircle.swift in Sources */,
 				7E5E7FE1203AF7EE00009A56 /* UIImage+AspectFit.swift in Sources */,
 				7E539BAC205A522E002C3E55 /* SnapNSharePhotoPresenter.swift in Sources */,

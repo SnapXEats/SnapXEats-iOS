@@ -16,15 +16,15 @@ class FoodCardsRouter {
     weak var view: UIViewController?
     private init() {}
     // MARK: Static methods
-    static let singleInstance = FoodCardsRouter()
+    static let shared = FoodCardsRouter()
     
      func loadFoodCardModule() -> FoodCardsViewController {
         
         let viewController = UIStoryboard.loadViewController() as FoodCardsViewController
         
-        let presenter = FoodCardsPresenter.singleInstance
-        let router = FoodCardsRouter.singleInstance
-        let interactor = FoodCardsInteractor.singleInstance
+        let presenter = FoodCardsPresenter.shared
+        let router = FoodCardsRouter.shared
+        let interactor = FoodCardsInteractor.shared
 
         viewController.presenter =  presenter
 

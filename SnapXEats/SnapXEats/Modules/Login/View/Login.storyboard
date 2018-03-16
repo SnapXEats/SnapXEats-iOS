@@ -121,10 +121,10 @@
             </objects>
             <point key="canvasLocation" x="-655.20000000000005" y="-142.57871064467767"/>
         </scene>
-        <!--Instagram View Controller-->
+        <!--Instagram Login View Controller-->
         <scene sceneID="tOf-az-WL5">
             <objects>
-                <viewController storyboardIdentifier="InstagramViewController" id="hWB-Zl-iHy" customClass="InstagramViewController" customModule="SnapXEats" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InstagramViewController" id="hWB-Zl-iHy" customClass="InstagramLoginViewController" customModule="SnapXEats" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jiv-Zm-y6f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

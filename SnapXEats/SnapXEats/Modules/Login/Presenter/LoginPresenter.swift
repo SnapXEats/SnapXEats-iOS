@@ -19,31 +19,18 @@ class LoginPresenter {
 }
 
 extension LoginPresenter: LoginViewPresentation {
-    func loginUsingFaceBook() {
-        interactor?.sendFaceBookLoginRequest(view: view)
+
+    func loginUsingInstagram() {
+        router?.presentScreen(screen: .instagram)
     }
     
-    func loginUsingInstagram() {
-        if  let interact = interactor, interact.checkRechability() == true {
-            router?.presentScreen(screen: .instagram)
-        }
+    func loginUsingFaceBook() {
+        interactor?.sendFaceBookLoginRequest(view: view)
     }
     
     func skipUserLogin() {
         presentFirstTimeUserScreen()
     }
-    
-    func showLocationScreen() {
-        removeInstagramWebView()
-        presentLocationScreen()
-    }
-    func setView(view: LoginView) {
-        self.view = view
-        baseView = view
-    }
-
-    //TODO: Implement other methods from presenter->view here
-    
 }
 
 extension LoginPresenter: LoginViewInteractorOutput {
@@ -77,21 +64,4 @@ extension LoginPresenter: LoginViewInteractorOutput {
         router?.presentScreen(screen: .location)
     }
     //TODO: Implement other methods from interactor->presenter here
-}
-
-extension LoginPresenter: LoginViewPresentationInstagram {
-    func instagramLoginRequest(request: URLRequest) -> Bool {
-        guard let interactor = interactor else {
-            return false
-        }
-        return interactor.sendInstagramRequest(request: request)
-    }
-    
-    func removeInstagramWebView() {
-         router?.presentScreen(screen: .firstScreen)
-    }
-    
-    func getInstagramUserData(completionHandler: @escaping ()-> ()) {
-        interactor?.getInstagramUserData(completionHandler: completionHandler)
-    }
 }
