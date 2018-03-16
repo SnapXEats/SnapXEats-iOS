@@ -63,7 +63,7 @@ class RootRouter: NSObject {
     }
     
     private func presentLoginInstagramScreen() {
-        let  instagramViewController = LoginRouter.singletenInstance.loadInstagramView() as! InstagramViewController
+        let  instagramViewController = InstagramLoginRouter.shared.loadInstagramView() as! InstagramLoginViewController
         window?.rootViewController?.present(instagramViewController, animated: true, completion: nil)
     }
     

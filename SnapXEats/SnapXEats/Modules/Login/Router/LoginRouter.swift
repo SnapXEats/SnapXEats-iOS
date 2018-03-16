@@ -26,14 +26,9 @@ extension LoginRouter: LoginViewWireframe {
         return viewController
     }
     
-    func loadInstagramView() -> LoginView {
-        return initInstagramView()
-    }
-    
     private  func initView(viewController: LoginView) {
         let presenter = LoginPresenter.singletenInstance
         viewController.presenter =  presenter
-        presenter.setView(view: viewController)
         let router = LoginRouter.singletenInstance
         let interactor = LoginInteractor.singletenInstance
         presenter.router = router
@@ -41,11 +36,5 @@ extension LoginRouter: LoginViewWireframe {
         //router.view = viewController
         interactor.output = presenter
         interactor.view = viewController
-    }
-    
-    private func initInstagramView() -> LoginView {
-        let viewController = UIStoryboard.loadViewControler(storyBoardName: SnapXEatsStoryboard.loginStoryboard, storyBoardId: SnapXEatsStoryboardIdentifier.instagramViewControllerID) as! InstagramViewController
-        initView(viewController: viewController)
-        return viewController
     }
 }

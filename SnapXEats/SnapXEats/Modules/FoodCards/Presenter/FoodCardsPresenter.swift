@@ -17,7 +17,7 @@ class FoodCardsPresenter {
     var interactor: FoodCardsRequestFomatter?
     
     private init() {}
-    static let singleInstance = FoodCardsPresenter()
+    static let shared = FoodCardsPresenter()
 }
 
 extension FoodCardsPresenter: FoodCardsPresentation {

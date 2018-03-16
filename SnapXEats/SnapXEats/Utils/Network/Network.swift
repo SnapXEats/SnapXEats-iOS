@@ -8,6 +8,15 @@
 
 import Foundation
 
+enum ServerErrorCode  {
+    static let timeOut = -1001  // TIMED OUT:
+    static let serverCanFound = -1003  // SERVER CANNOT BE FOUND
+    static let urlNotFoundONServer = -1100  // URL NOT FOUND ON SERVER
+    static let noInternetConnection = -1009  // No Internet connection
+    static let loadingFiled = -999 // HTTP load failed
+    
+}
+
 enum NetworkResult {
     case noInternet
     case error

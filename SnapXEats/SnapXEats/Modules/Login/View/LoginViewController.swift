@@ -22,13 +22,11 @@ class LoginViewController: BaseViewController, StoryboardLoadable, LoginView {
 
     @IBOutlet weak var buildLabel: UILabel!
     @IBAction func loginUsinInstagram(_ sender: Any) {
-        presenter?.setView(view: self)  // keep the view as current view
         presenter?.loginUsingInstagram()
     }
     
     // Once the button is clicked, show the login dialog
     @IBAction func fbLoginClicked(_ sender: Any) {
-        presenter?.setView(view: self)
         presenter?.loginUsingFaceBook()
     }
     
