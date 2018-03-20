@@ -77,7 +77,7 @@ class RootRouter: NSObject {
     
     private func pushFoodcardsScreen(selectedPreference: SelectedPreference, onNavigationController parentController: UINavigationController) {
         
-        let foodCardVC = FoodCardsRouter.singleInstance.loadFoodCardModule()
+        let foodCardVC = FoodCardsRouter.shared.loadFoodCardModule()
         foodCardVC.selectedPrefernce = selectedPreference
         parentController.pushViewController(foodCardVC, animated: true)
     }

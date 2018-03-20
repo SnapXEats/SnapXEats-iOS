@@ -16,7 +16,7 @@ protocol LoginViewPresentation {
 }
 
 protocol LoginViewInteractorInput: class {
-    func sendFaceBookLoginRequest(view: LoginView?)
+    func sendFaceBookLoginRequest(view: BaseView?)
 }
 
 protocol LoginViewInteractorOutput: class, Response {

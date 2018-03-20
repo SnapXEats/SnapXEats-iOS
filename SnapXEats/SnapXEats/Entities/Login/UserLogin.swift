@@ -7,16 +7,6 @@
 //
 
 import Foundation
-
-//
-//  File.swift
-//  SnapXEats
-//
-//  Created by Durgesh Trivedi on 15/02/18.
-//  Copyright © 2018 SnapXEats. All rights reserved.
-//
-
-import Foundation
 import RealmSwift
 
 class UserLogin: Object {

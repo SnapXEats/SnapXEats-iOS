@@ -118,6 +118,8 @@
 		9D0D715F203F144F0077FA7A /* DrawerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D7157203F144E0077FA7A /* DrawerPresenter.swift */; };
 		9D0D7161203F144F0077FA7A /* DrawerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D715B203F144E0077FA7A /* DrawerInteractor.swift */; };
 		9D0D7162203F144F0077FA7A /* DrawerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D715D203F144E0077FA7A /* DrawerRouter.swift */; };
+		9D1C33E0205FAAC100B4F69D /* SecondSocialLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C33DF205FAAC100B4F69D /* SecondSocialLogin.swift */; };
+		9D1C33E2205FAD1B00B4F69D /* SocialPlatformHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C33E1205FAD1B00B4F69D /* SocialPlatformHelper.swift */; };
 		9D2C484D202073A700FD8B1C /* SelectedPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C484C202073A700FD8B1C /* SelectedPreference.swift */; };
 		9D3D1CE02006479500AAAB95 /* SnapXConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3D1CDF2006479500AAAB95 /* SnapXConstants.swift */; };
 		9D3FC4D82011C94A001A4264 /* CuisinePreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3FC4D72011C94A001A4264 /* CuisinePreference.swift */; };
@@ -333,6 +335,8 @@
 		9D0D7157203F144E0077FA7A /* DrawerPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerPresenter.swift; sourceTree = "<group>"; };
 		9D0D715B203F144E0077FA7A /* DrawerInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerInteractor.swift; sourceTree = "<group>"; };
 		9D0D715D203F144E0077FA7A /* DrawerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerRouter.swift; sourceTree = "<group>"; };
+		9D1C33DF205FAAC100B4F69D /* SecondSocialLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSocialLogin.swift; sourceTree = "<group>"; };
+		9D1C33E1205FAD1B00B4F69D /* SocialPlatformHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialPlatformHelper.swift; sourceTree = "<group>"; };
 		9D2C484C202073A700FD8B1C /* SelectedPreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedPreference.swift; sourceTree = "<group>"; };
 		9D3D1CDF2006479500AAAB95 /* SnapXConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXConstants.swift; sourceTree = "<group>"; };
 		9D3FC4D72011C94A001A4264 /* CuisinePreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisinePreference.swift; sourceTree = "<group>"; };
@@ -640,10 +644,10 @@
 			isa = PBXGroup;
 			children = (
 				7E539BC4205BA323002C3E55 /* Contract */,
-				7E539BC6205BA323002C3E55 /* Interactor */,
 				7E539BC8205BA323002C3E55 /* Presenter */,
-				7E539BCA205BA323002C3E55 /* Router */,
 				7E539BCC205BA323002C3E55 /* View */,
+				7E539BC6205BA323002C3E55 /* Interactor */,
+				7E539BCA205BA323002C3E55 /* Router */,
 			);
 			path = SnapNShareSocialMedia;
 			sourceTree = "<group>";
@@ -683,8 +687,8 @@
 		7E539BCC205BA323002C3E55 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7E539BCD205BA323002C3E55 /* SnapNShareSocialMediaViewController.swift */,
 				7E539BD3205BA380002C3E55 /* SnapNShareSocialMedia.storyboard */,
+				7E539BCD205BA323002C3E55 /* SnapNShareSocialMediaViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1310,6 +1314,7 @@
 				9DDC3AEB2035553600A7F181 /* SnapXEatsLoginHelper.swift */,
 				9D0D713F203C633B0077FA7A /* PreferenceHelper.swift */,
 				7E9394EB204456F900A80387 /* FoodCardActionHelper.swift */,
+				9D1C33E1205FAD1B00B4F69D /* SocialPlatformHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1752,6 +1757,7 @@
 			isa = PBXGroup;
 			children = (
 				9D0D712B203859C80077FA7A /* UserLogin.swift */,
+				9D1C33DF205FAAC100B4F69D /* SecondSocialLogin.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -2206,10 +2212,12 @@
 				9DE7CE552023620500BBBFEC /* UserPreferenceRouter.swift in Sources */,
 				9DB02A702010805F0061FC0C /* LocationViewController.swift in Sources */,
 				9DB7FE0E2004BC9D00D0E816 /* Network.swift in Sources */,
+				9D1C33E2205FAD1B00B4F69D /* SocialPlatformHelper.swift in Sources */,
 				7EC5014720469A2C00D44E92 /* RestaurantDirectionsPresenter.swift in Sources */,
 				9D8E89111FFD2BEC0066A1D9 /* StoryboardLoadable.swift in Sources */,
 				9D8E89121FFD2BEC0066A1D9 /* NibLoadableView.swift in Sources */,
 				9D902BCD20171AED00359DFD /* FoodCardsRouter.swift in Sources */,
+				9D1C33E0205FAAC100B4F69D /* SecondSocialLogin.swift in Sources */,
 				9D8E89131FFD2BEC0066A1D9 /* ReusableView.swift in Sources */,
 				7E791F182032CAB800FA887D /* PreferenceTypeCollectionViewCell.swift in Sources */,
 				9D3FC4D82011C94A001A4264 /* CuisinePreference.swift in Sources */,

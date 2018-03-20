@@ -15,8 +15,6 @@ import SwiftInstagram
 
 class LoginInteractor {
     
-    // MARK: Properties
-    var view : LoginView?
     var output: LoginViewInteractorOutput?
     private init() {}
     static  var  singletenInstance = LoginInteractor()
@@ -25,7 +23,7 @@ class LoginInteractor {
 
 extension LoginInteractor: LoginViewInteractorInput {
     
-    func sendFaceBookLoginRequest(view: LoginView?) {
+    func sendFaceBookLoginRequest(view: BaseView?) {
         if  let view = view as? LoginViewController, checkRechability() {
             let loginManager = LoginManager()
            
@@ -36,7 +34,7 @@ extension LoginInteractor: LoginViewInteractorInput {
                 case .cancelled:
                     self?.output?.response(result: NetworkResult.cancelRequest)
                 case .success( _, _, let accessToken):
-                    self?.view?.showLoading()
+                    view.showLoading()
                     self?.updateLoginUserData(accessToken: accessToken)
                 }
             }

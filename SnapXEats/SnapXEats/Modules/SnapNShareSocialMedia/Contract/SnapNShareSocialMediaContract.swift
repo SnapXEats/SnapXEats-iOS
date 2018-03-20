@@ -8,22 +8,27 @@
 
 import Foundation
 
-protocol SnapNShareSocialMediaView: class, BaseView {
+protocol SnapNShareSocialMediaView: BaseView {
     // TODO: Declare view methods
 }
 
 protocol SnapNShareSocialMediaPresentation: class {
-    // TODO: Declare presentation methods
+    func presentScreen(screen: Screens)
+    func loginUsingFaceBook()
 }
 
-protocol SnapNShareSocialMediaUseCase: class {
-    // TODO: Declare use case methods
+protocol SnapNShareSocialMediaUseCase: SnapNShareSocialMediaInPut {
+    
 }
 
-protocol SnapNShareSocialMediaInteractorOutput: class {
+protocol SnapNShareSocialMediaInPut: class {
+   func sendFaceBookLoginRequest(view: BaseView?)
+}
+
+protocol SnapNShareSocialMediaInteractorOutput: Response {
     // TODO: Declare interactor output methods
 }
 
-protocol SnapNShareSocialMediaWireframe: class {
+protocol SnapNShareSocialMediaWireframe: RootWireFrame {
     // TODO: Declare wireframe methods
 }

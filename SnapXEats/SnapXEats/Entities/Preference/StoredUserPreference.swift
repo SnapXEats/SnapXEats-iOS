@@ -36,7 +36,7 @@ class StoredUserPreference: Mappable {
 
     var ratingPreference = 0
     var pricingPreference = 0
-    var distancePreference = 0
+    var distancePreference = 1 // default is 1 else it will crash app 
     var sort_by_distance = false
     var sort_by_rating = false
     
