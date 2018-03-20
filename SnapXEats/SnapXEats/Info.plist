@@ -81,7 +81,9 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>SnapXEats want to use your location to show cuisine based on your preferences</string>
 	<key>NSCameraUsageDescription</key>
-	<string>SnapXEats want to use your Camera to take SnapNShare Photos</string>
+	<string>SnapXEats want to use your Camera to take Snap n Share Photos</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>SnapXEats want to use your Microphone to record Snap n Share Audio Review</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Roboto-Light.ttf</string>

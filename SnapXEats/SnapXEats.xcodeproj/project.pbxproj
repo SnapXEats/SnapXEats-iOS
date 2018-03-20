@@ -12,6 +12,9 @@
 		7E2C64BD2044253400DAB44A /* NavigationMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C64BA2044253400DAB44A /* NavigationMenuTableViewCell.swift */; };
 		7E2C64BE2044253400DAB44A /* NavigationMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E2C64BB2044253400DAB44A /* NavigationMenuTableViewCell.xib */; };
 		7E2C64BF2044253400DAB44A /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C64BC2044253400DAB44A /* DrawerViewController.swift */; };
+		7E389705205F86F1005E248F /* AudioRecordingPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E389704205F86F1005E248F /* AudioRecordingPopUp.swift */; };
+		7E389707205F8703005E248F /* AudioRecordingPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E389706205F8703005E248F /* AudioRecordingPopUp.xib */; };
+		7E389709205FCBA6005E248F /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E389708205FCBA6005E248F /* FileManager.swift */; };
 		7E491D21204E920E004445E2 /* RestaurantsMapViewContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E491D18204E920E004445E2 /* RestaurantsMapViewContract.swift */; };
 		7E491D22204E920E004445E2 /* RestaurantsMapViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E491D1A204E920E004445E2 /* RestaurantsMapViewInteractor.swift */; };
 		7E491D23204E920E004445E2 /* RestaurantsMapViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E491D1C204E920E004445E2 /* RestaurantsMapViewPresenter.swift */; };
@@ -37,6 +40,7 @@
 		7E539BD1205BA323002C3E55 /* SnapNShareSocialMediaRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E539BCB205BA323002C3E55 /* SnapNShareSocialMediaRouter.swift */; };
 		7E539BD2205BA323002C3E55 /* SnapNShareSocialMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E539BCD205BA323002C3E55 /* SnapNShareSocialMediaViewController.swift */; };
 		7E539BD4205BA380002C3E55 /* SnapNShareSocialMedia.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E539BD3205BA380002C3E55 /* SnapNShareSocialMedia.storyboard */; };
+		7E555A552060E7FE00B95F09 /* UIButton+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E555A542060E7FE00B95F09 /* UIButton+Helper.swift */; };
 		7E5946972020BD02006702AF /* SearchPlacesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5946952020BD02006702AF /* SearchPlacesTableViewCell.swift */; };
 		7E5946982020BD02006702AF /* SearchPlacesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5946962020BD02006702AF /* SearchPlacesTableViewCell.xib */; };
 		7E5C057E2017A6DC000B5C33 /* SavedLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5C057C2017A6DC000B5C33 /* SavedLocationTableViewCell.swift */; };
@@ -222,6 +226,9 @@
 		7E2C64BA2044253400DAB44A /* NavigationMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationMenuTableViewCell.swift; sourceTree = "<group>"; };
 		7E2C64BB2044253400DAB44A /* NavigationMenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationMenuTableViewCell.xib; sourceTree = "<group>"; };
 		7E2C64BC2044253400DAB44A /* DrawerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
+		7E389704205F86F1005E248F /* AudioRecordingPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecordingPopUp.swift; sourceTree = "<group>"; };
+		7E389706205F8703005E248F /* AudioRecordingPopUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioRecordingPopUp.xib; sourceTree = "<group>"; };
+		7E389708205FCBA6005E248F /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		7E491D18204E920E004445E2 /* RestaurantsMapViewContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantsMapViewContract.swift; sourceTree = "<group>"; };
 		7E491D1A204E920E004445E2 /* RestaurantsMapViewInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantsMapViewInteractor.swift; sourceTree = "<group>"; };
 		7E491D1C204E920E004445E2 /* RestaurantsMapViewPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantsMapViewPresenter.swift; sourceTree = "<group>"; };
@@ -247,6 +254,7 @@
 		7E539BCB205BA323002C3E55 /* SnapNShareSocialMediaRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapNShareSocialMediaRouter.swift; sourceTree = "<group>"; };
 		7E539BCD205BA323002C3E55 /* SnapNShareSocialMediaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapNShareSocialMediaViewController.swift; sourceTree = "<group>"; };
 		7E539BD3205BA380002C3E55 /* SnapNShareSocialMedia.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SnapNShareSocialMedia.storyboard; sourceTree = "<group>"; };
+		7E555A542060E7FE00B95F09 /* UIButton+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Helper.swift"; sourceTree = "<group>"; };
 		7E5946952020BD02006702AF /* SearchPlacesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlacesTableViewCell.swift; sourceTree = "<group>"; };
 		7E5946962020BD02006702AF /* SearchPlacesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchPlacesTableViewCell.xib; sourceTree = "<group>"; };
 		7E5C057C2017A6DC000B5C33 /* SavedLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationTableViewCell.swift; sourceTree = "<group>"; };
@@ -468,6 +476,15 @@
 			path = TableviewCells;
 			sourceTree = "<group>";
 		};
+		7E389703205F86B5005E248F /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				7E389704205F86F1005E248F /* AudioRecordingPopUp.swift */,
+				7E389706205F8703005E248F /* AudioRecordingPopUp.xib */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
 		7E491D16204E920E004445E2 /* RestaurantsMapView */ = {
 			isa = PBXGroup;
 			children = (
@@ -622,6 +639,7 @@
 		7E539BA8205A522D002C3E55 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7E389703205F86B5005E248F /* Custom Views */,
 				7E539BA9205A522D002C3E55 /* SnapNSharePhotoViewController.swift */,
 				7E539BAF205A5268002C3E55 /* SnapNSharePhoto.storyboard */,
 			);
@@ -1169,6 +1187,7 @@
 				9D8E88B41FFD28C50066A1D9 /* Protocols */,
 				9D8E88B81FFD28C50066A1D9 /* Helpers */,
 				7E8397452045713B00E71C6D /* DateFormatters.swift */,
+				7E389708205FCBA6005E248F /* FileManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1212,6 +1231,7 @@
 				7E5C058420186846000B5C33 /* UISearchbar+helper.swift */,
 				7E5E8010203D9AD700009A56 /* Date+Helpers.swift */,
 				7E5328B720526FA20043539D /* NSMutableAttributedString+Helper.swift */,
+				7E555A542060E7FE00B95F09 /* UIButton+Helper.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1870,6 +1890,7 @@
 				7EAC8612201A067A00DE162A /* FoodCardView.xib in Resources */,
 				7E0CBBB5202435E4009E56AE /* UserPreference.storyboard in Resources */,
 				7EC5014B20469AE500D44E92 /* RestaurantDirections.storyboard in Resources */,
+				7E389707205F8703005E248F /* AudioRecordingPopUp.xib in Resources */,
 				9D3FC4DC2011E34D001A4264 /* CuisineCollectionViewCell.xib in Resources */,
 				9DEB5CF71FFE6D49003B9D4B /* FlashScreen.storyboard in Resources */,
 				7E5C057F2017A6DC000B5C33 /* SavedLocationTableViewCell.xib in Resources */,
@@ -1923,6 +1944,8 @@
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftInstagram/SwiftInstagram.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyStarRatingView/SwiftyStarRatingView.framework",
+				"${BUILT_PRODUCTS_DIR}/TPKeyboardAvoiding/TPKeyboardAvoiding.framework",
 				"${BUILT_PRODUCTS_DIR}/UIColor_Hex_Swift/UIColor_Hex_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 			);
@@ -1948,6 +1971,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftInstagram.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyStarRatingView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TPKeyboardAvoiding.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIColor_Hex_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 			);
@@ -1996,6 +2021,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E555A552060E7FE00B95F09 /* UIButton+Helper.swift in Sources */,
 				9D8E89161FFD2C400066A1D9 /* RootRouter.swift in Sources */,
 				7E5E7FE9203AF8A000009A56 /* AlamofireSource.swift in Sources */,
 				7E791F1C2032D8D600FA887D /* PreferenceItem.swift in Sources */,
@@ -2023,6 +2049,7 @@
 				7E9394EC204456F900A80387 /* FoodCardActionHelper.swift in Sources */,
 				7E5328B820526FA20043539D /* NSMutableAttributedString+Helper.swift in Sources */,
 				7E539B7520593A01002C3E55 /* SnapNShareHomeRouter.swift in Sources */,
+				7E389705205F86F1005E248F /* AudioRecordingPopUp.swift in Sources */,
 				9D0D714E203D99A80077FA7A /* FoodAndCuisinePreferenceRouter.swift in Sources */,
 				7E6FD41C2020A00F0058BFB8 /* SearchPlacePredictions.swift in Sources */,
 				7E539BD2205BA323002C3E55 /* SnapNShareSocialMediaViewController.swift in Sources */,
@@ -2130,6 +2157,7 @@
 				9D0D714F203D99A80077FA7A /* FoodAndCuisinePreferencePresenter.swift in Sources */,
 				7E491D24204E920E004445E2 /* RestaurantsMapViewRouter.swift in Sources */,
 				9D8E890A1FFD2BEC0066A1D9 /* SimpleCircle.swift in Sources */,
+				7E389709205FCBA6005E248F /* FileManager.swift in Sources */,
 				7E5E7FE1203AF7EE00009A56 /* UIImage+AspectFit.swift in Sources */,
 				7E539BAC205A522E002C3E55 /* SnapNSharePhotoPresenter.swift in Sources */,
 				9D8E890B1FFD2BEC0066A1D9 /* PlainButtonCell.swift in Sources */,

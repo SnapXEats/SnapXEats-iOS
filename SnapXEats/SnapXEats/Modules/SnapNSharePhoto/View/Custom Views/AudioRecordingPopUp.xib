@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+        <array key="roboto.bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AudioRecordingPopUp" customModule="SnapXEats" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s6b-x5-OC3">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Udx-ss-f4F">
+                    <rect key="frame" x="35" y="129" width="250" height="310"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADD AUDIO REVIEW" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVF-vK-dXk">
+                            <rect key="frame" x="57" y="30" width="136" height="20"/>
+                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
+                            <color key="textColor" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jD4-oq-qCs">
+                            <rect key="frame" x="88.5" y="80" width="73" height="73"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="73" id="mhn-7h-9jc"/>
+                                <constraint firstAttribute="height" constant="73" id="zUc-L8-ZEx"/>
+                            </constraints>
+                            <state key="normal" image="play_popup_icon"/>
+                            <connections>
+                                <action selector="recordingStartAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="7k7-sc-dFh"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="teb-fc-QYH">
+                            <rect key="frame" x="107" y="166" width="36" height="18.5"/>
+                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
+                            <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VFk-ja-Jw5">
+                            <rect key="frame" x="61" y="214.5" width="128" height="43"/>
+                            <color key="backgroundColor" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="128" id="9l9-gi-LGg"/>
+                                <constraint firstAttribute="height" constant="43" id="wfz-sv-W1h"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="13"/>
+                            <state key="normal" title="Done">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="recordingDoneAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="xwV-kZ-khV"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7jR-eX-sia">
+                            <rect key="frame" x="87" y="262" width="76" height="28"/>
+                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                            <state key="normal" title="Delete Review">
+                                <color key="titleColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="deleteReviewButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="MmK-yC-FnF"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="VFk-ja-Jw5" firstAttribute="centerX" secondItem="Udx-ss-f4F" secondAttribute="centerX" id="2ss-6A-CRU"/>
+                        <constraint firstItem="jD4-oq-qCs" firstAttribute="top" secondItem="CVF-vK-dXk" secondAttribute="bottom" constant="30" id="IS4-JQ-whf"/>
+                        <constraint firstAttribute="height" constant="310" id="JGO-mz-iMt"/>
+                        <constraint firstAttribute="bottom" secondItem="7jR-eX-sia" secondAttribute="bottom" constant="20" id="Oev-SO-HnE"/>
+                        <constraint firstItem="CVF-vK-dXk" firstAttribute="top" secondItem="Udx-ss-f4F" secondAttribute="top" constant="30" id="QlW-Va-kqt"/>
+                        <constraint firstItem="teb-fc-QYH" firstAttribute="centerX" secondItem="Udx-ss-f4F" secondAttribute="centerX" id="Sc8-Qy-3GI"/>
+                        <constraint firstItem="7jR-eX-sia" firstAttribute="centerX" secondItem="Udx-ss-f4F" secondAttribute="centerX" id="YRq-MT-SFN"/>
+                        <constraint firstItem="CVF-vK-dXk" firstAttribute="centerX" secondItem="Udx-ss-f4F" secondAttribute="centerX" id="eJL-UL-3zP"/>
+                        <constraint firstItem="VFk-ja-Jw5" firstAttribute="top" secondItem="teb-fc-QYH" secondAttribute="bottom" constant="30" id="fme-cz-J8i"/>
+                        <constraint firstItem="jD4-oq-qCs" firstAttribute="centerX" secondItem="Udx-ss-f4F" secondAttribute="centerX" id="twX-gn-BHW"/>
+                        <constraint firstItem="teb-fc-QYH" firstAttribute="top" secondItem="jD4-oq-qCs" secondAttribute="bottom" constant="13" id="xJv-nv-lu2"/>
+                        <constraint firstAttribute="width" constant="250" id="xSp-Cy-pHs"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="s6b-x5-OC3" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="CcZ-Gd-npZ"/>
+                <constraint firstItem="Udx-ss-f4F" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="XLY-vB-XiX"/>
+                <constraint firstItem="s6b-x5-OC3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="rPJ-fg-tGe"/>
+                <constraint firstItem="s6b-x5-OC3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="sgS-ns-Br0"/>
+                <constraint firstItem="Udx-ss-f4F" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="xEt-iO-H1L"/>
+                <constraint firstItem="s6b-x5-OC3" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="yct-7S-F6Z"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="audioDurationLabel" destination="teb-fc-QYH" id="cgd-6s-GKk"/>
+                <outlet property="containerView" destination="Udx-ss-f4F" id="H2e-oG-UQG"/>
+                <outlet property="recordAudioDoneButton" destination="VFk-ja-Jw5" id="Otv-HX-jRl"/>
+                <outlet property="recordAudioStartButton" destination="jD4-oq-qCs" id="kaC-bB-6Vm"/>
+                <outlet property="removeReviewButton" destination="7jR-eX-sia" id="NTd-xH-gWx"/>
+                <outlet property="titleLabel" destination="CVF-vK-dXk" id="WAD-2b-hZT"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="play_popup_icon" width="16" height="18"/>
+    </resources>
+</document>

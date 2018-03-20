@@ -63,15 +63,34 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3i-r7-D4F">
                                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="70"/>
                                                                 <state key="normal" image="mic_icon_no_record"/>
+                                                                <connections>
+                                                                    <action selector="addaudioReviewButtonAction:" destination="aUM-Ki-p5D" eventType="touchUpInside" id="jO9-fZ-vkY"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cfR-41-40C">
+                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="70"/>
+                                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                                                                <inset key="titleEdgeInsets" minX="-10" minY="50" maxX="0.0" maxY="0.0"/>
+                                                                <inset key="imageEdgeInsets" minX="35" minY="25" maxX="0.0" maxY="0.0"/>
+                                                                <state key="normal" title="00:00" image="play_popup_icon">
+                                                                    <color key="titleColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="playAudioReviewButtonAction:" destination="aUM-Ki-p5D" eventType="touchUpInside" id="nFJ-DN-HQZ"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="80" id="75w-LX-leu"/>
+                                                            <constraint firstItem="cfR-41-40C" firstAttribute="top" secondItem="A3i-r7-D4F" secondAttribute="top" id="C7t-nG-l0C"/>
                                                             <constraint firstItem="A3i-r7-D4F" firstAttribute="top" secondItem="f5B-t1-c7R" secondAttribute="top" id="HEh-lX-U9Z"/>
                                                             <constraint firstAttribute="bottom" secondItem="A3i-r7-D4F" secondAttribute="bottom" id="HN0-8V-aHC"/>
                                                             <constraint firstAttribute="trailing" secondItem="A3i-r7-D4F" secondAttribute="trailing" id="KSS-lF-790"/>
+                                                            <constraint firstItem="cfR-41-40C" firstAttribute="bottom" secondItem="A3i-r7-D4F" secondAttribute="bottom" id="UR7-Sx-V9k"/>
+                                                            <constraint firstItem="cfR-41-40C" firstAttribute="leading" secondItem="A3i-r7-D4F" secondAttribute="leading" id="Wux-RO-UJ1"/>
                                                             <constraint firstItem="A3i-r7-D4F" firstAttribute="leading" secondItem="f5B-t1-c7R" secondAttribute="leading" id="lox-8h-5p8"/>
+                                                            <constraint firstItem="cfR-41-40C" firstAttribute="trailing" secondItem="A3i-r7-D4F" secondAttribute="trailing" id="sqz-nA-C4j"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
@@ -104,10 +123,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zfh-ld-l7E" customClass="SwiftyStarRatingView" customModule="SwiftyStarRatingView">
-                                                <rect key="frame" x="40" y="450" width="240" height="25"/>
+                                                <rect key="frame" x="40" y="450" width="240" height="30"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="25" id="SHx-7f-WSu"/>
+                                                    <constraint firstAttribute="height" constant="30" id="SHx-7f-WSu"/>
                                                     <constraint firstAttribute="width" constant="240" id="qJg-Jb-UCI"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
@@ -169,6 +188,8 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="playRecordingButton" destination="cfR-41-40C" id="gh8-EF-8dH"/>
+                        <outlet property="recordAudioReviewButton" destination="A3i-r7-D4F" id="K6F-b0-rJU"/>
                         <outlet property="reviewTextView" destination="8a3-mR-Jw4" id="cSs-86-ux2"/>
                         <outlet property="snapPhotoImageView" destination="WPX-je-50F" id="h4X-dL-JYK"/>
                         <outlet property="starRatingView" destination="Zfh-ld-l7E" id="AXo-Go-UTC"/>
@@ -181,6 +202,7 @@
     </scenes>
     <resources>
         <image name="mic_icon_no_record" width="11" height="18"/>
+        <image name="play_popup_icon" width="16" height="18"/>
         <image name="star_icon_unfilled" width="23" height="23"/>
         <image name="start_icon_filled" width="23" height="23"/>
     </resources>

@@ -19,3 +19,9 @@ func formatDateFromString(datestr: String) -> String {
     }
     return formattedDate
 }
+
+func timeString(time:TimeInterval) -> String {
+    let minutes = Int(time) / timeFormatConstants.timeConversionFactor % timeFormatConstants.timeConversionFactor
+    let seconds = Int(time) % timeFormatConstants.timeConversionFactor
+    return String(format:timeFormatConstants.displayTimerFormat,minutes, seconds)
+}

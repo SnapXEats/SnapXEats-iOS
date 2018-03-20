@@ -12,14 +12,27 @@ import SwiftyStarRatingView
 
 class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
 
+    let reviewPlaceholderText = "Write what you feel about dish"
+    
     // MARK: Properties
     var presenter: SnapNSharePhotoPresentation?
     var snapPhoto: UIImage!
+    var audioReviewDuration: Int = 0
     
     @IBOutlet var snapPhotoImageView: UIImageView!
     @IBOutlet var starRatingView: SwiftyStarRatingView!
     @IBOutlet var reviewTextView: UITextView!
-
+    @IBOutlet var recordAudioReviewButton: UIButton!
+    @IBOutlet var playRecordingButton: UIButton!
+    
+    @IBAction func addaudioReviewButtonAction(_ sender: UIButton) {
+        showAudioRecordingPopUpViewWithType(type: .record)
+    }
+    
+    @IBAction func playAudioReviewButtonAction(_ sender: UIButton) {
+        showAudioRecordingPopUpViewWithType(type: .play)
+    }
+    
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,11 +51,11 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
     }
     
     func showConfirmationForShare() {
-        let confirmationAlert = UIAlertController(title: "", message: "Do you want to Add and Share your Review?", preferredStyle: .alert)
-        let discardAction = UIAlertAction(title: "Discard", style: .default) { (action) in
-            print("Discarded")
+        let confirmationAlert = UIAlertController(title: SnapXEatsAppDefaults.emptyString, message:AlertMessage.shareConfirmation , preferredStyle: .alert)
+        let discardAction = UIAlertAction(title: SnapXButtonTitle.discard, style: .default) { (action) in
+            // Action for Discard
         }
-        let continueAction = UIAlertAction(title: "Continue", style: .default) { [weak self] (action) in
+        let continueAction = UIAlertAction(title: SnapXButtonTitle.continueNext, style: .default) { [weak self] (action) in
             self?.gotoSnapNShareSocialMediaView()
         }
         confirmationAlert.addAction(discardAction)
@@ -55,6 +68,20 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
             presenter?.gotoSnapNSharesocialMediaView(parent: parentNVController)
         }
     }
+    
+    private func showAudioRecordingPopUpViewWithType(type: AudioRecordingPopupTypes) {
+        let audioRecordPopupView = UINib(nibName:SnapXEatsNibNames.audioRecordingPopup, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! AudioRecordingPopUp
+        audioRecordPopupView.audioRecordingPopupDelegate = self
+        let audioPopupFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        audioRecordPopupView.setupPopup(audioPopupFrame, type: type, forDuration: audioReviewDuration, forViewController: self)
+        self.view.addSubview(audioRecordPopupView)
+    }
+    
+    private func updateUIForAudioReview(audioReviewAvailable: Bool) {
+        audioReviewAvailable ? recordAudioReviewButton.isInactive() : recordAudioReviewButton.isActive()
+        audioReviewAvailable ? playRecordingButton.isActive() : playRecordingButton.isInactive()
+        playRecordingButton.setTitle(timeString(time: TimeInterval(audioReviewDuration)), for: .normal)
+    }
 }
 
 extension SnapNSharePhotoViewController: SnapNSharePhotoView {
@@ -63,8 +90,11 @@ extension SnapNSharePhotoViewController: SnapNSharePhotoView {
         addShareButtonOnNavigationItem()
         snapPhotoImageView.image = snapPhoto
         starRatingView.addTarget(self, action: #selector(ratingsChanged), for: .valueChanged)
-        reviewTextView.text = "Write what you feel about dish"
+        reviewTextView.text = reviewPlaceholderText
         reviewTextView.textColor = UIColor.lightGray
+        
+        playRecordingButton.isInactive()
+        recordAudioReviewButton.isActive()
     }
     
     @objc func ratingsChanged() {
@@ -77,6 +107,24 @@ extension SnapNSharePhotoViewController: UITextViewDelegate {
             textView.text = SnapXEatsAppDefaults.emptyString
             textView.textColor = UIColor.black
         }
+    }
+}
+
+extension SnapNSharePhotoViewController: AudioRecordingPopUpViewActionsDelegate {
+    func audioRecordingDone(_ popupView: AudioRecordingPopUp, forDuration duration: Int) {
+        popupView.removeFromSuperview()
+        audioReviewDuration = duration
+        updateUIForAudioReview(audioReviewAvailable: true)
+    }
+    
+    func audioPlaybackDone(_ popupView: AudioRecordingPopUp) {
+        popupView.removeFromSuperview()
+    }
+    
+    func audioRecordingDeleted(_ popupView: AudioRecordingPopUp) {
+        popupView.removeFromSuperview()
+        updateUIForAudioReview(audioReviewAvailable: false)
+        audioReviewDuration = 0
     }
 }
 
