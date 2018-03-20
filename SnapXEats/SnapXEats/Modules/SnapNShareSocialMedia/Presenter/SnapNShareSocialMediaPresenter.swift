@@ -12,15 +12,21 @@ class SnapNShareSocialMediaPresenter {
 
     // MARK: Properties
 
-    weak var view: SnapNShareSocialMediaView?
+    weak var baseView: BaseView?
     var router: SnapNShareSocialMediaWireframe?
     var interactor: SnapNShareSocialMediaUseCase?
 }
 
 extension SnapNShareSocialMediaPresenter: SnapNShareSocialMediaPresentation {
-    // TODO: implement presentation methods
+    func presentScreen(screen: Screens) {
+        router?.presentScreen(screen: screen)
+    }
+    
+    func loginUsingFaceBook() {
+        interactor?.sendFaceBookLoginRequest(view: baseView)
+    }
 }
 
-extension SnapNShareSocialMediaPresenter: SnapNShareSocialMediaInteractorOutput {
+extension SnapNShareSocialMediaPresenter: SnapNShareSocialMediaInteractorOutput {    
     // TODO: implement interactor output methods
 }

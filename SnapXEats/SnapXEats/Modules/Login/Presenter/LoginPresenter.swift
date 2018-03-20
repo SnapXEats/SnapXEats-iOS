@@ -7,7 +7,7 @@ import Foundation
 
 class LoginPresenter {
     // MARK: Properties
-    var view: LoginView?
+
     var baseView: BaseView?
     
     var router: LoginViewWireframe?
@@ -25,7 +25,7 @@ extension LoginPresenter: LoginViewPresentation {
     }
     
     func loginUsingFaceBook() {
-        interactor?.sendFaceBookLoginRequest(view: view)
+        interactor?.sendFaceBookLoginRequest(view: baseView)
     }
     
     func skipUserLogin() {
@@ -36,24 +36,24 @@ extension LoginPresenter: LoginViewPresentation {
 extension LoginPresenter: LoginViewInteractorOutput {
     
     func response(result: NetworkResult) {
-        self.view?.hideLoading()
+        baseView?.hideLoading()
         switch result {
         case .success(_):
                 presentFirstTimeUserScreen()
         case .error:
-            view?.error(result: NetworkResult.error)
+            baseView?.error(result: NetworkResult.error)
         case .fail:
-            view?.error(result: NetworkResult.error)
+            baseView?.error(result: NetworkResult.error)
         case  .noInternet:
-            view?.noInternet(result: NetworkResult.noInternet)
+            baseView?.noInternet(result: NetworkResult.noInternet)
         case  .cancelRequest:
-            view?.cancel(result: NetworkResult.cancelRequest)
+            baseView?.cancel(result: NetworkResult.cancelRequest)
             
         }
     }
     
     func onLoginReguestFailure(message: String) {
-        view?.showError(message)
+        baseView?.showError(message)
     }
     
     private func presentFirstTimeUserScreen() {
