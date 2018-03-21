@@ -14,6 +14,9 @@ class InstagramLoginPresenter {
     var router: InstagramLoginWireframe?
     var interactor: InstagramLoginInteractorInput?
     
+    private init() {}
+    
+    static let shared = InstagramLoginPresenter()
     
     func loginUsingInstagram() {
         router?.presentScreen(screen: .instagram)

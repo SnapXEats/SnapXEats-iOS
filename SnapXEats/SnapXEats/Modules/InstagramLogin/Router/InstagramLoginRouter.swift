@@ -24,8 +24,8 @@ extension InstagramLoginRouter: InstagramLoginWireframe {
      func loadInstagramView() -> InstagramLoginView {
         let viewController = UIStoryboard.loadViewControler(storyBoardName: SnapXEatsStoryboard.loginStoryboard, storyBoardId: SnapXEatsStoryboardIdentifier.instagramViewControllerID) as! InstagramLoginViewController
        
-        let presenter = InstagramLoginPresenter()
-        let router = InstagramLoginRouter()
+        let presenter = InstagramLoginPresenter.shared
+        let router = InstagramLoginRouter.shared
         let interactor = InstagramLoginInteractor.shared
         
         viewController.presenter =  presenter

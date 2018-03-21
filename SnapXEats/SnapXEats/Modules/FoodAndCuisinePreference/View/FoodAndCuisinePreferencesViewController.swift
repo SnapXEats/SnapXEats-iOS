@@ -37,6 +37,7 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
+        registerNotification()
         isDirtyPreferecne = false 
     }
     
@@ -49,6 +50,11 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getPreferences()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unRegisterNotification()
     }
     
     override func success(result: Any?) {
