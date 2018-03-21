@@ -28,7 +28,7 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
     
     let loginUserPreference = LoginUserPreferences.shared
     
-    var navigationOptions = [SnapXEatsPageTitles.home, SnapXEatsPageTitles.wishlist, SnapXEatsPageTitles.preferences, SnapXEatsPageTitles.foodJourney, SnapXEatsPageTitles.rewards, SnapXEatsPageTitles.snapnshare, SnapXEatsPageTitles.smartPhotos]
+    var navigationOptions = [SnapXEatsPageTitles.home, SnapXEatsPageTitles.wishlist, SnapXEatsPageTitles.preferences, SnapXEatsPageTitles.foodJourney, SnapXEatsPageTitles.rewards, SnapXEatsPageTitles.checkin, SnapXEatsPageTitles.smartPhotos]
     
     var screenIndex: navigateScreen = .home
     @IBOutlet weak var navigationOptionTable: UITableView!
