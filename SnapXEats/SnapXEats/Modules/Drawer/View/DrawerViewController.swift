@@ -28,9 +28,17 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
     
     let loginUserPreference = LoginUserPreferences.shared
     
-    var navigationOptions = [SnapXEatsPageTitles.home, SnapXEatsPageTitles.wishlist, SnapXEatsPageTitles.preferences, SnapXEatsPageTitles.foodJourney, SnapXEatsPageTitles.rewards, SnapXEatsPageTitles.snapnshare, SnapXEatsPageTitles.smartPhotos]
+    var navigationOptions = [SnapXEatsPageTitles.home, SnapXEatsPageTitles.wishlist, SnapXEatsPageTitles.preferences, SnapXEatsPageTitles.foodJourney, SnapXEatsPageTitles.rewards, SnapXEatsPageTitles.checkin, SnapXEatsPageTitles.smartPhotos]
     
     var screenIndex: navigateScreen = .home
+    
+    var isUserCheckedIn: Bool {
+        if let status = SnapXEatsLoginHelper.shared.isUserCheckedIn(), status == true {
+            return true
+        }
+        return false
+    }
+    
     @IBOutlet weak var navigationOptionTable: UITableView!
     @IBOutlet weak var userInfoView: UIView!
     @IBOutlet weak var userImageView: UIImageView!
@@ -65,6 +73,9 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // Change Drawer options dynamically based on user has already Checked In
+        navigationOptions[5] = isUserCheckedIn ? SnapXEatsPageTitles.snapnshare : SnapXEatsPageTitles.checkin
         // To refresh the Wishlist Count on Evrytime Drawer loads
         navigationOptionTable.reloadData()
     }
@@ -158,7 +169,8 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
         case .wishList:
             loginUserPreference.isLoggedIn ? showWishListForLoggedInUser() : showWishlistForNonLoggedInUser()
         case .snapnshare:
-            presenter?.presnetScreen(screen: .snapNShareHome)
+            let screenToPresent:Screens = isUserCheckedIn ? .snapNShareHome : .checkin
+            presenter?.presentScreen(screen: screenToPresent, drawerState: .closed)
         default:
             break
         }

@@ -11,7 +11,7 @@ import FBSDKLoginKit
 import SwiftInstagram
 
 enum Screens {
-    case firsTimeUser, login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurantID: String, parentController: UINavigationController, showMoreInfo: Bool), restaurantDirections(details: RestaurantDetails, parentController: UINavigationController), wishlist, restaurantsMapView(restaurants: [Restaurant], parentController: UINavigationController), snapNShareHome, snapNSharePhoto(photo: UIImage, iparentController: UINavigationController), snapNShareSocialMedia(parentController: UINavigationController)
+    case firsTimeUser, login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurantID: String, parentController: UINavigationController, showMoreInfo: Bool), restaurantDirections(details: RestaurantDetails, parentController: UINavigationController), wishlist, restaurantsMapView(restaurants: [Restaurant], parentController: UINavigationController), snapNShareHome, snapNSharePhoto(photo: UIImage, iparentController: UINavigationController), snapNShareSocialMedia(parentController: UINavigationController), checkin
 }
 
 class RootRouter: NSObject {
@@ -113,6 +113,16 @@ class RootRouter: NSObject {
         presentView(drawerController)
     }
     
+    private func presentCheckinPopup() {
+        if let window = UIApplication.shared.keyWindow {
+            let checkinPopup = UINib(nibName:SnapXEatsNibNames.checkinPopup, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! CheckinPopup
+            checkinPopup.checkinPopupDelegate = self
+            let popupFrame = CGRect(x: 0, y: 0, width: window.frame.width, height: window.frame.height)
+            checkinPopup.setupPopup(frame: popupFrame)
+            window.addSubview(checkinPopup)
+        }
+    }
+    
     private func dissmissSelectLocationScreen() {
         window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
@@ -186,6 +196,8 @@ class RootRouter: NSObject {
             pushRestaurantsMapView(onNavigationController: parentController, withRestaurants: restaurants)
         case .snapNShareHome:
             presentSnapNShareHomeScreen()
+        case .checkin:
+            presentCheckinPopup()
         case .snapNSharePhoto(let photo, let parentController):
             pushSnapNSharePhotoScreen(onNavigationController: parentController, withPhoto: photo)
         case .snapNShareSocialMedia(let parentController):
@@ -206,5 +218,11 @@ class RootRouter: NSObject {
         drawerController.mainViewController = mainVC
         drawerController.drawerViewController = drawerVC
     }
+}
 
+extension RootRouter: CheckinPopUpActionsDelegate {
+    func userDidChekin(_ popup: CheckinPopup) {
+        SnapXEatsLoginHelper.shared.checkinUser()
+        presentScreen(screen: .snapNShareHome, drawerState: .closed)
+    }
 }

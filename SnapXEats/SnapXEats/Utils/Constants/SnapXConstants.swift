@@ -104,6 +104,8 @@ enum SnapXEatsImageNames {
     static let marker_icon_selected = "marker_icon_selected"
     static let backArrow = "back_arrow"
     static let closeIcon = "close_icon"
+    static let record_popuup_icon = "record_popuup_icon"
+    static let play_popuup_icon = "play_popup_icon"
 }
 
 
@@ -131,6 +133,7 @@ enum SnapXEatsPageTitles {
     static let snapnshare = "Snap-n-Share"
     static let smartPhotos = "Smart Photos"
     static let restaurants = "Restaurants"
+    static let checkin = "Check In"
     
     static let cusinePreferences = "Cuisine Preferences"
     static let foodPreferences = "Food Preferences"
@@ -157,6 +160,8 @@ enum SnapXEatsNibNames {
     static let moreInfoTableViewCell = "MoreInfoTableViewCell"
     static let wishlistItemTableViewCell = "WishlistItemTableViewCell"
     static let restaurantCollectionViewCell = "RestaurantCollectionViewCell"
+    static let audioRecordingPopup = "AudioRecordingPopUp"
+    static let checkinPopup = "CheckinPopup"
 }
 
 enum SnapXEatsWebServiceParameterKeys {
@@ -174,10 +179,12 @@ enum SnapXButtonTitle {
     static let save = "Save"
     static let discard = "Discard"
     static let yes = "YES"
+    static let no = "NO"
     static let notnow = "Not Now"
     static let loginOut = "Log Out"
     static let loginIn = "Log In"
     static let apply = "Apply"
+    static let continueNext = "Continue"
 }
 
 enum SnapXEatsAppDefaults {
@@ -234,6 +241,9 @@ enum AlertMessage {
     static let deleteWishListMessage = "Do you really want to delete your selected wishlist Item, please press Ok or Cancel."
     static let wishlistForNonLoggedinUser = "Please Login to see the Wishlist."
     static let navigationFailureError = "We are not able to detect your current location so Navigation on the Map won't work"
+    static let shareConfirmation = "Do you want to Add and Share your Review?"
+    static let audioReviewDeleteConfirmation = "Are you sure you want to delete this audio review?"
+    static let maxAudioReviewLimitReached = "Maximum Audio Review length reached."
 }
 
 enum AlertTitle {
@@ -275,5 +285,10 @@ enum UserGestureJSONKeys {
 enum SnapXNonLoggedInUserConstants {
     static let message = "Log-In to SnapXEats and Earn Reward Points"
     static let highlightText = "SnapXEats"
+}
+
+enum timeFormatConstants {
+    static let displayTimerFormat = "%02i:%02i"
+    static let timeConversionFactor = 60
 }
 

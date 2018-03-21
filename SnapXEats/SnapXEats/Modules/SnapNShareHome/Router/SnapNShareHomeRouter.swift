@@ -32,7 +32,7 @@ class SnapNShareHomeRouter {
         let interactor = SnapNShareHomeInteractor.shared
 
         viewController.presenter =  presenter
-
+        presenter.baseView = viewController
         presenter.view = viewController
         presenter.router = router
         presenter.interactor = interactor

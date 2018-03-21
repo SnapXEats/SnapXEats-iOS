@@ -172,6 +172,14 @@ class SnapXEatsLoginHelper {
         UserDefaults.standard.removeObject(forKey: SnapXEatsConstant.snapXLoginData)
         UserLogin.deleteStoredLogedInUser()
     }
+    
+    func isUserCheckedIn() -> Bool? {
+        return UserDefaults.standard.value(forKey: "isUserCheckdIn") as? Bool
+    }
+    
+    func checkinUser() {
+        UserDefaults.standard.set(true, forKey: "isUserCheckdIn")
+    }
 }
 
 extension SnapXEatsLoginHelper {

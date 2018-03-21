@@ -23,6 +23,8 @@ target 'SnapXEats' do
     pod 'RealmSwift'
     pod 'SwiftInstagram', '~> 1.1.0'
     pod 'FSPagerView'
+    pod 'SwiftyStarRatingView', '~> 1.0'
+    pod 'TPKeyboardAvoiding', '~> 1.3'
 
 end
 

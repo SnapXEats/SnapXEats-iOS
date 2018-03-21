@@ -12,9 +12,10 @@ import UIKit
 class SnapNShareHomePresenter {
 
     // MARK: Properties
+    weak var baseView: BaseView?
     weak var view: SnapNShareHomeView?
     var router: SnapNShareHomeWireframe?
-    var interactor: SnapNShareHomeUseCase?
+    var interactor: SnapNShareHomeRequestFormatter?
     
     static let shared = SnapNShareHomePresenter()
     private init() {}
@@ -23,6 +24,10 @@ class SnapNShareHomePresenter {
 extension SnapNShareHomePresenter: SnapNShareHomePresentation {
     func gotoSnapNSharePhotoView(parent: UINavigationController, withPhoto photo: UIImage) {
         router?.presentScreen(screen: .snapNSharePhoto(photo: photo, iparentController: parent))
+    }
+    
+    func restaurantDetailsRequest(restaurantId: String) {
+        interactor?.getRestaurantDetailsRequest(restaurant_id: restaurantId)
     }
 }
 
