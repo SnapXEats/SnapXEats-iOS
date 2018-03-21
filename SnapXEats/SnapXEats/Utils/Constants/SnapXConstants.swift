@@ -161,6 +161,7 @@ enum SnapXEatsNibNames {
     static let wishlistItemTableViewCell = "WishlistItemTableViewCell"
     static let restaurantCollectionViewCell = "RestaurantCollectionViewCell"
     static let audioRecordingPopup = "AudioRecordingPopUp"
+    static let checkinPopup = "CheckinPopup"
 }
 
 enum SnapXEatsWebServiceParameterKeys {

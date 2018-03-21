@@ -90,6 +90,8 @@
 		7E83974220454DF600E71C6D /* MoreInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E83974020454DF600E71C6D /* MoreInfoTableViewCell.xib */; };
 		7E8397442045585100E71C6D /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E839743204557B000E71C6D /* Roboto-Italic.ttf */; };
 		7E8397462045713B00E71C6D /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8397452045713B00E71C6D /* DateFormatters.swift */; };
+		7E8B850B20624E0D00F802B3 /* CheckinPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8B850A20624E0D00F802B3 /* CheckinPopup.swift */; };
+		7E8B850D20624E4300F802B3 /* CheckinPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E8B850C20624E4300F802B3 /* CheckinPopup.xib */; };
 		7E9394EC204456F900A80387 /* FoodCardActionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9394EB204456F900A80387 /* FoodCardActionHelper.swift */; };
 		7E9C0B912021DC5700BA999E /* SnapXEatsLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9C0B902021DC5700BA999E /* SnapXEatsLocation.swift */; };
 		7EAC8610201A066B00DE162A /* FoodCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAC860F201A066B00DE162A /* FoodCardView.swift */; };
@@ -304,6 +306,8 @@
 		7E83974020454DF600E71C6D /* MoreInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreInfoTableViewCell.xib; sourceTree = "<group>"; };
 		7E839743204557B000E71C6D /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
 		7E8397452045713B00E71C6D /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
+		7E8B850A20624E0D00F802B3 /* CheckinPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinPopup.swift; sourceTree = "<group>"; };
+		7E8B850C20624E4300F802B3 /* CheckinPopup.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckinPopup.xib; sourceTree = "<group>"; };
 		7E9394EB204456F900A80387 /* FoodCardActionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCardActionHelper.swift; sourceTree = "<group>"; };
 		7E9C0B902021DC5700BA999E /* SnapXEatsLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEatsLocation.swift; sourceTree = "<group>"; };
 		7EAC860F201A066B00DE162A /* FoodCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCardView.swift; sourceTree = "<group>"; };
@@ -586,6 +590,7 @@
 		7E539B7020593A01002C3E55 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7E8B850920624DE900F802B3 /* Custom Views */,
 				7E539B7120593A01002C3E55 /* SnapNShareHomeViewController.swift */,
 				7E539B7720593B50002C3E55 /* SnapNShareHome.storyboard */,
 			);
@@ -879,6 +884,15 @@
 				7E83974020454DF600E71C6D /* MoreInfoTableViewCell.xib */,
 			);
 			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		7E8B850920624DE900F802B3 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				7E8B850A20624E0D00F802B3 /* CheckinPopup.swift */,
+				7E8B850C20624E4300F802B3 /* CheckinPopup.xib */,
+			);
+			path = "Custom Views";
 			sourceTree = "<group>";
 		};
 		7EAC860E201A061D00DE162A /* CustomView */ = {
@@ -1883,6 +1897,7 @@
 				7E2C64BE2044253400DAB44A /* NavigationMenuTableViewCell.xib in Resources */,
 				7E5C058320185F34000B5C33 /* SavedAddressHeaderViewCell.xib in Resources */,
 				7E539BB0205A5268002C3E55 /* SnapNSharePhoto.storyboard in Resources */,
+				7E8B850D20624E4300F802B3 /* CheckinPopup.xib in Resources */,
 				9D902BEC201736B500359DFD /* FoodCards.storyboard in Resources */,
 				7E5E7FDA203AF7EE00009A56 /* ic_cross_white@2x.png in Resources */,
 				7E5E7FF1203C0E6000009A56 /* RestaurantSpecialityCollectionViewCell.xib in Resources */,
@@ -2127,6 +2142,7 @@
 				7E5E800F203D6A4000009A56 /* TimingTableViewCell.swift in Sources */,
 				7EC5014620469A2C00D44E92 /* RestaurantDirectionsInteractor.swift in Sources */,
 				7EC5014820469A2C00D44E92 /* RestaurantDirectionsRouter.swift in Sources */,
+				7E8B850B20624E0D00F802B3 /* CheckinPopup.swift in Sources */,
 				7E673B19204961C9005D19DC /* WishlistPresenter.swift in Sources */,
 				7E673B13204961C9005D19DC /* WishlistInteractor.swift in Sources */,
 				9DB02A722010805F0061FC0C /* LocationRouter.swift in Sources */,
