@@ -126,6 +126,8 @@
 		9D0D7162203F144F0077FA7A /* DrawerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D715D203F144E0077FA7A /* DrawerRouter.swift */; };
 		9D1C33E0205FAAC100B4F69D /* SecondSocialLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C33DF205FAAC100B4F69D /* SecondSocialLogin.swift */; };
 		9D1C33E2205FAD1B00B4F69D /* SocialPlatformHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C33E1205FAD1B00B4F69D /* SocialPlatformHelper.swift */; };
+		9D1C33E42062378D00B4F69D /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D1C33E52062378D00B4F69D /* FBSDKShareKit.framework */; };
+		9D1C33E72062706000B4F69D /* InstagramManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C33E62062706000B4F69D /* InstagramManager.swift */; };
 		9D2C484D202073A700FD8B1C /* SelectedPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C484C202073A700FD8B1C /* SelectedPreference.swift */; };
 		9D3D1CE02006479500AAAB95 /* SnapXConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3D1CDF2006479500AAAB95 /* SnapXConstants.swift */; };
 		9D3FC4D82011C94A001A4264 /* CuisinePreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3FC4D72011C94A001A4264 /* CuisinePreference.swift */; };
@@ -349,6 +351,8 @@
 		9D0D715D203F144E0077FA7A /* DrawerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerRouter.swift; sourceTree = "<group>"; };
 		9D1C33DF205FAAC100B4F69D /* SecondSocialLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSocialLogin.swift; sourceTree = "<group>"; };
 		9D1C33E1205FAD1B00B4F69D /* SocialPlatformHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialPlatformHelper.swift; sourceTree = "<group>"; };
+		9D1C33E52062378D00B4F69D /* FBSDKShareKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D1C33E62062706000B4F69D /* InstagramManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramManager.swift; sourceTree = "<group>"; };
 		9D2C484C202073A700FD8B1C /* SelectedPreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedPreference.swift; sourceTree = "<group>"; };
 		9D3D1CDF2006479500AAAB95 /* SnapXConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXConstants.swift; sourceTree = "<group>"; };
 		9D3FC4D72011C94A001A4264 /* CuisinePreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisinePreference.swift; sourceTree = "<group>"; };
@@ -452,6 +456,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D1C33E42062378D00B4F69D /* FBSDKShareKit.framework in Frameworks */,
 				CE64A9A86226702DB23DF92F /* Pods_SnapXEats.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1349,6 +1354,7 @@
 				9D0D713F203C633B0077FA7A /* PreferenceHelper.swift */,
 				7E9394EB204456F900A80387 /* FoodCardActionHelper.swift */,
 				9D1C33E1205FAD1B00B4F69D /* SocialPlatformHelper.swift */,
+				9D1C33E62062706000B4F69D /* InstagramManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1852,6 +1858,7 @@
 		B29705C62477A6A310B7D943 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9D1C33E52062378D00B4F69D /* FBSDKShareKit.framework */,
 				967BD01B1CEED06931835CA3 /* Pods_SnapXEats.framework */,
 			);
 			name = Frameworks;
@@ -2212,6 +2219,7 @@
 				7EC5014820469A2C00D44E92 /* RestaurantDirectionsRouter.swift in Sources */,
 				7E8B850B20624E0D00F802B3 /* CheckinPopup.swift in Sources */,
 				7E673B19204961C9005D19DC /* WishlistPresenter.swift in Sources */,
+				9D1C33E72062706000B4F69D /* InstagramManager.swift in Sources */,
 				7E673B13204961C9005D19DC /* WishlistInteractor.swift in Sources */,
 				9DB02A722010805F0061FC0C /* LocationRouter.swift in Sources */,
 				9DAF6F6B205AAA26003001B5 /* InstagramLoginPresenter.swift in Sources */,

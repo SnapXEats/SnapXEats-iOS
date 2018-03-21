@@ -171,6 +171,7 @@ class SnapXEatsLoginHelper {
         SelectedPreference.shared.reset()
         UserDefaults.standard.removeObject(forKey: SnapXEatsConstant.snapXLoginData)
         UserLogin.deleteStoredLogedInUser()
+        SetUserPreference.deleteStoredLogedInUser()
     }
     
     func isUserCheckedIn() -> Bool? {

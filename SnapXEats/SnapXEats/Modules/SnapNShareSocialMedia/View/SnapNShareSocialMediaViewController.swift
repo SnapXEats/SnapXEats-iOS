@@ -9,8 +9,7 @@
 import Foundation
 import UIKit
 import FacebookShare
-import FBSDKShareKit
-import FacebookCore
+import SwiftInstagram
 
 class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadable {
 
@@ -18,6 +17,7 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
     var presenter: SnapNShareSocialMediaPresentation?
     
     let loginPreferecne = LoginUserPreferences.shared
+    let instagramApi = Instagram.shared
     
     @IBOutlet weak var fbButton: UIButton!
     // MARK: Lifecycle
@@ -26,25 +26,19 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
     @IBAction func fbImageShare(_ sender: Any) {
         if loginPreferecne.fbSharingenabled {
             // if already loggedin (FB or instagram) and Fb sharing is enabled
-            sharingDialog()
+            sharingDialogFB()
         } else {
              presenter?.loginUsingFaceBook()
         }
-//        if let platForm = loginPreferecne.loginPlatform, platForm == SnapXEatsConstant.platFormFB {
-//            // if logged in using Fb but sharing is not enabled we need to login with sharing enabled
-//            presenter?.loginUsingFaceBook()
-//        } else {
-//             // if logged in using instagram but want to share photo on FB then need to login with sharing enabled
-//            presenter?.loginUsingFaceBook()
-//        }
     }
     
     @IBAction func instagramImageShare(_ sender: Any) {
-        if loginPreferecne.isInstagramlogin {
-            
-        } else {
-            presenter?.presentScreen(screen: .instagram)
-        }
+//        if loginPreferecne.isInstagramlogin {
+//
+//        } else {
+//            presenter?.presentScreen(screen: .instagram)
+//        }
+        sharingDialogInstagram()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,13 +46,37 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
     }
     
     override func success(result: Any?) {
-        if let value = result as? Bool {
-            sharingDialog()
+        if let _ = result as? Bool {
+            sharingDialogFB()
         }
     }
     
     func getUsrImage() -> String {
         return "https://s3.us-east-2.amazonaws.com/snapxeats/french.jpg"
+    }
+    
+    func sharingDialogFB() {
+        let content = LinkShareContent(url: URL(string: getUsrImage())!)
+        let shareDialog = ShareDialog(content: content)
+        shareDialog.mode = .automatic
+        shareDialog.failsOnInvalidData = true
+        shareDialog.completion = { result in
+            switch result {
+            case .failed(let value ):
+                print("falied \(value.localizedDescription)")
+            case .cancelled:
+                print("canecel")
+            case .success:
+                print("Success")
+            }
+        }
+        try! shareDialog.show()
+    }
+    
+    func sharingDialogInstagram() {
+        if let image = UIImage(named: SnapXEatsImageNames.placeholder_cuisine) {
+            InstagramManager.shared.shareONInstagram(image: image, description: "This is the image on Instagram", viewController: self)
+        }
     }
 }
 
@@ -68,43 +86,6 @@ extension SnapNShareSocialMediaViewController: SnapNShareSocialMediaView {
     }
 }
 
-extension SnapNShareSocialMediaViewController: FBSDKSharingDelegate {
-    func sharer(_ sharer: FBSDKSharing!, didCompleteWithResults results: [AnyHashable : Any]!) {
-        print("Success")
-    }
     
-    func sharer(_ sharer: FBSDKSharing!, didFailWithError error: Error!) {
-         print("Error")
-    }
-    
-    func sharerDidCancel(_ sharer: FBSDKSharing!) {
-        print ("Is Canceled")
-    }
-    
-    func sharingDialog() {
-        
-        let photo = Photo.init(url: URL(string: getUsrImage())!, userGenerated: false)
-        
-        var content = PhotoShareContent()
-        content.photos = [photo]
-        
-        let content1 = LinkShareContent(url: URL(string: getUsrImage())!)
-        
-        let shareDialog = ShareDialog(content: content1)
-        shareDialog.mode = .native
-        shareDialog.failsOnInvalidData = true
-        shareDialog.completion = { result in
-            switch result {
-            case .failed(let value ):
-                  print("falied \(value.localizedDescription)")
-            case .cancelled:
-                print("canecel")
-            case .success:
-                 print("Success")
-            }
-        }
-        
-        try! shareDialog.show()
-    }
-    
-}
+
+
