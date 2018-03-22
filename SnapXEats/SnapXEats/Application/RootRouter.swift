@@ -115,7 +115,7 @@ class RootRouter: NSObject {
     
     private func presentCheckinPopup() {
         if let window = UIApplication.shared.keyWindow {
-            let checkinPopup = UINib(nibName:SnapXEatsNibNames.checkinPopup, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! CheckinPopup
+            let checkinPopup = CheckinPopupRouter.shared.loadCheckinPopupModule()
             checkinPopup.checkinPopupDelegate = self
             let popupFrame = CGRect(x: 0, y: 0, width: window.frame.width, height: window.frame.height)
             checkinPopup.setupPopup(frame: popupFrame)

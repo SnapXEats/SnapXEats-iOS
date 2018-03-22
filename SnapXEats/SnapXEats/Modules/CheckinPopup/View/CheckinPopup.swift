@@ -12,13 +12,14 @@ protocol CheckinPopUpActionsDelegate: class {
     func userDidChekin(_ popup: CheckinPopup)
 }
 
-class CheckinPopup: UIView {
+class CheckinPopup: SnapXEatsView, CheckinPopupView {
     
     private enum popupConstants {
         static let containerRadius: CGFloat = 6.0
     }
     
     weak var checkinPopupDelegate: CheckinPopUpActionsDelegate?
+    var presenter: CheckinPopupPresenter?
     
     @IBOutlet var containerView: UIView!
     @IBOutlet var checkinButton: UIButton!
@@ -30,8 +31,8 @@ class CheckinPopup: UIView {
     }
     
     @IBAction func checkinButtonAction(_ sender: UIButton) {
-        self.removeFromSuperview()
-        checkinPopupDelegate?.userDidChekin(self)
+        showLoading()
+        presenter?.checkinIntoRestaurant(restaurantId: "62dfee80-b52b-482f-b0f3-c175ce5d56ca")
     }
     
     func setupPopup(frame: CGRect) {
@@ -39,5 +40,12 @@ class CheckinPopup: UIView {
         checkinButton.layer.cornerRadius = checkinButton.frame.height/2
         restaurantLogoImageView.layer.cornerRadius = restaurantLogoImageView.frame.height/2
         containerView.layer.cornerRadius = popupConstants.containerRadius
+    }
+    
+    override func success(result: Any?) {
+        if let success = result as? Bool, success == true {
+            self.removeFromSuperview()
+            checkinPopupDelegate?.userDidChekin(self)
+        }
     }
 }

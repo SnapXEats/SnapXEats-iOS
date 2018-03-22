@@ -17,7 +17,7 @@ class SnapNShareHomeViewController: BaseViewController, StoryboardLoadable {
     var presenter: SnapNShareHomePresentation?
     var picker = UIImagePickerController()
     //TODO: Remove this hardcoded value once we get Id for Checkedin Restaurant
-    var restaurant_id = "dbd206e5-2573-4b3a-996d-aec799642c10"
+    var restaurant_id = "62dfee80-b52b-482f-b0f3-c175ce5d56ca"
     var restaurantDetails: RestaurantDetails?
     var specialities = [RestaurantSpeciality]()
     var slideshow =  ImageSlideshow()

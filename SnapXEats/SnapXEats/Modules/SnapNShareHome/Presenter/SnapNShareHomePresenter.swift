@@ -13,7 +13,6 @@ class SnapNShareHomePresenter {
 
     // MARK: Properties
     weak var baseView: BaseView?
-    weak var view: SnapNShareHomeView?
     var router: SnapNShareHomeWireframe?
     var interactor: SnapNShareHomeRequestFormatter?
     
