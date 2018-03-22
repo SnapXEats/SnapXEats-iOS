@@ -50,6 +50,8 @@ PODS:
   - SwiftInstagram (1.1.0):
     - SwiftInstagram/Core (= 1.1.0)
   - SwiftInstagram/Core (1.1.0)
+  - SwiftyStarRatingView (1.0.4)
+  - TPKeyboardAvoiding (1.3.2)
   - UIColor_Hex_Swift (3.0.2)
 
 DEPENDENCIES:
@@ -69,6 +71,8 @@ DEPENDENCIES:
   - ReachabilitySwift (~> 3)
   - RealmSwift
   - SwiftInstagram (~> 1.1.0)
+  - SwiftyStarRatingView (~> 1.0)
+  - TPKeyboardAvoiding (~> 1.3)
   - UIColor_Hex_Swift (~> 3.0.1)
 
 SPEC CHECKSUMS:
@@ -95,8 +99,10 @@ SPEC CHECKSUMS:
   Realm: 6f23fd1f178a09342eac21bfa7c2bf4312a7a180
   RealmSwift: 695393add1b8f9d5fa75dd16e6355cf3935f71e2
   SwiftInstagram: 90d5c143d8ebe1c790e06a138b8da3c8f2a9ba16
+  SwiftyStarRatingView: a2b0057700e0adeb8e7442c55d99cb53b531d2f4
+  TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
   UIColor_Hex_Swift: 95f718452092a3efc8a827dffd2c04d3237be02d
 
-PODFILE CHECKSUM: 6e99b125db84748eb8379b80a17c1e197c864308
+PODFILE CHECKSUM: 81dca9dc7b1a8a585b6eea00b10430ecca08825d
 
 COCOAPODS: 1.4.0

@@ -1,45 +1,62 @@
 //
+//  InstagramLoginPresenter.swift
 //  SnapXEats
-//  Created by Durgesh Trivedi on 03/01/18.
+//
+//  Created by Durgesh Trivedi on 15/03/18.
 //  Copyright © 2018 SnapXEats. All rights reserved.
+//
 
 import Foundation
 
-class LoginPresenter {
-    // MARK: Properties
+class InstagramLoginPresenter {
 
     var baseView: BaseView?
+    var router: InstagramLoginWireframe?
+    var interactor: InstagramLoginInteractorInput?
     
-    var router: LoginViewWireframe?
+    private init() {}
     
-    var interactor: LoginInteractor?
+    static let shared = InstagramLoginPresenter()
     
-    private init () {}
-    static  var  singletenInstance = LoginPresenter()
-}
-
-extension LoginPresenter: LoginViewPresentation {
-
     func loginUsingInstagram() {
         router?.presentScreen(screen: .instagram)
-    }
-    
-    func loginUsingFaceBook() {
-        interactor?.sendFaceBookLoginRequest(view: baseView)
     }
     
     func skipUserLogin() {
         presentFirstTimeUserScreen()
     }
+    
+    func showLocationScreen() {
+        removeInstagramWebView()
+        presentLocationScreen()
+    }
 }
 
-extension LoginPresenter: LoginViewInteractorOutput {
+extension InstagramLoginPresenter: InstagramLoginPresentation {
+    
+    func instagramLoginRequest(request: URLRequest) -> Bool {
+        guard let interactor = interactor else {
+            return false
+        }
+        return interactor.sendInstagramRequest(request: request)
+    }
+    
+    func removeInstagramWebView() {
+        router?.presentScreen(screen: .firstScreen)
+    }
+    
+    func getInstagramUserData(completionHandler: @escaping ()-> ()) {
+        interactor?.getInstagramUserData(completionHandler: completionHandler)
+    }
+}
+
+extension InstagramLoginPresenter: InstagramLoginInteractorOutput {
     
     func response(result: NetworkResult) {
         baseView?.hideLoading()
         switch result {
         case .success(_):
-                presentFirstTimeUserScreen()
+            presentFirstTimeUserScreen()
         case .error:
             baseView?.error(result: NetworkResult.error)
         case .fail:

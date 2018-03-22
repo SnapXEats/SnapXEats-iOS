@@ -17,7 +17,7 @@ class FoodCardsInteractor {
 
     var output: FoodCardsInteractorOutput?
     private init() {}
-    static let singleInstance = FoodCardsInteractor()
+    static let shared = FoodCardsInteractor()
 }
 
 extension FoodCardsInteractor: FoodCardsRequestFomatter {

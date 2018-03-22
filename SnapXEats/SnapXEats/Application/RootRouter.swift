@@ -63,7 +63,7 @@ class RootRouter: NSObject {
     }
     
     private func presentLoginInstagramScreen() {
-        let  instagramViewController = LoginRouter.singletenInstance.loadInstagramView() as! InstagramViewController
+        let  instagramViewController = InstagramLoginRouter.shared.loadInstagramView() as! InstagramLoginViewController
         window?.rootViewController?.present(instagramViewController, animated: true, completion: nil)
     }
     
@@ -77,7 +77,7 @@ class RootRouter: NSObject {
     
     private func pushFoodcardsScreen(selectedPreference: SelectedPreference, onNavigationController parentController: UINavigationController) {
         
-        let foodCardVC = FoodCardsRouter.singleInstance.loadFoodCardModule()
+        let foodCardVC = FoodCardsRouter.shared.loadFoodCardModule()
         foodCardVC.selectedPrefernce = selectedPreference
         parentController.pushViewController(foodCardVC, animated: true)
     }

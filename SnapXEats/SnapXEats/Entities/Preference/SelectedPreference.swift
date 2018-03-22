@@ -69,6 +69,14 @@ class LoginUserPreferences {
         }
     }
     
+    var isFBlogin: Bool {
+        return SnapXEatsLoginHelper.shared.isLoggedUsingFB()
+    }
+    
+    var isInstagramlogin: Bool {
+        return SnapXEatsLoginHelper.shared.isLoggedUsingInstagram()
+    }
+    
     var isLoggedIn: Bool {
         return SnapXEatsLoginHelper.shared.isUserLoggedIn()
     }
@@ -92,6 +100,10 @@ class LoginUserPreferences {
     var loggedInUserPreference = { () -> SetUserPreference? in
         let loginUserID =  SnapXEatsLoginHelper.shared.getLoggedInUserID()
         return PreferenceHelper.shared.getUserPrefernce(userID: loginUserID)
+    }
+    
+    var fbSharingenabled: Bool {
+        return  SocialPlatformHelper.shared.fbSharingEnabled()
     }
     
     func reset() {

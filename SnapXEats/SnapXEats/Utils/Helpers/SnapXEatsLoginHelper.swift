@@ -97,6 +97,27 @@ class SnapXEatsLoginHelper {
         return UserDefaults.standard.value(forKey: SnapXEatsConstant.snapXLoginData) as? [String: String]
     }
     
+    func isLoggedUsingFB() -> Bool {
+            if let socialPlatform = getLoginSocialPlatForm(), socialPlatform == SnapXEatsConstant.platFormFB  {
+                return true
+            }
+        return false
+    }
+    
+    func isLoggedUsingInstagram() -> Bool {
+        if let socialPlatform = getLoginSocialPlatForm(), socialPlatform == SnapXEatsConstant.platFormInstagram {
+            return true
+        }
+        return false
+    }
+    
+    private func getLoginSocialPlatForm() -> String? {
+        if let userInfo =  getSnapXLoginData() {
+           return  userInfo[SnapXEatsConstant.social_platform]
+        }
+        return nil
+    }
+    
     func getLoggedInUserID() -> String {
         guard let userInfo = getSnapXLoginData(),
             let loginID = userInfo[SnapXEatsConstant.loginID] else {
@@ -150,6 +171,7 @@ class SnapXEatsLoginHelper {
         SelectedPreference.shared.reset()
         UserDefaults.standard.removeObject(forKey: SnapXEatsConstant.snapXLoginData)
         UserLogin.deleteStoredLogedInUser()
+        SetUserPreference.deleteStoredLogedInUser()
     }
     
     func isUserCheckedIn() -> Bool? {

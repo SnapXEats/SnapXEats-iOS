@@ -1,8 +1,8 @@
 //
-//  InstagramViewController.swift
+//  InstagramLoginViewController.swift
 //  SnapXEats
 //
-//  Created by Durgesh Trivedi on 05/01/18.
+//  Created by Durgesh Trivedi on 15/03/18.
 //  Copyright © 2018 SnapXEats. All rights reserved.
 //
 
@@ -10,19 +10,11 @@ import Foundation
 import WebKit
 import SwiftInstagram
 
-enum ServerErrorCode  {
-    static let timeOut = -1001  // TIMED OUT:
-    static let serverCanFound = -1003  // SERVER CANNOT BE FOUND
-    static let urlNotFoundONServer = -1100  // URL NOT FOUND ON SERVER
-    static let noInternetConnection = -1009  // No Internet connection
-    static let loadingFiled = -999 // HTTP load failed
-    
-}
 
-class InstagramViewController: BaseViewController, StoryboardLoadable, LoginView {
+class InstagramLoginViewController: BaseViewController, StoryboardLoadable, InstagramLoginView {
     // MARK: Properties
     
-    var presenter: LoginViewPresentation?
+    var presenter: InstagramLoginPresentation?
     
     // MARK: IBOutlets
     var webView: WKWebView!
@@ -66,7 +58,7 @@ class InstagramViewController: BaseViewController, StoryboardLoadable, LoginView
     }
 }
 
-extension InstagramViewController: WKNavigationDelegate{
+extension InstagramLoginViewController: WKNavigationDelegate{
     
     func webView(_ webView: WKWebView,
                  decidePolicyFor navigationAction: WKNavigationAction,
@@ -148,7 +140,7 @@ extension InstagramViewController: WKNavigationDelegate{
              ServerErrorCode.serverCanFound,
              ServerErrorCode.urlNotFoundONServer,
              ServerErrorCode.noInternetConnection :
-             removeWebView()
+            removeWebView()
             webView.stopLoading()
             hideLoading()
             noInternet(result: .noInternet)

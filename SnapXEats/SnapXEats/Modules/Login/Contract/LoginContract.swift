@@ -9,22 +9,14 @@ protocol LoginView: BaseView  {
     var presenter: LoginViewPresentation? {get set}
 }
 
-protocol LoginViewPresentation: LoginViewPresentationInstagram {
-    func loginUsingInstagram()
+protocol LoginViewPresentation {
     func loginUsingFaceBook()
-    func setView(view: LoginView)
+    func loginUsingInstagram()
     func skipUserLogin()
-    func showLocationScreen()
 }
 
-protocol LoginViewPresentationInstagram: class {
-        func instagramLoginRequest(request: URLRequest) -> Bool
-        func getInstagramUserData(completionHandler: @escaping ()-> ())
-        func removeInstagramWebView()
-}
 protocol LoginViewInteractorInput: class {
-    func sendFaceBookLoginRequest(view: LoginView?)
-    func sendInstagramRequest(request: URLRequest) -> Bool
+    func sendFaceBookLoginRequest(view: BaseView?)
 }
 
 protocol LoginViewInteractorOutput: class, Response {
@@ -33,5 +25,4 @@ protocol LoginViewInteractorOutput: class, Response {
 
 protocol LoginViewWireframe: class, RootWireFrame {
     func loadLoginModule() -> LoginView
-    func loadInstagramView() -> LoginView
 }
