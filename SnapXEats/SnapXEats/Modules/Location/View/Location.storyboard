@@ -37,7 +37,6 @@
                                         </state>
                                         <connections>
                                             <action selector="setNewLocation:" destination="WSv-n5-V5p" eventType="touchUpInside" id="oq2-vW-gDA"/>
-                                            <action selector="setUserLocation:" destination="WSv-n5-V5p" eventType="touchUpInside" id="lgR-IP-ct4"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKh-JC-1ut">

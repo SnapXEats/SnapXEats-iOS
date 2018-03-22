@@ -121,6 +121,8 @@ enum SnapXEatsPlaceSearchRequestKeys {
     static let components = "components"
     static let key = "key"
     static let placeid = "placeid"
+    static let type = "type"
+    static let address = "address"
 }
 
 

@@ -23,10 +23,6 @@ class SelectLocationPresenter {
 
 extension SelectLocationPresenter: SelectLocationPresentation {
     
-    func dismissScreen() {
-        router?.presentScreen(screen: .dismissNewLocation)
-    }
-    
     func getSearchPlaces(searchText: String) {
         interactor?.getSearchPlacePredictionsFor(searchText: searchText)
     }
