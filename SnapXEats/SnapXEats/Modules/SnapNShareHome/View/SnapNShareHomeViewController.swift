@@ -130,6 +130,17 @@ class SnapNShareHomeViewController: BaseViewController, StoryboardLoadable {
             self?.slideshowCountLabel.text = "\(index+1)/\(inputsources.count)"
         }
     }
+    
+    private func savePhoto(image: UIImage) {
+        if let photoPathURL = getPathForSmartPhotoForRestaurant() {
+            do {
+                try UIImageJPEGRepresentation(image, 1.0)?.write(to: photoPathURL, options: .atomic)
+                
+            } catch {
+                print("file cant not be saved at path \(photoPathURL), with error : \(error)")
+            }
+        }
+    }
 }
 
 extension SnapNShareHomeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -140,6 +151,7 @@ extension SnapNShareHomeViewController: UIImagePickerControllerDelegate, UINavig
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             dismiss(animated: true) {
+                self.savePhoto(image: chosenImage)
                 self.gotoSnapNSharePhotoViewWithPhoto(photo: chosenImage)
             }
         }
