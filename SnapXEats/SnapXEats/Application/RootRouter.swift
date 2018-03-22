@@ -11,7 +11,7 @@ import FBSDKLoginKit
 import SwiftInstagram
 
 enum Screens {
-    case firsTimeUser, login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurantID: String, parentController: UINavigationController, showMoreInfo: Bool), restaurantDirections(details: RestaurantDetails, parentController: UINavigationController), wishlist, restaurantsMapView(restaurants: [Restaurant], parentController: UINavigationController), snapNShareHome, snapNSharePhoto(photo: UIImage, iparentController: UINavigationController), snapNShareSocialMedia(parentController: UINavigationController), checkin
+    case firsTimeUser, login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurantID: String, parentController: UINavigationController, showMoreInfo: Bool), restaurantDirections(details: RestaurantDetails, parentController: UINavigationController), wishlist, restaurantsMapView(restaurants: [Restaurant], parentController: UINavigationController), snapNShareHome, snapNSharePhoto(photo: UIImage, iparentController: UINavigationController), snapNShareSocialMedia(parentController: UINavigationController), checkin, chekinRewardPoints
 }
 
 class RootRouter: NSObject {
@@ -123,6 +123,16 @@ class RootRouter: NSObject {
         }
     }
     
+    private func presentRewardPointsPopup() {
+        if let window = UIApplication.shared.keyWindow {
+            let rewardPointsPopup = UINib(nibName:SnapXEatsNibNames.rewardPointsPopup, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! RewardPointsPopup
+            rewardPointsPopup.rewardsPopupDelegate = self
+            let popupFrame = CGRect(x: 0, y: 0, width: window.frame.width, height: window.frame.height)
+            rewardPointsPopup.setupPopup(popupFrame)
+            window.addSubview(rewardPointsPopup)
+        }
+    }
+    
     private func dissmissSelectLocationScreen() {
         window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
@@ -202,6 +212,8 @@ class RootRouter: NSObject {
             pushSnapNSharePhotoScreen(onNavigationController: parentController, withPhoto: photo)
         case .snapNShareSocialMedia(let parentController):
             pushSnapNShareSocialMediaScreen(onNavigationController: parentController)
+        case .chekinRewardPoints:
+            presentRewardPointsPopup()
         }
     }
     
@@ -222,7 +234,13 @@ class RootRouter: NSObject {
 
 extension RootRouter: CheckinPopUpActionsDelegate {
     func userDidChekin(_ popup: CheckinPopup) {
-        SnapXEatsLoginHelper.shared.checkinUser()
-        presentScreen(screen: .snapNShareHome, drawerState: .closed)
+        //SnapXEatsLoginHelper.shared.checkinUser()
+        presentScreen(screen: .chekinRewardPoints, drawerState: .closed)
+    }
+}
+
+extension RootRouter: RewardPopupActionsDelegate {
+    func popupDidDismiss(_ popup: RewardPointsPopup) {
+        self.presentScreen(screen: .snapNShareHome, drawerState: .closed)
     }
 }

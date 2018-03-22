@@ -15,6 +15,8 @@
 		7E389705205F86F1005E248F /* AudioRecordingPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E389704205F86F1005E248F /* AudioRecordingPopUp.swift */; };
 		7E389707205F8703005E248F /* AudioRecordingPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E389706205F8703005E248F /* AudioRecordingPopUp.xib */; };
 		7E389709205FCBA6005E248F /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E389708205FCBA6005E248F /* FileManager.swift */; };
+		7E393CB820637C7900E51149 /* RewardPointsPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E393CB620637C7900E51149 /* RewardPointsPopup.swift */; };
+		7E393CB920637C7900E51149 /* RewardPointsPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E393CB720637C7900E51149 /* RewardPointsPopup.xib */; };
 		7E491D21204E920E004445E2 /* RestaurantsMapViewContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E491D18204E920E004445E2 /* RestaurantsMapViewContract.swift */; };
 		7E491D22204E920E004445E2 /* RestaurantsMapViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E491D1A204E920E004445E2 /* RestaurantsMapViewInteractor.swift */; };
 		7E491D23204E920E004445E2 /* RestaurantsMapViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E491D1C204E920E004445E2 /* RestaurantsMapViewPresenter.swift */; };
@@ -239,6 +241,8 @@
 		7E389704205F86F1005E248F /* AudioRecordingPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecordingPopUp.swift; sourceTree = "<group>"; };
 		7E389706205F8703005E248F /* AudioRecordingPopUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioRecordingPopUp.xib; sourceTree = "<group>"; };
 		7E389708205FCBA6005E248F /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		7E393CB620637C7900E51149 /* RewardPointsPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardPointsPopup.swift; sourceTree = "<group>"; };
+		7E393CB720637C7900E51149 /* RewardPointsPopup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RewardPointsPopup.xib; sourceTree = "<group>"; };
 		7E491D18204E920E004445E2 /* RestaurantsMapViewContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantsMapViewContract.swift; sourceTree = "<group>"; };
 		7E491D1A204E920E004445E2 /* RestaurantsMapViewInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantsMapViewInteractor.swift; sourceTree = "<group>"; };
 		7E491D1C204E920E004445E2 /* RestaurantsMapViewPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantsMapViewPresenter.swift; sourceTree = "<group>"; };
@@ -906,6 +910,8 @@
 		7E8B850920624DE900F802B3 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				7E393CB620637C7900E51149 /* RewardPointsPopup.swift */,
+				7E393CB720637C7900E51149 /* RewardPointsPopup.xib */,
 				7E8B850A20624E0D00F802B3 /* CheckinPopup.swift */,
 				7E8B850C20624E4300F802B3 /* CheckinPopup.xib */,
 			);
@@ -1966,6 +1972,7 @@
 				9DB7FE1820061B6200D0E816 /* Roboto-Medium.ttf in Resources */,
 				9DB7FE1920061B6200D0E816 /* Roboto-Regular.ttf in Resources */,
 				7EDB8ED9204FF3710015F48A /* RestaurantCollectionViewCell.xib in Resources */,
+				7E393CB920637C7900E51149 /* RewardPointsPopup.xib in Resources */,
 				7E491D27204E9314004445E2 /* RestaurantsMapView.storyboard in Resources */,
 				9DB02A76201084730061FC0C /* Location.storyboard in Resources */,
 				7E2C64BE2044253400DAB44A /* NavigationMenuTableViewCell.xib in Resources */,
@@ -2129,6 +2136,7 @@
 				9D8E88EE1FFD2BEC0066A1D9 /* LoginInteractor.swift in Sources */,
 				7E2C64BD2044253400DAB44A /* NavigationMenuTableViewCell.swift in Sources */,
 				9D0D713C203AAE1F0077FA7A /* RestaurantDetailsRouter.swift in Sources */,
+				7E393CB820637C7900E51149 /* RewardPointsPopup.swift in Sources */,
 				9D8E88EF1FFD2BEC0066A1D9 /* LoginRouter.swift in Sources */,
 				7E539B7420593A01002C3E55 /* SnapNShareHomePresenter.swift in Sources */,
 				9D8E88F11FFD2BEC0066A1D9 /* BaseContract.swift in Sources */,

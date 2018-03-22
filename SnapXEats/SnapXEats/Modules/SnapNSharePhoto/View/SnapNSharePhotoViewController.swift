@@ -18,6 +18,9 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
     var presenter: SnapNSharePhotoPresentation?
     var snapPhoto: UIImage!
     var audioReviewDuration: Int = 0
+    var rating: Int {
+        return Int(starRatingView.value)
+    }
     
     @IBOutlet var snapPhotoImageView: UIImageView!
     @IBOutlet var starRatingView: SwiftyStarRatingView!
@@ -89,15 +92,11 @@ extension SnapNSharePhotoViewController: SnapNSharePhotoView {
         customizeNavigationItem(title: SnapXEatsPageTitles.snapnshare, isDetailPage: true)
         addShareButtonOnNavigationItem()
         snapPhotoImageView.image = snapPhoto
-        starRatingView.addTarget(self, action: #selector(ratingsChanged), for: .valueChanged)
         reviewTextView.text = reviewPlaceholderText
         reviewTextView.textColor = UIColor.lightGray
         
         playRecordingButton.isInactive()
         recordAudioReviewButton.isActive()
-    }
-    
-    @objc func ratingsChanged() {
     }
 }
 
