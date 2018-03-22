@@ -92,7 +92,6 @@ extension SnapNSharePhotoViewController: SnapNSharePhotoView {
         customizeNavigationItem(title: SnapXEatsPageTitles.snapnshare, isDetailPage: true)
         addShareButtonOnNavigationItem()
         snapPhotoImageView.image = snapPhoto
-        starRatingView.addTarget(self, action: #selector(ratingsChanged), for: .valueChanged)
         reviewTextView.text = reviewPlaceholderText
         reviewTextView.textColor = UIColor.lightGray
         
