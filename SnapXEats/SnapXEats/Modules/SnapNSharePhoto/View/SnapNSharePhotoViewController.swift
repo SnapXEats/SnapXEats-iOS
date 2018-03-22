@@ -18,6 +18,9 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
     var presenter: SnapNSharePhotoPresentation?
     var snapPhoto: UIImage!
     var audioReviewDuration: Int = 0
+    var rating: Int {
+        return Int(starRatingView.value)
+    }
     
     @IBOutlet var snapPhotoImageView: UIImageView!
     @IBOutlet var starRatingView: SwiftyStarRatingView!
@@ -95,9 +98,6 @@ extension SnapNSharePhotoViewController: SnapNSharePhotoView {
         
         playRecordingButton.isInactive()
         recordAudioReviewButton.isActive()
-    }
-    
-    @objc func ratingsChanged() {
     }
 }
 
