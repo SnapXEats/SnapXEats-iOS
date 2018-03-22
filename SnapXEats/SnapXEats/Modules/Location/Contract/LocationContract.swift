@@ -16,9 +16,9 @@ protocol LocationView: BaseView {
 protocol LocationPresentation: class {
 
     func closeLocationView(selectedPreference: SelectedPreference, parent: UINavigationController)
-        func selectLocation()
-        func cuisinePreferenceRequest(selectedPreference: SelectedPreference)
-        func updatedDrawerState(state: KYDrawerController.DrawerState)
+    func selectLocation(parent: UIViewController)
+    func cuisinePreferenceRequest(selectedPreference: SelectedPreference)
+    func updatedDrawerState(state: KYDrawerController.DrawerState)
 }
 
 protocol LocationRequestFomatter: class {

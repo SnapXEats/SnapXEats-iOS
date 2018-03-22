@@ -11,7 +11,8 @@ import FBSDKLoginKit
 import SwiftInstagram
 
 enum Screens {
-    case firsTimeUser, login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurantID: String, parentController: UINavigationController, showMoreInfo: Bool), restaurantDirections(details: RestaurantDetails, parentController: UINavigationController), wishlist, restaurantsMapView(restaurants: [Restaurant], parentController: UINavigationController), snapNShareHome, snapNSharePhoto(photo: UIImage, iparentController: UINavigationController), snapNShareSocialMedia(parentController: UINavigationController), checkin, chekinRewardPoints
+    
+    case firsTimeUser, login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation(parent: UIViewController), userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurantID: String, parentController: UINavigationController, showMoreInfo: Bool), restaurantDirections(details: RestaurantDetails, parentController: UINavigationController), wishlist, restaurantsMapView(restaurants: [Restaurant], parentController: UINavigationController), snapNShareHome, snapNSharePhoto(photo: UIImage, iparentController: UINavigationController), snapNShareSocialMedia(parentController: UINavigationController), checkin, chekinRewardPoints
 }
 
 class RootRouter: NSObject {
@@ -27,8 +28,9 @@ class RootRouter: NSObject {
     }
     
     private func presentFirstTimeUserScreen() {
-          showFirstScreen()
+        showFirstScreen()
     }
+    
     private func userLoggedIn() {
         if faceBookLoggedIn() || instagramLoggedIn() {
             showFirstScreen()
@@ -133,13 +135,9 @@ class RootRouter: NSObject {
         }
     }
     
-    private func dissmissSelectLocationScreen() {
-        window?.rootViewController?.dismiss(animated: true, completion: nil)
-    }
-    
-    private func presentSelectLocationScreen() {
+    private func presentSelectLocationScreen(parent: UIViewController) {
         let selectLocationViewController = SelectLocationRouter.singleInstance.loadSelectLocationModule()
-        window?.rootViewController?.present(selectLocationViewController, animated: true, completion: nil)
+        parent.present(selectLocationViewController, animated: true, completion: nil)
     }
     
     private func pushRestaurantDetailsScreen(onNavigationController parentController: UINavigationController, forRestaurant restaurantID: String, showMoreInfo: Bool) {
@@ -167,7 +165,7 @@ class RootRouter: NSObject {
     }
     
     func updateDrawerState(state: KYDrawerController.DrawerState) {
-         drawerController.setDrawerState(state, animated: true)
+        drawerController.setDrawerState(state, animated: true)
     }
     
     func presentScreen(screen: Screens, drawerState: KYDrawerController.DrawerState) {
@@ -188,12 +186,10 @@ class RootRouter: NSObject {
             presentLocationScreen()
         case .foodcards(let selectedPreference, let parentController):
             pushFoodcardsScreen(selectedPreference: selectedPreference, onNavigationController: parentController)
-        case .selectLocation:
-            presentSelectLocationScreen()
+        case .selectLocation(let  viewController):
+            presentSelectLocationScreen(parent: viewController)
         case .userPreference:
             presentUserPreferencesScreen()
-        case .dismissNewLocation:
-            dissmissSelectLocationScreen()
         case .foodAndCusinePreferences(let preferenceType, let parentController):
             pushFoodAndCuisinePreferencesScreen(onNavigationController: parentController, withPreferenceType: preferenceType)
         case .restaurantDetails(let restaurantID, let parentController, let showMoreInfo):
@@ -216,7 +212,6 @@ class RootRouter: NSObject {
             presentRewardPointsPopup()
         }
     }
-    
     private func presentView(_ viewController: UIViewController) {
         guard let window = UIApplication.shared.delegate?.window! else { return }
         window.backgroundColor = UIColor.white

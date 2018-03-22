@@ -51,7 +51,7 @@ class SelectLocationViewController: BaseViewController, StoryboardLoadable {
     
     @IBAction func closeSelectLocation(_ sender: Any) {
         dismissKeyboard()
-        presenter?.dismissScreen()
+        self.dismiss(animated: true, completion: nil)
     }
     
     
@@ -263,7 +263,7 @@ extension SelectLocationViewController: CLLocationManagerDelegate, SnapXEatsUser
     private func navigatScreen(locationName: String?) {
         selectedPreference.location.locationName = locationName ?? SnapXEatsConstant.emptyString
         stopLocationManager()
-        presenter?.dismissScreen()
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

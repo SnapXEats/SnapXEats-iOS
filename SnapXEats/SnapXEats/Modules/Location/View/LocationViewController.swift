@@ -71,7 +71,7 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     @IBAction func setNewLocation(_ sender: Any) {
         stopLocationManager()
         unRegisterNotification()
-        presenter?.selectLocation()
+        presenter?.selectLocation(parent: self)
     }
     
     @IBAction func menuButtonTapped(_ sender: Any) {
@@ -181,7 +181,7 @@ extension LocationViewController: CLLocationManagerDelegate, SnapXEatsUserLocati
         case .denied:
             if permissionDenied == false {
                 permissionDenied = true
-                presenter?.selectLocation()
+                presenter?.selectLocation(parent: self)
                 
             } else  {
                 showSettingDialog()
