@@ -32,6 +32,12 @@ class Restaurant: Mappable {
     var longitude: Double = 0.0
     var price: Int?
 
+    // This is temp Code to send restaurant Object to Checkin Popup
+    init(id: String, name: String) {
+        restaurant_info_id = id
+        restaurant_name = name
+    }
+    
     required init?(map: Map) {
     }
     

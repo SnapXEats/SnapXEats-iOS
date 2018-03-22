@@ -25,7 +25,7 @@ protocol CheckinPopupInteractorOutput: Response {
     // TODO: Declare interactor output methods
 }
 
-protocol CheckinPopupWireframe: class {
+protocol CheckinPopupWireframe: RootWireFrame {
     // TODO: Declare wireframe methods
 }
 

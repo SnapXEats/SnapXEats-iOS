@@ -11,7 +11,7 @@ import FBSDKLoginKit
 import SwiftInstagram
 
 enum Screens {
-    case firsTimeUser, login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurantID: String, parentController: UINavigationController, showMoreInfo: Bool), restaurantDirections(details: RestaurantDetails, parentController: UINavigationController), wishlist, restaurantsMapView(restaurants: [Restaurant], parentController: UINavigationController), snapNShareHome, snapNSharePhoto(photo: UIImage, iparentController: UINavigationController), snapNShareSocialMedia(parentController: UINavigationController), checkin, chekinRewardPoints
+    case firsTimeUser, login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation, dismissNewLocation, userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurantID: String, parentController: UINavigationController, showMoreInfo: Bool), restaurantDirections(details: RestaurantDetails, parentController: UINavigationController), wishlist, restaurantsMapView(restaurants: [Restaurant], parentController: UINavigationController), snapNShareHome(restaurant: Restaurant), snapNSharePhoto(photo: UIImage, iparentController: UINavigationController), snapNShareSocialMedia(parentController: UINavigationController), checkin(restaurant: Restaurant)
 }
 
 class RootRouter: NSObject {
@@ -107,29 +107,22 @@ class RootRouter: NSObject {
         parentController.pushViewController(restaurantMapsVC, animated: true)
     }
     
-    private func presentSnapNShareHomeScreen() {
-        let snapNShareHomeVC = SnapNShareHomeRouter.shared.loadSnapNShareHomeModule()
-        updateDrawerWithMainController(mainVC: snapNShareHomeVC)
+    private func presentSnapNShareHomeScreen(restaurant: Restaurant) {
+        let snapNShareHomeNavigation = SnapNShareHomeRouter.shared.loadSnapNShareHomeModule()
+        if let snapNShareHomeVC = snapNShareHomeNavigation.viewControllers.first as? SnapNShareHomeViewController{
+            snapNShareHomeVC.restaurant = restaurant
+        }
+        updateDrawerWithMainController(mainVC: snapNShareHomeNavigation)
         presentView(drawerController)
     }
     
-    private func presentCheckinPopup() {
+    private func presentCheckinPopupForRestaurant(restaurant: Restaurant) {
         if let window = UIApplication.shared.keyWindow {
             let checkinPopup = CheckinPopupRouter.shared.loadCheckinPopupModule()
             checkinPopup.checkinPopupDelegate = self
             let popupFrame = CGRect(x: 0, y: 0, width: window.frame.width, height: window.frame.height)
-            checkinPopup.setupPopup(frame: popupFrame)
+            checkinPopup.setupPopup(frame: popupFrame, restaurant: restaurant)
             window.addSubview(checkinPopup)
-        }
-    }
-    
-    private func presentRewardPointsPopup() {
-        if let window = UIApplication.shared.keyWindow {
-            let rewardPointsPopup = UINib(nibName:SnapXEatsNibNames.rewardPointsPopup, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! RewardPointsPopup
-            rewardPointsPopup.rewardsPopupDelegate = self
-            let popupFrame = CGRect(x: 0, y: 0, width: window.frame.width, height: window.frame.height)
-            rewardPointsPopup.setupPopup(popupFrame)
-            window.addSubview(rewardPointsPopup)
         }
     }
     
@@ -204,16 +197,14 @@ class RootRouter: NSObject {
             presentWishlistScreen()
         case .restaurantsMapView(let restaurants, let parentController):
             pushRestaurantsMapView(onNavigationController: parentController, withRestaurants: restaurants)
-        case .snapNShareHome:
-            presentSnapNShareHomeScreen()
-        case .checkin:
-            presentCheckinPopup()
+        case .snapNShareHome(let restaurant):
+            presentSnapNShareHomeScreen(restaurant: restaurant)
+        case .checkin(let restaurant):
+            presentCheckinPopupForRestaurant(restaurant: restaurant)
         case .snapNSharePhoto(let photo, let parentController):
             pushSnapNSharePhotoScreen(onNavigationController: parentController, withPhoto: photo)
         case .snapNShareSocialMedia(let parentController):
             pushSnapNShareSocialMediaScreen(onNavigationController: parentController)
-        case .chekinRewardPoints:
-            presentRewardPointsPopup()
         }
     }
     
@@ -233,14 +224,8 @@ class RootRouter: NSObject {
 }
 
 extension RootRouter: CheckinPopUpActionsDelegate {
-    func userDidChekin(_ popup: CheckinPopup) {
+    func userDidChekintoRestaurant(restaurant: Restaurant) {
         //SnapXEatsLoginHelper.shared.checkinUser()
-        presentScreen(screen: .chekinRewardPoints, drawerState: .closed)
-    }
-}
-
-extension RootRouter: RewardPopupActionsDelegate {
-    func popupDidDismiss(_ popup: RewardPointsPopup) {
-        self.presentScreen(screen: .snapNShareHome, drawerState: .closed)
+        presentScreen(screen: .snapNShareHome(restaurant: restaurant), drawerState: .closed)
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CheckinPopUpActionsDelegate: class {
-    func userDidChekin(_ popup: CheckinPopup)
+    func userDidChekintoRestaurant(restaurant: Restaurant)
 }
 
 class CheckinPopup: SnapXEatsView, CheckinPopupView {
@@ -20,6 +20,8 @@ class CheckinPopup: SnapXEatsView, CheckinPopupView {
     
     weak var checkinPopupDelegate: CheckinPopUpActionsDelegate?
     var presenter: CheckinPopupPresenter?
+    var restaurant: Restaurant?
+    var router: CheckinPopupRouter?
     
     @IBOutlet var containerView: UIView!
     @IBOutlet var checkinButton: UIButton!
@@ -31,21 +33,35 @@ class CheckinPopup: SnapXEatsView, CheckinPopupView {
     }
     
     @IBAction func checkinButtonAction(_ sender: UIButton) {
-        showLoading()
-        presenter?.checkinIntoRestaurant(restaurantId: "62dfee80-b52b-482f-b0f3-c175ce5d56ca")
+        if let restaurant = self.restaurant, let id = restaurant.restaurant_info_id {
+            showLoading()
+            presenter?.checkinIntoRestaurant(restaurantId: id)
+        }
     }
     
-    func setupPopup(frame: CGRect) {
+    func setupPopup(frame: CGRect, restaurant: Restaurant) {
         self.frame = frame
+        self.restaurant = restaurant
         checkinButton.layer.cornerRadius = checkinButton.frame.height/2
         restaurantLogoImageView.layer.cornerRadius = restaurantLogoImageView.frame.height/2
         containerView.layer.cornerRadius = popupConstants.containerRadius
+        if let restaurant = self.restaurant, let name = restaurant.restaurant_name {
+            restaurantNameLabel.text = name
+        }
     }
     
     override func success(result: Any?) {
         if let success = result as? Bool, success == true {
             self.removeFromSuperview()
-            checkinPopupDelegate?.userDidChekin(self)
+            router?.showRewardPointsPopup(parent: self)
+        }
+    }
+}
+
+extension CheckinPopup: RewardPopupActionsDelegate {
+    func popupDidDismiss(_ popup: RewardPointsPopup) {
+        if let restaurant = self.restaurant {
+           checkinPopupDelegate?.userDidChekintoRestaurant(restaurant: restaurant)
         }
     }
 }
