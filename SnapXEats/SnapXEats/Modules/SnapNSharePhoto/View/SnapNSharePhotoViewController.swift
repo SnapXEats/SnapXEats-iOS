@@ -18,6 +18,8 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
     var presenter: SnapNSharePhotoPresentation?
     var snapPhoto: UIImage!
     var audioReviewDuration: Int = 0
+    var loginPreference  = LoginUserPreferences.shared
+    let restaurntID = LoginUserPreferences.shared.userDishReview.restaurantInfoId
     var rating: Int {
         return Int(starRatingView.value)
     }
@@ -59,11 +61,22 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
             // Action for Discard
         }
         let continueAction = UIAlertAction(title: SnapXButtonTitle.continueNext, style: .default) { [weak self] (action) in
+            self?.setReviewData()
             self?.gotoSnapNShareSocialMediaView()
         }
         confirmationAlert.addAction(discardAction)
         confirmationAlert.addAction(continueAction)
         present(confirmationAlert, animated: true, completion: nil)
+    }
+    
+    func setReviewData() {
+        if let restaurntID = restaurntID {
+         loginPreference.userDishReview.rating = rating
+         loginPreference.userDishReview.reviewText = reviewTextView.text
+         loginPreference.userDishReview.reviewAudio =  getPathForAudioReviewForRestaurant(restaurantId: restaurntID)
+         loginPreference.userDishReview.dishPicture = getPathForSmartPhotoForRestaurant(restaurantId: restaurntID)
+         //loginPreference.userDishReview.restaurantInfoId  // This will get set in SnapNShareHomeViewController
+        }
     }
     
     func gotoSnapNShareSocialMediaView() {
@@ -73,11 +86,13 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
     }
     
     private func showAudioRecordingPopUpViewWithType(type: AudioRecordingPopupTypes) {
+        dismissKeyboard()
         let audioRecordPopupView = UINib(nibName:SnapXEatsNibNames.audioRecordingPopup, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! AudioRecordingPopUp
         audioRecordPopupView.audioRecordingPopupDelegate = self
         let audioPopupFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         audioRecordPopupView.setupPopup(audioPopupFrame, type: type, forDuration: audioReviewDuration, forViewController: self)
         self.view.addSubview(audioRecordPopupView)
+       
     }
     
     private func updateUIForAudioReview(audioReviewAvailable: Bool) {

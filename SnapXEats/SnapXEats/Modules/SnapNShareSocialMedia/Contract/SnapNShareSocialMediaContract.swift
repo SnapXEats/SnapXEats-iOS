@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 protocol SnapNShareSocialMediaView: BaseView {
     // TODO: Declare view methods
@@ -15,13 +16,14 @@ protocol SnapNShareSocialMediaView: BaseView {
 protocol SnapNShareSocialMediaPresentation: class {
     func presentScreen(screen: Screens)
     func loginUsingFaceBook()
+    func sendPhotoReview()
 }
 
 protocol SnapNShareSocialMediaUseCase: SnapNShareSocialMediaInPut {
     
 }
 
-protocol SnapNShareSocialMediaInPut: class {
+protocol SnapNShareSocialMediaInPut: SnapNShareSocialMediaRequestFomatter {
    func sendFaceBookLoginRequest(view: BaseView?)
 }
 
@@ -29,6 +31,22 @@ protocol SnapNShareSocialMediaInteractorOutput: Response {
     // TODO: Declare interactor output methods
 }
 
+
+protocol SnapNShareSocialMediaRequestFomatter: class {
+    func uploadDishReview()
+}
+
+protocol SnapNShareSocialMediaWebService: class {
+    func sendReviewRequest(path: String, parameters:[String: Any])
+}
+
+protocol SnapNShareSocialMediaObjectMapper: class {
+    func reviewDetails(data: Result<SnapNShare> )
+}
+
+
 protocol SnapNShareSocialMediaWireframe: RootWireFrame {
     // TODO: Declare wireframe methods
 }
+
+

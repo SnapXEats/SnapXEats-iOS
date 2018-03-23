@@ -87,6 +87,7 @@ enum SnapXEatsWebServicePath {
     static let  userGesture = "/api/v1/userGesture"
     static let  logOut = "/api/v1/users/logout"
     static let  wishList = "/api/v1/userGesture/wishlist"
+    static let  shanNShare = "/api/v1/snapNShare"
 }
 
 enum SnapXEatsImageNames {
@@ -174,6 +175,11 @@ enum SnapXEatsWebServiceParameterKeys {
     static let foodArray = "foodArray"
     static let authorization = "Authorization"
     static let BearerString = "Bearer "
+    static let restaurantInfoId = "restaurantInfoId"
+    static let dishPicture = "dishPicture"
+    static let audioReview   = "audioReview"
+    static let textReview = "textReview"
+    static let rating = "rating"
 }
 enum SnapXButtonTitle {
     static let ok = "Ok"
