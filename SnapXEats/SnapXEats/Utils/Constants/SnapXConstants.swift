@@ -138,7 +138,7 @@ enum SnapXEatsPageTitles {
     
     static let cusinePreferences = "Cuisine Preferences"
     static let foodPreferences = "Food Preferences"
-    static let restaurantDetail = "Restaurant Info"
+    static let restaurantDetail = "Restaurant Information"
     static let directions = "Directions"
 }
 
@@ -230,20 +230,20 @@ enum SnapXEatsDirectionConstants {
 }
 
 enum AlertMessage {
-    static let messageNoInternet = "SnapXEats required internet connection to process your request. Please enable your internet access."
+    static let messageNoInternet = "SnapXEats required internet connection to process your request. Please enable your internet access"
     static let messageSuccess = "Request Succesful"
-    static let loginError = "Server Error during process your request"
+    static let loginError = "Server error while processing your request"
     static let cancelRequest = "User canceled request"
-    static let logOutMessage = "Do you really want to Logout of SnapXEats"
-    static let preferenceMessage = "You have made some changes to your preferences, You need to apply them first."
+    static let logOutMessage = "Are you sure you want to logout?"
+    static let preferenceMessage = "You have made some changes to your preferences, you need to apply to continue"
     static let uberRedirectConfirmation = "Are you sure you want to book an Uber ride?"
     static let uberInstallConfirmation = "You need to install the uber app from app store to book a ride. Do you want to install it now?"
-    static let preferecneRestMessage = "Do you really want to reset your preferences. Please press Ok or Cancel."
-    static let preferenceSaveMessage = "You have made some changes to your preferences, You need to save them first."
-    static let deleteWishListMessage = "Do you really want to delete your selected wishlist Item, please press Ok or Cancel."
-    static let wishlistForNonLoggedinUser = "Please Login to see the Wishlist."
-    static let navigationFailureError = "We are not able to detect your current location so Navigation on the Map won't work"
-    static let shareConfirmation = "Do you want to Add and Share your Review?"
+    static let preferecneRestMessage = "Do you want to reset your preferences?"
+    static let preferenceSaveMessage = "You have made some changes to your preferences, you need to save them"
+    static let deleteWishListMessage = "Do you want to delete your selected wishlist item?"
+    static let wishlistForNonLoggedinUser = "Please login to check the Wishlist"
+    static let navigationFailureError = "We are not able to detect your current location so navigation on the map won't work"
+    static let shareConfirmation = "Do you want to add and share your review?"
     static let audioReviewDeleteConfirmation = "Are you sure you want to delete this audio review?"
     static let maxAudioReviewLimitReached = "Maximum Audio Review length reached."
 }

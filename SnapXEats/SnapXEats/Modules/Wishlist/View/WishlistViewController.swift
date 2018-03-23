@@ -51,7 +51,7 @@ class WishlistViewController: BaseViewController, StoryboardLoadable {
             self?.makeWishlistNonEditable()
         }
         
-        UIAlertController.presentAlertInViewController(self, title: AlertTitle.error , message: AlertMessage.deleteWishListMessage, actions: [cancel, ok], completion: nil)
+        UIAlertController.presentAlertInViewController(self, title: SnapXEatsAppDefaults.emptyString , message: AlertMessage.deleteWishListMessage, actions: [cancel, ok], completion: nil)
     }
     
     private func setCancelButton(completionHandler: @escaping () ->()) -> UIAlertAction {

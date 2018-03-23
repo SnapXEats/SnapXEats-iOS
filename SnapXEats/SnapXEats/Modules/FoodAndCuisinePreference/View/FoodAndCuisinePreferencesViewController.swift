@@ -148,7 +148,7 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
         }
         let cancel = setCancelButton {}
         
-        UIAlertController.presentAlertInViewController(self, title: AlertTitle.error , message: AlertMessage.preferecneRestMessage, actions: [cancel, ok], completion: nil)
+        UIAlertController.presentAlertInViewController(self, title: SnapXEatsAppDefaults.emptyString , message: AlertMessage.preferecneRestMessage, actions: [cancel, ok], completion: nil)
     }
     
     private func setCancelButton(completionHandler: @escaping () ->()) -> UIAlertAction {
