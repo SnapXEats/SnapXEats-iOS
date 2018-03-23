@@ -31,7 +31,7 @@ class WishlistItemTableViewCell: UITableViewCell {
             wishlistItemImageView.image = placeholderImage //UIImage(named: foodCardItem.imageName)
         }
         
-        let shadowColor = isSelected ? UIColor.rgba(230.0, 118.0, 7.0, 1) : UIColor.rgba(202.0, 202.0, 202.0, 1)
+        let shadowColor = isSelected ? UIColor.red : UIColor.rgba(202.0, 202.0, 202.0, 1)
         containerView.fullShadow(color: shadowColor, offSet: CGSize(width: 0, height: 0))
     }
 }

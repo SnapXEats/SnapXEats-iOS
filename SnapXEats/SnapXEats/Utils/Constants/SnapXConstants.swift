@@ -107,6 +107,7 @@ enum SnapXEatsImageNames {
     static let closeIcon = "close_icon"
     static let record_popuup_icon = "record_popuup_icon"
     static let play_popuup_icon = "play_popup_icon"
+    static let swipe_delete_icon = "swipe_delete_icon"
 }
 
 
