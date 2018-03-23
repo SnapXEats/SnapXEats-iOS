@@ -17,8 +17,8 @@ class WishlistViewController: BaseViewController, StoryboardLoadable {
     }
     
     private enum swipeToDeleteConstants {
-        static let imageHeight: CGFloat = 17
-        static let imageWidth: CGFloat = 19
+        static let imageHeight: CGFloat = 21
+        static let imageWidth: CGFloat = 17
         static let cellActionWidth: CGFloat = 80
         static let cellActionHeight: CGFloat = 80
     }

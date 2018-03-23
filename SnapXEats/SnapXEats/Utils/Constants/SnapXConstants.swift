@@ -125,7 +125,6 @@ enum SnapXEatsPlaceSearchRequestKeys {
     static let placeid = "placeid"
 }
 
-
 enum SnapXEatsPageTitles {
     static let home = "Home"
     static let wishlist = "Wishlist"
@@ -135,7 +134,7 @@ enum SnapXEatsPageTitles {
     static let snapnshare = "Snap-n-Share"
     static let smartPhotos = "Smart Photos"
     static let restaurants = "Restaurants"
-    static let checkin = "Check In"
+    static let checkin = "Check-In"
     
     static let cusinePreferences = "Cuisine Preferences"
     static let foodPreferences = "Food Preferences"

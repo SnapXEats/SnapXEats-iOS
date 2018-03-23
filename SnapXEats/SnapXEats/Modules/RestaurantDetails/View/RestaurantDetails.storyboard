@@ -184,17 +184,6 @@
                                                     <outlet property="delegate" destination="2ez-hK-vzS" id="n2P-YX-2wz"/>
                                                 </connections>
                                             </collectionView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uSl-az-n9O">
-                                                <rect key="frame" x="0.0" y="225" width="40" height="25"/>
-                                                <color key="backgroundColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="deviceRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="25" id="Yi2-r8-SPU"/>
-                                                    <constraint firstAttribute="width" constant="40" id="ner-3L-jyi"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kBW-nd-luK">
                                                 <rect key="frame" x="0.0" y="367" width="375" height="332"/>
                                                 <subviews>
@@ -274,7 +263,6 @@
                                             <constraint firstItem="642-at-qQE" firstAttribute="leading" secondItem="396-eL-bmq" secondAttribute="leading" id="Lyx-OZ-1Oo"/>
                                             <constraint firstItem="FsQ-Zk-rIl" firstAttribute="top" secondItem="GQn-M8-WrE" secondAttribute="bottom" constant="15" id="MDs-j8-CZI"/>
                                             <constraint firstItem="gPh-m1-gH0" firstAttribute="top" secondItem="642-at-qQE" secondAttribute="top" id="Mpi-Tg-E0q"/>
-                                            <constraint firstItem="uSl-az-n9O" firstAttribute="leading" secondItem="Ma9-91-AsJ" secondAttribute="leading" id="PMo-qQ-UdP"/>
                                             <constraint firstItem="GQn-M8-WrE" firstAttribute="leading" secondItem="UpG-YB-7ky" secondAttribute="leading" id="PXq-SV-XTz"/>
                                             <constraint firstItem="dq6-am-2eX" firstAttribute="trailing" secondItem="642-at-qQE" secondAttribute="trailing" id="Pjc-FW-5ef"/>
                                             <constraint firstItem="396-eL-bmq" firstAttribute="trailing" secondItem="UpG-YB-7ky" secondAttribute="trailing" id="RCO-lG-wfz"/>
@@ -301,7 +289,6 @@
                                             <constraint firstAttribute="trailing" secondItem="UpG-YB-7ky" secondAttribute="trailing" constant="10" id="uQs-ne-3Ra"/>
                                             <constraint firstItem="396-eL-bmq" firstAttribute="leading" secondItem="UpG-YB-7ky" secondAttribute="leading" id="uSh-zt-r6K"/>
                                             <constraint firstItem="gPh-m1-gH0" firstAttribute="leading" secondItem="zly-7a-SZ6" secondAttribute="trailing" constant="6" id="vcd-e5-MMv"/>
-                                            <constraint firstItem="uSl-az-n9O" firstAttribute="bottom" secondItem="Ma9-91-AsJ" secondAttribute="bottom" id="wCC-Ty-ahB"/>
                                             <constraint firstItem="zly-7a-SZ6" firstAttribute="leading" secondItem="642-at-qQE" secondAttribute="leading" id="wvQ-Ny-Ay5"/>
                                             <constraint firstItem="Ma9-91-AsJ" firstAttribute="leading" secondItem="rej-Yn-WrV" secondAttribute="leading" id="xWo-y7-tS9"/>
                                             <constraint firstItem="4N9-QR-yJF" firstAttribute="centerX" secondItem="U4V-eE-jUb" secondAttribute="centerX" id="zNg-1R-G9k"/>
@@ -340,7 +327,6 @@
                         <outlet property="restaurantTimingButton" destination="642-at-qQE" id="sWu-08-Eu5"/>
                         <outlet property="restaurantTimingLabel" destination="gPh-m1-gH0" id="FrB-b1-8i5"/>
                         <outlet property="slideshowContainer" destination="Ma9-91-AsJ" id="A9b-aT-2Fz"/>
-                        <outlet property="slideshowCountLabel" destination="uSl-az-n9O" id="VTx-EM-ht5"/>
                         <outlet property="specialityCollectionView" destination="FsQ-Zk-rIl" id="GUu-48-9LR"/>
                     </connections>
                 </viewController>

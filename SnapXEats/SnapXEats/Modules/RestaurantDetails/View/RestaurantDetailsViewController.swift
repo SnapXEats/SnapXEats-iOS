@@ -12,7 +12,6 @@ import UIKit
 class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
 
     @IBOutlet var slideshowContainer: UIView!
-    @IBOutlet var slideshowCountLabel: UILabel!
     @IBOutlet var specialityCollectionView: UICollectionView!
     @IBOutlet var restaurantNameLabel: UILabel!
     @IBOutlet var restaurantAddressLabel: UILabel!
@@ -229,16 +228,14 @@ extension RestaurantDetailsViewController: RestaurantDetailsView {
         slideshow.setImageInputs(inputsources)
         slideshow.contentScaleMode = .scaleAspectFit
         slideshow.slideshowInterval = 0
-        slideshow.pageControlPosition = .hidden
+        slideshow.pageControlPosition = .insideScrollView
         slideshow.activityIndicator = DefaultActivityIndicator(style: .whiteLarge, color: .black)
-        
+
         //Show details for First item which is by default selected
-        slideshowCountLabel.text = "1/\(inputsources.count)"
         photoClickedDateLabel.text = photoCreatedDatePrefix + (formatDateFromString(datestr: photos[0].createDate ?? SnapXEatsAppDefaults.emptyString))
         
         // Call back of image changed event
         slideshow.currentPageChanged = { [weak self] (index) in
-            self?.slideshowCountLabel.text = "\(index+1)/\(inputsources.count)"
             self?.photoClickedDateLabel.text = self!.photoCreatedDatePrefix + (formatDateFromString(datestr: photos[0].createDate ?? SnapXEatsAppDefaults.emptyString))
         }
     }
