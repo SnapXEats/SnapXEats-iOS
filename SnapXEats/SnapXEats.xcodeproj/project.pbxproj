@@ -130,6 +130,7 @@
 		9D1C33E2205FAD1B00B4F69D /* SocialPlatformHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C33E1205FAD1B00B4F69D /* SocialPlatformHelper.swift */; };
 		9D1C33E42062378D00B4F69D /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D1C33E52062378D00B4F69D /* FBSDKShareKit.framework */; };
 		9D1C33E72062706000B4F69D /* InstagramManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C33E62062706000B4F69D /* InstagramManager.swift */; };
+		9D1C33EB20650D9900B4F69D /* SnapNShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C33EA20650D9900B4F69D /* SnapNShare.swift */; };
 		9D2C484D202073A700FD8B1C /* SelectedPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C484C202073A700FD8B1C /* SelectedPreference.swift */; };
 		9D3D1CE02006479500AAAB95 /* SnapXConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3D1CDF2006479500AAAB95 /* SnapXConstants.swift */; };
 		9D3FC4D82011C94A001A4264 /* CuisinePreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3FC4D72011C94A001A4264 /* CuisinePreference.swift */; };
@@ -357,6 +358,7 @@
 		9D1C33E1205FAD1B00B4F69D /* SocialPlatformHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialPlatformHelper.swift; sourceTree = "<group>"; };
 		9D1C33E52062378D00B4F69D /* FBSDKShareKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D1C33E62062706000B4F69D /* InstagramManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramManager.swift; sourceTree = "<group>"; };
+		9D1C33EA20650D9900B4F69D /* SnapNShare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapNShare.swift; sourceTree = "<group>"; };
 		9D2C484C202073A700FD8B1C /* SelectedPreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedPreference.swift; sourceTree = "<group>"; };
 		9D3D1CDF2006479500AAAB95 /* SnapXConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXConstants.swift; sourceTree = "<group>"; };
 		9D3FC4D72011C94A001A4264 /* CuisinePreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisinePreference.swift; sourceTree = "<group>"; };
@@ -568,10 +570,10 @@
 			isa = PBXGroup;
 			children = (
 				7E539B6820593A01002C3E55 /* Contract */,
-				7E539B6A20593A01002C3E55 /* Interactor */,
 				7E539B6C20593A01002C3E55 /* Presenter */,
-				7E539B6E20593A01002C3E55 /* Router */,
 				7E539B7020593A01002C3E55 /* View */,
+				7E539B6A20593A01002C3E55 /* Interactor */,
+				7E539B6E20593A01002C3E55 /* Router */,
 			);
 			path = SnapNShareHome;
 			sourceTree = "<group>";
@@ -612,8 +614,8 @@
 			isa = PBXGroup;
 			children = (
 				7E8B850920624DE900F802B3 /* Custom Views */,
-				7E539B7120593A01002C3E55 /* SnapNShareHomeViewController.swift */,
 				7E539B7720593B50002C3E55 /* SnapNShareHome.storyboard */,
+				7E539B7120593A01002C3E55 /* SnapNShareHomeViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -622,10 +624,10 @@
 			isa = PBXGroup;
 			children = (
 				7E539BA0205A522D002C3E55 /* Contract */,
-				7E539BA2205A522D002C3E55 /* Interactor */,
 				7E539BA4205A522D002C3E55 /* Presenter */,
-				7E539BA6205A522D002C3E55 /* Router */,
 				7E539BA8205A522D002C3E55 /* View */,
+				7E539BA2205A522D002C3E55 /* Interactor */,
+				7E539BA6205A522D002C3E55 /* Router */,
 			);
 			path = SnapNSharePhoto;
 			sourceTree = "<group>";
@@ -666,8 +668,8 @@
 			isa = PBXGroup;
 			children = (
 				7E389703205F86B5005E248F /* Custom Views */,
-				7E539BA9205A522D002C3E55 /* SnapNSharePhotoViewController.swift */,
 				7E539BAF205A5268002C3E55 /* SnapNSharePhoto.storyboard */,
+				7E539BA9205A522D002C3E55 /* SnapNSharePhotoViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1155,6 +1157,14 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		9D1C33E920650D8000B4F69D /* SnapNShare */ = {
+			isa = PBXGroup;
+			children = (
+				9D1C33EA20650D9900B4F69D /* SnapNShare.swift */,
+			);
+			path = SnapNShare;
+			sourceTree = "<group>";
+		};
 		9D3FC4DD20120BBC001A4264 /* CuisineCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1485,6 +1495,7 @@
 				9DDC3AF020358E9600A7F181 /* Login */,
 				9D8E88DA1FFD28C50066A1D9 /* Preference */,
 				9D8E88DC1FFD28C50066A1D9 /* UserProfile */,
+				9D1C33E920650D8000B4F69D /* SnapNShare */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -2286,6 +2297,7 @@
 				7E539BAD205A522E002C3E55 /* SnapNSharePhotoRouter.swift in Sources */,
 				9D8E89151FFD2BEC0066A1D9 /* ValidatorHelper.swift in Sources */,
 				9DB02A712010805F0061FC0C /* LocationInteractor.swift in Sources */,
+				9D1C33EB20650D9900B4F69D /* SnapNShare.swift in Sources */,
 				7EC5014920469A2C00D44E92 /* RestaurantDirectionsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
