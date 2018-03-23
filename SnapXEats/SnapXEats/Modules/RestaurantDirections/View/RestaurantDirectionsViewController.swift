@@ -162,7 +162,7 @@ extension RestaurantDirectionsViewController: MKMapViewDelegate {
         let destinationPlacemark = MKPlacemark(coordinate: destinationLocation, addressDictionary: nil)
         
         // Create Annotations for Source and Destination
-        let sourceAnnotation = MKPointAnnotation()
+        let sourceAnnotation = CurrentLocationAnnotation()
         if let location = sourcePlacemark.location {
             sourceAnnotation.coordinate = location.coordinate
         }
