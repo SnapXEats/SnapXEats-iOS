@@ -18,7 +18,8 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
     
     let loginPreferecne = LoginUserPreferences.shared
     let instagramApi = Instagram.shared
-    
+    var shareableImageURL: URL?
+    var shareableTxt = ""
     @IBOutlet weak var fbButton: UIButton!
     // MARK: Lifecycle
     @IBOutlet weak var instagramButton: UIButton!
@@ -33,22 +34,25 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
     }
     
     @IBAction func instagramImageShare(_ sender: Any) {
-//        if loginPreferecne.isInstagramlogin {
-//
-//        } else {
-//            presenter?.presentScreen(screen: .instagram)
-//        }
         sharingDialogInstagram()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
+        showLoading()
+        presenter?.sendPhotoReview()
     }
+    
+    
     
     override func success(result: Any?) {
         if let _ = result as? Bool {
             sharingDialogFB()
+        } else if let result = result as? SnapNShare {
+            shareableImageURL = URL(string: result.dish_image_url!)
+            shareableTxt = result.message ?? ""
         }
+        
     }
     
     func getUsrImage() -> String {
@@ -67,14 +71,15 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
             case .cancelled:
                 print("canecel")
             case .success:
-                print("Success")
+                print("Success")  // You need to add the success pop here
             }
         }
         try! shareDialog.show()
     }
     
     func sharingDialogInstagram() {
-        if let image = UIImage(named: SnapXEatsImageNames.placeholder_cuisine) {
+        // For instagram you need to send the image. we can't send the url path for instagram.
+        if let image = UIImage(named: SnapXEatsImageNames.placeholder_cuisine) { 
             InstagramManager.shared.shareONInstagram(image: image, description: "This is the image on Instagram", viewController: self)
         }
     }

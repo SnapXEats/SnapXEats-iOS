@@ -75,16 +75,18 @@
 		<key>NSExceptionDomains</key>
 		<dict/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>SnapXEats want to use your Camera to take Snap n Share Photos</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>SnapXEats want to use your location to show cuisine based on your preferences</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Will you allow SnapXEats app to always use your location to show you cuisines based on your  preferences</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>SnapXEats want to use your location to show cuisine based on your preferences</string>
-	<key>NSCameraUsageDescription</key>
-	<string>SnapXEats want to use your Camera to take Snap n Share Photos</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>SnapXEats want to use your Microphone to record Snap n Share Audio Review</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>SnapXeats app requires access to the photo library.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Roboto-Light.ttf</string>

@@ -43,6 +43,17 @@ enum SortByPreference: Int {
     case rating = 1
 }
 
+class UserDishReview {
+    var rating = 3
+    var reviewText = ""
+    var reviewAudio: URL?
+    var dishPicture: URL?
+    var restaurantInfoId : String?
+    
+    private init() {}
+    static let shared = UserDishReview()
+}
+
 class LoginUserPreferences {
     
     static let shared = LoginUserPreferences()
@@ -58,6 +69,9 @@ class LoginUserPreferences {
     var isDirtyFoodPreference = false
     var isDirtyCuisinePreference = false
     var isDirtyPreference = false
+    
+    var userDishReview =  UserDishReview.shared
+    
     var isDirty: Bool {
         get {
             return isDirtyCuisinePreference || isDirtyFoodPreference || isDirtyPreference

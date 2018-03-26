@@ -32,8 +32,8 @@ extension LocationPresenter: LocationPresentation {
         router?.presentScreen(screen: .foodcards(selectPreference: selectedPreference, parentController: parent))
     }
     
-    func selectLocation() {
-        router?.presentScreen(screen: .selectLocation)
+    func selectLocation(parent: UIViewController) {
+        router?.presentScreen(screen: .selectLocation(parent: parent))
     }
     
     func cuisinePreferenceRequest(selectedPreference: SelectedPreference) {

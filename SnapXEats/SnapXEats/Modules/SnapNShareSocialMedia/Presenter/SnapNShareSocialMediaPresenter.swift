@@ -25,8 +25,13 @@ extension SnapNShareSocialMediaPresenter: SnapNShareSocialMediaPresentation {
     func loginUsingFaceBook() {
         interactor?.sendFaceBookLoginRequest(view: baseView)
     }
+    
+    func sendPhotoReview() {
+        interactor?.uploadDishReview()
+    }
 }
 
 extension SnapNShareSocialMediaPresenter: SnapNShareSocialMediaInteractorOutput {    
     // TODO: implement interactor output methods
 }
+

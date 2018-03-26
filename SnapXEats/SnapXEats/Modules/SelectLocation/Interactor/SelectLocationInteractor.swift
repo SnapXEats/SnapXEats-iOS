@@ -36,7 +36,8 @@ extension SelectLocationInteractor: SearchPlacePredictionsRequestFomatter {
     func getSearchPlacePredictionsFor(searchText: String) {
         let requestParameters = [
             SnapXEatsPlaceSearchRequestKeys.input: searchText,
-            SnapXEatsPlaceSearchRequestKeys.components:SnapXEatsPlaceSearchConstants.components,
+            SnapXEatsPlaceSearchRequestKeys.components: SnapXEatsPlaceSearchConstants.components,
+            SnapXEatsPlaceSearchRequestKeys.type : SnapXEatsPlaceSearchRequestKeys.address,
             SnapXEatsPlaceSearchRequestKeys.key: SnapXEatsPlaceSearchConstants.apiKey
         ]
         getSearchPlacePredictionRequest(forPath: SnapXEatsPlaceSearchConstants.autocompleteApiUrl, withParameters: requestParameters)

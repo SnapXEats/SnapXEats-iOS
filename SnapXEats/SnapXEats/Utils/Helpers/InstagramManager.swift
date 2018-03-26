@@ -10,7 +10,8 @@ import Foundation
 
 import UIKit
 import Photos
-// https://stackoverflow.com/questions/11393071/how-to-share-an-image-on-instagram-in-ios 
+
+//https://stackoverflow.com/questions/11393071/how-to-share-an-image-on-instagram-in-ios
 class InstagramManager: NSObject, UIDocumentInteractionControllerDelegate {
     
     private let kInstagramURL = "instagram://"
@@ -34,17 +35,20 @@ class InstagramManager: NSObject, UIDocumentInteractionControllerDelegate {
         
         let instagramURL = URL(string: kInstagramURL)
         if UIApplication.shared.canOpenURL(instagramURL!) {
-            let jpgPath = (NSTemporaryDirectory() as NSString).appendingPathComponent(kfileNameExtension)
-            let filePath = "file://\(jpgPath)"
-           try! UIImageJPEGRepresentation(imageInstagram, 1.0)!.write(to:  URL(string: filePath)!)
-            let rect = CGRect(x: 0, y: 0, width: 612, height: 612) // CGFloat, Double, Int
-            let fileURL = NSURL.fileURL(withPath: jpgPath)
-            documentInteractionController.url = fileURL
-            documentInteractionController.delegate = self
-            documentInteractionController.uti = kUTI
-            // adding caption for the image
-            documentInteractionController.annotation = ["InstagramCaption": instagramCaption]
-            documentInteractionController.presentOpenInMenu(from: rect, in: viewController.view, animated: true)
+            let image = imageInstagram.stretchableImage(withLeftCapWidth: 640, topCapHeight: 640)
+    
+            do {
+                try PHPhotoLibrary.shared().performChangesAndWait {
+                    let request = PHAssetChangeRequest.creationRequestForAsset(from: image)
+                    let assetID = request.placeholderForCreatedAsset?.localIdentifier ?? ""
+                    let shareURL = URL(string: "instagram://library?LocalIdentifier=" + assetID)
+                    if let urlForRedirect = shareURL {
+                        UIApplication.shared.openURL(urlForRedirect)
+                    }
+                }
+            } catch {
+                print("NO result")
+            }
         }
         else {
             
@@ -56,7 +60,7 @@ class InstagramManager: NSObject, UIDocumentInteractionControllerDelegate {
     func shareONInstagram(image: UIImage, description: String, viewController: UIViewController){
         postImageToInstagramWithCaption(imageInstagram: image, instagramCaption: "\(description)", viewController: viewController)
     }
-
+    
 }
 
 

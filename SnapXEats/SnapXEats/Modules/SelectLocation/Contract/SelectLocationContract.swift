@@ -9,23 +9,20 @@
 import Foundation
 import Alamofire
 
-protocol SelectLocationView: class, BaseView {
+protocol SelectLocationView: BaseView {
     var presenter: SelectLocationPresentation? {get set}
     func initView()
 }
 
 protocol SelectLocationPresentation: class {
-    func dismissScreen()
     func getSearchPlaces(searchText: String)
     func getPlaceDetails(placeid: String)
 }
 
 protocol SelectLocationUseCase: class {
-    // TODO: Declare use case methods
 }
 
 protocol SelectLocationInteractorOutput: Response {
-    // TODO: Declare interactor output methods
 }
 
 protocol SelectLocationWireframe: class, RootWireFrame {

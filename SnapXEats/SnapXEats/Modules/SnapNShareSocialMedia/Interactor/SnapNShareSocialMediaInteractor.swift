@@ -9,11 +9,13 @@
 import Foundation
 import FacebookLogin
 import FacebookCore
-
+import Alamofire
+import ObjectMapper
 
 class SnapNShareSocialMediaInteractor {
 
     var output: SnapNShareSocialMediaInteractorOutput?
+    let userReview = LoginUserPreferences.shared.userDishReview
 }
 
 
@@ -32,6 +34,41 @@ extension SnapNShareSocialMediaInteractor: SnapNShareSocialMediaUseCase {
                     self?.output?.response(result: .success(data: true))
                 }
             }
+        }
+    }
+}
+
+extension SnapNShareSocialMediaInteractor: SnapNShareSocialMediaRequestFomatter {
+    func uploadDishReview() {
+        if let restaurantID = userReview.restaurantInfoId, let pictureURL = userReview.dishPicture, let audioURL = userReview.reviewAudio {
+            let requestParameters: [String: Any] = [
+            SnapXEatsWebServiceParameterKeys.restaurantInfoId: restaurantID,
+            SnapXEatsWebServiceParameterKeys.dishPicture: pictureURL,
+            SnapXEatsWebServiceParameterKeys.audioReview : audioURL,
+            SnapXEatsWebServiceParameterKeys.textReview: userReview.reviewText,
+            SnapXEatsWebServiceParameterKeys.rating: userReview.rating
+        ]
+        sendReviewRequest(path: SnapXEatsWebServicePath.shanNShare, parameters: requestParameters)
+        }
+    } 
+}
+
+extension SnapNShareSocialMediaInteractor: SnapNShareSocialMediaWebService {
+    func sendReviewRequest(path: String, parameters: [String : Any]) {
+        SnapXEatsApi.snapXPostRequestMutiPartObjectWithParameters(path: path, parameters: parameters) { [weak self] (response: DataResponse<SnapNShare>) in
+            let review = response.result
+            self?.reviewDetails(data: review)
+        }
+    }
+}
+
+extension SnapNShareSocialMediaInteractor: SnapNShareSocialMediaObjectMapper {
+    func reviewDetails(data: Result<SnapNShare>) {
+        switch data {
+        case .success(let value):
+            output?.response(result: .success(data: value))
+        case .failure( _):
+            output?.response(result: NetworkResult.noInternet)
         }
     }
 }

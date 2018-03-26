@@ -21,6 +21,7 @@ class SnapNShareHomeViewController: BaseViewController, StoryboardLoadable {
     var restaurantDetails: RestaurantDetails?
     var specialities = [RestaurantSpeciality]()
     var slideshow =  ImageSlideshow()
+    var userDishReview = LoginUserPreferences.shared.userDishReview
     private var shouldLoadData: Bool {
         get {
             return checkRechability() && restaurantDetails == nil
@@ -77,6 +78,7 @@ class SnapNShareHomeViewController: BaseViewController, StoryboardLoadable {
         if shouldLoadData == true {
             showLoading()
             if let restaurant = self.restaurant, let id = restaurant.restaurant_info_id {
+            userDishReview.restaurantInfoId = id // This ID is needed while sending reviewPhoto, Audio and rating in SnapNSharePhotoViewController
                 presenter?.restaurantDetailsRequest(restaurantId:id)
             }
         }
