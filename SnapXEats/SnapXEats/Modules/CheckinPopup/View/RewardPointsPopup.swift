@@ -22,6 +22,7 @@ class RewardPointsPopup: UIView {
     }
     
     @IBOutlet var containerView: UIView!
+    @IBOutlet var backgroundImageView: UIImageView!
     @IBOutlet var okButton: UIButton!
     @IBOutlet var rewardPointsLabel: UILabel!
     
@@ -34,6 +35,8 @@ class RewardPointsPopup: UIView {
         self.frame = frame
         rewardPointsLabel.text = String(format: popupConstants.rewardPointsText, rewardPoints)
         containerView.layer.cornerRadius = popupConstants.containerViewRadius
+        backgroundImageView.layer.masksToBounds = true
+        backgroundImageView.layer.cornerRadius = popupConstants.containerViewRadius
         okButton.addBorder(ofWidth: 2.0, withColor: UIColor.rgba(230.0, 118.0, 7.0, 1.0), radius: okButton.frame.height/2)
         containerView.addShadow()
     }

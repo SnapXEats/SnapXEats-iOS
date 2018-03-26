@@ -33,9 +33,16 @@ class CheckinPopup: SnapXEatsView, CheckinPopupView {
     }
     
     @IBAction func checkinButtonAction(_ sender: UIButton) {
-        if let restaurant = self.restaurant, let id = restaurant.restaurant_info_id {
+        guard let restaurant = self.restaurant else {
+            return
+        }
+        
+        // Call Checkin API only if User is Logged in and then Show Reward Points popup else directly go to snapnShare Home page
+        if let id = restaurant.restaurant_info_id, LoginUserPreferences.shared.isLoggedIn {
             showLoading()
             presenter?.checkinIntoRestaurant(restaurantId: id)
+        } else {
+            checkinPopupDelegate?.userDidChekintoRestaurant(restaurant: restaurant)
         }
     }
     

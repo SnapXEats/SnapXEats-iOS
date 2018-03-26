@@ -112,6 +112,7 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="backgroundImageView" destination="c3D-RY-xhM" id="stA-Wa-EQ4"/>
                 <outlet property="containerView" destination="SUX-m8-iWz" id="fpY-iw-G5F"/>
                 <outlet property="okButton" destination="70Y-eZ-gJh" id="P46-Vx-Gzl"/>
                 <outlet property="rewardPointsLabel" destination="ySH-8o-uGF" id="V2z-ze-QIs"/>
