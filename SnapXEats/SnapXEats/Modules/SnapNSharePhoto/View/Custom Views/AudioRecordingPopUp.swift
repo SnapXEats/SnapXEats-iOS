@@ -28,6 +28,8 @@ class AudioRecordingPopUp: UIView {
         static let recordPopupTitle = "ADD AUDIO REVIEW"
         static let playPopupTitle = "AUDIO REVIEW"
         static let maxAudioLengthInSeconds = 30
+        static let startRecordButtonTitle = "RECORD"
+        static let doneButtontitle = "DONE"
     }
     
     weak var audioRecordingPopupDelegate: AudioRecordingPopUpViewActionsDelegate?
@@ -49,7 +51,7 @@ class AudioRecordingPopUp: UIView {
     
     @IBAction func recordingDoneAction(_ sender: UIButton) {
         if popupType == .record {
-            finishRecording()
+            (audioRecorder == nil) ? prepareForAudioRecording() : finishRecording()
         } else {
             audioPlayer?.stop()
             audioRecordingPopupDelegate?.audioPlaybackDone(self)
@@ -57,7 +59,7 @@ class AudioRecordingPopUp: UIView {
     }
     
     @IBAction func recordingStartAction(_ sender: UIButton) {
-        (popupType == .record) ? prepareForAudioRecording() : playAudioReview()
+        playAudioReview()
     }
     
     @IBAction func deleteReviewButtonAction(_ sender: UIButton) {
@@ -75,13 +77,13 @@ class AudioRecordingPopUp: UIView {
         recordAudioDoneButton.layer.cornerRadius = recordAudioDoneButton.frame.height/2
         recordAudioStartButton.addBorder(ofWidth: popupConstants.startButtonBorderWidth, withColor: .lightGray, radius: recordAudioStartButton.frame.width/2)
         
-        recordAudioDoneButton.isEnabled = (type == .record) ? false : true
-        recordAudioDoneButton.alpha = (type == .record) ? 0.5 : 1.0
-        
+        let title = (type == .record) ? popupConstants.startRecordButtonTitle : popupConstants.doneButtontitle
+        recordAudioDoneButton.setTitle(title, for: .normal)
         (type == .record) ? removeReviewButton.isInactive() : removeReviewButton.isActive()
         titleLabel.text = (type == .record) ? popupConstants.recordPopupTitle : popupConstants.playPopupTitle
         let imageName = (type == .record) ? SnapXEatsImageNames.record_popuup_icon : SnapXEatsImageNames.play_popuup_icon
         recordAudioStartButton.setImage(UIImage(named:imageName), for: .normal)
+        recordAudioStartButton.isUserInteractionEnabled = (type == .record) ? false : true
         audioDurationLabel.text = timeString(time: TimeInterval(seconds))
     }
     
@@ -116,8 +118,7 @@ class AudioRecordingPopUp: UIView {
                 audioRecorder = try AVAudioRecorder(url: audioRecordingURL, settings: settings)
                 audioRecorder.record()
                 runTimer()
-                recordAudioDoneButton.isActive()
-                recordAudioStartButton.isEnabled = false
+                recordAudioDoneButton.setTitle("Done", for: .normal)
             } catch {
                 print("failed to Record!")
             }
@@ -141,7 +142,7 @@ class AudioRecordingPopUp: UIView {
                     try AVAudioSession.sharedInstance().overrideOutputAudioPort(AVAudioSessionPortOverride.speaker)
                 }
                 audioPlayer?.play()
-                recordAudioStartButton.isEnabled = false
+                recordAudioStartButton.isUserInteractionEnabled = false
                 runTimer()
             } catch {
                 print("Unable to Play Audio")
@@ -161,7 +162,7 @@ class AudioRecordingPopUp: UIView {
             finishRecording()
             showAudioReviewLimitReachedAlert()
         } else if seconds == 0 {
-            recordAudioStartButton.isEnabled = true
+            recordAudioStartButton.isUserInteractionEnabled = true
             timer.invalidate()
             seconds = popupType == .play ? audioReviewDuration : seconds
         }
