@@ -24,12 +24,12 @@ class FoodCardView: UIView {
     func setupFoodCardView(_ frame: CGRect, foodCardItem: FoodCard) {
         self.frame = frame
         self.layer.cornerRadius = foodCardRadius
-         let placeholderImage = UIImage(named: SnapXEatsImageNames.placeholder_cuisine)!
+         let placeholderImage = UIImage(named: SnapXEatsImageNames.foodcard_placeholder)!
         if (foodCardItem.imageURL != "") {
             let url = URL(string: foodCardItem.imageURL)!
             foodCardImage.af_setImage(withURL: url, placeholderImage: placeholderImage)
         } else {
-            foodCardImage.image = placeholderImage //UIImage(named: foodCardItem.imageName)
+            foodCardImage.image = placeholderImage
         }
         foodCardName.text = foodCardItem.name
     }

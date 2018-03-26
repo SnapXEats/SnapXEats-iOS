@@ -18,7 +18,7 @@ class RestaurantSpecialityCollectionViewCell: UICollectionViewCell {
     
     func configureSpecialityCell(specialityItem: RestaurantSpeciality) {
         if let imageURL = URL(string: specialityItem.imageURL ?? "") {
-            specialityImageView.af_setImage(withURL: imageURL, placeholderImage:UIImage(named: SnapXEatsImageNames.placeholder_cuisine)!)
+            specialityImageView.af_setImage(withURL: imageURL, placeholderImage:UIImage(named: SnapXEatsImageNames.restaurant_speciality_placeholder)!)
         }
     }
 }

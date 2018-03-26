@@ -109,6 +109,11 @@ enum SnapXEatsImageNames {
     static let record_popuup_icon = "record_popuup_icon"
     static let play_popuup_icon = "play_popup_icon"
     static let swipe_delete_icon = "swipe_delete_icon"
+    static let foodcard_placeholder = "foodcard_placeholder"
+    static let restaurant_speciality_placeholder = "restaurant_speciality_placeholder"
+    static let restaurant_collectionView_placeholder = "restaurant_collectionView_placeholder"
+    static let wishlist_placeholder = "wishlist_placeholder"
+    static let preferences_placeholder = "preferences_placeholder"
 }
 
 

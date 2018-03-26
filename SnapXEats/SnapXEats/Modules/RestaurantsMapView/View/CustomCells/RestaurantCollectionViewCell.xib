@@ -28,7 +28,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yES-3g-UHA">
                         <rect key="frame" x="0.0" y="0.0" width="243" height="170"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_cuisine" translatesAutoresizingMaskIntoConstraints="NO" id="Th1-t1-kLb">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="restaurant_collectionView_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Th1-t1-kLb">
                                 <rect key="frame" x="0.0" y="0.0" width="243" height="111"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Th1-t1-kLb" secondAttribute="height" multiplier="230:105" id="nWQ-FH-UTj"/>
@@ -98,7 +98,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="placeholder_cuisine" width="89" height="58"/>
+        <image name="restaurant_collectionView_placeholder" width="243" height="111"/>
         <image name="seperator_dot_icon" width="6" height="6"/>
     </resources>
 </document>

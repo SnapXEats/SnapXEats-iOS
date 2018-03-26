@@ -30,7 +30,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3iO-wZ-JMq">
                         <rect key="frame" x="12" y="5" width="317" height="74.5"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_cuisine" translatesAutoresizingMaskIntoConstraints="NO" id="eIk-0i-uPh">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wishlist_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="eIk-0i-uPh">
                                 <rect key="frame" x="10" y="16.5" width="42" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="42" id="GfI-zW-xJs"/>
@@ -93,6 +93,6 @@
     </objects>
     <resources>
         <image name="detail_arrow" width="6" height="9"/>
-        <image name="placeholder_cuisine" width="89" height="58"/>
+        <image name="wishlist_placeholder" width="42" height="42"/>
     </resources>
 </document>
