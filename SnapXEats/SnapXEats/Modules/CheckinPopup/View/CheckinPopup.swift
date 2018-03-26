@@ -51,9 +51,9 @@ class CheckinPopup: SnapXEatsView, CheckinPopupView {
     }
     
     override func success(result: Any?) {
-        if let success = result as? Bool, success == true {
+        if let rewardPoints = result as? RewardPoints {
             self.removeFromSuperview()
-            router?.showRewardPointsPopup(parent: self)
+            router?.showRewardPointsPopup(parent: self, points: rewardPoints.points)
         }
     }
 }

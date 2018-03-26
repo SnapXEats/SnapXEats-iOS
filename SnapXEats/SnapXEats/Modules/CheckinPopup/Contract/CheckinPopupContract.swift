@@ -38,5 +38,5 @@ protocol CheckinPopupWebService: class {
 }
 
 protocol CheckinPopupObjectMapper: class {
-    func checkinIntoRestaurantResult(result: Bool)
+    func mapCheckinIntoRestaurantResult(data: Result<RewardPoints>)
 }

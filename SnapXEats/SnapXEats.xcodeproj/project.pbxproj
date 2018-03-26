@@ -112,6 +112,7 @@
 		7EC5014820469A2C00D44E92 /* RestaurantDirectionsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC5014220469A2C00D44E92 /* RestaurantDirectionsRouter.swift */; };
 		7EC5014920469A2C00D44E92 /* RestaurantDirectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC5014420469A2C00D44E92 /* RestaurantDirectionsViewController.swift */; };
 		7EC5014B20469AE500D44E92 /* RestaurantDirections.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EC5014A20469AE500D44E92 /* RestaurantDirections.storyboard */; };
+		7ED039F220652F97005A4215 /* RewardPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED039F120652F97005A4215 /* RewardPoints.swift */; };
 		7EDB8ED8204FF3710015F48A /* RestaurantCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDB8ED6204FF3710015F48A /* RestaurantCollectionViewCell.swift */; };
 		7EDB8ED9204FF3710015F48A /* RestaurantCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EDB8ED7204FF3710015F48A /* RestaurantCollectionViewCell.xib */; };
 		9D0498D82052BEF300BD4EDB /* StoredUserPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0498D72052BEF300BD4EDB /* StoredUserPreference.swift */; };
@@ -343,6 +344,7 @@
 		7EC5014220469A2C00D44E92 /* RestaurantDirectionsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDirectionsRouter.swift; sourceTree = "<group>"; };
 		7EC5014420469A2C00D44E92 /* RestaurantDirectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDirectionsViewController.swift; sourceTree = "<group>"; };
 		7EC5014A20469AE500D44E92 /* RestaurantDirections.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RestaurantDirections.storyboard; sourceTree = "<group>"; };
+		7ED039F120652F97005A4215 /* RewardPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardPoints.swift; sourceTree = "<group>"; };
 		7EDB8ED6204FF3710015F48A /* RestaurantCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCollectionViewCell.swift; sourceTree = "<group>"; };
 		7EDB8ED7204FF3710015F48A /* RestaurantCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurantCollectionViewCell.xib; sourceTree = "<group>"; };
 		967BD01B1CEED06931835CA3 /* Pods_SnapXEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnapXEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -939,6 +941,7 @@
 		7EA9407C2063E9300005B6B9 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				7ED039F020652F37005A4215 /* Entity */,
 				7EA9407D2063E9300005B6B9 /* CheckinPopupInteractor.swift */,
 			);
 			path = Interactor;
@@ -1033,6 +1036,14 @@
 				7EC5014A20469AE500D44E92 /* RestaurantDirections.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		7ED039F020652F37005A4215 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				7ED039F120652F97005A4215 /* RewardPoints.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		7EDB8ED5204FF3390015F48A /* CustomCells */ = {
@@ -2267,6 +2278,7 @@
 				9DCBE184201EF6F80030A0F9 /* SnapXEatsNetworkManager.swift in Sources */,
 				9D902BE5201729E400359DFD /* SelectLocationPresenter.swift in Sources */,
 				7E673B18204961C9005D19DC /* WishlistContract.swift in Sources */,
+				7ED039F220652F97005A4215 /* RewardPoints.swift in Sources */,
 				7E5E7FE3203AF7EE00009A56 /* ZoomAnimatedTransitioning.swift in Sources */,
 				9D0D7138203AAE1F0077FA7A /* RestaurantDetailsContract.swift in Sources */,
 				9D8E88FD1FFD2BEC0066A1D9 /* Results.swift in Sources */,

@@ -39,12 +39,12 @@ class CheckinPopupRouter {
         return checkinPopup
     }
     
-    func showRewardPointsPopup(parent: CheckinPopup) {
+    func showRewardPointsPopup(parent: CheckinPopup, points: Int) {
         if let window = UIApplication.shared.keyWindow {
             let rewardPointsPopup = UINib(nibName:SnapXEatsNibNames.rewardPointsPopup, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! RewardPointsPopup
             rewardPointsPopup.rewardsPopupDelegate = parent
             let popupFrame = CGRect(x: 0, y: 0, width: window.frame.width, height: window.frame.height)
-            rewardPointsPopup.setupPopup(popupFrame)
+            rewardPointsPopup.setupPopup(popupFrame, rewardPoints: points)
             window.addSubview(rewardPointsPopup)
         }
     }

@@ -294,3 +294,12 @@ enum timeFormatConstants {
     static let timeConversionFactor = 60
 }
 
+enum CheckinAPIInputKeys {
+    static let restaurant_info_id = "restaurant_info_id"
+    static let reward_type = "reward_type"
+}
+
+enum RewardPointTypes {
+    static let restaurant_check_in = "restaurant_check_in"
+}
+

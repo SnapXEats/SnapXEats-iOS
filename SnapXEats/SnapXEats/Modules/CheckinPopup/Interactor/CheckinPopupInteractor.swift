@@ -20,23 +20,29 @@ class CheckinPopupInteractor {
 extension CheckinPopupInteractor: CheckinPopupRequestFormatter {
     func checkinIntoRestaurantRequest(restaurant_id: String) {
         let path = SnapXEatsWebServicePath.checkin
-        let parameters: [String : Any] = ["restaurant_info_id":restaurant_id,
-                                          "reward_point": 50]
+        let parameters: [String : Any] = [CheckinAPIInputKeys.restaurant_info_id:restaurant_id,
+                                          CheckinAPIInputKeys.reward_type: RewardPointTypes.restaurant_check_in]
         checkinIntoRestaurant(forPath: path, withParameters: parameters)
     }
 }
 
 extension CheckinPopupInteractor: CheckinPopupWebService {
     func checkinIntoRestaurant(forPath: String, withParameters: [String: Any]) {
-        SnapXEatsApi.snapXPostRequestWithParameters(path: forPath, parameters: withParameters) { [weak self] (response: DefaultDataResponse) in
-            self?.checkinIntoRestaurantResult(result: response.isSuccess)
+        
+        SnapXEatsApi.snapXPostRequestObjectWithParameters(path: forPath, parameters: withParameters) { [weak self] (response: DataResponse<RewardPoints>) in
+            let checkinReardPoints = response.result
+            self?.mapCheckinIntoRestaurantResult(data: checkinReardPoints)
         }
     }
 }
 
 extension CheckinPopupInteractor: CheckinPopupObjectMapper {
-    func checkinIntoRestaurantResult(result: Bool) {
-        result ? output?.response(result: .success(data: true))
-            :output?.response(result: NetworkResult.noInternet)
+    func mapCheckinIntoRestaurantResult(data: Result<RewardPoints>) {
+        switch data {
+        case .success(let value):
+            output?.response(result: .success(data: value))
+        case .failure( _):
+            output?.response(result: NetworkResult.noInternet)
+        }
     }
 }
