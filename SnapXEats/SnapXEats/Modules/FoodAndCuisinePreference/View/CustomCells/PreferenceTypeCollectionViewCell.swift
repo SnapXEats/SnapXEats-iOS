@@ -36,7 +36,7 @@ class PreferenceTypeCollectionViewCell: UICollectionViewCell {
         }
         
         // Set Image for item status based on favourite or Liked
-        let image = preferenceItem.isFavourite ? UIImage(named:"favourite_icon") : (preferenceItem.isLiked ? UIImage(named:"like_icon"): nil)
+        let image = preferenceItem.isFavourite ? UIImage(named:SnapXEatsImageNames.favourite_icon) : (preferenceItem.isLiked ? UIImage(named:SnapXEatsImageNames.like_icon): nil)
         preferenceItemStatusButton.setImage(image, for: .normal)
         
     }

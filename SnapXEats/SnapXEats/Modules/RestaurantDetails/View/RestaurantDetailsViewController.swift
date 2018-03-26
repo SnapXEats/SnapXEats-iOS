@@ -207,6 +207,7 @@ extension RestaurantDetailsViewController: RestaurantDetailsView {
         customizeNavigationItem(title: SnapXEatsPageTitles.restaurantDetail, isDetailPage: true)
         registerCellForNib()
         moreInfoView.isHidden =  (showMoreInfo == true) ? false : true
+        slideshowContainer.backgroundColor = UIColor(patternImage: UIImage(named: SnapXEatsImageNames.restaurant_details_placeholder)!)
     }
     
     private func registerCellForNib() {
