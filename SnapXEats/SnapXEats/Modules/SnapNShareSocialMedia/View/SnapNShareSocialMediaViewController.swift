@@ -48,11 +48,10 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
     override func success(result: Any?) {
         if let _ = result as? Bool {
             sharingDialogFB()
-        } else if let result = result as? SnapNShare {
-            shareableImageURL = URL(string: result.dish_image_url!)
+        } else if let result = result as? SnapNShare, let url = URL(string: result.dish_image_url ?? "") {
+            shareableImageURL = url
             shareableTxt = result.message ?? ""
         }
-        
     }
     
     func getUsrImage() -> String {

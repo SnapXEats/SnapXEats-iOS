@@ -136,9 +136,9 @@ class SnapNShareHomeViewController: BaseViewController, StoryboardLoadable {
     }
     
     private func savePhoto(image: UIImage) {
-        if let photoPathURL = getPathForSmartPhotoForRestaurant() {
+        if let restaurntID = restaurant?.restaurant_info_id, let photoPathURL = getPathForSmartPhotoForRestaurant(restaurantId:restaurntID) {
             do {
-                try UIImageJPEGRepresentation(image, 1.0)?.write(to: photoPathURL, options: .atomic)
+                try UIImageJPEGRepresentation(image, 0.3)?.write(to: photoPathURL, options: .atomic)
                 
             } catch {
                 print("file cant not be saved at path \(photoPathURL), with error : \(error)")

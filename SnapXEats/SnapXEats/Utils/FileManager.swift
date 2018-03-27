@@ -36,7 +36,7 @@ func getPathForAudioReviewForRestaurant(restaurantId: String = "test_restaurant"
     return audioRecordingPath?.appendingPathComponent(fileManagerConstants.audioReviewFileNAme)
 }
 
-func getPathForSmartPhotoForRestaurant(restaurantId: String = "test_restaurant") -> URL? {
+func getPathForSmartPhotoForRestaurant(restaurantId: String) -> URL? {
     
     let fileManager = FileManager.default
     let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)

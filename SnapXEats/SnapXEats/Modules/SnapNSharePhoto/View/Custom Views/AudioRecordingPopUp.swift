@@ -41,7 +41,7 @@ class AudioRecordingPopUp: UIView {
     var audioReviewDuration = 0
     var popupType: AudioRecordingPopupTypes!
     var parentController: UIViewController!
-    
+
     @IBOutlet var containerView: UIView!
     @IBOutlet var recordAudioStartButton: UIButton!
     @IBOutlet var recordAudioDoneButton: UIButton!
@@ -107,7 +107,7 @@ class AudioRecordingPopUp: UIView {
     }
     
     private func startAudioRecording() {
-        if let audioRecordingURL = getPathForAudioReviewForRestaurant() {
+         if let restaurntID = LoginUserPreferences.shared.userDishReview.restaurantInfoId, let audioRecordingURL = getPathForAudioReviewForRestaurant(restaurantId: restaurntID) {
             let settings = [
                 AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
                 AVSampleRateKey: 44100,
@@ -135,7 +135,7 @@ class AudioRecordingPopUp: UIView {
     }
     
     private func playAudioReview() {
-        if let audioRecordingURL = getPathForAudioReviewForRestaurant() {
+        if let restaurntID = LoginUserPreferences.shared.userDishReview.restaurantInfoId, let audioRecordingURL = getPathForAudioReviewForRestaurant(restaurantId: restaurntID) {
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: audioRecordingURL)
                 do {

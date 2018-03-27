@@ -55,36 +55,34 @@ class SnapXEatsApi {
         
     }
     
-    static func snapXPostRequestMutiPartObjectWithParameters<T: Mappable>(path: String, parameters: [String: Any], completionHandler:  @escaping (DataResponse<T>) -> ()) {
+    static func snapXPostRequestMutiPartObjectWithParameters<T: Mappable>(path: String, parameters: [String: Any], completionHandler:  @escaping (DataResponse<T>) -> (), failureCallback: @escaping (Error) -> Void) {
         let url = baseURL + path
-        Alamofire.upload(multipartFormData: { multipartFormData in
+        do {
+            // Get Image and Audio data to upload
+            let imageData = try Data(contentsOf: LoginUserPreferences.shared.userDishReview.dishPicture!)
+            let audioData = try Data(contentsOf: LoginUserPreferences.shared.userDishReview.reviewAudio!)
 
-            
-            for (key, value) in parameters {
-              //  multipartFormData.append((value.data(using: .utf8))!, withName: key)
-                
-                if key == SnapXEatsWebServiceParameterKeys.audioReview, let audioFile = value as? URL {
-                   // multipartFormData.append(imageData, withName: "file", fileName: "file.png", mimeType: "image/png")
-                    
-                     multipartFormData.append(audioFile, withName: "File.mp4")
-                    
-                } else if key == SnapXEatsWebServiceParameterKeys.dishPicture, let picture = value as? URL {
-                     multipartFormData.append(picture, withName: "File.png")
-                } else {
-                   // multipartFormData.append(data: value, withName: key)
-                }
-                
-                
-            }}, to: url, method: .post, headers: header,
-                encodingCompletion: { encodingResult in
-                    switch encodingResult {
-                    case .success(let upload, _, _):
-                        upload.responseObject(completionHandler: completionHandler)
-                    case .failure(let encodingError):
-                        print("error:\(encodingError)")
+            Alamofire.upload(multipartFormData: { (multipartFormData) in
+                multipartFormData.append(imageData, withName: "dishPicture", fileName: "smart_photo.jpeg", mimeType: "image/jpg")
+                multipartFormData.append(audioData, withName: "audioReview", fileName: "audio_review.m4a", mimeType: "audio/mpeg")
+                for (key, value) in parameters {
+                    if value is String || value is Int {
+                        multipartFormData.append("\(value)".data(using: .utf8)!, withName: key)
                     }
-        })
-        
+                }
+            }, to:url, method: .post, headers: header)
+            { (result) in
+                switch result {
+                case .success(let upload, _, _):
+                    upload.responseObject(completionHandler: completionHandler)
+                case .failure(let encodingError):
+                    failureCallback(encodingError)
+                }
+            }
+        } catch {
+            print("Unable to load data: \(error)")
+            failureCallback(error)
+        }
     }
     
     static func snapXPutRequestObjectWithParameters<T: Mappable>(path: String, parameters: [String: Any], completionHandler:  @escaping (DataResponse<T>) -> ()) {
