@@ -625,8 +625,6 @@
 		7E539B7020593A01002C3E55 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7E539B7120593A01002C3E55 /* SnapNShareHomeViewController.swift */,
-				7E8B850920624DE900F802B3 /* Custom Views */,
 				7E539B7720593B50002C3E55 /* SnapNShareHome.storyboard */,
 				7E539B7120593A01002C3E55 /* SnapNShareHomeViewController.swift */,
 			);
