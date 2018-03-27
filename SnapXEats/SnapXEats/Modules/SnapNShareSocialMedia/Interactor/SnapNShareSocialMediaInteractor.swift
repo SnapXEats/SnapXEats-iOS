@@ -57,7 +57,6 @@ extension SnapNShareSocialMediaInteractor: SnapNShareSocialMediaWebService {
             let review = response.result
             self?.reviewDetails(data: review)
         }) { [weak self] (error) in
-            //print("Error --- \(error)")
             self?.output?.response(result: NetworkResult.error)
         }
     }
