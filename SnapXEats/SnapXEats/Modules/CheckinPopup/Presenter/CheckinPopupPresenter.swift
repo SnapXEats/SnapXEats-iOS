@@ -23,6 +23,10 @@ extension CheckinPopupPresenter: CheckinPopupPresentation {
     func checkinIntoRestaurant(restaurantId: String) {
         interactor?.checkinIntoRestaurantRequest(restaurant_id: restaurantId)
     }
+    
+    func getNearbyRestaurantList(latitude: String, longitude: String) {
+        interactor?.getNearbyRestaurantRequest(latitude: latitude, longitude: longitude)
+    }
 }
 
 extension CheckinPopupPresenter: CheckinPopupInteractorOutput {

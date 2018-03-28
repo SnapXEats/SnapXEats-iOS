@@ -31,6 +31,8 @@ class Restaurant: Mappable {
     var latitude: Double = 0.0
     var longitude: Double = 0.0
     var price: Int?
+    var type: String?
+    var logoImage: String?
 
     // This is temp Code to send restaurant Object to Checkin Popup
     init(id: String, name: String) {
@@ -49,6 +51,8 @@ class Restaurant: Mappable {
         latitude           <- map["location_lat"]
         longitude          <- map["location_long"]
         price              <- map["restaurant_price"]
+        type              <- map["restaurant_type"]
+        logoImage         <- map["restaurant_logo"]
     }
 }
 
@@ -77,6 +81,18 @@ class DishLabels: Mappable {
     
     func mapping(map: Map) {
         dish_label <- map["dish_label"]
+    }
+}
+
+class RestaurantsList: Mappable {
+    
+    var restaurants = [Restaurant]()
+    
+    required init?(map: Map) {
+    }
+    
+    func mapping(map: Map) {
+        restaurants <- map["restaurants_info"]
     }
 }
 

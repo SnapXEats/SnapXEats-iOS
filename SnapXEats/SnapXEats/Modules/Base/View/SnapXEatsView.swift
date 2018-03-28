@@ -43,8 +43,10 @@ class SnapXEatsView: UIView {
     func showLoading() {
         if isProgressHUD == false {
             isProgressHUD = true
-            progressHUD = MBProgressHUD.showAdded(to: window!, animated: true)
-            progressHUD?.mode = MBProgressHUDMode.indeterminate
+            if let window = UIApplication.shared.keyWindow {
+                progressHUD = MBProgressHUD.showAdded(to: window, animated: true)
+                progressHUD?.mode = MBProgressHUDMode.indeterminate
+            }
         }
     }
     

@@ -31,12 +31,15 @@ protocol CheckinPopupWireframe: RootWireFrame {
 
 protocol CheckinPopupRequestFormatter: class {
     func checkinIntoRestaurantRequest(restaurant_id: String)
+    func getNearbyRestaurantRequest(latitude: String, longitude: String)
 }
 
 protocol CheckinPopupWebService: class {
     func checkinIntoRestaurant(forPath: String, withParameters: [String: Any])
+    func getNearbyRestaurants(forPath: String, withParameters: [String: Any])
 }
 
 protocol CheckinPopupObjectMapper: class {
     func mapCheckinIntoRestaurantResult(data: Result<RewardPoints>)
+    func mapRestaurantListResult(data: Result<RestaurantsList>)
 }

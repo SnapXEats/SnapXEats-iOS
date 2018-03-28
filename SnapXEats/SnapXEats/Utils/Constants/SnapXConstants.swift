@@ -87,8 +87,9 @@ enum SnapXEatsWebServicePath {
     static let  userGesture = "/api/v1/userGesture"
     static let  logOut = "/api/v1/users/logout"
     static let  wishList = "/api/v1/userGesture/wishlist"
-    static let checkin = "/api/v1/restaurant/checkIn"
+    static let  checkin = "/api/v1/restaurant/checkIn"
     static let  shanNShare = "/api/v1/snapNShare"
+    static let  getRestaurants = "/api/v1/restaurant/checkIn/getRestaurants"
 }
 
 enum SnapXEatsImageNames {
@@ -161,6 +162,7 @@ enum SnapXEatsCellResourceIdentifiler {
     static let moreInfoTableView = "moreInfoTableViewCell"
     static let wishlistTableView = "wishlistTableViewCell"
     static let restaurantCollectionView = "restaurantCell"
+    static let restaurantListTableView = "RestaurantListCell"
 }
 
 enum SnapXEatsNibNames {
@@ -175,6 +177,7 @@ enum SnapXEatsNibNames {
     static let audioRecordingPopup = "AudioRecordingPopUp"
     static let checkinPopup = "CheckinPopup"
     static let rewardPointsPopup = "RewardPointsPopup"
+    static let restaurantListTableViewCell = "RestaurantListTableViewCell"
 }
 
 enum SnapXEatsWebServiceParameterKeys {
@@ -318,5 +321,10 @@ enum CheckinAPIInputKeys {
 
 enum RewardPointTypes {
     static let restaurant_check_in = "restaurant_check_in"
+}
+
+enum RestaurantListAPIKeys {
+    static let latitude = "latitude"
+    static let longitude = "longitude"
 }
 
