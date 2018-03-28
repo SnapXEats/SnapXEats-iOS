@@ -260,6 +260,7 @@ enum AlertMessage {
     static let wishlistForNonLoggedinUser = "Please login to check the Wishlist"
     static let navigationFailureError = "We are not able to detect your current location so navigation on the map won't work"
     static let shareConfirmation = "Do you want to add and share your review?"
+    static let incompleteShareInformation = "Rating and Audio or Text review is mandatory"
     static let audioReviewDeleteConfirmation = "Are you sure you want to delete this audio review?"
     static let maxAudioReviewLimitReached = "Maximum Audio Review length reached."
 }

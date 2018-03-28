@@ -55,3 +55,30 @@ func getPathForSmartPhotoForRestaurant(restaurantId: String) -> URL? {
     }
     return audioRecordingPath?.appendingPathComponent(fileManagerConstants.smartPhotoFileName)
 }
+
+func deleteAudioReview(restaurantId: String) {
+    // Delete the Audio Recording from documents directory as well
+    if let audioRecordingURL = getPathForAudioReviewForRestaurant(restaurantId: restaurantId) {
+        do {
+            try FileManager.default.removeItem(at: audioRecordingURL)
+        } catch {
+            print("Unable to Delete File")
+        }
+    }
+}
+
+func deletesmartPhoto(restaurantId: String) {
+    // Delete the Smart Photo from documents directory as well
+    if let smartPhotoURL = getPathForSmartPhotoForRestaurant(restaurantId: restaurantId) {
+        do {
+            try FileManager.default.removeItem(at: smartPhotoURL)
+        } catch {
+            print("Unable to Delete File")
+        }
+    }
+}
+
+func deleteUserReviewData(restaurantId: String) {
+    deletesmartPhoto(restaurantId: restaurantId)
+    deleteAudioReview(restaurantId: restaurantId)
+}

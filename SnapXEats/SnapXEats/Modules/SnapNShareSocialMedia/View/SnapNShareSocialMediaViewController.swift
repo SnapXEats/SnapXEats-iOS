@@ -52,6 +52,9 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
         } else if let result = result as? SnapNShare {
             shareDetails = result
             showSharingDetails()
+            if let restaurantId = LoginUserPreferences.shared.userDishReview.restaurantInfoId {
+                deleteUserReviewData(restaurantId: restaurantId)
+            }
         }
     }
 

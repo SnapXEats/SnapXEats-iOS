@@ -52,27 +52,39 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
     }
     
     @objc func shareButtonAction() {
-        showConfirmationForShare()
+        isSharingInformationComplete() ? continueSharingUserReview() : showIncompleteInformationAlert()
     }
     
-    func showConfirmationForShare() {
-        let confirmationAlert = UIAlertController(title: SnapXEatsAppDefaults.emptyString, message:AlertMessage.shareConfirmation , preferredStyle: .alert)
-        let discardAction = UIAlertAction(title: SnapXButtonTitle.discard, style: .default) { (action) in
-            // Action for Discard
+    private func isSharingInformationComplete() -> Bool {
+        guard let restaurntID = restaurntID, let reviewAudioURL = getPathForAudioReviewForRestaurant(restaurantId: restaurntID) else {
+            return false
         }
-        let continueAction = UIAlertAction(title: SnapXButtonTitle.continueNext, style: .default) { [weak self] (action) in
-            self?.setReviewData()
-            self?.gotoSnapNShareSocialMediaView()
+    
+        let isAudioReviewAvailable = FileManager.default.fileExists(atPath: reviewAudioURL.path)
+        let isTextReviewAvailable = (reviewTextView.text == reviewPlaceholderText || reviewTextView.text.isEmpty) ? false : true
+        
+        if rating > 0 && (isAudioReviewAvailable || isTextReviewAvailable) {
+           return true
         }
-        confirmationAlert.addAction(discardAction)
-        confirmationAlert.addAction(continueAction)
-        present(confirmationAlert, animated: true, completion: nil)
+        return false
+    }
+    
+    func showIncompleteInformationAlert() {
+        let incompleteInfoAlert = UIAlertController(title: SnapXEatsAppDefaults.emptyString, message:AlertMessage.incompleteShareInformation , preferredStyle: .alert)
+        let okAction = UIAlertAction(title: SnapXButtonTitle.ok, style: .cancel, handler: nil)
+        incompleteInfoAlert.addAction(okAction)
+        present(incompleteInfoAlert, animated: true, completion: nil)
+    }
+    
+    func continueSharingUserReview() {
+        setReviewData()
+        gotoSnapNShareSocialMediaView()
     }
     
     func setReviewData() {
         if let restaurntID = restaurntID {
          loginPreference.userDishReview.rating = rating
-         loginPreference.userDishReview.reviewText = reviewTextView.text
+            loginPreference.userDishReview.reviewText = (reviewTextView.text == reviewPlaceholderText) ? SnapXEatsAppDefaults.emptyString : reviewTextView.text
          loginPreference.userDishReview.reviewAudio =  getPathForAudioReviewForRestaurant(restaurantId: restaurntID)
          loginPreference.userDishReview.dishPicture = getPathForSmartPhotoForRestaurant(restaurantId: restaurntID)
          //loginPreference.userDishReview.restaurantInfoId  // This will get set in SnapNShareHomeViewController

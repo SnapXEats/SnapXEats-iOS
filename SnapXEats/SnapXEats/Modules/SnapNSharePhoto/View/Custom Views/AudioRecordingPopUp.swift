@@ -183,22 +183,13 @@ class AudioRecordingPopUp: UIView {
         confirmationAlert.addAction(noAction)
         
         let yesAction = UIAlertAction(title: SnapXButtonTitle.yes, style: .default) { (_) in
-            self.deleteAudioReview()
+            if let restaurntID = LoginUserPreferences.shared.userDishReview.restaurantInfoId {
+                deleteAudioReview(restaurantId: restaurntID)
+            }
+            self.audioRecordingPopupDelegate?.audioRecordingDeleted(self)
         }
         confirmationAlert.addAction(yesAction)
         parentController.present(confirmationAlert, animated: true, completion: nil)
-    }
-    
-    private func deleteAudioReview() {
-        // Delete the Audio Recording from documents directory as well
-        if let audioFileURL = getPathForAudioReviewForRestaurant() {
-            do {
-                try FileManager.default.removeItem(at: audioFileURL)
-            } catch {
-                print("Unable to Delete File")
-            }
-        }
-        audioRecordingPopupDelegate?.audioRecordingDeleted(self)
     }
 }
 
