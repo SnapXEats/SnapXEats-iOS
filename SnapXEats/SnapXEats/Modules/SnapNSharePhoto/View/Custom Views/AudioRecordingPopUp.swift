@@ -13,6 +13,7 @@ protocol AudioRecordingPopUpViewActionsDelegate: class {
     func audioRecordingDone(_ popupView: AudioRecordingPopUp, forDuration duration: Int)
     func audioPlaybackDone(_ popupView: AudioRecordingPopUp)
     func audioRecordingDeleted(_ popupView: AudioRecordingPopUp)
+    func audioRecordingCancelled(_ popupView: AudioRecordingPopUp)
 }
 
 enum AudioRecordingPopupTypes {
@@ -30,6 +31,8 @@ class AudioRecordingPopUp: UIView {
         static let maxAudioLengthInSeconds = 30
         static let startRecordButtonTitle = "RECORD"
         static let doneButtontitle = "DONE"
+        static let cancelButtonTitle = "Cancel"
+        static let removeReviewButtonTitle = "Delete Review"
     }
     
     weak var audioRecordingPopupDelegate: AudioRecordingPopUpViewActionsDelegate?
@@ -63,7 +66,7 @@ class AudioRecordingPopUp: UIView {
     }
     
     @IBAction func deleteReviewButtonAction(_ sender: UIButton) {
-        showDeleteAudioReviewConfirmation()
+        (popupType == .record) ? cancelRecordingAudioReview() : showDeleteAudioReviewConfirmation()
     }
     
     func setupPopup(_ frame: CGRect, type: AudioRecordingPopupTypes, forDuration seconds: Int, forViewController vc: UIViewController) {
@@ -77,9 +80,12 @@ class AudioRecordingPopUp: UIView {
         recordAudioDoneButton.layer.cornerRadius = recordAudioDoneButton.frame.height/2
         recordAudioStartButton.addBorder(ofWidth: popupConstants.startButtonBorderWidth, withColor: .lightGray, radius: recordAudioStartButton.frame.width/2)
         
-        let title = (type == .record) ? popupConstants.startRecordButtonTitle : popupConstants.doneButtontitle
-        recordAudioDoneButton.setTitle(title, for: .normal)
-        (type == .record) ? removeReviewButton.isInactive() : removeReviewButton.isActive()
+        let recordAudioButtontitle = (type == .record) ? popupConstants.startRecordButtonTitle : popupConstants.doneButtontitle
+        recordAudioDoneButton.setTitle(recordAudioButtontitle, for: .normal)
+        
+        let removeReviewButtontitle = (type == .record) ? popupConstants.cancelButtonTitle : popupConstants.removeReviewButtonTitle
+        removeReviewButton.setTitle(removeReviewButtontitle, for: .normal)
+        
         titleLabel.text = (type == .record) ? popupConstants.recordPopupTitle : popupConstants.playPopupTitle
         let imageName = (type == .record) ? SnapXEatsImageNames.record_popuup_icon : SnapXEatsImageNames.play_popuup_icon
         recordAudioStartButton.setImage(UIImage(named:imageName), for: .normal)
@@ -190,6 +196,11 @@ class AudioRecordingPopUp: UIView {
         }
         confirmationAlert.addAction(yesAction)
         parentController.present(confirmationAlert, animated: true, completion: nil)
+    }
+    
+    private func cancelRecordingAudioReview() {
+        timer.invalidate()
+        audioRecordingPopupDelegate?.audioRecordingCancelled(self)
     }
 }
 

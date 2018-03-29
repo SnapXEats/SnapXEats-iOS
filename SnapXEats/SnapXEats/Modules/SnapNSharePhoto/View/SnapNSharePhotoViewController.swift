@@ -127,6 +127,10 @@ extension SnapNSharePhotoViewController: UITextViewDelegate {
 }
 
 extension SnapNSharePhotoViewController: AudioRecordingPopUpViewActionsDelegate {
+    func audioRecordingCancelled(_ popupView: AudioRecordingPopUp) {
+        popupView.removeFromSuperview()
+    }
+    
     func audioRecordingDone(_ popupView: AudioRecordingPopUp, forDuration duration: Int) {
         popupView.removeFromSuperview()
         audioReviewDuration = duration
