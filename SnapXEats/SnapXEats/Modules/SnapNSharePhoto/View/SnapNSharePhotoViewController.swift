@@ -56,17 +56,7 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
     }
     
     private func isSharingInformationComplete() -> Bool {
-        guard let restaurntID = restaurntID, let reviewAudioURL = getPathForAudioReviewForRestaurant(restaurantId: restaurntID) else {
-            return false
-        }
-    
-        let isAudioReviewAvailable = FileManager.default.fileExists(atPath: reviewAudioURL.path)
-        let isTextReviewAvailable = (reviewTextView.text == reviewPlaceholderText || reviewTextView.text.isEmpty) ? false : true
-        
-        if rating > 0 && (isAudioReviewAvailable || isTextReviewAvailable) {
-           return true
-        }
-        return false
+        return rating > 0 ? true : false
     }
     
     func showIncompleteInformationAlert() {

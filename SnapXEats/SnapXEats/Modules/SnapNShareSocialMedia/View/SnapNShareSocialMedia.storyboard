@@ -32,6 +32,7 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="foodcard_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Lgv-i0-u5H">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="224"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Lgv-i0-u5H" secondAttribute="height" multiplier="1:0.8" id="sgo-ES-24b"/>
                                         </constraints>
@@ -110,7 +111,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="yjQ-Cq-cZu" firstAttribute="top" secondItem="TUN-KC-1o1" secondAttribute="top" id="1kn-vZ-iAi"/>
                                     <constraint firstAttribute="height" constant="45" id="8n4-Ml-Zft"/>
@@ -139,7 +140,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Odr-5u-YRm" firstAttribute="top" secondItem="AGR-18-scp" secondAttribute="bottom" constant="5" id="5X4-Hg-eh4"/>
                             <constraint firstItem="EnU-dx-Y0k" firstAttribute="top" secondItem="mCz-2h-8Ur" secondAttribute="bottom" constant="10" id="PX1-oy-uxF"/>

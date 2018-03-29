@@ -101,7 +101,7 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
 extension SnapNShareSocialMediaViewController: SnapNShareSocialMediaView {
     func initView() {
         customizeNavigationItem(title: SnapXEatsPageTitles.snapnshare, isDetailPage: true)
-        smartPhotoView.addShadow()
+        smartPhotoView.addShadow(width: 0.0, height: 0.0)
     }
 }
 

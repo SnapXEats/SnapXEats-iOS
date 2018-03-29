@@ -57,31 +57,40 @@ class SnapXEatsApi {
     
     static func snapXPostRequestMutiPartObjectWithParameters<T: Mappable>(path: String, parameters: [String: Any], completionHandler:  @escaping (DataResponse<T>) -> (), failureCallback: @escaping (Error) -> Void) {
         let url = baseURL + path
+        
+        var imageData: Data? = nil
+        var audioData: Data? = nil
+        
         do {
             // Get Image and Audio data to upload
-            let imageData = try Data(contentsOf: LoginUserPreferences.shared.userDishReview.dishPicture!)
-            let audioData = try Data(contentsOf: LoginUserPreferences.shared.userDishReview.reviewAudio!)
-
-            Alamofire.upload(multipartFormData: { (multipartFormData) in
-                multipartFormData.append(imageData, withName: "dishPicture", fileName: "smart_photo.jpeg", mimeType: "image/jpg")
-                multipartFormData.append(audioData, withName: "audioReview", fileName: "audio_review.m4a", mimeType: "audio/mpeg")
-                for (key, value) in parameters {
-                    if value is String || value is Int {
-                        multipartFormData.append("\(value)".data(using: .utf8)!, withName: key)
-                    }
-                }
-            }, to:url, method: .post, headers: header)
-            { (result) in
-                switch result {
-                case .success(let upload, _, _):
-                    upload.responseObject(completionHandler: completionHandler)
-                case .failure(let encodingError):
-                    failureCallback(encodingError)
-                }
-            }
+            imageData = try Data(contentsOf: LoginUserPreferences.shared.userDishReview.dishPicture!)
+            audioData = try Data(contentsOf: LoginUserPreferences.shared.userDishReview.reviewAudio!)
         } catch {
             print("Unable to load data: \(error)")
-            failureCallback(error)
+        }
+        
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+            if let imageFormData = imageData { //append Image data if available
+               multipartFormData.append(imageFormData, withName: "dishPicture", fileName: "smart_photo.jpeg", mimeType: "image/jpg")
+            }
+            
+            if let audioFormData = audioData { //append Audio data if available
+                multipartFormData.append(audioFormData, withName: "audioReview", fileName: "audio_review.m4a", mimeType: "audio/mpeg")
+            }
+            
+            for (key, value) in parameters {
+                if value is String || value is Int {
+                    multipartFormData.append("\(value)".data(using: .utf8)!, withName: key)
+                }
+            }
+        }, to:url, method: .post, headers: header)
+        { (result) in
+            switch result {
+            case .success(let upload, _, _):
+                upload.responseObject(completionHandler: completionHandler)
+            case .failure(let encodingError):
+                failureCallback(encodingError)
+            }
         }
     }
     
