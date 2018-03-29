@@ -90,6 +90,8 @@
 		7E7A6E5A2036D2EE0026C305 /* SnapX_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7A6E592036D2EE0026C305 /* SnapX_White.png */; };
 		7E7AC909206B663700CA4FEF /* RestaurantListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7AC907206B663700CA4FEF /* RestaurantListTableViewCell.swift */; };
 		7E7AC90A206B663700CA4FEF /* RestaurantListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E7AC908206B663700CA4FEF /* RestaurantListTableViewCell.xib */; };
+		7E7AC90E206CCA1C00CA4FEF /* NoFoodCardsPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7AC90D206CCA1C00CA4FEF /* NoFoodCardsPopup.swift */; };
+		7E7AC910206CCA5200CA4FEF /* NoFoodCardsPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E7AC90F206CCA5200CA4FEF /* NoFoodCardsPopup.xib */; };
 		7E83974120454DF600E71C6D /* MoreInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E83973F20454DF600E71C6D /* MoreInfoTableViewCell.swift */; };
 		7E83974220454DF600E71C6D /* MoreInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E83974020454DF600E71C6D /* MoreInfoTableViewCell.xib */; };
 		7E8397442045585100E71C6D /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E839743204557B000E71C6D /* Roboto-Italic.ttf */; };
@@ -325,6 +327,8 @@
 		7E7A6E592036D2EE0026C305 /* SnapX_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SnapX_White.png; sourceTree = "<group>"; };
 		7E7AC907206B663700CA4FEF /* RestaurantListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListTableViewCell.swift; sourceTree = "<group>"; };
 		7E7AC908206B663700CA4FEF /* RestaurantListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurantListTableViewCell.xib; sourceTree = "<group>"; };
+		7E7AC90D206CCA1C00CA4FEF /* NoFoodCardsPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoFoodCardsPopup.swift; sourceTree = "<group>"; };
+		7E7AC90F206CCA5200CA4FEF /* NoFoodCardsPopup.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoFoodCardsPopup.xib; sourceTree = "<group>"; };
 		7E83973F20454DF600E71C6D /* MoreInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoTableViewCell.swift; sourceTree = "<group>"; };
 		7E83974020454DF600E71C6D /* MoreInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreInfoTableViewCell.xib; sourceTree = "<group>"; };
 		7E839743204557B000E71C6D /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
@@ -997,6 +1001,8 @@
 				7EAC8611201A067A00DE162A /* FoodCardView.xib */,
 				7EB5922220404A0E00CC6888 /* foodCardOverlayView.swift */,
 				7EB59220204049F400CC6888 /* foodCardOverlayView.xib */,
+				7E7AC90D206CCA1C00CA4FEF /* NoFoodCardsPopup.swift */,
+				7E7AC90F206CCA5200CA4FEF /* NoFoodCardsPopup.xib */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -2066,6 +2072,7 @@
 				7EDB8ED9204FF3710015F48A /* RestaurantCollectionViewCell.xib in Resources */,
 				7E393CB920637C7900E51149 /* RewardPointsPopup.xib in Resources */,
 				7E491D27204E9314004445E2 /* RestaurantsMapView.storyboard in Resources */,
+				7E7AC910206CCA5200CA4FEF /* NoFoodCardsPopup.xib in Resources */,
 				9DB02A76201084730061FC0C /* Location.storyboard in Resources */,
 				7E2C64BE2044253400DAB44A /* NavigationMenuTableViewCell.xib in Resources */,
 				7E5C058320185F34000B5C33 /* SavedAddressHeaderViewCell.xib in Resources */,
@@ -2305,6 +2312,7 @@
 				9D902BE5201729E400359DFD /* SelectLocationPresenter.swift in Sources */,
 				7E673B18204961C9005D19DC /* WishlistContract.swift in Sources */,
 				7ED039F220652F97005A4215 /* RewardPoints.swift in Sources */,
+				7E7AC90E206CCA1C00CA4FEF /* NoFoodCardsPopup.swift in Sources */,
 				7E5E7FE3203AF7EE00009A56 /* ZoomAnimatedTransitioning.swift in Sources */,
 				9D0D7138203AAE1F0077FA7A /* RestaurantDetailsContract.swift in Sources */,
 				9D8E88FD1FFD2BEC0066A1D9 /* Results.swift in Sources */,

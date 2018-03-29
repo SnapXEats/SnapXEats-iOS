@@ -23,6 +23,7 @@ protocol FoodCardsPresentation: class {
     func gotoRestaurantDetails(selectedRestaurant: String, parent: UINavigationController, showMoreInfo: Bool)
     func sendUserGestures(gestures: [String: Any])
     func gotoRestaurantsMapView(restaurants: [Restaurant], parent: UINavigationController)
+    func gotoPreferencesScreen()
 }
 
 protocol FoodCardsRequestFomatter: class {

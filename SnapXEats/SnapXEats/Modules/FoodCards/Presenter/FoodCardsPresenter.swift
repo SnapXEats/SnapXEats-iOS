@@ -41,6 +41,10 @@ extension FoodCardsPresenter: FoodCardsPresentation {
     func gotoRestaurantsMapView(restaurants: [Restaurant], parent: UINavigationController) {
         router?.presentScreen(screen: .restaurantsMapView(restaurants: restaurants, parentController: parent))
     }
+    
+    func gotoPreferencesScreen() {
+        router?.presentScreen(screen: .userPreference)
+    }
 }
 
 extension FoodCardsPresenter: FoodCardsInteractorOutput {

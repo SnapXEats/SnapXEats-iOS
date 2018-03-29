@@ -126,6 +126,19 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
         }
         kolodaView.reloadData()
         hideLoading()
+        
+        //Show Popup if there are no Foodcards available
+        if foodCards.count == 0 {
+            showNoFoodCardsPopup()
+        }
+    }
+    
+    private func showNoFoodCardsPopup() {
+        let noFoodCardsPopup = UINib(nibName:SnapXEatsNibNames.noFoodCardsPopup, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! NoFoodCardsPopup
+        noFoodCardsPopup.noFoodCardsPopupDelegate = self
+        let popupFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        noFoodCardsPopup.setupPopup(popupFrame)
+        self.view.addSubview(noFoodCardsPopup)
     }
 }
 
@@ -261,5 +274,17 @@ extension FoodCardsViewController {
         let foodCard = UserFoodCard()
         foodCard.Id = currentFoodCard.id
         return foodCard
+    }
+}
+
+extension FoodCardsViewController: NofoodCardActionsDelegate {
+    func didSelectSetCuisine(_ popup: NoFoodCardsPopup) {
+        popup.removeFromSuperview()
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func didSelectSetPreferences(_ popup: NoFoodCardsPopup) {
+        popup.removeFromSuperview()
+        presenter?.gotoPreferencesScreen()
     }
 }
