@@ -35,6 +35,7 @@ class CheckinPopup: SnapXEatsView, CheckinPopupView {
     @IBOutlet var restaurantLogoImageView: UIImageView!
     @IBOutlet var restaurantNameLabel: UILabel!
     @IBOutlet var restaurantTypeLabel: UILabel!
+    @IBOutlet var nearbyRestaurantsErrorLabel: UILabel!
     
     @IBAction func cancelButtonAction(_ sender: UIButton) {
         self.removeFromSuperview()
@@ -60,6 +61,7 @@ class CheckinPopup: SnapXEatsView, CheckinPopupView {
             router?.showRewardPointsPopup(parent: self, points: rewardPoints.points)
         } else if let restaurantList = result as? RestaurantsList {
             self.restaurantList = restaurantList.restaurants
+            nearbyRestaurantsErrorLabel.isHidden = self.restaurantList.count == 0 ? false : true
             restaurantListTableView.reloadData()
         }
     }
@@ -85,12 +87,14 @@ class CheckinPopup: SnapXEatsView, CheckinPopupView {
     
     private func checkIfRestaurantIsAvailable() {
         //TODO:  When user goes to direction page restaurant from UserdishReview needs to be updated which should be used for Check in once user location is detected within certain distance from this restaurant
-        LoginUserPreferences.shared.userDishReview.restaurant != nil ? checkLocationStatus() : showRestaurantInfo()
+        LoginUserPreferences.shared.userDishReview.restaurant == nil ? showRestaurantList() : showRestaurantInfo()
     }
     
     private func showRestaurantList() {
         restaurantInfoView.isHidden = true
         restaurantListView.isHidden = false
+        checkinButton.isEnabled = false
+        checkinButton.alpha = 0.5
         checkLocationStatus()
     }
     
@@ -111,8 +115,9 @@ class CheckinPopup: SnapXEatsView, CheckinPopupView {
     private func getRestaurantList() {
         if let currentLocation = self.currentLocation {
             showActivityIndicator()
+            // This is used for testing as current location is not from US
             presenter?.getNearbyRestaurantList(latitude: "40.7014", longitude: "-74.0151")
-//            presenter?.getNearbyRestaurantList(latitude: String(currentLocation.coordinate.latitude), longitude: String(currentLocation.coordinate.longitude))
+            //presenter?.getNearbyRestaurantList(latitude: String(currentLocation.coordinate.latitude), longitude: String(currentLocation.coordinate.longitude))
         }
     }
     
@@ -140,6 +145,12 @@ extension CheckinPopup: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: SnapXEatsCellResourceIdentifiler.restaurantListTableView, for: indexPath) as! RestaurantListTableViewCell
         cell.configureRestaurantCell(restaurant: restaurantList[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        checkinButton.isEnabled = true
+        checkinButton.alpha = 1.0
+        self.restaurant = restaurantList[indexPath.row]
     }
 }
 

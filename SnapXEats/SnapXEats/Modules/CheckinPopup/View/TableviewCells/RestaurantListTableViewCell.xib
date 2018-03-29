@@ -35,19 +35,20 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Yo-59-KCd">
-                        <rect key="frame" x="60" y="10" width="250" height="18.5"/>
+                        <rect key="frame" x="60" y="10" width="250" height="25.5"/>
                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
                         <color key="textColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQW-lP-0eC">
-                        <rect key="frame" x="60" y="30.5" width="250" height="16"/>
+                        <rect key="frame" x="60" y="35.5" width="250" height="16"/>
                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                         <color key="textColor" red="0.36470588240000001" green="0.36470588240000001" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="0Yo-59-KCd" secondAttribute="bottom" constant="30" id="3h0-Jr-9cx"/>
                     <constraint firstItem="LQW-lP-0eC" firstAttribute="trailing" secondItem="0Yo-59-KCd" secondAttribute="trailing" id="56H-uf-HSQ"/>
                     <constraint firstItem="htI-9Z-2DL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Oti-bY-ybf"/>
                     <constraint firstItem="0Yo-59-KCd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="ZjU-b2-JUW"/>
@@ -55,8 +56,7 @@
                     <constraint firstItem="htI-9Z-2DL" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="bds-6f-6wj"/>
                     <constraint firstAttribute="trailing" secondItem="0Yo-59-KCd" secondAttribute="trailing" constant="10" id="ezH-rh-ob4"/>
                     <constraint firstItem="0Yo-59-KCd" firstAttribute="leading" secondItem="htI-9Z-2DL" secondAttribute="trailing" constant="10" id="fuX-rj-kcQ"/>
-                    <constraint firstItem="LQW-lP-0eC" firstAttribute="top" secondItem="0Yo-59-KCd" secondAttribute="bottom" constant="2" id="mI2-wC-JOu"/>
-                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="LQW-lP-0eC" secondAttribute="bottom" constant="10" id="vtx-uo-sSm"/>
+                    <constraint firstItem="LQW-lP-0eC" firstAttribute="top" secondItem="0Yo-59-KCd" secondAttribute="bottom" id="mI2-wC-JOu"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

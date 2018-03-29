@@ -21,7 +21,7 @@
             <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="foodcard_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="M3Q-4g-PbA" customClass="RoundedCornerImageView" customModule="SnapXEats" customModuleProvider="target">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="foodcard_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="M3Q-4g-PbA" customClass="RoundedCornerImageView" customModule="SnapXEats" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="300" height="256"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpO-QZ-CVI">

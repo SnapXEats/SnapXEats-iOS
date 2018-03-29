@@ -88,17 +88,27 @@
                                     <color key="textColor" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No restaurants found near your location." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZF-N2-gtu">
+                                    <rect key="frame" x="20" y="97.5" width="215" height="34.5"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
+                                    <color key="textColor" red="0.36470588240000001" green="0.36470588240000001" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="mze-Y8-0qf" firstAttribute="leading" secondItem="Lkq-HL-owQ" secondAttribute="leading" constant="10" id="7Jb-Yk-C8B"/>
+                                <constraint firstItem="mZF-N2-gtu" firstAttribute="centerX" secondItem="Lkq-HL-owQ" secondAttribute="centerX" id="BcB-mK-VkB"/>
                                 <constraint firstAttribute="trailing" secondItem="mze-Y8-0qf" secondAttribute="trailing" constant="10" id="J7t-2F-YAV"/>
+                                <constraint firstItem="mZF-N2-gtu" firstAttribute="leading" secondItem="Lkq-HL-owQ" secondAttribute="leading" constant="20" id="RKy-Lp-6Yt"/>
                                 <constraint firstItem="mze-Y8-0qf" firstAttribute="top" secondItem="Lkq-HL-owQ" secondAttribute="top" id="V2Q-WZ-4MU"/>
                                 <constraint firstItem="rSI-V9-FuB" firstAttribute="top" secondItem="Lkq-HL-owQ" secondAttribute="top" constant="30" id="VBS-BB-Zj3"/>
+                                <constraint firstAttribute="trailing" secondItem="mZF-N2-gtu" secondAttribute="trailing" constant="20" id="X0L-HK-9mM"/>
                                 <constraint firstAttribute="bottom" secondItem="rSI-V9-FuB" secondAttribute="bottom" id="ar1-Jj-7lJ"/>
                                 <constraint firstItem="rSI-V9-FuB" firstAttribute="leading" secondItem="Lkq-HL-owQ" secondAttribute="leading" id="bcl-GO-VrZ"/>
                                 <constraint firstAttribute="trailing" secondItem="rSI-V9-FuB" secondAttribute="trailing" id="g0X-Tm-Y2L"/>
                                 <constraint firstAttribute="height" constant="230" id="gGj-1i-geH"/>
+                                <constraint firstItem="mZF-N2-gtu" firstAttribute="centerY" secondItem="Lkq-HL-owQ" secondAttribute="centerY" id="tSH-2r-FT5"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check In and earn reward points" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5j-Ip-Vm4">
@@ -166,6 +176,7 @@
             <connections>
                 <outlet property="checkinButton" destination="5Go-Gf-rpE" id="2zI-Ne-BpD"/>
                 <outlet property="containerView" destination="86D-Vr-dHF" id="Uwp-1s-gZ0"/>
+                <outlet property="nearbyRestaurantsErrorLabel" destination="mZF-N2-gtu" id="l4n-Aa-XJU"/>
                 <outlet property="restaurantInfoView" destination="gWT-vr-60R" id="Ch4-DG-Vfi"/>
                 <outlet property="restaurantListTableView" destination="rSI-V9-FuB" id="i3q-7b-Tpb"/>
                 <outlet property="restaurantListView" destination="Lkq-HL-owQ" id="jAU-iL-e8R"/>
