@@ -61,9 +61,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="restaurantCategoryLabel" destination="LQW-lP-0eC" id="H9d-Qf-UmY"/>
                 <outlet property="restaurantLogoImageView" destination="htI-9Z-2DL" id="XLv-dK-y6C"/>
                 <outlet property="restaurantNameLabel" destination="0Yo-59-KCd" id="AhD-HM-mbS"/>
+                <outlet property="restaurantTypeLabel" destination="LQW-lP-0eC" id="4qi-iK-2Aq"/>
             </connections>
             <point key="canvasLocation" x="22" y="58"/>
         </tableViewCell>

@@ -34,7 +34,7 @@ class CheckinPopup: SnapXEatsView, CheckinPopupView {
     @IBOutlet var checkinButton: UIButton!
     @IBOutlet var restaurantLogoImageView: UIImageView!
     @IBOutlet var restaurantNameLabel: UILabel!
-    
+    @IBOutlet var restaurantTypeLabel: UILabel!
     
     @IBAction func cancelButtonAction(_ sender: UIButton) {
         self.removeFromSuperview()
@@ -54,6 +54,16 @@ class CheckinPopup: SnapXEatsView, CheckinPopupView {
         }
     }
     
+    override func success(result: Any?) {
+        if let rewardPoints = result as? RewardPoints {
+            self.removeFromSuperview()
+            router?.showRewardPointsPopup(parent: self, points: rewardPoints.points)
+        } else if let restaurantList = result as? RestaurantsList {
+            self.restaurantList = restaurantList.restaurants
+            restaurantListTableView.reloadData()
+        }
+    }
+    
     func setupPopup(frame: CGRect, restaurant: Restaurant) {
         self.frame = frame
         self.restaurant = restaurant
@@ -68,36 +78,34 @@ class CheckinPopup: SnapXEatsView, CheckinPopupView {
         checkIfRestaurantIsAvailable()
     }
     
-    override func success(result: Any?) {
-        if let rewardPoints = result as? RewardPoints {
-            self.removeFromSuperview()
-            router?.showRewardPointsPopup(parent: self, points: rewardPoints.points)
-        } else if let restaurantList = result as? RestaurantsList {
-            self.restaurantList = restaurantList.restaurants
-            restaurantListTableView.reloadData()
-        }
-    }
-    
     private func registerCellForNib() {
         let tableCellNib = UINib(nibName: SnapXEatsNibNames.restaurantListTableViewCell, bundle: nil)
         restaurantListTableView.register(tableCellNib, forCellReuseIdentifier: SnapXEatsCellResourceIdentifiler.restaurantListTableView)
     }
     
+    private func checkIfRestaurantIsAvailable() {
+        //TODO:  When user goes to direction page restaurant from UserdishReview needs to be updated which should be used for Check in once user location is detected within certain distance from this restaurant
+        LoginUserPreferences.shared.userDishReview.restaurant != nil ? checkLocationStatus() : showRestaurantInfo()
+    }
+    
     private func showRestaurantList() {
         restaurantInfoView.isHidden = true
         restaurantListView.isHidden = false
-        
-        checkIfRestaurantIsAvailable()
+        checkLocationStatus()
     }
     
     private func showRestaurantInfo() {
         restaurantInfoView.isHidden = false
         restaurantListView.isHidden = true
-    }
-    
-    private func checkIfRestaurantIsAvailable() {
-        //TODO:  Add Condition to check if there is already a restaurant which is detected as Nearby automatically from CLLocation. If not then only get User current location and get nearby restaurants.
-        checkLocationStatus()
+        
+        if let restaurant = LoginUserPreferences.shared.userDishReview.restaurant {
+            restaurantNameLabel.text = restaurant.restaurant_name ?? ""
+            restaurantTypeLabel.text = restaurant.type ?? ""
+            if let url = URL(string: restaurant.logoImage ?? "") {
+                let placeholderImage = UIImage(named: SnapXEatsImageNames.restaurant_logo)!
+                restaurantLogoImageView.af_setImage(withURL: url, placeholderImage: placeholderImage)
+            }
+        }
     }
     
     private func getRestaurantList() {

@@ -12,7 +12,7 @@ class RestaurantListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var restaurantLogoImageView: UIImageView!
     @IBOutlet weak var restaurantNameLabel: UILabel!
-    @IBOutlet weak var restaurantCategoryLabel: UILabel!
+    @IBOutlet weak var restaurantTypeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,9 +27,9 @@ class RestaurantListTableViewCell: UITableViewCell {
     
     func configureRestaurantCell(restaurant: Restaurant) {
         restaurantNameLabel.text = restaurant.restaurant_name ?? ""
-        restaurantCategoryLabel.text = restaurant.type ?? ""
+        restaurantTypeLabel.text = restaurant.type ?? ""
         if let url = URL(string: restaurant.logoImage ?? "") {
-            let placeholderImage = UIImage(named: SnapXEatsImageNames.placeholder_cuisine)!
+            let placeholderImage = UIImage(named: SnapXEatsImageNames.restaurant_logo)!
             restaurantLogoImageView.af_setImage(withURL: url, placeholderImage: placeholderImage)
         }
     }
