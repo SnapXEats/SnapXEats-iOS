@@ -17,7 +17,7 @@ class SnapNShareHomeViewController: BaseViewController, StoryboardLoadable {
     var presenter: SnapNShareHomePresentation?
     var picker = UIImagePickerController()
     //TODO: Remove this hardcoded value once we get Id for Checkedin Restaurant
-    var restaurant_id = "dbd206e5-2573-4b3a-996d-aec799642c10"
+    var restaurant: Restaurant?
     var restaurantDetails: RestaurantDetails?
     var specialities = [RestaurantSpeciality]()
     var slideshow =  ImageSlideshow()
@@ -77,9 +77,10 @@ class SnapNShareHomeViewController: BaseViewController, StoryboardLoadable {
     private func getRestaurantDetails() {
         if shouldLoadData == true {
             showLoading()
-            userDishReview.restaurantInfoId = restaurant_id // This ID is needed while sending reviewPhoto, Audio and rating in SnapNSharePhotoViewController
-            presenter?.restaurantDetailsRequest(restaurantId:restaurant_id)
-            
+            if let restaurant = self.restaurant, let id = restaurant.restaurant_info_id {
+                userDishReview.restaurantInfoId = id // This ID is needed while sending reviewPhoto, Audio and rating in SnapNSharePhotoViewController
+                presenter?.restaurantDetailsRequest(restaurantId:id)
+            }
         }
     }
     
@@ -135,9 +136,9 @@ class SnapNShareHomeViewController: BaseViewController, StoryboardLoadable {
     }
     
     private func savePhoto(image: UIImage) {
-        if let photoPathURL = getPathForSmartPhotoForRestaurant() {
+        if let restaurntID = restaurant?.restaurant_info_id, let photoPathURL = getPathForSmartPhotoForRestaurant(restaurantId:restaurntID) {
             do {
-                try UIImageJPEGRepresentation(image, 1.0)?.write(to: photoPathURL, options: .atomic)
+                try UIImageJPEGRepresentation(image, 0.3)?.write(to: photoPathURL, options: .atomic)
                 
             } catch {
                 print("file cant not be saved at path \(photoPathURL), with error : \(error)")

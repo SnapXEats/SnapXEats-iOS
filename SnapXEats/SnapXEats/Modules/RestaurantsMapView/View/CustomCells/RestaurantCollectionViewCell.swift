@@ -27,7 +27,7 @@ class RestaurantCollectionViewCell: FSPagerViewCell {
         }
         
         if let imageURL = URL(string: restaurant.restaurantDishes[0].dish_image_url ?? "") {
-            restaurantImageView.af_setImage(withURL: imageURL, placeholderImage:UIImage(named: SnapXEatsImageNames.placeholder_cuisine)!)
+            restaurantImageView.af_setImage(withURL: imageURL, placeholderImage:UIImage(named: SnapXEatsImageNames.restaurant_collectionView_placeholder)!)
         }
     }
 }

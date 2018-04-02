@@ -155,7 +155,6 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
             } else {
                 presentScreen(index: screen)
             }
-
     }
     
     private func presentScreen(index: navigateScreen) {
@@ -169,7 +168,8 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
         case .wishList:
             loginUserPreference.isLoggedIn ? showWishListForLoggedInUser() : showWishlistForNonLoggedInUser()
         case .snapnshare:
-            let screenToPresent:Screens = isUserCheckedIn ? .snapNShareHome : .checkin
+            let currentRestaurant = Restaurant(id: "62dfee80-b52b-482f-b0f3-c175ce5d56ca", name: "Tertulia")
+            let screenToPresent:Screens = isUserCheckedIn ? .snapNShareHome(restaurant: currentRestaurant) : .checkin(restaurant: currentRestaurant)
             presenter?.presentScreen(screen: screenToPresent, drawerState: .closed)
         default:
             break

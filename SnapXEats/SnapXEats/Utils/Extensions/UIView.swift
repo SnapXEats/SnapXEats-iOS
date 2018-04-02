@@ -81,4 +81,15 @@ extension UIView {
         layer.shadowOffset = offSet
         layer.shadowRadius = radius
     }
+    
+    func image() -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, isOpaque, 0)
+        guard let context = UIGraphicsGetCurrentContext() else {
+            return UIImage()
+        }
+        layer.render(in: context)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image!
+    }
 }

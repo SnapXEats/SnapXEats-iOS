@@ -87,7 +87,9 @@ enum SnapXEatsWebServicePath {
     static let  userGesture = "/api/v1/userGesture"
     static let  logOut = "/api/v1/users/logout"
     static let  wishList = "/api/v1/userGesture/wishlist"
+    static let  checkin = "/api/v1/restaurant/checkIn"
     static let  shanNShare = "/api/v1/snapNShare"
+    static let  getRestaurants = "/api/v1/restaurant/checkIn/getRestaurants"
 }
 
 enum SnapXEatsImageNames {
@@ -107,6 +109,16 @@ enum SnapXEatsImageNames {
     static let closeIcon = "close_icon"
     static let record_popuup_icon = "record_popuup_icon"
     static let play_popuup_icon = "play_popup_icon"
+    static let swipe_delete_icon = "swipe_delete_icon"
+    static let foodcard_placeholder = "foodcard_placeholder"
+    static let restaurant_speciality_placeholder = "restaurant_speciality_placeholder"
+    static let restaurant_collectionView_placeholder = "restaurant_collectionView_placeholder"
+    static let restaurant_details_placeholder = "restaurant_details_placeholder"
+    static let wishlist_placeholder = "wishlist_placeholder"
+    static let preferences_placeholder = "preferences_placeholder"
+    static let favourite_icon = "favourite_icon"
+    static let like_icon = "like_icon"
+    static let restaurant_logo = "restaurant_logo"
 }
 
 
@@ -126,7 +138,6 @@ enum SnapXEatsPlaceSearchRequestKeys {
     static let address = "address"
 }
 
-
 enum SnapXEatsPageTitles {
     static let home = "Home"
     static let wishlist = "Wishlist"
@@ -136,11 +147,11 @@ enum SnapXEatsPageTitles {
     static let snapnshare = "Snap-n-Share"
     static let smartPhotos = "Smart Photos"
     static let restaurants = "Restaurants"
-    static let checkin = "Check In"
+    static let checkin = "Check-In"
     
     static let cusinePreferences = "Cuisine Preferences"
     static let foodPreferences = "Food Preferences"
-    static let restaurantDetail = "Restaurant Info"
+    static let restaurantDetail = "Restaurant Information"
     static let directions = "Directions"
 }
 
@@ -152,6 +163,7 @@ enum SnapXEatsCellResourceIdentifiler {
     static let moreInfoTableView = "moreInfoTableViewCell"
     static let wishlistTableView = "wishlistTableViewCell"
     static let restaurantCollectionView = "restaurantCell"
+    static let restaurantListTableView = "RestaurantListCell"
 }
 
 enum SnapXEatsNibNames {
@@ -166,6 +178,8 @@ enum SnapXEatsNibNames {
     static let audioRecordingPopup = "AudioRecordingPopUp"
     static let checkinPopup = "CheckinPopup"
     static let rewardPointsPopup = "RewardPointsPopup"
+    static let restaurantListTableViewCell = "RestaurantListTableViewCell"
+    static let noFoodCardsPopup = "NoFoodCardsPopup"
 }
 
 enum SnapXEatsWebServiceParameterKeys {
@@ -237,20 +251,21 @@ enum SnapXEatsDirectionConstants {
 }
 
 enum AlertMessage {
-    static let messageNoInternet = "SnapXEats required internet connection to process your request. Please enable your internet access."
+    static let messageNoInternet = "SnapXEats required internet connection to process your request. Please enable your internet access"
     static let messageSuccess = "Request Succesful"
-    static let loginError = "Server Error during process your request"
+    static let loginError = "Server error while processing your request"
     static let cancelRequest = "User canceled request"
-    static let logOutMessage = "Do you really want to Logout of SnapXEats"
-    static let preferenceMessage = "You have made some changes to your preferences, You need to apply them first."
+    static let logOutMessage = "Are you sure you want to logout?"
+    static let preferenceMessage = "You have made some changes to your preferences, you need to apply to continue"
     static let uberRedirectConfirmation = "Are you sure you want to book an Uber ride?"
     static let uberInstallConfirmation = "You need to install the uber app from app store to book a ride. Do you want to install it now?"
-    static let preferecneRestMessage = "Do you really want to reset your preferences. Please press Ok or Cancel."
-    static let preferenceSaveMessage = "You have made some changes to your preferences, You need to save them first."
-    static let deleteWishListMessage = "Do you really want to delete your selected wishlist Item, please press Ok or Cancel."
-    static let wishlistForNonLoggedinUser = "Please Login to see the Wishlist."
-    static let navigationFailureError = "We are not able to detect your current location so Navigation on the Map won't work"
-    static let shareConfirmation = "Do you want to Add and Share your Review?"
+    static let preferecneRestMessage = "Do you want to reset your preferences?"
+    static let preferenceSaveMessage = "You have made some changes to your preferences, you need to save them"
+    static let deleteWishListMessage = "Do you want to delete your selected wishlist item?"
+    static let wishlistForNonLoggedinUser = "Please login to check the Wishlist"
+    static let navigationFailureError = "We are not able to detect your current location so navigation on the map won't work"
+    static let shareConfirmation = "Do you want to add and share your review?"
+    static let incompleteShareInformation = "Rating and Audio or Text review is mandatory"
     static let audioReviewDeleteConfirmation = "Are you sure you want to delete this audio review?"
     static let maxAudioReviewLimitReached = "Maximum Audio Review length reached."
 }
@@ -299,5 +314,19 @@ enum SnapXNonLoggedInUserConstants {
 enum timeFormatConstants {
     static let displayTimerFormat = "%02i:%02i"
     static let timeConversionFactor = 60
+}
+
+enum CheckinAPIInputKeys {
+    static let restaurant_info_id = "restaurant_info_id"
+    static let reward_type = "reward_type"
+}
+
+enum RewardPointTypes {
+    static let restaurant_check_in = "restaurant_check_in"
+}
+
+enum RestaurantListAPIKeys {
+    static let latitude = "latitude"
+    static let longitude = "longitude"
 }
 

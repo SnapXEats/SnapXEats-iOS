@@ -18,12 +18,15 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
     
     let loginPreferecne = LoginUserPreferences.shared
     let instagramApi = Instagram.shared
-    var shareableImageURL: URL?
-    var shareableTxt = ""
+    var shareDetails: SnapNShare?
+    
     @IBOutlet weak var fbButton: UIButton!
-    // MARK: Lifecycle
     @IBOutlet weak var instagramButton: UIButton!
-
+    @IBOutlet weak var smartPhotoView: UIView!
+    @IBOutlet weak var sharingMessageLabel: UILabel!
+    @IBOutlet weak var restaurantNameLabel: UILabel!
+    @IBOutlet weak var smartPhotoImageView: UIImageView!
+    
     @IBAction func fbImageShare(_ sender: Any) {
         if loginPreferecne.fbSharingenabled {
             // if already loggedin (FB or instagram) and Fb sharing is enabled
@@ -43,24 +46,24 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
         presenter?.sendPhotoReview()
     }
     
-    
-    
     override func success(result: Any?) {
         if let _ = result as? Bool {
             sharingDialogFB()
         } else if let result = result as? SnapNShare {
-            shareableImageURL = URL(string: result.dish_image_url!)
-            shareableTxt = result.message ?? ""
+            shareDetails = result
+            showSharingDetails()
+            if let restaurantId = LoginUserPreferences.shared.userDishReview.restaurantInfoId {
+                deleteUserReviewData(restaurantId: restaurantId)
+            }
+        }
+    }
+
+    func sharingDialogFB() {
+        guard let shareDetails = self.shareDetails, let shareURL = URL(string: shareDetails.dish_image_url ?? "") else {
+            return
         }
         
-    }
-    
-    func getUsrImage() -> String {
-        return "https://s3.us-east-2.amazonaws.com/snapxeats/french.jpg"
-    }
-    
-    func sharingDialogFB() {
-        let content = LinkShareContent(url: URL(string: getUsrImage())!)
+        let content = LinkShareContent(url: shareURL)
         let shareDialog = ShareDialog(content: content)
         shareDialog.mode = .automatic
         shareDialog.failsOnInvalidData = true
@@ -83,11 +86,22 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
             InstagramManager.shared.shareONInstagram(image: image, description: "This is the image on Instagram", viewController: self)
         }
     }
+    
+    func showSharingDetails() {
+        if let shareDetails = self.shareDetails {
+            sharingMessageLabel.text = shareDetails.message ?? ""
+            restaurantNameLabel.text = shareDetails.restaurant_name ?? ""
+            if let url = URL(string: shareDetails.dish_image_url ?? "") {
+                smartPhotoImageView.af_setImage(withURL: url, placeholderImage:UIImage(named: SnapXEatsImageNames.foodcard_placeholder)!)
+            }
+        }
+    }
 }
 
 extension SnapNShareSocialMediaViewController: SnapNShareSocialMediaView {
     func initView() {
         customizeNavigationItem(title: SnapXEatsPageTitles.snapnshare, isDetailPage: true)
+        smartPhotoView.addShadow(width: 0.0, height: 0.0)
     }
 }
 

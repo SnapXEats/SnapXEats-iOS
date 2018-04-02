@@ -28,7 +28,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7tx-Om-6KI">
                         <rect key="frame" x="5" y="5" width="205" height="173"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_cuisine" translatesAutoresizingMaskIntoConstraints="NO" id="d8s-e4-IFC">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="preferences_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="d8s-e4-IFC">
                                 <rect key="frame" x="0.0" y="0.0" width="205" height="137"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="d8s-e4-IFC" secondAttribute="height" multiplier="3:2" id="MMK-lf-L5h"/>
@@ -96,6 +96,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="placeholder_cuisine" width="89" height="58"/>
+        <image name="preferences_placeholder" width="205" height="137"/>
     </resources>
 </document>

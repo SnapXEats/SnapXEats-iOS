@@ -21,24 +21,22 @@ class PreferenceTypeCollectionViewCell: UICollectionViewCell {
     }
 
     func configurePreferenceItemCell(preferenceItem: PreferenceItem, preferencetype: PreferenceType) {
-        
+        let placeholderImage = UIImage(named: SnapXEatsImageNames.preferences_placeholder)!
         if let item = preferenceItem as? FoodItem {
             preferenceItemNameLabel.text = item.name
             if let imagURL = item.imageURL, let url = URL(string: imagURL) {
-                let placeholderImage = UIImage(named: SnapXEatsImageNames.placeholder_cuisine)!
                 preferenceItemImage.af_setImage(withURL: url, placeholderImage: placeholderImage)
             }
         } else if let item = preferenceItem as? CuisineItem {
             preferenceItemNameLabel.text = item.name
             if let imagURL = item.imageURL {
                 let url = URL(string: imagURL)!
-                let placeholderImage = UIImage(named: SnapXEatsImageNames.placeholder_cuisine)!
                 preferenceItemImage.af_setImage(withURL: url, placeholderImage: placeholderImage)
             }
         }
         
         // Set Image for item status based on favourite or Liked
-        let image = preferenceItem.isFavourite ? UIImage(named:"favourite_icon") : (preferenceItem.isLiked ? UIImage(named:"like_icon"): nil)
+        let image = preferenceItem.isFavourite ? UIImage(named:SnapXEatsImageNames.favourite_icon) : (preferenceItem.isLiked ? UIImage(named:SnapXEatsImageNames.like_icon): nil)
         preferenceItemStatusButton.setImage(image, for: .normal)
         
     }

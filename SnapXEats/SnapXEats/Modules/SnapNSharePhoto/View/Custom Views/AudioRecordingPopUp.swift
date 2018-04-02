@@ -13,6 +13,7 @@ protocol AudioRecordingPopUpViewActionsDelegate: class {
     func audioRecordingDone(_ popupView: AudioRecordingPopUp, forDuration duration: Int)
     func audioPlaybackDone(_ popupView: AudioRecordingPopUp)
     func audioRecordingDeleted(_ popupView: AudioRecordingPopUp)
+    func audioRecordingCancelled(_ popupView: AudioRecordingPopUp)
 }
 
 enum AudioRecordingPopupTypes {
@@ -28,6 +29,10 @@ class AudioRecordingPopUp: UIView {
         static let recordPopupTitle = "ADD AUDIO REVIEW"
         static let playPopupTitle = "AUDIO REVIEW"
         static let maxAudioLengthInSeconds = 30
+        static let startRecordButtonTitle = "RECORD"
+        static let doneButtontitle = "DONE"
+        static let cancelButtonTitle = "Cancel"
+        static let removeReviewButtonTitle = "Delete Review"
     }
     
     weak var audioRecordingPopupDelegate: AudioRecordingPopUpViewActionsDelegate?
@@ -39,7 +44,7 @@ class AudioRecordingPopUp: UIView {
     var audioReviewDuration = 0
     var popupType: AudioRecordingPopupTypes!
     var parentController: UIViewController!
-    
+
     @IBOutlet var containerView: UIView!
     @IBOutlet var recordAudioStartButton: UIButton!
     @IBOutlet var recordAudioDoneButton: UIButton!
@@ -49,7 +54,7 @@ class AudioRecordingPopUp: UIView {
     
     @IBAction func recordingDoneAction(_ sender: UIButton) {
         if popupType == .record {
-            finishRecording()
+            (audioRecorder == nil) ? prepareForAudioRecording() : finishRecording()
         } else {
             audioPlayer?.stop()
             audioRecordingPopupDelegate?.audioPlaybackDone(self)
@@ -57,11 +62,11 @@ class AudioRecordingPopUp: UIView {
     }
     
     @IBAction func recordingStartAction(_ sender: UIButton) {
-        (popupType == .record) ? prepareForAudioRecording() : playAudioReview()
+        playAudioReview()
     }
     
     @IBAction func deleteReviewButtonAction(_ sender: UIButton) {
-        showDeleteAudioReviewConfirmation()
+        (popupType == .record) ? cancelRecordingAudioReview() : showDeleteAudioReviewConfirmation()
     }
     
     func setupPopup(_ frame: CGRect, type: AudioRecordingPopupTypes, forDuration seconds: Int, forViewController vc: UIViewController) {
@@ -75,13 +80,16 @@ class AudioRecordingPopUp: UIView {
         recordAudioDoneButton.layer.cornerRadius = recordAudioDoneButton.frame.height/2
         recordAudioStartButton.addBorder(ofWidth: popupConstants.startButtonBorderWidth, withColor: .lightGray, radius: recordAudioStartButton.frame.width/2)
         
-        recordAudioDoneButton.isEnabled = (type == .record) ? false : true
-        recordAudioDoneButton.alpha = (type == .record) ? 0.5 : 1.0
+        let recordAudioButtontitle = (type == .record) ? popupConstants.startRecordButtonTitle : popupConstants.doneButtontitle
+        recordAudioDoneButton.setTitle(recordAudioButtontitle, for: .normal)
         
-        (type == .record) ? removeReviewButton.isInactive() : removeReviewButton.isActive()
+        let removeReviewButtontitle = (type == .record) ? popupConstants.cancelButtonTitle : popupConstants.removeReviewButtonTitle
+        removeReviewButton.setTitle(removeReviewButtontitle, for: .normal)
+        
         titleLabel.text = (type == .record) ? popupConstants.recordPopupTitle : popupConstants.playPopupTitle
         let imageName = (type == .record) ? SnapXEatsImageNames.record_popuup_icon : SnapXEatsImageNames.play_popuup_icon
         recordAudioStartButton.setImage(UIImage(named:imageName), for: .normal)
+        recordAudioStartButton.isUserInteractionEnabled = (type == .record) ? false : true
         audioDurationLabel.text = timeString(time: TimeInterval(seconds))
     }
     
@@ -105,7 +113,7 @@ class AudioRecordingPopUp: UIView {
     }
     
     private func startAudioRecording() {
-        if let audioRecordingURL = getPathForAudioReviewForRestaurant() {
+         if let restaurntID = LoginUserPreferences.shared.userDishReview.restaurantInfoId, let audioRecordingURL = getPathForAudioReviewForRestaurant(restaurantId: restaurntID) {
             let settings = [
                 AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
                 AVSampleRateKey: 44100,
@@ -116,8 +124,7 @@ class AudioRecordingPopUp: UIView {
                 audioRecorder = try AVAudioRecorder(url: audioRecordingURL, settings: settings)
                 audioRecorder.record()
                 runTimer()
-                recordAudioDoneButton.isActive()
-                recordAudioStartButton.isEnabled = false
+                recordAudioDoneButton.setTitle("Done", for: .normal)
             } catch {
                 print("failed to Record!")
             }
@@ -134,14 +141,14 @@ class AudioRecordingPopUp: UIView {
     }
     
     private func playAudioReview() {
-        if let audioRecordingURL = getPathForAudioReviewForRestaurant() {
+        if let restaurntID = LoginUserPreferences.shared.userDishReview.restaurantInfoId, let audioRecordingURL = getPathForAudioReviewForRestaurant(restaurantId: restaurntID) {
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: audioRecordingURL)
                 do {
                     try AVAudioSession.sharedInstance().overrideOutputAudioPort(AVAudioSessionPortOverride.speaker)
                 }
                 audioPlayer?.play()
-                recordAudioStartButton.isEnabled = false
+                recordAudioStartButton.isUserInteractionEnabled = false
                 runTimer()
             } catch {
                 print("Unable to Play Audio")
@@ -161,7 +168,7 @@ class AudioRecordingPopUp: UIView {
             finishRecording()
             showAudioReviewLimitReachedAlert()
         } else if seconds == 0 {
-            recordAudioStartButton.isEnabled = true
+            recordAudioStartButton.isUserInteractionEnabled = true
             timer.invalidate()
             seconds = popupType == .play ? audioReviewDuration : seconds
         }
@@ -182,22 +189,18 @@ class AudioRecordingPopUp: UIView {
         confirmationAlert.addAction(noAction)
         
         let yesAction = UIAlertAction(title: SnapXButtonTitle.yes, style: .default) { (_) in
-            self.deleteAudioReview()
+            if let restaurntID = LoginUserPreferences.shared.userDishReview.restaurantInfoId {
+                deleteAudioReview(restaurantId: restaurntID)
+            }
+            self.audioRecordingPopupDelegate?.audioRecordingDeleted(self)
         }
         confirmationAlert.addAction(yesAction)
         parentController.present(confirmationAlert, animated: true, completion: nil)
     }
     
-    private func deleteAudioReview() {
-        // Delete the Audio Recording from documents directory as well
-        if let audioFileURL = getPathForAudioReviewForRestaurant() {
-            do {
-                try FileManager.default.removeItem(at: audioFileURL)
-            } catch {
-                print("Unable to Delete File")
-            }
-        }
-        audioRecordingPopupDelegate?.audioRecordingDeleted(self)
+    private func cancelRecordingAudioReview() {
+        timer.invalidate()
+        audioRecordingPopupDelegate?.audioRecordingCancelled(self)
     }
 }
 

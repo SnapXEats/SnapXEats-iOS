@@ -52,27 +52,29 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
     }
     
     @objc func shareButtonAction() {
-        showConfirmationForShare()
+        isSharingInformationComplete() ? continueSharingUserReview() : showIncompleteInformationAlert()
     }
     
-    func showConfirmationForShare() {
-        let confirmationAlert = UIAlertController(title: SnapXEatsAppDefaults.emptyString, message:AlertMessage.shareConfirmation , preferredStyle: .alert)
-        let discardAction = UIAlertAction(title: SnapXButtonTitle.discard, style: .default) { (action) in
-            // Action for Discard
-        }
-        let continueAction = UIAlertAction(title: SnapXButtonTitle.continueNext, style: .default) { [weak self] (action) in
-            self?.setReviewData()
-            self?.gotoSnapNShareSocialMediaView()
-        }
-        confirmationAlert.addAction(discardAction)
-        confirmationAlert.addAction(continueAction)
-        present(confirmationAlert, animated: true, completion: nil)
+    private func isSharingInformationComplete() -> Bool {
+        return rating > 0 ? true : false
+    }
+    
+    func showIncompleteInformationAlert() {
+        let incompleteInfoAlert = UIAlertController(title: SnapXEatsAppDefaults.emptyString, message:AlertMessage.incompleteShareInformation , preferredStyle: .alert)
+        let okAction = UIAlertAction(title: SnapXButtonTitle.ok, style: .cancel, handler: nil)
+        incompleteInfoAlert.addAction(okAction)
+        present(incompleteInfoAlert, animated: true, completion: nil)
+    }
+    
+    func continueSharingUserReview() {
+        setReviewData()
+        gotoSnapNShareSocialMediaView()
     }
     
     func setReviewData() {
         if let restaurntID = restaurntID {
          loginPreference.userDishReview.rating = rating
-         loginPreference.userDishReview.reviewText = reviewTextView.text
+            loginPreference.userDishReview.reviewText = (reviewTextView.text == reviewPlaceholderText) ? SnapXEatsAppDefaults.emptyString : reviewTextView.text
          loginPreference.userDishReview.reviewAudio =  getPathForAudioReviewForRestaurant(restaurantId: restaurntID)
          loginPreference.userDishReview.dishPicture = getPathForSmartPhotoForRestaurant(restaurantId: restaurntID)
          //loginPreference.userDishReview.restaurantInfoId  // This will get set in SnapNShareHomeViewController
@@ -125,6 +127,10 @@ extension SnapNSharePhotoViewController: UITextViewDelegate {
 }
 
 extension SnapNSharePhotoViewController: AudioRecordingPopUpViewActionsDelegate {
+    func audioRecordingCancelled(_ popupView: AudioRecordingPopUp) {
+        popupView.removeFromSuperview()
+    }
+    
     func audioRecordingDone(_ popupView: AudioRecordingPopUp, forDuration duration: Int) {
         popupView.removeFromSuperview()
         audioReviewDuration = duration

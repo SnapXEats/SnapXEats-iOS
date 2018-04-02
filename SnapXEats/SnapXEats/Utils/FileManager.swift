@@ -36,7 +36,7 @@ func getPathForAudioReviewForRestaurant(restaurantId: String = "test_restaurant"
     return audioRecordingPath?.appendingPathComponent(fileManagerConstants.audioReviewFileNAme)
 }
 
-func getPathForSmartPhotoForRestaurant(restaurantId: String = "test_restaurant") -> URL? {
+func getPathForSmartPhotoForRestaurant(restaurantId: String) -> URL? {
     
     let fileManager = FileManager.default
     let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
@@ -54,4 +54,31 @@ func getPathForSmartPhotoForRestaurant(restaurantId: String = "test_restaurant")
         print("File Error --- \(error.localizedDescription)")
     }
     return audioRecordingPath?.appendingPathComponent(fileManagerConstants.smartPhotoFileName)
+}
+
+func deleteAudioReview(restaurantId: String) {
+    // Delete the Audio Recording from documents directory as well
+    if let audioRecordingURL = getPathForAudioReviewForRestaurant(restaurantId: restaurantId) {
+        do {
+            try FileManager.default.removeItem(at: audioRecordingURL)
+        } catch {
+            print("Unable to Delete File")
+        }
+    }
+}
+
+func deletesmartPhoto(restaurantId: String) {
+    // Delete the Smart Photo from documents directory as well
+    if let smartPhotoURL = getPathForSmartPhotoForRestaurant(restaurantId: restaurantId) {
+        do {
+            try FileManager.default.removeItem(at: smartPhotoURL)
+        } catch {
+            print("Unable to Delete File")
+        }
+    }
+}
+
+func deleteUserReviewData(restaurantId: String) {
+    deletesmartPhoto(restaurantId: restaurantId)
+    deleteAudioReview(restaurantId: restaurantId)
 }

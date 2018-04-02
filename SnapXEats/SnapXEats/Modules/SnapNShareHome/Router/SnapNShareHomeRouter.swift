@@ -33,7 +33,6 @@ class SnapNShareHomeRouter {
 
         viewController.presenter =  presenter
         presenter.baseView = viewController
-        presenter.view = viewController
         presenter.router = router
         presenter.interactor = interactor
 

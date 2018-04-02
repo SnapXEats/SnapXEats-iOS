@@ -28,81 +28,136 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4fD-ZX-0Z5">
-                                <rect key="frame" x="20" y="79" width="280" height="280"/>
-                                <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="20" y="74" width="280" height="270"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="foodcard_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Lgv-i0-u5H">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="224"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Lgv-i0-u5H" secondAttribute="height" multiplier="1:0.8" id="sgo-ES-24b"/>
+                                        </constraints>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mCz-2h-8Ur">
+                                        <rect key="frame" x="0.0" y="220" width="280" height="50"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H7d-0Q-61D">
+                                                <rect key="frame" x="20" y="14.5" width="250" height="21.5"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                                <color key="textColor" red="0.25882352941176467" green="0.25882352941176467" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="H7d-0Q-61D" firstAttribute="leading" secondItem="mCz-2h-8Ur" secondAttribute="leading" constant="20" id="7Ha-ya-ktB"/>
+                                            <constraint firstAttribute="height" constant="50" id="K59-K6-1Eo"/>
+                                            <constraint firstItem="H7d-0Q-61D" firstAttribute="centerY" secondItem="mCz-2h-8Ur" secondAttribute="centerY" id="gPI-ok-k1X"/>
+                                            <constraint firstAttribute="trailing" secondItem="H7d-0Q-61D" secondAttribute="trailing" constant="10" id="isM-DO-Tpb"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="4fD-ZX-0Z5" secondAttribute="height" multiplier="1:1" id="03O-Uk-2QJ"/>
+                                    <constraint firstItem="Lgv-i0-u5H" firstAttribute="leading" secondItem="4fD-ZX-0Z5" secondAttribute="leading" id="JSX-PG-Af0"/>
+                                    <constraint firstItem="mCz-2h-8Ur" firstAttribute="top" secondItem="Lgv-i0-u5H" secondAttribute="bottom" constant="-4" id="Oy1-0J-hhW"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lgv-i0-u5H" secondAttribute="trailing" id="Uah-WR-NYq"/>
+                                    <constraint firstAttribute="trailing" secondItem="mCz-2h-8Ur" secondAttribute="trailing" id="Xia-e2-0lA"/>
+                                    <constraint firstAttribute="bottom" secondItem="mCz-2h-8Ur" secondAttribute="bottom" id="bof-cH-OPw"/>
+                                    <constraint firstItem="mCz-2h-8Ur" firstAttribute="leading" secondItem="4fD-ZX-0Z5" secondAttribute="leading" id="ihf-Jd-KSv"/>
+                                    <constraint firstItem="Lgv-i0-u5H" firstAttribute="top" secondItem="4fD-ZX-0Z5" secondAttribute="top" id="lWS-B0-Ako"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share On Social Media" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGR-18-scp">
+                                <rect key="frame" x="25" y="450.5" width="270" height="21.5"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                                <color key="textColor" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="and Earn 50 Reward Points" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odr-5u-YRm">
+                                <rect key="frame" x="25" y="477" width="270" height="16"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                                <color key="textColor" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TUN-KC-1o1">
-                                <rect key="frame" x="110" y="508" width="100" height="40"/>
+                                <rect key="frame" x="107.5" y="503" width="105" height="45"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MM0-f6-6m6">
-                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MM0-f6-6m6">
+                                        <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="NGR-Kl-ydE"/>
+                                            <constraint firstAttribute="width" constant="45" id="NGR-Kl-ydE"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                        <state key="normal" title="F">
+                                        <state key="normal" image="fb_share_icon">
                                             <color key="titleColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <state key="highlighted" image="fb_share_icon_highlighted"/>
                                         <connections>
                                             <action selector="fbImageShare:" destination="etl-FZ-wAQ" eventType="touchUpInside" id="6x3-Gh-r1b"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yjQ-Cq-cZu">
-                                        <rect key="frame" x="60" y="0.0" width="40" height="40"/>
-                                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yjQ-Cq-cZu">
+                                        <rect key="frame" x="60" y="0.0" width="45" height="45"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="pKT-I5-Um2"/>
+                                            <constraint firstAttribute="width" constant="45" id="pKT-I5-Um2"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                        <state key="normal" title="I">
+                                        <state key="normal" image="insta_share_icon">
                                             <color key="titleColor" red="0.25882352939999997" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <state key="highlighted" image="insta_share_icon_highlighted"/>
                                         <connections>
                                             <action selector="instagramImageShare:" destination="etl-FZ-wAQ" eventType="touchUpInside" id="tKl-Kh-7WV"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="yjQ-Cq-cZu" firstAttribute="top" secondItem="TUN-KC-1o1" secondAttribute="top" id="1kn-vZ-iAi"/>
-                                    <constraint firstAttribute="height" constant="40" id="8n4-Ml-Zft"/>
+                                    <constraint firstAttribute="height" constant="45" id="8n4-Ml-Zft"/>
                                     <constraint firstAttribute="bottom" secondItem="yjQ-Cq-cZu" secondAttribute="bottom" id="GrO-Ch-x4U"/>
                                     <constraint firstAttribute="bottom" secondItem="MM0-f6-6m6" secondAttribute="bottom" id="g0v-Gp-gXm"/>
                                     <constraint firstItem="MM0-f6-6m6" firstAttribute="top" secondItem="TUN-KC-1o1" secondAttribute="top" id="gag-ze-nfJ"/>
                                     <constraint firstAttribute="trailing" secondItem="yjQ-Cq-cZu" secondAttribute="trailing" id="jwb-fb-kd3"/>
-                                    <constraint firstItem="yjQ-Cq-cZu" firstAttribute="leading" secondItem="MM0-f6-6m6" secondAttribute="trailing" constant="20" id="tD1-kG-F0P"/>
+                                    <constraint firstItem="yjQ-Cq-cZu" firstAttribute="leading" secondItem="MM0-f6-6m6" secondAttribute="trailing" constant="15" id="tD1-kG-F0P"/>
                                     <constraint firstItem="MM0-f6-6m6" firstAttribute="leading" secondItem="TUN-KC-1o1" secondAttribute="leading" id="x82-sn-SU4"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share On Social Media" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGR-18-scp">
-                                <rect key="frame" x="25" y="379" width="270" height="24"/>
-                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
-                                <color key="textColor" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EnU-dx-Y0k">
+                                <rect key="frame" x="20" y="354" width="280" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="Xoi-YW-l8Q"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                                <color key="textColor" red="0.10588235294117647" green="0.12549019607843137" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="and Earn 50 Reward Points" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odr-5u-YRm">
-                                <rect key="frame" x="25" y="408" width="270" height="18.5"/>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
-                                <color key="textColor" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bEw-MJ-iGn">
+                                <rect key="frame" x="0.0" y="434" width="320" height="1"/>
+                                <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="KNq-1O-uJB"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Odr-5u-YRm" firstAttribute="top" secondItem="AGR-18-scp" secondAttribute="bottom" constant="5" id="5X4-Hg-eh4"/>
+                            <constraint firstItem="EnU-dx-Y0k" firstAttribute="top" secondItem="mCz-2h-8Ur" secondAttribute="bottom" constant="10" id="PX1-oy-uxF"/>
                             <constraint firstItem="Odr-5u-YRm" firstAttribute="leading" secondItem="AGR-18-scp" secondAttribute="leading" id="Rv6-es-0yw"/>
-                            <constraint firstItem="4fD-ZX-0Z5" firstAttribute="top" secondItem="DQF-P6-9vx" secondAttribute="top" constant="15" id="XtZ-c5-PLj"/>
+                            <constraint firstItem="4fD-ZX-0Z5" firstAttribute="top" secondItem="DQF-P6-9vx" secondAttribute="top" constant="10" id="XtZ-c5-PLj"/>
                             <constraint firstItem="AGR-18-scp" firstAttribute="leading" secondItem="DQF-P6-9vx" secondAttribute="leading" constant="25" id="Y11-Z0-pDg"/>
                             <constraint firstItem="DQF-P6-9vx" firstAttribute="trailing" secondItem="AGR-18-scp" secondAttribute="trailing" constant="25" id="bGM-G5-uKG"/>
+                            <constraint firstItem="bEw-MJ-iGn" firstAttribute="leading" secondItem="DQF-P6-9vx" secondAttribute="leading" id="c7l-l0-oSV"/>
+                            <constraint firstItem="TUN-KC-1o1" firstAttribute="top" secondItem="Odr-5u-YRm" secondAttribute="bottom" constant="10" id="cac-Dj-3Gb"/>
                             <constraint firstItem="TUN-KC-1o1" firstAttribute="centerX" secondItem="1QA-35-023" secondAttribute="centerX" id="deq-wY-RUT"/>
+                            <constraint firstItem="bEw-MJ-iGn" firstAttribute="top" secondItem="EnU-dx-Y0k" secondAttribute="bottom" constant="10" id="e0L-KT-bSv"/>
+                            <constraint firstItem="EnU-dx-Y0k" firstAttribute="leading" secondItem="mCz-2h-8Ur" secondAttribute="leading" id="huh-fL-0W6"/>
                             <constraint firstItem="4fD-ZX-0Z5" firstAttribute="leading" secondItem="DQF-P6-9vx" secondAttribute="leading" constant="20" id="ldJ-oj-9uc"/>
                             <constraint firstItem="DQF-P6-9vx" firstAttribute="bottom" secondItem="TUN-KC-1o1" secondAttribute="bottom" constant="20" id="orF-cN-cTb"/>
-                            <constraint firstItem="AGR-18-scp" firstAttribute="top" secondItem="4fD-ZX-0Z5" secondAttribute="bottom" constant="20" id="sas-FM-11P"/>
+                            <constraint firstItem="DQF-P6-9vx" firstAttribute="trailing" secondItem="bEw-MJ-iGn" secondAttribute="trailing" id="sml-Cs-i2B"/>
                             <constraint firstItem="Odr-5u-YRm" firstAttribute="trailing" secondItem="AGR-18-scp" secondAttribute="trailing" id="txl-Tq-Ebk"/>
+                            <constraint firstItem="EnU-dx-Y0k" firstAttribute="trailing" secondItem="mCz-2h-8Ur" secondAttribute="trailing" id="uh4-kE-4lp"/>
                             <constraint firstItem="DQF-P6-9vx" firstAttribute="trailing" secondItem="4fD-ZX-0Z5" secondAttribute="trailing" constant="20" id="zSa-8q-QpS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DQF-P6-9vx"/>
@@ -111,11 +166,22 @@
                     <connections>
                         <outlet property="fbButton" destination="MM0-f6-6m6" id="ZcM-3q-xr8"/>
                         <outlet property="instagramButton" destination="yjQ-Cq-cZu" id="lTu-xA-vPG"/>
+                        <outlet property="restaurantNameLabel" destination="H7d-0Q-61D" id="6Nn-fT-WAs"/>
+                        <outlet property="sharingMessageLabel" destination="EnU-dx-Y0k" id="keT-b2-diw"/>
+                        <outlet property="smartPhotoImageView" destination="Lgv-i0-u5H" id="7rj-Rz-q3N"/>
+                        <outlet property="smartPhotoView" destination="4fD-ZX-0Z5" id="e3H-7o-hrC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B82-BD-zpm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="101.25" y="180.63380281690141"/>
+            <point key="canvasLocation" x="100" y="180.35982008995504"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="fb_share_icon" width="45" height="45"/>
+        <image name="fb_share_icon_highlighted" width="45" height="45"/>
+        <image name="foodcard_placeholder" width="300" height="256"/>
+        <image name="insta_share_icon" width="45" height="45"/>
+        <image name="insta_share_icon_highlighted" width="45" height="45"/>
+    </resources>
 </document>

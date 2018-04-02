@@ -40,11 +40,9 @@ extension SnapNShareSocialMediaInteractor: SnapNShareSocialMediaUseCase {
 
 extension SnapNShareSocialMediaInteractor: SnapNShareSocialMediaRequestFomatter {
     func uploadDishReview() {
-        if let restaurantID = userReview.restaurantInfoId, let pictureURL = userReview.dishPicture, let audioURL = userReview.reviewAudio {
+        if let restaurantID = userReview.restaurantInfoId {
             let requestParameters: [String: Any] = [
             SnapXEatsWebServiceParameterKeys.restaurantInfoId: restaurantID,
-            SnapXEatsWebServiceParameterKeys.dishPicture: pictureURL,
-            SnapXEatsWebServiceParameterKeys.audioReview : audioURL,
             SnapXEatsWebServiceParameterKeys.textReview: userReview.reviewText,
             SnapXEatsWebServiceParameterKeys.rating: userReview.rating
         ]
@@ -55,9 +53,11 @@ extension SnapNShareSocialMediaInteractor: SnapNShareSocialMediaRequestFomatter 
 
 extension SnapNShareSocialMediaInteractor: SnapNShareSocialMediaWebService {
     func sendReviewRequest(path: String, parameters: [String : Any]) {
-        SnapXEatsApi.snapXPostRequestMutiPartObjectWithParameters(path: path, parameters: parameters) { [weak self] (response: DataResponse<SnapNShare>) in
+        SnapXEatsApi.snapXPostRequestMutiPartObjectWithParameters(path: path, parameters: parameters, completionHandler: { [weak self] (response: DataResponse<SnapNShare>) in
             let review = response.result
             self?.reviewDetails(data: review)
+        }) { [weak self] (error) in
+            self?.output?.response(result: NetworkResult.error)
         }
     }
 }

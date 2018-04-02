@@ -49,6 +49,8 @@ class UserDishReview {
     var reviewAudio: URL?
     var dishPicture: URL?
     var restaurantInfoId : String?
+    // This should be used to check if there is any Restaurant available for Checkin automatically. Will be set when user goes to Direction Page for particular restaurant and then start Tracking current location.
+    var restaurant: Restaurant?
     
     private init() {}
     static let shared = UserDishReview()

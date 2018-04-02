@@ -16,6 +16,13 @@ class WishlistViewController: BaseViewController, StoryboardLoadable {
         static let delete = "Delete"
     }
     
+    private enum swipeToDeleteConstants {
+        static let imageHeight: CGFloat = 21
+        static let imageWidth: CGFloat = 17
+        static let cellActionWidth: CGFloat = 80
+        static let cellActionHeight: CGFloat = 80
+    }
+    
     // MARK: Properties
     var presenter: WishlistPresentation?
     var wishItems = [WishListItem]()
@@ -44,7 +51,7 @@ class WishlistViewController: BaseViewController, StoryboardLoadable {
             self?.makeWishlistNonEditable()
         }
         
-        UIAlertController.presentAlertInViewController(self, title: AlertTitle.error , message: AlertMessage.deleteWishListMessage, actions: [cancel, ok], completion: nil)
+        UIAlertController.presentAlertInViewController(self, title: SnapXEatsAppDefaults.emptyString , message: AlertMessage.deleteWishListMessage, actions: [cancel, ok], completion: nil)
     }
     
     private func setCancelButton(completionHandler: @escaping () ->()) -> UIAlertAction {
@@ -105,6 +112,7 @@ extension WishlistViewController: WishlistView {
     private func makeWishlistEditable() {
         isEditable = true
         self.navigationItem.rightBarButtonItem?.title = navigationRightButtonTitles.delete
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.red
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: SnapXEatsImageNames.closeIcon), style: .plain, target: self, action: #selector(cancelEditing))
     }
     
@@ -116,6 +124,7 @@ extension WishlistViewController: WishlistView {
     private func makeWishlistNonEditable() {
         isEditable = false
         self.navigationItem.rightBarButtonItem?.title = navigationRightButtonTitles.edit
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.rgba(230.0, 118.0, 7.0, 1.0)
         self.navigationItem.leftBarButtonItem = menuBarButtonItem
         wishlistTableView.reloadData()
     }
@@ -165,14 +174,9 @@ extension WishlistViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if (editingStyle == UITableViewCellEditingStyle.delete) {
-            // handle delete (by removing the data from your array and updating the tableview)
-            presenter?.deleteWishListItem(item: wishItems[indexPath.row])
-            wishItems.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            enableBarButton()
-        }
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = deleteActionForRowInTableView(tableView: tableView)
+        return [deleteAction]
     }
     
     func loadRestaurantDetails(item: WishListItem) {
@@ -180,5 +184,28 @@ extension WishlistViewController: UITableViewDelegate, UITableViewDataSource {
         if let parent = self.navigationController {
             presenter?.gotoRestaurantDetails(selectedRestaurant: item.restaurant_info_id, parent: parent, showMoreInfo: false)
         }
+    }
+    
+    private func deleteActionForRowInTableView(tableView: UITableView) -> UITableViewRowAction {
+        let deleteAction = UITableViewRowAction(style: .default, title: "") { (action, indexPath) in
+            self.presenter?.deleteWishListItem(item: self.wishItems[indexPath.row])
+            self.wishItems.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            self.enableBarButton()
+        }
+        
+        // create a color from pattern image and set the color as a background color of action
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: swipeToDeleteConstants.cellActionWidth, height: swipeToDeleteConstants.cellActionHeight))
+        view.backgroundColor = UIColor.red
+        
+        let imageView = UIImageView(frame: CGRect(x: (swipeToDeleteConstants.cellActionWidth - swipeToDeleteConstants.imageWidth) / 2,
+                                                  y: (swipeToDeleteConstants.cellActionHeight - swipeToDeleteConstants.imageHeight) / 2,
+                                                  width: swipeToDeleteConstants.imageWidth,
+                                                  height: swipeToDeleteConstants.imageHeight))
+        imageView.image = UIImage(named: SnapXEatsImageNames.swipe_delete_icon)!
+        view.addSubview(imageView)
+        let image = view.image()
+        deleteAction.backgroundColor = UIColor(patternImage:image)
+        return deleteAction
     }
 }
