@@ -12,7 +12,7 @@ import FacebookShare
 import SwiftInstagram
 
 class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadable {
-
+    
     // MARK: Properties
     var presenter: SnapNShareSocialMediaPresentation?
     
@@ -32,7 +32,7 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
             // if already loggedin (FB or instagram) and Fb sharing is enabled
             sharingDialogFB()
         } else {
-             presenter?.loginUsingFaceBook()
+            presenter?.loginUsingFaceBook()
         }
     }
     
@@ -42,8 +42,15 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
-        showLoading()
-        presenter?.sendPhotoReview()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if shareDetails == nil {
+            showLoading()
+            presenter?.sendPhotoReview()
+        }
     }
     
     override func success(result: Any?) {
@@ -57,15 +64,16 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
             }
         }
     }
-
+    
     func sharingDialogFB() {
         guard let shareDetails = self.shareDetails, let shareURL = URL(string: shareDetails.dish_image_url ?? "") else {
             return
         }
         
-        let content = LinkShareContent(url: shareURL)
+        let content = LinkShareContent(url: shareURL, quote: shareDetails.message)
         let shareDialog = ShareDialog(content: content)
         shareDialog.mode = .automatic
+        shareDialog.presentingViewController = self
         shareDialog.failsOnInvalidData = true
         shareDialog.completion = { result in
             switch result {
@@ -105,6 +113,6 @@ extension SnapNShareSocialMediaViewController: SnapNShareSocialMediaView {
     }
 }
 
-    
+
 
 
