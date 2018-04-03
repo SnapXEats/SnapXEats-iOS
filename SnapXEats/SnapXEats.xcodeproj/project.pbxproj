@@ -146,6 +146,8 @@
 		9D3FC4D82011C94A001A4264 /* CuisinePreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3FC4D72011C94A001A4264 /* CuisinePreference.swift */; };
 		9D3FC4DB2011E34D001A4264 /* CuisineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3FC4D92011E34D001A4264 /* CuisineCollectionViewCell.swift */; };
 		9D3FC4DC2011E34D001A4264 /* CuisineCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D3FC4DA2011E34D001A4264 /* CuisineCollectionViewCell.xib */; };
+		9D748B272073883C004ED49A /* SharedSucceesPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D748B252073883C004ED49A /* SharedSucceesPopup.swift */; };
+		9D748B282073883C004ED49A /* SharedSucceesPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D748B262073883C004ED49A /* SharedSucceesPopup.xib */; };
 		9D8095712015E5200077F84B /* SnapXEatsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8095702015E5200077F84B /* SnapXEatsApi.swift */; };
 		9D8E887D1FFD27F30066A1D9 /* SnapXEatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E887C1FFD27F30066A1D9 /* SnapXEatsTests.swift */; };
 		9D8E88EB1FFD2BEC0066A1D9 /* LoginContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88C21FFD28C50066A1D9 /* LoginContract.swift */; };
@@ -174,8 +176,6 @@
 		9D8E89051FFD2BEC0066A1D9 /* UICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88A01FFD28C50066A1D9 /* UICollectionViewCell.swift */; };
 		9D8E89061FFD2BEC0066A1D9 /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88A11FFD28C50066A1D9 /* UIStoryboard.swift */; };
 		9D8E89071FFD2BEC0066A1D9 /* ValidableUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88A31FFD28C50066A1D9 /* ValidableUILabel.swift */; };
-		9D8E89081FFD2BEC0066A1D9 /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88A41FFD28C50066A1D9 /* RoundedTextField.swift */; };
-		9D8E89091FFD2BEC0066A1D9 /* RoundedPinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88A51FFD28C50066A1D9 /* RoundedPinkButton.swift */; };
 		9D8E890A1FFD2BEC0066A1D9 /* SimpleCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88A61FFD28C50066A1D9 /* SimpleCircle.swift */; };
 		9D8E890B1FFD2BEC0066A1D9 /* PlainButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88AA1FFD28C50066A1D9 /* PlainButtonCell.swift */; };
 		9D8E890D1FFD2BEC0066A1D9 /* SectionHeaderLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88AD1FFD28C50066A1D9 /* SectionHeaderLabelCell.swift */; };
@@ -384,6 +384,8 @@
 		9D3FC4D72011C94A001A4264 /* CuisinePreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisinePreference.swift; sourceTree = "<group>"; };
 		9D3FC4D92011E34D001A4264 /* CuisineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisineCollectionViewCell.swift; sourceTree = "<group>"; };
 		9D3FC4DA2011E34D001A4264 /* CuisineCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CuisineCollectionViewCell.xib; sourceTree = "<group>"; };
+		9D748B252073883C004ED49A /* SharedSucceesPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedSucceesPopup.swift; sourceTree = "<group>"; };
+		9D748B262073883C004ED49A /* SharedSucceesPopup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SharedSucceesPopup.xib; sourceTree = "<group>"; };
 		9D8095702015E5200077F84B /* SnapXEatsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEatsApi.swift; sourceTree = "<group>"; };
 		9D8E88641FFD27F30066A1D9 /* SnapXEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapXEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8E88781FFD27F30066A1D9 /* SnapXEatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapXEatsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -740,6 +742,7 @@
 		7E539BCC205BA323002C3E55 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9D748B24207387A5004ED49A /* SuccessPopup */,
 				7E539BD3205BA380002C3E55 /* SnapNShareSocialMedia.storyboard */,
 				7E539BCD205BA323002C3E55 /* SnapNShareSocialMediaViewController.swift */,
 			);
@@ -986,10 +989,10 @@
 			isa = PBXGroup;
 			children = (
 				7E7AC906206B660E00CA4FEF /* TableviewCells */,
-				7E393CB620637C7900E51149 /* RewardPointsPopup.swift */,
 				7E393CB720637C7900E51149 /* RewardPointsPopup.xib */,
-				7E8B850A20624E0D00F802B3 /* CheckinPopup.swift */,
+				7E393CB620637C7900E51149 /* RewardPointsPopup.swift */,
 				7E8B850C20624E4300F802B3 /* CheckinPopup.xib */,
+				7E8B850A20624E0D00F802B3 /* CheckinPopup.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1256,6 +1259,15 @@
 				9D3FC4D92011E34D001A4264 /* CuisineCollectionViewCell.swift */,
 			);
 			path = CuisineCell;
+			sourceTree = "<group>";
+		};
+		9D748B24207387A5004ED49A /* SuccessPopup */ = {
+			isa = PBXGroup;
+			children = (
+				9D748B262073883C004ED49A /* SharedSucceesPopup.xib */,
+				9D748B252073883C004ED49A /* SharedSucceesPopup.swift */,
+			);
+			path = SuccessPopup;
 			sourceTree = "<group>";
 		};
 		9D8E885B1FFD27F30066A1D9 = {
@@ -2093,6 +2105,7 @@
 				7E7A6E5A2036D2EE0026C305 /* SnapX_White.png in Resources */,
 				7E5E7FD9203AF7EE00009A56 /* .gitkeep in Resources */,
 				7E673B1B2049622F005D19DC /* Wishlist.storyboard in Resources */,
+				9D748B282073883C004ED49A /* SharedSucceesPopup.xib in Resources */,
 				7EB59221204049F400CC6888 /* foodCardOverlayView.xib in Resources */,
 				7E5E7FDB203AF7EE00009A56 /* ic_cross_white@3x.png in Resources */,
 				7E791F192032CAB800FA887D /* PreferenceTypeCollectionViewCell.xib in Resources */,
@@ -2301,6 +2314,7 @@
 				7E539BCE205BA323002C3E55 /* SnapNShareSocialMediaContract.swift in Sources */,
 				9D0D7150203D99A80077FA7A /* FoodAndCuisinePreferenceContract.swift in Sources */,
 				9DE7CE512023620500BBBFEC /* UserPreferenceContract.swift in Sources */,
+				9D748B272073883C004ED49A /* SharedSucceesPopup.swift in Sources */,
 				9D8E88FB1FFD2BEC0066A1D9 /* UICollectionView.swift in Sources */,
 				9DAF6F6E205AAA26003001B5 /* InstagramLoginRouter.swift in Sources */,
 				7E5E7FE0203AF7EE00009A56 /* InputSource.swift in Sources */,
@@ -2356,11 +2370,9 @@
 				7E491D22204E920E004445E2 /* RestaurantsMapViewInteractor.swift in Sources */,
 				7E539B7220593A01002C3E55 /* SnapNShareHomeContract.swift in Sources */,
 				9DAF6F6C205AAA26003001B5 /* InstagramLoginViewController.swift in Sources */,
-				9D8E89081FFD2BEC0066A1D9 /* RoundedTextField.swift in Sources */,
 				9D902BCB20171AED00359DFD /* FoodCardsViewController.swift in Sources */,
 				9D0D713A203AAE1F0077FA7A /* RestaurantDetailsViewController.swift in Sources */,
 				9D902BE7201729E400359DFD /* SelectLocationInteractor.swift in Sources */,
-				9D8E89091FFD2BEC0066A1D9 /* RoundedPinkButton.swift in Sources */,
 				9D0D714F203D99A80077FA7A /* FoodAndCuisinePreferencePresenter.swift in Sources */,
 				7E491D24204E920E004445E2 /* RestaurantsMapViewRouter.swift in Sources */,
 				9DAF6F6D205AAA26003001B5 /* InstagramLoginInteractor.swift in Sources */,

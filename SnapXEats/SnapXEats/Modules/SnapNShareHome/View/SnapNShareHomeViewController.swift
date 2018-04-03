@@ -17,7 +17,7 @@ class SnapNShareHomeViewController: BaseViewController, StoryboardLoadable {
     var presenter: SnapNShareHomePresentation?
     var picker = UIImagePickerController()
     //TODO: Remove this hardcoded value once we get Id for Checkedin Restaurant
-    var restaurant: Restaurant?
+    var restaurantID: String?
     var restaurantDetails: RestaurantDetails?
     var specialities = [RestaurantSpeciality]()
     var slideshow =  ImageSlideshow()
@@ -77,9 +77,9 @@ class SnapNShareHomeViewController: BaseViewController, StoryboardLoadable {
     private func getRestaurantDetails() {
         if shouldLoadData == true {
             showLoading()
-            if let restaurant = self.restaurant, let id = restaurant.restaurant_info_id {
-                userDishReview.restaurantInfoId = id // This ID is needed while sending reviewPhoto, Audio and rating in SnapNSharePhotoViewController
-                presenter?.restaurantDetailsRequest(restaurantId:id)
+            if let restaurantid = restaurantID {
+                userDishReview.restaurantInfoId = restaurantid // This ID is needed while sending reviewPhoto, Audio and rating in SnapNSharePhotoViewController
+                presenter?.restaurantDetailsRequest(restaurantId: restaurantid)
             }
         }
     }
@@ -136,7 +136,7 @@ class SnapNShareHomeViewController: BaseViewController, StoryboardLoadable {
     }
     
     private func savePhoto(image: UIImage) {
-        if let restaurntID = restaurant?.restaurant_info_id, let photoPathURL = getPathForSmartPhotoForRestaurant(restaurantId:restaurntID) {
+        if let restaurntid = restaurantID, let photoPathURL = getPathForSmartPhotoForRestaurant(restaurantId: restaurntid) {
             do {
                 try UIImageJPEGRepresentation(image, 0.3)?.write(to: photoPathURL, options: .atomic)
                 

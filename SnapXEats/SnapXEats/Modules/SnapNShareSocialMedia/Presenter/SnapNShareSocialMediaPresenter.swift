@@ -15,6 +15,8 @@ class SnapNShareSocialMediaPresenter {
     weak var baseView: BaseView?
     var router: SnapNShareSocialMediaWireframe?
     var interactor: SnapNShareSocialMediaUseCase?
+    private init() {}
+    static let shared = SnapNShareSocialMediaPresenter()
 }
 
 extension SnapNShareSocialMediaPresenter: SnapNShareSocialMediaPresentation {

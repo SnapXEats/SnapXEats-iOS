@@ -20,9 +20,9 @@ class SnapNShareSocialMediaRouter {
     // MARK: Static methods
     func loadSnapNshareSocialMediaModule() -> SnapNShareSocialMediaViewController {
         let viewController = UIStoryboard.loadViewController() as SnapNShareSocialMediaViewController
-        let presenter = SnapNShareSocialMediaPresenter()
-        let router = SnapNShareSocialMediaRouter()
-        let interactor = SnapNShareSocialMediaInteractor()
+        let presenter = SnapNShareSocialMediaPresenter.shared
+        let router = SnapNShareSocialMediaRouter.shared
+        let interactor = SnapNShareSocialMediaInteractor.shared
 
         viewController.presenter =  presenter
 
@@ -40,4 +40,11 @@ class SnapNShareSocialMediaRouter {
 
 extension SnapNShareSocialMediaRouter: SnapNShareSocialMediaWireframe {
     // TODO: Implement wireframe methods
+}
+
+extension SnapNShareSocialMediaRouter {
+    func loadSharedSuccessPopup() -> SharedSucceesPopup {
+        let sharedSucceesPopup = UINib(nibName:SnapXEatsNibNames.sharedSucceesPopup, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! SharedSucceesPopup
+        return sharedSucceesPopup
+    }
 }

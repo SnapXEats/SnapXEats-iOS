@@ -19,6 +19,7 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
     let loginPreferecne = LoginUserPreferences.shared
     let instagramApi = Instagram.shared
     var shareDetails: SnapNShare?
+    let dishReview = LoginUserPreferences.shared.userDishReview
     
     @IBOutlet weak var fbButton: UIButton!
     @IBOutlet weak var instagramButton: UIButton!
@@ -28,21 +29,24 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
     @IBOutlet weak var smartPhotoImageView: UIImageView!
     
     @IBAction func fbImageShare(_ sender: Any) {
-        if loginPreferecne.fbSharingenabled {
-            // if already loggedin (FB or instagram) and Fb sharing is enabled
-            sharingDialogFB()
-        } else {
-            presenter?.loginUsingFaceBook()
+        if let _ = shareDetails {
+            if loginPreferecne.fbSharingenabled {
+                // if already loggedin (FB or instagram) and Fb sharing is enabled
+                sharingDialogFB()
+            } else {
+                presenter?.loginUsingFaceBook()
+            }
         }
     }
     
     @IBAction func instagramImageShare(_ sender: Any) {
-        sharingDialogInstagram()
+        if let _ = shareDetails {
+            sharingDialogInstagram()
+        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -59,9 +63,6 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
         } else if let result = result as? SnapNShare {
             shareDetails = result
             showSharingDetails()
-            if let restaurantId = LoginUserPreferences.shared.userDishReview.restaurantInfoId {
-                deleteUserReviewData(restaurantId: restaurantId)
-            }
         }
     }
     
@@ -75,34 +76,51 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
         shareDialog.mode = .automatic
         shareDialog.presentingViewController = self
         shareDialog.failsOnInvalidData = true
-        shareDialog.completion = { result in
+        shareDialog.completion = { [weak self] result in
             switch result {
-            case .failed(let value ):
-                print("falied \(value.localizedDescription)")
+            case .failed(_):
+                self?.showShaingFailedDialog()
             case .cancelled:
-                print("canecel")
+                self?.showShaingCancelDialog()
             case .success:
-                print("Success")  // You need to add the success pop here
+                if let restaurantId = self?.dishReview.restaurantInfoId {
+                    deleteUserReviewData(restaurantId: restaurantId)
+                    self?.presenter?.presentScreen(screen: .sharedSuccess(restaurantID: restaurantId))
+                }
+                
             }
         }
         try! shareDialog.show()
     }
     
     func sharingDialogInstagram() {
-        // For instagram you need to send the image. we can't send the url path for instagram.
-        if let image = UIImage(named: SnapXEatsImageNames.placeholder_cuisine) { 
-            InstagramManager.shared.shareONInstagram(image: image, description: "This is the image on Instagram", viewController: self)
+        if let restaurantId = dishReview.restaurantInfoId, let imagePath = getPathForSmartPhotoForRestaurant(restaurantId: restaurantId) {
+            // For instagram you need to send the image. we can't send the url path for instagram.
+            if let image = UIImage(contentsOfFile: imagePath.path) {
+                InstagramManager.shared.shareONInstagram(image: image, description: shareDetails?.message ?? "", viewController: self)
+            }
         }
     }
     
     func showSharingDetails() {
-        if let shareDetails = self.shareDetails {
+        if let shareDetails = shareDetails {
             sharingMessageLabel.text = shareDetails.message ?? ""
             restaurantNameLabel.text = shareDetails.restaurant_name ?? ""
-            if let url = URL(string: shareDetails.dish_image_url ?? "") {
-                smartPhotoImageView.af_setImage(withURL: url, placeholderImage:UIImage(named: SnapXEatsImageNames.foodcard_placeholder)!)
+            if let restaurantId = dishReview.restaurantInfoId, let imagePath = getPathForSmartPhotoForRestaurant(restaurantId: restaurantId),
+                let image = UIImage(contentsOfFile: imagePath.path) {
+                smartPhotoImageView.image = image
             }
         }
+    }
+    
+    func showShaingFailedDialog() {
+        let Ok = UIAlertAction(title: SnapXButtonTitle.ok, style: UIAlertActionStyle.default, handler: nil)
+        UIAlertController.presentAlertInViewController(self, title: AlertTitle.sharingTitle , message: AlertMessage.sharingFailed, actions: [Ok], completion: nil)
+    }
+    
+    func showShaingCancelDialog() {
+        let Ok = UIAlertAction(title: SnapXButtonTitle.ok, style: UIAlertActionStyle.default, handler: nil)
+        UIAlertController.presentAlertInViewController(self, title: AlertTitle.sharingTitle , message: AlertMessage.sharingCanceled, actions: [Ok], completion: nil)
     }
 }
 

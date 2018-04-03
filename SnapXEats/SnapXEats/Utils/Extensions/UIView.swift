@@ -92,4 +92,35 @@ extension UIView {
         UIGraphicsEndImageContext()
         return image!
     }
+    
+    /// Adding provision to provide cornerRadius from Interface builder
+    @IBInspectable var cornerRadius: CGFloat {
+        get {
+            return layer.cornerRadius
+        }
+        set {
+            layer.cornerRadius = newValue
+            layer.masksToBounds = newValue > 0
+        }
+    }
+    
+    /// Adding provision to provide borderWidth from Interface builder
+    @IBInspectable var borderWidth: CGFloat {
+        get {
+            return layer.borderWidth
+        }
+        set {
+            layer.borderWidth = newValue
+        }
+    }
+    
+    /// Adding provision to provide borderColor from Interface builder
+    @IBInspectable var borderColor: UIColor? {
+        get {
+            return UIColor(cgColor: layer.borderColor!)
+        }
+        set {
+            layer.borderColor = newValue?.cgColor
+        }
+    }
 }

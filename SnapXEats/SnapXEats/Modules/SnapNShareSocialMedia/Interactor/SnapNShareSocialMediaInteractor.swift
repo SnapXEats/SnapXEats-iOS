@@ -16,6 +16,8 @@ class SnapNShareSocialMediaInteractor {
 
     var output: SnapNShareSocialMediaInteractorOutput?
     let userReview = LoginUserPreferences.shared.userDishReview
+    private init() {}
+    static let shared = SnapNShareSocialMediaInteractor()
 }
 
 

@@ -169,7 +169,7 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
             loginUserPreference.isLoggedIn ? showWishListForLoggedInUser() : showWishlistForNonLoggedInUser()
         case .snapnshare:
             let currentRestaurant = Restaurant(id: "62dfee80-b52b-482f-b0f3-c175ce5d56ca", name: "Tertulia")
-            let screenToPresent:Screens = isUserCheckedIn ? .snapNShareHome(restaurant: currentRestaurant) : .checkin(restaurant: currentRestaurant)
+            let screenToPresent: Screens = isUserCheckedIn ? Screens.snapNShareHome(restaurantID: currentRestaurant.restaurant_info_id!) : Screens.checkin(restaurant: currentRestaurant)
             presenter?.presentScreen(screen: screenToPresent, drawerState: .closed)
         default:
             break
