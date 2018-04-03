@@ -17,7 +17,7 @@ enum fileManagerConstants {
 }
 
 func getPathForAudioReviewForRestaurant(restaurantId: String = "test_restaurant") -> URL? {
-    
+    var audioURL: URL?
     let fileManager = FileManager.default
     let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
     let documentDirectory = urls[0] as NSURL
@@ -33,7 +33,13 @@ func getPathForAudioReviewForRestaurant(restaurantId: String = "test_restaurant"
     } catch {
         print("File Error --- \(error.localizedDescription)")
     }
-    return audioRecordingPath?.appendingPathComponent(fileManagerConstants.audioReviewFileNAme)
+    let audioFilePath = audioRecordingPath?.appendingPathComponent(fileManagerConstants.audioReviewFileNAme)
+    if let audioFilePath = audioFilePath?.absoluteString {
+        if fileManager.fileExists(atPath: audioFilePath) == true {
+           audioURL = audioRecordingPath?.appendingPathComponent(fileManagerConstants.audioReviewFileNAme)
+        }
+    }
+    return audioURL
 }
 
 func getPathForSmartPhotoForRestaurant(restaurantId: String) -> URL? {
@@ -46,14 +52,14 @@ func getPathForSmartPhotoForRestaurant(restaurantId: String) -> URL? {
     
     let smartPhotosFolderName = fileManagerConstants.smartPhotosFolderName
     let pathComponent = userId + "/" + restaurantId + "/" + smartPhotosFolderName
-    let audioRecordingPath = documentDirectory.appendingPathComponent(pathComponent)
+    let storedPhotoPath = documentDirectory.appendingPathComponent(pathComponent)
     
     do {
-        try fileManager.createDirectory(at: audioRecordingPath!, withIntermediateDirectories: true, attributes: nil)
+        try fileManager.createDirectory(at: storedPhotoPath!, withIntermediateDirectories: true, attributes: nil)
     } catch {
         print("File Error --- \(error.localizedDescription)")
     }
-    return audioRecordingPath?.appendingPathComponent(fileManagerConstants.smartPhotoFileName)
+    return storedPhotoPath?.appendingPathComponent(fileManagerConstants.smartPhotoFileName)
 }
 
 func deleteAudioReview(restaurantId: String) {

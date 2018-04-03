@@ -20,6 +20,7 @@ class SnapXEatsApi {
     
     static var uploadRequest: Request?
     static let loginUserPrefernce = LoginUserPreferences.shared
+    static let dishReview = loginUserPrefernce.userDishReview
     static var baseURL: String {
         return SnapXEatsWebServicePath.rootURL
     }
@@ -63,8 +64,12 @@ class SnapXEatsApi {
         
         do {
             // Get Image and Audio data to upload
-            imageData = try Data(contentsOf: LoginUserPreferences.shared.userDishReview.dishPicture!)
-            audioData = try Data(contentsOf: LoginUserPreferences.shared.userDishReview.reviewAudio!)
+            if let pictureURL = dishReview.dishPicture, pictureURL.absoluteString != SnapXEatsConstant.emptyString {
+                imageData = try Data(contentsOf: pictureURL)
+            }
+            if let audioURL = dishReview.reviewAudio, audioURL.absoluteString != SnapXEatsConstant.emptyString {
+                audioData = try Data(contentsOf: audioURL)
+            }
         } catch {
             print("Unable to load data: \(error)")
         }
