@@ -20,9 +20,9 @@ class SnapNSharePhotoRouter {
     // MARK: Static methods
     func loadSnapNSharePhotoModule() -> SnapNSharePhotoViewController {
         let viewController = UIStoryboard.loadViewController() as SnapNSharePhotoViewController
-        let presenter = SnapNSharePhotoPresenter()
-        let router = SnapNSharePhotoRouter()
-        let interactor = SnapNSharePhotoInteractor()
+        let presenter = SnapNSharePhotoPresenter.shared
+        let router = SnapNSharePhotoRouter.shared
+        let interactor = SnapNSharePhotoInteractor.shared
 
         viewController.presenter =  presenter
 

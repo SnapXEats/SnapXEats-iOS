@@ -15,6 +15,8 @@ class SnapNSharePhotoPresenter {
     weak var view: SnapNSharePhotoView?
     var router: SnapNSharePhotoWireframe?
     var interactor: SnapNSharePhotoUseCase?
+    private init(){}
+    static let shared = SnapNSharePhotoPresenter()
 }
 
 extension SnapNSharePhotoPresenter: SnapNSharePhotoPresentation {

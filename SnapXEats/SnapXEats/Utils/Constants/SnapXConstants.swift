@@ -180,6 +180,7 @@ enum SnapXEatsNibNames {
     static let rewardPointsPopup = "RewardPointsPopup"
     static let restaurantListTableViewCell = "RestaurantListTableViewCell"
     static let noFoodCardsPopup = "NoFoodCardsPopup"
+    static let sharedSucceesPopup = "SharedSucceesPopup"
 }
 
 enum SnapXEatsWebServiceParameterKeys {
@@ -268,12 +269,15 @@ enum AlertMessage {
     static let incompleteShareInformation = "Rating and Audio or Text review is mandatory"
     static let audioReviewDeleteConfirmation = "Are you sure you want to delete this audio review?"
     static let maxAudioReviewLimitReached = "Maximum Audio Review length reached."
+    static let sharingFailed = "Please check your internet connection and train again."
+    static let sharingCanceled = "You can earn SnapXEats rewards by sharing photos, you have canceled your action."
 }
 
 enum AlertTitle {
     static let loginTitle = "Error"
     static let preferenceTitle = "Preference Error"
     static let logOutTitle = "LogOut"
+    static let sharingTitle = "Sharing Error"
     static let error = "Error"
     static let wishlist = "Wishlist"
     static let navigationFailureError = "Navigation Error"

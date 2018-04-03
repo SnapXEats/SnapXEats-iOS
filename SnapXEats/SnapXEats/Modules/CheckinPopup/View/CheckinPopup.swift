@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 
 protocol CheckinPopUpActionsDelegate: class {
-    func userDidChekintoRestaurant(restaurant: Restaurant)
+    func userDidChekintoRestaurant(restaurantID: String)
 }
 
 class CheckinPopup: SnapXEatsView, CheckinPopupView {
@@ -47,11 +47,13 @@ class CheckinPopup: SnapXEatsView, CheckinPopupView {
         }
         
         // Call Checkin API only if User is Logged in and then Show Reward Points popup else directly go to snapnShare Home page
-        if let id = restaurant.restaurant_info_id, LoginUserPreferences.shared.isLoggedIn {
+        if let id = restaurant.restaurant_info_id {
+            if LoginUserPreferences.shared.isLoggedIn {
             showLoading()
             presenter?.checkinIntoRestaurant(restaurantId: id)
         } else {
-            checkinPopupDelegate?.userDidChekintoRestaurant(restaurant: restaurant)
+            checkinPopupDelegate?.userDidChekintoRestaurant(restaurantID: id)
+            }
         }
     }
     
@@ -130,8 +132,8 @@ class CheckinPopup: SnapXEatsView, CheckinPopupView {
 
 extension CheckinPopup: RewardPopupActionsDelegate {
     func popupDidDismiss(_ popup: RewardPointsPopup) {
-        if let restaurant = self.restaurant {
-           checkinPopupDelegate?.userDidChekintoRestaurant(restaurant: restaurant)
+        if let restaurantID = self.restaurant?.restaurant_info_id {
+           checkinPopupDelegate?.userDidChekintoRestaurant(restaurantID: restaurantID)
         }
     }
 }

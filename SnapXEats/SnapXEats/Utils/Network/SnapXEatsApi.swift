@@ -61,13 +61,13 @@ class SnapXEatsApi {
         
         var imageData: Data? = nil
         var audioData: Data? = nil
-        
+        let fileManager = FileManager.default
         do {
             // Get Image and Audio data to upload
-            if let pictureURL = dishReview.dishPicture, pictureURL.absoluteString != SnapXEatsConstant.emptyString {
+            if let pictureURL = dishReview.dishPicture, fileManager.fileExists(atPath: pictureURL.path) == true {
                 imageData = try Data(contentsOf: pictureURL)
             }
-            if let audioURL = dishReview.reviewAudio, audioURL.absoluteString != SnapXEatsConstant.emptyString {
+            if let audioURL = dishReview.reviewAudio, fileManager.fileExists(atPath: audioURL.path) == true {
                 audioData = try Data(contentsOf: audioURL)
             }
         } catch {

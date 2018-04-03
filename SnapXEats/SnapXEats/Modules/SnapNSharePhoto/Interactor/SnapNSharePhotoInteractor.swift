@@ -13,6 +13,8 @@ class SnapNSharePhotoInteractor {
     // MARK: Properties
 
     weak var output: SnapNSharePhotoInteractorOutput?
+    private init() {}
+    static let shared = SnapNSharePhotoInteractor()
 }
 
 extension SnapNSharePhotoInteractor: SnapNSharePhotoUseCase {
