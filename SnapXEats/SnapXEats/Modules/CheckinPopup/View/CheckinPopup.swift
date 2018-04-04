@@ -48,11 +48,12 @@ class CheckinPopup: SnapXEatsView, CheckinPopupView {
         
         // Call Checkin API only if User is Logged in and then Show Reward Points popup else directly go to snapnShare Home page
         if let id = restaurant.restaurant_info_id {
+            self.removeFromSuperview()
             if LoginUserPreferences.shared.isLoggedIn {
-            showLoading()
-            presenter?.checkinIntoRestaurant(restaurantId: id)
-        } else {
-            checkinPopupDelegate?.userDidChekintoRestaurant(restaurantID: id)
+                showLoading()
+                presenter?.checkinIntoRestaurant(restaurantId: id)
+            } else {
+                checkinPopupDelegate?.userDidChekintoRestaurant(restaurantID: id)
             }
         }
     }

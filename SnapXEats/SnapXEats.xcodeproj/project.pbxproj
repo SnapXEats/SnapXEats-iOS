@@ -148,6 +148,12 @@
 		9D3FC4DC2011E34D001A4264 /* CuisineCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D3FC4DA2011E34D001A4264 /* CuisineCollectionViewCell.xib */; };
 		9D748B272073883C004ED49A /* SharedSucceesPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D748B252073883C004ED49A /* SharedSucceesPopup.swift */; };
 		9D748B282073883C004ED49A /* SharedSucceesPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D748B262073883C004ED49A /* SharedSucceesPopup.xib */; };
+		9D748B3F2074B2E2004ED49A /* LoginPopUpContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D748B362074B2E2004ED49A /* LoginPopUpContract.swift */; };
+		9D748B402074B2E2004ED49A /* LoginPopUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D748B382074B2E2004ED49A /* LoginPopUpPresenter.swift */; };
+		9D748B422074B2E2004ED49A /* LoginPopUpInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D748B3C2074B2E2004ED49A /* LoginPopUpInteractor.swift */; };
+		9D748B432074B2E2004ED49A /* LoginPopUpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D748B3E2074B2E2004ED49A /* LoginPopUpRouter.swift */; };
+		9D748B472074E9A5004ED49A /* LoginPopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D748B462074E9A5004ED49A /* LoginPopUp.storyboard */; };
+		9D748B492074EBBC004ED49A /* LoginPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D748B482074EBBC004ED49A /* LoginPopUpViewController.swift */; };
 		9D8095712015E5200077F84B /* SnapXEatsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8095702015E5200077F84B /* SnapXEatsApi.swift */; };
 		9D8E887D1FFD27F30066A1D9 /* SnapXEatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E887C1FFD27F30066A1D9 /* SnapXEatsTests.swift */; };
 		9D8E88EB1FFD2BEC0066A1D9 /* LoginContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88C21FFD28C50066A1D9 /* LoginContract.swift */; };
@@ -386,6 +392,12 @@
 		9D3FC4DA2011E34D001A4264 /* CuisineCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CuisineCollectionViewCell.xib; sourceTree = "<group>"; };
 		9D748B252073883C004ED49A /* SharedSucceesPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedSucceesPopup.swift; sourceTree = "<group>"; };
 		9D748B262073883C004ED49A /* SharedSucceesPopup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SharedSucceesPopup.xib; sourceTree = "<group>"; };
+		9D748B362074B2E2004ED49A /* LoginPopUpContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPopUpContract.swift; sourceTree = "<group>"; };
+		9D748B382074B2E2004ED49A /* LoginPopUpPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPopUpPresenter.swift; sourceTree = "<group>"; };
+		9D748B3C2074B2E2004ED49A /* LoginPopUpInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPopUpInteractor.swift; sourceTree = "<group>"; };
+		9D748B3E2074B2E2004ED49A /* LoginPopUpRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPopUpRouter.swift; sourceTree = "<group>"; };
+		9D748B462074E9A5004ED49A /* LoginPopUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginPopUp.storyboard; sourceTree = "<group>"; };
+		9D748B482074EBBC004ED49A /* LoginPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPopUpViewController.swift; sourceTree = "<group>"; };
 		9D8095702015E5200077F84B /* SnapXEatsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEatsApi.swift; sourceTree = "<group>"; };
 		9D8E88641FFD27F30066A1D9 /* SnapXEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapXEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8E88781FFD27F30066A1D9 /* SnapXEatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapXEatsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1270,6 +1282,60 @@
 			path = SuccessPopup;
 			sourceTree = "<group>";
 		};
+		9D748B342074B2E2004ED49A /* LoginPopUp */ = {
+			isa = PBXGroup;
+			children = (
+				9D748B352074B2E2004ED49A /* Contract */,
+				9D748B372074B2E2004ED49A /* Presenter */,
+				9D748B392074B2E2004ED49A /* View */,
+				9D748B3B2074B2E2004ED49A /* Interactor */,
+				9D748B3D2074B2E2004ED49A /* Router */,
+			);
+			name = LoginPopUp;
+			path = SnapXEats/Modules/LoginPopUp;
+			sourceTree = SOURCE_ROOT;
+		};
+		9D748B352074B2E2004ED49A /* Contract */ = {
+			isa = PBXGroup;
+			children = (
+				9D748B362074B2E2004ED49A /* LoginPopUpContract.swift */,
+			);
+			path = Contract;
+			sourceTree = "<group>";
+		};
+		9D748B372074B2E2004ED49A /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				9D748B382074B2E2004ED49A /* LoginPopUpPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		9D748B392074B2E2004ED49A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9D748B462074E9A5004ED49A /* LoginPopUp.storyboard */,
+				9D748B482074EBBC004ED49A /* LoginPopUpViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9D748B3B2074B2E2004ED49A /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				9D748B3C2074B2E2004ED49A /* LoginPopUpInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		9D748B3D2074B2E2004ED49A /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				9D748B3E2074B2E2004ED49A /* LoginPopUpRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		9D8E885B1FFD27F30066A1D9 = {
 			isa = PBXGroup;
 			children = (
@@ -1485,6 +1551,7 @@
 		9D8E88BF1FFD28C50066A1D9 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				9D748B342074B2E2004ED49A /* LoginPopUp */,
 				9D8E88C01FFD28C50066A1D9 /* Login */,
 				9DAF6F5F205AAA26003001B5 /* InstagramLogin */,
 				9DB02A632010805F0061FC0C /* Location */,
@@ -2105,6 +2172,7 @@
 				7E7A6E5A2036D2EE0026C305 /* SnapX_White.png in Resources */,
 				7E5E7FD9203AF7EE00009A56 /* .gitkeep in Resources */,
 				7E673B1B2049622F005D19DC /* Wishlist.storyboard in Resources */,
+				9D748B472074E9A5004ED49A /* LoginPopUp.storyboard in Resources */,
 				9D748B282073883C004ED49A /* SharedSucceesPopup.xib in Resources */,
 				7EB59221204049F400CC6888 /* foodCardOverlayView.xib in Resources */,
 				7E5E7FDB203AF7EE00009A56 /* ic_cross_white@3x.png in Resources */,
@@ -2245,6 +2313,7 @@
 				7E5E7FF4203C312400009A56 /* RestaurantDetails.swift in Sources */,
 				7E5E7FDD203AF7EE00009A56 /* FullScreenSlideshowViewController.swift in Sources */,
 				9D902BE4201729E400359DFD /* SelectLocationContract.swift in Sources */,
+				9D748B3F2074B2E2004ED49A /* LoginPopUpContract.swift in Sources */,
 				9D8E88EE1FFD2BEC0066A1D9 /* LoginInteractor.swift in Sources */,
 				7E2C64BD2044253400DAB44A /* NavigationMenuTableViewCell.swift in Sources */,
 				9D0D713C203AAE1F0077FA7A /* RestaurantDetailsRouter.swift in Sources */,
@@ -2254,6 +2323,7 @@
 				7E539B7420593A01002C3E55 /* SnapNShareHomePresenter.swift in Sources */,
 				9D8E88F11FFD2BEC0066A1D9 /* BaseContract.swift in Sources */,
 				9D8E88F21FFD2BEC0066A1D9 /* BaseViewController.swift in Sources */,
+				9D748B432074B2E2004ED49A /* LoginPopUpRouter.swift in Sources */,
 				9D0D7140203C633B0077FA7A /* PreferenceHelper.swift in Sources */,
 				7E9394EC204456F900A80387 /* FoodCardActionHelper.swift in Sources */,
 				7E5328B820526FA20043539D /* NSMutableAttributedString+Helper.swift in Sources */,
@@ -2273,9 +2343,11 @@
 				9D902BE6201729E400359DFD /* SelectLocationViewController.swift in Sources */,
 				7E491D25204E920E004445E2 /* RestaurantsMapViewViewController.swift in Sources */,
 				9D8E88F51FFD2BEC0066A1D9 /* Constants.swift in Sources */,
+				9D748B402074B2E2004ED49A /* LoginPopUpPresenter.swift in Sources */,
 				7EAC8610201A066B00DE162A /* FoodCardView.swift in Sources */,
 				7EB5922320404A0E00CC6888 /* foodCardOverlayView.swift in Sources */,
 				7E539BD0205BA323002C3E55 /* SnapNShareSocialMediaPresenter.swift in Sources */,
+				9D748B422074B2E2004ED49A /* LoginPopUpInteractor.swift in Sources */,
 				7E71FC082022CCAD00CA8467 /* KYEmbedDrawerControllerSegue.swift in Sources */,
 				9D8E88F61FFD2BEC0066A1D9 /* PlainButtonCellDelegate.swift in Sources */,
 				7E539BAB205A522E002C3E55 /* SnapNSharePhotoInteractor.swift in Sources */,
@@ -2382,6 +2454,7 @@
 				7E539BAC205A522E002C3E55 /* SnapNSharePhotoPresenter.swift in Sources */,
 				9D8E890B1FFD2BEC0066A1D9 /* PlainButtonCell.swift in Sources */,
 				9D8E890D1FFD2BEC0066A1D9 /* SectionHeaderLabelCell.swift in Sources */,
+				9D748B492074EBBC004ED49A /* LoginPopUpViewController.swift in Sources */,
 				9D955D2B2028A91A0007CB01 /* SnapXEatsUserLocation.swift in Sources */,
 				9D8E890F1FFD2BEC0066A1D9 /* ProfileLocalDataManager.swift in Sources */,
 				7EA940842063E9310005B6B9 /* CheckinPopupContract.swift in Sources */,

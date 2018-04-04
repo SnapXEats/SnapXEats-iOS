@@ -30,6 +30,10 @@ enum InstagramConstant {
     }
 }
 
+ enum PopupConstants {
+    static let containerViewRadius: CGFloat = 5.0
+}
+
 enum SnapXEatsBuild {
     case buildVersion
     
@@ -181,6 +185,7 @@ enum SnapXEatsNibNames {
     static let restaurantListTableViewCell = "RestaurantListTableViewCell"
     static let noFoodCardsPopup = "NoFoodCardsPopup"
     static let sharedSucceesPopup = "SharedSucceesPopup"
+    static let loginPopup = "LoginPopup"
 }
 
 enum SnapXEatsWebServiceParameterKeys {

@@ -17,9 +17,7 @@ class SharedSucceesPopup: UIView {
 
     weak var sharedSuccessDelegate: SharedSucceesActionsDelegate?
     var restaurantID: String?
-    private enum popupConstants {
-        static let containerViewRadius: CGFloat = 5.0
-    }
+
     
     @IBOutlet var containerView: UIView!
     @IBOutlet var notNowButton: UIButton!
@@ -39,7 +37,7 @@ class SharedSucceesPopup: UIView {
     
     func setupPopup(_ frame: CGRect, rewardPoints: Int) {
         self.frame = frame
-        containerView.layer.cornerRadius = popupConstants.containerViewRadius
+        containerView.layer.cornerRadius = PopupConstants.containerViewRadius
         sharedAnotherButton.addBorder(ofWidth: 2.0, withColor: UIColor.rgba(230.0, 118.0, 7.0, 1.0), radius: sharedAnotherButton.frame.height/2)
         containerView.addShadow()
     }
