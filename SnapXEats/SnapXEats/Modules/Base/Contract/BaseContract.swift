@@ -45,7 +45,7 @@ extension RootWireFrame {
     }
 }
 
-protocol Response {
+protocol Response: class {
     var baseView: BaseView? {set get}
     func response(result: NetworkResult)
 }

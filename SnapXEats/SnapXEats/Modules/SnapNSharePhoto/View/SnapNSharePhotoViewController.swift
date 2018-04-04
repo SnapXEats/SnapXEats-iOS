@@ -19,11 +19,12 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
     var snapPhoto: UIImage!
     var audioReviewDuration: Int = 0
     var loginPreference  = LoginUserPreferences.shared
-    let restaurntID = LoginUserPreferences.shared.userDishReview.restaurantInfoId
+    var restaurntID: String?
     var rating: Int {
         return Int(starRatingView.value)
     }
     
+    let loginPreferecne = LoginUserPreferences.shared
     @IBOutlet var snapPhotoImageView: UIImageView!
     @IBOutlet var starRatingView: SwiftyStarRatingView!
     @IBOutlet var reviewTextView: UITextView!
@@ -45,14 +46,17 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
     }
     
     private func addShareButtonOnNavigationItem() {
-        let shareButton:UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 18, height: 18))
+        let shareButton:UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 38, height: 18))
         shareButton.setImage(UIImage(named: SnapXEatsImageNames.share), for: UIControlState.normal)
         shareButton.addTarget(self, action: #selector(shareButtonAction), for: UIControlEvents.touchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: shareButton)
     }
     
     @objc func shareButtonAction() {
-        isSharingInformationComplete() ? continueSharingUserReview() : showIncompleteInformationAlert()
+        if let Id = restaurntID {
+         isSharingInformationComplete()
+            ? loginPreferecne.isLoggedIn ? continueSharingUserReview() : presenter?.presentScreenLoginPopup(screen: .loginPopUp(restaurantID: Id)) : showIncompleteInformationAlert()
+        }
     }
     
     private func isSharingInformationComplete() -> Bool {

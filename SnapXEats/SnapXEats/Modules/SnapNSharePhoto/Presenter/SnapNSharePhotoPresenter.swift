@@ -23,6 +23,10 @@ extension SnapNSharePhotoPresenter: SnapNSharePhotoPresentation {
     func gotoSnapNSharesocialMediaView(parent: UINavigationController) {
         router?.presentScreen(screen: .snapNShareSocialMedia(parentController: parent))
     }
+    
+    func presentScreenLoginPopup(screen: Screens) {
+        router?.presentScreen(screen: screen)
+    }
 }
 
 extension SnapNSharePhotoPresenter: SnapNSharePhotoInteractorOutput {

@@ -15,7 +15,7 @@ protocol SnapNShareHomeView: class, BaseView {
 }
 
 protocol SnapNShareHomePresentation: class {
-    func gotoSnapNSharePhotoView(parent: UINavigationController, withPhoto photo: UIImage)
+    func gotoSnapNSharePhotoView(parent: UINavigationController, withPhoto photo: UIImage, restaurantId: String)
     func restaurantDetailsRequest(restaurantId: String)
 }
 

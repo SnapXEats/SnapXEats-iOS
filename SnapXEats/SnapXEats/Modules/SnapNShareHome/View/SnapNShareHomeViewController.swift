@@ -99,8 +99,8 @@ class SnapNShareHomeViewController: BaseViewController, StoryboardLoadable {
     }
     
     private func gotoSnapNSharePhotoViewWithPhoto(photo: UIImage) {
-        if let parentNVCpntroller = self.navigationController {
-            presenter?.gotoSnapNSharePhotoView(parent: parentNVCpntroller, withPhoto: photo)
+        if let parentNVCpntroller = self.navigationController, let restaurantID = restaurantID {
+            presenter?.gotoSnapNSharePhotoView(parent: parentNVCpntroller, withPhoto: photo, restaurantId: restaurantID)
         }
     }
     

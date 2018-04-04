@@ -9,12 +9,13 @@
 import Foundation
 import UIKit
 
-protocol SnapNSharePhotoView: class, BaseView {
+protocol SnapNSharePhotoView: BaseView {
     // TODO: Declare view methods
 }
 
 protocol SnapNSharePhotoPresentation: class {
     func gotoSnapNSharesocialMediaView(parent: UINavigationController)
+    func presentScreenLoginPopup(screen: Screens)
 }
 
 protocol SnapNSharePhotoUseCase: class {
