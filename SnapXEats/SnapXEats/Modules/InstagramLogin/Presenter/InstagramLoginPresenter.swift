@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class InstagramLoginPresenter {
 
@@ -18,31 +19,28 @@ class InstagramLoginPresenter {
     
     static let shared = InstagramLoginPresenter()
     
-    func loginUsingInstagram() {
-        router?.presentScreen(screen: .instagram)
-    }
     
+    var userLoginForShared: Bool {
+        if let view = baseView as? InstagramLoginViewController {
+            return view.sharedLoginFromSkip
+        }
+        return false
+    }
     func skipUserLogin() {
         presentFirstTimeUserScreen()
-    }
-    
-    func showLocationScreen() {
-        removeInstagramWebView()
-        presentLocationScreen()
     }
 }
 
 extension InstagramLoginPresenter: InstagramLoginPresentation {
     
-    func instagramLoginRequest(request: URLRequest) -> Bool {
-        guard let interactor = interactor else {
-            return false
-        }
-        return interactor.sendInstagramRequest(request: request)
-    }
     
-    func removeInstagramWebView() {
-        router?.presentScreen(screen: .firstScreen)
+    func removeInstagramWebView(sharedLoginFromSkip: Bool, parentController: UINavigationController?) {
+        if let parent = parentController, sharedLoginFromSkip  {
+             router?.presentScreen(screen: .socialLoginFromLoginPopUp(parentController: parent))
+        } else {
+            //presentFirstTimeUserScreen()
+            router?.presentScreen(screen: .firstScreen)
+        }
     }
     
     func getInstagramUserData(completionHandler: @escaping ()-> ()) {
@@ -76,9 +74,4 @@ extension InstagramLoginPresenter: InstagramLoginInteractorOutput {
     private func presentFirstTimeUserScreen() {
         router?.presentScreen(screen: .firsTimeUser)
     }
-    
-    private func presentLocationScreen() {
-        router?.presentScreen(screen: .location)
-    }
-    //TODO: Implement other methods from interactor->presenter here
 }

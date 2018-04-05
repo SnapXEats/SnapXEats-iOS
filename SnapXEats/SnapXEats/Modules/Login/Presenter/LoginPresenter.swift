@@ -21,7 +21,7 @@ class LoginPresenter {
 extension LoginPresenter: LoginViewPresentation {
 
     func loginUsingInstagram() {
-        router?.presentScreen(screen: .instagram)
+        router?.presentScreen(screen: .instagram(sharedLoginFromSkip: false, rootController: nil))
     }
     
     func loginUsingFaceBook() {
@@ -59,9 +59,4 @@ extension LoginPresenter: LoginViewInteractorOutput {
     private func presentFirstTimeUserScreen() {
         router?.presentScreen(screen: .firsTimeUser)
     }
-    
-    private func presentLocationScreen() {
-        router?.presentScreen(screen: .location)
-    }
-    //TODO: Implement other methods from interactor->presenter here
 }

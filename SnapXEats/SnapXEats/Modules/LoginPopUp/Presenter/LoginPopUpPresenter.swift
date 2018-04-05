@@ -26,8 +26,9 @@ extension LoginPopUpPresenter: LoginPopUpPresentation {
         interactor?.sendLoginFaceBook(view: view )
     }
     
-    func loginInstagram() {
-        interactor?.sendLoginInstagram()
+    func loginInstagram(parentController: UINavigationController) {
+        router?.presentScreen(screen: .instagram(sharedLoginFromSkip: true, rootController: parentController))
+        //interactor?.sendLoginInstagram()
     }
     
     func presentScreen(screen: Screens) {

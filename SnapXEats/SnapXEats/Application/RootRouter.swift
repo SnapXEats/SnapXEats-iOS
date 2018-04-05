@@ -11,8 +11,8 @@ import FBSDKLoginKit
 import SwiftInstagram
 
 enum Screens {
-    case firsTimeUser, login, instagram, location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation(parent: UIViewController), userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurantID: String, parentController: UINavigationController, showMoreInfo: Bool), restaurantDirections(details: RestaurantDetails, parentController: UINavigationController), wishlist, restaurantsMapView(restaurants: [Restaurant], parentController: UINavigationController), snapNShareHome(restaurantID: String), snapNSharePhoto(photo: UIImage, iparentController: UINavigationController, restaurantID: String), snapNShareSocialMedia(parentController: UINavigationController), checkin(restaurant: Restaurant),
-    sharedSuccess(restaurantID: String), loginPopUp(restaurantID: String)
+    case firsTimeUser, login, instagram(sharedLoginFromSkip: Bool, rootController: UINavigationController?), location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation(parent: UIViewController), userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurantID: String, parentController: UINavigationController, showMoreInfo: Bool), restaurantDirections(details: RestaurantDetails, parentController: UINavigationController), wishlist, restaurantsMapView(restaurants: [Restaurant], parentController: UINavigationController), snapNShareHome(restaurantID: String), snapNSharePhoto(photo: UIImage, iparentController: UINavigationController, restaurantID: String), snapNShareSocialMedia(parentController: UINavigationController), checkin(restaurant: Restaurant),
+    sharedSuccess(restaurantID: String), loginPopUp(restaurantID: String, parentController: UINavigationController), socialLoginFromLoginPopUp(parentController: UINavigationController)
 }
 
 class RootRouter: NSObject {
@@ -64,9 +64,16 @@ class RootRouter: NSObject {
         presentView(loginViewController)
     }
     
-    private func presentLoginInstagramScreen() {
+    private func presentLoginInstagramScreen(sharedLoginFromSkip: Bool, parentController: UINavigationController?) {
         let  instagramViewController = InstagramLoginRouter.shared.loadInstagramView() as! InstagramLoginViewController
-        window?.rootViewController?.present(instagramViewController, animated: true, completion: nil)
+        instagramViewController.sharedLoginFromSkip = sharedLoginFromSkip
+        instagramViewController.parentController = parentController
+        if sharedLoginFromSkip {
+            window?.rootViewController?.dismiss(animated: false, completion: nil) // first dissmiss the  login  with FB and Instagram view when user try to shared photo 
+        }
+        window?.rootViewController?.present(instagramViewController, animated: true, completion: {
+            
+        })
     }
     
     private func presentLocationScreen() {
@@ -162,6 +169,20 @@ class RootRouter: NSObject {
         parentController.pushViewController(snapNShareSocialMediaVC, animated: true)
     }
     
+    private func presentSocialShareAferNewLogin(parentController: UINavigationController) {
+        let drawerVC = DrawerRouter.shared.loadDrawerMenu()
+        drawerController.drawerViewController = drawerVC
+        window?.rootViewController?.dismiss(animated: true, completion: nil)
+        pushSnapNShareSocialMediaScreen(onNavigationController: parentController)
+    }
+    
+    private func presentLoginPopUp(restaurantID: String, parentController: UINavigationController) {
+        let viewController = LoginPopUpRouter.shared.loadLoginPopUpView()
+        viewController.restaurantID = restaurantID
+        viewController.rootController = parentController
+        window?.rootViewController?.present(viewController, animated: false, completion: nil)
+    }
+    
     func updateDrawerState(state: KYDrawerController.DrawerState) {
         drawerController.setDrawerState(state, animated: true)
     }
@@ -179,8 +200,8 @@ class RootRouter: NSObject {
             presentFirstScreen()
         case .login:
             presentLoginScreen()
-        case .instagram:
-            presentLoginInstagramScreen()
+        case .instagram(let sharedLoginFromSkip, let parentController):
+            presentLoginInstagramScreen(sharedLoginFromSkip: sharedLoginFromSkip, parentController: parentController)
         case .location:
             presentLocationScreen()
         case .foodcards(let selectedPreference, let parentController):
@@ -209,15 +230,11 @@ class RootRouter: NSObject {
             pushSnapNShareSocialMediaScreen(onNavigationController: parentController)
         case .sharedSuccess(let restaurantID):
             presentSuccessFulSharedPhoto(restaurantID: restaurantID)
-        case .loginPopUp(let restaurantID):
-            presentLoginPopUp(restaurantID: restaurantID)
+        case .loginPopUp(let restaurantID, let parentController):
+            presentLoginPopUp(restaurantID: restaurantID, parentController: parentController)
+        case .socialLoginFromLoginPopUp(let parentController):
+            presentSocialShareAferNewLogin(parentController: parentController)
         }
-    }
-    
-    private func presentLoginPopUp(restaurantID: String) {
-           let viewController = LoginPopUpRouter.shared.loadLoginPopUpView()
-            viewController.restaurantID = restaurantID
-            presentView(viewController)
     }
         
     private func presentView(_ viewController: UIViewController) {

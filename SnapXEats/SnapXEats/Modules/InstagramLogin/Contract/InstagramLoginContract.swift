@@ -7,17 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
 protocol InstagramLoginView: BaseView {
     // TODO: Declare view methods
 }
 
 protocol InstagramLoginPresentation  {
-    func showLocationScreen()
-    func loginUsingInstagram()
-    
-    func instagramLoginRequest(request: URLRequest) -> Bool
-    func removeInstagramWebView()
+    func removeInstagramWebView(sharedLoginFromSkip: Bool, parentController: UINavigationController?)
     func getInstagramUserData(completionHandler: @escaping ()-> ())
 }
 
@@ -34,7 +31,6 @@ protocol InstagramLoginWireframe: RootWireFrame {
 }
 
 protocol InstagramLoginInteractorInput: class {
-    func sendInstagramRequest(request: URLRequest) -> Bool
     func getInstagramUserData(completionHandler: @escaping ()-> ())
 }
 
