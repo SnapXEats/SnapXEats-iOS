@@ -36,6 +36,14 @@ class SnapNShareSocialMediaRouter {
 
         return viewController
     }
+    
+    func createNavigationController() -> UINavigationController {
+        let navigationController = UIStoryboard.loadNavigationControler(storyBoardName: SnapXEatsStoryboard.locationStoryboard, storyBoardId: SnapXEatsStoryboardIdentifier.locationNavigationControllerID)
+        
+        //navigationController.viewControllers.removeAll()
+        navigationController.viewControllers.append(loadSnapNshareSocialMediaModule())
+        return navigationController
+    }
 }
 
 extension SnapNShareSocialMediaRouter: SnapNShareSocialMediaWireframe {

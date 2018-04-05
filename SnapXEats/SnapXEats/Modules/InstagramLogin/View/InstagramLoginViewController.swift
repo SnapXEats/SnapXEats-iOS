@@ -15,7 +15,8 @@ class InstagramLoginViewController: BaseViewController, StoryboardLoadable, Inst
     // MARK: Properties
     
     var presenter: InstagramLoginPresentation?
-    
+    var sharedLoginFromSkip = false
+    weak var parentController: UINavigationController?  // This will get use for skip user when he try to shared the photo and before that login in snapXEats
     // MARK: IBOutlets
     var webView: WKWebView!
     
@@ -30,7 +31,7 @@ class InstagramLoginViewController: BaseViewController, StoryboardLoadable, Inst
         //hideKeyboardWhenTappedAround()
     }
     @IBAction func cancelLogin(_ sender: Any) {
-        presenter?.removeInstagramWebView()
+        presenter?.removeInstagramWebView(sharedLoginFromSkip: sharedLoginFromSkip, parentController: parentController)
     }
     
     private func creatWKWebview() {
@@ -140,6 +141,7 @@ extension InstagramLoginViewController: WKNavigationDelegate{
              ServerErrorCode.serverCanFound,
              ServerErrorCode.urlNotFoundONServer,
              ServerErrorCode.noInternetConnection :
+            sharedLoginFromSkip = false  // reset the value
             removeWebView()
             webView.stopLoading()
             hideLoading()
@@ -160,7 +162,8 @@ extension InstagramLoginViewController: WKNavigationDelegate{
     }
     
     private func discardWebView() {
-        presenter?.removeInstagramWebView()
+        presenter?.removeInstagramWebView(sharedLoginFromSkip: sharedLoginFromSkip, parentController: parentController)
+        sharedLoginFromSkip = false 
     }
 }
 

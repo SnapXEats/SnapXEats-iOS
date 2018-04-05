@@ -11,7 +11,7 @@ import UIKit
 import SwiftyStarRatingView
 
 class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
-
+    
     let reviewPlaceholderText = "Write what you feel about dish"
     
     // MARK: Properties
@@ -53,9 +53,18 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
     }
     
     @objc func shareButtonAction() {
-        if let Id = restaurntID {
-         isSharingInformationComplete()
-            ? loginPreferecne.isLoggedIn ? continueSharingUserReview() : presenter?.presentScreenLoginPopup(screen: .loginPopUp(restaurantID: Id)) : showIncompleteInformationAlert()
+        if let Id = restaurntID, let parent = self.navigationController {
+            if  isSharingInformationComplete() {
+                 hideKeyboardWhenTappedAround()
+                if loginPreferecne.isLoggedIn {
+                    continueSharingUserReview()
+                } else {
+                    setReviewData()
+                    presenter?.presentScreenLoginPopup(screen: .loginPopUp(restaurantID: Id, parentController: parent))
+                }
+            } else {
+                showIncompleteInformationAlert()
+            }
         }
     }
     
@@ -77,11 +86,11 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
     
     func setReviewData() {
         if let restaurntID = restaurntID {
-         loginPreference.userDishReview.rating = rating
+            loginPreference.userDishReview.rating = rating
             loginPreference.userDishReview.reviewText = (reviewTextView.text == reviewPlaceholderText) ? SnapXEatsAppDefaults.emptyString : reviewTextView.text
-         loginPreference.userDishReview.reviewAudio =  getPathForAudioReviewForRestaurant(restaurantId: restaurntID)
-         loginPreference.userDishReview.dishPicture = getPathForSmartPhotoForRestaurant(restaurantId: restaurntID)
-         //loginPreference.userDishReview.restaurantInfoId  // This will get set in SnapNShareHomeViewController
+            loginPreference.userDishReview.reviewAudio =  getPathForAudioReviewForRestaurant(restaurantId: restaurntID)
+            loginPreference.userDishReview.dishPicture = getPathForSmartPhotoForRestaurant(restaurantId: restaurntID)
+            //loginPreference.userDishReview.restaurantInfoId  // This will get set in SnapNShareHomeViewController
         }
     }
     
@@ -98,7 +107,7 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
         let audioPopupFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         audioRecordPopupView.setupPopup(audioPopupFrame, type: type, forDuration: audioReviewDuration, forViewController: self)
         self.view.addSubview(audioRecordPopupView)
-       
+        
     }
     
     private func updateUIForAudioReview(audioReviewAvailable: Bool) {

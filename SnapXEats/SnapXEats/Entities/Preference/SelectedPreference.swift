@@ -54,6 +54,16 @@ class UserDishReview {
     
     private init() {}
     static let shared = UserDishReview()
+    
+    func resetData() {
+        rating = 3
+        reviewText = ""
+        reviewAudio = nil
+        dishPicture = nil
+        restaurantInfoId = nil
+        restaurant = nil
+    }
+    
 }
 
 class LoginUserPreferences {
@@ -130,6 +140,7 @@ class LoginUserPreferences {
         isDirty = false
         foodPreference.removeAll()
         cuisinePreference.removeAll()
+        userDishReview.resetData()
     }
 }
 

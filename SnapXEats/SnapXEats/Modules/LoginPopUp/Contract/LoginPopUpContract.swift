@@ -16,7 +16,7 @@ protocol LoginPopUpView: BaseView {
 protocol LoginPopUpPresentation: class {
     func presentScreen(screen: Screens)
     func loginFaceBook(view: UIViewController)
-    func loginInstagram()
+    func loginInstagram(parentController: UINavigationController)
 }
 
 protocol LoginPopUpInteractorInPut: class {

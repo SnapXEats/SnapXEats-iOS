@@ -17,10 +17,11 @@ class LoginPopUpViewController: BaseViewController, StoryboardLoadable {
     @IBOutlet var containerView: UIView!
     @IBOutlet weak var fbLoginButton: UIButton!
     @IBOutlet weak var instagramLoginButton: UIButton!
-
+    weak var rootController: UINavigationController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        rootView.alpha = 0.0
+        //        rootView.alpha = 0.0
     }
     
     @IBAction func fbLoginAction(_ sender: Any) {
@@ -28,13 +29,21 @@ class LoginPopUpViewController: BaseViewController, StoryboardLoadable {
     }
     
     @IBAction func instagramLoginAction(_ sender: Any) {
-        presenter?.loginInstagram()
+        if let parent = rootController {
+            presenter?.loginInstagram(parentController: parent)
+        }
     }
     
     @IBAction func shareLaterAction(_ sender: Any) {
-       // self.removeFromSuperview()
+        // self.removeFromSuperview()
         if let id = restaurantID {
             presenter?.presentScreen(screen: .snapNShareHome(restaurantID: id))
+        }
+    }
+    
+    override func success(result: Any?) {
+        if let result = result as? Bool, result == true, let navigationController = rootController {
+            presenter?.presentScreen(screen: .socialLoginFromLoginPopUp(parentController: navigationController))
         }
     }
 }
@@ -43,6 +52,5 @@ extension LoginPopUpViewController: LoginPopUpView {
     func initView() {
         
     }
-    
     
 }

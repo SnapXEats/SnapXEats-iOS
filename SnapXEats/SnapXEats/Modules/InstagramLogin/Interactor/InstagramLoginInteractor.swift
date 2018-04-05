@@ -29,9 +29,6 @@ extension InstagramLoginInteractor: InstagramLoginUseCase {
 }
 
 extension InstagramLoginInteractor {
-    func sendInstagramRequest(request: URLRequest) -> Bool {
-        return  false //checkRechability() ? checkRequestForCallbackURL(request: request) : false
-    }
     
     func updateInstagramUserData(accessToken: String, instagramUser: InstagramUser, completionHandler: @escaping ()-> ()) {
         sendInstagramUserInfo(path: SnapXEatsWebServicePath.snapXEatsUser, accessToken: accessToken, instagramUser: instagramUser, platform: SnapXEatsConstant.platFormInstagram) { [weak self] (result) in
@@ -111,11 +108,11 @@ extension InstagramLoginInteractor {
                     completion()
                 }
             }
-            output?.response(result: .success(data: value))
+           // output?.response(result: .success(data: value))
         case .failure( _):
-            if  let completion = completionHandler {
-                completion()
-            }
+//            if  let completion = completionHandler {
+//                completion()
+//            }
             output?.response(result: NetworkResult.noInternet)
         }
     }

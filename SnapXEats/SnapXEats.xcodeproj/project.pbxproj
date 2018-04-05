@@ -550,10 +550,10 @@
 			isa = PBXGroup;
 			children = (
 				7E491D17204E920E004445E2 /* Contract */,
-				7E491D19204E920E004445E2 /* Interactor */,
 				7E491D1B204E920E004445E2 /* Presenter */,
-				7E491D1D204E920E004445E2 /* Router */,
 				7E491D1F204E920E004445E2 /* View */,
+				7E491D19204E920E004445E2 /* Interactor */,
+				7E491D1D204E920E004445E2 /* Router */,
 			);
 			path = RestaurantsMapView;
 			sourceTree = "<group>";
@@ -594,8 +594,8 @@
 			isa = PBXGroup;
 			children = (
 				7EDB8ED5204FF3390015F48A /* CustomCells */,
-				7E491D20204E920E004445E2 /* RestaurantsMapViewViewController.swift */,
 				7E491D26204E9314004445E2 /* RestaurantsMapView.storyboard */,
+				7E491D20204E920E004445E2 /* RestaurantsMapViewViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
