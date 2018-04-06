@@ -276,6 +276,7 @@ enum AlertMessage {
     static let maxAudioReviewLimitReached = "Maximum Audio Review length reached."
     static let sharingFailed = "Please check your internet connection and train again."
     static let sharingCanceled = "You can earn SnapXEats rewards by sharing photos, you have canceled your action."
+    static let photoLibMessage = "SnapXEats need your photo library access to share  photo on Instagram, Please enable it from settings"
 }
 
 enum AlertTitle {
@@ -286,6 +287,7 @@ enum AlertTitle {
     static let error = "Error"
     static let wishlist = "Wishlist"
     static let navigationFailureError = "Navigation Error"
+    static let photoLibAccess = "Photo Lib Error"
 }
 
 enum PreferecneConstant {

@@ -26,6 +26,14 @@ class InstagramLoginPresenter {
         }
         return false
     }
+    
+    var parentController: UINavigationController? {
+        if let view = baseView as? InstagramLoginViewController {
+            return view.parentController
+        }
+        return nil
+    }
+    
     func skipUserLogin() {
         presentFirstTimeUserScreen()
     }
@@ -35,12 +43,7 @@ extension InstagramLoginPresenter: InstagramLoginPresentation {
     
     
     func removeInstagramWebView(sharedLoginFromSkip: Bool, parentController: UINavigationController?) {
-        if let parent = parentController, sharedLoginFromSkip  {
-             router?.presentScreen(screen: .socialLoginFromLoginPopUp(parentController: parent))
-        } else {
-            //presentFirstTimeUserScreen()
             router?.presentScreen(screen: .firstScreen)
-        }
     }
     
     func getInstagramUserData(completionHandler: @escaping ()-> ()) {
@@ -54,7 +57,12 @@ extension InstagramLoginPresenter: InstagramLoginInteractorOutput {
         baseView?.hideLoading()
         switch result {
         case .success(_):
-            presentFirstTimeUserScreen()
+            if let parent = parentController, userLoginForShared  {
+                router?.presentScreen(screen: .socialLoginFromLoginPopUp(parentController: parent))
+            } else {
+                presentFirstTimeUserScreen()
+            }
+           
         case .error:
             baseView?.error(result: NetworkResult.error)
         case .fail:

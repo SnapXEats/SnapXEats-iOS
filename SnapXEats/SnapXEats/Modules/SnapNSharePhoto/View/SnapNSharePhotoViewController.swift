@@ -80,8 +80,10 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
     }
     
     func continueSharingUserReview() {
-        setReviewData()
-        gotoSnapNShareSocialMediaView()
+        if checkRechability() {
+         setReviewData()
+         gotoSnapNShareSocialMediaView()
+        }
     }
     
     func setReviewData() {
@@ -95,7 +97,7 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
     }
     
     func gotoSnapNShareSocialMediaView() {
-        if let parentNVController = self.navigationController {
+        if let parentNVController = self.navigationController, let _ = restaurntID {
             presenter?.gotoSnapNSharesocialMediaView(parent: parentNVController)
         }
     }

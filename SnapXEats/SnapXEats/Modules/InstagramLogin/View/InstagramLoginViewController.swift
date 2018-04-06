@@ -163,7 +163,6 @@ extension InstagramLoginViewController: WKNavigationDelegate{
     
     private func discardWebView() {
         presenter?.removeInstagramWebView(sharedLoginFromSkip: sharedLoginFromSkip, parentController: parentController)
-        sharedLoginFromSkip = false 
     }
 }
 

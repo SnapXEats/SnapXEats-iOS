@@ -16,7 +16,10 @@ enum Screens {
 }
 
 class RootRouter: NSObject {
-    private var window: UIWindow?
+    private var window: UIWindow? {
+        guard let window  = UIApplication.shared.delegate?.window! else { return nil }
+        return window
+    }
     private var drawerController: KYDrawerController!
     private override init() {
         
@@ -35,8 +38,6 @@ class RootRouter: NSObject {
         if faceBookLoggedIn() || instagramLoggedIn() {
             showFirstScreen()
         } else {
-            guard let window  = UIApplication.shared.delegate?.window! else { return }
-            self.window = window
             presentLoginScreen()
         }
     }
@@ -180,7 +181,7 @@ class RootRouter: NSObject {
         let viewController = LoginPopUpRouter.shared.loadLoginPopUpView()
         viewController.restaurantID = restaurantID
         viewController.rootController = parentController
-        window?.rootViewController?.present(viewController, animated: false, completion: nil)
+        window?.rootViewController?.present(viewController, animated: true, completion: nil)
     }
     
     func updateDrawerState(state: KYDrawerController.DrawerState) {
@@ -193,6 +194,11 @@ class RootRouter: NSObject {
     }
     
     func presentScreen(screens: Screens) {
+        
+        if window?.rootViewController == nil &&  drawerController != nil {
+            presentView(drawerController)  // some tim the rootViewController become nil
+        }
+        
         switch screens {
         case .firsTimeUser:
             presentFirstTimeUserScreen()
@@ -233,7 +239,7 @@ class RootRouter: NSObject {
         case .loginPopUp(let restaurantID, let parentController):
             presentLoginPopUp(restaurantID: restaurantID, parentController: parentController)
         case .socialLoginFromLoginPopUp(let parentController):
-            presentSocialShareAferNewLogin(parentController: parentController)
+            presentSocialShareAferNewLogin( parentController: parentController)
         }
     }
         

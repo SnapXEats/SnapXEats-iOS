@@ -19,7 +19,8 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
     let loginPreferecne = LoginUserPreferences.shared
     let instagramApi = Instagram.shared
     var shareDetails: SnapNShare?
-    let dishReview = LoginUserPreferences.shared.userDishReview
+   // let dishReview = LoginUserPreferences.shared.userDishReview
+    var restaurantID = LoginUserPreferences.shared.userDishReview.restaurantInfoId
     
     @IBOutlet weak var fbButton: UIButton!
     @IBOutlet weak var instagramButton: UIButton!
@@ -27,6 +28,21 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
     @IBOutlet weak var sharingMessageLabel: UILabel!
     @IBOutlet weak var restaurantNameLabel: UILabel!
     @IBOutlet weak var smartPhotoImageView: UIImageView!
+    
+    var shareImage: UIImage? {
+        var sharableImge: UIImage?
+        guard let id = self.restaurantID else {
+            return sharableImge
+        }
+        
+        if let imagePath  = getPathForSmartPhotoForRestaurant(restaurantId: id),
+            let image = UIImage(contentsOfFile: imagePath.path) {
+             sharableImge = image
+        } else if let imagePath = getPathForSmartPhotoForRestaurant(restaurantId: id, skipSharedLogin: true) , let image = UIImage(contentsOfFile: imagePath.path), LoginUserPreferences.shared.isLoggedIn {
+            sharableImge = image
+        }
+        return sharableImge
+    }
     
     @IBAction func fbImageShare(_ sender: Any) {
         if let _ = shareDetails {
@@ -66,6 +82,14 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
         }
     }
     
+    override func noInternet(result: NetworkResult) {
+        showShaingErrorDialog(message: AlertMessage.messageNoInternet, completionHandler: {
+            if let parent = self.navigationController, self.shareDetails == nil {
+                parent.popViewController(animated: true)
+            }
+        })
+    }
+    
     func sharingDialogFB() {
         guard let shareDetails = self.shareDetails, let shareURL = URL(string: shareDetails.dish_image_url ?? "") else {
             return
@@ -79,11 +103,11 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
         shareDialog.completion = { [weak self] result in
             switch result {
             case .failed(_):
-                self?.showShaingFailedDialog()
+                self?.showShaingErrorDialog(message: AlertMessage.sharingFailed, completionHandler: nil)
             case .cancelled:
-                self?.showShaingCancelDialog()
+                self?.showShaingErrorDialog(message: AlertMessage.sharingCanceled, completionHandler: nil)
             case .success:
-                if let restaurantId = self?.dishReview.restaurantInfoId {
+                if let restaurantId = self?.restaurantID {
                     deleteUserReviewData(restaurantId: restaurantId)
                     self?.presenter?.presentScreen(screen: .sharedSuccess(restaurantID: restaurantId))
                 }
@@ -94,11 +118,8 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
     }
     
     func sharingDialogInstagram() {
-        if let restaurantId = dishReview.restaurantInfoId, let imagePath = getPathForSmartPhotoForRestaurant(restaurantId: restaurantId) {
-            // For instagram you need to send the image. we can't send the url path for instagram.
-            if let image = UIImage(contentsOfFile: imagePath.path) {
-                InstagramManager.shared.shareONInstagram(image: image, description: shareDetails?.message ?? "", viewController: self)
-            }
+        if let image = shareImage {
+            InstagramManager.shared.shareONInstagram(image: image, description: shareDetails?.message ?? "", viewController: self)
         }
     }
     
@@ -106,22 +127,21 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
         if let shareDetails = shareDetails {
             sharingMessageLabel.text = shareDetails.message ?? ""
             restaurantNameLabel.text = shareDetails.restaurant_name ?? ""
-            if let restaurantId = dishReview.restaurantInfoId, let imagePath = getPathForSmartPhotoForRestaurant(restaurantId: restaurantId),
-                let image = UIImage(contentsOfFile: imagePath.path) {
-                smartPhotoImageView.image = image
+            if let image = shareImage {
+                smartPhotoImageView.image = image   
             }
         }
     }
     
-    func showShaingFailedDialog() {
-        let Ok = UIAlertAction(title: SnapXButtonTitle.ok, style: UIAlertActionStyle.default, handler: nil)
-        UIAlertController.presentAlertInViewController(self, title: AlertTitle.sharingTitle , message: AlertMessage.sharingFailed, actions: [Ok], completion: nil)
+    func showShaingErrorDialog(message: String, completionHandler: (() -> ())?) {
+        let Ok = UIAlertAction(title: SnapXButtonTitle.ok, style: UIAlertActionStyle.default, handler: { action in
+            if let completionHandler = completionHandler {
+                completionHandler()
+            }
+        })
+        UIAlertController.presentAlertInViewController(self, title: AlertTitle.sharingTitle , message: message, actions: [Ok], completion: nil)
     }
-    
-    func showShaingCancelDialog() {
-        let Ok = UIAlertAction(title: SnapXButtonTitle.ok, style: UIAlertActionStyle.default, handler: nil)
-        UIAlertController.presentAlertInViewController(self, title: AlertTitle.sharingTitle , message: AlertMessage.sharingCanceled, actions: [Ok], completion: nil)
-    }
+
 }
 
 extension SnapNShareSocialMediaViewController: SnapNShareSocialMediaView {

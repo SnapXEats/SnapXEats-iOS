@@ -105,14 +105,14 @@ extension InstagramLoginInteractor {
             if let preferecne = value.userPreferences {
                 PreferenceHelper.shared.saveFirstTimeLoginPreferecne(storedPreferecne: preferecne)
                 if  let completion = completionHandler {
-                    completion()
+                    completion()  // This will dissmiss the instagramviewControl
                 }
             }
-           // output?.response(result: .success(data: value))
+            output?.response(result: .success(data: value))  // This will navigate to the next screen
         case .failure( _):
-//            if  let completion = completionHandler {
-//                completion()
-//            }
+            if  let completion = completionHandler {
+                completion()  //This will dissmiss the instagramviewControl
+            }
             output?.response(result: NetworkResult.noInternet)
         }
     }

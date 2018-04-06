@@ -42,13 +42,16 @@ func getPathForAudioReviewForRestaurant(restaurantId: String = "test_restaurant"
     return audioRecordingPath?.appendingPathComponent(fileManagerConstants.audioReviewFileNAme)
 }
 
-func getPathForSmartPhotoForRestaurant(restaurantId: String) -> URL? {
+func getPathForSmartPhotoForRestaurant(restaurantId: String, skipSharedLogin: Bool = false) -> URL? {
     let fileManager = FileManager.default
     let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
     let documentDirectory = urls[0] as NSURL
     
-    let userId = LoginUserPreferences.shared.isLoggedIn ? LoginUserPreferences.shared.loginUserID : fileManagerConstants.nonLoggedInUserFolderName
+    var userId = LoginUserPreferences.shared.isLoggedIn ? LoginUserPreferences.shared.loginUserID : fileManagerConstants.nonLoggedInUserFolderName
     
+    if skipSharedLogin == true {
+        userId = fileManagerConstants.nonLoggedInUserFolderName
+    }
     let smartPhotosFolderName = fileManagerConstants.smartPhotosFolderName
     let pathComponent = userId + "/" + restaurantId + "/" + smartPhotosFolderName
     let storedPhotoPath = documentDirectory.appendingPathComponent(pathComponent)
