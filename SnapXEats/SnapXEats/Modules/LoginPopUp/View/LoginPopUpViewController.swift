@@ -42,7 +42,7 @@ class LoginPopUpViewController: BaseViewController, StoryboardLoadable {
     }
     
     override func success(result: Any?) {
-        if let result = result as? Bool, result == true, let navigationController = rootController {
+        if let result = result as? Bool, result == true, let navigationController = rootController, let id = restaurantID {
             presenter?.presentScreen(screen: .socialLoginFromLoginPopUp(parentController: navigationController))
         }
     }

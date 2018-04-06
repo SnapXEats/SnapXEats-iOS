@@ -36,24 +36,49 @@ class InstagramManager: NSObject, UIDocumentInteractionControllerDelegate {
         let instagramURL = URL(string: kInstagramURL)
         if UIApplication.shared.canOpenURL(instagramURL!) {
             let image = imageInstagram.stretchableImage(withLeftCapWidth: 640, topCapHeight: 640)
-    
-            do {
-                try PHPhotoLibrary.shared().performChangesAndWait {
-                    let request = PHAssetChangeRequest.creationRequestForAsset(from: image)
-                    let assetID = request.placeholderForCreatedAsset?.localIdentifier ?? ""
-                    let shareURL = URL(string: "instagram://library?LocalIdentifier=" + assetID)
-                    if let urlForRedirect = shareURL {
-                        UIApplication.shared.openURL(urlForRedirect)
+            let status = PHPhotoLibrary.authorizationStatus()
+            switch status {
+            case .authorized:
+                sharedPhotOnInstagram(image: image, view: viewController)
+            case .notDetermined, .denied:
+                // Access has not been determined.
+                PHPhotoLibrary.requestAuthorization({ [weak self] (newStatus) in
+                    if (newStatus == PHAuthorizationStatus.authorized) {
+                        self?.sharedPhotOnInstagram(image: image, view: viewController)
+                    } else {
+                        self?.showPhotoLibAccessDialog(view: viewController)
                     }
-                }
-            } catch {
-                print("NO result")
+                })
+                
+                
+            default: break
             }
+            
         }
         else {
             
             let okAction = UIAlertAction(title: SnapXButtonTitle.ok, style: .default, handler: nil)
             UIAlertController.presentAlertInViewController(viewController, title: kAlertViewTitle, message: kAlertViewMessage, actions: [okAction], completion: nil)
+        }
+    }
+    
+    func showPhotoLibAccessDialog(view: UIViewController) {
+        let Ok = UIAlertAction(title: SnapXButtonTitle.ok, style: UIAlertActionStyle.default, handler: nil)
+        UIAlertController.presentAlertInViewController(view, title: AlertTitle.photoLibAccess , message: AlertMessage.photoLibMessage, actions: [Ok], completion: nil)
+    }
+    
+    func sharedPhotOnInstagram(image: UIImage, view: UIViewController) {
+        do {
+            try PHPhotoLibrary.shared().performChangesAndWait {
+                let request = PHAssetChangeRequest.creationRequestForAsset(from: image)
+                let assetID = request.placeholderForCreatedAsset?.localIdentifier ?? ""
+                let shareURL = URL(string: "instagram://library?LocalIdentifier=" + assetID)
+                if let urlForRedirect = shareURL {
+                    UIApplication.shared.openURL(urlForRedirect)
+                }
+            }
+        } catch {
+           showPhotoLibAccessDialog(view: view)
         }
     }
     
