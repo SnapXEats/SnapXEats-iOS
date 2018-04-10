@@ -120,6 +120,10 @@
 		7EDB8ED8204FF3710015F48A /* RestaurantCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDB8ED6204FF3710015F48A /* RestaurantCollectionViewCell.swift */; };
 		7EDB8ED9204FF3710015F48A /* RestaurantCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EDB8ED7204FF3710015F48A /* RestaurantCollectionViewCell.xib */; };
 		9D0498D82052BEF300BD4EDB /* StoredUserPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0498D72052BEF300BD4EDB /* StoredUserPreference.swift */; };
+		9D0D70FA207B4B0700A521EB /* DeepLinking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D70F9207B4B0600A521EB /* DeepLinking.swift */; };
+		9D0D70FC207B5AC900A521EB /* SnapXLinkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D70FB207B5AC900A521EB /* SnapXLinkingManager.swift */; };
+		9D0D70FF207B5D3B00A521EB /* SnapXLinkNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D70FE207B5D3B00A521EB /* SnapXLinkNavigator.swift */; };
+		9D0D7101207B8CC100A521EB /* SnapXDeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D7100207B8CC100A521EB /* SnapXDeepLink.swift */; };
 		9D0D712C203859C80077FA7A /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D712B203859C80077FA7A /* UserLogin.swift */; };
 		9D0D7138203AAE1F0077FA7A /* RestaurantDetailsContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D712F203AAE1F0077FA7A /* RestaurantDetailsContract.swift */; };
 		9D0D7139203AAE1F0077FA7A /* RestaurantDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D7131203AAE1F0077FA7A /* RestaurantDetailsPresenter.swift */; };
@@ -193,6 +197,21 @@
 		9D8E89151FFD2BEC0066A1D9 /* ValidatorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88BA1FFD28C50066A1D9 /* ValidatorHelper.swift */; };
 		9D8E89161FFD2C400066A1D9 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88BD1FFD28C50066A1D9 /* RootRouter.swift */; };
 		9D8E89171FFD2C400066A1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88BE1FFD28C50066A1D9 /* AppDelegate.swift */; };
+		9D8FB1ED207CB862002E6662 /* SmartPhotoContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8FB1E4207CB861002E6662 /* SmartPhotoContract.swift */; };
+		9D8FB1EE207CB862002E6662 /* SmartPhotoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8FB1E6207CB861002E6662 /* SmartPhotoPresenter.swift */; };
+		9D8FB1EF207CB862002E6662 /* SmartPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8FB1E8207CB861002E6662 /* SmartPhotoViewController.swift */; };
+		9D8FB1F0207CB862002E6662 /* SmartPhotoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8FB1EA207CB861002E6662 /* SmartPhotoInteractor.swift */; };
+		9D8FB1F1207CB862002E6662 /* SmartPhotoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8FB1EC207CB861002E6662 /* SmartPhotoRouter.swift */; };
+		9D8FB1F3207CB88F002E6662 /* SmartPhoto.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D8FB1F2207CB88F002E6662 /* SmartPhoto.storyboard */; };
+		9D8FB1FC207CCB39002E6662 /* SmartPhotoInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8FB1F6207CCB39002E6662 /* SmartPhotoInfo.swift */; };
+		9D8FB1FD207CCB39002E6662 /* SmartPhotoDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8FB1F7207CCB39002E6662 /* SmartPhotoDownload.swift */; };
+		9D8FB1FE207CCB39002E6662 /* SmartPhotoInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D8FB1F8207CCB39002E6662 /* SmartPhotoInfo.xib */; };
+		9D8FB1FF207CCB39002E6662 /* SmartPhotoDownload.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D8FB1F9207CCB39002E6662 /* SmartPhotoDownload.xib */; };
+		9D8FB200207CCB39002E6662 /* SmartPhotoTextReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8FB1FA207CCB39002E6662 /* SmartPhotoTextReview.swift */; };
+		9D8FB201207CCB39002E6662 /* SmartPhotoTextReview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D8FB1FB207CCB39002E6662 /* SmartPhotoTextReview.xib */; };
+		9D8FB204207CD2D8002E6662 /* SmartPhotoDownloadSuccess.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D8FB202207CD2D7002E6662 /* SmartPhotoDownloadSuccess.xib */; };
+		9D8FB205207CD2D8002E6662 /* SmartPhotoDownloadSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8FB203207CD2D8002E6662 /* SmartPhotoDownloadSuccess.swift */; };
+		9D8FB208207CF1C5002E6662 /* SmartPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8FB207207CF1C5002E6662 /* SmartPhoto.swift */; };
 		9D902BC920171AED00359DFD /* FoodCardsContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D902BC020171AED00359DFD /* FoodCardsContract.swift */; };
 		9D902BCA20171AED00359DFD /* FoodCardsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D902BC220171AED00359DFD /* FoodCardsPresenter.swift */; };
 		9D902BCB20171AED00359DFD /* FoodCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D902BC420171AED00359DFD /* FoodCardsViewController.swift */; };
@@ -364,6 +383,10 @@
 		7EDB8ED7204FF3710015F48A /* RestaurantCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurantCollectionViewCell.xib; sourceTree = "<group>"; };
 		967BD01B1CEED06931835CA3 /* Pods_SnapXEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnapXEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D0498D72052BEF300BD4EDB /* StoredUserPreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredUserPreference.swift; sourceTree = "<group>"; };
+		9D0D70F9207B4B0600A521EB /* DeepLinking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeepLinking.swift; sourceTree = "<group>"; };
+		9D0D70FB207B5AC900A521EB /* SnapXLinkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXLinkingManager.swift; sourceTree = "<group>"; };
+		9D0D70FE207B5D3B00A521EB /* SnapXLinkNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXLinkNavigator.swift; sourceTree = "<group>"; };
+		9D0D7100207B8CC100A521EB /* SnapXDeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXDeepLink.swift; sourceTree = "<group>"; };
 		9D0D712B203859C80077FA7A /* UserLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
 		9D0D712F203AAE1F0077FA7A /* RestaurantDetailsContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailsContract.swift; sourceTree = "<group>"; };
 		9D0D7131203AAE1F0077FA7A /* RestaurantDetailsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailsPresenter.swift; sourceTree = "<group>"; };
@@ -447,6 +470,21 @@
 		9D8E88DF1FFD2A6F0066A1D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D8E88E71FFD2A6F0066A1D9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9D8E88E81FFD2A6F0066A1D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9D8FB1E4207CB861002E6662 /* SmartPhotoContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartPhotoContract.swift; sourceTree = "<group>"; };
+		9D8FB1E6207CB861002E6662 /* SmartPhotoPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartPhotoPresenter.swift; sourceTree = "<group>"; };
+		9D8FB1E8207CB861002E6662 /* SmartPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartPhotoViewController.swift; sourceTree = "<group>"; };
+		9D8FB1EA207CB861002E6662 /* SmartPhotoInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartPhotoInteractor.swift; sourceTree = "<group>"; };
+		9D8FB1EC207CB861002E6662 /* SmartPhotoRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartPhotoRouter.swift; sourceTree = "<group>"; };
+		9D8FB1F2207CB88F002E6662 /* SmartPhoto.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SmartPhoto.storyboard; sourceTree = "<group>"; };
+		9D8FB1F6207CCB39002E6662 /* SmartPhotoInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartPhotoInfo.swift; sourceTree = "<group>"; };
+		9D8FB1F7207CCB39002E6662 /* SmartPhotoDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartPhotoDownload.swift; sourceTree = "<group>"; };
+		9D8FB1F8207CCB39002E6662 /* SmartPhotoInfo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmartPhotoInfo.xib; sourceTree = "<group>"; };
+		9D8FB1F9207CCB39002E6662 /* SmartPhotoDownload.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmartPhotoDownload.xib; sourceTree = "<group>"; };
+		9D8FB1FA207CCB39002E6662 /* SmartPhotoTextReview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartPhotoTextReview.swift; sourceTree = "<group>"; };
+		9D8FB1FB207CCB39002E6662 /* SmartPhotoTextReview.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmartPhotoTextReview.xib; sourceTree = "<group>"; };
+		9D8FB202207CD2D7002E6662 /* SmartPhotoDownloadSuccess.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmartPhotoDownloadSuccess.xib; sourceTree = "<group>"; };
+		9D8FB203207CD2D8002E6662 /* SmartPhotoDownloadSuccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartPhotoDownloadSuccess.swift; sourceTree = "<group>"; };
+		9D8FB207207CF1C5002E6662 /* SmartPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartPhoto.swift; sourceTree = "<group>"; };
 		9D902BC020171AED00359DFD /* FoodCardsContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCardsContract.swift; sourceTree = "<group>"; };
 		9D902BC220171AED00359DFD /* FoodCardsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCardsPresenter.swift; sourceTree = "<group>"; };
 		9D902BC420171AED00359DFD /* FoodCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCardsViewController.swift; sourceTree = "<group>"; };
@@ -909,6 +947,7 @@
 		7E71FC022022CC6800CA8467 /* External Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				9D0D70F8207B4A0400A521EB /* DeepLinking */,
 				7E5E7FC8203AF7EE00009A56 /* ImageSlideshow */,
 				7E71FC032022CCAD00CA8467 /* KYDrawer */,
 			);
@@ -1090,6 +1129,24 @@
 				7EDB8ED7204FF3710015F48A /* RestaurantCollectionViewCell.xib */,
 			);
 			path = CustomCells;
+			sourceTree = "<group>";
+		};
+		9D0D70F8207B4A0400A521EB /* DeepLinking */ = {
+			isa = PBXGroup;
+			children = (
+				9D0D70F9207B4B0600A521EB /* DeepLinking.swift */,
+			);
+			path = DeepLinking;
+			sourceTree = "<group>";
+		};
+		9D0D70FD207B5D1700A521EB /* SnapXEatsLinking */ = {
+			isa = PBXGroup;
+			children = (
+				9D0D70FB207B5AC900A521EB /* SnapXLinkingManager.swift */,
+				9D0D70FE207B5D3B00A521EB /* SnapXLinkNavigator.swift */,
+				9D0D7100207B8CC100A521EB /* SnapXDeepLink.swift */,
+			);
+			path = SnapXEatsLinking;
 			sourceTree = "<group>";
 		};
 		9D0D712D203AAE1F0077FA7A /* RestaurantDetails */ = {
@@ -1551,8 +1608,8 @@
 		9D8E88BF1FFD28C50066A1D9 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				9D748B342074B2E2004ED49A /* LoginPopUp */,
 				9D8E88C01FFD28C50066A1D9 /* Login */,
+				9D748B342074B2E2004ED49A /* LoginPopUp */,
 				9DAF6F5F205AAA26003001B5 /* InstagramLogin */,
 				9DB02A632010805F0061FC0C /* Location */,
 				9D902BD9201729E300359DFD /* SelectLocation */,
@@ -1565,6 +1622,7 @@
 				7EA940792063E9300005B6B9 /* CheckinPopup */,
 				7E539B9F205A522D002C3E55 /* SnapNSharePhoto */,
 				7E539BC3205BA323002C3E55 /* SnapNShareSocialMedia */,
+				9D8FB1E2207CB861002E6662 /* SmartPhoto */,
 				9DE7CE462023620500BBBFEC /* UserPrefernce */,
 				7E673AE020496122005D19DC /* Wishlist */,
 				9D0D7141203D998D0077FA7A /* FoodAndCuisinePreference */,
@@ -1629,6 +1687,7 @@
 		9D8E88CD1FFD28C50066A1D9 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				9D0D70FD207B5D1700A521EB /* SnapXEatsLinking */,
 				9D8E88CE1FFD28C50066A1D9 /* Contract */,
 				9D8E88D01FFD28C50066A1D9 /* View */,
 			);
@@ -1655,6 +1714,7 @@
 		9D8E88D91FFD28C50066A1D9 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				9D8FB206207CF19E002E6662 /* SmarPhoto */,
 				9DBA8658204A95E700C99841 /* Wishlist */,
 				7E2C64B1204401D000DAB44A /* FoodCard */,
 				9DDC3AF020358E9600A7F181 /* Login */,
@@ -1721,6 +1781,84 @@
 			children = (
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		9D8FB1E2207CB861002E6662 /* SmartPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				9D8FB1E3207CB861002E6662 /* Contract */,
+				9D8FB1E5207CB861002E6662 /* Presenter */,
+				9D8FB1E7207CB861002E6662 /* View */,
+				9D8FB1E9207CB861002E6662 /* Interactor */,
+				9D8FB1EB207CB861002E6662 /* Router */,
+			);
+			name = SmartPhoto;
+			path = SnapXEats/Modules/SmartPhoto;
+			sourceTree = SOURCE_ROOT;
+		};
+		9D8FB1E3207CB861002E6662 /* Contract */ = {
+			isa = PBXGroup;
+			children = (
+				9D8FB1E4207CB861002E6662 /* SmartPhotoContract.swift */,
+			);
+			path = Contract;
+			sourceTree = "<group>";
+		};
+		9D8FB1E5207CB861002E6662 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				9D8FB1E6207CB861002E6662 /* SmartPhotoPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		9D8FB1E7207CB861002E6662 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9D8FB1F5207CCB39002E6662 /* CustomViews */,
+				9D8FB1F2207CB88F002E6662 /* SmartPhoto.storyboard */,
+				9D8FB1E8207CB861002E6662 /* SmartPhotoViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9D8FB1E9207CB861002E6662 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				9D8FB1EA207CB861002E6662 /* SmartPhotoInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		9D8FB1EB207CB861002E6662 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				9D8FB1EC207CB861002E6662 /* SmartPhotoRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		9D8FB1F5207CCB39002E6662 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				9D8FB1F8207CCB39002E6662 /* SmartPhotoInfo.xib */,
+				9D8FB1F6207CCB39002E6662 /* SmartPhotoInfo.swift */,
+				9D8FB1FB207CCB39002E6662 /* SmartPhotoTextReview.xib */,
+				9D8FB1FA207CCB39002E6662 /* SmartPhotoTextReview.swift */,
+				9D8FB1F9207CCB39002E6662 /* SmartPhotoDownload.xib */,
+				9D8FB1F7207CCB39002E6662 /* SmartPhotoDownload.swift */,
+				9D8FB202207CD2D7002E6662 /* SmartPhotoDownloadSuccess.xib */,
+				9D8FB203207CD2D8002E6662 /* SmartPhotoDownloadSuccess.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		9D8FB206207CF19E002E6662 /* SmarPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				9D8FB207207CF1C5002E6662 /* SmartPhoto.swift */,
+			);
+			path = SmarPhoto;
 			sourceTree = "<group>";
 		};
 		9D902BBE20171AED00359DFD /* FoodCards */ = {
@@ -2137,7 +2275,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D8FB1FF207CCB39002E6662 /* SmartPhotoDownload.xib in Resources */,
 				7E8397442045585100E71C6D /* Roboto-Italic.ttf in Resources */,
+				9D8FB1F3207CB88F002E6662 /* SmartPhoto.storyboard in Resources */,
 				7E83974220454DF600E71C6D /* MoreInfoTableViewCell.xib in Resources */,
 				7E5C058720186C36000B5C33 /* roboto.bold.ttf in Resources */,
 				7E673B20204968D2005D19DC /* WishlistItemTableViewCell.xib in Resources */,
@@ -2154,17 +2294,20 @@
 				7E7AC910206CCA5200CA4FEF /* NoFoodCardsPopup.xib in Resources */,
 				9DB02A76201084730061FC0C /* Location.storyboard in Resources */,
 				7E2C64BE2044253400DAB44A /* NavigationMenuTableViewCell.xib in Resources */,
+				9D8FB1FE207CCB39002E6662 /* SmartPhotoInfo.xib in Resources */,
 				7E5C058320185F34000B5C33 /* SavedAddressHeaderViewCell.xib in Resources */,
 				7E539BB0205A5268002C3E55 /* SnapNSharePhoto.storyboard in Resources */,
 				7E8B850D20624E4300F802B3 /* CheckinPopup.xib in Resources */,
 				9D902BEC201736B500359DFD /* FoodCards.storyboard in Resources */,
 				7E5E7FDA203AF7EE00009A56 /* ic_cross_white@2x.png in Resources */,
+				9D8FB201207CCB39002E6662 /* SmartPhotoTextReview.xib in Resources */,
 				7E5E7FF1203C0E6000009A56 /* RestaurantSpecialityCollectionViewCell.xib in Resources */,
 				9D902BEA20172A2F00359DFD /* SelectLocation.storyboard in Resources */,
 				7EAC8612201A067A00DE162A /* FoodCardView.xib in Resources */,
 				7E0CBBB5202435E4009E56AE /* UserPreference.storyboard in Resources */,
 				7EC5014B20469AE500D44E92 /* RestaurantDirections.storyboard in Resources */,
 				7E389707205F8703005E248F /* AudioRecordingPopUp.xib in Resources */,
+				9D8FB204207CD2D8002E6662 /* SmartPhotoDownloadSuccess.xib in Resources */,
 				9D3FC4DC2011E34D001A4264 /* CuisineCollectionViewCell.xib in Resources */,
 				9DEB5CF71FFE6D49003B9D4B /* FlashScreen.storyboard in Resources */,
 				7E5C057F2017A6DC000B5C33 /* SavedLocationTableViewCell.xib in Resources */,
@@ -2303,6 +2446,7 @@
 				7E791F1C2032D8D600FA887D /* PreferenceItem.swift in Sources */,
 				7E5E7FDE203AF7EE00009A56 /* ImageSlideshow.swift in Sources */,
 				9D0D7162203F144F0077FA7A /* DrawerRouter.swift in Sources */,
+				9D8FB1FD207CCB39002E6662 /* SmartPhotoDownload.swift in Sources */,
 				9D8E89171FFD2C400066A1D9 /* AppDelegate.swift in Sources */,
 				9D8E88EB1FFD2BEC0066A1D9 /* LoginContract.swift in Sources */,
 				9D2C484D202073A700FD8B1C /* SelectedPreference.swift in Sources */,
@@ -2310,6 +2454,7 @@
 				9D8E88EC1FFD2BEC0066A1D9 /* LoginPresenter.swift in Sources */,
 				9D8E88ED1FFD2BEC0066A1D9 /* LoginViewController.swift in Sources */,
 				7E5C058520186846000B5C33 /* UISearchbar+helper.swift in Sources */,
+				9D0D70FF207B5D3B00A521EB /* SnapXLinkNavigator.swift in Sources */,
 				7E5E7FF4203C312400009A56 /* RestaurantDetails.swift in Sources */,
 				7E5E7FDD203AF7EE00009A56 /* FullScreenSlideshowViewController.swift in Sources */,
 				9D902BE4201729E400359DFD /* SelectLocationContract.swift in Sources */,
@@ -2319,6 +2464,7 @@
 				9D0D713C203AAE1F0077FA7A /* RestaurantDetailsRouter.swift in Sources */,
 				7E393CB820637C7900E51149 /* RewardPointsPopup.swift in Sources */,
 				7EA940862063E9310005B6B9 /* CheckinPopupPresenter.swift in Sources */,
+				9D8FB1EF207CB862002E6662 /* SmartPhotoViewController.swift in Sources */,
 				9D8E88EF1FFD2BEC0066A1D9 /* LoginRouter.swift in Sources */,
 				7E539B7420593A01002C3E55 /* SnapNShareHomePresenter.swift in Sources */,
 				9D8E88F11FFD2BEC0066A1D9 /* BaseContract.swift in Sources */,
@@ -2326,16 +2472,21 @@
 				9D748B432074B2E2004ED49A /* LoginPopUpRouter.swift in Sources */,
 				9D0D7140203C633B0077FA7A /* PreferenceHelper.swift in Sources */,
 				7E9394EC204456F900A80387 /* FoodCardActionHelper.swift in Sources */,
+				9D8FB200207CCB39002E6662 /* SmartPhotoTextReview.swift in Sources */,
 				7E5328B820526FA20043539D /* NSMutableAttributedString+Helper.swift in Sources */,
 				7E539B7520593A01002C3E55 /* SnapNShareHomeRouter.swift in Sources */,
 				7E389705205F86F1005E248F /* AudioRecordingPopUp.swift in Sources */,
 				9D0D714E203D99A80077FA7A /* FoodAndCuisinePreferenceRouter.swift in Sources */,
+				9D8FB1F1207CB862002E6662 /* SmartPhotoRouter.swift in Sources */,
 				7E6FD41C2020A00F0058BFB8 /* SearchPlacePredictions.swift in Sources */,
 				7E539BD2205BA323002C3E55 /* SnapNShareSocialMediaViewController.swift in Sources */,
 				7E539BD1205BA323002C3E55 /* SnapNShareSocialMediaRouter.swift in Sources */,
 				9D0D713E203C2CFD0077FA7A /* SetUserPreference.swift in Sources */,
 				9D8E88F41FFD2BEC0066A1D9 /* UserProfile.swift in Sources */,
+				9D8FB1F0207CB862002E6662 /* SmartPhotoInteractor.swift in Sources */,
+				9D8FB1EE207CB862002E6662 /* SmartPhotoPresenter.swift in Sources */,
 				7E5C057E2017A6DC000B5C33 /* SavedLocationTableViewCell.swift in Sources */,
+				9D8FB1FC207CCB39002E6662 /* SmartPhotoInfo.swift in Sources */,
 				7E71FC092022CCAD00CA8467 /* KYEmbedMainControllerSegue.swift in Sources */,
 				7E8397462045713B00E71C6D /* DateFormatters.swift in Sources */,
 				7E539BAE205A522E002C3E55 /* SnapNSharePhotoViewController.swift in Sources */,
@@ -2378,10 +2529,12 @@
 				7EC5014520469A2C00D44E92 /* RestaurantDirectionsContract.swift in Sources */,
 				7E2C64B3204401E600DAB44A /* FoodCardActions.swift in Sources */,
 				7E5E7FF0203C0E6000009A56 /* RestaurantSpecialityCollectionViewCell.swift in Sources */,
+				9D8FB1ED207CB862002E6662 /* SmartPhotoContract.swift in Sources */,
 				9D0D715E203F144F0077FA7A /* DrawerContract.swift in Sources */,
 				7EA940852063E9310005B6B9 /* CheckinPopupInteractor.swift in Sources */,
 				9DB02A6F2010805F0061FC0C /* LocationPresenter.swift in Sources */,
 				9D9868D92023202B003E82F6 /* Restaurant.swift in Sources */,
+				9D0D70FC207B5AC900A521EB /* SnapXLinkingManager.swift in Sources */,
 				9D0D714C203D99A80077FA7A /* FoodAndCuisinePreferenceInteractor.swift in Sources */,
 				7E539BCE205BA323002C3E55 /* SnapNShareSocialMediaContract.swift in Sources */,
 				9D0D7150203D99A80077FA7A /* FoodAndCuisinePreferenceContract.swift in Sources */,
@@ -2393,6 +2546,7 @@
 				9DDC3AEC2035553600A7F181 /* SnapXEatsLoginHelper.swift in Sources */,
 				9D8E88FC1FFD2BEC0066A1D9 /* DataResponse.swift in Sources */,
 				9DE7CE542023620500BBBFEC /* UserPreferenceInteractor.swift in Sources */,
+				9D0D7101207B8CC100A521EB /* SnapXDeepLink.swift in Sources */,
 				7E491D23204E920E004445E2 /* RestaurantsMapViewPresenter.swift in Sources */,
 				9DCBE184201EF6F80030A0F9 /* SnapXEatsNetworkManager.swift in Sources */,
 				9D902BE5201729E400359DFD /* SelectLocationPresenter.swift in Sources */,
@@ -2407,6 +2561,7 @@
 				9D8E89001FFD2BEC0066A1D9 /* String.swift in Sources */,
 				7E71FC072022CCAD00CA8467 /* KYDrawerController.swift in Sources */,
 				9DAF6F6A205AAA26003001B5 /* InstagramLoginContract.swift in Sources */,
+				9D0D70FA207B4B0700A521EB /* DeepLinking.swift in Sources */,
 				9D8E89011FFD2BEC0066A1D9 /* UIViewController.swift in Sources */,
 				7E539B7620593A01002C3E55 /* SnapNShareHomeViewController.swift in Sources */,
 				9D0D713B203AAE1F0077FA7A /* RestaurantDetailsInteractor.swift in Sources */,
@@ -2433,6 +2588,7 @@
 				7E5946972020BD02006702AF /* SearchPlacesTableViewCell.swift in Sources */,
 				7EB5921F2040048600CC6888 /* DrivingDirections.swift in Sources */,
 				9D8E89051FFD2BEC0066A1D9 /* UICollectionViewCell.swift in Sources */,
+				9D8FB205207CD2D8002E6662 /* SmartPhotoDownloadSuccess.swift in Sources */,
 				9DBA865A204A95FB00C99841 /* WishList.swift in Sources */,
 				7EDB8ED8204FF3710015F48A /* RestaurantCollectionViewCell.swift in Sources */,
 				9D8E89061FFD2BEC0066A1D9 /* UIStoryboard.swift in Sources */,
@@ -2473,6 +2629,7 @@
 				9D8E89131FFD2BEC0066A1D9 /* ReusableView.swift in Sources */,
 				7E791F182032CAB800FA887D /* PreferenceTypeCollectionViewCell.swift in Sources */,
 				9D3FC4D82011C94A001A4264 /* CuisinePreference.swift in Sources */,
+				9D8FB208207CF1C5002E6662 /* SmartPhoto.swift in Sources */,
 				9DE7CE532023620500BBBFEC /* UserPreferenceViewController.swift in Sources */,
 				7E2C64BF2044253400DAB44A /* DrawerViewController.swift in Sources */,
 				7E539BAD205A522E002C3E55 /* SnapNSharePhotoRouter.swift in Sources */,

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SmartPhotoDownload" customModule="SnapXEats" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s6b-x5-OC3">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Udx-ss-f4F">
+                    <rect key="frame" x="38" y="164" width="245" height="240"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jD4-oq-qCs" userLabel="DownloadBar">
+                            <rect key="frame" x="86" y="124" width="73" height="29"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="73" id="mhn-7h-9jc"/>
+                            </constraints>
+                            <state key="normal" image="download"/>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downloading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8XH-ju-nKU">
+                            <rect key="frame" x="75" y="193" width="110" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="c4c-OE-SXh"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
+                            <color key="textColor" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="8XH-ju-nKU" firstAttribute="top" secondItem="jD4-oq-qCs" secondAttribute="bottom" constant="40" id="Lh7-EO-dcH"/>
+                        <constraint firstAttribute="trailing" secondItem="8XH-ju-nKU" secondAttribute="trailing" constant="60" id="g9D-Wu-h0J"/>
+                        <constraint firstAttribute="bottom" secondItem="8XH-ju-nKU" secondAttribute="bottom" constant="26" id="hg3-nQ-ROW"/>
+                        <constraint firstItem="jD4-oq-qCs" firstAttribute="centerX" secondItem="Udx-ss-f4F" secondAttribute="centerX" id="twX-gn-BHW"/>
+                        <constraint firstItem="8XH-ju-nKU" firstAttribute="leading" secondItem="Udx-ss-f4F" secondAttribute="leading" constant="75" id="uDF-Wf-XIc"/>
+                        <constraint firstAttribute="width" constant="245" id="xSp-Cy-pHs"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="s6b-x5-OC3" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="CcZ-Gd-npZ"/>
+                <constraint firstItem="Udx-ss-f4F" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="XLY-vB-XiX"/>
+                <constraint firstItem="Udx-ss-f4F" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="144" id="fL5-61-QTc"/>
+                <constraint firstItem="s6b-x5-OC3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="rPJ-fg-tGe"/>
+                <constraint firstItem="s6b-x5-OC3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="sgS-ns-Br0"/>
+                <constraint firstItem="Udx-ss-f4F" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="xEt-iO-H1L"/>
+                <constraint firstItem="s6b-x5-OC3" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="yct-7S-F6Z"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="download" width="29" height="29"/>
+    </resources>
+</document>

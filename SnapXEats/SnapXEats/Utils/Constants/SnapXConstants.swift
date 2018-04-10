@@ -80,7 +80,7 @@ enum SnapXEatsLocationConstant {
 }
 enum SnapXEatsWebServicePath {
     static let  port = "3000"
-    static let  rootURL =  "http://ec2-18-216-193-78.us-east-2.compute.amazonaws.com:" + port
+    static let  rootURL =  "http://e928243b.ngrok.io" //"http://ec2-18-216-193-78.us-east-2.compute.amazonaws.com:" + port
     static let  cuisinePreferenceURL = "/api/v1/cuisine"
     static let  dishesURL = "/api/v1/dishes"
     static let  foodtypesURL = "/api/v1/foodTypes"
@@ -200,6 +200,7 @@ enum SnapXEatsWebServiceParameterKeys {
     static let audioReview   = "audioReview"
     static let textReview = "textReview"
     static let rating = "rating"
+    static let restaurant_dish_id = "restaurant_dish_id"
 }
 enum SnapXButtonTitle {
     static let ok = "Ok"
@@ -242,6 +243,7 @@ enum SnapXEatsConstant {
     static let platFormInstagram = "instagram"
     static let snaXEatsFirstTimeUser = "SnaXEatsFirstTimeUser"
     static let firstTimeUser = "firstTimeUser"
+    static let urlScheme = "snapXEats"
 }
 
 enum UberAppConstants {
