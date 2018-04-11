@@ -188,7 +188,7 @@ enum SnapXEatsNibNames {
     static let loginPopup = "LoginPopup"
     static let smartPhotoInfo = "SmartPhotoInfo"
     static let smartPhotoMessage = "SmartPhotoTextReview"
-    static let smartPhotoAudio = "smartPhotoAudio"
+    static let smartPhotoAudio = "SmartPhotoAudio"
     static let smartPhotoDownload = "SmartPhotoDownload"
     static let smartPhotoSuccess = "SmartPhotoDownloadSuccess"
 }

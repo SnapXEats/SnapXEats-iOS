@@ -145,6 +145,8 @@
 		9D1C33E42062378D00B4F69D /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D1C33E52062378D00B4F69D /* FBSDKShareKit.framework */; };
 		9D1C33E72062706000B4F69D /* InstagramManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C33E62062706000B4F69D /* InstagramManager.swift */; };
 		9D1C33EB20650D9900B4F69D /* SnapNShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C33EA20650D9900B4F69D /* SnapNShare.swift */; };
+		9D2A9FEC207E4071004484E6 /* SmartPhotoAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2A9FEA207E406F004484E6 /* SmartPhotoAudio.swift */; };
+		9D2A9FED207E4071004484E6 /* SmartPhotoAudio.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D2A9FEB207E4070004484E6 /* SmartPhotoAudio.xib */; };
 		9D2C484D202073A700FD8B1C /* SelectedPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C484C202073A700FD8B1C /* SelectedPreference.swift */; };
 		9D3D1CE02006479500AAAB95 /* SnapXConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3D1CDF2006479500AAAB95 /* SnapXConstants.swift */; };
 		9D3FC4D82011C94A001A4264 /* CuisinePreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3FC4D72011C94A001A4264 /* CuisinePreference.swift */; };
@@ -408,6 +410,8 @@
 		9D1C33E52062378D00B4F69D /* FBSDKShareKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D1C33E62062706000B4F69D /* InstagramManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramManager.swift; sourceTree = "<group>"; };
 		9D1C33EA20650D9900B4F69D /* SnapNShare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapNShare.swift; sourceTree = "<group>"; };
+		9D2A9FEA207E406F004484E6 /* SmartPhotoAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartPhotoAudio.swift; sourceTree = "<group>"; };
+		9D2A9FEB207E4070004484E6 /* SmartPhotoAudio.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmartPhotoAudio.xib; sourceTree = "<group>"; };
 		9D2C484C202073A700FD8B1C /* SelectedPreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedPreference.swift; sourceTree = "<group>"; };
 		9D3D1CDF2006479500AAAB95 /* SnapXConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXConstants.swift; sourceTree = "<group>"; };
 		9D3FC4D72011C94A001A4264 /* CuisinePreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisinePreference.swift; sourceTree = "<group>"; };
@@ -1845,6 +1849,8 @@
 				9D8FB1F6207CCB39002E6662 /* SmartPhotoInfo.swift */,
 				9D8FB1FB207CCB39002E6662 /* SmartPhotoTextReview.xib */,
 				9D8FB1FA207CCB39002E6662 /* SmartPhotoTextReview.swift */,
+				9D2A9FEB207E4070004484E6 /* SmartPhotoAudio.xib */,
+				9D2A9FEA207E406F004484E6 /* SmartPhotoAudio.swift */,
 				9D8FB1F9207CCB39002E6662 /* SmartPhotoDownload.xib */,
 				9D8FB1F7207CCB39002E6662 /* SmartPhotoDownload.swift */,
 				9D8FB202207CD2D7002E6662 /* SmartPhotoDownloadSuccess.xib */,
@@ -2323,6 +2329,7 @@
 				9DB7FE1F20061E8C00D0E816 /* BG@3x.png in Resources */,
 				7E539BD4205BA380002C3E55 /* SnapNShareSocialMedia.storyboard in Resources */,
 				9DB7FE132005F96A00D0E816 /* Assets.xcassets in Resources */,
+				9D2A9FED207E4071004484E6 /* SmartPhotoAudio.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2495,6 +2502,7 @@
 				7E491D25204E920E004445E2 /* RestaurantsMapViewViewController.swift in Sources */,
 				9D8E88F51FFD2BEC0066A1D9 /* Constants.swift in Sources */,
 				9D748B402074B2E2004ED49A /* LoginPopUpPresenter.swift in Sources */,
+				9D2A9FEC207E4071004484E6 /* SmartPhotoAudio.swift in Sources */,
 				7EAC8610201A066B00DE162A /* FoodCardView.swift in Sources */,
 				7EB5922320404A0E00CC6888 /* foodCardOverlayView.swift in Sources */,
 				7E539BD0205BA323002C3E55 /* SnapNShareSocialMediaPresenter.swift in Sources */,

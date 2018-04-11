@@ -74,9 +74,9 @@ class SmartPhotoRouter {
     }
     
     private func loadAudioView() {
-//        if let audioView = loadNib(nimName: SnapXEatsNibNames.smartPhotoAudio) as? SmartPhotoTextReview {
-//            initView(configView: audioView)
-//        }
+        if let audioView = loadNib(nimName: SnapXEatsNibNames.smartPhotoAudio) as? SmartPhotoAudio {
+            initView(configView: audioView)
+        }
     }
     
     private func loadDownloadView() {
