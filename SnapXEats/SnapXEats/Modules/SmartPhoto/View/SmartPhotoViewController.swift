@@ -10,14 +10,15 @@ import Foundation
 import UIKit
 
 class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
-
+    
     // MARK: Properties
-
+    
     var presenter: SmartPhotoPresentation?
-
+    
     @IBOutlet weak var smartPhotoImage: UIImageView!
     // MARK: Lifecycle
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var rootView: UIView!
     
     @IBOutlet weak var infoButton: UIButton!
     
@@ -25,32 +26,103 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
     @IBOutlet weak var audioButton: UIButton!
     @IBOutlet weak var downloadButton: UIButton!
     
+    @IBOutlet weak var buttonView: UIView!
     var smartPhoto: SmartPhoto?
     var dishID: String?
     
     @IBAction func infoButtonAction(_ sender: Any) {
-        presenter?.presentView(view: .info)
+        
+        if infoButton.isSelected {
+            removeSubView()
+        } else {
+            if let photoInfo = smartPhoto {
+             presenter?.presentView(view: .info(photoInfo: photoInfo))
+            }
+        }
+        updateTintColor(sender: sender)
     }
     
-
+    func removeSubView() {
+        for subView in containerView.subviews {
+            subView.removeFromSuperview()
+        }
+         containerView.isHidden = true
+    }
+    
     @IBAction func messageButtonAction(_ sender: Any) {
-         presenter?.presentView(view: .message)
+        
+        if messageButton.isSelected {
+            removeSubView()
+        } else {
+            presenter?.presentView(view: .textReview(textReview: smartPhoto?.text_review ?? ""))
+        }
+        updateTintColor(sender: sender)
     }
     @IBAction func audioButtonAction(_ sender: Any) {
-        presenter?.presentView(view: .audio)
+        if audioButton.isSelected {
+            removeSubView()
+        } else {
+            presenter?.presentView(view: .audio)
+        }
+        updateTintColor(sender: sender)
     }
     
     @IBAction func downloadButtonAction(_ sender: Any) {
-        presenter?.presentView(view: .download)
+        if downloadButton.isSelected {
+            removeSubView()
+        } else {
+            presenter?.presentView(view: .download)
+        }
+        updateTintColor(sender: sender)
     }
     
+    @IBAction func closeButtonAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        initView()
+    }
+    
+    func updateTintColor(sender: Any?) {
+        if let button = sender as? UIButton {
+            switch button.tag  {
+            case 1001:
+                infoButton.isSelected = infoButton.isSelected ? false : true
+                messageButton.isSelected = false
+                audioButton.isSelected = false
+                downloadButton.isSelected = false
+            case 1002:
+                infoButton.isSelected = false
+                messageButton.isSelected = messageButton.isSelected ? false : true
+                audioButton.isSelected = false
+                downloadButton.isSelected = false
+            case 1003:
+                infoButton.isSelected = false
+                messageButton.isSelected = false
+                audioButton.isSelected = audioButton.isSelected ? false : true
+                downloadButton.isSelected = false
+            case 1004:
+                infoButton.isSelected = false
+                messageButton.isSelected = false
+                audioButton.isSelected = false
+                downloadButton.isSelected = downloadButton.isSelected ? false : true
+            default: break
+                
+            }
+        } else {
+            infoButton.isSelected = false
+            messageButton.isSelected = false
+            audioButton.isSelected = false
+            downloadButton.isSelected = false
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let id = dishID, smartPhoto == nil {
+            showLoading()
             presenter?.getSmartPhotoDetails(dishID: id)
         }
     }
@@ -67,13 +139,26 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
             smartPhotoImage.af_setImage(withURL: imageURL, placeholderImage:UIImage(named: SnapXEatsImageNames.restaurant_speciality_placeholder)!)
         }
     }
+    
+    @objc func hideButtonView() {
+        buttonView.isHidden = buttonView.isHidden ? false : true
+        if buttonView.isHidden {
+             removeSubView()
+        }
+        updateTintColor(sender: nil) // this is to reset all the button
+    }
 }
 
 extension SmartPhotoViewController: SmartPhotoView {
     func initView() {
-        containerView.layer.cornerRadius = PopupConstants.containerViewRadius
-        containerView.addShadow()
+        smartPhotoImage.isUserInteractionEnabled = true
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideButtonView))
+        tapGestureRecognizer.numberOfTapsRequired = 1
+        smartPhotoImage.addGestureRecognizer(tapGestureRecognizer)
+        rootView.layer.cornerRadius = PopupConstants.containerViewRadius
+        rootView.addShadow()
+        containerView.isHidden = true
+        buttonView.isHidden = true
     }
     
-    // TODO: implement view output methods
 }

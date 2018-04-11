@@ -29,40 +29,41 @@
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Udx-ss-f4F">
-                    <rect key="frame" x="37.5" y="164" width="245" height="240"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Text Review" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7A8-2U-9p1">
-                            <rect key="frame" x="21" y="32" width="86" height="21"/>
+                            <rect key="frame" x="21" y="10" width="86" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
                             <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEk-uh-xIZ" userLabel="userReview">
-                            <rect key="frame" x="21" y="61" width="216" height="36"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEk-uh-xIZ" userLabel="userReview">
+                            <rect key="frame" x="21" y="30" width="216" height="27"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
-                            <nil key="textColor"/>
+                            <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="240" id="JGO-mz-iMt"/>
-                        <constraint firstAttribute="width" constant="245" id="xSp-Cy-pHs"/>
-                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="s6b-x5-OC3" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="CcZ-Gd-npZ"/>
-                <constraint firstItem="Udx-ss-f4F" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="XLY-vB-XiX"/>
-                <constraint firstItem="s6b-x5-OC3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="rPJ-fg-tGe"/>
-                <constraint firstItem="s6b-x5-OC3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="sgS-ns-Br0"/>
-                <constraint firstItem="Udx-ss-f4F" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="xEt-iO-H1L"/>
-                <constraint firstItem="s6b-x5-OC3" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="yct-7S-F6Z"/>
+                <constraint firstItem="Udx-ss-f4F" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Gkh-lZ-J58"/>
+                <constraint firstItem="s6b-x5-OC3" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="Sns-wA-h4d"/>
+                <constraint firstItem="s6b-x5-OC3" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="UZT-GB-uC8"/>
+                <constraint firstItem="s6b-x5-OC3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aD5-Ff-Pck"/>
+                <constraint firstItem="s6b-x5-OC3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="c1w-os-TTJ"/>
+                <constraint firstItem="Udx-ss-f4F" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="sqm-Za-vUh"/>
+                <constraint firstItem="Udx-ss-f4F" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="wel-n5-C1c"/>
+                <constraint firstItem="Udx-ss-f4F" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="xea-11-sfw"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="reviewMessageLabel" destination="cEk-uh-xIZ" id="HrJ-pl-w6j"/>
+            </connections>
         </view>
     </objects>
 </document>

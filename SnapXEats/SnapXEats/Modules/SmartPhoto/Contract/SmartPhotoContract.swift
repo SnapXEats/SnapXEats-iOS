@@ -9,10 +9,6 @@
 import Foundation
 import Alamofire
 
-enum SmartPhotView {
-    case info, message, audio, download, success
-}
-
 protocol SmartPhotoView: BaseView {
     var presenter: SmartPhotoPresentation? {get set}
     

@@ -11,7 +11,13 @@ import AVFoundation
 
 
 class SmartPhotoTextReview: UIView {
-
+    var textReview = ""
+    
+    @IBOutlet weak var reviewMessageLabel: UILabel!
+    
+    func initView() {
+        reviewMessageLabel.text = textReview
+    }
 }
 
 

@@ -17,8 +17,8 @@ class SmartPhotoInteractor {
 
 extension SmartPhotoInteractor: SmartPhotoUseCase {
     func sendSmartPhotoRequest(dishID: String) {
-        let paraMeter = [ SnapXEatsWebServiceParameterKeys.restaurant_dish_id: dishID]
-        smartPhotoRequest(forPath: SnapXEatsWebServicePath.dishesURL, parameters: paraMeter)
+        let paraMeter: [String: Any] = [:]
+        smartPhotoRequest(forPath: SnapXEatsWebServicePath.dishesURL + "/\(dishID)", parameters: paraMeter)
     }
 }
 

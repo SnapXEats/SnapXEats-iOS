@@ -80,7 +80,7 @@ enum SnapXEatsLocationConstant {
 }
 enum SnapXEatsWebServicePath {
     static let  port = "3000"
-    static let  rootURL =  "http://e928243b.ngrok.io" //"http://ec2-18-216-193-78.us-east-2.compute.amazonaws.com:" + port
+    static let  rootURL =  "http://ec2-18-216-193-78.us-east-2.compute.amazonaws.com:" + port
     static let  cuisinePreferenceURL = "/api/v1/cuisine"
     static let  dishesURL = "/api/v1/dishes"
     static let  foodtypesURL = "/api/v1/foodTypes"
@@ -186,6 +186,11 @@ enum SnapXEatsNibNames {
     static let noFoodCardsPopup = "NoFoodCardsPopup"
     static let sharedSucceesPopup = "SharedSucceesPopup"
     static let loginPopup = "LoginPopup"
+    static let smartPhotoInfo = "SmartPhotoInfo"
+    static let smartPhotoMessage = "SmartPhotoTextReview"
+    static let smartPhotoAudio = "smartPhotoAudio"
+    static let smartPhotoDownload = "SmartPhotoDownload"
+    static let smartPhotoSuccess = "SmartPhotoDownloadSuccess"
 }
 
 enum SnapXEatsWebServiceParameterKeys {
@@ -222,6 +227,8 @@ enum SnapXEatsAppDefaults {
     static let meterToMileMultiplier = 0.000621371
     static let restaurantDistance = "%.1f mi"
     static let milesToMetersMultiplier = 1609.344
+    static let amenitiesTableRowHeight: CGFloat = 20
+
 }
 
 enum SnapXEatsSettingsURL {

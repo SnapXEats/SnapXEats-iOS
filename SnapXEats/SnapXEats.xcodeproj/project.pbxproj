@@ -1182,10 +1182,10 @@
 			children = (
 				7E83973E20454DDB00E71C6D /* TableViewCell */,
 				7E5E7FED203C0E4200009A56 /* collectionCell */,
-				7E5E800A203D4B2F00009A56 /* RestaurantTimingViewController.swift */,
-				7E5E800E203D6A4000009A56 /* TimingTableViewCell.swift */,
-				9D0D7133203AAE1F0077FA7A /* RestaurantDetailsViewController.swift */,
 				7E5E7FC1203AD11200009A56 /* RestaurantDetails.storyboard */,
+				9D0D7133203AAE1F0077FA7A /* RestaurantDetailsViewController.swift */,
+				7E5E800E203D6A4000009A56 /* TimingTableViewCell.swift */,
+				7E5E800A203D4B2F00009A56 /* RestaurantTimingViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
