@@ -12,7 +12,7 @@ import SwiftInstagram
 
 enum Screens {
     case firsTimeUser, login, instagram(sharedLoginFromSkip: Bool, rootController: UINavigationController?), location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation(parent: UIViewController), userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurantID: String, parentController: UINavigationController, showMoreInfo: Bool), restaurantDirections(details: RestaurantDetails, parentController: UINavigationController), wishlist, restaurantsMapView(restaurants: [Restaurant], parentController: UINavigationController), snapNShareHome(restaurantID: String), snapNSharePhoto(photo: UIImage, iparentController: UINavigationController, restaurantID: String), snapNShareSocialMedia(parentController: UINavigationController), checkin(restaurant: Restaurant),
-    sharedSuccess(restaurantID: String), loginPopUp(restaurantID: String, parentController: UINavigationController), socialLoginFromLoginPopUp(parentController: UINavigationController)
+    sharedSuccess(restaurantID: String), loginPopUp(restaurantID: String, parentController: UINavigationController), socialLoginFromLoginPopUp(parentController: UINavigationController), smartPhoto(dishID: String)
 }
 
 class RootRouter: NSObject {
@@ -72,9 +72,7 @@ class RootRouter: NSObject {
         if sharedLoginFromSkip {
             window?.rootViewController?.dismiss(animated: false, completion: nil) // first dissmiss the  login  with FB and Instagram view when user try to shared photo 
         }
-        window?.rootViewController?.present(instagramViewController, animated: true, completion: {
-            
-        })
+        window?.rootViewController?.present(instagramViewController, animated: true, completion: nil)
     }
     
     private func presentLocationScreen() {
@@ -193,6 +191,13 @@ class RootRouter: NSObject {
         presentScreen(screens: screen)
     }
     
+    func presentSmartPhotoScreen(dishID: String) {
+            let smartPhotoController = SmartPhotoRouter.shared.loadModule()
+            smartPhotoController.dishID = dishID
+            window?.rootViewController?.present(smartPhotoController, animated: true, completion: nil)
+    }
+    
+    
     func presentScreen(screens: Screens) {
         
         if window?.rootViewController == nil &&  drawerController != nil {
@@ -240,6 +245,8 @@ class RootRouter: NSObject {
             presentLoginPopUp(restaurantID: restaurantID, parentController: parentController)
         case .socialLoginFromLoginPopUp(let parentController):
             presentSocialShareAferNewLogin( parentController: parentController)
+        case .smartPhoto(let dishID):
+            presentSmartPhotoScreen(dishID: dishID)
         }
     }
         

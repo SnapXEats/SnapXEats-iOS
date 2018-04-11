@@ -30,7 +30,6 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
         static let open = "Open Today"
         static let close = "Closed Now"
     }
-    private let amenitiesTableRowHeight: CGFloat = 20
     
     var presenter: RestaurantDetailsPresentation?
     var restaurant_info_id: String?
@@ -151,7 +150,7 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
             if showMoreInfo {
                 amenities = details.restaurant_amenities
                 amenitiesTableView.reloadData()
-                amenityTableHeightConstraint.constant = CGFloat(amenities.count) * amenitiesTableRowHeight
+                amenityTableHeightConstraint.constant = CGFloat(amenities.count) * SnapXEatsAppDefaults.amenitiesTableRowHeight
             }
         }
     }
@@ -251,7 +250,7 @@ extension RestaurantDetailsViewController: UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return amenitiesTableRowHeight
+        return SnapXEatsAppDefaults.amenitiesTableRowHeight
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -186,6 +186,11 @@ enum SnapXEatsNibNames {
     static let noFoodCardsPopup = "NoFoodCardsPopup"
     static let sharedSucceesPopup = "SharedSucceesPopup"
     static let loginPopup = "LoginPopup"
+    static let smartPhotoInfo = "SmartPhotoInfo"
+    static let smartPhotoMessage = "SmartPhotoTextReview"
+    static let smartPhotoAudio = "SmartPhotoAudio"
+    static let smartPhotoDownload = "SmartPhotoDownload"
+    static let smartPhotoSuccess = "SmartPhotoDownloadSuccess"
 }
 
 enum SnapXEatsWebServiceParameterKeys {
@@ -200,6 +205,7 @@ enum SnapXEatsWebServiceParameterKeys {
     static let audioReview   = "audioReview"
     static let textReview = "textReview"
     static let rating = "rating"
+    static let restaurant_dish_id = "restaurant_dish_id"
 }
 enum SnapXButtonTitle {
     static let ok = "Ok"
@@ -221,6 +227,8 @@ enum SnapXEatsAppDefaults {
     static let meterToMileMultiplier = 0.000621371
     static let restaurantDistance = "%.1f mi"
     static let milesToMetersMultiplier = 1609.344
+    static let amenitiesTableRowHeight: CGFloat = 20
+
 }
 
 enum SnapXEatsSettingsURL {
@@ -242,6 +250,7 @@ enum SnapXEatsConstant {
     static let platFormInstagram = "instagram"
     static let snaXEatsFirstTimeUser = "SnaXEatsFirstTimeUser"
     static let firstTimeUser = "firstTimeUser"
+    static let urlScheme = "snapXEats"
 }
 
 enum UberAppConstants {

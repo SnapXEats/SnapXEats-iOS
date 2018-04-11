@@ -18,6 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        if  url.scheme == SnapXEatsConstant.urlScheme  {
+            return SnapXLinkingManager.shared.checkDeepLink(with: url)
+        }
         return SDKApplicationDelegate.shared.application(app, open: url, options: options)
     }
     
@@ -67,4 +70,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage.backIcon
         //UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -60), for: .default)
     }
+    
 }
