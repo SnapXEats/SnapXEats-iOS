@@ -21,7 +21,7 @@ class SmartPhoto: Mappable {
     var pic_taken_date =  SnapXEatsConstant.emptyString
     var audio_review_url =  SnapXEatsConstant.emptyString
     var text_review =  SnapXEatsConstant.emptyString
-    var restaurant_amenities =  [String]()
+    var restaurant_aminities =  [String]()
 
     required init?(map: Map) {
     }
@@ -34,7 +34,7 @@ class SmartPhoto: Mappable {
         pic_taken_date  <- map["pic_taken_date"]
         audio_review_url    <- map["audio_review_url"]
         text_review <- map["text_review"]
-        restaurant_amenities <- map["restaurant_amenities"]
+        restaurant_aminities <- map["restaurant_aminities"]
     }
 }
 

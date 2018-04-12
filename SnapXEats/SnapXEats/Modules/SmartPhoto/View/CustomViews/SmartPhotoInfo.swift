@@ -19,11 +19,18 @@ class SmartPhotoInfo: UIView {
     
     func initView() {
         if let smartPhotoInfo  = smartPhotoInfo {
+            registerCellNib()
             restaurantName.text = smartPhotoInfo.restaurant_name
             restaurantAddress.text = smartPhotoInfo.restaurant_address
-            moreInfo = smartPhotoInfo.restaurant_amenities
+            moreInfo = smartPhotoInfo.restaurant_aminities
             moreInfo.count == 0 ? restaurantInfoTabel.isHidden = true : restaurantInfoTabel.reloadData()
         }
+    }
+    
+    func registerCellNib() {
+        let tableViewCellNib = UINib(nibName: SnapXEatsNibNames.moreInfoTableViewCell, bundle: nil)
+        restaurantInfoTabel.register(tableViewCellNib, forCellReuseIdentifier: SnapXEatsCellResourceIdentifiler.moreInfoTableView)
+        restaurantInfoTabel.separatorColor = UIColor.clear
     }
     
 }

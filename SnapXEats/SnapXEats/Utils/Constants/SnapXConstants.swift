@@ -250,7 +250,7 @@ enum SnapXEatsConstant {
     static let platFormInstagram = "instagram"
     static let snaXEatsFirstTimeUser = "SnaXEatsFirstTimeUser"
     static let firstTimeUser = "firstTimeUser"
-    static let urlScheme = "snapXEats"
+    static let urlScheme = "snapxeats"
 }
 
 enum UberAppConstants {
