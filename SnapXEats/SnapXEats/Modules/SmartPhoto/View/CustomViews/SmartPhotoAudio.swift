@@ -11,12 +11,10 @@ import AVFoundation
 
 
 class SmartPhotoAudio: UIView {
-    var textReview = ""
-    
-    @IBOutlet weak var reviewMessageLabel: UILabel!
-    
+   var audioURL: String?
+
     func initView() {
-        reviewMessageLabel.text = textReview
+       
     }
 }
 

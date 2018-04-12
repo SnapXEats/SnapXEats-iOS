@@ -61,8 +61,9 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
     @IBAction func audioButtonAction(_ sender: Any) {
         if audioButton.isSelected {
             removeSubView()
-        } else {
-            presenter?.presentView(view: .audio)
+        } else if let audioURL = smartPhoto?.audio_review_url {
+                presenter?.presentView(view: .audio(audioURL: audioURL))
+        
         }
         updateTintColor(sender: sender)
     }
@@ -70,8 +71,8 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
     @IBAction func downloadButtonAction(_ sender: Any) {
         if downloadButton.isSelected {
             removeSubView()
-        } else {
-            presenter?.presentView(view: .download)
+        } else if let imageURL = smartPhoto?.dish_image_url {
+            presenter?.presentView(view: .download(imageURL: imageURL, audioURL: smartPhoto?.audio_review_url))
         }
         updateTintColor(sender: sender)
     }
@@ -138,6 +139,14 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
         if let url = smartPhoto?.dish_image_url, let imageURL = URL(string: url) {
             smartPhotoImage.af_setImage(withURL: imageURL, placeholderImage:UIImage(named: SnapXEatsImageNames.restaurant_speciality_placeholder)!)
         }
+        
+        if let _ = smartPhoto?.audio_review_url {
+            audioButton.isHidden = false
+        }
+        
+        if let text = smartPhoto?.text_review , text != "" {
+            messageButton.isHidden = false
+        }
     }
     
     @objc func hideButtonView() {
@@ -159,6 +168,8 @@ extension SmartPhotoViewController: SmartPhotoView {
         rootView.addShadow()
         containerView.isHidden = true
         buttonView.isHidden = true
+        audioButton.isHidden = true
+        messageButton.isHidden = true
     }
     
 }

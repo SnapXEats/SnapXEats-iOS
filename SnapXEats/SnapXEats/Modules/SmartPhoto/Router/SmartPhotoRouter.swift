@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 enum SmartPhotView {
-    case info(photoInfo: SmartPhoto), textReview(textReview: String), audio, download, success
+    case info(photoInfo: SmartPhoto), textReview(textReview: String), audio(audioURL: String), download(imageURL: String, audioURL: String?), success
 }
 
 
@@ -73,14 +73,18 @@ class SmartPhotoRouter {
         }
     }
     
-    private func loadAudioView() {
+    private func loadAudioView(audioURL: String) {
         if let audioView = loadNib(nimName: SnapXEatsNibNames.smartPhotoAudio) as? SmartPhotoAudio {
+            audioView.audioURL = audioURL
             initView(configView: audioView)
         }
     }
     
-    private func loadDownloadView() {
+    private func loadDownloadView(imageURL: String, audioURL: String?) {
         if let downloadView = loadNib(nimName: SnapXEatsNibNames.smartPhotoDownload) as? SmartPhotoDownload {
+            downloadView.imageURL = imageURL
+            downloadView.audioURL = audioURL
+            downloadView.initView()
             initView(configView: downloadView)
         }
     }
@@ -96,12 +100,12 @@ extension SmartPhotoRouter: SmartPhotoWireframe {
         switch view {
         case .info(let photoInfo):
             presentInfoView(smartPhotInfo: photoInfo)
-        case .audio:
-            presentAudioReview()
+        case .audio(let audioURL):
+            presentAudioReview(audioURL: audioURL)
         case .textReview(let textReview):
             presentTextReview(textReview: textReview)
-        case .download:
-            presentDownLoadView()
+        case .download(let imageURL, let audioURL):
+            presentDownLoadView(imageURL: imageURL, audioURL: audioURL)
         case .success:
             presentSuccessView()
         }
@@ -115,12 +119,12 @@ extension SmartPhotoRouter: SmartPhotoWireframe {
         loadTextView(textReview: textReview)
     }
     
-    private func presentAudioReview() {
-        loadAudioView()
+    private func presentAudioReview(audioURL: String) {
+        loadAudioView(audioURL: audioURL)
     }
     
-    private func presentDownLoadView() {
-        loadDownloadView()
+    private func presentDownLoadView(imageURL: String, audioURL: String?) {
+        loadDownloadView(imageURL: imageURL, audioURL: audioURL)
     }
     
     func presentSuccessView() {
