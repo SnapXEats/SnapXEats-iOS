@@ -60,9 +60,11 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
     }
     @IBAction func audioButtonAction(_ sender: Any) {
         if audioButton.isSelected {
+            presenter?.pausePlayAudio()
             removeSubView()
-        } else {
-            presenter?.presentView(view: .audio)
+        } else if let audioURL = smartPhoto?.audio_review_url {
+                presenter?.presentView(view: .audio(audioURL: audioURL))
+        
         }
         updateTintColor(sender: sender)
     }
@@ -70,10 +72,12 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
     @IBAction func downloadButtonAction(_ sender: Any) {
         if downloadButton.isSelected {
             removeSubView()
-        } else {
-            presenter?.presentView(view: .download)
+             updateTintColor(sender: sender)
+        } else if let imageURL = smartPhoto?.dish_image_url, checkRechability() {
+            presenter?.presentView(view: .download(imageURL: imageURL, audioURL: smartPhoto?.audio_review_url))
+             updateTintColor(sender: sender)  // if internet is off tint colour should not change 
         }
-        updateTintColor(sender: sender)
+       
     }
     
     @IBAction func closeButtonAction(_ sender: Any) {
@@ -121,10 +125,7 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let id = dishID, smartPhoto == nil {
-            showLoading()
-            presenter?.getSmartPhotoDetails(dishID: id)
-        }
+        loadData()
     }
     
     override func success(result: Any?) {
@@ -138,6 +139,14 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
         if let url = smartPhoto?.dish_image_url, let imageURL = URL(string: url) {
             smartPhotoImage.af_setImage(withURL: imageURL, placeholderImage:UIImage(named: SnapXEatsImageNames.restaurant_speciality_placeholder)!)
         }
+        
+        if let audio = smartPhoto?.audio_review_url, audio != ""  {
+            audioButton.isHidden = false
+        }
+        
+        if let text = smartPhoto?.text_review , text != "" {
+            messageButton.isHidden = false
+        }
     }
     
     @objc func hideButtonView() {
@@ -147,10 +156,25 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
         }
         updateTintColor(sender: nil) // this is to reset all the button
     }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        unRegisterNotification()
+    }
+    
+    override func internetConnected() {
+        loadData()
+    }
+    func loadData() {
+        if let id = dishID, smartPhoto == nil, checkRechability() {
+            showLoading()
+            presenter?.getSmartPhotoDetails(dishID: id)
+        }
+    }
 }
 
 extension SmartPhotoViewController: SmartPhotoView {
     func initView() {
+        registerNotification()
         smartPhotoImage.isUserInteractionEnabled = true
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideButtonView))
         tapGestureRecognizer.numberOfTapsRequired = 1
@@ -159,6 +183,8 @@ extension SmartPhotoViewController: SmartPhotoView {
         rootView.addShadow()
         containerView.isHidden = true
         buttonView.isHidden = true
+        audioButton.isHidden = true
+        messageButton.isHidden = true
     }
     
 }

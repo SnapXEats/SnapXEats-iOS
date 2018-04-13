@@ -35,7 +35,7 @@ protocol SnapXDialogs: class {
     func showMessage(_ message: String?, withTitle title: String?)
 }
 
-protocol RootWireFrame {
+protocol RootWireFrame: class {
     func presentScreen(screen: Screens)
 }
 

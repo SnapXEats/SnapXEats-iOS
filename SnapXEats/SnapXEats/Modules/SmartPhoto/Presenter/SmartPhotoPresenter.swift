@@ -28,6 +28,14 @@ extension SmartPhotoPresenter: SmartPhotoPresentation {
     func presentView(view: SmartPhotView) {
         router?.presentSmartPhotoView(view: view)
     }
+    
+    func showSuccess() {
+        router?.presentSmartPhotoView(view: .success)
+    }
+    
+    func pausePlayAudio() {
+        router?.pausePlayAudio()
+    }
 }
 
 extension SmartPhotoPresenter: SmartPhotoInteractorOutput {

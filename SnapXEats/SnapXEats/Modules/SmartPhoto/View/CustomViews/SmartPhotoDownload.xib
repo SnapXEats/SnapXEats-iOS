@@ -28,15 +28,36 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Udx-ss-f4F">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jD4-oq-qCs" userLabel="DownloadBar">
-                            <rect key="frame" x="121" y="30" width="40" height="29"/>
+                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dEx-0v-POg" customClass="UICircularProgressRingView" customModule="UICircularProgressRing">
+                            <rect key="frame" x="91" y="8" width="100" height="100"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="40" id="R2Q-3R-y4R"/>
+                                <constraint firstAttribute="width" constant="100" id="LmL-wQ-f0t"/>
+                                <constraint firstAttribute="height" constant="100" id="T3T-wm-bYb"/>
                             </constraints>
-                            <state key="normal" image="download"/>
-                        </button>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                    <real key="value" value="100"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="outerRingWidth">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="innerRingWidth">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="outerRingColor">
+                                    <color key="value" red="0.33725490200000002" green="0.33725490200000002" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="innerRingColor">
+                                    <color key="value" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="ibRingStyle">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downloading ..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8XH-ju-nKU">
-                            <rect key="frame" x="79" y="79" width="123" height="21"/>
+                            <rect key="frame" x="79" y="139" width="123" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="c4c-OE-SXh"/>
                                 <constraint firstAttribute="width" constant="123" id="gYd-DT-rSX"/>
@@ -48,9 +69,9 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="jD4-oq-qCs" firstAttribute="top" secondItem="Udx-ss-f4F" secondAttribute="top" constant="30" id="3nw-3W-EH6"/>
-                        <constraint firstItem="jD4-oq-qCs" firstAttribute="centerX" secondItem="8XH-ju-nKU" secondAttribute="centerX" id="UFa-bv-FR2"/>
-                        <constraint firstItem="8XH-ju-nKU" firstAttribute="top" secondItem="jD4-oq-qCs" secondAttribute="bottom" constant="20" id="kla-Ig-azg"/>
+                        <constraint firstItem="dEx-0v-POg" firstAttribute="centerX" secondItem="8XH-ju-nKU" secondAttribute="centerX" id="DdC-2d-kLl"/>
+                        <constraint firstItem="dEx-0v-POg" firstAttribute="top" secondItem="Udx-ss-f4F" secondAttribute="top" constant="8" id="Uoo-se-YRo"/>
+                        <constraint firstItem="8XH-ju-nKU" firstAttribute="top" secondItem="dEx-0v-POg" secondAttribute="bottom" constant="31" id="dhR-M1-K32"/>
                         <constraint firstItem="8XH-ju-nKU" firstAttribute="leading" secondItem="Udx-ss-f4F" secondAttribute="leading" constant="79" id="yQ3-FQ-1RL"/>
                     </constraints>
                 </view>
@@ -67,9 +88,9 @@
                 <constraint firstItem="s6b-x5-OC3" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="yct-7S-F6Z"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="progressBar" destination="dEx-0v-POg" id="DEj-uK-Jvl"/>
+            </connections>
         </view>
     </objects>
-    <resources>
-        <image name="download" width="29" height="29"/>
-    </resources>
 </document>

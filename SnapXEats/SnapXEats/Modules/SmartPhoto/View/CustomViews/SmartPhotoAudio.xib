@@ -34,22 +34,24 @@
                             <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play_popup_icon" translatesAutoresizingMaskIntoConstraints="NO" id="85f-2k-rO1">
-                            <rect key="frame" x="138" y="59" width="44" height="44"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="44" id="ASE-V7-Xov"/>
-                                <constraint firstAttribute="width" constant="44" id="Guv-29-ScM"/>
-                            </constraints>
-                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="7A8-2U-9p1" firstAttribute="leading" secondItem="Udx-ss-f4F" secondAttribute="leading" constant="21" id="7do-9u-mQA"/>
                         <constraint firstItem="7A8-2U-9p1" firstAttribute="top" secondItem="Udx-ss-f4F" secondAttribute="top" constant="10" id="Nmk-V1-Yjj"/>
-                        <constraint firstItem="85f-2k-rO1" firstAttribute="top" secondItem="7A8-2U-9p1" secondAttribute="bottom" constant="30" id="diU-Oj-l6r"/>
-                        <constraint firstItem="85f-2k-rO1" firstAttribute="centerX" secondItem="Udx-ss-f4F" secondAttribute="centerX" id="xAE-5B-NKK"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XMF-My-D8n">
+                    <rect key="frame" x="135" y="70" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="ALe-bL-c2A"/>
+                        <constraint firstAttribute="height" constant="50" id="Dnx-OI-Xrl"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="Play_icon"/>
+                    <connections>
+                        <action selector="playButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="vYc-U2-q7H"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
@@ -59,6 +61,8 @@
                 <constraint firstItem="Udx-ss-f4F" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="VV8-7d-Sdj"/>
                 <constraint firstItem="s6b-x5-OC3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aD5-Ff-Pck"/>
                 <constraint firstItem="s6b-x5-OC3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="c1w-os-TTJ"/>
+                <constraint firstItem="XMF-My-D8n" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="50" id="gzk-Ot-79O"/>
+                <constraint firstItem="XMF-My-D8n" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="pZh-z5-oSc"/>
                 <constraint firstItem="Udx-ss-f4F" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="sqm-Za-vUh"/>
                 <constraint firstItem="Udx-ss-f4F" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="wel-n5-C1c"/>
                 <constraint firstItem="Udx-ss-f4F" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="xea-11-sfw"/>
@@ -67,6 +71,6 @@
         </view>
     </objects>
     <resources>
-        <image name="play_popup_icon" width="16" height="18"/>
+        <image name="Play_icon" width="44" height="44"/>
     </resources>
 </document>
