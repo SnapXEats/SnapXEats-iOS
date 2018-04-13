@@ -14,9 +14,10 @@ protocol SmartPhotoView: BaseView {
     
 }
 
-protocol SmartPhotoPresentation: class {
+protocol SmartPhotoPresentation: SuccessScreen {
      func getSmartPhotoDetails(dishID: String)
      func presentView(view: SmartPhotView)
+     func pausePlayAudio()
 }
 
 protocol SmartPhotoUseCase: SmartPhotoFormatter {
@@ -41,4 +42,6 @@ protocol SmartPhotoInteractorOutput: Response {
 
 protocol SmartPhotoWireframe: RootWireFrame {
     func presentSmartPhotoView(view: SmartPhotView)
+    func pausePlayAudio()
+    func checkInternet() -> Bool
 }

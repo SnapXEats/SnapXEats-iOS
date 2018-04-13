@@ -140,6 +140,9 @@
 		9D0D715F203F144F0077FA7A /* DrawerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D7157203F144E0077FA7A /* DrawerPresenter.swift */; };
 		9D0D7161203F144F0077FA7A /* DrawerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D715B203F144E0077FA7A /* DrawerInteractor.swift */; };
 		9D0D7162203F144F0077FA7A /* DrawerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D715D203F144E0077FA7A /* DrawerRouter.swift */; };
+		9D1940452080E3B900B15F1E /* SmartPhotoDownloadSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8FB203207CD2D8002E6662 /* SmartPhotoDownloadSuccess.swift */; };
+		9D19404A2081024100B15F1E /* JukeboxItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1940472081024000B15F1E /* JukeboxItem.swift */; };
+		9D19404B2081024100B15F1E /* Jukebox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1940482081024000B15F1E /* Jukebox.swift */; };
 		9D1C33E0205FAAC100B4F69D /* SecondSocialLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C33DF205FAAC100B4F69D /* SecondSocialLogin.swift */; };
 		9D1C33E2205FAD1B00B4F69D /* SocialPlatformHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C33E1205FAD1B00B4F69D /* SocialPlatformHelper.swift */; };
 		9D1C33E42062378D00B4F69D /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D1C33E52062378D00B4F69D /* FBSDKShareKit.framework */; };
@@ -212,7 +215,6 @@
 		9D8FB200207CCB39002E6662 /* SmartPhotoTextReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8FB1FA207CCB39002E6662 /* SmartPhotoTextReview.swift */; };
 		9D8FB201207CCB39002E6662 /* SmartPhotoTextReview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D8FB1FB207CCB39002E6662 /* SmartPhotoTextReview.xib */; };
 		9D8FB204207CD2D8002E6662 /* SmartPhotoDownloadSuccess.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D8FB202207CD2D7002E6662 /* SmartPhotoDownloadSuccess.xib */; };
-		9D8FB205207CD2D8002E6662 /* SmartPhotoDownloadSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8FB203207CD2D8002E6662 /* SmartPhotoDownloadSuccess.swift */; };
 		9D8FB208207CF1C5002E6662 /* SmartPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8FB207207CF1C5002E6662 /* SmartPhoto.swift */; };
 		9D902BC920171AED00359DFD /* FoodCardsContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D902BC020171AED00359DFD /* FoodCardsContract.swift */; };
 		9D902BCA20171AED00359DFD /* FoodCardsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D902BC220171AED00359DFD /* FoodCardsPresenter.swift */; };
@@ -405,6 +407,9 @@
 		9D0D7157203F144E0077FA7A /* DrawerPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerPresenter.swift; sourceTree = "<group>"; };
 		9D0D715B203F144E0077FA7A /* DrawerInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerInteractor.swift; sourceTree = "<group>"; };
 		9D0D715D203F144E0077FA7A /* DrawerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerRouter.swift; sourceTree = "<group>"; };
+		9D1940472081024000B15F1E /* JukeboxItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JukeboxItem.swift; sourceTree = "<group>"; };
+		9D1940482081024000B15F1E /* Jukebox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Jukebox.swift; sourceTree = "<group>"; };
+		9D1940492081024000B15F1E /* Jukebox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jukebox.h; sourceTree = "<group>"; };
 		9D1C33DF205FAAC100B4F69D /* SecondSocialLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSocialLogin.swift; sourceTree = "<group>"; };
 		9D1C33E1205FAD1B00B4F69D /* SocialPlatformHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialPlatformHelper.swift; sourceTree = "<group>"; };
 		9D1C33E52062378D00B4F69D /* FBSDKShareKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -582,8 +587,8 @@
 		7E389703205F86B5005E248F /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				7E389704205F86F1005E248F /* AudioRecordingPopUp.swift */,
 				7E389706205F8703005E248F /* AudioRecordingPopUp.xib */,
+				7E389704205F86F1005E248F /* AudioRecordingPopUp.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -951,6 +956,7 @@
 		7E71FC022022CC6800CA8467 /* External Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				9D194046208101BF00B15F1E /* JukeBox */,
 				9D0D70F8207B4A0400A521EB /* DeepLinking */,
 				7E5E7FC8203AF7EE00009A56 /* ImageSlideshow */,
 				7E71FC032022CCAD00CA8467 /* KYDrawer */,
@@ -1315,6 +1321,16 @@
 				9D0D715D203F144E0077FA7A /* DrawerRouter.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		9D194046208101BF00B15F1E /* JukeBox */ = {
+			isa = PBXGroup;
+			children = (
+				9D1940492081024000B15F1E /* Jukebox.h */,
+				9D1940482081024000B15F1E /* Jukebox.swift */,
+				9D1940472081024000B15F1E /* JukeboxItem.swift */,
+			);
+			path = JukeBox;
 			sourceTree = "<group>";
 		};
 		9D1C33E920650D8000B4F69D /* SnapNShare */ = {
@@ -2562,6 +2578,7 @@
 				9D902BE5201729E400359DFD /* SelectLocationPresenter.swift in Sources */,
 				7E673B18204961C9005D19DC /* WishlistContract.swift in Sources */,
 				7ED039F220652F97005A4215 /* RewardPoints.swift in Sources */,
+				9D19404A2081024100B15F1E /* JukeboxItem.swift in Sources */,
 				7E7AC90E206CCA1C00CA4FEF /* NoFoodCardsPopup.swift in Sources */,
 				7E5E7FE3203AF7EE00009A56 /* ZoomAnimatedTransitioning.swift in Sources */,
 				9D0D7138203AAE1F0077FA7A /* RestaurantDetailsContract.swift in Sources */,
@@ -2598,7 +2615,6 @@
 				7E5946972020BD02006702AF /* SearchPlacesTableViewCell.swift in Sources */,
 				7EB5921F2040048600CC6888 /* DrivingDirections.swift in Sources */,
 				9D8E89051FFD2BEC0066A1D9 /* UICollectionViewCell.swift in Sources */,
-				9D8FB205207CD2D8002E6662 /* SmartPhotoDownloadSuccess.swift in Sources */,
 				9DBA865A204A95FB00C99841 /* WishList.swift in Sources */,
 				7EDB8ED8204FF3710015F48A /* RestaurantCollectionViewCell.swift in Sources */,
 				9D8E89061FFD2BEC0066A1D9 /* UIStoryboard.swift in Sources */,
@@ -2616,6 +2632,7 @@
 				9DAF6F6D205AAA26003001B5 /* InstagramLoginInteractor.swift in Sources */,
 				9D8E890A1FFD2BEC0066A1D9 /* SimpleCircle.swift in Sources */,
 				7E389709205FCBA6005E248F /* FileManager.swift in Sources */,
+				9D1940452080E3B900B15F1E /* SmartPhotoDownloadSuccess.swift in Sources */,
 				7E5E7FE1203AF7EE00009A56 /* UIImage+AspectFit.swift in Sources */,
 				7E539BAC205A522E002C3E55 /* SnapNSharePhotoPresenter.swift in Sources */,
 				9D8E890B1FFD2BEC0066A1D9 /* PlainButtonCell.swift in Sources */,
@@ -2624,6 +2641,7 @@
 				9D955D2B2028A91A0007CB01 /* SnapXEatsUserLocation.swift in Sources */,
 				9D8E890F1FFD2BEC0066A1D9 /* ProfileLocalDataManager.swift in Sources */,
 				7EA940842063E9310005B6B9 /* CheckinPopupContract.swift in Sources */,
+				9D19404B2081024100B15F1E /* Jukebox.swift in Sources */,
 				9D3FC4DB2011E34D001A4264 /* CuisineCollectionViewCell.swift in Sources */,
 				9D8E89101FFD2BEC0066A1D9 /* ProfileApiDataManager.swift in Sources */,
 				9DE7CE552023620500BBBFEC /* UserPreferenceRouter.swift in Sources */,
