@@ -155,6 +155,16 @@
 		9D3FC4D82011C94A001A4264 /* CuisinePreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3FC4D72011C94A001A4264 /* CuisinePreference.swift */; };
 		9D3FC4DB2011E34D001A4264 /* CuisineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3FC4D92011E34D001A4264 /* CuisineCollectionViewCell.swift */; };
 		9D3FC4DC2011E34D001A4264 /* CuisineCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D3FC4DA2011E34D001A4264 /* CuisineCollectionViewCell.xib */; };
+		9D48FF552081F0D600A88E70 /* SmartPhotoDraftContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D48FF4C2081F0D600A88E70 /* SmartPhotoDraftContract.swift */; };
+		9D48FF562081F0D600A88E70 /* SmartPhotoDraftPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D48FF4E2081F0D600A88E70 /* SmartPhotoDraftPresenter.swift */; };
+		9D48FF572081F0D600A88E70 /* SmartPhotoDraftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D48FF502081F0D600A88E70 /* SmartPhotoDraftViewController.swift */; };
+		9D48FF582081F0D600A88E70 /* SmartPhotoDraftInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D48FF522081F0D600A88E70 /* SmartPhotoDraftInteractor.swift */; };
+		9D48FF592081F0D600A88E70 /* SmartPhotoDraftRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D48FF542081F0D600A88E70 /* SmartPhotoDraftRouter.swift */; };
+		9D48FF5B2081F4B500A88E70 /* SmartPhotoDraft.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D48FF5A2081F4B500A88E70 /* SmartPhotoDraft.storyboard */; };
+		9D48FF5D2081F7E500A88E70 /* DraftTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D48FF5C2081F7E500A88E70 /* DraftTableViewController.swift */; };
+		9D48FF5F2081F82C00A88E70 /* SmartPhotoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D48FF5E2081F82C00A88E70 /* SmartPhotoTableViewController.swift */; };
+		9D48FF6420820A6400A88E70 /* SmartPhotoTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D48FF6320820A6400A88E70 /* SmartPhotoTableCell.xib */; };
+		9D48FF6620820CB500A88E70 /* SmartPhotoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D48FF6520820CB500A88E70 /* SmartPhotoTableCell.swift */; };
 		9D748B272073883C004ED49A /* SharedSucceesPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D748B252073883C004ED49A /* SharedSucceesPopup.swift */; };
 		9D748B282073883C004ED49A /* SharedSucceesPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D748B262073883C004ED49A /* SharedSucceesPopup.xib */; };
 		9D748B3F2074B2E2004ED49A /* LoginPopUpContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D748B362074B2E2004ED49A /* LoginPopUpContract.swift */; };
@@ -422,6 +432,16 @@
 		9D3FC4D72011C94A001A4264 /* CuisinePreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisinePreference.swift; sourceTree = "<group>"; };
 		9D3FC4D92011E34D001A4264 /* CuisineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisineCollectionViewCell.swift; sourceTree = "<group>"; };
 		9D3FC4DA2011E34D001A4264 /* CuisineCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CuisineCollectionViewCell.xib; sourceTree = "<group>"; };
+		9D48FF4C2081F0D600A88E70 /* SmartPhotoDraftContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartPhotoDraftContract.swift; sourceTree = "<group>"; };
+		9D48FF4E2081F0D600A88E70 /* SmartPhotoDraftPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartPhotoDraftPresenter.swift; sourceTree = "<group>"; };
+		9D48FF502081F0D600A88E70 /* SmartPhotoDraftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartPhotoDraftViewController.swift; sourceTree = "<group>"; };
+		9D48FF522081F0D600A88E70 /* SmartPhotoDraftInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartPhotoDraftInteractor.swift; sourceTree = "<group>"; };
+		9D48FF542081F0D600A88E70 /* SmartPhotoDraftRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartPhotoDraftRouter.swift; sourceTree = "<group>"; };
+		9D48FF5A2081F4B500A88E70 /* SmartPhotoDraft.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SmartPhotoDraft.storyboard; sourceTree = "<group>"; };
+		9D48FF5C2081F7E500A88E70 /* DraftTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftTableViewController.swift; sourceTree = "<group>"; };
+		9D48FF5E2081F82C00A88E70 /* SmartPhotoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartPhotoTableViewController.swift; sourceTree = "<group>"; };
+		9D48FF6320820A6400A88E70 /* SmartPhotoTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmartPhotoTableCell.xib; sourceTree = "<group>"; };
+		9D48FF6520820CB500A88E70 /* SmartPhotoTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartPhotoTableCell.swift; sourceTree = "<group>"; };
 		9D748B252073883C004ED49A /* SharedSucceesPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedSucceesPopup.swift; sourceTree = "<group>"; };
 		9D748B262073883C004ED49A /* SharedSucceesPopup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SharedSucceesPopup.xib; sourceTree = "<group>"; };
 		9D748B362074B2E2004ED49A /* LoginPopUpContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPopUpContract.swift; sourceTree = "<group>"; };
@@ -1350,6 +1370,72 @@
 			path = CuisineCell;
 			sourceTree = "<group>";
 		};
+		9D48FF4A2081F0D600A88E70 /* SmartPhotoDraft */ = {
+			isa = PBXGroup;
+			children = (
+				9D48FF4B2081F0D600A88E70 /* Contract */,
+				9D48FF4D2081F0D600A88E70 /* Presenter */,
+				9D48FF4F2081F0D600A88E70 /* View */,
+				9D48FF512081F0D600A88E70 /* Interactor */,
+				9D48FF532081F0D600A88E70 /* Router */,
+			);
+			name = SmartPhotoDraft;
+			path = SnapXEats/Modules/SmartPhotoDraft;
+			sourceTree = SOURCE_ROOT;
+		};
+		9D48FF4B2081F0D600A88E70 /* Contract */ = {
+			isa = PBXGroup;
+			children = (
+				9D48FF4C2081F0D600A88E70 /* SmartPhotoDraftContract.swift */,
+			);
+			path = Contract;
+			sourceTree = "<group>";
+		};
+		9D48FF4D2081F0D600A88E70 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				9D48FF4E2081F0D600A88E70 /* SmartPhotoDraftPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		9D48FF4F2081F0D600A88E70 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9D48FF602082099300A88E70 /* SmartPhotoTableCell */,
+				9D48FF5A2081F4B500A88E70 /* SmartPhotoDraft.storyboard */,
+				9D48FF502081F0D600A88E70 /* SmartPhotoDraftViewController.swift */,
+				9D48FF5C2081F7E500A88E70 /* DraftTableViewController.swift */,
+				9D48FF5E2081F82C00A88E70 /* SmartPhotoTableViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9D48FF512081F0D600A88E70 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				9D48FF522081F0D600A88E70 /* SmartPhotoDraftInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		9D48FF532081F0D600A88E70 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				9D48FF542081F0D600A88E70 /* SmartPhotoDraftRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		9D48FF602082099300A88E70 /* SmartPhotoTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				9D48FF6320820A6400A88E70 /* SmartPhotoTableCell.xib */,
+				9D48FF6520820CB500A88E70 /* SmartPhotoTableCell.swift */,
+			);
+			path = SmartPhotoTableCell;
+			sourceTree = "<group>";
+		};
 		9D748B24207387A5004ED49A /* SuccessPopup */ = {
 			isa = PBXGroup;
 			children = (
@@ -1643,6 +1729,7 @@
 				7E539B9F205A522D002C3E55 /* SnapNSharePhoto */,
 				7E539BC3205BA323002C3E55 /* SnapNShareSocialMedia */,
 				9D8FB1E2207CB861002E6662 /* SmartPhoto */,
+				9D48FF4A2081F0D600A88E70 /* SmartPhotoDraft */,
 				9DE7CE462023620500BBBFEC /* UserPrefernce */,
 				7E673AE020496122005D19DC /* Wishlist */,
 				9D0D7141203D998D0077FA7A /* FoodAndCuisinePreference */,
@@ -2299,6 +2386,7 @@
 			files = (
 				9D8FB1FF207CCB39002E6662 /* SmartPhotoDownload.xib in Resources */,
 				7E8397442045585100E71C6D /* Roboto-Italic.ttf in Resources */,
+				9D48FF6420820A6400A88E70 /* SmartPhotoTableCell.xib in Resources */,
 				9D8FB1F3207CB88F002E6662 /* SmartPhoto.storyboard in Resources */,
 				7E83974220454DF600E71C6D /* MoreInfoTableViewCell.xib in Resources */,
 				7E5C058720186C36000B5C33 /* roboto.bold.ttf in Resources */,
@@ -2306,6 +2394,7 @@
 				7E5946982020BD02006702AF /* SearchPlacesTableViewCell.xib in Resources */,
 				9DB7FE1720061B6200D0E816 /* Roboto-Light.ttf in Resources */,
 				7E539B7820593B50002C3E55 /* SnapNShareHome.storyboard in Resources */,
+				9D48FF5B2081F4B500A88E70 /* SmartPhotoDraft.storyboard in Resources */,
 				7E5E7FC2203AD11200009A56 /* RestaurantDetails.storyboard in Resources */,
 				7E7AC90A206B663700CA4FEF /* RestaurantListTableViewCell.xib in Resources */,
 				9DB7FE1820061B6200D0E816 /* Roboto-Medium.ttf in Resources */,
@@ -2472,11 +2561,13 @@
 				7E5E7FDE203AF7EE00009A56 /* ImageSlideshow.swift in Sources */,
 				9D0D7162203F144F0077FA7A /* DrawerRouter.swift in Sources */,
 				9D8FB1FD207CCB39002E6662 /* SmartPhotoDownload.swift in Sources */,
+				9D48FF582081F0D600A88E70 /* SmartPhotoDraftInteractor.swift in Sources */,
 				9D8E89171FFD2C400066A1D9 /* AppDelegate.swift in Sources */,
 				9D8E88EB1FFD2BEC0066A1D9 /* LoginContract.swift in Sources */,
 				9D2C484D202073A700FD8B1C /* SelectedPreference.swift in Sources */,
 				9D8095712015E5200077F84B /* SnapXEatsApi.swift in Sources */,
 				9D8E88EC1FFD2BEC0066A1D9 /* LoginPresenter.swift in Sources */,
+				9D48FF6620820CB500A88E70 /* SmartPhotoTableCell.swift in Sources */,
 				9D8E88ED1FFD2BEC0066A1D9 /* LoginViewController.swift in Sources */,
 				7E5C058520186846000B5C33 /* UISearchbar+helper.swift in Sources */,
 				9D0D70FF207B5D3B00A521EB /* SnapXLinkNavigator.swift in Sources */,
@@ -2531,6 +2622,7 @@
 				7E5E7FDC203AF7EE00009A56 /* ActivityIndicator.swift in Sources */,
 				7EA9408A2063ECF50005B6B9 /* SnapXEatsView.swift in Sources */,
 				7E539B7320593A01002C3E55 /* SnapNShareHomeInteractor.swift in Sources */,
+				9D48FF552081F0D600A88E70 /* SmartPhotoDraftContract.swift in Sources */,
 				9D8E88F71FFD2BEC0066A1D9 /* UIImage+Icons.swift in Sources */,
 				9D8E88F81FFD2BEC0066A1D9 /* UIView.swift in Sources */,
 				9D8E88F91FFD2BEC0066A1D9 /* UIFont+Utils.swift in Sources */,
@@ -2546,6 +2638,7 @@
 				7E673B14204961C9005D19DC /* WishlistRouter.swift in Sources */,
 				7E9C0B912021DC5700BA999E /* SnapXEatsLocation.swift in Sources */,
 				9D8E88FA1FFD2BEC0066A1D9 /* UITextField+Border.swift in Sources */,
+				9D48FF592081F0D600A88E70 /* SmartPhotoDraftRouter.swift in Sources */,
 				7E491D21204E920E004445E2 /* RestaurantsMapViewContract.swift in Sources */,
 				7E539BAA205A522E002C3E55 /* SnapNSharePhotoContract.swift in Sources */,
 				7E5E7FE2203AF7EE00009A56 /* UIImageView+Tools.swift in Sources */,
@@ -2557,6 +2650,7 @@
 				7E5E7FF0203C0E6000009A56 /* RestaurantSpecialityCollectionViewCell.swift in Sources */,
 				9D8FB1ED207CB862002E6662 /* SmartPhotoContract.swift in Sources */,
 				9D0D715E203F144F0077FA7A /* DrawerContract.swift in Sources */,
+				9D48FF562081F0D600A88E70 /* SmartPhotoDraftPresenter.swift in Sources */,
 				7EA940852063E9310005B6B9 /* CheckinPopupInteractor.swift in Sources */,
 				9DB02A6F2010805F0061FC0C /* LocationPresenter.swift in Sources */,
 				9D9868D92023202B003E82F6 /* Restaurant.swift in Sources */,
@@ -2592,6 +2686,7 @@
 				9D8E89011FFD2BEC0066A1D9 /* UIViewController.swift in Sources */,
 				7E539B7620593A01002C3E55 /* SnapNShareHomeViewController.swift in Sources */,
 				9D0D713B203AAE1F0077FA7A /* RestaurantDetailsInteractor.swift in Sources */,
+				9D48FF5D2081F7E500A88E70 /* DraftTableViewController.swift in Sources */,
 				9DB7FE112004F0EE00D0E816 /* Alert.swift in Sources */,
 				9D0D715F203F144F0077FA7A /* DrawerPresenter.swift in Sources */,
 				9D902BE8201729E400359DFD /* SelectLocationRouter.swift in Sources */,
@@ -2612,6 +2707,7 @@
 				9D0D7139203AAE1F0077FA7A /* RestaurantDetailsPresenter.swift in Sources */,
 				9DE7CE522023620500BBBFEC /* UserPreferencePresenter.swift in Sources */,
 				9D8E89041FFD2BEC0066A1D9 /* UIAlertController.swift in Sources */,
+				9D48FF572081F0D600A88E70 /* SmartPhotoDraftViewController.swift in Sources */,
 				7E5946972020BD02006702AF /* SearchPlacesTableViewCell.swift in Sources */,
 				7EB5921F2040048600CC6888 /* DrivingDirections.swift in Sources */,
 				9D8E89051FFD2BEC0066A1D9 /* UICollectionViewCell.swift in Sources */,
@@ -2661,6 +2757,7 @@
 				9DE7CE532023620500BBBFEC /* UserPreferenceViewController.swift in Sources */,
 				7E2C64BF2044253400DAB44A /* DrawerViewController.swift in Sources */,
 				7E539BAD205A522E002C3E55 /* SnapNSharePhotoRouter.swift in Sources */,
+				9D48FF5F2081F82C00A88E70 /* SmartPhotoTableViewController.swift in Sources */,
 				9D8E89151FFD2BEC0066A1D9 /* ValidatorHelper.swift in Sources */,
 				9DB02A712010805F0061FC0C /* LocationInteractor.swift in Sources */,
 				9D1C33EB20650D9900B4F69D /* SnapNShare.swift in Sources */,

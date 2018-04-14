@@ -12,7 +12,7 @@ import SwiftInstagram
 
 enum Screens {
     case firsTimeUser, login, instagram(sharedLoginFromSkip: Bool, rootController: UINavigationController?), location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation(parent: UIViewController), userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurantID: String, parentController: UINavigationController, showMoreInfo: Bool), restaurantDirections(details: RestaurantDetails, parentController: UINavigationController), wishlist, restaurantsMapView(restaurants: [Restaurant], parentController: UINavigationController), snapNShareHome(restaurantID: String), snapNSharePhoto(photo: UIImage, iparentController: UINavigationController, restaurantID: String), snapNShareSocialMedia(parentController: UINavigationController), checkin(restaurant: Restaurant),
-    sharedSuccess(restaurantID: String), loginPopUp(restaurantID: String, parentController: UINavigationController), socialLoginFromLoginPopUp(parentController: UINavigationController), smartPhoto(dishID: String)
+    sharedSuccess(restaurantID: String), loginPopUp(restaurantID: String, parentController: UINavigationController), socialLoginFromLoginPopUp(parentController: UINavigationController), smartPhoto(dishID: String), smartPhotoDraft
 }
 
 class RootRouter: NSObject {
@@ -197,6 +197,11 @@ class RootRouter: NSObject {
             window?.rootViewController?.present(smartPhotoController, animated: true, completion: nil)
     }
     
+    func presentSmartPhotoDraft() {
+        let smartPhotoDraftVC = SmartPhotoDraftRouter.shared.loadSmartPhotoDraftModule()
+        updateDrawerWithMainController(mainVC: smartPhotoDraftVC)
+        presentView(drawerController)
+    }
     
     func presentScreen(screens: Screens) {
         
@@ -247,6 +252,8 @@ class RootRouter: NSObject {
             presentSocialShareAferNewLogin( parentController: parentController)
         case .smartPhoto(let dishID):
             presentSmartPhotoScreen(dishID: dishID)
+        case .smartPhotoDraft:
+            presentSmartPhotoDraft()
         }
     }
         
