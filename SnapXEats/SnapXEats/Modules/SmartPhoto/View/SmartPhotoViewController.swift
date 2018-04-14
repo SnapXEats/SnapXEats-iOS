@@ -152,6 +152,9 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
     @objc func hideButtonView() {
         buttonView.isHidden = buttonView.isHidden ? false : true
         if buttonView.isHidden {
+            if audioButton.isSelected {
+                presenter?.pausePlayAudio()
+            }
              removeSubView()
         }
         updateTintColor(sender: nil) // this is to reset all the button

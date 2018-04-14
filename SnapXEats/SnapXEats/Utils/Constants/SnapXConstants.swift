@@ -56,6 +56,7 @@ enum SnapXEatsStoryboard {
     static let wishlist = "Wishlist"
     static let restarantDetails = "RestaurantDetails"
     static let snapNShareHome = "SnapNShareHome"
+    static let smartPhotoDraft = "SmartPhotoDraft"
 }
 
 enum SnapXEatsStoryboardIdentifier {
@@ -72,6 +73,9 @@ enum SnapXEatsStoryboardIdentifier {
     static let drawerViewController = "DrawerViewController"
     static let wishlistNavigationControllerID = "WishlistNavigationController"
     static let snapNShareHomeNvControllerID = "SnapNShareHomeNavigationController"
+    static let smartPhotoDraftNavigationControllerID = "SmartPhotoDraftNavigationController"
+    static let draftTableViewControllerID = "DraftTableViewController"
+    static let smartPhotoTableViewControllerID = "SmartPhotoTableViewController"
 }
 
 enum SnapXEatsLocationConstant {
@@ -168,6 +172,7 @@ enum SnapXEatsCellResourceIdentifiler {
     static let wishlistTableView = "wishlistTableViewCell"
     static let restaurantCollectionView = "restaurantCell"
     static let restaurantListTableView = "RestaurantListCell"
+    static let smartPhotTableView =  "SmartPhotoCellIdentifier"
 }
 
 enum SnapXEatsNibNames {
@@ -191,6 +196,7 @@ enum SnapXEatsNibNames {
     static let smartPhotoAudio = "SmartPhotoAudio"
     static let smartPhotoDownload = "SmartPhotoDownload"
     static let smartPhotoSuccess = "SmartPhotoDownloadSuccess"
+    static let smartPhotoTableCell = "SmartPhotoTableCell"
 }
 
 enum SnapXEatsWebServiceParameterKeys {
@@ -228,6 +234,7 @@ enum SnapXEatsAppDefaults {
     static let restaurantDistance = "%.1f mi"
     static let milesToMetersMultiplier = 1609.344
     static let amenitiesTableRowHeight: CGFloat = 20
+    static let smartPhotTableRowheight: CGFloat = 180
 
 }
 

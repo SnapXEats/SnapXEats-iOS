@@ -51,9 +51,9 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
         if loginUserPreference.isLoggedIn {
             let cancel = UIAlertAction(title: SnapXButtonTitle.cancel, style: UIAlertActionStyle.default, handler: nil)
             let Ok = UIAlertAction(title: SnapXButtonTitle.ok, style: UIAlertActionStyle.default, handler:  {[weak self] action in
-             self?.screenIndex = .showLogin
-             self?.showLoading()
-             self?.presenter?.sendlogOutRequest()})
+                self?.screenIndex = .showLogin
+                self?.showLoading()
+                self?.presenter?.sendlogOutRequest()})
             UIAlertController.presentAlertInViewController(self, title: AlertTitle.logOutTitle , message: AlertMessage.logOutMessage, actions: [cancel, Ok], completion: nil)
             
         } else {
@@ -150,27 +150,31 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let  screen = navigateScreen(rawValue: indexPath.row) ?? .home
-            if loginUserPreference.isDirty {
-                showPreferenceSaveDialog(screen: screen)
-            } else {
-                presentScreen(index: screen)
-            }
+        if loginUserPreference.isDirty {
+            showPreferenceSaveDialog(screen: screen)
+        } else {
+            presentScreen(index: screen)
+        }
     }
     
     private func presentScreen(index: navigateScreen) {
         switch index {
         case .home:
             presenter?.presentScreen(screen: .location, drawerState: .closed)
-        case .showPreference:
-            presenter?.presentScreen(screen: .userPreference, drawerState: .closed)
-        case .showLogin:
-            presenter?.presentScreen(screen: .login, drawerState: .closed)
         case .wishList:
             loginUserPreference.isLoggedIn ? showWishListForLoggedInUser() : showWishlistForNonLoggedInUser()
+        case .showPreference:
+            presenter?.presentScreen(screen: .userPreference, drawerState: .closed)
+        case .foodJourney:
+            print("Food Journey")
         case .snapnshare:
             let currentRestaurant = Restaurant(id: "62dfee80-b52b-482f-b0f3-c175ce5d56ca", name: "Tertulia")
             let screenToPresent: Screens = isUserCheckedIn ? Screens.snapNShareHome(restaurantID: currentRestaurant.restaurant_info_id!) : Screens.checkin(restaurant: currentRestaurant)
             presenter?.presentScreen(screen: screenToPresent, drawerState: .closed)
+        case .smartPhotos:
+            presenter?.presentScreen(screen: .smartPhotoDraft, drawerState: .closed)
+        case .showLogin:
+            presenter?.presentScreen(screen: .login, drawerState: .closed)
         default:
             break
         }
