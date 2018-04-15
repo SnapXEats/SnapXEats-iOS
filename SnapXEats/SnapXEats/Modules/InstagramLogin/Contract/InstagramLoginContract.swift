@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol InstagramLoginView: BaseView {
-    // TODO: Declare view methods
+     var presenter: InstagramLoginPresentation? {get set}
 }
 
 protocol InstagramLoginPresentation  {

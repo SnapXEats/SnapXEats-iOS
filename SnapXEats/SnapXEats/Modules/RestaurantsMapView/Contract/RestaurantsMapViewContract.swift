@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol RestaurantsMapViewView: BaseView {
-    // TODO: Declare view methods
+     var presenter: RestaurantsMapViewPresentation? {get set}
 }
 
 protocol RestaurantsMapViewPresentation: class {

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol SmartPhotoDraftView: BaseView {
-    // TODO: Declare view methods
+    var presenter: SmartPhotoDraftPresentation? {get set}
 }
 
 protocol SmartPhotoDraftPresentation: class {

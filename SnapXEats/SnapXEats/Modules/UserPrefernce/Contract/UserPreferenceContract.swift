@@ -11,7 +11,7 @@ import UIKit
 import Alamofire
 
 protocol UserPreferenceView: BaseView {
-    // TODO: Declare view methods
+     var presenter: UserPreferencePresentation? {get set}
 }
 
 protocol UserPreferencePresentation: UserPreferenceUseCase {

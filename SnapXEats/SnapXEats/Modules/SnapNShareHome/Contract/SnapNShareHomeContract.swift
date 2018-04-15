@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 import Alamofire
 
-protocol SnapNShareHomeView: class, BaseView {
-    // TODO: Declare view methods
+protocol SnapNShareHomeView: BaseView {
+    var presenter: SnapNShareHomePresentation? {get set}
 }
 
 protocol SnapNShareHomePresentation: class {
