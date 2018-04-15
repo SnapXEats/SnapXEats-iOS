@@ -31,7 +31,7 @@ class FoodJourneyViewController: BaseViewController, StoryboardLoadable {
 
 extension FoodJourneyViewController: FoodJourneyView {
     func initView() {
-        
+        customizeNavigationItem(title: SnapXEatsPageTitles.foodJourney, isDetailPage: false)
     }
     
     // TODO: implement view output methods

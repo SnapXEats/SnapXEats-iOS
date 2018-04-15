@@ -171,6 +171,7 @@
 		9D60DDAD20837A6F00678D3A /* FoodJourneyInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D60DDA720837A6E00678D3A /* FoodJourneyInteractor.swift */; };
 		9D60DDAE20837A6F00678D3A /* FoodJourneyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D60DDA920837A6E00678D3A /* FoodJourneyRouter.swift */; };
 		9D60DDB120837B2400678D3A /* FoodJourney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D60DDB020837B2400678D3A /* FoodJourney.swift */; };
+		9D60DDB32083892700678D3A /* FoodJourney.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D60DDB22083892700678D3A /* FoodJourney.storyboard */; };
 		9D748B272073883C004ED49A /* SharedSucceesPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D748B252073883C004ED49A /* SharedSucceesPopup.swift */; };
 		9D748B282073883C004ED49A /* SharedSucceesPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D748B262073883C004ED49A /* SharedSucceesPopup.xib */; };
 		9D748B3F2074B2E2004ED49A /* LoginPopUpContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D748B362074B2E2004ED49A /* LoginPopUpContract.swift */; };
@@ -454,6 +455,7 @@
 		9D60DDA720837A6E00678D3A /* FoodJourneyInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodJourneyInteractor.swift; sourceTree = "<group>"; };
 		9D60DDA920837A6E00678D3A /* FoodJourneyRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodJourneyRouter.swift; sourceTree = "<group>"; };
 		9D60DDB020837B2400678D3A /* FoodJourney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodJourney.swift; sourceTree = "<group>"; };
+		9D60DDB22083892700678D3A /* FoodJourney.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FoodJourney.storyboard; sourceTree = "<group>"; };
 		9D748B252073883C004ED49A /* SharedSucceesPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedSucceesPopup.swift; sourceTree = "<group>"; };
 		9D748B262073883C004ED49A /* SharedSucceesPopup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SharedSucceesPopup.xib; sourceTree = "<group>"; };
 		9D748B362074B2E2004ED49A /* LoginPopUpContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPopUpContract.swift; sourceTree = "<group>"; };
@@ -1479,6 +1481,7 @@
 		9D60DDA420837A6E00678D3A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9D60DDB22083892700678D3A /* FoodJourney.storyboard */,
 				9D60DDA520837A6E00678D3A /* FoodJourneyViewController.swift */,
 			);
 			path = View;
@@ -2475,6 +2478,7 @@
 				9DB7FE1920061B6200D0E816 /* Roboto-Regular.ttf in Resources */,
 				7EDB8ED9204FF3710015F48A /* RestaurantCollectionViewCell.xib in Resources */,
 				7E393CB920637C7900E51149 /* RewardPointsPopup.xib in Resources */,
+				9D60DDB32083892700678D3A /* FoodJourney.storyboard in Resources */,
 				7E491D27204E9314004445E2 /* RestaurantsMapView.storyboard in Resources */,
 				7E7AC910206CCA5200CA4FEF /* NoFoodCardsPopup.xib in Resources */,
 				9DB02A76201084730061FC0C /* Location.storyboard in Resources */,

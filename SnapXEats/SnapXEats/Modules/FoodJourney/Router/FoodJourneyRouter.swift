@@ -19,8 +19,12 @@ class FoodJourneyRouter {
     static let shared = FoodJourneyRouter()
     // MARK: Static methods
 
-     func loadFoodJoureyModule() -> FoodJourneyViewController {
-        let viewController = UIStoryboard.loadViewController() as FoodJourneyViewController
+     func loadFoodJoureyModule() -> UINavigationController {
+        let foodJourneyNC = UIStoryboard.loadNavigationControler(storyBoardName: SnapXEatsStoryboard.foodJourney, storyBoardId: SnapXEatsStoryboardIdentifier.foodCardsNavigationControllerID)
+        
+        guard let firstViewController = foodJourneyNC.viewControllers.first, let viewController = firstViewController as? FoodJourneyViewController else {
+            return UINavigationController()
+        }
         let presenter = FoodJourneyPresenter.shared
         let router = FoodJourneyRouter.shared
         let interactor = FoodJourneyInteractor.shared
@@ -35,7 +39,7 @@ class FoodJourneyRouter {
 
         interactor.output = presenter
 
-        return viewController
+        return foodJourneyNC
     }
 }
 
