@@ -20,7 +20,7 @@ class FoodJourneyRouter {
     // MARK: Static methods
 
      func loadFoodJoureyModule() -> UINavigationController {
-        let foodJourneyNC = UIStoryboard.loadNavigationControler(storyBoardName: SnapXEatsStoryboard.foodJourney, storyBoardId: SnapXEatsStoryboardIdentifier.foodCardsNavigationControllerID)
+        let foodJourneyNC = UIStoryboard.loadNavigationControler(storyBoardName: SnapXEatsStoryboard.foodJourney, storyBoardId: SnapXEatsStoryboardIdentifier.foodJourneyNavigationControllerID)
         
         guard let firstViewController = foodJourneyNC.viewControllers.first, let viewController = firstViewController as? FoodJourneyViewController else {
             return UINavigationController()

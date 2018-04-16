@@ -143,6 +143,7 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SnapXEatsCellResourceIdentifiler.navigationMenu, for: indexPath as IndexPath) as! NavigationMenuTableViewCell
+        cell.loggedIn = loginUserPreference.isLoggedIn
         let showCount = indexPath.row == 1 ? true : false
         cell.configureCell(WithMenu: navigationOptions[indexPath.row], showCount: showCount)
         return cell
@@ -166,7 +167,9 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
         case .showPreference:
             presenter?.presentScreen(screen: .userPreference, drawerState: .closed)
         case .foodJourney:
-            presenter?.presentScreen(screen: .foodJourney, drawerState: .closed)
+            if loginUserPreference.isLoggedIn  {
+                presenter?.presentScreen(screen: .foodJourney, drawerState: .closed)
+            }
         case .snapnshare:
             let currentRestaurant = Restaurant(id: "62dfee80-b52b-482f-b0f3-c175ce5d56ca", name: "Tertulia")
             let screenToPresent: Screens = isUserCheckedIn ? Screens.snapNShareHome(restaurantID: currentRestaurant.restaurant_info_id!) : Screens.checkin(restaurant: currentRestaurant)
