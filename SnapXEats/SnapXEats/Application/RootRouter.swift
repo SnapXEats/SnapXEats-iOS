@@ -12,7 +12,7 @@ import SwiftInstagram
 
 enum Screens {
     case firsTimeUser, login, instagram(sharedLoginFromSkip: Bool, rootController: UINavigationController?), location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation(parent: UIViewController), userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurantID: String, parentController: UINavigationController, showMoreInfo: Bool), restaurantDirections(details: RestaurantDetails, parentController: UINavigationController), wishlist, restaurantsMapView(restaurants: [Restaurant], parentController: UINavigationController), snapNShareHome(restaurantID: String), snapNSharePhoto(photo: UIImage, iparentController: UINavigationController, restaurantID: String), snapNShareSocialMedia(parentController: UINavigationController), checkin(restaurant: Restaurant),
-    sharedSuccess(restaurantID: String), loginPopUp(restaurantID: String, parentController: UINavigationController), socialLoginFromLoginPopUp(parentController: UINavigationController), smartPhoto(dishID: String), smartPhotoDraft
+    sharedSuccess(restaurantID: String), loginPopUp(restaurantID: String, parentController: UINavigationController), socialLoginFromLoginPopUp(parentController: UINavigationController), smartPhoto(dishID: String), smartPhotoDraft, foodJourney
 }
 
 class RootRouter: NSObject {
@@ -203,6 +203,12 @@ class RootRouter: NSObject {
         presentView(drawerController)
     }
     
+    func presentFoodJourney() {
+        let foodJourney = FoodJourneyRouter.shared.loadFoodJoureyModule()
+        updateDrawerWithMainController(mainVC: foodJourney)
+        presentView(drawerController)
+    }
+    
     func presentScreen(screens: Screens) {
         
         if window?.rootViewController == nil &&  drawerController != nil {
@@ -254,6 +260,8 @@ class RootRouter: NSObject {
             presentSmartPhotoScreen(dishID: dishID)
         case .smartPhotoDraft:
             presentSmartPhotoDraft()
+        case .foodJourney:
+            presentFoodJourney()
         }
     }
         

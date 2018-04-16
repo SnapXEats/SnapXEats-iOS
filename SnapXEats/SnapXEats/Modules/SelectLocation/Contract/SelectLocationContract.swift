@@ -11,7 +11,6 @@ import Alamofire
 
 protocol SelectLocationView: BaseView {
     var presenter: SelectLocationPresentation? {get set}
-    func initView()
 }
 
 protocol SelectLocationPresentation: class {
@@ -25,7 +24,7 @@ protocol SelectLocationUseCase: class {
 protocol SelectLocationInteractorOutput: Response {
 }
 
-protocol SelectLocationWireframe: class, RootWireFrame {
+protocol SelectLocationWireframe: RootWireFrame {
 }
 
 protocol SearchPlacePredictionsRequestFomatter: class {

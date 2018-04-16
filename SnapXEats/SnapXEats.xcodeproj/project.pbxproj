@@ -165,6 +165,13 @@
 		9D48FF5F2081F82C00A88E70 /* SmartPhotoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D48FF5E2081F82C00A88E70 /* SmartPhotoTableViewController.swift */; };
 		9D48FF6420820A6400A88E70 /* SmartPhotoTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D48FF6320820A6400A88E70 /* SmartPhotoTableCell.xib */; };
 		9D48FF6620820CB500A88E70 /* SmartPhotoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D48FF6520820CB500A88E70 /* SmartPhotoTableCell.swift */; };
+		9D60DDAA20837A6F00678D3A /* FoodJourneyContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D60DDA120837A6E00678D3A /* FoodJourneyContract.swift */; };
+		9D60DDAB20837A6F00678D3A /* FoodJourneyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D60DDA320837A6E00678D3A /* FoodJourneyPresenter.swift */; };
+		9D60DDAC20837A6F00678D3A /* FoodJourneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D60DDA520837A6E00678D3A /* FoodJourneyViewController.swift */; };
+		9D60DDAD20837A6F00678D3A /* FoodJourneyInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D60DDA720837A6E00678D3A /* FoodJourneyInteractor.swift */; };
+		9D60DDAE20837A6F00678D3A /* FoodJourneyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D60DDA920837A6E00678D3A /* FoodJourneyRouter.swift */; };
+		9D60DDB120837B2400678D3A /* FoodJourney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D60DDB020837B2400678D3A /* FoodJourney.swift */; };
+		9D60DDB32083892700678D3A /* FoodJourney.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D60DDB22083892700678D3A /* FoodJourney.storyboard */; };
 		9D748B272073883C004ED49A /* SharedSucceesPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D748B252073883C004ED49A /* SharedSucceesPopup.swift */; };
 		9D748B282073883C004ED49A /* SharedSucceesPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D748B262073883C004ED49A /* SharedSucceesPopup.xib */; };
 		9D748B3F2074B2E2004ED49A /* LoginPopUpContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D748B362074B2E2004ED49A /* LoginPopUpContract.swift */; };
@@ -442,6 +449,13 @@
 		9D48FF5E2081F82C00A88E70 /* SmartPhotoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartPhotoTableViewController.swift; sourceTree = "<group>"; };
 		9D48FF6320820A6400A88E70 /* SmartPhotoTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmartPhotoTableCell.xib; sourceTree = "<group>"; };
 		9D48FF6520820CB500A88E70 /* SmartPhotoTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartPhotoTableCell.swift; sourceTree = "<group>"; };
+		9D60DDA120837A6E00678D3A /* FoodJourneyContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodJourneyContract.swift; sourceTree = "<group>"; };
+		9D60DDA320837A6E00678D3A /* FoodJourneyPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodJourneyPresenter.swift; sourceTree = "<group>"; };
+		9D60DDA520837A6E00678D3A /* FoodJourneyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodJourneyViewController.swift; sourceTree = "<group>"; };
+		9D60DDA720837A6E00678D3A /* FoodJourneyInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodJourneyInteractor.swift; sourceTree = "<group>"; };
+		9D60DDA920837A6E00678D3A /* FoodJourneyRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodJourneyRouter.swift; sourceTree = "<group>"; };
+		9D60DDB020837B2400678D3A /* FoodJourney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodJourney.swift; sourceTree = "<group>"; };
+		9D60DDB22083892700678D3A /* FoodJourney.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FoodJourney.storyboard; sourceTree = "<group>"; };
 		9D748B252073883C004ED49A /* SharedSucceesPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedSucceesPopup.swift; sourceTree = "<group>"; };
 		9D748B262073883C004ED49A /* SharedSucceesPopup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SharedSucceesPopup.xib; sourceTree = "<group>"; };
 		9D748B362074B2E2004ED49A /* LoginPopUpContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPopUpContract.swift; sourceTree = "<group>"; };
@@ -1436,6 +1450,67 @@
 			path = SmartPhotoTableCell;
 			sourceTree = "<group>";
 		};
+		9D60DD9F20837A6E00678D3A /* FoodJourney */ = {
+			isa = PBXGroup;
+			children = (
+				9D60DDA020837A6E00678D3A /* Contract */,
+				9D60DDA220837A6E00678D3A /* Presenter */,
+				9D60DDA420837A6E00678D3A /* View */,
+				9D60DDA620837A6E00678D3A /* Interactor */,
+				9D60DDA820837A6E00678D3A /* Router */,
+			);
+			path = FoodJourney;
+			sourceTree = "<group>";
+		};
+		9D60DDA020837A6E00678D3A /* Contract */ = {
+			isa = PBXGroup;
+			children = (
+				9D60DDA120837A6E00678D3A /* FoodJourneyContract.swift */,
+			);
+			path = Contract;
+			sourceTree = "<group>";
+		};
+		9D60DDA220837A6E00678D3A /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				9D60DDA320837A6E00678D3A /* FoodJourneyPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		9D60DDA420837A6E00678D3A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9D60DDB22083892700678D3A /* FoodJourney.storyboard */,
+				9D60DDA520837A6E00678D3A /* FoodJourneyViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9D60DDA620837A6E00678D3A /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				9D60DDA720837A6E00678D3A /* FoodJourneyInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		9D60DDA820837A6E00678D3A /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				9D60DDA920837A6E00678D3A /* FoodJourneyRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		9D60DDAF20837B0E00678D3A /* FoodJourney */ = {
+			isa = PBXGroup;
+			children = (
+				9D60DDB020837B2400678D3A /* FoodJourney.swift */,
+			);
+			path = FoodJourney;
+			sourceTree = "<group>";
+		};
 		9D748B24207387A5004ED49A /* SuccessPopup */ = {
 			isa = PBXGroup;
 			children = (
@@ -1719,6 +1794,9 @@
 				9DAF6F5F205AAA26003001B5 /* InstagramLogin */,
 				9DB02A632010805F0061FC0C /* Location */,
 				9D902BD9201729E300359DFD /* SelectLocation */,
+				9DE7CE462023620500BBBFEC /* UserPrefernce */,
+				9D0D7141203D998D0077FA7A /* FoodAndCuisinePreference */,
+				7E673AE020496122005D19DC /* Wishlist */,
 				9D902BBE20171AED00359DFD /* FoodCards */,
 				9D0D7153203F144E0077FA7A /* Drawer */,
 				9D0D712D203AAE1F0077FA7A /* RestaurantDetails */,
@@ -1730,9 +1808,7 @@
 				7E539BC3205BA323002C3E55 /* SnapNShareSocialMedia */,
 				9D8FB1E2207CB861002E6662 /* SmartPhoto */,
 				9D48FF4A2081F0D600A88E70 /* SmartPhotoDraft */,
-				9DE7CE462023620500BBBFEC /* UserPrefernce */,
-				7E673AE020496122005D19DC /* Wishlist */,
-				9D0D7141203D998D0077FA7A /* FoodAndCuisinePreference */,
+				9D60DD9F20837A6E00678D3A /* FoodJourney */,
 				9D8E88CD1FFD28C50066A1D9 /* Base */,
 			);
 			path = Modules;
@@ -1821,6 +1897,7 @@
 		9D8E88D91FFD28C50066A1D9 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				9D60DDAF20837B0E00678D3A /* FoodJourney */,
 				9D8FB206207CF19E002E6662 /* SmarPhoto */,
 				9DBA8658204A95E700C99841 /* Wishlist */,
 				7E2C64B1204401D000DAB44A /* FoodCard */,
@@ -2401,6 +2478,7 @@
 				9DB7FE1920061B6200D0E816 /* Roboto-Regular.ttf in Resources */,
 				7EDB8ED9204FF3710015F48A /* RestaurantCollectionViewCell.xib in Resources */,
 				7E393CB920637C7900E51149 /* RewardPointsPopup.xib in Resources */,
+				9D60DDB32083892700678D3A /* FoodJourney.storyboard in Resources */,
 				7E491D27204E9314004445E2 /* RestaurantsMapView.storyboard in Resources */,
 				7E7AC910206CCA5200CA4FEF /* NoFoodCardsPopup.xib in Resources */,
 				9DB02A76201084730061FC0C /* Location.storyboard in Resources */,
@@ -2614,6 +2692,7 @@
 				9D2A9FEC207E4071004484E6 /* SmartPhotoAudio.swift in Sources */,
 				7EAC8610201A066B00DE162A /* FoodCardView.swift in Sources */,
 				7EB5922320404A0E00CC6888 /* foodCardOverlayView.swift in Sources */,
+				9D60DDAE20837A6F00678D3A /* FoodJourneyRouter.swift in Sources */,
 				7E539BD0205BA323002C3E55 /* SnapNShareSocialMediaPresenter.swift in Sources */,
 				9D748B422074B2E2004ED49A /* LoginPopUpInteractor.swift in Sources */,
 				7E71FC082022CCAD00CA8467 /* KYEmbedDrawerControllerSegue.swift in Sources */,
@@ -2626,6 +2705,7 @@
 				9D8E88F71FFD2BEC0066A1D9 /* UIImage+Icons.swift in Sources */,
 				9D8E88F81FFD2BEC0066A1D9 /* UIView.swift in Sources */,
 				9D8E88F91FFD2BEC0066A1D9 /* UIFont+Utils.swift in Sources */,
+				9D60DDAC20837A6F00678D3A /* FoodJourneyViewController.swift in Sources */,
 				7E5E800C203D4B3000009A56 /* RestaurantTimingViewController.swift in Sources */,
 				7E539BCF205BA323002C3E55 /* SnapNShareSocialMediaInteractor.swift in Sources */,
 				7EA940872063E9310005B6B9 /* CheckinPopupRouter.swift in Sources */,
@@ -2634,6 +2714,7 @@
 				7E673B1F204968D2005D19DC /* WishlistItemTableViewCell.swift in Sources */,
 				9D3D1CE02006479500AAAB95 /* SnapXConstants.swift in Sources */,
 				7E673B2220498EFF005D19DC /* UIColor+Pallet.swift in Sources */,
+				9D60DDB120837B2400678D3A /* FoodJourney.swift in Sources */,
 				7E83974120454DF600E71C6D /* MoreInfoTableViewCell.swift in Sources */,
 				7E673B14204961C9005D19DC /* WishlistRouter.swift in Sources */,
 				7E9C0B912021DC5700BA999E /* SnapXEatsLocation.swift in Sources */,
@@ -2678,6 +2759,7 @@
 				9D0D7138203AAE1F0077FA7A /* RestaurantDetailsContract.swift in Sources */,
 				9D8E88FD1FFD2BEC0066A1D9 /* Results.swift in Sources */,
 				9D8E88FE1FFD2BEC0066A1D9 /* UITableView.swift in Sources */,
+				9D60DDAD20837A6F00678D3A /* FoodJourneyInteractor.swift in Sources */,
 				9D8E88FF1FFD2BEC0066A1D9 /* UITableViewCell.swift in Sources */,
 				9D8E89001FFD2BEC0066A1D9 /* String.swift in Sources */,
 				7E71FC072022CCAD00CA8467 /* KYDrawerController.swift in Sources */,
@@ -2687,10 +2769,12 @@
 				7E539B7620593A01002C3E55 /* SnapNShareHomeViewController.swift in Sources */,
 				9D0D713B203AAE1F0077FA7A /* RestaurantDetailsInteractor.swift in Sources */,
 				9D48FF5D2081F7E500A88E70 /* DraftTableViewController.swift in Sources */,
+				9D60DDAB20837A6F00678D3A /* FoodJourneyPresenter.swift in Sources */,
 				9DB7FE112004F0EE00D0E816 /* Alert.swift in Sources */,
 				9D0D715F203F144F0077FA7A /* DrawerPresenter.swift in Sources */,
 				9D902BE8201729E400359DFD /* SelectLocationRouter.swift in Sources */,
 				7E5E800F203D6A4000009A56 /* TimingTableViewCell.swift in Sources */,
+				9D60DDAA20837A6F00678D3A /* FoodJourneyContract.swift in Sources */,
 				7EC5014620469A2C00D44E92 /* RestaurantDirectionsInteractor.swift in Sources */,
 				7EC5014820469A2C00D44E92 /* RestaurantDirectionsRouter.swift in Sources */,
 				7E8B850B20624E0D00F802B3 /* CheckinPopup.swift in Sources */,

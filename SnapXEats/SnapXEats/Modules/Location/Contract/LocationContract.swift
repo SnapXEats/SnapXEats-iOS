@@ -10,7 +10,6 @@ import Foundation
 import Alamofire
 protocol LocationView: BaseView {
     var presenter: LocationPresentation? {get set}
-    func initView()
 }
 
 protocol LocationPresentation: class {

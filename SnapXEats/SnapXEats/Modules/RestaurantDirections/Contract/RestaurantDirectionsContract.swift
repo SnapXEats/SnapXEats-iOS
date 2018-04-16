@@ -9,7 +9,7 @@
 import Foundation
 
 protocol RestaurantDirectionsView: class, BaseView {
-    // TODO: Declare view methods
+     var presenter: RestaurantDirectionsPresentation? {get set}
 }
 
 protocol RestaurantDirectionsPresentation: class {

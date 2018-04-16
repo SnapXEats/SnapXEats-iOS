@@ -9,8 +9,8 @@
 import Foundation
 import Alamofire
 
-protocol RestaurantDetailsView: class, BaseView {
-    // TODO: Declare view methods
+protocol RestaurantDetailsView: BaseView {
+    var presenter: RestaurantDetailsPresentation? {get set}
 }
 
 protocol RestaurantDetailsPresentation: class {

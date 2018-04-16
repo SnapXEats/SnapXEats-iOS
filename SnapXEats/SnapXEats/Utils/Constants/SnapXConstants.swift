@@ -57,6 +57,7 @@ enum SnapXEatsStoryboard {
     static let restarantDetails = "RestaurantDetails"
     static let snapNShareHome = "SnapNShareHome"
     static let smartPhotoDraft = "SmartPhotoDraft"
+    static let foodJourney = "FoodJourney"
 }
 
 enum SnapXEatsStoryboardIdentifier {
@@ -76,6 +77,7 @@ enum SnapXEatsStoryboardIdentifier {
     static let smartPhotoDraftNavigationControllerID = "SmartPhotoDraftNavigationController"
     static let draftTableViewControllerID = "DraftTableViewController"
     static let smartPhotoTableViewControllerID = "SmartPhotoTableViewController"
+    static let foodJourneyNavigationControllerID = "FoodJourneyNavigationController"
 }
 
 enum SnapXEatsLocationConstant {
@@ -98,6 +100,7 @@ enum SnapXEatsWebServicePath {
     static let  checkin = "/api/v1/restaurant/checkIn"
     static let  shanNShare = "/api/v1/snapNShare"
     static let  getRestaurants = "/api/v1/restaurant/checkIn/getRestaurants"
+    static let  foodJourney = "/api/v1/foodJourney"
 }
 
 enum SnapXEatsImageNames {
