@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 enum SmartPhotView {
-    case info(photoInfo: SmartPhoto), textReview(textReview: String), audio(audioURL: String), download(imageURL: String, audioURL: String?), success
+    case info(photoInfo: SmartPhoto), textReview(textReview: String), audio(audioURL: String), download(smartPhoto:  SmartPhoto?), success
 }
 
 enum CurrentViewType {
@@ -94,10 +94,9 @@ class SmartPhotoRouter {
         }
     }
     
-    private func loadDownloadView(imageURL: String, audioURL: String?) {
+    private func loadDownloadView(smartPhoto:  SmartPhoto?) {
         if let downloadView = loadNib(nimName: SnapXEatsNibNames.smartPhotoDownload) as? SmartPhotoDownload {
-            downloadView.imageURL = imageURL
-            downloadView.audioURL = audioURL
+            downloadView.smartPhoto = smartPhoto
             downloadView.delegate = view?.presenter
             downloadView.internetdelegate = self
             downloadView.initView()
@@ -129,8 +128,8 @@ extension SmartPhotoRouter: SmartPhotoWireframe {
             presentAudioReview(audioURL: audioURL)
         case .textReview(let textReview):
             presentTextReview(textReview: textReview)
-        case .download(let imageURL, let audioURL):
-            presentDownLoadView(imageURL: imageURL, audioURL: audioURL)
+        case .download(let smartPhoto):
+            presentDownLoadView(smartPhoto: smartPhoto)
         case .success:
             presentSuccessView()
         }
@@ -148,8 +147,8 @@ extension SmartPhotoRouter: SmartPhotoWireframe {
         loadAudioView(audioURL: audioURL)
     }
     
-    private func presentDownLoadView(imageURL: String, audioURL: String?) {
-        loadDownloadView(imageURL: imageURL, audioURL: audioURL)
+    private func presentDownLoadView(smartPhoto:  SmartPhoto?) {
+        loadDownloadView(smartPhoto: smartPhoto)
     }
     
     func presentSuccessView() {

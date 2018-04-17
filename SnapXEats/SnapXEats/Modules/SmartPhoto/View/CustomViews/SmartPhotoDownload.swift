@@ -17,8 +17,7 @@ protocol SuccessScreen: class {
 class SmartPhotoDownload: UIView, UICircularProgressRingDelegate {
     
     @IBOutlet weak var progressBar: UICircularProgressRingView!
-    var imageURL: String?
-    var audioURL: String?
+    var smartPhoto: SmartPhoto?
     weak var delegate: SuccessScreen?
     weak var internetdelegate: SmartPhotoWireframe?
     let utilityQueue = DispatchQueue.global(qos: .utility)
@@ -32,7 +31,7 @@ class SmartPhotoDownload: UIView, UICircularProgressRingDelegate {
     }
     
     func startDownloading() {
-        if let imageUrl  = imageURL, let url = URL(string: imageUrl) {
+        if let imageUrl  = smartPhoto?.dish_image_url, let url = URL(string: imageUrl) {
             downloadData(url: url,imagedata: true)
         }
     }
@@ -59,7 +58,7 @@ class SmartPhotoDownload: UIView, UICircularProgressRingDelegate {
                 audioDownloadSuccess = saveAudio(data: value)
             }
             
-            if let audioURL = audioURL, let url = URL(string: audioURL), imageDownloadSuccess {
+            if let audioURL =  smartPhoto?.audio_review_url, let url = URL(string: audioURL), imageDownloadSuccess {
                 downloadData(url: url, audioData: true)
             } else if imageDownloadSuccess || audioDownloadSuccess {
                 delegate?.showSuccess()
@@ -72,16 +71,16 @@ class SmartPhotoDownload: UIView, UICircularProgressRingDelegate {
     }
     
     func savePhotoFile(value: Data) -> Bool {
-        if let fileName = getFileName(filePath: imageURL),
-            let image = UIImage(data: value),  let saveFilePath = SmartPhotoPath.smartPhoto(fileName: fileName).getPath() {
+        if let fileName = getFileName(filePath: smartPhoto?.dish_image_url), let id = smartPhoto?.restaurant_dish_id,
+            let image = UIImage(data: value),  let saveFilePath = SmartPhotoPath.smartPhoto(fileName: fileName, id: id).getPath() {
             return  savePhoto(image: image, path: saveFilePath)
         }
         return false
     }
     
     func saveAudio(data: Data) -> Bool {
-        if let fileName = getFileName(filePath: audioURL),
-             let saveFilePath = SmartPhotoPath.smartPhoto(fileName: fileName).getPath() {
+        if let fileName = getFileName(filePath: smartPhoto?.audio_review_url), let id = smartPhoto?.restaurant_dish_id,
+            let saveFilePath = SmartPhotoPath.smartPhoto(fileName: fileName, id: id).getPath() {
             return  saveAudioFile(value: data, path: saveFilePath)
         }
         return false

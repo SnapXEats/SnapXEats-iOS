@@ -12,89 +12,72 @@ import UIKit
 enum fileManagerConstants {
     static let nonLoggedInUserFolderName = "NonLoggedInUsers"
     static let audioReviewsFolderName = "Audio_Reviews"
-    static let audioReviewFileNAme = "review.m4a"
+    static let audioReviewFileName = "SnapX_Draft_Audio.m4a"
     static let smartPhotosFolderName = "Smart_Photos"
-    static let smartPhotoFileName = "photo.jpg"
+    static let smartPhotoFileName = "SnapX_Draft_photo.jpg"
     static let rootFolder = "SnapXEats"
     static let draftFolder = "Draft"
     static let smartPhotoFolder = "SmartPhoto"
 }
 
 enum SmartPhotoPath {
-    case smartPhoto(fileName: String), draft(fileName: String)
+    case smartPhoto(fileName: String, id: String), draft(fileName: String, id: String)
     
     func  getPath () -> URL? {
         switch self {
-        case .smartPhoto(let fileName):
-            return getPhoto(fileName: fileName,path: fileManagerConstants.smartPhotoFolder)
+        case .smartPhoto(let fileName, let id ):
+            return getFilePath(fileName: fileName,path: fileManagerConstants.smartPhotoFolder + "/\(id)")
             
-        case .draft(let fileName):
-            return getPhoto(fileName: fileName, path: fileManagerConstants.draftFolder)
+        case .draft(let fileName, let id):
+            return getFilePath(fileName: fileName, path: fileManagerConstants.draftFolder + "/\(id)")
         }
     }
 }
 
-func getPhoto(fileName: String, path: String) -> URL? {
+func getFilePath(fileName: String, path: String) -> URL? {
+    var timeInterval = UserDefaults.standard.string(forKey: SnapXEatsConstant.timeInterval) ?? SnapXEatsConstant.emptyString
+    if  timeInterval  == SnapXEatsConstant.emptyString {
+        // You need  to reset the time interval before saving the new photo
+        timeInterval = "\(Date().timeIntervalSince1970)"
+        UserDefaults.standard.set(timeInterval, forKey: SnapXEatsConstant.timeInterval)
+    }
+    let pathComponent = fileManagerConstants.rootFolder + "/" + path + "/" + "\(timeInterval)"
+   
+    let filePath =  apptoDocumentDirPath(path: pathComponent)
     let fileManager = FileManager.default
-    let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
-    let documentDirectory = urls[0] as NSURL
-    
-    let pathComponent = fileManagerConstants.rootFolder + "/" + path
-    let smarPhotoFilePath = documentDirectory.appendingPathComponent(pathComponent)
-    
     do {
-        try fileManager.createDirectory(at: smarPhotoFilePath!, withIntermediateDirectories: true, attributes: nil)
+        try fileManager.createDirectory(at: filePath!, withIntermediateDirectories: true, attributes: nil)
     } catch {
         print("File Error --- \(error.localizedDescription)")
     }
-    return smarPhotoFilePath?.appendingPathComponent(fileName)
+    
+    return filePath?.appendingPathComponent(fileName)
 }
 
-
-func getPathForAudioReviewForRestaurant(restaurantId: String = "test_restaurant") -> URL? {
-    let fileManager = FileManager.default
-    let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
-    let documentDirectory = urls[0] as NSURL
-    
-    let userId = LoginUserPreferences.shared.isLoggedIn ? LoginUserPreferences.shared.loginUserID : fileManagerConstants.nonLoggedInUserFolderName
-    
-    let audioReviewsFolderName = fileManagerConstants.audioReviewsFolderName
-    let pathComponent = userId + "/" + restaurantId + "/" + audioReviewsFolderName
-    let audioRecordingPath = documentDirectory.appendingPathComponent(pathComponent)
-    
-    do {
-        try fileManager.createDirectory(at: audioRecordingPath!, withIntermediateDirectories: true, attributes: nil)
-    } catch {
-        print("File Error --- \(error.localizedDescription)")
+func getPathTillDocDir(path: String) -> String? {
+     let result = path.range(of: fileManagerConstants.rootFolder,
+                                            options: NSString.CompareOptions.literal,
+                                            range: path.startIndex..<path.endIndex,
+                                            locale: nil)
+   // https://www.dotnetperls.com/find-swift
+    if let range = result {
+        // Start of range of found string.
+        let start = range.lowerBound
+        return "\(path[start..<path.endIndex])"
     }
-    return audioRecordingPath?.appendingPathComponent(fileManagerConstants.audioReviewFileNAme)
+    return nil
 }
 
-func getPathForSmartPhotoForRestaurant(restaurantId: String, skipSharedLogin: Bool = false) -> URL? {
+func apptoDocumentDirPath(path: String) -> URL? {
     let fileManager = FileManager.default
     let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
     let documentDirectory = urls[0] as NSURL
-    
-    var userId = LoginUserPreferences.shared.isLoggedIn ? LoginUserPreferences.shared.loginUserID : fileManagerConstants.nonLoggedInUserFolderName
-    
-    if skipSharedLogin == true {
-        userId = fileManagerConstants.nonLoggedInUserFolderName
-    }
-    let smartPhotosFolderName = fileManagerConstants.smartPhotosFolderName
-    let pathComponent = userId + "/" + restaurantId + "/" + smartPhotosFolderName
-    let storedPhotoPath = documentDirectory.appendingPathComponent(pathComponent)
-    
-    do {
-        try fileManager.createDirectory(at: storedPhotoPath!, withIntermediateDirectories: true, attributes: nil)
-    } catch {
-        print("File Error --- \(error.localizedDescription)")
-    }
-    return storedPhotoPath?.appendingPathComponent(fileManagerConstants.smartPhotoFileName)
+    return documentDirectory.appendingPathComponent(path)
 }
 
 func deleteAudioReview(restaurantId: String) {
     // Delete the Audio Recording from documents directory as well
-    if let audioRecordingURL = getPathForAudioReviewForRestaurant(restaurantId: restaurantId) {
+    if let audioRecordingURL = SmartPhotoPath.smartPhoto(fileName: fileManagerConstants.audioReviewFileName, id: restaurantId).getPath() {
         do {
             try FileManager.default.removeItem(at: audioRecordingURL)
         } catch {
@@ -105,7 +88,7 @@ func deleteAudioReview(restaurantId: String) {
 
 func deletesmartPhoto(restaurantId: String) {
     // Delete the Smart Photo from documents directory as well
-    if let smartPhotoURL = getPathForSmartPhotoForRestaurant(restaurantId: restaurantId) {
+    if let smartPhotoURL = SmartPhotoPath.smartPhoto(fileName: fileManagerConstants.smartPhotoFileName, id: restaurantId).getPath() {
         do {
             try FileManager.default.removeItem(at: smartPhotoURL)
         } catch {
@@ -145,4 +128,12 @@ func saveAudioFile(value: Data, path: URL) -> Bool {
             print("file cant not be saved at path \(path), with error : \(error)")
         }
     return false
+}
+
+func resetImageSaveTimeInterval() {
+    UserDefaults.standard.set(SnapXEatsConstant.emptyString, forKey: SnapXEatsConstant.timeInterval)
+}
+
+func getTimeInterval() -> String {
+     return UserDefaults.standard.string(forKey: SnapXEatsConstant.timeInterval) ?? SnapXEatsConstant.emptyString
 }

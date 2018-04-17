@@ -35,12 +35,10 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
             return sharableImge
         }
         
-        if let imagePath  = getPathForSmartPhotoForRestaurant(restaurantId: id),
+        if let imagePath  = SmartPhotoPath.draft(fileName: fileManagerConstants.smartPhotoFileName, id: id).getPath(),
             let image = UIImage(contentsOfFile: imagePath.path) {
              sharableImge = image
-        } else if let imagePath = getPathForSmartPhotoForRestaurant(restaurantId: id, skipSharedLogin: true) , let image = UIImage(contentsOfFile: imagePath.path), LoginUserPreferences.shared.isLoggedIn {
-            sharableImge = image
-        }
+        } 
         return sharableImge
     }
     

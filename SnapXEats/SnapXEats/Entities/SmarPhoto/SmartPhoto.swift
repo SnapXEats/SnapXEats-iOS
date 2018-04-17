@@ -14,15 +14,18 @@ import ObjectMapper
 
 class SmartPhoto: Mappable {
     
-    var  restaurant_dish_id =  SnapXEatsConstant.emptyString
+    var restaurant_dish_id =  SnapXEatsConstant.emptyString
     var restaurant_name =  SnapXEatsConstant.emptyString
     var restaurant_address =  SnapXEatsConstant.emptyString
     var dish_image_url =  SnapXEatsConstant.emptyString
     var pic_taken_date =  SnapXEatsConstant.emptyString
     var audio_review_url =  SnapXEatsConstant.emptyString
     var text_review =  SnapXEatsConstant.emptyString
+    var rating = 3 // This will not come from server SmartPhoto object is also used to save the data for SmartPhoto and Draft feature
+    var timeInterval = SnapXEatsConstant.emptyString // This will not come from server SmartPhoto object is also used to save the data for SmartPhoto and Draft feature
     var restaurant_aminities =  [String]()
 
+    init() {}
     required init?(map: Map) {
     }
     

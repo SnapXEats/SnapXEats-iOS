@@ -113,7 +113,8 @@ class AudioRecordingPopUp: UIView {
     }
     
     private func startAudioRecording() {
-         if let restaurntID = LoginUserPreferences.shared.userDishReview.restaurantInfoId, let audioRecordingURL = getPathForAudioReviewForRestaurant(restaurantId: restaurntID) {
+         if let restaurntID = LoginUserPreferences.shared.userDishReview.restaurantInfoId, let audioRecordingURL =
+            SmartPhotoPath.draft(fileName: fileManagerConstants.audioReviewFileName, id: restaurntID).getPath() {
             let settings = [
                 AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
                 AVSampleRateKey: 44100,
@@ -141,7 +142,7 @@ class AudioRecordingPopUp: UIView {
     }
     
     private func playAudioReview() {
-        if let restaurntID = LoginUserPreferences.shared.userDishReview.restaurantInfoId, let audioRecordingURL = getPathForAudioReviewForRestaurant(restaurantId: restaurntID) {
+        if let restaurntID = LoginUserPreferences.shared.userDishReview.restaurantInfoId, let audioRecordingURL = SmartPhotoPath.draft(fileName: fileManagerConstants.audioReviewFileName, id: restaurntID).getPath() {
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: audioRecordingURL)
                 do {

@@ -80,9 +80,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UNR-QN-jto">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UNR-QN-jto">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="51R-cZ-nhM" id="LGt-1a-aba"/>
@@ -91,6 +90,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="UNR-QN-jto" firstAttribute="trailing" secondItem="B0s-4b-RZQ" secondAttribute="trailing" id="0b6-CW-QkF"/>
+                            <constraint firstItem="UNR-QN-jto" firstAttribute="top" secondItem="5yl-4c-Rre" secondAttribute="top" id="F5g-yg-Cc0"/>
+                            <constraint firstItem="UNR-QN-jto" firstAttribute="bottom" secondItem="B0s-4b-RZQ" secondAttribute="bottom" id="tHy-LT-3gq"/>
+                            <constraint firstItem="UNR-QN-jto" firstAttribute="leading" secondItem="B0s-4b-RZQ" secondAttribute="leading" id="uuZ-GN-JqM"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="B0s-4b-RZQ"/>
                     </view>
                     <connections>
@@ -109,9 +114,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2FQ-hQ-17J">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2FQ-hQ-17J">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="5uK-Yh-jbD" id="gud-ah-4NG"/>
@@ -120,6 +124,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2FQ-hQ-17J" firstAttribute="top" secondItem="wGP-y0-VpZ" secondAttribute="top" id="43o-ta-gxv"/>
+                            <constraint firstItem="2FQ-hQ-17J" firstAttribute="bottom" secondItem="wGP-y0-VpZ" secondAttribute="bottom" id="ITE-H2-q0u"/>
+                            <constraint firstItem="2FQ-hQ-17J" firstAttribute="leading" secondItem="wGP-y0-VpZ" secondAttribute="leading" id="a4E-M5-rYS"/>
+                            <constraint firstItem="2FQ-hQ-17J" firstAttribute="trailing" secondItem="wGP-y0-VpZ" secondAttribute="trailing" id="zVy-Uk-p2l"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="wGP-y0-VpZ"/>
                     </view>
                     <connections>

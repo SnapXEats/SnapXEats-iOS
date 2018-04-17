@@ -73,8 +73,8 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
         if downloadButton.isSelected {
             removeSubView()
              updateTintColor(sender: sender)
-        } else if let imageURL = smartPhoto?.dish_image_url, checkRechability() {
-            presenter?.presentView(view: .download(imageURL: imageURL, audioURL: smartPhoto?.audio_review_url))
+        } else if let _ = smartPhoto?.dish_image_url, checkRechability() {
+            presenter?.presentView(view: .download(smartPhoto: smartPhoto))
              updateTintColor(sender: sender)  // if internet is off tint colour should not change 
         }
        

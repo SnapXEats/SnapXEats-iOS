@@ -269,6 +269,7 @@ enum SnapXEatsConstant {
     static let snaXEatsFirstTimeUser = "SnaXEatsFirstTimeUser"
     static let firstTimeUser = "firstTimeUser"
     static let urlScheme = "snapxeats"
+    static let timeInterval = "ImageSavedTime"
 }
 
 enum UberAppConstants {
