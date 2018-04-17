@@ -176,6 +176,10 @@ enum SnapXEatsCellResourceIdentifiler {
     static let restaurantCollectionView = "restaurantCell"
     static let restaurantListTableView = "RestaurantListCell"
     static let smartPhotTableView =  "SmartPhotoCellIdentifier"
+    static let recentFoodJourneyTableView = "RecentFoodJourneyCell"
+    static let recentFoodJourneyPicturesCollectionView = "RecentFoodJourneyPicturesCell"
+    static let olderFoodJourneyTableView = "OlderFoodJourneyCell"
+    static let olderHeaderTableView = "OlderHeaderCell"
 }
 
 enum SnapXEatsNibNames {
@@ -200,6 +204,10 @@ enum SnapXEatsNibNames {
     static let smartPhotoDownload = "SmartPhotoDownload"
     static let smartPhotoSuccess = "SmartPhotoDownloadSuccess"
     static let smartPhotoTableCell = "SmartPhotoTableCell"
+    static let recentFoodJourneyTableViewCell = "RecentFoodJourneyTableViewCell"
+    static let recentFoodJourneyPicturesCell = "RecentFoodJourneyPicturesCollectionViewCell"
+    static let olderFoodJourneyTableViewCell = "OlderFoodJourneyTableViewCell"
+    static let olderHeaderTableViewCell = "OlderHeaderTableViewCell"
 }
 
 enum SnapXEatsWebServiceParameterKeys {

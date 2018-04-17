@@ -17,14 +17,33 @@
                     <view key="view" contentMode="scaleToFill" id="SkX-ch-OEI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="176" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gEO-36-Lpf">
+                                <rect key="frame" x="0.0" y="72" width="375" height="595"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Voj-fb-jzY" id="dHC-Sn-XEa"/>
+                                    <outlet property="delegate" destination="Voj-fb-jzY" id="9hw-3S-owg"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gEO-36-Lpf" firstAttribute="trailing" secondItem="KCa-HH-IDL" secondAttribute="trailing" id="NnZ-Wm-kUL"/>
+                            <constraint firstItem="gEO-36-Lpf" firstAttribute="top" secondItem="KCa-HH-IDL" secondAttribute="top" constant="8" id="YrR-5k-NOJ"/>
+                            <constraint firstItem="gEO-36-Lpf" firstAttribute="leading" secondItem="KCa-HH-IDL" secondAttribute="leading" id="kcK-Ov-RPY"/>
+                            <constraint firstItem="KCa-HH-IDL" firstAttribute="bottom" secondItem="gEO-36-Lpf" secondAttribute="bottom" id="weh-hh-U5b"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="KCa-HH-IDL"/>
                     </view>
                     <navigationItem key="navigationItem" id="b2u-lc-2Cs"/>
+                    <connections>
+                        <outlet property="recentFoodJourneyTableView" destination="gEO-36-Lpf" id="qUe-Sw-8ZM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T5J-8l-DbA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="233" y="50"/>
+            <point key="canvasLocation" x="232.80000000000001" y="49.925037481259373"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7f3-Ns-OYu">
