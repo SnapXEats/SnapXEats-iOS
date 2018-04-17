@@ -13,6 +13,7 @@ import UIKit
 class SmartPhotoTableViewController: BaseViewController {
     
     @IBOutlet weak var smartPhotoTableView: UITableView!
+    var smartPhotos: [SmartPhoto]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,7 @@ class SmartPhotoTableViewController: BaseViewController {
     
     func initView() {
         registerNibForCell()
+        smartPhotos = SmartPhotoHelper.shared.getSmartPhotos()
     }
     
     var smartPhotoItemCount = [Int]()
@@ -38,7 +40,7 @@ extension SmartPhotoTableViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  5//draftItemCount.count
+        return  smartPhotos?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

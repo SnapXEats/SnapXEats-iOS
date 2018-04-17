@@ -172,6 +172,8 @@
 		9D60DDAE20837A6F00678D3A /* FoodJourneyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D60DDA920837A6E00678D3A /* FoodJourneyRouter.swift */; };
 		9D60DDB120837B2400678D3A /* FoodJourney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D60DDB020837B2400678D3A /* FoodJourney.swift */; };
 		9D60DDB32083892700678D3A /* FoodJourney.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D60DDB22083892700678D3A /* FoodJourney.storyboard */; };
+		9D60DDB52084A86D00678D3A /* SmartPhotoAndDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D60DDB42084A86D00678D3A /* SmartPhotoAndDraft.swift */; };
+		9D60DDB72084B33200678D3A /* SmartPhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D60DDB62084B33200678D3A /* SmartPhotoHelper.swift */; };
 		9D748B272073883C004ED49A /* SharedSucceesPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D748B252073883C004ED49A /* SharedSucceesPopup.swift */; };
 		9D748B282073883C004ED49A /* SharedSucceesPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D748B262073883C004ED49A /* SharedSucceesPopup.xib */; };
 		9D748B3F2074B2E2004ED49A /* LoginPopUpContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D748B362074B2E2004ED49A /* LoginPopUpContract.swift */; };
@@ -456,6 +458,8 @@
 		9D60DDA920837A6E00678D3A /* FoodJourneyRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodJourneyRouter.swift; sourceTree = "<group>"; };
 		9D60DDB020837B2400678D3A /* FoodJourney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodJourney.swift; sourceTree = "<group>"; };
 		9D60DDB22083892700678D3A /* FoodJourney.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FoodJourney.storyboard; sourceTree = "<group>"; };
+		9D60DDB42084A86D00678D3A /* SmartPhotoAndDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartPhotoAndDraft.swift; sourceTree = "<group>"; };
+		9D60DDB62084B33200678D3A /* SmartPhotoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartPhotoHelper.swift; sourceTree = "<group>"; };
 		9D748B252073883C004ED49A /* SharedSucceesPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedSucceesPopup.swift; sourceTree = "<group>"; };
 		9D748B262073883C004ED49A /* SharedSucceesPopup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SharedSucceesPopup.xib; sourceTree = "<group>"; };
 		9D748B362074B2E2004ED49A /* LoginPopUpContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPopUpContract.swift; sourceTree = "<group>"; };
@@ -1771,6 +1775,7 @@
 				7E9394EB204456F900A80387 /* FoodCardActionHelper.swift */,
 				9D1C33E1205FAD1B00B4F69D /* SocialPlatformHelper.swift */,
 				9D1C33E62062706000B4F69D /* InstagramManager.swift */,
+				9D60DDB62084B33200678D3A /* SmartPhotoHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -2043,6 +2048,7 @@
 			isa = PBXGroup;
 			children = (
 				9D8FB207207CF1C5002E6662 /* SmartPhoto.swift */,
+				9D60DDB42084A86D00678D3A /* SmartPhotoAndDraft.swift */,
 			);
 			path = SmarPhoto;
 			sourceTree = "<group>";
@@ -2653,6 +2659,7 @@
 				7E5E7FDD203AF7EE00009A56 /* FullScreenSlideshowViewController.swift in Sources */,
 				9D902BE4201729E400359DFD /* SelectLocationContract.swift in Sources */,
 				9D748B3F2074B2E2004ED49A /* LoginPopUpContract.swift in Sources */,
+				9D60DDB52084A86D00678D3A /* SmartPhotoAndDraft.swift in Sources */,
 				9D8E88EE1FFD2BEC0066A1D9 /* LoginInteractor.swift in Sources */,
 				7E2C64BD2044253400DAB44A /* NavigationMenuTableViewCell.swift in Sources */,
 				9D0D713C203AAE1F0077FA7A /* RestaurantDetailsRouter.swift in Sources */,
@@ -2817,6 +2824,7 @@
 				7E539BAC205A522E002C3E55 /* SnapNSharePhotoPresenter.swift in Sources */,
 				9D8E890B1FFD2BEC0066A1D9 /* PlainButtonCell.swift in Sources */,
 				9D8E890D1FFD2BEC0066A1D9 /* SectionHeaderLabelCell.swift in Sources */,
+				9D60DDB72084B33200678D3A /* SmartPhotoHelper.swift in Sources */,
 				9D748B492074EBBC004ED49A /* LoginPopUpViewController.swift in Sources */,
 				9D955D2B2028A91A0007CB01 /* SnapXEatsUserLocation.swift in Sources */,
 				9D8E890F1FFD2BEC0066A1D9 /* ProfileLocalDataManager.swift in Sources */,

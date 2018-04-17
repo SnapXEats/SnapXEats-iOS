@@ -13,6 +13,8 @@ class DraftTableViewController: BaseViewController {
     
     @IBOutlet weak var draftTableView: UITableView!
     
+    var draftPhotos: [SmartPhoto]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
@@ -20,6 +22,7 @@ class DraftTableViewController: BaseViewController {
     
     func initView() {
         registerNibForCell()
+        draftPhotos = SmartPhotoHelper.shared.getDraftPhotos()
     }
     
     var draftItemCount = [Int]()
@@ -37,7 +40,7 @@ extension DraftTableViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  5//draftItemCount.count
+        return  draftPhotos?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -47,8 +50,13 @@ extension DraftTableViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SnapXEatsCellResourceIdentifiler.smartPhotTableView, for: indexPath) as! SmartPhotoTableCell
         cell.selectionStyle = .none
-        cell.smartPhotoImage.image =  UIImage(named: SnapXEatsImageNames.wishlist_placeholder)!
-        cell.restaurantNameLabel.text = "Brand New"
+        if let photos = draftPhotos, let imageUrl = apptoDocumentDirPath(path: photos[indexPath.row].dish_image_url) {
+            if FileManager.default.fileExists(atPath: imageUrl.path) {
+                print(imageUrl.path)
+                cell.smartPhotoImage.image =   UIImage(contentsOfFile: imageUrl.path)
+            }
+            cell.restaurantNameLabel.text = photos[indexPath.row].restaurant_name
+        }
         return cell
     }
 }

@@ -19,7 +19,7 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
     var snapPhoto: UIImage!
     var audioReviewDuration: Int = 0
     var loginPreference  = LoginUserPreferences.shared
-    var restaurntID: String?
+    var restaurantDetails: RestaurantDetails?
     var rating: Int {
         return Int(starRatingView.value)
     }
@@ -45,6 +45,25 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
         initView()
     }
     
+    func saveFileInDraft() {
+        if let restaurantDetails = restaurantDetails, let id = restaurantDetails.id, let imageURL = SmartPhotoPath.draft(fileName: fileManagerConstants.smartPhotoFileName, id: id).getPath(), FileManager.default.fileExists(atPath: imageURL.path) {
+            let smartPhoto = SmartPhoto()
+            smartPhoto.restaurant_dish_id = id
+            smartPhoto.timeInterval = getTimeInterval()
+            if let url = SmartPhotoPath.draft(fileName: fileManagerConstants.audioReviewFileName, id: id).getPath(),
+                FileManager.default.fileExists(atPath: url.path) {
+                smartPhoto.audio_review_url =  getPathTillDocDir(path: url.path) ?? ""
+            }
+            
+            smartPhoto.dish_image_url =  getPathTillDocDir(path: imageURL.path) ?? ""
+            smartPhoto.text_review = (reviewTextView.text == reviewPlaceholderText) ? SnapXEatsAppDefaults.emptyString : reviewTextView.text
+            smartPhoto.restaurant_aminities = restaurantDetails.restaurant_amenities
+            smartPhoto.restaurant_name = restaurantDetails.name ?? ""
+            smartPhoto.rating = rating
+            SmartPhotoHelper.shared.savePhotoDraft(smartPhoto: smartPhoto)
+        }
+    }
+    
     private func addShareButtonOnNavigationItem() {
         let shareButton:UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 38, height: 18))
         shareButton.setImage(UIImage(named: SnapXEatsImageNames.share), for: UIControlState.normal)
@@ -53,9 +72,9 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
     }
     
     @objc func shareButtonAction() {
-        if let Id = restaurntID, let parent = self.navigationController {
+        if let Id = restaurantDetails?.id, let parent = self.navigationController {
             if  isSharingInformationComplete() {
-                 hideKeyboardWhenTappedAround()
+                hideKeyboardWhenTappedAround()
                 if loginPreferecne.isLoggedIn {
                     continueSharingUserReview()
                 } else {
@@ -81,23 +100,19 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
     
     func continueSharingUserReview() {
         if checkRechability() {
-         setReviewData()
-         gotoSnapNShareSocialMediaView()
+            setReviewData()
+            gotoSnapNShareSocialMediaView()
         }
     }
     
     func setReviewData() {
-        if let restaurntID = restaurntID {
-            loginPreference.userDishReview.rating = rating
-            loginPreference.userDishReview.reviewText = (reviewTextView.text == reviewPlaceholderText) ? SnapXEatsAppDefaults.emptyString : reviewTextView.text
-            loginPreference.userDishReview.reviewAudio =  getPathForAudioReviewForRestaurant(restaurantId: restaurntID)
-            loginPreference.userDishReview.dishPicture = getPathForSmartPhotoForRestaurant(restaurantId: restaurntID)
-            //loginPreference.userDishReview.restaurantInfoId  // This will get set in SnapNShareHomeViewController
+        if let restaurntID = restaurantDetails?.id {
+            saveFileInDraft()
         }
     }
     
     func gotoSnapNShareSocialMediaView() {
-        if let parentNVController = self.navigationController, let _ = restaurntID {
+        if let parentNVController = self.navigationController, let _ = restaurantDetails?.id {
             presenter?.gotoSnapNSharesocialMediaView(parent: parentNVController)
         }
     }

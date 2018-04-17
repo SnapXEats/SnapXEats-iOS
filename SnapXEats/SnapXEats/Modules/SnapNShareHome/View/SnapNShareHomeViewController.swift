@@ -99,8 +99,8 @@ class SnapNShareHomeViewController: BaseViewController, StoryboardLoadable {
     }
     
     private func gotoSnapNSharePhotoViewWithPhoto(photo: UIImage) {
-        if let parentNVCpntroller = self.navigationController, let restaurantID = restaurantID {
-            presenter?.gotoSnapNSharePhotoView(parent: parentNVCpntroller, withPhoto: photo, restaurantId: restaurantID)
+        if let parentNVCpntroller = self.navigationController, let _  = restaurantDetails?.id {
+            presenter?.gotoSnapNSharePhotoView(parent: parentNVCpntroller, withPhoto: photo, restaurantDetails: restaurantDetails)
         }
     }
     
@@ -146,7 +146,8 @@ extension SnapNShareHomeViewController: UIImagePickerControllerDelegate, UINavig
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             dismiss(animated: true) { [weak self] in
-                if let restaurntid = self?.restaurantID, let photoPathURL = getPathForSmartPhotoForRestaurant(restaurantId: restaurntid) {
+                resetImageSaveTimeInterval() // Reset value before saving new image to path, 
+                if let restaurntId = self?.restaurantID, let photoPathURL = SmartPhotoPath.draft(fileName: fileManagerConstants.smartPhotoFileName, id: restaurntId).getPath() {
                         savePhoto(image: chosenImage, path: photoPathURL)
                     }
                 self?.gotoSnapNSharePhotoViewWithPhoto(photo: chosenImage)

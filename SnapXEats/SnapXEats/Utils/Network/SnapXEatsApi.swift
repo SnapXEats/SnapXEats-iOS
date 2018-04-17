@@ -20,11 +20,11 @@ class SnapXEatsApi {
     
     static var uploadRequest: Request?
     static let loginUserPrefernce = LoginUserPreferences.shared
-    static let dishReview = loginUserPrefernce.userDishReview
+    static let restaurantID = loginUserPrefernce.userDishReview.restaurantInfoId
     static var baseURL: String {
         return SnapXEatsWebServicePath.rootURL
     }
-    
+    static let timeInterval = UserDefaults.standard.string(forKey: SnapXEatsConstant.timeInterval) ?? ""
     static let serverToken = SnapXEatsLoginHelper.shared.getLoginUserServerToken()
     
     static var header: [String: String]? {
@@ -35,7 +35,7 @@ class SnapXEatsApi {
     }
     
     static func snapXRequestObject<T: Mappable>(path: String, completionHandler:  @escaping (DataResponse<T>) -> ()) {
-         let url = baseURL + path
+        let url = baseURL + path
         Alamofire.request(url).responseObject( completionHandler: completionHandler)
     }
     
@@ -45,9 +45,9 @@ class SnapXEatsApi {
     }
     
     static func snapXRequestObjectWithParameters<T: Mappable>(path: String, parameters: [String: Any], completionHandler:  @escaping (DataResponse<T>) -> ()) {
-         let url = baseURL + path
+        let url = baseURL + path
         Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: header).responseObject( completionHandler: completionHandler)
-    
+        
     }
     
     static func snapXPostRequestObjectWithParameters<T: Mappable>(path: String, parameters: [String: Any], completionHandler:  @escaping (DataResponse<T>) -> ()) {
@@ -63,12 +63,17 @@ class SnapXEatsApi {
         var audioData: Data? = nil
         let fileManager = FileManager.default
         do {
-            // Get Image and Audio data to upload
-            if let pictureURL = dishReview.dishPicture, fileManager.fileExists(atPath: pictureURL.path) == true {
-                imageData = try Data(contentsOf: pictureURL)
-            }
-            if let audioURL = dishReview.reviewAudio, fileManager.fileExists(atPath: audioURL.path) == true {
-                audioData = try Data(contentsOf: audioURL)
+            if let restaurantID = restaurantID, let smartPhoto = SmartPhotoHelper.shared.getDraftPhoto(timeInterval: timeInterval),
+                let pictureURL = apptoDocumentDirPath(path: smartPhoto.dish_image_url) {
+                // Get Image and Audio data to upload
+                
+                if fileManager.fileExists(atPath: pictureURL.path) == true {
+                    imageData = try Data(contentsOf: pictureURL)
+                }
+                if  let audioURL = apptoDocumentDirPath(path: smartPhoto.audio_review_url),
+                    fileManager.fileExists(atPath: audioURL.path) == true {
+                    audioData = try Data(contentsOf: audioURL)
+                }
             }
         } catch {
             print("Unable to load data: \(error)")
@@ -76,7 +81,7 @@ class SnapXEatsApi {
         
         Alamofire.upload(multipartFormData: { (multipartFormData) in
             if let imageFormData = imageData { //append Image data if available
-               multipartFormData.append(imageFormData, withName: "dishPicture", fileName: "smart_photo.jpeg", mimeType: "image/jpg")
+                multipartFormData.append(imageFormData, withName: "dishPicture", fileName: "smart_photo.jpeg", mimeType: "image/jpg")
             }
             
             if let audioFormData = audioData { //append Audio data if available
@@ -103,7 +108,7 @@ class SnapXEatsApi {
         let url = baseURL + path
         Alamofire.request(url, method: .put, parameters: parameters, encoding: URLEncoding.default, headers: header).responseObject( completionHandler: completionHandler)
     }
-
+    
     static func snapXPostRequestWithParameters(path: String, parameters: [String: Any], completionHandler:  @escaping (DefaultDataResponse) -> ()) {
         let url = baseURL + path
         Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: header).response { (data) in
