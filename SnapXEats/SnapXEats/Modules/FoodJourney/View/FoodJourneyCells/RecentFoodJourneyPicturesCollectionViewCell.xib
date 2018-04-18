@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="77" height="66"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_cuisine" translatesAutoresizingMaskIntoConstraints="NO" id="eMG-n3-2il">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="foodjorney_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="eMG-n3-2il">
                         <rect key="frame" x="0.0" y="0.0" width="77" height="66"/>
                     </imageView>
                 </subviews>
@@ -35,6 +35,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="placeholder_cuisine" width="89" height="58"/>
+        <image name="foodjorney_placeholder" width="77" height="66"/>
     </resources>
 </document>
