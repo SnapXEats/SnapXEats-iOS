@@ -14,7 +14,7 @@ class SmartPhotoDraftViewController: BaseViewController, StoryboardLoadable {
     
     @IBOutlet weak var containerView: UIView!
     // MARK: Properties
-
+    var smartPhoto_Draft_Stored_id: String?  = getTimeInterval()
     var presenter: SmartPhotoDraftPresentation?
 
     // MARK: Lifecycle
@@ -22,6 +22,9 @@ class SmartPhotoDraftViewController: BaseViewController, StoryboardLoadable {
     @IBOutlet weak var shareButton: UIBarButtonItem!
     
     @IBAction func shareButtonAction(_ sender: Any) {
+        if let smartPhoto_Draft_Stored_id = smartPhoto_Draft_Stored_id,  smartPhoto_Draft_Stored_id != SnapXEatsConstant.emptyString, let parent = self.navigationController {
+            presenter?.presentScreen(screen: .snapNShareSocialMedia(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id, parentController: parent))
+        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +45,7 @@ class SmartPhotoDraftViewController: BaseViewController, StoryboardLoadable {
     }
     
     func loadView(screen: DraftScreen) {
-        if  let smartPhotoView = presenter?.presentScreen(screen: screen) {
+        if  let smartPhotoView = presenter?.presentView(screen: screen) {
             addControllerToContainerView(smartPhotoView)
         }
     }

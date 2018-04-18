@@ -20,8 +20,12 @@ class SmartPhotoDraftPresenter {
 }
 
 extension SmartPhotoDraftPresenter: SmartPhotoDraftPresentation {
-    func presentScreen(screen: DraftScreen) -> UIViewController? {
+    func presentView(screen: DraftScreen) -> UIViewController? {
        return  router?.loadScreen(screen: screen)
+    }
+    
+    func presentScreen(screen: Screens) {
+        router?.presentScreen(screen: screen)
     }
 }
 

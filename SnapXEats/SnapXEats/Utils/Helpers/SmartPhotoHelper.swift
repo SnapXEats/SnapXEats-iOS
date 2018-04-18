@@ -14,16 +14,18 @@ class SmartPhotoHelper {
     private init() {}
     
     func savePhotoDraft(smartPhoto: SmartPhoto) {
-        if smartPhoto.timeInterval != SnapXEatsConstant.emptyString {
+        if smartPhoto.smartPhoto_Draft_Stored_id != SnapXEatsConstant.emptyString {
             let draftData = mapDraftPhotosToData(smartPhoto: smartPhoto)
-            let predicate  =  NSPredicate(format: "timeInterval == %@", draftData.timeInterval)
+            if let id = draftData.smartPhoto_Draft_Stored_id {
+            let predicate  =  NSPredicate(format: "smartPhoto_Draft_Stored_id == %@", id)
             SmartPhotoAndDraft.createDraftData(photo: draftData, aminities: smartPhoto.restaurant_aminities, predicate: predicate)
+            }
         }
     }
     
-    func getDraftPhoto(timeInterval: String) -> SmartPhoto? {
-        if timeInterval != SnapXEatsConstant.emptyString {
-            let predicate  =  NSPredicate(format: "timeInterval == %@", timeInterval)
+    func getDraftPhoto(smartPhoto_Draft_Stored_id: String) -> SmartPhoto? {
+        if smartPhoto_Draft_Stored_id != SnapXEatsConstant.emptyString {
+            let predicate  =  NSPredicate(format: "smartPhoto_Draft_Stored_id == %@", smartPhoto_Draft_Stored_id)
             if let draftData = SmartPhotoAndDraft.getDraftPhoto(predicate: predicate) {
                 return mapDataToDraftPhoto(draftData: draftData)
             }
@@ -32,16 +34,18 @@ class SmartPhotoHelper {
     }
     
     func saveSmartPhoto(smartPhoto: SmartPhoto) {
-        if smartPhoto.timeInterval != SnapXEatsConstant.emptyString {
+        if smartPhoto.smartPhoto_Draft_Stored_id != SnapXEatsConstant.emptyString {
             let photoData = mapSmartPhotosToData(smartPhoto: smartPhoto)
-            let predicate  =  NSPredicate(format: "timeInterval == %@", photoData.timeInterval)
+             if let id = photoData.smartPhoto_Draft_Stored_id {
+            let predicate  =  NSPredicate(format: "smartPhoto_Draft_Stored_id == %@", id)
             SmartPhotoAndDraft.createSmartPhotoData(photo: photoData, aminities: smartPhoto.restaurant_aminities, predicate: predicate)
+            }
         }
     }
     
-    func getSmartPhoto(timeInterval: String) -> SmartPhoto?  {
-        if timeInterval != SnapXEatsConstant.emptyString {
-            let predicate  =  NSPredicate(format: "timeInterval == %@", timeInterval)
+    func getSmartPhoto(smartPhoto_Draft_Stored_id: String) -> SmartPhoto?  {
+        if smartPhoto_Draft_Stored_id != SnapXEatsConstant.emptyString {
+            let predicate  =  NSPredicate(format: "smartPhoto_Draft_Stored_id == %@", smartPhoto_Draft_Stored_id)
             if  let smartPhotoData = SmartPhotoAndDraft.getSmartPhoto(predicate: predicate) {
                 return  mapDataToSmartPhoto(photosData: smartPhotoData)
             }
@@ -51,25 +55,25 @@ class SmartPhotoHelper {
     
     private func mapSmartPhotosToData(smartPhoto: SmartPhoto) -> SmartPhotoData {
         let smartPhotoData = SmartPhotoData()
-        smartPhotoData.smartPhotoID = smartPhoto.restaurant_dish_id
+        smartPhotoData.smartPhotoID = smartPhoto.restaurant_item_id
         smartPhotoData.imageURL = smartPhoto.dish_image_url
         smartPhotoData.audioURL = smartPhoto.audio_review_url
         smartPhotoData.textReview = smartPhoto.text_review
         smartPhotoData.restaurantName = smartPhoto.restaurant_name
         smartPhotoData.rating = smartPhoto.rating
-        smartPhotoData.timeInterval = smartPhoto.timeInterval
+        smartPhotoData.smartPhoto_Draft_Stored_id = smartPhoto.smartPhoto_Draft_Stored_id
         return smartPhotoData
         
     }
     
     private func mapDraftPhotosToData(smartPhoto: SmartPhoto) -> DraftData {
         let draftPhotoData = DraftData()
-        draftPhotoData.restaurantID = smartPhoto.restaurant_dish_id
+        draftPhotoData.restaurantID = smartPhoto.restaurant_item_id
         draftPhotoData.imageURL = smartPhoto.dish_image_url
         draftPhotoData.audioURL = smartPhoto.audio_review_url
         draftPhotoData.textReview = smartPhoto.text_review
         draftPhotoData.restaurantName = smartPhoto.restaurant_name
-        draftPhotoData.timeInterval = smartPhoto.timeInterval
+        draftPhotoData.smartPhoto_Draft_Stored_id = smartPhoto.smartPhoto_Draft_Stored_id
         draftPhotoData.rating = smartPhoto.rating
         return draftPhotoData
         
@@ -97,7 +101,7 @@ class SmartPhotoHelper {
     
     func mapDataToSmartPhoto(photosData: SmartPhotoData) -> SmartPhoto {
         let photo = SmartPhoto()
-        photo.restaurant_dish_id = photosData.smartPhotoID
+        photo.restaurant_item_id = photosData.smartPhotoID
         photo.audio_review_url = photosData.audioURL
         photo.dish_image_url = photosData.imageURL
         photo.text_review = photosData.textReview
@@ -105,14 +109,14 @@ class SmartPhotoHelper {
         for  aminity in photosData.restaurant_aminities {
             photo.restaurant_aminities.append(aminity)
         }
-        photo.timeInterval = photosData.timeInterval
+        photo.smartPhoto_Draft_Stored_id = photosData.smartPhoto_Draft_Stored_id
         photo.rating = photosData.rating
         return photo
     }
     
     func mapDataToDraftPhoto(draftData: DraftData) -> SmartPhoto {
         let photo = SmartPhoto()
-        photo.restaurant_dish_id = draftData.restaurantID
+        photo.restaurant_item_id = draftData.restaurantID
         photo.audio_review_url = draftData.audioURL
         photo.dish_image_url = draftData.imageURL
         photo.text_review = draftData.textReview
@@ -120,7 +124,7 @@ class SmartPhotoHelper {
         for  aminity in draftData.restaurant_aminities {
             photo.restaurant_aminities.append(aminity)
         }
-        photo.timeInterval = draftData.timeInterval
+        photo.smartPhoto_Draft_Stored_id = draftData.smartPhoto_Draft_Stored_id
         photo.rating = draftData.rating
         return photo
     }

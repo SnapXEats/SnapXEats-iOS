@@ -53,19 +53,11 @@
                         <viewLayoutGuide key="safeArea" id="G7f-tQ-l7b"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="N70-P4-yH4">
-                        <barButtonItem key="rightBarButtonItem" title="Share" id="uzc-D6-AHg">
-                            <color key="tintColor" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="shareButtonAction:" destination="bk7-DQ-219" id="elM-Ey-20B"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="N70-P4-yH4"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="containerView" destination="0Fk-dh-EBW" id="sv0-oY-SoT"/>
                         <outlet property="segmentView" destination="PNX-yn-ehQ" id="Iyb-gv-pGN"/>
-                        <outlet property="shareButton" destination="uzc-D6-AHg" id="hv4-61-ZPI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k7o-z9-5Hh" userLabel="First Responder" sceneMemberID="firstResponder"/>

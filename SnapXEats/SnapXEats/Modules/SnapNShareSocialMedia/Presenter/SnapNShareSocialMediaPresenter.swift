@@ -28,8 +28,8 @@ extension SnapNShareSocialMediaPresenter: SnapNShareSocialMediaPresentation {
         interactor?.sendFaceBookLoginRequest(view: baseView)
     }
     
-    func sendPhotoReview() {
-        interactor?.uploadDishReview()
+    func sendPhotoReview(restaurantID: String, smartPhoto_Draft_Stored_id : String) {
+        interactor?.uploadDishReview(restaurantID: restaurantID, smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id)
     }
 }
 

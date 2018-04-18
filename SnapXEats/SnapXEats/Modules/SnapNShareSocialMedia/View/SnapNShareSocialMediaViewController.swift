@@ -19,9 +19,14 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
     let loginPreferecne = LoginUserPreferences.shared
     let instagramApi = Instagram.shared
     var shareDetails: SnapNShare?
-   // let dishReview = LoginUserPreferences.shared.userDishReview
-    var restaurantID = LoginUserPreferences.shared.userDishReview.restaurantInfoId
+    var smartPhoto_Draft_Stored_id: String?
     
+    var smartPhoto: SmartPhoto? {
+        if let smartPhoto_Draft_Stored_id = smartPhoto_Draft_Stored_id, smartPhoto_Draft_Stored_id != SnapXEatsConstant.emptyString {
+            return SmartPhotoHelper.shared.getDraftPhoto(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id)
+        }
+        return nil
+    }
     @IBOutlet weak var fbButton: UIButton!
     @IBOutlet weak var instagramButton: UIButton!
     @IBOutlet weak var smartPhotoView: UIView!
@@ -30,16 +35,10 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
     @IBOutlet weak var smartPhotoImageView: UIImageView!
     
     var shareImage: UIImage? {
-        var sharableImge: UIImage?
-        guard let id = self.restaurantID else {
-            return sharableImge
+        guard let imagePath = smartPhoto?.dish_image_url, let imageURL  = apptoDocumentDirPath(path: imagePath) else {
+            return nil
         }
-        
-        if let imagePath  = SmartPhotoPath.draft(fileName: fileManagerConstants.smartPhotoFileName, id: id).getPath(),
-            let image = UIImage(contentsOfFile: imagePath.path) {
-             sharableImge = image
-        } 
-        return sharableImge
+        return  UIImage(contentsOfFile: imageURL.path)
     }
     
     @IBAction func fbImageShare(_ sender: Any) {
@@ -66,8 +65,10 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if shareDetails == nil {
-            showLoading()
-            presenter?.sendPhotoReview()
+            if let restaurantID = smartPhoto?.restaurant_item_id, let smartPhoto_Draft_Stored_id = smartPhoto_Draft_Stored_id {
+                showLoading()
+                presenter?.sendPhotoReview(restaurantID: restaurantID, smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id)
+            }
         }
     }
     
@@ -105,9 +106,9 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
             case .cancelled:
                 self?.showShaingErrorDialog(message: AlertMessage.sharingCanceled, completionHandler: nil)
             case .success:
-                if let restaurantId = self?.restaurantID {
-                    deleteUserReviewData(restaurantId: restaurantId)
-                    self?.presenter?.presentScreen(screen: .sharedSuccess(restaurantID: restaurantId))
+                if let smartPhoto_Draft_Stored_id = self?.smartPhoto_Draft_Stored_id, let restaurantID = self?.smartPhoto?.restaurant_item_id {
+                    deleteUserReviewData(restaurantId: smartPhoto_Draft_Stored_id)
+                    self?.presenter?.presentScreen(screen: .sharedSuccess(restaurantID: restaurantID))
                 }
                 
             }
@@ -126,7 +127,7 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
             sharingMessageLabel.text = shareDetails.message ?? ""
             restaurantNameLabel.text = shareDetails.restaurant_name ?? ""
             if let image = shareImage {
-                smartPhotoImageView.image = image   
+                smartPhotoImageView.image = image
             }
         }
     }
@@ -139,7 +140,7 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
         })
         UIAlertController.presentAlertInViewController(self, title: AlertTitle.sharingTitle , message: message, actions: [Ok], completion: nil)
     }
-
+    
 }
 
 extension SnapNShareSocialMediaViewController: SnapNShareSocialMediaView {

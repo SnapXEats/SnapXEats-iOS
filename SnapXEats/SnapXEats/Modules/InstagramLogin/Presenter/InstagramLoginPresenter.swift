@@ -14,7 +14,7 @@ class InstagramLoginPresenter {
     var baseView: BaseView?
     var router: InstagramLoginWireframe?
     var interactor: InstagramLoginInteractorInput?
-    
+    var smartPhoto_Draft_Stored_id = getTimeInterval()  // This is stored when user newly taken photo get saved. and get reset every time 
     private init() {}
     
     static let shared = InstagramLoginPresenter()
@@ -58,7 +58,7 @@ extension InstagramLoginPresenter: InstagramLoginInteractorOutput {
         switch result {
         case .success(_):
             if let parent = parentController, userLoginForShared  {
-                router?.presentScreen(screen: .socialLoginFromLoginPopUp(parentController: parent))
+                router?.presentScreen(screen: .socialLoginFromLoginPopUp(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id, parentController: parent))
             } else {
                 presentFirstTimeUserScreen()
             }

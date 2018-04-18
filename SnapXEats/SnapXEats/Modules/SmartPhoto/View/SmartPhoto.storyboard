@@ -96,6 +96,15 @@
                                                     <action selector="downloadButtonAction:" destination="Z9X-La-f6T" eventType="touchUpInside" id="gmZ-MH-Xt4"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="klK-jP-vEU" userLabel="share">
+                                                <rect key="frame" x="225" y="10" width="41" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="share_icon"/>
+                                                <state key="selected" image="share_icon"/>
+                                                <connections>
+                                                    <action selector="draftShareAction:" destination="Z9X-La-f6T" eventType="touchUpInside" id="Als-Jk-XrD"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -150,6 +159,7 @@
                         <outlet property="buttonView" destination="7zD-mk-RZE" id="lKw-4B-gb5"/>
                         <outlet property="containerView" destination="hel-Q2-Gyw" id="Z3m-RD-cs0"/>
                         <outlet property="downloadButton" destination="jM8-jz-mIV" id="6Pg-1Q-7FR"/>
+                        <outlet property="draftShareButton" destination="klK-jP-vEU" id="jpW-u0-Oo8"/>
                         <outlet property="infoButton" destination="S6r-RT-E9Z" id="TZ9-sl-Gpl"/>
                         <outlet property="messageButton" destination="Pe8-wj-jhj" id="70i-Ik-X66"/>
                         <outlet property="rootView" destination="mjB-WD-4Ty" id="cue-hb-gwS"/>
@@ -178,5 +188,6 @@
         <image name="info" width="29" height="29"/>
         <image name="info_color" width="29" height="29"/>
         <image name="placeholder_cuisine" width="89" height="58"/>
+        <image name="share_icon" width="16" height="15"/>
     </resources>
 </document>

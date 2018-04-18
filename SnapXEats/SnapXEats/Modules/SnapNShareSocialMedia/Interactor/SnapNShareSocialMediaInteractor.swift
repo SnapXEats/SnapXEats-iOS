@@ -15,7 +15,6 @@ import ObjectMapper
 class SnapNShareSocialMediaInteractor {
 
     var output: SnapNShareSocialMediaInteractorOutput?
-    let restaurantID = LoginUserPreferences.shared.userDishReview.restaurantInfoId
     private init() {}
     static let shared = SnapNShareSocialMediaInteractor()
 }
@@ -41,9 +40,8 @@ extension SnapNShareSocialMediaInteractor: SnapNShareSocialMediaUseCase {
 }
 
 extension SnapNShareSocialMediaInteractor: SnapNShareSocialMediaRequestFomatter {
-    func uploadDishReview() {
-        if let restaurantID = restaurantID, let timeInterval = UserDefaults.standard.string(forKey: SnapXEatsConstant.timeInterval), let smartPhoto = SmartPhotoHelper.shared.getDraftPhoto(timeInterval: timeInterval) {
-            
+    func uploadDishReview(restaurantID: String, smartPhoto_Draft_Stored_id : String) {
+        if  restaurantID != SnapXEatsConstant.emptyString, smartPhoto_Draft_Stored_id != SnapXEatsConstant.emptyString, let smartPhoto = SmartPhotoHelper.shared.getDraftPhoto(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id) {
             let requestParameters: [String: Any] = [
             SnapXEatsWebServiceParameterKeys.restaurantInfoId: restaurantID,
             SnapXEatsWebServiceParameterKeys.textReview: smartPhoto.text_review,
