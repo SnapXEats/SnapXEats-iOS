@@ -47,11 +47,15 @@ class SmartPhotoDraftRouter {
     }
     
     func loadDraftTableView() -> DraftTableViewController {
-       return  UIStoryboard.loadViewControler(storyBoardName: SnapXEatsStoryboard.smartPhotoDraft, storyBoardId: SnapXEatsStoryboardIdentifier.draftTableViewControllerID) as! DraftTableViewController
+       let viewController =   UIStoryboard.loadViewControler(storyBoardName: SnapXEatsStoryboard.smartPhotoDraft, storyBoardId: SnapXEatsStoryboardIdentifier.draftTableViewControllerID) as! DraftTableViewController
+        viewController.delegate = self
+        return viewController
     }
     
     func loadSmartPhotoTableView() -> SmartPhotoTableViewController {
-        return  UIStoryboard.loadViewControler(storyBoardName: SnapXEatsStoryboard.smartPhotoDraft, storyBoardId: SnapXEatsStoryboardIdentifier.smartPhotoTableViewControllerID) as! SmartPhotoTableViewController
+         let viewController =  UIStoryboard.loadViewControler(storyBoardName: SnapXEatsStoryboard.smartPhotoDraft, storyBoardId: SnapXEatsStoryboardIdentifier.smartPhotoTableViewControllerID) as! SmartPhotoTableViewController
+        viewController.delegate = self
+        return viewController
     }
 }
 

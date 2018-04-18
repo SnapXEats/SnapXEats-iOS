@@ -14,7 +14,7 @@ protocol SnapNSharePhotoView: BaseView {
 }
 
 protocol SnapNSharePhotoPresentation: class {
-    func gotoSnapNSharesocialMediaView(parent: UINavigationController)
+    func gotoSnapNSharesocialMediaView(timeInterval: String?, parent: UINavigationController)
     func presentScreenLoginPopup(screen: Screens)
 }
 

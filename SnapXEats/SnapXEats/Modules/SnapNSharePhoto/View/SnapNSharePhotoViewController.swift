@@ -23,7 +23,7 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
     var rating: Int {
         return Int(starRatingView.value)
     }
-    
+    var smartPhoto: SmartPhoto?
     let loginPreferecne = LoginUserPreferences.shared
     @IBOutlet var snapPhotoImageView: UIImageView!
     @IBOutlet var starRatingView: SwiftyStarRatingView!
@@ -45,11 +45,11 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
         initView()
     }
     
-    func saveFileInDraft() {
+    func saveFileInDraft() -> SmartPhoto? {
         if let restaurantDetails = restaurantDetails, let id = restaurantDetails.id, let imageURL = SmartPhotoPath.draft(fileName: fileManagerConstants.smartPhotoFileName, id: id).getPath(), FileManager.default.fileExists(atPath: imageURL.path) {
             let smartPhoto = SmartPhoto()
-            smartPhoto.restaurant_dish_id = id
-            smartPhoto.timeInterval = getTimeInterval()
+            smartPhoto.restaurant_item_id = id
+            smartPhoto.smartPhoto_Draft_Stored_id = getTimeInterval()
             if let url = SmartPhotoPath.draft(fileName: fileManagerConstants.audioReviewFileName, id: id).getPath(),
                 FileManager.default.fileExists(atPath: url.path) {
                 smartPhoto.audio_review_url =  getPathTillDocDir(path: url.path) ?? ""
@@ -61,7 +61,9 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
             smartPhoto.restaurant_name = restaurantDetails.name ?? ""
             smartPhoto.rating = rating
             SmartPhotoHelper.shared.savePhotoDraft(smartPhoto: smartPhoto)
+            return smartPhoto
         }
+        return nil
     }
     
     private func addShareButtonOnNavigationItem() {
@@ -79,7 +81,9 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
                     continueSharingUserReview()
                 } else {
                     setReviewData()
-                    presenter?.presentScreenLoginPopup(screen: .loginPopUp(restaurantID: Id, parentController: parent))
+                    if let storedID =  smartPhoto?.smartPhoto_Draft_Stored_id {
+                        presenter?.presentScreenLoginPopup(screen: .loginPopUp(storedID: storedID, parentController: parent))
+                    }
                 }
             } else {
                 showIncompleteInformationAlert()
@@ -106,14 +110,14 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
     }
     
     func setReviewData() {
-        if let restaurntID = restaurantDetails?.id {
-            saveFileInDraft()
+        if let _ = restaurantDetails?.id {
+           smartPhoto =  saveFileInDraft()
         }
     }
     
     func gotoSnapNShareSocialMediaView() {
-        if let parentNVController = self.navigationController, let _ = restaurantDetails?.id {
-            presenter?.gotoSnapNSharesocialMediaView(parent: parentNVController)
+        if let parentNVController = self.navigationController, let _ = restaurantDetails?.id, let timeInterval = smartPhoto?.smartPhoto_Draft_Stored_id {
+            presenter?.gotoSnapNSharesocialMediaView(timeInterval: timeInterval, parent: parentNVController)
         }
     }
     

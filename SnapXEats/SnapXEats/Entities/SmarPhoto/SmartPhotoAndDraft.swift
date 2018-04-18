@@ -12,7 +12,7 @@ import RealmSwift
 class SmartPhotoAndDraft: Object {
     
     static func createSmartPhotoData(photo: SmartPhotoData, aminities: [String], predicate: NSPredicate) {
-        if photo.timeInterval != SnapXEatsConstant.emptyString {
+        if photo.smartPhoto_Draft_Stored_id != SnapXEatsConstant.emptyString {
             if  let _ = SmartPhotoData.getSmarPhotoData(predicate: predicate)  {
                 return
             }
@@ -28,7 +28,7 @@ class SmartPhotoAndDraft: Object {
     }
     
     static func createDraftData(photo: DraftData, aminities: [String], predicate: NSPredicate) {
-        if photo.timeInterval != SnapXEatsConstant.emptyString {
+        if photo.smartPhoto_Draft_Stored_id != SnapXEatsConstant.emptyString {
             if  let _ = DraftData.getDraftData(predicate: predicate)  {
                 return
             }
@@ -62,7 +62,7 @@ class SmartPhotoAndDraft: Object {
 }
 
 class SnapXPhotoData: Object {
-    @objc dynamic var timeInterval = SnapXEatsConstant.emptyString
+    @objc dynamic var smartPhoto_Draft_Stored_id: String?
     @objc dynamic var restaurantName = SnapXEatsConstant.emptyString
     @objc dynamic var imageURL = SnapXEatsConstant.emptyString
     @objc dynamic var audioURL = SnapXEatsConstant.emptyString
@@ -73,7 +73,7 @@ class SnapXPhotoData: Object {
 }
 
 class SmartPhotoData: SnapXPhotoData {
-     @objc dynamic var smartPhotoID = SnapXEatsConstant.emptyString
+    @objc dynamic var smartPhotoID: String?
     
     static func getSmarPhotoData(predicate: NSPredicate) -> SmartPhotoData?  {
         // Get the default Realm
@@ -92,7 +92,7 @@ class SmartPhotoData: SnapXPhotoData {
 }
 
 class DraftData: SnapXPhotoData {
-     @objc dynamic var restaurantID = SnapXEatsConstant.emptyString
+    @objc dynamic var restaurantID: String?
     static func getDraftData(predicate: NSPredicate) -> DraftData?  {
         // Get the default Realm
         let realm = try! Realm()

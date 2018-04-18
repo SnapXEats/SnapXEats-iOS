@@ -71,7 +71,7 @@ class SmartPhotoDownload: UIView, UICircularProgressRingDelegate {
     }
     
     func savePhotoFile(value: Data) -> Bool {
-        if let fileName = getFileName(filePath: smartPhoto?.dish_image_url), let id = smartPhoto?.restaurant_dish_id,
+        if let fileName = getFileName(filePath: smartPhoto?.dish_image_url), let id = smartPhoto?.restaurant_item_id,
             let image = UIImage(data: value),  let saveFilePath = SmartPhotoPath.smartPhoto(fileName: fileName, id: id).getPath() {
             return  savePhoto(image: image, path: saveFilePath)
         }
@@ -79,7 +79,7 @@ class SmartPhotoDownload: UIView, UICircularProgressRingDelegate {
     }
     
     func saveAudio(data: Data) -> Bool {
-        if let fileName = getFileName(filePath: smartPhoto?.audio_review_url), let id = smartPhoto?.restaurant_dish_id,
+        if let fileName = getFileName(filePath: smartPhoto?.audio_review_url), let id = smartPhoto?.restaurant_item_id,
             let saveFilePath = SmartPhotoPath.smartPhoto(fileName: fileName, id: id).getPath() {
             return  saveAudioFile(value: data, path: saveFilePath)
         }

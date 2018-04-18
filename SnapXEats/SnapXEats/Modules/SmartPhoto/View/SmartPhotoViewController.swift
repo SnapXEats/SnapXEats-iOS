@@ -9,12 +9,17 @@
 import Foundation
 import UIKit
 
+enum SmartPhotoType {
+    case draftPhoto, smartPhoto, downlaodedSmartPhoto
+}
+
 class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
     
     // MARK: Properties
     
     var presenter: SmartPhotoPresentation?
     
+    @IBOutlet weak var draftShareButton: UIButton!
     @IBOutlet weak var smartPhotoImage: UIImageView!
     // MARK: Lifecycle
     @IBOutlet weak var containerView: UIView!
@@ -29,6 +34,17 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
     @IBOutlet weak var buttonView: UIView!
     var smartPhoto: SmartPhoto?
     var dishID: String?
+    var smartPhoto_Draft_Stored_id: String?
+    
+    var photoType = SmartPhotoType.smartPhoto
+    
+    weak var parentController: UINavigationController?
+    
+    @IBAction func draftShareAction(_ sender: Any) {
+        if let smartPhoto_Draft_Stored_id = smartPhoto_Draft_Stored_id,  smartPhoto_Draft_Stored_id != SnapXEatsConstant.emptyString, let parent = parentController {
+            presenter?.presentScreen(screen: .snapAndShareFromDraft(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id, parentController: parent))
+        }
+    }
     
     @IBAction func infoButtonAction(_ sender: Any) {
         
@@ -36,7 +52,7 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
             removeSubView()
         } else {
             if let photoInfo = smartPhoto {
-             presenter?.presentView(view: .info(photoInfo: photoInfo))
+                presenter?.presentView(view: .info(photoInfo: photoInfo))
             }
         }
         updateTintColor(sender: sender)
@@ -46,7 +62,7 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
         for subView in containerView.subviews {
             subView.removeFromSuperview()
         }
-         containerView.isHidden = true
+        containerView.isHidden = true
     }
     
     @IBAction func messageButtonAction(_ sender: Any) {
@@ -62,9 +78,19 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
         if audioButton.isSelected {
             presenter?.pausePlayAudio()
             removeSubView()
-        } else if let audioURL = smartPhoto?.audio_review_url {
-                presenter?.presentView(view: .audio(audioURL: audioURL))
-        
+        } else if let smartPhoto = smartPhoto {
+            switch photoType {
+            case .smartPhoto:
+                presenter?.presentView(view: .audio(audioURL: smartPhoto.audio_review_url))
+            case .draftPhoto:
+                if let audioUrl = apptoDocumentDirPath(path: smartPhoto.audio_review_url),
+                     FileManager.default.fileExists(atPath: audioUrl.path) {
+                        presenter?.presentView(view: .audio(audioURL: audioUrl.path))
+                    }
+            case .downlaodedSmartPhoto:
+                print("downlaodedSmartPhoto")
+            }
+            
         }
         updateTintColor(sender: sender)
     }
@@ -72,12 +98,12 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
     @IBAction func downloadButtonAction(_ sender: Any) {
         if downloadButton.isSelected {
             removeSubView()
-             updateTintColor(sender: sender)
+            updateTintColor(sender: sender)
         } else if let _ = smartPhoto?.dish_image_url, checkRechability() {
             presenter?.presentView(view: .download(smartPhoto: smartPhoto))
-             updateTintColor(sender: sender)  // if internet is off tint colour should not change 
+            updateTintColor(sender: sender)  // if internet is off tint colour should not change
         }
-       
+        
     }
     
     @IBAction func closeButtonAction(_ sender: Any) {
@@ -125,13 +151,46 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadData()
+        showView()
     }
     
     override func success(result: Any?) {
         if let smartPhoto = result as? SmartPhoto {
             self.smartPhoto = smartPhoto
             loadSmartPhoto()
+        }
+    }
+    
+    func showView() {
+        switch photoType {
+        case .smartPhoto:
+            loadPhoto()
+        case .draftPhoto:
+            loadDraftView()
+        case .downlaodedSmartPhoto:
+            print("downlaodedSmartPhoto")
+        }
+    }
+    
+    func loadDraftView() {
+         draftShareButton.isHidden = false
+         smartPhoto = SmartPhotoHelper.shared.getDraftPhoto(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id ?? SnapXEatsConstant.emptyString)
+        if let photos = smartPhoto {
+            if let imageUrl = apptoDocumentDirPath(path: photos.dish_image_url) {
+                if FileManager.default.fileExists(atPath: imageUrl.path), let imageItem = UIImage(contentsOfFile: imageUrl.path)  {
+                    smartPhotoImage.image = imageItem
+                }
+            }
+            
+            if let audioUrl = apptoDocumentDirPath(path: photos.audio_review_url) {
+                if FileManager.default.fileExists(atPath: audioUrl.path) {
+                    audioButton.isHidden = false
+                }
+            }
+            
+            if photos.text_review != "" {
+                messageButton.isHidden = false
+            }
         }
     }
     
@@ -155,7 +214,7 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
             if audioButton.isSelected {
                 presenter?.pausePlayAudio()
             }
-             removeSubView()
+            removeSubView()
         }
         updateTintColor(sender: nil) // this is to reset all the button
     }
@@ -165,12 +224,16 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
     }
     
     override func internetConnected() {
-        loadData()
+        showView()
     }
-    func loadData() {
+    
+    func loadPhoto() {
+        downloadButton.isHidden = false
         if let id = dishID, smartPhoto == nil, checkRechability() {
             showLoading()
             presenter?.getSmartPhotoDetails(dishID: id)
+        } else if smartPhoto != nil  {
+            loadSmartPhoto()
         }
     }
 }
@@ -188,6 +251,8 @@ extension SmartPhotoViewController: SmartPhotoView {
         buttonView.isHidden = true
         audioButton.isHidden = true
         messageButton.isHidden = true
+        draftShareButton.isHidden = true
+        downloadButton.isHidden = true
     }
     
 }
