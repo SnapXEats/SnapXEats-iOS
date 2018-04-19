@@ -12,7 +12,11 @@ import UIKit
 class LoginPopUpViewController: BaseViewController, StoryboardLoadable {
     
     var presenter: LoginPopUpPresentation?
-    var restaurantID: String?
+    var smartPhoto_Draft_Stored_id: String?
+    
+    var smartPhoto: SmartPhoto? {
+        return SmartPhotoHelper.shared.getDraftPhoto(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id ?? SnapXEatsConstant.emptyString)
+    }
     @IBOutlet var rootView: UIView!
     @IBOutlet var containerView: UIView!
     @IBOutlet weak var fbLoginButton: UIButton!
@@ -35,15 +39,14 @@ class LoginPopUpViewController: BaseViewController, StoryboardLoadable {
     }
     
     @IBAction func shareLaterAction(_ sender: Any) {
-        // self.removeFromSuperview()
-        if let id = restaurantID {
+        if let id = smartPhoto?.restaurant_item_id {
             presenter?.presentScreen(screen: .snapNShareHome(restaurantID: id))
         }
     }
     
     override func success(result: Any?) {
-        if let result = result as? Bool, result == true, let navigationController = rootController, let id = restaurantID {
-            presenter?.presentScreen(screen: .socialLoginFromLoginPopUp(parentController: navigationController))
+        if let result = result as? Bool, result == true, let navigationController = rootController, let _ = smartPhoto?.restaurant_item_id {
+            presenter?.presentScreen(screen: .socialLoginFromLoginPopUp(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id, parentController: navigationController))
         }
     }
 }

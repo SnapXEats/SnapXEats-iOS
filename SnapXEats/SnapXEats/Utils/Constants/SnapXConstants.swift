@@ -245,7 +245,7 @@ enum SnapXEatsAppDefaults {
     static let restaurantDistance = "%.1f mi"
     static let milesToMetersMultiplier = 1609.344
     static let amenitiesTableRowHeight: CGFloat = 20
-    static let smartPhotTableRowheight: CGFloat = 180
+    static let smartPhotTableRowheight: CGFloat = 181
 
 }
 

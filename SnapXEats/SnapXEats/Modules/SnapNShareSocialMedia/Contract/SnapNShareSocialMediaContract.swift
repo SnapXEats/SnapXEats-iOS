@@ -16,7 +16,7 @@ protocol SnapNShareSocialMediaView: BaseView {
 protocol SnapNShareSocialMediaPresentation: class {
     func presentScreen(screen: Screens)
     func loginUsingFaceBook()
-    func sendPhotoReview()
+    func sendPhotoReview(restaurantID: String, smartPhoto_Draft_Stored_id: String)
 }
 
 protocol SnapNShareSocialMediaUseCase: SnapNShareSocialMediaInPut {
@@ -33,7 +33,7 @@ protocol SnapNShareSocialMediaInteractorOutput: Response {
 
 
 protocol SnapNShareSocialMediaRequestFomatter: class {
-    func uploadDishReview()
+    func uploadDishReview(restaurantID: String, smartPhoto_Draft_Stored_id: String)
 }
 
 protocol SnapNShareSocialMediaWebService: class {

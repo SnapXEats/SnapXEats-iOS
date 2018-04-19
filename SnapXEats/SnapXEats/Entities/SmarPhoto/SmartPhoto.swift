@@ -14,7 +14,7 @@ import ObjectMapper
 
 class SmartPhoto: Mappable {
     
-    var restaurant_dish_id =  SnapXEatsConstant.emptyString
+    var restaurant_item_id: String?
     var restaurant_name =  SnapXEatsConstant.emptyString
     var restaurant_address =  SnapXEatsConstant.emptyString
     var dish_image_url =  SnapXEatsConstant.emptyString
@@ -22,7 +22,7 @@ class SmartPhoto: Mappable {
     var audio_review_url =  SnapXEatsConstant.emptyString
     var text_review =  SnapXEatsConstant.emptyString
     var rating = 3 // This will not come from server SmartPhoto object is also used to save the data for SmartPhoto and Draft feature
-    var timeInterval = SnapXEatsConstant.emptyString // This will not come from server SmartPhoto object is also used to save the data for SmartPhoto and Draft feature
+    var smartPhoto_Draft_Stored_id: String? // This will not come from server SmartPhoto object is also used to save the data for SmartPhoto and Draft feature
     var restaurant_aminities =  [String]()
 
     init() {}
@@ -30,7 +30,7 @@ class SmartPhoto: Mappable {
     }
     
     func mapping(map: Map) {
-        restaurant_dish_id <- map["restaurant_dish_id"]
+        restaurant_item_id <- map["restaurant_dish_id"]
         restaurant_name <- map["restaurant_name"]
         restaurant_address <- map["restaurant_address"]
         dish_image_url  <- map["dish_image_url"]

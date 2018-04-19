@@ -18,7 +18,7 @@ class SnapXLinkNavigator {
         switch deepLink {
         //case let link as SelectTabDeepLink: return selectTab(with: link)
         case let link as SnapXEatsPhotoDeepLink:
-            presentScreen(screens: .smartPhoto(dishID: link.imageName))
+            presentScreen(screens: .smartPhoto(smartPhoto_Draft_Stored_id: nil, dishID: link.imageName, type: .smartPhoto, parentController: nil))
         default: fatalError("Unsupported DeepLink: \(type(of: deepLink))")
         }
     }

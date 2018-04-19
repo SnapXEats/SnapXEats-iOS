@@ -18,6 +18,7 @@ protocol SmartPhotoPresentation: SuccessScreen {
      func getSmartPhotoDetails(dishID: String)
      func presentView(view: SmartPhotView)
      func pausePlayAudio()
+     func presentScreen(screen: Screens)
 }
 
 protocol SmartPhotoUseCase: SmartPhotoFormatter {

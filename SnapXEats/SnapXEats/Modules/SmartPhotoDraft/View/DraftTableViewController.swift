@@ -15,6 +15,7 @@ class DraftTableViewController: BaseViewController {
     
     var draftPhotos: [SmartPhoto]?
     
+    weak var delegate: SmartPhotoDraftWireframe?
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
@@ -43,6 +44,13 @@ extension DraftTableViewController: UITableViewDelegate, UITableViewDataSource {
         return  draftPhotos?.count ?? 0
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let photo = draftPhotos, let smartPhoto_Draft_Stored_id = photo[indexPath.row].smartPhoto_Draft_Stored_id,
+            let dishId = photo[indexPath.row].restaurant_item_id, let parent = self.navigationController {
+            delegate?.presentScreen(screen: .smartPhoto(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id, dishID: dishId, type: .draftPhoto, parentController: parent))
+        }
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return SnapXEatsAppDefaults.smartPhotTableRowheight
     }
@@ -56,7 +64,18 @@ extension DraftTableViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.smartPhotoImage.image =   UIImage(contentsOfFile: imageUrl.path)
             }
             cell.restaurantNameLabel.text = photos[indexPath.row].restaurant_name
+            cell.smartPhot_Draft_id = photos[indexPath.row].smartPhoto_Draft_Stored_id
+            cell.delegate = self
         }
+       
         return cell
+    }
+}
+
+extension DraftTableViewController :TableCelldelegate {
+    func navigateScreen(id: String?) {
+        if let smartPhoto_Draft_Stored_id = id, let parent = self.navigationController {
+            delegate?.presentScreen(screen: .snapAndShareFromDraft(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id, parentController: parent))
+        }
     }
 }

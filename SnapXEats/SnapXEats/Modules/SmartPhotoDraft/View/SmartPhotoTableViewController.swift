@@ -14,7 +14,7 @@ class SmartPhotoTableViewController: BaseViewController {
     
     @IBOutlet weak var smartPhotoTableView: UITableView!
     var smartPhotos: [SmartPhoto]?
-    
+    var delegate: SmartPhotoDraftWireframe?
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()

@@ -14,7 +14,8 @@ protocol SmartPhotoDraftView: BaseView {
 }
 
 protocol SmartPhotoDraftPresentation: class {
-    func presentScreen(screen: DraftScreen) -> UIViewController?
+    func presentView(screen: DraftScreen) -> UIViewController?
+    func presentScreen(screen: Screens)
 }
 
 protocol SmartPhotoDraftUseCase: class {
@@ -27,4 +28,7 @@ protocol SmartPhotoDraftInteractorOutput: Response {
 
 protocol SmartPhotoDraftWireframe: RootWireFrame {
     func loadScreen(screen: DraftScreen) -> UIViewController
+}
+protocol TableCelldelegate: class {
+    func navigateScreen(id: String?)
 }

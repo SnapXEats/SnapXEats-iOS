@@ -36,6 +36,10 @@ extension SmartPhotoPresenter: SmartPhotoPresentation {
     func pausePlayAudio() {
         router?.pausePlayAudio()
     }
+    
+    func presentScreen(screen: Screens) {
+        router?.presentScreen(screen: screen)
+    }
 }
 
 extension SmartPhotoPresenter: SmartPhotoInteractorOutput {
