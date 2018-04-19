@@ -26,6 +26,7 @@ enum Constants {
         static let SFTextMedium = "SanFranciscoText-Medium"
         static let SFTextRegular = "SanFranciscoText-Regular"
         static let roboto_regular = "Roboto-Regular"
+        static let roboto_bold = "Roboto-Bold"
     }
 
 }

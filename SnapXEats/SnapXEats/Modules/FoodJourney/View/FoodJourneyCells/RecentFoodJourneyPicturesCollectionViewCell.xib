@@ -31,6 +31,9 @@
                 <constraint firstItem="eMG-n3-2il" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ds8-uv-ZeL"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="rewardDishesImageView" destination="eMG-n3-2il" id="Mbr-4c-wd8"/>
+            </connections>
             <point key="canvasLocation" x="37.5" y="54"/>
         </collectionViewCell>
     </objects>

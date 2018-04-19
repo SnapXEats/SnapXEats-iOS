@@ -28,7 +28,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jkG-f0-cmF">
-                        <rect key="frame" x="12" y="0.0" width="327" height="73.5"/>
+                        <rect key="frame" x="12" y="5" width="327" height="67.5"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y5G-MM-Urn">
                                 <rect key="frame" x="271" y="18" width="38" height="38"/>
@@ -99,9 +99,9 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="jkG-f0-cmF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="Wtq-0O-t8A"/>
-                    <constraint firstItem="jkG-f0-cmF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="XZg-Vp-BYZ"/>
+                    <constraint firstItem="jkG-f0-cmF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="XZg-Vp-BYZ"/>
                     <constraint firstAttribute="trailing" secondItem="jkG-f0-cmF" secondAttribute="trailing" constant="12" id="fDR-T6-8jC"/>
-                    <constraint firstAttribute="bottom" secondItem="jkG-f0-cmF" secondAttribute="bottom" constant="4" id="qWJ-cJ-kT2"/>
+                    <constraint firstAttribute="bottom" secondItem="jkG-f0-cmF" secondAttribute="bottom" constant="5" id="qWJ-cJ-kT2"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

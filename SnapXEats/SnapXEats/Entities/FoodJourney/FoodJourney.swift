@@ -10,8 +10,8 @@ import Foundation
 import ObjectMapper
 
 class FoodJourney: Mappable {
-    var userCurrentWeekHistory = [UserCurrentWeekHistory]()
-    var userPastHistory = [UserPastHistory]()
+    var userCurrentWeekHistory : [UserCurrentWeekHistory]?
+    var userPastHistory : [UserPastHistory]?
     
     required init?(map: Map) {
     }

@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol RecentFoodJourneyCellDelegate: class {
+    func updateRecentFoodJourneyCellHeight(indexPath:IndexPath, estimatedHeight:CGFloat)
+}
+
 class RecentFoodJourneyTableViewCell: UITableViewCell {
 
     @IBOutlet weak var containerView: UIView!
@@ -17,6 +21,13 @@ class RecentFoodJourneyTableViewCell: UITableViewCell {
     @IBOutlet weak var foodJourneyItemImageView: UIImageView!
     @IBOutlet weak var foodJourneyItemPoints: UILabel!
     @IBOutlet weak var foodJourneyItemImagesCollectionView: UICollectionView!
+    
+    @IBOutlet weak var foodJourneyImageBottomSpace: NSLayoutConstraint!
+    @IBOutlet weak var collectionViewHeightConstraint: NSLayoutConstraint!
+    
+    // Mark: Properties
+    var rewardDishesUrls = [String]()
+    var delegate: RecentFoodJourneyCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,7 +46,28 @@ class RecentFoodJourneyTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureRecentFoodJourneyCell(){
+    func configureRecentFoodJourneyCell(indexPath:IndexPath, item: UserCurrentWeekHistory){
+        foodJourneyItemDate.text = item.formattedDate
+        foodJourneyItemName.text = item.restaurant_name
+        foodJourneyItemLocation.text = item.restaurant_address
+        foodJourneyItemPoints.text = "\(item.reward_point)"
+        if (item.restaurant_image_url != "") {
+            if let url = URL(string: item.restaurant_image_url) {
+                foodJourneyItemImageView.af_setImage(withURL: url, placeholderImage: nil)
+            }
+        }
+        
+        if item.reward_dishes.count > 0 {
+            rewardDishesUrls = item.reward_dishes
+            foodJourneyItemImagesCollectionView.isHidden = false
+            foodJourneyItemImagesCollectionView.reloadData()
+        } else {
+            foodJourneyItemImagesCollectionView.isHidden = true
+            delegate?.updateRecentFoodJourneyCellHeight(indexPath: indexPath, estimatedHeight: 102)
+        }
+        
+        foodJourneyImageBottomSpace.constant = foodJourneyItemImagesCollectionView.isHidden ? 14 : 90
+
         let shadowColor = isSelected ? UIColor.red : UIColor.rgba(202.0, 202.0, 202.0, 1)
         containerView.fullShadow(color: shadowColor, offSet: CGSize(width: 0, height: 0))
     }
@@ -44,11 +76,12 @@ class RecentFoodJourneyTableViewCell: UITableViewCell {
 
 extension RecentFoodJourneyTableViewCell : UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return rewardDishesUrls.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = foodJourneyItemImagesCollectionView.dequeueReusableCell(withReuseIdentifier: SnapXEatsCellResourceIdentifiler.recentFoodJourneyPicturesCollectionView, for: indexPath)
+        let cell = foodJourneyItemImagesCollectionView.dequeueReusableCell(withReuseIdentifier: SnapXEatsCellResourceIdentifiler.recentFoodJourneyPicturesCollectionView, for: indexPath) as! RecentFoodJourneyPicturesCollectionViewCell
+        cell.configurePicturesCell(imageUrl: rewardDishesUrls[indexPath.row])
         return cell
     }
     
