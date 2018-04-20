@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="77" height="66"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_cuisine" translatesAutoresizingMaskIntoConstraints="NO" id="eMG-n3-2il">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="foodjorney_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="eMG-n3-2il">
                         <rect key="frame" x="0.0" y="0.0" width="77" height="66"/>
                     </imageView>
                 </subviews>
@@ -31,10 +31,13 @@
                 <constraint firstItem="eMG-n3-2il" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ds8-uv-ZeL"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="rewardDishesImageView" destination="eMG-n3-2il" id="Mbr-4c-wd8"/>
+            </connections>
             <point key="canvasLocation" x="37.5" y="54"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="placeholder_cuisine" width="89" height="58"/>
+        <image name="foodjorney_placeholder" width="77" height="66"/>
     </resources>
 </document>

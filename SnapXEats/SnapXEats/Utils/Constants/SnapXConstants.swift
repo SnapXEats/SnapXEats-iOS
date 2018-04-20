@@ -369,3 +369,13 @@ enum RestaurantListAPIKeys {
     static let longitude = "longitude"
 }
 
+enum CellHeight {
+    static let defaultRecentFoodJourneyCellHeight: CGFloat = 186
+    static let defaulfOlderHeaderCellHeight: CGFloat = 40
+    static let defaultOlderFoodJourneyCellHeight: CGFloat = 78
+}
+
+enum HeaderLabel {
+    static let x:CGFloat = 15
+    static let y:CGFloat = 13
+}

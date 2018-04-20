@@ -125,8 +125,6 @@
 		997F39CA2085C14800C1FE3A /* OlderFoodJourneyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997F39C82085C14800C1FE3A /* OlderFoodJourneyTableViewCell.xib */; };
 		997F39CD2085C3BD00C1FE3A /* RecentFoodJourneyPicturesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997F39CB2085C3BD00C1FE3A /* RecentFoodJourneyPicturesCollectionViewCell.swift */; };
 		997F39CE2085C3BD00C1FE3A /* RecentFoodJourneyPicturesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997F39CC2085C3BD00C1FE3A /* RecentFoodJourneyPicturesCollectionViewCell.xib */; };
-		997F39D120861E8B00C1FE3A /* OlderHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997F39CF20861E8B00C1FE3A /* OlderHeaderTableViewCell.swift */; };
-		997F39D220861E8B00C1FE3A /* OlderHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997F39D020861E8B00C1FE3A /* OlderHeaderTableViewCell.xib */; };
 		9D0498D82052BEF300BD4EDB /* StoredUserPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0498D72052BEF300BD4EDB /* StoredUserPreference.swift */; };
 		9D0D70FA207B4B0700A521EB /* DeepLinking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D70F9207B4B0600A521EB /* DeepLinking.swift */; };
 		9D0D70FC207B5AC900A521EB /* SnapXLinkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D70FB207B5AC900A521EB /* SnapXLinkingManager.swift */; };
@@ -419,8 +417,6 @@
 		997F39C82085C14800C1FE3A /* OlderFoodJourneyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OlderFoodJourneyTableViewCell.xib; sourceTree = "<group>"; };
 		997F39CB2085C3BD00C1FE3A /* RecentFoodJourneyPicturesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentFoodJourneyPicturesCollectionViewCell.swift; sourceTree = "<group>"; };
 		997F39CC2085C3BD00C1FE3A /* RecentFoodJourneyPicturesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecentFoodJourneyPicturesCollectionViewCell.xib; sourceTree = "<group>"; };
-		997F39CF20861E8B00C1FE3A /* OlderHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OlderHeaderTableViewCell.swift; sourceTree = "<group>"; };
-		997F39D020861E8B00C1FE3A /* OlderHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OlderHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		9D0498D72052BEF300BD4EDB /* StoredUserPreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredUserPreference.swift; sourceTree = "<group>"; };
 		9D0D70F9207B4B0600A521EB /* DeepLinking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeepLinking.swift; sourceTree = "<group>"; };
 		9D0D70FB207B5AC900A521EB /* SnapXLinkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXLinkingManager.swift; sourceTree = "<group>"; };
@@ -1204,8 +1200,6 @@
 				997F39C82085C14800C1FE3A /* OlderFoodJourneyTableViewCell.xib */,
 				997F39CB2085C3BD00C1FE3A /* RecentFoodJourneyPicturesCollectionViewCell.swift */,
 				997F39CC2085C3BD00C1FE3A /* RecentFoodJourneyPicturesCollectionViewCell.xib */,
-				997F39CF20861E8B00C1FE3A /* OlderHeaderTableViewCell.swift */,
-				997F39D020861E8B00C1FE3A /* OlderHeaderTableViewCell.xib */,
 			);
 			path = FoodJourneyCells;
 			sourceTree = "<group>";
@@ -2546,7 +2540,6 @@
 				7E673B1B2049622F005D19DC /* Wishlist.storyboard in Resources */,
 				9D748B472074E9A5004ED49A /* LoginPopUp.storyboard in Resources */,
 				9D748B282073883C004ED49A /* SharedSucceesPopup.xib in Resources */,
-				997F39D220861E8B00C1FE3A /* OlderHeaderTableViewCell.xib in Resources */,
 				7EB59221204049F400CC6888 /* foodCardOverlayView.xib in Resources */,
 				7E5E7FDB203AF7EE00009A56 /* ic_cross_white@3x.png in Resources */,
 				7E791F192032CAB800FA887D /* PreferenceTypeCollectionViewCell.xib in Resources */,
@@ -2842,7 +2835,6 @@
 				7EB5921F2040048600CC6888 /* DrivingDirections.swift in Sources */,
 				9D8E89051FFD2BEC0066A1D9 /* UICollectionViewCell.swift in Sources */,
 				9DBA865A204A95FB00C99841 /* WishList.swift in Sources */,
-				997F39D120861E8B00C1FE3A /* OlderHeaderTableViewCell.swift in Sources */,
 				7EDB8ED8204FF3710015F48A /* RestaurantCollectionViewCell.swift in Sources */,
 				9D8E89061FFD2BEC0066A1D9 /* UIStoryboard.swift in Sources */,
 				9D8E89071FFD2BEC0066A1D9 /* ValidableUILabel.swift in Sources */,
