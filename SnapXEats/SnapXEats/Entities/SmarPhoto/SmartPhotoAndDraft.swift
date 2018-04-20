@@ -13,33 +13,37 @@ class SmartPhotoAndDraft: Object {
     
     static func createSmartPhotoData(photo: SmartPhotoData, aminities: [String], predicate: NSPredicate) {
         if photo.smartPhoto_Draft_Stored_id != SnapXEatsConstant.emptyString {
-            if  let _ = SmartPhotoData.getSmarPhotoData(predicate: predicate)  {
-                return
-            }
-            let realm = try! Realm()
-            // Persist your data easily
-            try! realm.write {
-                for aminity in aminities {
-                    photo.restaurant_aminities.append(aminity)
+            DispatchQueue.global(qos: .background).async {
+                if  let _ = SmartPhotoData.getSmarPhotoData(predicate: predicate)  {
+                    return
                 }
-                realm.add(photo)
+                let realm = try! Realm()
+                // Persist your data easily
+                try! realm.write {
+                    for aminity in aminities {
+                        photo.restaurant_aminities.append(aminity)
+                    }
+                    realm.add(photo)
+                }
             }
         }
     }
     
     static func createDraftData(photo: DraftData, aminities: [String], predicate: NSPredicate) {
         if photo.smartPhoto_Draft_Stored_id != SnapXEatsConstant.emptyString {
-            if  let _ = DraftData.getDraftData(predicate: predicate)  {
-                return
-            }
-            let realm = try! Realm()
-            
-            // Persist your data easily
-            try! realm.write {
-                for aminity in aminities {
-                    photo.restaurant_aminities.append(aminity)
+            DispatchQueue.global(qos: .background).async {
+                if  let _ = DraftData.getDraftData(predicate: predicate)  {
+                    return
                 }
-                realm.add(photo)
+                let realm = try! Realm()
+                
+                // Persist your data easily
+                try! realm.write {
+                    for aminity in aminities {
+                        photo.restaurant_aminities.append(aminity)
+                    }
+                    realm.add(photo)
+                }
             }
         }
     }
@@ -59,6 +63,10 @@ class SmartPhotoAndDraft: Object {
     static func getDraftPhoto(predicate: NSPredicate) -> DraftData? {
         return DraftData.getDraftData(predicate: predicate)
     }
+    
+    static func alreadyStoredPhoto(smartPhotoID: String) -> Bool {
+        return SmartPhotoData.checkSmartPhoto(smartPhotoID: smartPhotoID)
+    }
 }
 
 class SnapXPhotoData: Object {
@@ -76,11 +84,15 @@ class SmartPhotoData: SnapXPhotoData {
     @objc dynamic var smartPhotoID: String?
     
     static func getSmarPhotoData(predicate: NSPredicate) -> SmartPhotoData?  {
-        // Get the default Realm
-        let realm = try! Realm()
-        // Query Realm for profile for which id is not empty
-        let result: Results<SmartPhotoData> = realm.objects(SmartPhotoData.self).filter(predicate)
-        return result.first
+        var result: Results<SmartPhotoData>?
+        DispatchQueue.global(qos: .background).async {
+            // Get the default Realm
+            let realm = try! Realm()
+            // Query Realm for profile for which id is not empty
+            result = realm.objects(SmartPhotoData.self).filter(predicate)
+        }
+        return result?.first
+        
     }
     
     static func smartPhotos() -> Results<SmartPhotoData>?  {
@@ -89,16 +101,31 @@ class SmartPhotoData: SnapXPhotoData {
         // Query Realm for profile for which id is not empty
         return realm.objects(SmartPhotoData.self)
     }
+    
+    static func checkSmartPhoto(smartPhotoID: String) -> Bool {
+        let predicate  =  NSPredicate(format: "smartPhotoID == %@", smartPhotoID)
+        // Get the default Realm
+        let realm = try! Realm()
+        // Query Realm for profile for which id is not empty
+        let result: Results<SmartPhotoData> = realm.objects(SmartPhotoData.self).filter(predicate)
+        if let photoID = result.first?.smartPhotoID, photoID == smartPhotoID {
+            return true
+        }
+        return false
+    }
 }
 
 class DraftData: SnapXPhotoData {
     @objc dynamic var restaurantID: String?
     static func getDraftData(predicate: NSPredicate) -> DraftData?  {
-        // Get the default Realm
-        let realm = try! Realm()
-        // Query Realm for profile for which id is not empty
-        let result: Results<DraftData> = realm.objects(DraftData.self).filter(predicate)
-        return result.first
+        var result: Results<DraftData>?
+        DispatchQueue.global(qos: .background).async {
+            // Get the default Realm
+            let realm = try! Realm()
+            // Query Realm for profile for which id is not empty
+            result = realm.objects(DraftData.self).filter(predicate)
+        }
+        return result?.first
     }
     
     static func drafts() -> Results<DraftData>?  {

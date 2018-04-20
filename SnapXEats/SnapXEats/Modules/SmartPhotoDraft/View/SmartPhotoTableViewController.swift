@@ -43,6 +43,13 @@ extension SmartPhotoTableViewController: UITableViewDelegate, UITableViewDataSou
         return  smartPhotos?.count ?? 0
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let photo = smartPhotos, let smartPhoto_Draft_Stored_id = photo[indexPath.row].smartPhoto_Draft_Stored_id,
+            let dishId = photo[indexPath.row].restaurant_item_id, let parent = self.navigationController {
+            delegate?.presentScreen(screen: .smartPhoto(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id, dishID: dishId, type: .downlaodedSmartPhoto, parentController: parent))
+        }
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return SnapXEatsAppDefaults.smartPhotTableRowheight
     }
@@ -50,8 +57,16 @@ extension SmartPhotoTableViewController: UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SnapXEatsCellResourceIdentifiler.smartPhotTableView, for: indexPath) as! SmartPhotoTableCell
         cell.selectionStyle = .none
-        cell.smartPhotoImage.image =  UIImage(named: SnapXEatsImageNames.wishlist_placeholder)!
-        cell.restaurantNameLabel.text = "Brand New"
+        if let photos = smartPhotos, let imageUrl = apptoDocumentDirPath(path: photos[indexPath.row].dish_image_url) {
+            if FileManager.default.fileExists(atPath: imageUrl.path) {
+                print(imageUrl.path)
+                cell.smartPhotoImage.image =   UIImage(contentsOfFile: imageUrl.path)
+            }
+            cell.restaurantNameLabel.text = photos[indexPath.row].restaurant_name
+            cell.smartPhot_Draft_id = photos[indexPath.row].smartPhoto_Draft_Stored_id
+           cell.shareButton.isHidden = true
+        }
+        
         return cell
     }
 }
