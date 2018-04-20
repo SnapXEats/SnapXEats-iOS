@@ -28,5 +28,9 @@ enum Constants {
         static let roboto_regular = "Roboto-Regular"
         static let roboto_bold = "Roboto-Bold"
     }
+    
+    enum FontSize {
+        static let OlderFoodJourneyHeader:CGFloat = 11.0
+    }
 
 }

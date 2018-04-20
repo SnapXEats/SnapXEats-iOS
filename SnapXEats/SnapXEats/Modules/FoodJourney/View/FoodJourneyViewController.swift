@@ -22,12 +22,6 @@ class FoodJourneyViewController: BaseViewController, StoryboardLoadable {
     var userPastHistoryItems = [UserPastHistory]()
     fileprivate var contentHeights = [CGFloat]() // Used for storing dynamic heights of recent food journey
     
-    // MARK: Constant
-    var defaultRecentFoodJourneyCellHeight: CGFloat = 186
-    let defaulfOlderHeaderCellHeight: CGFloat = 40
-    let defaultOlderFoodJourneyCellHeight: CGFloat = 78
-    let olderLabelCellCount = 1
-
     // MARK: Lifecycle
 
     override func viewDidLoad() {
@@ -43,7 +37,7 @@ class FoodJourneyViewController: BaseViewController, StoryboardLoadable {
     private func initContentHeight() {
         contentHeights.removeAll()
         for _ in currentWeekHistoryItems {
-            contentHeights.append(defaultRecentFoodJourneyCellHeight)
+            contentHeights.append(CellHeight.defaultRecentFoodJourneyCellHeight)
         }
     }
     
@@ -107,9 +101,9 @@ extension FoodJourneyViewController: UITableViewDelegate, UITableViewDataSource 
 
         if section == 1 && userPastHistoryItems.count > 0 {
             let headerView = UIView()
-            let headerLabel = UILabel(frame: CGRect(x: 15, y: 13, width:
+            let headerLabel = UILabel(frame: CGRect(x: HeaderLabel.x, y: HeaderLabel.y, width:
                 tableView.bounds.size.width, height: tableView.bounds.size.height))
-            headerLabel.font = UIFont(name: Constants.Font.roboto_bold, size: 11.0)
+            headerLabel.font = UIFont(name: Constants.Font.roboto_bold, size: Constants.FontSize.OlderFoodJourneyHeader)
             headerLabel.textColor = UIColor.headerCell
             headerLabel.text = "Older"
             headerLabel.sizeToFit()
@@ -121,16 +115,16 @@ extension FoodJourneyViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 1 {
-            return defaulfOlderHeaderCellHeight
+            return CellHeight.defaulfOlderHeaderCellHeight
         }
         return 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return contentHeights[indexPath.row] + 10
+            return contentHeights[indexPath.row]
         } else if indexPath.section == 1 {
-            return CGFloat(defaultOlderFoodJourneyCellHeight)
+            return CellHeight.defaultOlderFoodJourneyCellHeight
         }
         return 0
     }
