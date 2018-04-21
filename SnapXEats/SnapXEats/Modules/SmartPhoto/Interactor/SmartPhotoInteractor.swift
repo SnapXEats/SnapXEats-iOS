@@ -16,9 +16,17 @@ class SmartPhotoInteractor {
 }
 
 extension SmartPhotoInteractor: SmartPhotoUseCase {
+    func storeSmartPhoto(smartPhoto: SmartPhoto) {
+          SmartPhotoHelper.shared.saveSmartPhoto(smartPhoto: smartPhoto)
+    }
+    
     func sendSmartPhotoRequest(dishID: String) {
         let paraMeter: [String: Any] = [:]
         smartPhotoRequest(forPath: SnapXEatsWebServicePath.dishesURL + "/\(dishID)", parameters: paraMeter)
+    }
+    
+    func alreadyExistingSmartPhoto(smartPhotoID: String) -> Bool {
+       return  SmartPhotoHelper.shared.hasSmartPhoto(smartPhotoDishId: smartPhotoID)
     }
 }
 

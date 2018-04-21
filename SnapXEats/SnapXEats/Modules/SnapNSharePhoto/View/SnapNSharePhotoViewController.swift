@@ -83,7 +83,7 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
                 } else {
                     setReviewData()
                     if let storedID =  smartPhoto?.smartPhoto_Draft_Stored_id {
-                        presenter?.presentScreenLoginPopup(screen: .loginPopUp(storedID: storedID, parentController: parent))
+                        presenter?.presentScreenLoginPopup(screen: .loginPopUp(storedID: storedID, parentController: parent, loadFromSmartPhot_Draft: false))
                     }
                 }
             } else {

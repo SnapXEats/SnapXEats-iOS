@@ -152,6 +152,7 @@ extension SmartPhotoRouter: SmartPhotoWireframe {
     }
     
     func presentSuccessView() {
+        view?.downloadButton.isHidden = true // hide the download button after success
         loadDownloadSuccessView()
     }
     

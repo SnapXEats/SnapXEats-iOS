@@ -19,14 +19,17 @@ protocol SmartPhotoPresentation: SuccessScreen {
      func presentView(view: SmartPhotView)
      func pausePlayAudio()
      func presentScreen(screen: Screens)
+     func saveSmartPhoto(smartPhoto: SmartPhoto)
+     func checkSmartPhoto(smartPhotoID: String) -> Bool
 }
 
 protocol SmartPhotoUseCase: SmartPhotoFormatter {
-    // TODO: Declare use case methods
+    func storeSmartPhoto(smartPhoto: SmartPhoto)
 }
 
 protocol SmartPhotoFormatter: class {
     func sendSmartPhotoRequest(dishID: String)
+    func alreadyExistingSmartPhoto(smartPhotoID: String) -> Bool
 }
 
 protocol SmartPhotoWebService: class {

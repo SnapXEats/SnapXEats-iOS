@@ -18,8 +18,9 @@ class SmartPhotoDownload: UIView, UICircularProgressRingDelegate {
     
     @IBOutlet weak var progressBar: UICircularProgressRingView!
     var smartPhoto: SmartPhoto?
-    weak var delegate: SuccessScreen?
+    weak var delegate: SmartPhotoPresentation?
     weak var internetdelegate: SmartPhotoWireframe?
+    
     let utilityQueue = DispatchQueue.global(qos: .utility)
     func initView() {
         progressBar.outerCapStyle = .round
@@ -71,21 +72,54 @@ class SmartPhotoDownload: UIView, UICircularProgressRingDelegate {
     }
     
     func savePhotoFile(value: Data) -> Bool {
-        if let fileName = getFileName(filePath: smartPhoto?.dish_image_url), let id = smartPhoto?.restaurant_item_id,
-            let image = UIImage(data: value),  let saveFilePath = SmartPhotoPath.smartPhoto(fileName: fileName, id: id).getPath() {
+         resetImageSaveTimeInterval() // before saving data we need to reset the timeinterval every time, to creat new stored ID
+        if let saveFilePath =  getImageFilePath(), let image = UIImage(data: value) {
+            saveSmartPhotoInfo() // save the info in Realm data base
             return  savePhoto(image: image, path: saveFilePath)
         }
         return false
     }
     
     func saveAudio(data: Data) -> Bool {
-        if let fileName = getFileName(filePath: smartPhoto?.audio_review_url), let id = smartPhoto?.restaurant_item_id,
-            let saveFilePath = SmartPhotoPath.smartPhoto(fileName: fileName, id: id).getPath() {
+        if let saveFilePath = getAudioFilePath() {
             return  saveAudioFile(value: data, path: saveFilePath)
         }
         return false
     }
     
+    func saveSmartPhotoInfo() {
+        if let photo = smartPhoto, let imagURL = getImageFilePath(), let imagePath = getPathTillDocDir(path: imagURL.absoluteString) {
+            let smartPhoto = SmartPhoto()
+            
+             smartPhoto.dish_image_url =  imagePath
+            if let audioURL = getAudioFilePath() , let audiopath = getPathTillDocDir(path: audioURL.absoluteString) {
+              smartPhoto.audio_review_url = audiopath
+            }
+            smartPhoto.restaurant_name = photo.restaurant_name
+            smartPhoto.restaurant_address = photo.restaurant_address
+            smartPhoto.restaurant_aminities = photo.restaurant_aminities
+            smartPhoto.restaurant_item_id = photo.restaurant_item_id
+            smartPhoto.smartPhoto_Draft_Stored_id = getTimeInterval()
+            smartPhoto.text_review = photo.text_review
+            delegate?.saveSmartPhoto(smartPhoto: smartPhoto)
+        }
+    }
+    
+    func getImageFilePath() -> URL? {
+        if let fileName = getFileName(filePath: smartPhoto?.dish_image_url), let id = smartPhoto?.restaurant_item_id,
+            let filePath = SmartPhotoPath.smartPhoto(fileName: fileName, id: id).getPath() {
+            return filePath
+        }
+        return nil
+    }
+    
+    func getAudioFilePath() -> URL? {
+        if let fileName = getFileName(filePath: smartPhoto?.audio_review_url), let id = smartPhoto?.restaurant_item_id,
+            let saveFilePath = SmartPhotoPath.smartPhoto(fileName: fileName, id: id).getPath() {
+            return saveFilePath
+        }
+        return nil
+    }
 }
 
 

@@ -29,6 +29,8 @@ protocol SmartPhotoDraftInteractorOutput: Response {
 protocol SmartPhotoDraftWireframe: RootWireFrame {
     func loadScreen(screen: DraftScreen) -> UIViewController
 }
+
 protocol TableCelldelegate: class {
     func navigateScreen(id: String?)
+    func showLoginScreen(id: String?)
 }

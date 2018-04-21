@@ -37,12 +37,20 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
     var smartPhoto_Draft_Stored_id: String?
     
     var photoType = SmartPhotoType.smartPhoto
-    
+    var alreadyDownloaded = false
     weak var parentController: UINavigationController?
+    let isloggedIn = LoginUserPreferences.shared.isLoggedIn
     
     @IBAction func draftShareAction(_ sender: Any) {
         if let smartPhoto_Draft_Stored_id = smartPhoto_Draft_Stored_id,  smartPhoto_Draft_Stored_id != SnapXEatsConstant.emptyString, let parent = parentController {
-            presenter?.presentScreen(screen: .snapAndShareFromDraft(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id, parentController: parent))
+            if isloggedIn == false {
+                self.dismiss(animated: true, completion: { [weak self] in
+                     self?.presenter?.presentScreen(screen: .loginPopUp(storedID: smartPhoto_Draft_Stored_id, parentController: parent, loadFromSmartPhot_Draft: true))
+                })
+               
+            } else {
+                presenter?.presentScreen(screen: .snapAndShareFromDraft(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id, parentController: parent))
+            }
         }
     }
     
@@ -82,13 +90,11 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
             switch photoType {
             case .smartPhoto:
                 presenter?.presentView(view: .audio(audioURL: smartPhoto.audio_review_url))
-            case .draftPhoto:
+            case .draftPhoto, .downlaodedSmartPhoto:
                 if let audioUrl = apptoDocumentDirPath(path: smartPhoto.audio_review_url),
-                     FileManager.default.fileExists(atPath: audioUrl.path) {
-                        presenter?.presentView(view: .audio(audioURL: audioUrl.path))
-                    }
-            case .downlaodedSmartPhoto:
-                print("downlaodedSmartPhoto")
+                    FileManager.default.fileExists(atPath: audioUrl.path) {
+                    presenter?.presentView(view: .audio(audioURL: audioUrl.absoluteString))
+                }
             }
             
         }
@@ -157,6 +163,9 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
     override func success(result: Any?) {
         if let smartPhoto = result as? SmartPhoto {
             self.smartPhoto = smartPhoto
+            if let id = smartPhoto.restaurant_item_id {
+                alreadyDownloaded = presenter?.checkSmartPhoto(smartPhotoID: id) ?? false
+            }
             loadSmartPhoto()
         }
     }
@@ -168,13 +177,13 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
         case .draftPhoto:
             loadDraftView()
         case .downlaodedSmartPhoto:
-            print("downlaodedSmartPhoto")
+            loadDownloadedSmartPhotoView()
         }
     }
     
     func loadDraftView() {
-         draftShareButton.isHidden = false
-         smartPhoto = SmartPhotoHelper.shared.getDraftPhoto(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id ?? SnapXEatsConstant.emptyString)
+        draftShareButton.isHidden = false
+        smartPhoto = SmartPhotoHelper.shared.getDraftPhoto(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id ?? SnapXEatsConstant.emptyString)
         if let photos = smartPhoto {
             if let imageUrl = apptoDocumentDirPath(path: photos.dish_image_url) {
                 if FileManager.default.fileExists(atPath: imageUrl.path), let imageItem = UIImage(contentsOfFile: imageUrl.path)  {
@@ -195,6 +204,7 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
     }
     
     func loadSmartPhoto() {
+        downloadButton.isHidden = alreadyDownloaded
         if let url = smartPhoto?.dish_image_url, let imageURL = URL(string: url) {
             smartPhotoImage.af_setImage(withURL: imageURL, placeholderImage:UIImage(named: SnapXEatsImageNames.restaurant_speciality_placeholder)!)
         }
@@ -205,6 +215,27 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
         
         if let text = smartPhoto?.text_review , text != "" {
             messageButton.isHidden = false
+        }
+    }
+    
+    func loadDownloadedSmartPhotoView() {
+        smartPhoto = SmartPhotoHelper.shared.getSmartPhoto(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id ?? SnapXEatsConstant.emptyString)
+        if let photos = smartPhoto {
+            if photos.dish_image_url != SnapXEatsConstant.emptyString, let imageUrl = apptoDocumentDirPath(path: photos.dish_image_url) {
+                if FileManager.default.fileExists(atPath: imageUrl.path), let imageItem = UIImage(contentsOfFile: imageUrl.path)  {
+                    smartPhotoImage.image = imageItem
+                }
+            }
+            
+            if photos.audio_review_url != SnapXEatsConstant.emptyString, let audioUrl = apptoDocumentDirPath(path: photos.audio_review_url) {
+                if FileManager.default.fileExists(atPath: audioUrl.path) {
+                    audioButton.isHidden = false
+                }
+            }
+            
+            if photos.text_review != "" {
+                messageButton.isHidden = false
+            }
         }
     }
     

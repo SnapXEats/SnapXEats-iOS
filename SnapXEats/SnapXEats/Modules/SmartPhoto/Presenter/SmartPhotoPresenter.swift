@@ -40,6 +40,18 @@ extension SmartPhotoPresenter: SmartPhotoPresentation {
     func presentScreen(screen: Screens) {
         router?.presentScreen(screen: screen)
     }
+    
+    func saveSmartPhoto(smartPhoto: SmartPhoto) {
+        interactor?.storeSmartPhoto(smartPhoto: smartPhoto)
+    }
+    
+    func checkSmartPhoto(smartPhotoID: String) -> Bool {
+        if let interactor = interactor {
+            return interactor.alreadyExistingSmartPhoto(smartPhotoID: smartPhotoID)
+        }
+        return false
+    }
+    
 }
 
 extension SmartPhotoPresenter: SmartPhotoInteractorOutput {

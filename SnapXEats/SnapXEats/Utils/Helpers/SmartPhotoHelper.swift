@@ -53,6 +53,13 @@ class SmartPhotoHelper {
         return nil
     }
     
+    func hasSmartPhoto(smartPhotoDishId: String) -> Bool {
+        if smartPhotoDishId != SnapXEatsConstant.emptyString {
+            return SmartPhotoAndDraft.alreadyStoredPhoto(smartPhotoID: smartPhotoDishId)
+        }
+        return false
+    }
+    
     private func mapSmartPhotosToData(smartPhoto: SmartPhoto) -> SmartPhotoData {
         let smartPhotoData = SmartPhotoData()
         smartPhotoData.smartPhotoID = smartPhoto.restaurant_item_id
