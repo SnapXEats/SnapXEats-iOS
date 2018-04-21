@@ -67,6 +67,10 @@ class SmartPhotoAndDraft: Object {
     static func alreadyStoredPhoto(smartPhotoID: String) -> Bool {
         return SmartPhotoData.checkSmartPhoto(smartPhotoID: smartPhotoID)
     }
+    
+    static func deleteDraftItem(smartPhoto_Draft_Stored_id: String) {
+        DraftData.deleteDraft(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id)
+    }
 }
 
 class SnapXPhotoData: Object {
@@ -85,10 +89,10 @@ class SmartPhotoData: SnapXPhotoData {
     
     static func getSmarPhotoData(predicate: NSPredicate) -> SmartPhotoData?  {
         var result: Results<SmartPhotoData>?
-            // Get the default Realm
-            let realm = try! Realm()
-            // Query Realm for profile for which id is not empty
-            result = realm.objects(SmartPhotoData.self).filter(predicate)
+        // Get the default Realm
+        let realm = try! Realm()
+        // Query Realm for profile for which id is not empty
+        result = realm.objects(SmartPhotoData.self).filter(predicate)
         return result?.first
         
     }
@@ -117,11 +121,11 @@ class DraftData: SnapXPhotoData {
     @objc dynamic var restaurantID: String?
     static func getDraftData(predicate: NSPredicate) -> DraftData?  {
         var result: Results<DraftData>?
-            // Get the default Realm
-            let realm = try! Realm()
-            // Query Realm for profile for which id is not empty
-            result = realm.objects(DraftData.self).filter(predicate)
-            return result?.first
+        // Get the default Realm
+        let realm = try! Realm()
+        // Query Realm for profile for which id is not empty
+        result = realm.objects(DraftData.self).filter(predicate)
+        return result?.first
     }
     
     static func drafts() -> Results<DraftData>?  {
@@ -129,5 +133,19 @@ class DraftData: SnapXPhotoData {
         let realm = try! Realm()
         // Query Realm for profile for which id is not empty
         return  realm.objects(DraftData.self)
+    }
+    
+    static func deleteDraft(smartPhoto_Draft_Stored_id: String) {
+        let predicate  =  NSPredicate(format: "smartPhoto_Draft_Stored_id == %@", smartPhoto_Draft_Stored_id)
+        // Get the default Realm
+        let realm = try! Realm()
+        // Query Realm for profile for which id is not empty
+        let result: Results<DraftData> = realm.objects(DraftData.self).filter(predicate)
+        
+        if let item = result.first {
+            try! realm.write {
+                realm.delete(item)
+            }
+        }
     }
 }

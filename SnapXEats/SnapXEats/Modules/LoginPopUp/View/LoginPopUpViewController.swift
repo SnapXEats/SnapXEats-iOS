@@ -45,7 +45,9 @@ class LoginPopUpViewController: BaseViewController, StoryboardLoadable {
         if loadFromSmartPhot_DraftScreen {
             self.dismiss(animated: true, completion: nil)
         }else if let id = smartPhoto?.restaurant_item_id {
-            presenter?.presentScreen(screen: .snapNShareHome(restaurantID: id))
+            showShaingErrorDialog(completionHandler: {[weak self] in
+                self?.presenter?.presentScreen(screen: .snapNShareHome(restaurantID: id))
+            })
         }
     }
     
@@ -53,6 +55,16 @@ class LoginPopUpViewController: BaseViewController, StoryboardLoadable {
         if let result = result as? Bool, result == true, let navigationController = rootController, let _ = smartPhoto?.restaurant_item_id {
             presenter?.presentScreen(screen: .socialLoginFromLoginPopUp(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id, parentController: navigationController))
         }
+    }
+    
+    
+    func showShaingErrorDialog(completionHandler: (() -> ())?) {
+        let Ok = UIAlertAction(title: SnapXButtonTitle.ok, style: UIAlertActionStyle.default, handler: { action in
+            if let completionHandler = completionHandler {
+                completionHandler()
+            }
+        })
+        UIAlertController.presentAlertInViewController(self, title: AlertTitle.draftTitle , message: AlertMessage.draftMessage, actions: [Ok], completion: nil)
     }
 }
 
