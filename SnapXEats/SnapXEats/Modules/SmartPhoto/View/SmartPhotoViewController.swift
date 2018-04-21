@@ -39,10 +39,18 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
     var photoType = SmartPhotoType.smartPhoto
     var alreadyDownloaded = false
     weak var parentController: UINavigationController?
+    let isloggedIn = LoginUserPreferences.shared.isLoggedIn
     
     @IBAction func draftShareAction(_ sender: Any) {
         if let smartPhoto_Draft_Stored_id = smartPhoto_Draft_Stored_id,  smartPhoto_Draft_Stored_id != SnapXEatsConstant.emptyString, let parent = parentController {
-            presenter?.presentScreen(screen: .snapAndShareFromDraft(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id, parentController: parent))
+            if isloggedIn == false {
+                self.dismiss(animated: true, completion: { [weak self] in
+                     self?.presenter?.presentScreen(screen: .loginPopUp(storedID: smartPhoto_Draft_Stored_id, parentController: parent, loadFromSmartPhot_Draft: true))
+                })
+               
+            } else {
+                presenter?.presentScreen(screen: .snapAndShareFromDraft(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id, parentController: parent))
+            }
         }
     }
     
@@ -82,13 +90,11 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
             switch photoType {
             case .smartPhoto:
                 presenter?.presentView(view: .audio(audioURL: smartPhoto.audio_review_url))
-            case .draftPhoto:
+            case .draftPhoto, .downlaodedSmartPhoto:
                 if let audioUrl = apptoDocumentDirPath(path: smartPhoto.audio_review_url),
                     FileManager.default.fileExists(atPath: audioUrl.path) {
-                    presenter?.presentView(view: .audio(audioURL: audioUrl.path))
+                    presenter?.presentView(view: .audio(audioURL: audioUrl.absoluteString))
                 }
-            case .downlaodedSmartPhoto:
-                print("downlaodedSmartPhoto")
             }
             
         }
@@ -158,7 +164,7 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
         if let smartPhoto = result as? SmartPhoto {
             self.smartPhoto = smartPhoto
             if let id = smartPhoto.restaurant_item_id {
-               alreadyDownloaded = presenter?.checkSmartPhoto(smartPhotoID: id) ?? false
+                alreadyDownloaded = presenter?.checkSmartPhoto(smartPhotoID: id) ?? false
             }
             loadSmartPhoto()
         }

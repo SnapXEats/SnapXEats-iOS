@@ -13,9 +13,12 @@ class LoginPopUpViewController: BaseViewController, StoryboardLoadable {
     
     var presenter: LoginPopUpPresentation?
     var smartPhoto_Draft_Stored_id: String?
-    
+    var loadFromSmartPhot_DraftScreen = false
     var smartPhoto: SmartPhoto? {
-        return SmartPhotoHelper.shared.getDraftPhoto(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id ?? SnapXEatsConstant.emptyString)
+        if let smartPhoto_Draft_Stored_id = smartPhoto_Draft_Stored_id {
+            return SmartPhotoHelper.shared.getDraftPhoto(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id)
+        }
+        return nil
     }
     @IBOutlet var rootView: UIView!
     @IBOutlet var containerView: UIView!
@@ -39,7 +42,9 @@ class LoginPopUpViewController: BaseViewController, StoryboardLoadable {
     }
     
     @IBAction func shareLaterAction(_ sender: Any) {
-        if let id = smartPhoto?.restaurant_item_id {
+        if loadFromSmartPhot_DraftScreen {
+            self.dismiss(animated: true, completion: nil)
+        }else if let id = smartPhoto?.restaurant_item_id {
             presenter?.presentScreen(screen: .snapNShareHome(restaurantID: id))
         }
     }

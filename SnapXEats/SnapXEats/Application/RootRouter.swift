@@ -12,7 +12,7 @@ import SwiftInstagram
 
 enum Screens {
     case firsTimeUser, login, instagram(sharedLoginFromSkip: Bool, rootController: UINavigationController?), location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation(parent: UIViewController), userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurantID: String, parentController: UINavigationController, showMoreInfo: Bool), restaurantDirections(details: RestaurantDetails, parentController: UINavigationController), wishlist, restaurantsMapView(restaurants: [Restaurant], parentController: UINavigationController), snapNShareHome(restaurantID: String), snapNSharePhoto(photo: UIImage, iparentController: UINavigationController, restaurantDetails: RestaurantDetails?), snapNShareSocialMedia(smartPhoto_Draft_Stored_id: String?, parentController: UINavigationController), checkin(restaurant: Restaurant),
-    sharedSuccess(restaurantID: String), loginPopUp(storedID: String, parentController: UINavigationController), socialLoginFromLoginPopUp(smartPhoto_Draft_Stored_id: String?, parentController: UINavigationController), smartPhoto(smartPhoto_Draft_Stored_id: String?, dishID: String, type: SmartPhotoType, parentController: UINavigationController?), smartPhotoDraft, foodJourney, snapAndShareFromDraft(smartPhoto_Draft_Stored_id: String?, parentController: UINavigationController)
+    sharedSuccess(restaurantID: String), loginPopUp(storedID: String, parentController: UINavigationController, loadFromSmartPhot_Draft: Bool), socialLoginFromLoginPopUp(smartPhoto_Draft_Stored_id: String?, parentController: UINavigationController), smartPhoto(smartPhoto_Draft_Stored_id: String?, dishID: String, type: SmartPhotoType, parentController: UINavigationController?), smartPhotoDraft, foodJourney, snapAndShareFromDraft(smartPhoto_Draft_Stored_id: String?, parentController: UINavigationController)
 }
 
 class RootRouter: NSObject {
@@ -184,10 +184,11 @@ class RootRouter: NSObject {
         pushSnapNShareSocialMediaScreen(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id, onNavigationController: parentController)
     }
     
-    private func presentLoginPopUp(smartPhoto_Draft_Stored_id: String?, parentController: UINavigationController) {
+    private func presentLoginPopUp(smartPhoto_Draft_Stored_id: String?, parentController: UINavigationController, loadFrom_SmartPhot_Draft: Bool) {
         let viewController = LoginPopUpRouter.shared.loadLoginPopUpView()
         viewController.smartPhoto_Draft_Stored_id = smartPhoto_Draft_Stored_id
         viewController.rootController = parentController
+        viewController.loadFromSmartPhot_DraftScreen = loadFrom_SmartPhot_Draft
         window?.rootViewController?.present(viewController, animated: true, completion: nil)
     }
     
@@ -264,8 +265,8 @@ class RootRouter: NSObject {
             pushSnapNShareSocialMediaScreen(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id, onNavigationController: parentController)
         case .sharedSuccess(let restaurantID):
             presentSuccessFulSharedPhoto(restaurantID: restaurantID)
-        case .loginPopUp(let smartPhoto_Draft_Stored_id, let parentController):
-            presentLoginPopUp(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id, parentController: parentController)
+        case .loginPopUp(let smartPhoto_Draft_Stored_id, let parentController, let loadFrom_SmartPhot_Draft):
+            presentLoginPopUp(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id, parentController: parentController, loadFrom_SmartPhot_Draft: loadFrom_SmartPhot_Draft)
         case .socialLoginFromLoginPopUp(let smartPhoto_Draft_Stored_id,let parentController):
             presentSocialShareAferNewLogin( smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id, parentController: parentController)
         case .smartPhoto(let smartPhoto_Draft_Stored_id, let dishID, let type, let parent):

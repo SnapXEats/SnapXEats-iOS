@@ -73,6 +73,12 @@ extension DraftTableViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension DraftTableViewController :TableCelldelegate {
+    func showLoginScreen(id: String?) {
+        if let smartPhoto_Draft_Stored_id = id, let parent = self.navigationController {
+            delegate?.presentScreen(screen: .loginPopUp(storedID: smartPhoto_Draft_Stored_id, parentController: parent, loadFromSmartPhot_Draft: true))
+        }
+    }
+    
     func navigateScreen(id: String?) {
         if let smartPhoto_Draft_Stored_id = id, let parent = self.navigationController {
             delegate?.presentScreen(screen: .snapAndShareFromDraft(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id, parentController: parent))

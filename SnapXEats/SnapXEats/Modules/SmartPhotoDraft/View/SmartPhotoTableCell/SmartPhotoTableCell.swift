@@ -16,11 +16,12 @@ class SmartPhotoTableCell: UITableViewCell {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var restaurantNameLabel: UILabel!
     var  smartPhot_Draft_id : String?
-    
+    let isLoggedIn = LoginUserPreferences.shared.isLoggedIn
     weak var delegate: TableCelldelegate?
     
     @IBAction func shareButtonAction(_ sender: Any) {
-        delegate?.navigateScreen(id: smartPhot_Draft_id)
+         isLoggedIn ? delegate?.navigateScreen(id: smartPhot_Draft_id)
+            : delegate?.showLoginScreen(id: smartPhot_Draft_id)
     }
     override func awakeFromNib() {
         super.awakeFromNib()

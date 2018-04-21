@@ -85,12 +85,10 @@ class SmartPhotoData: SnapXPhotoData {
     
     static func getSmarPhotoData(predicate: NSPredicate) -> SmartPhotoData?  {
         var result: Results<SmartPhotoData>?
-        DispatchQueue.global(qos: .background).async {
             // Get the default Realm
             let realm = try! Realm()
             // Query Realm for profile for which id is not empty
             result = realm.objects(SmartPhotoData.self).filter(predicate)
-        }
         return result?.first
         
     }
@@ -119,13 +117,11 @@ class DraftData: SnapXPhotoData {
     @objc dynamic var restaurantID: String?
     static func getDraftData(predicate: NSPredicate) -> DraftData?  {
         var result: Results<DraftData>?
-        DispatchQueue.global(qos: .background).async {
             // Get the default Realm
             let realm = try! Realm()
             // Query Realm for profile for which id is not empty
             result = realm.objects(DraftData.self).filter(predicate)
-        }
-        return result?.first
+            return result?.first
     }
     
     static func drafts() -> Results<DraftData>?  {
