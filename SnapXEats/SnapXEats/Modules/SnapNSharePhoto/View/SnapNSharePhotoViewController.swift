@@ -13,7 +13,8 @@ import SwiftyStarRatingView
 class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
     
     let reviewPlaceholderText = "Write what you feel about dish"
-    
+    let ReviewTextCharacterLimit = 140
+
     // MARK: Properties
     var presenter: SnapNSharePhotoPresentation?
     var snapPhoto: UIImage!
@@ -157,6 +158,13 @@ extension SnapNSharePhotoViewController: UITextViewDelegate {
             textView.text = SnapXEatsAppDefaults.emptyString
             textView.textColor = UIColor.black
         }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let currentText = textView.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        let changedText = currentText.replacingCharacters(in: stringRange, with: text)
+        return changedText.count <= ReviewTextCharacterLimit
     }
 }
 
