@@ -107,7 +107,8 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
                 self?.showShaingErrorDialog(message: AlertMessage.sharingCanceled, completionHandler: nil)
             case .success:
                 if let smartPhoto_Draft_Stored_id = self?.smartPhoto_Draft_Stored_id, let restaurantID = self?.smartPhoto?.restaurant_item_id {
-                    deleteUserReviewData(restaurantId: smartPhoto_Draft_Stored_id)
+                    SmartPhotoHelper.shared.deleteDraftReview(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id)
+                    deleteUserReviewData(restaurantId: restaurantID)
                     self?.presenter?.presentScreen(screen: .sharedSuccess(restaurantID: restaurantID))
                 }
                 

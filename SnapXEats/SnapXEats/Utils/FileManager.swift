@@ -131,7 +131,7 @@ func saveAudioFile(value: Data, path: URL) -> Bool {
 }
 
 func resetImageSaveTimeInterval() {
-    UserDefaults.standard.set(SnapXEatsConstant.emptyString, forKey: SnapXEatsConstant.timeInterval)
+    UserDefaults.standard.removeObject(forKey: SnapXEatsConstant.timeInterval)
 }
 
 func getTimeInterval() -> String {

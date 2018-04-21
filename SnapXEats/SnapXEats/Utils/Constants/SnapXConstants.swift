@@ -299,12 +299,14 @@ enum AlertMessage {
     static let wishlistForNonLoggedinUser = "Please login to check the Wishlist"
     static let navigationFailureError = "We are not able to detect your current location so navigation on the map won't work"
     static let shareConfirmation = "Do you want to add and share your review?"
-    static let incompleteShareInformation = "Rating and Audio or Text review is mandatory"
+    static let incompleteShareInformation = "You need to give atleast rating for your review"
     static let audioReviewDeleteConfirmation = "Are you sure you want to delete this audio review?"
     static let maxAudioReviewLimitReached = "Maximum Audio Review length reached."
     static let sharingFailed = "Please check your internet connection and train again."
     static let sharingCanceled = "You can earn SnapXEats rewards by sharing photos, you have canceled your action."
     static let photoLibMessage = "SnapXEats need your photo library access to share  photo on Instagram, Please enable it from settings"
+    static let draftMessage = "The photo has been saved in drafts and you can share it, once you login."
+    static let reviewMessage = "Do you want to discard your review?, You can earn rewards by sharing them."
 }
 
 enum AlertTitle {
@@ -316,6 +318,8 @@ enum AlertTitle {
     static let wishlist = "Wishlist"
     static let navigationFailureError = "Navigation Error"
     static let photoLibAccess = "Photo Lib Error"
+    static let draftTitle = "Draft"
+    static let reviewTitle = "Review Error"
 }
 
 enum PreferecneConstant {

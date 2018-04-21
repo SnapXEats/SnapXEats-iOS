@@ -14,7 +14,7 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
     
     let reviewPlaceholderText = "Write what you feel about dish"
     let ReviewTextCharacterLimit = 140
-
+    
     // MARK: Properties
     var presenter: SnapNSharePhotoPresentation?
     var snapPhoto: UIImage!
@@ -31,6 +31,9 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
     @IBOutlet var reviewTextView: UITextView!
     @IBOutlet var recordAudioReviewButton: UIButton!
     @IBOutlet var playRecordingButton: UIButton!
+    var isDirty: Bool {
+        return  isSharingInformationComplete() || isPhotoFileExist() || isAudioFileExist()
+    }
     
     @IBAction func addaudioReviewButtonAction(_ sender: UIButton) {
         showAudioRecordingPopUpViewWithType(type: .record)
@@ -75,7 +78,7 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
     }
     
     @objc func shareButtonAction() {
-        if let Id = restaurantDetails?.id, let parent = self.navigationController {
+        if let _ = restaurantDetails?.id, let parent = self.navigationController {
             if  isSharingInformationComplete() {
                 hideKeyboardWhenTappedAround()
                 if loginPreferecne.isLoggedIn {
@@ -96,6 +99,20 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
         return rating > 0 ? true : false
     }
     
+    private func isPhotoFileExist() -> Bool {
+        if let id = restaurantDetails?.id, let imageURL = SmartPhotoPath.draft(fileName: fileManagerConstants.smartPhotoFileName, id: id).getPath(), FileManager.default.fileExists(atPath: imageURL.path) {
+            return true
+        }
+        return false
+    }
+    
+    private func isAudioFileExist() -> Bool {
+        if let id = restaurantDetails?.id, let audioURL = SmartPhotoPath.draft(fileName: fileManagerConstants.audioReviewFileName, id: id).getPath(), FileManager.default.fileExists(atPath: audioURL.path) {
+            return true
+        }
+        return false
+    }
+    
     func showIncompleteInformationAlert() {
         let incompleteInfoAlert = UIAlertController(title: SnapXEatsAppDefaults.emptyString, message:AlertMessage.incompleteShareInformation , preferredStyle: .alert)
         let okAction = UIAlertAction(title: SnapXButtonTitle.ok, style: .cancel, handler: nil)
@@ -110,9 +127,31 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
         }
     }
     
+    private func enableBackButtonAction() {
+        let newBackButton = UIBarButtonItem(image: UIImage(named: SnapXEatsImageNames.backArrow), style: UIBarButtonItemStyle.plain, target: self, action: #selector(backAction))
+        self.navigationItem.leftBarButtonItem = newBackButton
+    }
+    // Then handle the button selection
+    @objc func backAction() {
+        if  isDirty { showErrorDialog() }
+        else { self.navigationController?.popViewController(animated: true) }
+    }
+    
+    func showErrorDialog() {
+        let Ok = UIAlertAction(title: SnapXButtonTitle.ok, style: UIAlertActionStyle.default, handler: { [weak self] action in
+            if let id = self?.restaurantDetails?.id {
+                deleteUserReviewData(restaurantId: id)
+            }
+            self?.navigationController?.popViewController(animated: true)
+        })
+        let cancel = UIAlertAction(title: SnapXButtonTitle.cancel, style: UIAlertActionStyle.default, handler: nil)
+        UIAlertController.presentAlertInViewController(self, title: AlertTitle.reviewTitle , message: AlertMessage.reviewMessage, actions: [cancel,Ok], completion: nil)
+    }
+    
+    
     func setReviewData() {
         if let _ = restaurantDetails?.id {
-           smartPhoto =  saveFileInDraft()
+            smartPhoto =  saveFileInDraft()
         }
     }
     
@@ -143,6 +182,7 @@ extension SnapNSharePhotoViewController: SnapNSharePhotoView {
     func initView() {
         customizeNavigationItem(title: SnapXEatsPageTitles.snapnshare, isDetailPage: true)
         addShareButtonOnNavigationItem()
+        enableBackButtonAction()
         snapPhotoImageView.image = snapPhoto
         reviewTextView.text = reviewPlaceholderText
         reviewTextView.textColor = UIColor.lightGray

@@ -60,6 +60,10 @@ class SmartPhotoHelper {
         return false
     }
     
+    func deleteDraftReview(smartPhoto_Draft_Stored_id: String) {
+        SmartPhotoAndDraft.deleteDraftItem(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id)
+    }
+    
     private func mapSmartPhotosToData(smartPhoto: SmartPhoto) -> SmartPhotoData {
         let smartPhotoData = SmartPhotoData()
         smartPhotoData.smartPhotoID = smartPhoto.restaurant_item_id
