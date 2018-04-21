@@ -299,15 +299,5 @@ class PreferenceHelper {
             SnapXEatsWebServiceParameterKeys.foodArray: getNonLoggedInUserFoodPreferenceIdArray(foodPreferecne: loginPreferecne.foodPreference)
         ]
     }
-    
-    func resetFoodPreferenceData() {
-        let userId = loginPreferecne.loginUserID
-        SetUserPreference.resetFoodPreference(userID: userId)
-    }
-    
-    func resetCuisinePreferenceData() {
-        let userId = loginPreferecne.loginUserID
-        SetUserPreference.resetCuisinePreference(userID: userId)
-    }
 }
 

@@ -22,13 +22,11 @@ protocol FoodAndCuisinePreferencePresentation: FoodAndCuisinePreferenceUseCase {
 protocol FoodAndCuisinePreferenceUseCase: class {
     func savePreferecne(type: PreferenceType, usierID: String, preferencesItems: [PreferenceItem])
     func getSavedPreferecne(usierID: String, type: PreferenceType, preferenceItems: [PreferenceItem])
-    func resetData(type: PreferenceType)
 }
 
 protocol FoodAndCuisinePreferenceInteractorInput: FoodAndCuisinePreferenceRequestFormatter {
      func savePreferecne(type: PreferenceType, usierID: String, preferencesItems: [PreferenceItem])
      func getSavedPreferecne(usierID: String, type: PreferenceType, preferenceItems: [PreferenceItem])
-     func resetData(type: PreferenceType)
 }
 
 protocol FoodAndCuisinePreferenceInteractorOutput: Response {
