@@ -147,7 +147,9 @@ extension FoodJourneyViewController: UITableViewDelegate, UITableViewDataSource 
 extension FoodJourneyViewController:RecentFoodJourneyCellDelegate {
     func updateRecentFoodJourneyCellHeight(indexPath: IndexPath, estimatedHeight: CGFloat) {
         contentHeights[indexPath.row] = estimatedHeight
+        /* FIXME :: If there will be issue on scroll
         self.foodJourneyTableView.beginUpdates()
         self.foodJourneyTableView.endUpdates()
+         */
     }
 }

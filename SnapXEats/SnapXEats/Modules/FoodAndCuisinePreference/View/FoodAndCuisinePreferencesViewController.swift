@@ -162,7 +162,6 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
     
     private func resetLoggedInUserData() {
         isDirtyPreferecne = true
-        presenter?.resetData(type: preferenceType)
     }
     
     private func resetNonLoggedInUserData() {
