@@ -16,7 +16,13 @@ class SmartPhotoDraftViewController: BaseViewController, StoryboardLoadable {
     // MARK: Properties
     var smartPhoto_Draft_Stored_id: String?  = getTimeInterval()
     var presenter: SmartPhotoDraftPresentation?
-
+    var enableSmartPhoto: Bool {
+        return SmartPhotoHelper.shared.hasSmartPhotos()
+    }
+    
+    var enableDraft: Bool {
+        return SmartPhotoHelper.shared.hasDraftPhotos()
+    }
     // MARK: Lifecycle
 
     @IBOutlet weak var shareButton: UIBarButtonItem!
@@ -54,8 +60,24 @@ class SmartPhotoDraftViewController: BaseViewController, StoryboardLoadable {
 extension SmartPhotoDraftViewController: SmartPhotoDraftView {
     func initView() {
         customizeNavigationItem(title: SnapXEatsPageTitles.smartPhotos, isDetailPage: false)
-        segmentView.selectedSegmentIndex = 0
-        loadView(screen: .smartPhoto)
+        configureSegment()
+    }
+    
+    func configureSegment() {
+        let hasPhoto = enableSmartPhoto
+        let hasDraft = enableDraft
+        if hasPhoto == false {
+            segmentView.setEnabled(hasPhoto, forSegmentAt: 0)
+            segmentView.selectedSegmentIndex = 1
+            loadView(screen: .draft)
+        } else {
+            segmentView.selectedSegmentIndex = 0
+            loadView(screen: .smartPhoto)
+        }
+        
+        if hasDraft == false {
+            segmentView.setEnabled(hasDraft, forSegmentAt: 1)
+        }
     }
     
     fileprivate func addControllerToContainerView(_ viewController: UIViewController) {

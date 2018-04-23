@@ -31,7 +31,9 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
     var navigationOptions = [SnapXEatsPageTitles.home, SnapXEatsPageTitles.wishlist, SnapXEatsPageTitles.preferences, SnapXEatsPageTitles.foodJourney, SnapXEatsPageTitles.rewards, SnapXEatsPageTitles.checkin, SnapXEatsPageTitles.smartPhotos]
     
     var screenIndex: navigateScreen = .home
-    
+    var enableSmartPhoto: Bool {
+        return  SmartPhotoHelper.shared.hasDraftPhotos() || SmartPhotoHelper.shared.hasSmartPhotos()
+    }
     var isUserCheckedIn: Bool {
         if let status = SnapXEatsLoginHelper.shared.isUserCheckedIn(), status == true {
             return true
@@ -145,7 +147,11 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: SnapXEatsCellResourceIdentifiler.navigationMenu, for: indexPath as IndexPath) as! NavigationMenuTableViewCell
         cell.loggedIn = loginUserPreference.isLoggedIn
         let showCount = indexPath.row == 1 ? true : false
-        cell.configureCell(WithMenu: navigationOptions[indexPath.row], showCount: showCount)
+        let title = navigationOptions[indexPath.row]
+        if title == SnapXEatsPageTitles.smartPhotos {
+            cell.enableSmartPhoto = enableSmartPhoto
+        }
+        cell.configureCell(WithMenu: title, showCount: showCount)
         return cell
     }
     
@@ -175,7 +181,9 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
             let screenToPresent: Screens = isUserCheckedIn ? Screens.snapNShareHome(restaurantID: currentRestaurant.restaurant_info_id!) : Screens.checkin(restaurant: currentRestaurant)
             presenter?.presentScreen(screen: screenToPresent, drawerState: .closed)
         case .smartPhotos:
-            presenter?.presentScreen(screen: .smartPhotoDraft, drawerState: .closed)
+            if enableSmartPhoto {
+                presenter?.presentScreen(screen: .smartPhotoDraft, drawerState: .closed)
+            }
         case .showLogin:
             presenter?.presentScreen(screen: .login, drawerState: .closed)
         default:

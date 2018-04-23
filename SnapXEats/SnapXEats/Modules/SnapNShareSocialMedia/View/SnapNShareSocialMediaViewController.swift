@@ -67,6 +67,7 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
         if shareDetails == nil {
             if let restaurantID = smartPhoto?.restaurant_item_id, let smartPhoto_Draft_Stored_id = smartPhoto_Draft_Stored_id {
                 showLoading()
+                LoginUserPreferences.shared.userDishReview.smartPhoto_Draft_Stored_id = smartPhoto_Draft_Stored_id // This will be used, when image data is send to server in webservice
                 presenter?.sendPhotoReview(restaurantID: restaurantID, smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id)
             }
         }

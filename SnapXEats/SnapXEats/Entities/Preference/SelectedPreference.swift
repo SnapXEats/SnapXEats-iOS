@@ -44,11 +44,8 @@ enum SortByPreference: Int {
 }
 
 class UserDishReview {
-    var rating = 3
-    var reviewText = ""
-    var reviewAudio: URL?
-    var dishPicture: URL?
     var restaurantInfoId : String?
+    var smartPhoto_Draft_Stored_id: String?
     // This should be used to check if there is any Restaurant available for Checkin automatically. Will be set when user goes to Direction Page for particular restaurant and then start Tracking current location.
     var restaurant: Restaurant?
     
@@ -56,11 +53,8 @@ class UserDishReview {
     static let shared = UserDishReview()
     
     func resetData() {
-        rating = 3
-        reviewText = ""
-        reviewAudio = nil
-        dishPicture = nil
         restaurantInfoId = nil
+        smartPhoto_Draft_Stored_id = nil
         restaurant = nil
     }
     

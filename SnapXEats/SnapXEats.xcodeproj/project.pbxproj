@@ -1364,8 +1364,8 @@
 		9D0D7158203F144E0077FA7A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7E2C64BC2044253400DAB44A /* DrawerViewController.swift */,
 				7E2C64B92044253400DAB44A /* TableviewCells */,
+				7E2C64BC2044253400DAB44A /* DrawerViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

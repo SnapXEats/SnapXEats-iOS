@@ -60,6 +60,14 @@ class SmartPhotoHelper {
         return false
     }
     
+    func hasSmartPhotos() -> Bool {
+        return SmartPhotoAndDraft.hasSmartPhotos()
+    }
+    
+    func hasDraftPhotos() -> Bool {
+        return SmartPhotoAndDraft.hasDraftPhotos()
+    }
+    
     func deleteDraftReview(smartPhoto_Draft_Stored_id: String) {
         SmartPhotoAndDraft.deleteDraftItem(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id)
     }
