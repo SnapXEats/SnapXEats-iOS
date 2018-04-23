@@ -29,11 +29,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <subviews>
                         <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dEx-0v-POg" customClass="UICircularProgressRingView" customModule="UICircularProgressRing">
-                            <rect key="frame" x="91" y="8" width="100" height="100"/>
+                            <rect key="frame" x="110" y="15" width="100" height="100"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="100" id="LmL-wQ-f0t"/>
-                                <constraint firstAttribute="height" constant="100" id="T3T-wm-bYb"/>
+                                <constraint firstAttribute="width" constant="100" id="dzj-tf-fSQ"/>
+                                <constraint firstAttribute="height" constant="100" id="oNE-B8-NIr"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
@@ -57,11 +57,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downloading ..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8XH-ju-nKU">
-                            <rect key="frame" x="79" y="139" width="123" height="21"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="21" id="c4c-OE-SXh"/>
-                                <constraint firstAttribute="width" constant="123" id="gYd-DT-rSX"/>
-                            </constraints>
+                            <rect key="frame" x="101" y="139" width="118.5" height="22.5"/>
                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
                             <color key="textColor" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -69,10 +65,10 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="dEx-0v-POg" firstAttribute="centerX" secondItem="8XH-ju-nKU" secondAttribute="centerX" id="DdC-2d-kLl"/>
-                        <constraint firstItem="dEx-0v-POg" firstAttribute="top" secondItem="Udx-ss-f4F" secondAttribute="top" constant="8" id="Uoo-se-YRo"/>
-                        <constraint firstItem="8XH-ju-nKU" firstAttribute="top" secondItem="dEx-0v-POg" secondAttribute="bottom" constant="31" id="dhR-M1-K32"/>
-                        <constraint firstItem="8XH-ju-nKU" firstAttribute="leading" secondItem="Udx-ss-f4F" secondAttribute="leading" constant="79" id="yQ3-FQ-1RL"/>
+                        <constraint firstItem="8XH-ju-nKU" firstAttribute="top" secondItem="dEx-0v-POg" secondAttribute="bottom" constant="24" id="TZx-bb-bbK"/>
+                        <constraint firstItem="8XH-ju-nKU" firstAttribute="centerX" secondItem="dEx-0v-POg" secondAttribute="centerX" id="hkB-JP-n15"/>
+                        <constraint firstItem="dEx-0v-POg" firstAttribute="top" secondItem="Udx-ss-f4F" secondAttribute="top" constant="15" id="lkp-8F-XhJ"/>
+                        <constraint firstItem="dEx-0v-POg" firstAttribute="centerX" secondItem="Udx-ss-f4F" secondAttribute="centerX" id="yV7-38-RuD"/>
                     </constraints>
                 </view>
             </subviews>
