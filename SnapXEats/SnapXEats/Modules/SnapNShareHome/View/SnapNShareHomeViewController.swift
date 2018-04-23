@@ -100,7 +100,7 @@ class SnapNShareHomeViewController: BaseViewController, StoryboardLoadable {
     
     private func gotoSnapNSharePhotoViewWithPhoto(photo: UIImage) {
         if let parentNVCpntroller = self.navigationController, let _  = restaurantDetails?.id {
-            presenter?.gotoSnapNSharePhotoView(parent: parentNVCpntroller, withPhoto: photo, restaurantDetails: restaurantDetails)
+            presenter?.presentScreen(screens: .snapNSharePhoto(photo: photo, iparentController: parentNVCpntroller, restaurantDetails: restaurantDetails))
         }
     }
     
@@ -110,6 +110,7 @@ class SnapNShareHomeViewController: BaseViewController, StoryboardLoadable {
             specialities = details.specialities
             specialityCollectionView.reloadData()
             setupImageSlideshowWithPhotos(photos: details.photos)
+            presenter?.presentScreen(screens: .reminderPopUp(rewardsPoint: 50))
         }
     }
     

@@ -274,6 +274,8 @@
 		9DB7FE1920061B6200D0E816 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1420061B1600D0E816 /* Roboto-Regular.ttf */; };
 		9DB7FE1F20061E8C00D0E816 /* BG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB7FE1E20061E8C00D0E816 /* BG@3x.png */; };
 		9DBA865A204A95FB00C99841 /* WishList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBA8659204A95FB00C99841 /* WishList.swift */; };
+		9DC325E9208E0AF2001DB62A /* ReminderPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DC325E7208E0AF2001DB62A /* ReminderPopUp.xib */; };
+		9DC325EA208E0AF2001DB62A /* ReminderPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC325E8208E0AF2001DB62A /* ReminderPopUp.swift */; };
 		9DCBE184201EF6F80030A0F9 /* SnapXEatsNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCBE183201EF6F80030A0F9 /* SnapXEatsNetworkManager.swift */; };
 		9DDC3AEC2035553600A7F181 /* SnapXEatsLoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDC3AEB2035553600A7F181 /* SnapXEatsLoginHelper.swift */; };
 		9DE7CE512023620500BBBFEC /* UserPreferenceContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE7CE482023620500BBBFEC /* UserPreferenceContract.swift */; };
@@ -578,6 +580,8 @@
 		9DB7FE1620061B1600D0E816 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		9DB7FE1E20061E8C00D0E816 /* BG@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BG@3x.png"; sourceTree = "<group>"; };
 		9DBA8659204A95FB00C99841 /* WishList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishList.swift; sourceTree = "<group>"; };
+		9DC325E7208E0AF2001DB62A /* ReminderPopUp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReminderPopUp.xib; sourceTree = "<group>"; };
+		9DC325E8208E0AF2001DB62A /* ReminderPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderPopUp.swift; sourceTree = "<group>"; };
 		9DCBE183201EF6F80030A0F9 /* SnapXEatsNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEatsNetworkManager.swift; sourceTree = "<group>"; };
 		9DDC3AEB2035553600A7F181 /* SnapXEatsLoginHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEatsLoginHelper.swift; sourceTree = "<group>"; };
 		9DE7CE482023620500BBBFEC /* UserPreferenceContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferenceContract.swift; sourceTree = "<group>"; };
@@ -744,6 +748,7 @@
 		7E539B7020593A01002C3E55 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9DC325E2208E0A63001DB62A /* CustomView */,
 				7E539B7720593B50002C3E55 /* SnapNShareHome.storyboard */,
 				7E539B7120593A01002C3E55 /* SnapNShareHomeViewController.swift */,
 			);
@@ -2331,6 +2336,15 @@
 			path = Wishlist;
 			sourceTree = "<group>";
 		};
+		9DC325E2208E0A63001DB62A /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				9DC325E7208E0AF2001DB62A /* ReminderPopUp.xib */,
+				9DC325E8208E0AF2001DB62A /* ReminderPopUp.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
 		9DDC3AF020358E9600A7F181 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -2505,6 +2519,7 @@
 				9DB7FE1720061B6200D0E816 /* Roboto-Light.ttf in Resources */,
 				7E539B7820593B50002C3E55 /* SnapNShareHome.storyboard in Resources */,
 				9D48FF5B2081F4B500A88E70 /* SmartPhotoDraft.storyboard in Resources */,
+				9DC325E9208E0AF2001DB62A /* ReminderPopUp.xib in Resources */,
 				7E5E7FC2203AD11200009A56 /* RestaurantDetails.storyboard in Resources */,
 				7E7AC90A206B663700CA4FEF /* RestaurantListTableViewCell.xib in Resources */,
 				9DB7FE1820061B6200D0E816 /* Roboto-Medium.ttf in Resources */,
@@ -2679,6 +2694,7 @@
 				9D8E88EB1FFD2BEC0066A1D9 /* LoginContract.swift in Sources */,
 				9D2C484D202073A700FD8B1C /* SelectedPreference.swift in Sources */,
 				9D8095712015E5200077F84B /* SnapXEatsApi.swift in Sources */,
+				9DC325EA208E0AF2001DB62A /* ReminderPopUp.swift in Sources */,
 				9D8E88EC1FFD2BEC0066A1D9 /* LoginPresenter.swift in Sources */,
 				9D48FF6620820CB500A88E70 /* SmartPhotoTableCell.swift in Sources */,
 				9D8E88ED1FFD2BEC0066A1D9 /* LoginViewController.swift in Sources */,
