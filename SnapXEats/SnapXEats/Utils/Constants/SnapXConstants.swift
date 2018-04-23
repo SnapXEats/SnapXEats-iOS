@@ -208,6 +208,7 @@ enum SnapXEatsNibNames {
     static let recentFoodJourneyPicturesCell = "RecentFoodJourneyPicturesCollectionViewCell"
     static let olderFoodJourneyTableViewCell = "OlderFoodJourneyTableViewCell"
     static let olderHeaderTableViewCell = "OlderHeaderTableViewCell"
+    static let reminderPopUp = "ReminderPopUp"
 }
 
 enum SnapXEatsWebServiceParameterKeys {

@@ -21,8 +21,8 @@ class SnapNShareHomePresenter {
 }
 
 extension SnapNShareHomePresenter: SnapNShareHomePresentation {
-    func gotoSnapNSharePhotoView(parent: UINavigationController, withPhoto photo: UIImage, restaurantDetails: RestaurantDetails?) {
-        router?.presentScreen(screen: .snapNSharePhoto(photo: photo, iparentController: parent, restaurantDetails: restaurantDetails))
+    func presentScreen(screens: Screens) {
+        router?.presentScreen(screen: screens)
     }
     
     func restaurantDetailsRequest(restaurantId: String) {
