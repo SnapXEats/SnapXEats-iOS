@@ -15,7 +15,7 @@ class NavigationMenuTableViewCell: UITableViewCell {
     @IBOutlet weak var wishlistCountLabel: UILabel!
     
     var loggedIn = false
-    
+    var enableSmartPhoto = true
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -27,8 +27,10 @@ class NavigationMenuTableViewCell: UITableViewCell {
         var textColor = UIColor.rgba(72.0, 72.0, 72.0, 1.0)
         if  (title == SnapXEatsPageTitles.foodJourney) && loggedIn == false {
              textColor = UIColor.rgba(157.0, 157.0, 157.0, 1.0)
+        } else if  (title == SnapXEatsPageTitles.smartPhotos) && enableSmartPhoto == false {
+            textColor = UIColor.rgba(157.0, 157.0, 157.0, 1.0)
         }
-
+    
         optionLabel.textColor = textColor
         optionLabel.text = title
 

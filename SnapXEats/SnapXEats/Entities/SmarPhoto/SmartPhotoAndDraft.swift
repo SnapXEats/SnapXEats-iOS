@@ -71,6 +71,14 @@ class SmartPhotoAndDraft: Object {
     static func deleteDraftItem(smartPhoto_Draft_Stored_id: String) {
         DraftData.deleteDraft(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id)
     }
+    
+    static func hasSmartPhotos() -> Bool {
+        return SmartPhotoData.count() > 0 ? true : false
+    }
+    
+    static func hasDraftPhotos() -> Bool {
+        return DraftData.count() > 0 ? true : false
+    }
 }
 
 class SnapXPhotoData: Object {
@@ -115,6 +123,10 @@ class SmartPhotoData: SnapXPhotoData {
         }
         return false
     }
+    
+    static func count() -> Int {
+        return smartPhotos()?.count ?? 0
+    }
 }
 
 class DraftData: SnapXPhotoData {
@@ -133,6 +145,10 @@ class DraftData: SnapXPhotoData {
         let realm = try! Realm()
         // Query Realm for profile for which id is not empty
         return  realm.objects(DraftData.self)
+    }
+    
+    static func count() -> Int {
+        return drafts()?.count ?? 0
     }
     
     static func deleteDraft(smartPhoto_Draft_Stored_id: String) {

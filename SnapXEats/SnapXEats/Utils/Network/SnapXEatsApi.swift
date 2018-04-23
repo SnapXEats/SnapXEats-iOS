@@ -20,11 +20,12 @@ class SnapXEatsApi {
     
     static var uploadRequest: Request?
     static let loginUserPrefernce = LoginUserPreferences.shared
-    static let restaurantID = loginUserPrefernce.userDishReview.restaurantInfoId
     static var baseURL: String {
         return SnapXEatsWebServicePath.rootURL
     }
-    static let smartPhoto_Draft_Stored_id = UserDefaults.standard.string(forKey: SnapXEatsConstant.timeInterval) ?? ""
+    static var smartPhoto_Draft_Stored_id : String? {
+        return LoginUserPreferences.shared.userDishReview.smartPhoto_Draft_Stored_id
+    }
     static let serverToken = SnapXEatsLoginHelper.shared.getLoginUserServerToken()
     
     static var header: [String: String]? {
@@ -63,7 +64,7 @@ class SnapXEatsApi {
         var audioData: Data? = nil
         let fileManager = FileManager.default
         do {
-            if let restaurantID = restaurantID, let smartPhoto = SmartPhotoHelper.shared.getDraftPhoto(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id),
+            if let storedID = smartPhoto_Draft_Stored_id, let smartPhoto = SmartPhotoHelper.shared.getDraftPhoto(smartPhoto_Draft_Stored_id: storedID),
                 let pictureURL = apptoDocumentDirPath(path: smartPhoto.dish_image_url) {
                 // Get Image and Audio data to upload
                 
