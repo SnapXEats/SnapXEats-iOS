@@ -46,7 +46,7 @@ class LoginPopUpViewController: BaseViewController, StoryboardLoadable {
             self.dismiss(animated: true, completion: nil)
         }else if let id = smartPhoto?.restaurant_item_id {
             showShaingErrorDialog(completionHandler: {[weak self] in
-                self?.presenter?.presentScreen(screen: .snapNShareHome(restaurantID: id))
+                self?.presenter?.presentScreen(screen: .snapNShareHome(restaurantID: id, displayFromNotification: false))
             })
         }
     }

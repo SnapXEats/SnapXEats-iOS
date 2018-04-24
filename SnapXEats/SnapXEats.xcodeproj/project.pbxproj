@@ -276,6 +276,8 @@
 		9DBA865A204A95FB00C99841 /* WishList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBA8659204A95FB00C99841 /* WishList.swift */; };
 		9DC325E9208E0AF2001DB62A /* ReminderPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DC325E7208E0AF2001DB62A /* ReminderPopUp.xib */; };
 		9DC325EA208E0AF2001DB62A /* ReminderPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC325E8208E0AF2001DB62A /* ReminderPopUp.swift */; };
+		9DC325EC208EF6D3001DB62A /* CameraPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC325EB208EF6D3001DB62A /* CameraPicker.swift */; };
+		9DC325EE208F0BE1001DB62A /* SnapXNotificataionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC325ED208F0BE1001DB62A /* SnapXNotificataionHelper.swift */; };
 		9DCBE184201EF6F80030A0F9 /* SnapXEatsNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCBE183201EF6F80030A0F9 /* SnapXEatsNetworkManager.swift */; };
 		9DDC3AEC2035553600A7F181 /* SnapXEatsLoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDC3AEB2035553600A7F181 /* SnapXEatsLoginHelper.swift */; };
 		9DE7CE512023620500BBBFEC /* UserPreferenceContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE7CE482023620500BBBFEC /* UserPreferenceContract.swift */; };
@@ -582,6 +584,8 @@
 		9DBA8659204A95FB00C99841 /* WishList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishList.swift; sourceTree = "<group>"; };
 		9DC325E7208E0AF2001DB62A /* ReminderPopUp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReminderPopUp.xib; sourceTree = "<group>"; };
 		9DC325E8208E0AF2001DB62A /* ReminderPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderPopUp.swift; sourceTree = "<group>"; };
+		9DC325EB208EF6D3001DB62A /* CameraPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPicker.swift; sourceTree = "<group>"; };
+		9DC325ED208F0BE1001DB62A /* SnapXNotificataionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXNotificataionHelper.swift; sourceTree = "<group>"; };
 		9DCBE183201EF6F80030A0F9 /* SnapXEatsNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEatsNetworkManager.swift; sourceTree = "<group>"; };
 		9DDC3AEB2035553600A7F181 /* SnapXEatsLoginHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEatsLoginHelper.swift; sourceTree = "<group>"; };
 		9DE7CE482023620500BBBFEC /* UserPreferenceContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferenceContract.swift; sourceTree = "<group>"; };
@@ -1807,6 +1811,8 @@
 				9D1C33E1205FAD1B00B4F69D /* SocialPlatformHelper.swift */,
 				9D1C33E62062706000B4F69D /* InstagramManager.swift */,
 				9D60DDB62084B33200678D3A /* SmartPhotoHelper.swift */,
+				9DC325EB208EF6D3001DB62A /* CameraPicker.swift */,
+				9DC325ED208F0BE1001DB62A /* SnapXNotificataionHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -2702,6 +2708,7 @@
 				9D0D70FF207B5D3B00A521EB /* SnapXLinkNavigator.swift in Sources */,
 				7E5E7FF4203C312400009A56 /* RestaurantDetails.swift in Sources */,
 				7E5E7FDD203AF7EE00009A56 /* FullScreenSlideshowViewController.swift in Sources */,
+				9DC325EE208F0BE1001DB62A /* SnapXNotificataionHelper.swift in Sources */,
 				9D902BE4201729E400359DFD /* SelectLocationContract.swift in Sources */,
 				9D748B3F2074B2E2004ED49A /* LoginPopUpContract.swift in Sources */,
 				9D60DDB52084A86D00678D3A /* SmartPhotoAndDraft.swift in Sources */,
@@ -2768,6 +2775,7 @@
 				7E5E8011203D9AD700009A56 /* Date+Helpers.swift in Sources */,
 				7E673B1F204968D2005D19DC /* WishlistItemTableViewCell.swift in Sources */,
 				9D3D1CE02006479500AAAB95 /* SnapXConstants.swift in Sources */,
+				9DC325EC208EF6D3001DB62A /* CameraPicker.swift in Sources */,
 				7E673B2220498EFF005D19DC /* UIColor+Pallet.swift in Sources */,
 				9D60DDB120837B2400678D3A /* FoodJourney.swift in Sources */,
 				7E83974120454DF600E71C6D /* MoreInfoTableViewCell.swift in Sources */,

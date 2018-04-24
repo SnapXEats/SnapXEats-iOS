@@ -9,10 +9,11 @@ import FacebookCore
 import FBSDKCoreKit
 import FBSDKLoginKit
 import SwiftInstagram
+import UserNotifications
 
 enum Screens {
-    case firsTimeUser, login, instagram(sharedLoginFromSkip: Bool, rootController: UINavigationController?), location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation(parent: UIViewController), userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurantID: String, parentController: UINavigationController, showMoreInfo: Bool), restaurantDirections(details: RestaurantDetails, parentController: UINavigationController), wishlist, restaurantsMapView(restaurants: [Restaurant], parentController: UINavigationController), snapNShareHome(restaurantID: String), snapNSharePhoto(photo: UIImage, iparentController: UINavigationController, restaurantDetails: RestaurantDetails?), snapNShareSocialMedia(smartPhoto_Draft_Stored_id: String?, parentController: UINavigationController), checkin(restaurant: Restaurant),
-    sharedSuccess(restaurantID: String), loginPopUp(storedID: String, parentController: UINavigationController, loadFromSmartPhot_Draft: Bool), socialLoginFromLoginPopUp(smartPhoto_Draft_Stored_id: String?, parentController: UINavigationController), smartPhoto(smartPhoto_Draft_Stored_id: String?, dishID: String, type: SmartPhotoType, parentController: UINavigationController?), smartPhotoDraft, foodJourney, snapAndShareFromDraft(smartPhoto_Draft_Stored_id: String?, parentController: UINavigationController), reminderPopUp(rewardsPoint: Int)
+    case firsTimeUser, login, instagram(sharedLoginFromSkip: Bool, rootController: UINavigationController?), location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation(parent: UIViewController), userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurantID: String, parentController: UINavigationController, showMoreInfo: Bool), restaurantDirections(details: RestaurantDetails, parentController: UINavigationController), wishlist, restaurantsMapView(restaurants: [Restaurant], parentController: UINavigationController), snapNShareHome(restaurantID: String, displayFromNotification: Bool), snapNSharePhoto(photo: UIImage, iparentController: UINavigationController, restaurantDetails: RestaurantDetails?), snapNShareSocialMedia(smartPhoto_Draft_Stored_id: String?, parentController: UINavigationController), checkin(restaurant: Restaurant),
+    sharedSuccess(restaurantID: String), loginPopUp(storedID: String, parentController: UINavigationController, loadFromSmartPhot_Draft: Bool), socialLoginFromLoginPopUp(smartPhoto_Draft_Stored_id: String?, parentController: UINavigationController), smartPhoto(smartPhoto_Draft_Stored_id: String?, dishID: String, type: SmartPhotoType, parentController: UINavigationController?), smartPhotoDraft, foodJourney, snapAndShareFromDraft(smartPhoto_Draft_Stored_id: String?, parentController: UINavigationController), reminderPopUp(rewardsPoint: Int, restaurantID: String?, delegate: CameraMode)
 }
 
 class RootRouter: NSObject {
@@ -22,13 +23,22 @@ class RootRouter: NSObject {
     }
     private var drawerController: KYDrawerController!
     
-    fileprivate var reminderTimer: Timer!
-    
+    fileprivate var reminderCount : Int {
+        set {
+            UserDefaults.standard.set(newValue, forKey: NotificationConstant.requestIdentifier)
+        }
+        get {
+            return UserDefaults.standard.integer(forKey: NotificationConstant.requestIdentifier)
+        }
+    }
     private override init() {
     }
     static var shared = RootRouter()
     
     func presentFirstScreen(inWindow window: UIWindow) {
+        if #available(iOS 10.0, *) {
+            registerReminderNotification()
+        }
         userLoggedIn()
     }
     
@@ -117,11 +127,13 @@ class RootRouter: NSObject {
         parentController.pushViewController(restaurantMapsVC, animated: true)
     }
     
-    private func presentSnapNShareHomeScreen(restaurantID: String) {
+    private func presentSnapNShareHomeScreen(restaurantID: String, displayFromNotification: Bool) {
         let snapNShareHomeNavigation = SnapNShareHomeRouter.shared.loadSnapNShareHomeModule()
         if let snapNShareHomeVC = snapNShareHomeNavigation.viewControllers.first as? SnapNShareHomeViewController{
             snapNShareHomeVC.restaurantID = restaurantID
+            snapNShareHomeVC.displayFromNotification = displayFromNotification
         }
+        
         updateDrawerWithMainController(mainVC: snapNShareHomeNavigation)
         presentView(drawerController)
     }
@@ -204,12 +216,12 @@ class RootRouter: NSObject {
     }
     
     func presentSmartPhotoScreen(smartPhoto_Draft_Stored_id: String?, dishID: String, type: SmartPhotoType, parentController: UINavigationController?) {
-            let smartPhotoController = SmartPhotoRouter.shared.loadModule()
-            smartPhotoController.dishID = dishID
-            smartPhotoController.smartPhoto_Draft_Stored_id = smartPhoto_Draft_Stored_id
-            smartPhotoController.photoType = type
-            smartPhotoController.parentController = parentController
-            window?.rootViewController?.present(smartPhotoController, animated: true, completion: nil)
+        let smartPhotoController = SmartPhotoRouter.shared.loadModule()
+        smartPhotoController.dishID = dishID
+        smartPhotoController.smartPhoto_Draft_Stored_id = smartPhoto_Draft_Stored_id
+        smartPhotoController.photoType = type
+        smartPhotoController.parentController = parentController
+        window?.rootViewController?.present(smartPhotoController, animated: true, completion: nil)
     }
     
     func presentSmartPhotoDraft() {
@@ -229,14 +241,15 @@ class RootRouter: NSObject {
         return reminderPopUp
     }
     
-    @objc func showReminderView(rewardPoints: Int) {
-      let remivnerview = loadReminderPopup()
+    func showReminderView(rewardPoints: Int, restaurantID: String?, delegate: CameraMode) {
+        let reminderview = loadReminderPopup()
         if let frame = window?.rootViewController?.view.frame {
-            remivnerview.setupPopup(frame, rewardPoints: rewardPoints)
+            reminderview.setupPopup(frame, rewardPoints: rewardPoints)
         }
-      stopReminder()
-      remivnerview.reminderPopUpDelegate = self
-      window?.rootViewController?.view.addSubview(remivnerview)
+        reminderview.restaurantID = restaurantID
+        reminderview.cameraDelegate = delegate
+        
+        window?.rootViewController?.view.addSubview(reminderview)
     }
     
     
@@ -273,8 +286,8 @@ class RootRouter: NSObject {
             presentWishlistScreen()
         case .restaurantsMapView(let restaurants, let parentController):
             pushRestaurantsMapView(onNavigationController: parentController, withRestaurants: restaurants)
-        case .snapNShareHome(let restaurantid):
-            presentSnapNShareHomeScreen(restaurantID: restaurantid)
+        case .snapNShareHome(let restaurantid, let displayFromNotification):
+            presentSnapNShareHomeScreen(restaurantID: restaurantid, displayFromNotification: displayFromNotification)
         case .checkin(let restaurant):
             presentCheckinPopupForRestaurant(restaurant: restaurant)
         case .snapNSharePhoto(let photo, let parentController, let reataurantDetails):
@@ -295,11 +308,11 @@ class RootRouter: NSObject {
             presentFoodJourney()
         case .snapAndShareFromDraft(let smartPhoto_Draft_Stored_id, let parentController):
             presentSocialShareFromDraft(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id, parentController: parentController)
-        case .reminderPopUp(let rewardsPoint):
-            showReminderView(rewardPoints: rewardsPoint)
+        case .reminderPopUp(let rewardsPoint, let restaurantID, let cameraDelegate):
+            showReminderView(rewardPoints: rewardsPoint, restaurantID: restaurantID, delegate: cameraDelegate)
         }
     }
-        
+    
     private func presentView(_ viewController: UIViewController) {
         guard let window = UIApplication.shared.delegate?.window! else { return }
         window.backgroundColor = UIColor.white
@@ -318,13 +331,13 @@ class RootRouter: NSObject {
 extension RootRouter: CheckinPopUpActionsDelegate {
     func userDidChekintoRestaurant(restaurantID: String) {
         //SnapXEatsLoginHelper.shared.checkinUser()
-        presentScreen(screen: .snapNShareHome(restaurantID: restaurantID), drawerState: .closed)
+        presentScreen(screen: .snapNShareHome(restaurantID: restaurantID, displayFromNotification: false), drawerState: .closed)
     }
 }
 
 extension RootRouter: SharedSucceesActionsDelegate {
     func movetoSnapNShareScreen(restaurantID: String) {
-        presentScreen(screen: .snapNShareHome(restaurantID: restaurantID), drawerState: .closed)
+        presentScreen(screen: .snapNShareHome(restaurantID: restaurantID, displayFromNotification: false), drawerState: .closed)
     }
     
     func popupDidDismiss() {
@@ -345,18 +358,59 @@ extension RootRouter: SharedSucceesActionsDelegate {
     
 }
 
-extension RootRouter: ReminderPopUpDelegate {
+@available(iOS 10.0, *)
+extension RootRouter: UNUserNotificationCenterDelegate {
     
-    func startReminder() {
-        if reminderTimer == nil {
-            reminderTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(showReminderView), userInfo: nil, repeats: true)
+    func registerReminderNotification() {
+        UNUserNotificationCenter.current().delegate = self
+    }
+    //for displaying notification when app is in foreground
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        //If you don't want to show notification when app is open, do something here else and make a return here.
+        //Even you you don't implement this delegate method, you will not see the notification on the specified controller. So, you have to implement this delegate and make sure the below line execute. i.e. completionHandler.
+        if  notification.request.content.categoryIdentifier == NotificationConstant.catogories {
+            if reminderCount == 3 {
+                reminderCount = 0
+                center.removeAllPendingNotificationRequests()
+                center.removeAllDeliveredNotifications()
+            } else {
+                reminderCount += 1
+            }
+        }
+        completionHandler([.alert, .badge, .sound])
+    }
+    
+    // For handling tap and user actions
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        switch response.actionIdentifier {
+        case NotificationConstant.remindLater:
+            completionHandler()
+        case NotificationConstant.takePhoto:
+            if  let drawerController = window?.rootViewController as? KYDrawerController, let navigationController = drawerController.mainViewController as? UINavigationController {
+                let filterController = navigationController.viewControllers.filter({ (viewController) -> Bool in
+                    if let _ = viewController as? SnapNShareHomeViewController {
+                        return true
+                    }
+                    return false
+                })
+                if filterController.count == 1 {
+                    return
+                }else {
+                    presentSnapNShare(content: response.notification.request.content)
+                }
+                
+                completionHandler()
+            }
+        default:
+            presentSnapNShare(content: response.notification.request.content)
         }
     }
     
-    func stopReminder() {
-        if let _ = reminderTimer {
-            reminderTimer.invalidate()
-            reminderTimer = nil
+    func presentSnapNShare(content: UNNotificationContent) {
+        if let restaurentID = content.userInfo[SnapXEatsConstant.restaurantID] as? String {
+            presentScreen(screens: .snapNShareHome(restaurantID: restaurentID, displayFromNotification: true))
         }
     }
 }
