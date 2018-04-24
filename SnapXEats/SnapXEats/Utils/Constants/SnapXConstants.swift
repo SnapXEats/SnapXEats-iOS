@@ -271,6 +271,7 @@ enum SnapXEatsConstant {
     static let firstTimeUser = "firstTimeUser"
     static let urlScheme = "snapxeats"
     static let timeInterval = "ImageSavedTime"
+    static let restaurantID = "RestaurantID"
 }
 
 enum UberAppConstants {
@@ -383,4 +384,17 @@ enum CellHeight {
 enum HeaderLabel {
     static let x:CGFloat = 15
     static let y:CGFloat = 13
+}
+
+enum NotificationConstant {
+    static let remindLater = "RemindLater"
+    static let takePhoto = "TakePhoto"
+    static let remindTitle = "Remind Later"
+    static let photoTitle = "Take Photo"
+    static let catogories = "ReminderNotification"
+    
+    static let messageTitle = "SnapXEats Reminder"
+    static let messageSubTitle = "Its Time to take some food snap"
+    static let messageBody =  "By sharing photos you can earn rewards"
+    static let requestIdentifier = "SnapXEatsNotification"
 }

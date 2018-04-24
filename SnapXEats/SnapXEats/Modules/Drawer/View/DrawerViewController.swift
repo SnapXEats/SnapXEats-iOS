@@ -178,7 +178,7 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
             }
         case .snapnshare:
             let currentRestaurant = Restaurant(id: "62dfee80-b52b-482f-b0f3-c175ce5d56ca", name: "Tertulia")
-            let screenToPresent: Screens = isUserCheckedIn ? Screens.snapNShareHome(restaurantID: currentRestaurant.restaurant_info_id!) : Screens.checkin(restaurant: currentRestaurant)
+            let screenToPresent: Screens = isUserCheckedIn ? Screens.snapNShareHome(restaurantID: currentRestaurant.restaurant_info_id!, displayFromNotification: false) : Screens.checkin(restaurant: currentRestaurant)
             presenter?.presentScreen(screen: screenToPresent, drawerState: .closed)
         case .smartPhotos:
             if enableSmartPhoto {

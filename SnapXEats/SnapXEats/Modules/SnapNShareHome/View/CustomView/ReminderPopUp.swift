@@ -7,30 +7,31 @@
 //
 
 import UIKit
+import UserNotifications
 
-protocol ReminderPopUpDelegate: class {
-    func startReminder()
-    func stopReminder()
+protocol CameraMode: class {
+    func showCamera()
 }
 
 class ReminderPopUp: UIView {
-
-    weak var reminderPopUpDelegate: ReminderPopUpDelegate?
+   
     var restaurantID: String?
-
+    weak var cameraDelegate: CameraMode?
     
     @IBOutlet var containerView: UIView!
     @IBOutlet var remindlaterButton: UIButton!
     @IBOutlet var takePhotoButton: UIButton!
-    
+    weak var parentView: SnapNShareHomeViewController?
     @IBAction func remindLaterButtonAction(_ sender: UIButton) {
-        reminderPopUpDelegate?.startReminder()
         self.removeFromSuperview()
-        
+        if let id = restaurantID, #available(iOS 10.0, *) {
+            SnapXNotificataionHelper.shared.registerReminderNotification(restaurantID: id)
+        }
     }
     
     @IBAction func takePhotoAction(_ sender: UIButton) {
         self.removeFromSuperview()
+        cameraDelegate?.showCamera()
     }
     
     func setupPopup(_ frame: CGRect, rewardPoints: Int) {
@@ -39,4 +40,6 @@ class ReminderPopUp: UIView {
         takePhotoButton.addBorder(ofWidth: 2.0, withColor: UIColor.rgba(230.0, 118.0, 7.0, 1.0), radius: takePhotoButton.frame.height/2)
         containerView.addShadow()
     }
+    
+   
 }
