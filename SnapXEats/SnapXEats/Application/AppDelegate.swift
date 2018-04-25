@@ -16,7 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         presentInitialScreen()
         if #available(iOS 10.0, *) {
             registerForRichNotifications()
+            UNUserNotificationCenter.current().delegate = self
         }
+        
         // This is for FB
         return SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
@@ -49,6 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // in analytics and advertising reporting.
         AppEventsLogger.activate(application)
         SDKSettings.limitedEventAndDataUsage = true
+        application.applicationIconBadgeNumber = 0
         SnapXEatsNetworkManager.sharedInstance.startMonitoringNetwork()
     }
     
@@ -95,24 +98,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 @available(iOS 10.0, *)
 extension AppDelegate: UNUserNotificationCenterDelegate {
     
-    // called when user interacts with notification (app not running in foreground)
-    func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                didReceive response: UNNotificationResponse, withCompletionHandler
-        completionHandler: @escaping () -> Void) {
-        
-        // do something with the notification
-        print(response.notification.request.content.userInfo)
-        
-        // the docs say you should execute this asap
-        return completionHandler()
+    //for displaying notification when app is in foreground
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        RootRouter.shared.checkNotificationIdentifier(notification: notification, completionHandler: completionHandler)
     }
     
-    // called if app is running in foreground
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent
-        notification: UNNotification, withCompletionHandler completionHandler:
-        @escaping (UNNotificationPresentationOptions) -> Void) {
-        
-        // show alert while app is running in foreground
-        return completionHandler(UNNotificationPresentationOptions.alert)
+    // For handling tap and user actions
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        RootRouter.shared.checkNotification(response: response, completionHandler: completionHandler)
     }
 }

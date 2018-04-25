@@ -397,4 +397,5 @@ enum NotificationConstant {
     static let messageSubTitle = "Its Time to take some food snap"
     static let messageBody =  "By sharing photos you can earn rewards"
     static let requestIdentifier = "SnapXEatsNotification"
+    static let notificationTimer = 600.0
 }

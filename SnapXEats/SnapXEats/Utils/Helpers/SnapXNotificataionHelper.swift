@@ -10,6 +10,7 @@ import Foundation
 import UserNotifications
 
 @available(iOS 10.0, *)
+//https://stackoverflow.com/questions/39713605/getting-local-notifications-to-show-while-app-is-in-foreground-swift-3
 class SnapXNotificataionHelper {
     
     static let shared = SnapXNotificataionHelper()
@@ -34,7 +35,7 @@ class SnapXNotificataionHelper {
         //            content.attachments = [attachment!]
         //        }
         
-        let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 60, repeats: true)
+        let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: NotificationConstant.notificationTimer, repeats: false)
         
         let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request) { (error:Error?) in
