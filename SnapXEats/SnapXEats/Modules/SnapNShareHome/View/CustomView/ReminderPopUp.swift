@@ -13,10 +13,18 @@ protocol CameraMode: class {
     func showCamera()
 }
 
+
+protocol ReminderNotification: class {
+    
+    @available(iOS 10.0, *)
+    func regiterNotification(restaurantID: String)
+}
+
 class ReminderPopUp: UIView {
-   
+    
     var restaurantID: String?
     weak var cameraDelegate: CameraMode?
+    weak var notificationDelegate: ReminderNotification?
     
     @IBOutlet var containerView: UIView!
     @IBOutlet var remindlaterButton: UIButton!
@@ -25,7 +33,7 @@ class ReminderPopUp: UIView {
     @IBAction func remindLaterButtonAction(_ sender: UIButton) {
         self.removeFromSuperview()
         if let id = restaurantID, #available(iOS 10.0, *) {
-            SnapXNotificataionHelper.shared.registerReminderNotification(restaurantID: id)
+            notificationDelegate?.regiterNotification(restaurantID: id)
         }
     }
     
@@ -41,5 +49,5 @@ class ReminderPopUp: UIView {
         containerView.addShadow()
     }
     
-   
+    
 }

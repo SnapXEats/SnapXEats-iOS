@@ -33,12 +33,10 @@ class RootRouter: NSObject {
     }
     private override init() {
     }
+    
     static var shared = RootRouter()
     
     func presentFirstScreen(inWindow window: UIWindow) {
-        if #available(iOS 10.0, *) {
-            registerReminderNotification()
-        }
         userLoggedIn()
     }
     
@@ -141,7 +139,7 @@ class RootRouter: NSObject {
     private func presentCheckinPopupForRestaurant(restaurant: Restaurant) {
         if let window = UIApplication.shared.keyWindow {
             let checkinPopup = CheckinPopupRouter.shared.loadCheckinPopupModule()
-            checkinPopup.checkinPopupDelegate = self
+            checkinPopup.checkinPopupDelegate = RootRouter.shared
             let popupFrame = CGRect(x: 0, y: 0, width: window.frame.width, height: window.frame.height)
             checkinPopup.setupPopup(frame: popupFrame, restaurant: restaurant)
             window.addSubview(checkinPopup)
@@ -248,7 +246,7 @@ class RootRouter: NSObject {
         }
         reminderview.restaurantID = restaurantID
         reminderview.cameraDelegate = delegate
-        
+        reminderview.notificationDelegate = RootRouter.shared
         window?.rootViewController?.view.addSubview(reminderview)
     }
     
@@ -349,7 +347,7 @@ extension RootRouter: SharedSucceesActionsDelegate {
         if let window = UIApplication.shared.keyWindow {
             let sharedSucceesPopup = SnapNShareSocialMediaRouter.shared.loadSharedSuccessPopup()
             sharedSucceesPopup.restaurantID = restaurantID
-            sharedSucceesPopup.sharedSuccessDelegate = self
+            sharedSucceesPopup.sharedSuccessDelegate = RootRouter.shared
             let popupFrame = CGRect(x: 0, y: 0, width: window.frame.width, height: window.frame.height)
             sharedSucceesPopup.setupPopup(popupFrame, rewardPoints: 0)
             window.addSubview(sharedSucceesPopup)
@@ -359,33 +357,26 @@ extension RootRouter: SharedSucceesActionsDelegate {
 }
 
 @available(iOS 10.0, *)
-extension RootRouter: UNUserNotificationCenterDelegate {
+extension RootRouter: ReminderNotification {
     
-    func registerReminderNotification() {
-        UNUserNotificationCenter.current().delegate = self
+    func regiterNotification(restaurantID: String) {
+         SnapXNotificataionHelper.shared.registerReminderNotification(restaurantID: restaurantID)
     }
-    //for displaying notification when app is in foreground
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        
+    
+    func checkNotificationIdentifier(notification: UNNotification, completionHandler: (UNNotificationPresentationOptions) -> Void) {
         //If you don't want to show notification when app is open, do something here else and make a return here.
         //Even you you don't implement this delegate method, you will not see the notification on the specified controller. So, you have to implement this delegate and make sure the below line execute. i.e. completionHandler.
-        if  notification.request.content.categoryIdentifier == NotificationConstant.catogories {
-            if reminderCount == 3 {
-                reminderCount = 0
-                center.removeAllPendingNotificationRequests()
-                center.removeAllDeliveredNotifications()
-            } else {
-                reminderCount += 1
-            }
-        }
+//        if  notification.request.identifier == NotificationConstant.requestIdentifier {
+//        }
         completionHandler([.alert, .badge, .sound])
     }
     
-    // For handling tap and user actions
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        
+    func checkNotification(response: UNNotificationResponse, completionHandler: () -> Void) {
         switch response.actionIdentifier {
         case NotificationConstant.remindLater:
+            if let restaurentID = response.notification.request.content.userInfo[SnapXEatsConstant.restaurantID] as? String {
+                 SnapXNotificataionHelper.shared.registerReminderNotification(restaurantID: restaurentID)
+            }
             completionHandler()
         case NotificationConstant.takePhoto:
             if  let drawerController = window?.rootViewController as? KYDrawerController, let navigationController = drawerController.mainViewController as? UINavigationController {
@@ -399,12 +390,14 @@ extension RootRouter: UNUserNotificationCenterDelegate {
                     return
                 }else {
                     presentSnapNShare(content: response.notification.request.content)
+                    removeDeliveredNotification()
                 }
                 
                 completionHandler()
             }
         default:
             presentSnapNShare(content: response.notification.request.content)
+            removeDeliveredNotification()
         }
     }
     
@@ -413,4 +406,29 @@ extension RootRouter: UNUserNotificationCenterDelegate {
             presentScreen(screens: .snapNShareHome(restaurantID: restaurentID, displayFromNotification: true))
         }
     }
+    
+    func removePendingNotification() {
+        UNUserNotificationCenter.current().getPendingNotificationRequests { (notificationRequests) in
+            var identifiers: [String] = []
+            for notification:UNNotificationRequest in notificationRequests {
+                if notification.identifier == NotificationConstant.requestIdentifier {
+                    identifiers.append(notification.identifier)
+                }
+            }
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
+        }
+    }
+    
+    func removeDeliveredNotification() {
+        UNUserNotificationCenter.current().getDeliveredNotifications { (notificationRequests) in
+            var identifiers: [String] = []
+            for notification:UNNotification in notificationRequests {
+                if notification.request.identifier == NotificationConstant.requestIdentifier {
+                    identifiers.append(notification.request.identifier)
+                }
+            }
+            UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: identifiers)
+        }
+    }
+    
 }
