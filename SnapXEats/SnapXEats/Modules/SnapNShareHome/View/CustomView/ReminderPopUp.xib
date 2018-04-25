@@ -34,7 +34,7 @@
                 <view contentMode="scaleToFill" restorationIdentifier="ReminderPopUp" translatesAutoresizingMaskIntoConstraints="NO" id="SUX-m8-iWz" userLabel="containerView" customClass="SharedSucceesPopup" customModule="SnapXEats" customModuleProvider="target">
                     <rect key="frame" x="39" y="130" width="242" height="308"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cuisine_icon" translatesAutoresizingMaskIntoConstraints="NO" id="hzs-Lo-rQy">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dish" translatesAutoresizingMaskIntoConstraints="NO" id="hzs-Lo-rQy">
                             <rect key="frame" x="83" y="104" width="75" height="75"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="75" id="O9f-60-LGo"/>
@@ -123,6 +123,6 @@
         </view>
     </objects>
     <resources>
-        <image name="cuisine_icon" width="20" height="20"/>
+        <image name="dish" width="108" height="114"/>
     </resources>
 </document>
