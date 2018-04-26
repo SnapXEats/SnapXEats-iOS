@@ -38,6 +38,7 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
     var restaurantDetails: RestaurantDetails?
     var showMoreInfo = false
     var amenities = [String]()
+    var actionButtonsView = RestaurantDetailsActionButtonView()
     
     private var shouldLoadData: Bool {
         get {
@@ -148,6 +149,7 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
             restaurantTimingButton.isEnabled = details.timings.count > 0 ? true : false
             restaurantTimingLabel.text = getRestaurantTimingDisplayText(details: details)
             if showMoreInfo {
+                registerViewForNib()
                 amenities = details.restaurant_amenities
                 amenitiesTableView.reloadData()
                 amenityTableHeightConstraint.constant = CGFloat(amenities.count) * SnapXEatsAppDefaults.amenitiesTableRowHeight
@@ -209,6 +211,13 @@ extension RestaurantDetailsViewController: RestaurantDetailsView {
         slideshowContainer.backgroundColor = UIColor(patternImage: UIImage(named: SnapXEatsImageNames.restaurant_details_placeholder)!)
     }
     
+    private func registerViewForNib() {
+        actionButtonsView = UINib(nibName: SnapXEatsNibNames.restaurantDetailsActionButtonView, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! RestaurantDetailsActionButtonView
+        actionButtonsView.delegate = self
+        actionButtonsView.setupView(CGRect(x: 0, y: (slideshowContainer.frame.height - actionButtonsView.frame.height), width: slideshowContainer.frame.width, height: actionButtonsView.frame.height))
+        slideshow.addSubview(actionButtonsView)
+    }
+    
     private func registerCellForNib() {
         let nib = UINib(nibName: SnapXEatsNibNames.restaurantSpecialityCollectionViewCell, bundle: nil)
         specialityCollectionView.register(nib, forCellWithReuseIdentifier: SnapXEatsCellResourceIdentifiler.restaurantSpeciality)
@@ -218,14 +227,15 @@ extension RestaurantDetailsViewController: RestaurantDetailsView {
     }
     
     func setupImageSlideshowWithPhotos(photos: [RestaurantPhoto]) {
-        
         var inputsources = [AlamofireSource]()
         for photo in photos {
             if let photoURLString = photo.imageURL, let source = AlamofireSource(urlString: photoURLString) {
-               inputsources.append(source)
+                inputsources.append(source)
             }
         }
         slideshow.setImageInputs(inputsources)
+        
+//        slideshow.setInputs(photos, showActionButtons: showMoreInfo)
         slideshow.contentScaleMode = .scaleAspectFit
         slideshow.slideshowInterval = 0
         slideshow.pageControlPosition = .insideScrollView
@@ -237,6 +247,16 @@ extension RestaurantDetailsViewController: RestaurantDetailsView {
         // Call back of image changed event
         slideshow.currentPageChanged = { [weak self] (index) in
             self?.photoClickedDateLabel.text = self!.photoCreatedDatePrefix + (formatDateFromString(datestr: photos[0].createDate ?? SnapXEatsAppDefaults.emptyString))
+            if let textReview = photos[index].textReview {
+                self?.actionButtonsView.toggleTextReviewButtonState(shouldHide: false)
+            } else {
+                self?.actionButtonsView.toggleTextReviewButtonState(shouldHide: true)
+            }
+            if let audioReview = photos[index].audioReviewURL {
+                self?.actionButtonsView.toggleAudioReviewButtonState(shouldHide: false)
+            } else {
+                self?.actionButtonsView.toggleAudioReviewButtonState(shouldHide: true)
+            }
         }
     }
 }
@@ -277,3 +297,36 @@ extension RestaurantDetailsViewController: UICollectionViewDelegate, UICollectio
     }
 }
 
+extension RestaurantDetailsViewController : RestaurantDetailsActionButtonViewDelegate {
+    func reviewMessageAction() {
+        if let review = restaurantDetails?.photos[slideshow.currentPage].textReview {
+            showTextReviewPopUP(text: review)
+        }
+    }
+    
+    func playAudioAction() {
+        let audioURL = restaurantDetails?.photos[slideshow.currentPage].audioReviewURL
+        showPlayAudioPopUpViewWithType(type: .play)
+    }
+    
+    func downloadAction() {
+        
+    }
+    
+    private func showPlayAudioPopUpViewWithType(type: AudioRecordingPopupTypes) {
+        dismissKeyboard()
+        let audioRecordPopupView = UINib(nibName:SnapXEatsNibNames.playAudioPopUp, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! PlayAudioPopUp
+        let audioPopupFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        audioRecordPopupView.setupPopup(audioPopupFrame, type: type, forDuration: 0, forViewController: self)
+        self.view.addSubview(audioRecordPopupView)
+        
+    }
+    
+    private func showTextReviewPopUP(text:String) {
+        dismissKeyboard()
+        let textReviewPopupView = UINib(nibName:SnapXEatsNibNames.textReviewPopUp, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! TextReviewPopUp
+        let textReviewPopupFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        textReviewPopupView.setupPopup(textReviewPopupFrame, forViewController: self)
+        self.view.addSubview(textReviewPopupView)
+    }
+}
