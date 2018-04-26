@@ -18,10 +18,14 @@ protocol LocationPresentation: class {
     func selectLocation(parent: UIViewController)
     func cuisinePreferenceRequest(selectedPreference: SelectedPreference)
     func updatedDrawerState(state: KYDrawerController.DrawerState)
+    func storeLocation(location: LocationModel)
+    func getLocation(userID:  String) -> LocationModel?
 }
 
 protocol LocationRequestFomatter: class {
     func getCuisines(selectedPreference: SelectedPreference)
+    func storeLocation(location: LocationModel)
+    func getLocation(userID:  String) -> LocationModel?
 }
 
 protocol LocationWebService: class {

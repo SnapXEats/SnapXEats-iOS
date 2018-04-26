@@ -22,6 +22,10 @@ class SelectLocationPresenter {
 }
 
 extension SelectLocationPresenter: SelectLocationPresentation {
+    func storeLocation(location: LocationModel) {
+        interactor?.storeLocation(location: location)
+    }
+    
     
     func getSearchPlaces(searchText: String) {
         interactor?.getSearchPlacePredictionsFor(searchText: searchText)

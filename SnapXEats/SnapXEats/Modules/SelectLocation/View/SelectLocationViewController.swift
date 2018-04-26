@@ -262,8 +262,18 @@ extension SelectLocationViewController: CLLocationManagerDelegate, SnapXEatsUser
     
     private func navigatScreen(locationName: String?) {
         selectedPreference.location.locationName = locationName ?? SnapXEatsConstant.emptyString
+        storeLocation()
         stopLocationManager()
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func storeLocation() {
+        let storedLocation = LocationModel()
+        storedLocation.logitude  = selectedPreference.location.longitude
+        storedLocation.latitue   = selectedPreference.location.latitude
+        storedLocation.placeName = selectedPreference.location.locationName
+        storedLocation.userID  = selectedPreference.loginUserPreference.loginUserID
+        presenter?.storeLocation(location: storedLocation)
     }
 }
 

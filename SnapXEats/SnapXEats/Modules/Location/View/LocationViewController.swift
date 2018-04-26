@@ -20,6 +20,7 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     private let defaultLocationTitle = "Select Location"
     private let locationTitleTopInset: CGFloat = 5
     private let locationTitleLeftInsetMargin: CGFloat = 15.0
+    private let storedLocation = LocationModel()
     
     let userPreference = UserPreference()
     private let sectionInsets = UIEdgeInsets(top: 10.0, left: 20.0, bottom: 30.0, right: 20.0)
@@ -101,6 +102,24 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
         }
     }
     
+    func storeLocation() {
+        storedLocation.logitude  = selectedPreference.location.longitude
+        storedLocation.latitue   = selectedPreference.location.latitude
+        storedLocation.placeName = selectedPreference.location.locationName
+        storedLocation.userID  = selectedPreference.loginUserPreference.loginUserID
+        presenter?.storeLocation(location: storedLocation)
+    }
+    
+    func checkStoredLocation() -> Bool {
+        if let location = presenter?.getLocation(userID: selectedPreference.loginUserPreference.loginUserID), let place = location.placeName {
+            selectedPreference.location.longitude = location.logitude
+            selectedPreference.location.latitude = location.latitue
+            setLocationTitle(locationName: place)
+            return true
+        }
+        return false
+    }
+    
     @objc override func internetConnected() {
         locationEnabled ? sendCuiseRequest() : verifyLocationService()
     }
@@ -152,7 +171,9 @@ extension LocationViewController: LocationView {
     func initView() {
         customizeNavigationItem(isDetailPage: false)
         configureView()
-        verifyLocationService()
+        if checkStoredLocation() == false {
+            verifyLocationService()
+        }
     }
 }
 
@@ -209,6 +230,7 @@ extension LocationViewController: CLLocationManagerDelegate, SnapXEatsUserLocati
                 } else if let area = data.1 {
                     self?.setLocationTitle(locationName: area)
                 }
+                self?.storeLocation()
                 self?.hideLoading()
                 self?.sendCuiseRequest()
                 

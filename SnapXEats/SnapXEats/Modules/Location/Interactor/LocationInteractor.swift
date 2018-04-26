@@ -22,6 +22,15 @@ class LocationInteractor {
 
 extension LocationInteractor: LocationRequestFomatter {
     
+    func storeLocation(location: LocationModel) {
+        LocationStoreHelper.shared.storeLocation(location: location)
+    }
+    
+    func getLocation(userID: String) -> LocationModel? {
+        return LocationStoreHelper.shared.getStoredLocation(userID: userID)
+    }
+    
+    
     /**
      Prepare request URL to get Cuisnes.
      - parameters:
