@@ -16,9 +16,7 @@ protocol SelectLocationView: BaseView {
 protocol SelectLocationPresentation: class {
     func getSearchPlaces(searchText: String)
     func getPlaceDetails(placeid: String)
-}
-
-protocol SelectLocationUseCase: class {
+    func storeLocation(location: LocationModel)
 }
 
 protocol SelectLocationInteractorOutput: Response {
@@ -30,6 +28,7 @@ protocol SelectLocationWireframe: RootWireFrame {
 protocol SearchPlacePredictionsRequestFomatter: class {
     func getSearchPlacePredictionsFor(searchText: String)
     func getPlaceDetailsFor(placeid: String)
+    func storeLocation(location: LocationModel)
 }
 
 protocol SearchPlacePredictionsWebService: class {

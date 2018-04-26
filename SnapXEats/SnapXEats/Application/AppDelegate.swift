@@ -12,6 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        SnapXEatsNetworkManager.shared.startMonitoringNetwork()
         setupNavigationBarFont()
         presentInitialScreen()
         if #available(iOS 10.0, *) {
@@ -52,7 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppEventsLogger.activate(application)
         SDKSettings.limitedEventAndDataUsage = true
         application.applicationIconBadgeNumber = 0
-        SnapXEatsNetworkManager.sharedInstance.startMonitoringNetwork()
     }
     
     func applicationWillTerminate(_ application: UIApplication) {

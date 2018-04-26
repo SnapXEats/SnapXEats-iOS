@@ -15,13 +15,13 @@ import Alamofire
 class SnapXEatsNetworkManager {
     
     // MARK: - Properties
-    static let sharedInstance = SnapXEatsNetworkManager()
+    static let shared = SnapXEatsNetworkManager()
     
     var manager = NetworkReachabilityManager(host: "www.google.com")
-    var isConnectedToInternet = false
+    var isConnectedToInternet = true  // keeping default false keep showing internet error message for first time launch    
     
     private init() {
-        initialSetUp()
+        manager?.startListening()
     }
     
     func initialSetUp() {
@@ -47,7 +47,7 @@ class SnapXEatsNetworkManager {
      - returns: Void
      */
     func startMonitoringNetwork() {
-        manager?.startListening()
+         initialSetUp()
     }
     
     //For future use

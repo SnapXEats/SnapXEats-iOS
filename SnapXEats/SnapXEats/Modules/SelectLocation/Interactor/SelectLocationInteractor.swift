@@ -22,12 +22,12 @@ class SelectLocationInteractor {
     static let singleInstance = SelectLocationInteractor()
 }
 
-extension SelectLocationInteractor: SelectLocationUseCase {
-    // TODO: Implement use case methods
-}
 
 extension SelectLocationInteractor: SearchPlacePredictionsRequestFomatter {
     
+    func storeLocation(location: LocationModel) {
+        LocationStoreHelper.shared.storeLocation(location: location)
+    }
     /**
      Prepare request URL to get Cuisnes.
      - parameters:

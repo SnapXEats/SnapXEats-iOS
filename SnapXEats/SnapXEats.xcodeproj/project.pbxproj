@@ -171,6 +171,9 @@
 		9D48FF5F2081F82C00A88E70 /* SmartPhotoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D48FF5E2081F82C00A88E70 /* SmartPhotoTableViewController.swift */; };
 		9D48FF6420820A6400A88E70 /* SmartPhotoTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D48FF6320820A6400A88E70 /* SmartPhotoTableCell.xib */; };
 		9D48FF6620820CB500A88E70 /* SmartPhotoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D48FF6520820CB500A88E70 /* SmartPhotoTableCell.swift */; };
+		9D4E07F12091C74B001A9DC1 /* LocationStoreHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4E07F02091C74B001A9DC1 /* LocationStoreHelper.swift */; };
+		9D4E07F42091C784001A9DC1 /* LocationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4E07F32091C784001A9DC1 /* LocationStore.swift */; };
+		9D4E07F62091CAE6001A9DC1 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4E07F52091CAE6001A9DC1 /* LocationModel.swift */; };
 		9D60DDAA20837A6F00678D3A /* FoodJourneyContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D60DDA120837A6E00678D3A /* FoodJourneyContract.swift */; };
 		9D60DDAB20837A6F00678D3A /* FoodJourneyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D60DDA320837A6E00678D3A /* FoodJourneyPresenter.swift */; };
 		9D60DDAC20837A6F00678D3A /* FoodJourneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D60DDA520837A6E00678D3A /* FoodJourneyViewController.swift */; };
@@ -467,6 +470,9 @@
 		9D48FF5E2081F82C00A88E70 /* SmartPhotoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartPhotoTableViewController.swift; sourceTree = "<group>"; };
 		9D48FF6320820A6400A88E70 /* SmartPhotoTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmartPhotoTableCell.xib; sourceTree = "<group>"; };
 		9D48FF6520820CB500A88E70 /* SmartPhotoTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartPhotoTableCell.swift; sourceTree = "<group>"; };
+		9D4E07F02091C74B001A9DC1 /* LocationStoreHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationStoreHelper.swift; sourceTree = "<group>"; };
+		9D4E07F32091C784001A9DC1 /* LocationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationStore.swift; sourceTree = "<group>"; };
+		9D4E07F52091CAE6001A9DC1 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		9D60DDA120837A6E00678D3A /* FoodJourneyContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodJourneyContract.swift; sourceTree = "<group>"; };
 		9D60DDA320837A6E00678D3A /* FoodJourneyPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodJourneyPresenter.swift; sourceTree = "<group>"; };
 		9D60DDA520837A6E00678D3A /* FoodJourneyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodJourneyViewController.swift; sourceTree = "<group>"; };
@@ -1488,6 +1494,15 @@
 			path = SmartPhotoTableCell;
 			sourceTree = "<group>";
 		};
+		9D4E07F22091C76A001A9DC1 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				9D4E07F32091C784001A9DC1 /* LocationStore.swift */,
+				9D4E07F52091CAE6001A9DC1 /* LocationModel.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 		9D60DD9F20837A6E00678D3A /* FoodJourney */ = {
 			isa = PBXGroup;
 			children = (
@@ -1813,6 +1828,7 @@
 				9D60DDB62084B33200678D3A /* SmartPhotoHelper.swift */,
 				9DC325EB208EF6D3001DB62A /* CameraPicker.swift */,
 				9DC325ED208F0BE1001DB62A /* SnapXNotificataionHelper.swift */,
+				9D4E07F02091C74B001A9DC1 /* LocationStoreHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1939,6 +1955,7 @@
 		9D8E88D91FFD28C50066A1D9 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				9D4E07F22091C76A001A9DC1 /* Location */,
 				9D60DDAF20837B0E00678D3A /* FoodJourney */,
 				9D8FB206207CF19E002E6662 /* SmarPhoto */,
 				9DBA8658204A95E700C99841 /* Wishlist */,
@@ -2740,6 +2757,7 @@
 				9D8E88F41FFD2BEC0066A1D9 /* UserProfile.swift in Sources */,
 				9D8FB1F0207CB862002E6662 /* SmartPhotoInteractor.swift in Sources */,
 				9D8FB1EE207CB862002E6662 /* SmartPhotoPresenter.swift in Sources */,
+				9D4E07F42091C784001A9DC1 /* LocationStore.swift in Sources */,
 				7E5C057E2017A6DC000B5C33 /* SavedLocationTableViewCell.swift in Sources */,
 				9D8FB1FC207CCB39002E6662 /* SmartPhotoInfo.swift in Sources */,
 				7E71FC092022CCAD00CA8467 /* KYEmbedMainControllerSegue.swift in Sources */,
@@ -2753,6 +2771,7 @@
 				9D2A9FEC207E4071004484E6 /* SmartPhotoAudio.swift in Sources */,
 				7EAC8610201A066B00DE162A /* FoodCardView.swift in Sources */,
 				7EB5922320404A0E00CC6888 /* foodCardOverlayView.swift in Sources */,
+				9D4E07F12091C74B001A9DC1 /* LocationStoreHelper.swift in Sources */,
 				9D60DDAE20837A6F00678D3A /* FoodJourneyRouter.swift in Sources */,
 				997F39CD2085C3BD00C1FE3A /* RecentFoodJourneyPicturesCollectionViewCell.swift in Sources */,
 				7E539BD0205BA323002C3E55 /* SnapNShareSocialMediaPresenter.swift in Sources */,
@@ -2879,6 +2898,7 @@
 				7E5E7FE1203AF7EE00009A56 /* UIImage+AspectFit.swift in Sources */,
 				7E539BAC205A522E002C3E55 /* SnapNSharePhotoPresenter.swift in Sources */,
 				9D8E890B1FFD2BEC0066A1D9 /* PlainButtonCell.swift in Sources */,
+				9D4E07F62091CAE6001A9DC1 /* LocationModel.swift in Sources */,
 				9D8E890D1FFD2BEC0066A1D9 /* SectionHeaderLabelCell.swift in Sources */,
 				9D60DDB72084B33200678D3A /* SmartPhotoHelper.swift in Sources */,
 				9D748B492074EBBC004ED49A /* LoginPopUpViewController.swift in Sources */,
