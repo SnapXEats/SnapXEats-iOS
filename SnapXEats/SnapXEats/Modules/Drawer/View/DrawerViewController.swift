@@ -85,9 +85,11 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        CheckInHelper.shared.userCheckedOut()
         if isUserCheckedIn {
             checkInButton.setTitle(SnapXButtonTitle.checkOut, for: .normal)
+        } else {
+            checkInButton.setTitle(SnapXButtonTitle.checkIn, for: .normal)
         }
         // To refresh the Wishlist Count on Evrytime Drawer loads
         navigationOptionTable.reloadData()

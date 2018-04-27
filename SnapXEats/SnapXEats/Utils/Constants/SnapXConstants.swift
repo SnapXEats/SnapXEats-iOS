@@ -312,6 +312,7 @@ enum AlertMessage {
     static let photoLibMessage = "SnapXEats need your photo library access to share  photo on Instagram, Please enable it from settings"
     static let draftMessage = "The photo has been saved in drafts and you can share it, once you login."
     static let reviewMessage = "Do you want to discard your review?, You can earn rewards by sharing them."
+    static let checkInMessage = "You need to checkIn again."
 }
 
 enum AlertTitle {
@@ -325,6 +326,7 @@ enum AlertTitle {
     static let photoLibAccess = "Photo Lib Error"
     static let draftTitle = "Draft"
     static let reviewTitle = "Review Error"
+    static let checkInTitle = "CheckIn Error"
 }
 
 enum PreferecneConstant {
@@ -387,6 +389,10 @@ enum CellHeight {
 enum HeaderLabel {
     static let x:CGFloat = 15
     static let y:CGFloat = 13
+}
+
+enum CheckOutContant {
+    static let timeInterval = 60.0
 }
 
 enum NotificationConstant {

@@ -29,6 +29,10 @@ class SnapNShareHomeViewController: BaseViewController, StoryboardLoadable {
         }
     }
     
+    private var isCheckedIn: Bool {
+        return CheckInHelper.shared.isCheckedIn()
+    }
+    
     @IBOutlet var restaurantNameLabel: UILabel!
     @IBOutlet var closingTimeLabel: UILabel!
     @IBOutlet var checkinTimeLabel: UILabel!
@@ -37,9 +41,15 @@ class SnapNShareHomeViewController: BaseViewController, StoryboardLoadable {
     @IBOutlet var slideshowContainer: UIView!
     
     @IBAction func takeSnapButtonAction(_ sender: UIButton) {
-        CamerPicker.camperPicker(view: self)
+        isCheckedIn ? CamerPicker.camperPicker(view: self) : showChecInError()
     }
     
+    func showChecInError() {
+        let Ok = UIAlertAction(title: SnapXButtonTitle.ok, style: UIAlertActionStyle.default, handler: { [weak self] action in
+            self?.presenter?.presentScreen(screens: .location)
+        })
+        UIAlertController.presentAlertInViewController(self, title: AlertTitle.checkInTitle , message: AlertMessage.checkInMessage, actions: [Ok], completion: nil)
+    }
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
