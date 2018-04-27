@@ -26,7 +26,7 @@ class CheckinPopup: SnapXEatsView, CheckinPopupView {
     var restaurantList = [Restaurant]()
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
-    
+    var userID = LoginUserPreferences.shared.loginUserID
     @IBOutlet var containerView: UIView!
     @IBOutlet var restaurantInfoView: UIView!
     @IBOutlet var restaurantListView: UIView!
@@ -60,16 +60,28 @@ class CheckinPopup: SnapXEatsView, CheckinPopupView {
     
     override func success(result: Any?) {
         if let rewardPoints = result as? RewardPoints {
+            checkInUser()
             self.removeFromSuperview()
             router?.showRewardPointsPopup(parent: self, points: rewardPoints.points)
         } else if let restaurantList = result as? RestaurantsList {
+            
             self.restaurantList = restaurantList.restaurants
             nearbyRestaurantsErrorLabel.isHidden = self.restaurantList.count == 0 ? false : true
             restaurantListTableView.reloadData()
         }
     }
     
-    func setupPopup(frame: CGRect, restaurant: Restaurant) {
+    func checkInUser() {
+        if let restaurantID = self.restaurant?.restaurant_info_id {
+            let checkIn = CheckInModel()
+            checkIn.userID = userID
+            checkIn.restaurantID = restaurantID
+            checkIn.checkIntime =  "\(Date().timeIntervalSince1970)"
+            CheckInHelper.shared.checkInUser(checkIn: checkIn)
+        }
+    }
+    
+    func setupPopup(frame: CGRect, restaurant: Restaurant?) {
         self.frame = frame
         self.restaurant = restaurant
         checkinButton.layer.cornerRadius = checkinButton.frame.height/2

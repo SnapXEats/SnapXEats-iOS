@@ -58,6 +58,7 @@ enum SnapXEatsStoryboard {
     static let snapNShareHome = "SnapNShareHome"
     static let smartPhotoDraft = "SmartPhotoDraft"
     static let foodJourney = "FoodJourney"
+    static let drawer = "Drawer"
 }
 
 enum SnapXEatsStoryboardIdentifier {
@@ -238,6 +239,8 @@ enum SnapXButtonTitle {
     static let loginIn = "Log In"
     static let apply = "Apply"
     static let continueNext = "Continue"
+    static let checkIn = "Check-In"
+    static let checkOut = "Check-Out"
 }
 
 enum SnapXEatsAppDefaults {
