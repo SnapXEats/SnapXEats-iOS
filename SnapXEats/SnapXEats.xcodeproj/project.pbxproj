@@ -290,6 +290,10 @@
 		9DE7CE552023620500BBBFEC /* UserPreferenceRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE7CE502023620500BBBFEC /* UserPreferenceRouter.swift */; };
 		9DEB5CF71FFE6D49003B9D4B /* FlashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88BC1FFD28C50066A1D9 /* FlashScreen.storyboard */; };
 		9DEB5CF81FFE6D49003B9D4B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E88C61FFD28C50066A1D9 /* Login.storyboard */; };
+		9DF0C2D32092FC7800358071 /* Drawer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DF0C2D22092FC7800358071 /* Drawer.storyboard */; };
+		9DF0C2D520931FA800358071 /* CheckInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF0C2D420931FA800358071 /* CheckInHelper.swift */; };
+		9DF0C2D82093206100358071 /* CheckInStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF0C2D72093206100358071 /* CheckInStore.swift */; };
+		9DF0C2DA2093256200358071 /* CheckInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF0C2D92093256200358071 /* CheckInModel.swift */; };
 		CE64A9A86226702DB23DF92F /* Pods_SnapXEats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967BD01B1CEED06931835CA3 /* Pods_SnapXEats.framework */; };
 /* End PBXBuildFile section */
 
@@ -599,6 +603,10 @@
 		9DE7CE4C2023620500BBBFEC /* UserPreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferenceViewController.swift; sourceTree = "<group>"; };
 		9DE7CE4E2023620500BBBFEC /* UserPreferenceInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferenceInteractor.swift; sourceTree = "<group>"; };
 		9DE7CE502023620500BBBFEC /* UserPreferenceRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferenceRouter.swift; sourceTree = "<group>"; };
+		9DF0C2D22092FC7800358071 /* Drawer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Drawer.storyboard; path = SnapXEats/Modules/Drawer/View/Drawer.storyboard; sourceTree = SOURCE_ROOT; };
+		9DF0C2D420931FA800358071 /* CheckInHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInHelper.swift; sourceTree = "<group>"; };
+		9DF0C2D72093206100358071 /* CheckInStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInStore.swift; sourceTree = "<group>"; };
+		9DF0C2D92093256200358071 /* CheckInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInModel.swift; sourceTree = "<group>"; };
 		C272160BBB123BC8E63B160D /* Pods-SnapXEats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapXEats.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapXEats/Pods-SnapXEats.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -642,8 +650,8 @@
 		7E2C64B92044253400DAB44A /* TableviewCells */ = {
 			isa = PBXGroup;
 			children = (
-				7E2C64BA2044253400DAB44A /* NavigationMenuTableViewCell.swift */,
 				7E2C64BB2044253400DAB44A /* NavigationMenuTableViewCell.xib */,
+				7E2C64BA2044253400DAB44A /* NavigationMenuTableViewCell.swift */,
 			);
 			path = TableviewCells;
 			sourceTree = "<group>";
@@ -1380,6 +1388,7 @@
 			isa = PBXGroup;
 			children = (
 				7E2C64B92044253400DAB44A /* TableviewCells */,
+				9DF0C2D22092FC7800358071 /* Drawer.storyboard */,
 				7E2C64BC2044253400DAB44A /* DrawerViewController.swift */,
 			);
 			path = View;
@@ -1829,6 +1838,7 @@
 				9DC325EB208EF6D3001DB62A /* CameraPicker.swift */,
 				9DC325ED208F0BE1001DB62A /* SnapXNotificataionHelper.swift */,
 				9D4E07F02091C74B001A9DC1 /* LocationStoreHelper.swift */,
+				9DF0C2D420931FA800358071 /* CheckInHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1955,14 +1965,15 @@
 		9D8E88D91FFD28C50066A1D9 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				9DDC3AF020358E9600A7F181 /* Login */,
+				9DF0C2D62093201E00358071 /* checkIn */,
 				9D4E07F22091C76A001A9DC1 /* Location */,
-				9D60DDAF20837B0E00678D3A /* FoodJourney */,
-				9D8FB206207CF19E002E6662 /* SmarPhoto */,
 				9DBA8658204A95E700C99841 /* Wishlist */,
 				7E2C64B1204401D000DAB44A /* FoodCard */,
-				9DDC3AF020358E9600A7F181 /* Login */,
 				9D8E88DA1FFD28C50066A1D9 /* Preference */,
 				9D8E88DC1FFD28C50066A1D9 /* UserProfile */,
+				9D8FB206207CF19E002E6662 /* SmarPhoto */,
+				9D60DDAF20837B0E00678D3A /* FoodJourney */,
 				9D1C33E920650D8000B4F69D /* SnapNShare */,
 			);
 			path = Entities;
@@ -2430,6 +2441,15 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		9DF0C2D62093201E00358071 /* checkIn */ = {
+			isa = PBXGroup;
+			children = (
+				9DF0C2D72093206100358071 /* CheckInStore.swift */,
+				9DF0C2D92093256200358071 /* CheckInModel.swift */,
+			);
+			path = checkIn;
+			sourceTree = "<group>";
+		};
 		B29705C62477A6A310B7D943 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -2574,6 +2594,7 @@
 				7E5C057F2017A6DC000B5C33 /* SavedLocationTableViewCell.xib in Resources */,
 				9DEB5CF81FFE6D49003B9D4B /* Login.storyboard in Resources */,
 				7E7A6E5A2036D2EE0026C305 /* SnapX_White.png in Resources */,
+				9DF0C2D32092FC7800358071 /* Drawer.storyboard in Resources */,
 				7E5E7FD9203AF7EE00009A56 /* .gitkeep in Resources */,
 				7E673B1B2049622F005D19DC /* Wishlist.storyboard in Resources */,
 				9D748B472074E9A5004ED49A /* LoginPopUp.storyboard in Resources */,
@@ -2858,6 +2879,7 @@
 				7E5E800F203D6A4000009A56 /* TimingTableViewCell.swift in Sources */,
 				9D60DDAA20837A6F00678D3A /* FoodJourneyContract.swift in Sources */,
 				7EC5014620469A2C00D44E92 /* RestaurantDirectionsInteractor.swift in Sources */,
+				9DF0C2D520931FA800358071 /* CheckInHelper.swift in Sources */,
 				7EC5014820469A2C00D44E92 /* RestaurantDirectionsRouter.swift in Sources */,
 				7E8B850B20624E0D00F802B3 /* CheckinPopup.swift in Sources */,
 				7E673B19204961C9005D19DC /* WishlistPresenter.swift in Sources */,
@@ -2879,6 +2901,7 @@
 				9D8E89051FFD2BEC0066A1D9 /* UICollectionViewCell.swift in Sources */,
 				9DBA865A204A95FB00C99841 /* WishList.swift in Sources */,
 				7EDB8ED8204FF3710015F48A /* RestaurantCollectionViewCell.swift in Sources */,
+				9DF0C2DA2093256200358071 /* CheckInModel.swift in Sources */,
 				9D8E89061FFD2BEC0066A1D9 /* UIStoryboard.swift in Sources */,
 				9D8E89071FFD2BEC0066A1D9 /* ValidableUILabel.swift in Sources */,
 				9D902BC920171AED00359DFD /* FoodCardsContract.swift in Sources */,
@@ -2924,6 +2947,7 @@
 				9D8FB208207CF1C5002E6662 /* SmartPhoto.swift in Sources */,
 				9DE7CE532023620500BBBFEC /* UserPreferenceViewController.swift in Sources */,
 				7E2C64BF2044253400DAB44A /* DrawerViewController.swift in Sources */,
+				9DF0C2D82093206100358071 /* CheckInStore.swift in Sources */,
 				7E539BAD205A522E002C3E55 /* SnapNSharePhotoRouter.swift in Sources */,
 				9D48FF5F2081F82C00A88E70 /* SmartPhotoTableViewController.swift in Sources */,
 				9D8E89151FFD2BEC0066A1D9 /* ValidatorHelper.swift in Sources */,

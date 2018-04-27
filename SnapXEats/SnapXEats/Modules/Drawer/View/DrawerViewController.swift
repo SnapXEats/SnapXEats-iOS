@@ -14,7 +14,7 @@ enum navigateScreen: Int {
     case wishList
     case showPreference
     case foodJourney
-    case rewards
+    // case rewards  add rewards later by uncomment it and add in option  the order should follow
     case snapnshare
     case smartPhotos
     case privacyPolicy
@@ -28,14 +28,14 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
     
     let loginUserPreference = LoginUserPreferences.shared
     
-    var navigationOptions = [SnapXEatsPageTitles.home, SnapXEatsPageTitles.wishlist, SnapXEatsPageTitles.preferences, SnapXEatsPageTitles.foodJourney, SnapXEatsPageTitles.rewards, SnapXEatsPageTitles.checkin, SnapXEatsPageTitles.smartPhotos]
+    var navigationOptions = [SnapXEatsPageTitles.home, SnapXEatsPageTitles.wishlist, SnapXEatsPageTitles.preferences, SnapXEatsPageTitles.foodJourney, SnapXEatsPageTitles.snapnshare, SnapXEatsPageTitles.smartPhotos]
     
     var screenIndex: navigateScreen = .home
     var enableSmartPhoto: Bool {
         return  SmartPhotoHelper.shared.hasDraftPhotos() || SmartPhotoHelper.shared.hasSmartPhotos()
     }
     var isUserCheckedIn: Bool {
-        if let status = SnapXEatsLoginHelper.shared.isUserCheckedIn(), status == true {
+        if CheckInHelper.shared.isCheckedIn() {
             return true
         }
         return false
@@ -49,6 +49,16 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var nonLoggedInUserMessageLabel: UILabel!
     @IBOutlet weak var loggedInUserInfoView: UIView!
     
+    @IBOutlet weak var checkInButton: UIButton!
+    
+    @IBAction func checkInAction(_ sender: Any) {
+        if isUserCheckedIn == false {
+            presenter?.presentScreen(screen: .checkin(restaurant: nil), drawerState: .closed)
+        } else {
+            CheckInHelper.shared.checkOutUser()
+            presenter?.presentScreen(screen: .location, drawerState: .closed)
+        }
+    }
     @IBAction func logoutButtonAction(sender: UIButton) {
         if loginUserPreference.isLoggedIn {
             let cancel = UIAlertAction(title: SnapXButtonTitle.cancel, style: UIAlertActionStyle.default, handler: nil)
@@ -76,8 +86,9 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Change Drawer options dynamically based on user has already Checked In
-        navigationOptions[5] = isUserCheckedIn ? SnapXEatsPageTitles.snapnshare : SnapXEatsPageTitles.checkin
+        if isUserCheckedIn {
+            checkInButton.setTitle(SnapXButtonTitle.checkOut, for: .normal)
+        }
         // To refresh the Wishlist Count on Evrytime Drawer loads
         navigationOptionTable.reloadData()
     }
@@ -150,6 +161,8 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
         let title = navigationOptions[indexPath.row]
         if title == SnapXEatsPageTitles.smartPhotos {
             cell.enableSmartPhoto = enableSmartPhoto
+        } else if title == SnapXEatsPageTitles.snapnshare {
+            cell.isCheckedIn = isUserCheckedIn
         }
         cell.configureCell(WithMenu: title, showCount: showCount)
         return cell
@@ -177,9 +190,10 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
                 presenter?.presentScreen(screen: .foodJourney, drawerState: .closed)
             }
         case .snapnshare:
-            let currentRestaurant = Restaurant(id: "62dfee80-b52b-482f-b0f3-c175ce5d56ca", name: "Tertulia")
-            let screenToPresent: Screens = isUserCheckedIn ? Screens.snapNShareHome(restaurantID: currentRestaurant.restaurant_info_id!, displayFromNotification: false) : Screens.checkin(restaurant: currentRestaurant)
-            presenter?.presentScreen(screen: screenToPresent, drawerState: .closed)
+            if let restroID = CheckInHelper.shared.getCheckInRestroInfo() {
+                let screenToPresent = Screens.snapNShareHome(restaurantID: restroID, displayFromNotification: true) // it should not show the reminder pop up again
+                presenter?.presentScreen(screen: screenToPresent, drawerState: .closed)
+            }
         case .smartPhotos:
             if enableSmartPhoto {
                 presenter?.presentScreen(screen: .smartPhotoDraft, drawerState: .closed)
