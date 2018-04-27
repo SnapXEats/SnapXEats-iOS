@@ -51,15 +51,17 @@ class CheckInHelper {
         return checkInStore
     }
     
-    func shouldCheckOut() {
+    func userCheckedOut() -> Bool {
         let predicate  =  NSPredicate(format: "userID == %@", userID)
         if let user = CheckInStore.getCheckInStatus(predicate: predicate), user.userID == userID, let checkInTime = user.checkIntime {
             let timeInterval = Date().timeIntervalSince1970
             if  let time = TimeInterval.init(checkInTime) {
-                if (timeInterval - time ) >= 120  { //2 hour for auto checkout 
+                if (timeInterval - time ) >= CheckOutContant.timeInterval { //2 hour for auto checkout
                     checkOutUser()
+                    return true
                 }
             }
         }
+        return false
     }
 }
