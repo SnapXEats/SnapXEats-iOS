@@ -19,7 +19,7 @@ class DrawerRouter {
     // MARK: Static methods
 
     func loadDrawerMenu() -> DrawerViewController {
-        let storyboard = UIStoryboard(name: SnapXEatsStoryboard.foodCardsStoryboard, bundle: nil)
+        let storyboard = UIStoryboard(name: SnapXEatsStoryboard.drawer, bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: SnapXEatsStoryboardIdentifier.drawerViewController) as! DrawerViewController
         
         let presenter = DrawerPresenter.shared

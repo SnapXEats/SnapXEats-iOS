@@ -4,6 +4,7 @@
 
 import UIKit
 import FacebookCore
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -11,8 +12,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        SnapXEatsNetworkManager.shared.startMonitoringNetwork()
         setupNavigationBarFont()
         presentInitialScreen()
+        if #available(iOS 10.0, *) {
+            registerForRichNotifications()
+            UNUserNotificationCenter.current().delegate = self
+        }
+        
         // This is for FB
         return SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
@@ -45,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // in analytics and advertising reporting.
         AppEventsLogger.activate(application)
         SDKSettings.limitedEventAndDataUsage = true
-        SnapXEatsNetworkManager.sharedInstance.startMonitoringNetwork()
+        application.applicationIconBadgeNumber = 0
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
@@ -71,4 +78,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -60), for: .default)
     }
     
+    @available(iOS 10.0, *)
+    func registerForRichNotifications() {
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.badge,.sound]) { (granted:Bool, error:Error?) in
+            if error != nil {
+                print(error?.localizedDescription)
+            }
+            if granted {
+                print("Permission granted")
+            } else {
+                print("Permission not granted")
+            }
+        }        
+    }
+}
+
+
+@available(iOS 10.0, *)
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    //for displaying notification when app is in foreground
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        RootRouter.shared.checkNotificationIdentifier(notification: notification, completionHandler: completionHandler)
+    }
+    
+    // For handling tap and user actions
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        RootRouter.shared.checkNotification(response: response, completionHandler: completionHandler)
+    }
 }

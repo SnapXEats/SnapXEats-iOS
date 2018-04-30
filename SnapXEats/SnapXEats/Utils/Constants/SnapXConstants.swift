@@ -58,6 +58,7 @@ enum SnapXEatsStoryboard {
     static let snapNShareHome = "SnapNShareHome"
     static let smartPhotoDraft = "SmartPhotoDraft"
     static let foodJourney = "FoodJourney"
+    static let drawer = "Drawer"
 }
 
 enum SnapXEatsStoryboardIdentifier {
@@ -212,6 +213,7 @@ enum SnapXEatsNibNames {
     static let playAudioPopUp = "PlayAudioPopUp"
     static let textReviewPopUp = "TextReviewPopUp"
     static let restaurantInfoDownload = "RestaurantInfoDownload"
+    static let reminderPopUp = "ReminderPopUp"
 }
 
 enum SnapXEatsWebServiceParameterKeys {
@@ -241,6 +243,8 @@ enum SnapXButtonTitle {
     static let loginIn = "Log In"
     static let apply = "Apply"
     static let continueNext = "Continue"
+    static let checkIn = "Check-In"
+    static let checkOut = "Check-Out"
 }
 
 enum SnapXEatsAppDefaults {
@@ -274,6 +278,7 @@ enum SnapXEatsConstant {
     static let firstTimeUser = "firstTimeUser"
     static let urlScheme = "snapxeats"
     static let timeInterval = "ImageSavedTime"
+    static let restaurantID = "RestaurantID"
 }
 
 enum UberAppConstants {
@@ -311,6 +316,7 @@ enum AlertMessage {
     static let photoLibMessage = "SnapXEats need your photo library access to share  photo on Instagram, Please enable it from settings"
     static let draftMessage = "The photo has been saved in drafts and you can share it, once you login."
     static let reviewMessage = "Do you want to discard your review?, You can earn rewards by sharing them."
+    static let checkInMessage = "You need to checkIn again."
 }
 
 enum AlertTitle {
@@ -324,6 +330,7 @@ enum AlertTitle {
     static let photoLibAccess = "Photo Lib Error"
     static let draftTitle = "Draft"
     static let reviewTitle = "Review Error"
+    static let checkInTitle = "CheckIn Error"
 }
 
 enum PreferecneConstant {
@@ -398,4 +405,20 @@ enum popupConstants {
     static let doneButtontitle = "DONE"
     static let cancelButtonTitle = "Cancel"
     static let removeReviewButtonTitle = "Delete Review"
+enum CheckOutContant {
+    static let timeInterval = 60.0
+}
+
+enum NotificationConstant {
+    static let remindLater = "RemindLater"
+    static let takePhoto = "TakePhoto"
+    static let remindTitle = "Remind Later"
+    static let photoTitle = "Take Photo"
+    static let catogories = "ReminderNotification"
+    
+    static let messageTitle = "SnapXEats Reminder"
+    static let messageSubTitle = "Its Time to take some food snap"
+    static let messageBody =  "By sharing photos you can earn rewards"
+    static let requestIdentifier = "SnapXEatsNotification"
+    static let notificationTimer = 600.0
 }

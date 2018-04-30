@@ -136,7 +136,7 @@ extension LoginInteractor {
     }
     
     func checkRechability() -> Bool {
-        if !SnapXEatsNetworkManager.sharedInstance.isConnectedToInternet {
+        if !SnapXEatsNetworkManager.shared.isConnectedToInternet {
             output?.response(result: .noInternet)
             return false
         } else {

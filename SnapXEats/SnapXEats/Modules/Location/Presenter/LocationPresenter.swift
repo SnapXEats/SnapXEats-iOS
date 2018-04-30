@@ -22,6 +22,14 @@ class LocationPresenter {
 }
 
 extension LocationPresenter: LocationPresentation {
+    func storeLocation(location: LocationModel) {
+         interactor?.storeLocation(location: location)
+    }
+    
+    func getLocation(userID: String) -> LocationModel? {
+       return  interactor?.getLocation(userID: userID)
+    }
+    
     func updatedDrawerState(state: KYDrawerController.DrawerState) {
         router?.updatedDrawerState(state: state)
     }

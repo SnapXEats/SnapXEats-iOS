@@ -16,6 +16,7 @@ class NavigationMenuTableViewCell: UITableViewCell {
     
     var loggedIn = false
     var enableSmartPhoto = true
+    var isCheckedIn = false
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -29,8 +30,10 @@ class NavigationMenuTableViewCell: UITableViewCell {
              textColor = UIColor.rgba(157.0, 157.0, 157.0, 1.0)
         } else if  (title == SnapXEatsPageTitles.smartPhotos) && enableSmartPhoto == false {
             textColor = UIColor.rgba(157.0, 157.0, 157.0, 1.0)
+        }  else if  (title == SnapXEatsPageTitles.snapnshare) && isCheckedIn == false {
+            textColor = UIColor.rgba(157.0, 157.0, 157.0, 1.0)
         }
-    
+        
         optionLabel.textColor = textColor
         optionLabel.text = title
 

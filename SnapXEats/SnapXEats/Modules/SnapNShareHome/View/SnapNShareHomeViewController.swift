@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import UserNotifications
 
 class SnapNShareHomeViewController: BaseViewController, StoryboardLoadable {
 
@@ -15,17 +16,21 @@ class SnapNShareHomeViewController: BaseViewController, StoryboardLoadable {
     
     // MARK: Properties
     var presenter: SnapNShareHomePresentation?
-    var picker = UIImagePickerController()
     //TODO: Remove this hardcoded value once we get Id for Checkedin Restaurant
     var restaurantID: String?
     var restaurantDetails: RestaurantDetails?
     var specialities = [RestaurantSpeciality]()
     var slideshow =  ImageSlideshow()
     var userDishReview = LoginUserPreferences.shared.userDishReview
+    var displayFromNotification: Bool = false
     private var shouldLoadData: Bool {
         get {
             return checkRechability() && restaurantDetails == nil
         }
+    }
+    
+    private var isCheckedIn: Bool {
+        return CheckInHelper.shared.isCheckedIn()
     }
     
     @IBOutlet var restaurantNameLabel: UILabel!
@@ -36,9 +41,15 @@ class SnapNShareHomeViewController: BaseViewController, StoryboardLoadable {
     @IBOutlet var slideshowContainer: UIView!
     
     @IBAction func takeSnapButtonAction(_ sender: UIButton) {
-        openCameraPicker()
+        isCheckedIn ? CamerPicker.camperPicker(view: self) : showChecInError()
     }
     
+    func showChecInError() {
+        let Ok = UIAlertAction(title: SnapXButtonTitle.ok, style: UIAlertActionStyle.default, handler: { [weak self] action in
+            self?.presenter?.presentScreen(screens: .location)
+        })
+        UIAlertController.presentAlertInViewController(self, title: AlertTitle.checkInTitle , message: AlertMessage.checkInMessage, actions: [Ok], completion: nil)
+    }
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,23 +95,9 @@ class SnapNShareHomeViewController: BaseViewController, StoryboardLoadable {
         }
     }
     
-    private func openCameraPicker() {
-        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)){
-            picker.allowsEditing = false
-            picker.sourceType = UIImagePickerControllerSourceType.camera
-            picker.cameraCaptureMode = .photo
-            present(picker, animated: true, completion: nil)
-        } else {
-            let alert = UIAlertController(title: "Camera Not Found", message: "This device has no Camera", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "OK", style:.default, handler: nil)
-            alert.addAction(ok)
-            present(alert, animated: true, completion: nil)
-        }
-    }
-    
     private func gotoSnapNSharePhotoViewWithPhoto(photo: UIImage) {
         if let parentNVCpntroller = self.navigationController, let _  = restaurantDetails?.id {
-            presenter?.gotoSnapNSharePhotoView(parent: parentNVCpntroller, withPhoto: photo, restaurantDetails: restaurantDetails)
+            presenter?.presentScreen(screens: .snapNSharePhoto(photo: photo, iparentController: parentNVCpntroller, restaurantDetails: restaurantDetails))
         }
     }
     
@@ -110,6 +107,9 @@ class SnapNShareHomeViewController: BaseViewController, StoryboardLoadable {
             specialities = details.specialities
             specialityCollectionView.reloadData()
             setupImageSlideshowWithPhotos(photos: details.photos)
+            if displayFromNotification == false {
+                presenter?.presentScreen(screens: .reminderPopUp(rewardsPoint: 50, restaurantID: restaurantDetails?.id, delegate: self))
+            }
         }
     }
     
@@ -159,8 +159,8 @@ extension SnapNShareHomeViewController: UIImagePickerControllerDelegate, UINavig
 extension SnapNShareHomeViewController: SnapNShareHomeView {
     func initView() {
         customizeNavigationItem(title: SnapXEatsPageTitles.snapnshare, isDetailPage: false)
-        picker.delegate = self
-        registerCellForNib()
+        CamerPicker.picker.delegate = self
+        registerCellForNib()       
     }
     
     private func registerCellForNib() {
@@ -182,5 +182,12 @@ extension SnapNShareHomeViewController: UICollectionViewDelegate, UICollectionVi
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SnapXEatsCellResourceIdentifiler.restaurantSpeciality, for: indexPath) as! RestaurantSpecialityCollectionViewCell
         cell.configureSpecialityCell(specialityItem: specialities[indexPath.row])
         return cell
+    }
+}
+
+
+extension SnapNShareHomeViewController: CameraMode {
+    func showCamera() {
+         CamerPicker.camperPicker(view: self)
     }
 }
