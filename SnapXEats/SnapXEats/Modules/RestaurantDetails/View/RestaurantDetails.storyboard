@@ -319,6 +319,7 @@
                     <connections>
                         <outlet property="amenitiesTableView" destination="OjR-Jx-Bcb" id="s58-Ph-NFg"/>
                         <outlet property="amenityTableHeightConstraint" destination="GMS-fu-Jo1" id="7qf-gi-mJ5"/>
+                        <outlet property="containerView" destination="kBW-nd-luK" id="dmr-G4-c7c"/>
                         <outlet property="durationLabel" destination="y3R-Xp-Zel" id="FNw-Fm-LVU"/>
                         <outlet property="moreInfoView" destination="kBW-nd-luK" id="Atg-6e-ZPO"/>
                         <outlet property="photoClickedDateLabel" destination="Z2v-kv-u7H" id="rVE-jV-ZMy"/>

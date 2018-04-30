@@ -123,6 +123,8 @@
 		99652566208F59E100DF570B /* PlayAudioPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99652565208F59E100DF570B /* PlayAudioPopUp.xib */; };
 		99706120208F01D1003A0C82 /* RestaurantDetailsActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9970611F208F01D1003A0C82 /* RestaurantDetailsActionButtonView.swift */; };
 		99706122208F01E4003A0C82 /* RestaurantDetailsActionButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99706121208F01E4003A0C82 /* RestaurantDetailsActionButtonView.xib */; };
+		9973C64A2092FBE00064FBAB /* RestaurantInfoDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9973C6482092FBE00064FBAB /* RestaurantInfoDownload.swift */; };
+		9973C64B2092FBE00064FBAB /* RestaurantInfoDownload.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9973C6492092FBE00064FBAB /* RestaurantInfoDownload.xib */; };
 		99747CB420904F530053A35C /* TextReviewPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99747CB320904F530053A35C /* TextReviewPopUp.swift */; };
 		99747CB6209051C20053A35C /* TextReviewPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99747CB5209051C20053A35C /* TextReviewPopUp.xib */; };
 		997493FB2084D0F4005016A6 /* RecentFoodJourneyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997493F92084D0F4005016A6 /* RecentFoodJourneyTableViewCell.swift */; };
@@ -421,6 +423,8 @@
 		99652565208F59E100DF570B /* PlayAudioPopUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayAudioPopUp.xib; sourceTree = "<group>"; };
 		9970611F208F01D1003A0C82 /* RestaurantDetailsActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailsActionButtonView.swift; sourceTree = "<group>"; };
 		99706121208F01E4003A0C82 /* RestaurantDetailsActionButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurantDetailsActionButtonView.xib; sourceTree = "<group>"; };
+		9973C6482092FBE00064FBAB /* RestaurantInfoDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantInfoDownload.swift; sourceTree = "<group>"; };
+		9973C6492092FBE00064FBAB /* RestaurantInfoDownload.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurantInfoDownload.xib; sourceTree = "<group>"; };
 		99747CB320904F530053A35C /* TextReviewPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextReviewPopUp.swift; sourceTree = "<group>"; };
 		99747CB5209051C20053A35C /* TextReviewPopUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextReviewPopUp.xib; sourceTree = "<group>"; };
 		997493F92084D0F4005016A6 /* RecentFoodJourneyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentFoodJourneyTableViewCell.swift; sourceTree = "<group>"; };
@@ -1212,6 +1216,8 @@
 				99652565208F59E100DF570B /* PlayAudioPopUp.xib */,
 				99747CB320904F530053A35C /* TextReviewPopUp.swift */,
 				99747CB5209051C20053A35C /* TextReviewPopUp.xib */,
+				9973C6482092FBE00064FBAB /* RestaurantInfoDownload.swift */,
+				9973C6492092FBE00064FBAB /* RestaurantInfoDownload.xib */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -2577,6 +2583,7 @@
 				7E539BD4205BA380002C3E55 /* SnapNShareSocialMedia.storyboard in Resources */,
 				9DB7FE132005F96A00D0E816 /* Assets.xcassets in Resources */,
 				9D2A9FED207E4071004484E6 /* SmartPhotoAudio.xib in Resources */,
+				9973C64B2092FBE00064FBAB /* RestaurantInfoDownload.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2790,6 +2797,7 @@
 				9D8E88FA1FFD2BEC0066A1D9 /* UITextField+Border.swift in Sources */,
 				9D48FF592081F0D600A88E70 /* SmartPhotoDraftRouter.swift in Sources */,
 				7E491D21204E920E004445E2 /* RestaurantsMapViewContract.swift in Sources */,
+				9973C64A2092FBE00064FBAB /* RestaurantInfoDownload.swift in Sources */,
 				7E539BAA205A522E002C3E55 /* SnapNSharePhotoContract.swift in Sources */,
 				7E5E7FE2203AF7EE00009A56 /* UIImageView+Tools.swift in Sources */,
 				7E5E7FDF203AF7EE00009A56 /* ImageSlideshowItem.swift in Sources */,

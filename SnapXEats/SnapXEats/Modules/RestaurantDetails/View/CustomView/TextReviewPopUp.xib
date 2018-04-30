@@ -92,6 +92,7 @@
             <viewLayoutGuide key="safeArea" id="jas-hE-jIc"/>
             <connections>
                 <outlet property="containerView" destination="mx9-n4-0QV" id="2BW-rf-7Cc"/>
+                <outlet property="textReview" destination="gPZ-eG-yDj" id="I0Y-r2-SX0"/>
                 <outlet property="textReviewOkayButton" destination="cAn-Nr-9i9" id="Wjr-zF-17L"/>
             </connections>
             <point key="canvasLocation" x="34.5" y="-653.5"/>

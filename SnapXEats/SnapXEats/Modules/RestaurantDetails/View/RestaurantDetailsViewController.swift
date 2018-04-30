@@ -24,6 +24,8 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
     @IBOutlet var amenitiesTableView: UITableView!
     @IBOutlet var amenityTableHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var containerView: UIView!
+    
     private let durationTrailingText = " Away"
     private let photoCreatedDatePrefix = "Photo taken on "
     private enum restaurantTimingConstants {
@@ -36,6 +38,7 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
     var slideshow =  ImageSlideshow()
     var specialities = [RestaurantSpeciality]()
     var restaurantDetails: RestaurantDetails?
+    var smartPhoto = [SmartPhoto]()
     var showMoreInfo = false
     var amenities = [String]()
     var actionButtonsView = RestaurantDetailsActionButtonView()
@@ -89,6 +92,13 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
                 durationLabel.text = duration.text + SnapXEatsDirectionConstants.durationTextPrefix
             }
         }
+    }
+    
+    func removeSubView() {
+        for subView in containerView.subviews {
+            subView.removeFromSuperview()
+        }
+        containerView.isHidden = true
     }
     
     @IBAction func callButtonAction(_ sender: UIButton) {
@@ -208,6 +218,7 @@ extension RestaurantDetailsViewController: RestaurantDetailsView {
         customizeNavigationItem(title: SnapXEatsPageTitles.restaurantDetail, isDetailPage: true)
         registerCellForNib()
         moreInfoView.isHidden =  (showMoreInfo == true) ? false : true
+        containerView.isHidden = true
         slideshowContainer.backgroundColor = UIColor(patternImage: UIImage(named: SnapXEatsImageNames.restaurant_details_placeholder)!)
     }
     
@@ -234,8 +245,6 @@ extension RestaurantDetailsViewController: RestaurantDetailsView {
             }
         }
         slideshow.setImageInputs(inputsources)
-        
-//        slideshow.setInputs(photos, showActionButtons: showMoreInfo)
         slideshow.contentScaleMode = .scaleAspectFit
         slideshow.slideshowInterval = 0
         slideshow.pageControlPosition = .insideScrollView
@@ -305,19 +314,45 @@ extension RestaurantDetailsViewController : RestaurantDetailsActionButtonViewDel
     }
     
     func playAudioAction() {
-        let audioURL = restaurantDetails?.photos[slideshow.currentPage].audioReviewURL
-        showPlayAudioPopUpViewWithType(type: .play)
+        if let audioURL = restaurantDetails?.photos[slideshow.currentPage].audioReviewURL {
+            showPlayAudioPopUpViewWithType(audioURL: audioURL,type: .play)
+        }
     }
     
     func downloadAction() {
+        if let dishInfo = restaurantDetails?.photos {
+            initSmartPhoto(dishInfo: dishInfo)
+        }
+        if checkRechability() {
+            presenter?.presentView(view: .download(smartPhoto: smartPhoto[slideshow.currentPage]))
+        }
+    }
+    
+    func initSmartPhoto(dishInfo:[RestaurantPhoto]) {
+        for photo in dishInfo {
+            let restInfo = SmartPhoto()
+            restInfo.restaurant_name = (restaurantDetails?.name)!
+            restInfo.restaurant_item_id = photo.dishId
+            restInfo.restaurant_address = (restaurantDetails?.address)!
+            restInfo.dish_image_url = photo.imageURL!
+            restInfo.pic_taken_date = photo.createDate!
+            if let audioURL = photo.audioReviewURL {
+                restInfo.audio_review_url = audioURL
+            }
+            if let review = photo.textReview {
+                restInfo.text_review = review
+            }
+            
+            smartPhoto.append(restInfo)
+        }
         
     }
     
-    private func showPlayAudioPopUpViewWithType(type: AudioRecordingPopupTypes) {
+    private func showPlayAudioPopUpViewWithType(audioURL: String, type: AudioRecordingPopupTypes) {
         dismissKeyboard()
         let audioRecordPopupView = UINib(nibName:SnapXEatsNibNames.playAudioPopUp, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! PlayAudioPopUp
         let audioPopupFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-        audioRecordPopupView.setupPopup(audioPopupFrame, type: type, forDuration: 0, forViewController: self)
+        audioRecordPopupView.setupPopup(audioPopupFrame, url: audioURL, type: type, forDuration: 0, forViewController: self)
         self.view.addSubview(audioRecordPopupView)
         
     }
@@ -326,7 +361,7 @@ extension RestaurantDetailsViewController : RestaurantDetailsActionButtonViewDel
         dismissKeyboard()
         let textReviewPopupView = UINib(nibName:SnapXEatsNibNames.textReviewPopUp, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! TextReviewPopUp
         let textReviewPopupFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-        textReviewPopupView.setupPopup(textReviewPopupFrame, forViewController: self)
+        textReviewPopupView.setupPopup(textReviewPopupFrame,text:text, forViewController: self)
         self.view.addSubview(textReviewPopupView)
     }
 }

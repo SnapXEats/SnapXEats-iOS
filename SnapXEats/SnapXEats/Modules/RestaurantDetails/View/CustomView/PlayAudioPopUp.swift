@@ -23,8 +23,10 @@ class PlayAudioPopUp: UIView {
     var seconds = 0
     var audioPlayer: AVAudioPlayer?
     var timer = Timer()
+    var audioURL: String?
+    var dishId: String?
 
-    func setupPopup(_ frame: CGRect, type: AudioRecordingPopupTypes, forDuration seconds: Int, forViewController vc: UIViewController) {
+    func setupPopup(_ frame: CGRect, url:String, type: AudioRecordingPopupTypes, forDuration seconds: Int, forViewController vc: UIViewController) {
         self.frame = frame
         self.seconds = 0
         self.parentController = vc
@@ -33,6 +35,7 @@ class PlayAudioPopUp: UIView {
         containerView.addShadow()
         playAudioOkayButton.layer.cornerRadius = playAudioOkayButton.frame.height/2
         playAudioStartButton.addBorder(ofWidth: popupConstants.startButtonBorderWidth, withColor: .lightGray, radius: playAudioStartButton.frame.width/2)
+        audioURL = url
         audioDurationLabel.text = timeString(time: TimeInterval(seconds))
         
     }
@@ -46,7 +49,21 @@ class PlayAudioPopUp: UIView {
     }
     
     private func playAudioReview() {
-        // TODO
+        if let audioUrl = audioURL, let url = URL(string: audioUrl) {
+            do {
+                
+                let soundData = try Data(contentsOf: url)
+                audioPlayer = try AVAudioPlayer(data: soundData)
+                do {
+                    try AVAudioSession.sharedInstance().overrideOutputAudioPort(AVAudioSessionPortOverride.speaker)
+                }
+                audioPlayer?.play()
+                runTimer()
+            } catch (let error) {
+                print("Unable to Play Audio", error)
+            }
+        }
+        
     }
     
     func runTimer() {

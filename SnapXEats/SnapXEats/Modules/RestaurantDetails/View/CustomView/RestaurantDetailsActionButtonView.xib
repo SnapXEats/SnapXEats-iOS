@@ -74,6 +74,7 @@
             <connections>
                 <outlet property="audioReviewButton" destination="x5P-7n-eHI" id="85d-cv-Kk5"/>
                 <outlet property="audioTextReviewButtonSpacing" destination="nzx-1z-lqA" id="V8o-YH-vfP"/>
+                <outlet property="downloadButton" destination="dof-9S-t42" id="zbJ-k9-9KA"/>
                 <outlet property="textReviewButton" destination="lDg-35-KFK" id="vPX-UV-JFd"/>
             </connections>
             <point key="canvasLocation" x="86" y="-49"/>

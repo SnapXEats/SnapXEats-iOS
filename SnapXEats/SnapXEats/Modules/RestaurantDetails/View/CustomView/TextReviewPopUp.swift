@@ -13,15 +13,17 @@ class TextReviewPopUp: UIView {
     @IBOutlet var containerView: UIView!
     @IBOutlet var textReviewOkayButton: UIButton!
     
+    @IBOutlet weak var textReview: UITextView!
+    
     var parentController: UIViewController!
 
-    func setupPopup(_ frame: CGRect, forViewController vc: UIViewController) {
+    func setupPopup(_ frame: CGRect, text: String, forViewController vc: UIViewController) {
         self.frame = frame
         self.parentController = vc
-        
         containerView.layer.cornerRadius = popupConstants.containerViewRadius
         containerView.addShadow()
         textReviewOkayButton.layer.cornerRadius = textReviewOkayButton.frame.height/2
+        textReview.text = text
     }
     
     @IBAction func okayAction(_ sender: Any) {

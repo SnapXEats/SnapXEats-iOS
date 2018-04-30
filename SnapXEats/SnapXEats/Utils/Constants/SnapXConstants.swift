@@ -211,6 +211,7 @@ enum SnapXEatsNibNames {
     static let restaurantDetailsActionButtonView = "RestaurantDetailsActionButtonView"
     static let playAudioPopUp = "PlayAudioPopUp"
     static let textReviewPopUp = "TextReviewPopUp"
+    static let restaurantInfoDownload = "RestaurantInfoDownload"
 }
 
 enum SnapXEatsWebServiceParameterKeys {
