@@ -405,6 +405,8 @@ enum popupConstants {
     static let doneButtontitle = "DONE"
     static let cancelButtonTitle = "Cancel"
     static let removeReviewButtonTitle = "Delete Review"
+}
+
 enum CheckOutContant {
     static let timeInterval = 60.0
 }
