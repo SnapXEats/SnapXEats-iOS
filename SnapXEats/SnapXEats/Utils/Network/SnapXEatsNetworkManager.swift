@@ -18,10 +18,10 @@ class SnapXEatsNetworkManager {
     static let shared = SnapXEatsNetworkManager()
     
     var manager = NetworkReachabilityManager(host: "www.google.com")
-    var isConnectedToInternet = true  // keeping default false keep showing internet error message for first time launch    
+    var isConnectedToInternet = false  // keeping default false keep showing internet error message for first time launch. it we make it true then checkIn flow start creating problem for network error 
     
     private init() {
-        manager?.startListening()
+        initialSetUp()
     }
     
     func initialSetUp() {
@@ -47,7 +47,7 @@ class SnapXEatsNetworkManager {
      - returns: Void
      */
     func startMonitoringNetwork() {
-         initialSetUp()
+         manager?.startListening()
     }
     
     //For future use

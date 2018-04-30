@@ -8,6 +8,7 @@
 
 import UIKit
 import AlamofireImage
+import CoreLocation
 
 enum navigateScreen: Int {
     case home = 0
@@ -27,7 +28,6 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
     var presenter: DrawerPresentation?
     
     let loginUserPreference = LoginUserPreferences.shared
-    
     var navigationOptions = [SnapXEatsPageTitles.home, SnapXEatsPageTitles.wishlist, SnapXEatsPageTitles.preferences, SnapXEatsPageTitles.foodJourney, SnapXEatsPageTitles.snapnshare, SnapXEatsPageTitles.smartPhotos]
     
     var screenIndex: navigateScreen = .home
@@ -39,6 +39,13 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
             return true
         }
         return false
+    }
+    
+    let userPreference = UserPreference()
+    var currentView: UIViewController {
+        get {
+            return self
+        }
     }
     
     @IBOutlet weak var navigationOptionTable: UITableView!
@@ -53,7 +60,7 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
     
     @IBAction func checkInAction(_ sender: Any) {
         if isUserCheckedIn == false {
-            presenter?.presentScreen(screen: .checkin(restaurant: nil), drawerState: .closed)
+            checkLocationStatus()
         } else {
             CheckInHelper.shared.checkOutUser()
             presenter?.presentScreen(screen: .location, drawerState: .closed)
@@ -250,5 +257,29 @@ extension DrawerViewController: BaseView {
     private func showWishlistForNonLoggedInUser() {
         let okAction = UIAlertAction(title: SnapXButtonTitle.ok, style: .default, handler: nil)
         UIAlertController.presentAlertInViewController(self, title: AlertTitle.wishlist, message: AlertMessage.wishlistForNonLoggedinUser, actions: [okAction], completion: nil)
+    }
+}
+
+
+extension DrawerViewController: CLLocationManagerDelegate, SnapXEatsUserLocation {
+    
+    //TODO: Use Common Location related functionality from SnapXEatsUserLocation. It will be used to show settings popup if user has denied permission for Location and other use cases.
+    func checkLocationStatus() {
+        let status = CLLocationManager.authorizationStatus()
+        switch status  {
+        case .authorizedWhenInUse, .authorizedAlways:
+               // Don't check network here because of LocationViewController viewWillPresent get call before popup show and it shows
+                // network error for cuiselist
+               presenter?.presentScreen(screen: .checkin(restaurant: nil), drawerState: .closed)
+        case .denied:
+                showSettingDialog()
+        case  .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        default: break
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+           // We not need to handle delegate here, we are just checking location is enable or not before checkin
     }
 }
