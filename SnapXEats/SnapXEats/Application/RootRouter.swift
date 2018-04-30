@@ -137,7 +137,7 @@ class RootRouter: NSObject {
     }
     
     private func presentCheckinPopupForRestaurant(restaurant: Restaurant?) {
-        if let window = UIApplication.shared.keyWindow {
+        if let window = UIApplication.shared.keyWindow, SnapXEatsNetworkManager.shared.isConnectedToInternet == true {
             let checkinPopup = CheckinPopupRouter.shared.loadCheckinPopupModule()
             checkinPopup.checkinPopupDelegate = RootRouter.shared
             let popupFrame = CGRect(x: 0, y: 0, width: window.frame.width, height: window.frame.height)
