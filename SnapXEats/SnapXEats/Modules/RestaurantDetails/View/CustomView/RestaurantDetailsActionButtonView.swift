@@ -28,7 +28,8 @@ class RestaurantDetailsActionButtonView: UIView {
     let defaultAudioTextReviewButtonSpacing:CGFloat = 10
     let estimatedAudioTextReviewButtonSpacing:CGFloat = 52
     
-    func setupView(_ frame: CGRect) {
+    func setupView(_ frame: CGRect, alreadyDownloaded: Bool) {
+        downloadButton.isHidden = alreadyDownloaded
         self.isUserInteractionEnabled = true
         self.frame = frame
         self.backgroundColor = UIColor.clear
@@ -42,6 +43,11 @@ class RestaurantDetailsActionButtonView: UIView {
     func toggleTextReviewButtonState(shouldHide: Bool) {
         textReviewButton.isHidden = shouldHide
         audioTextReviewButtonSpacing.constant = shouldHide ? defaultAudioTextReviewButtonSpacing : estimatedAudioTextReviewButtonSpacing
+        layoutIfNeeded()
+    }
+    
+    func toggleDownloadButtonState(shouldHide: Bool) {
+        downloadButton.isHidden = shouldHide
         layoutIfNeeded()
     }
     

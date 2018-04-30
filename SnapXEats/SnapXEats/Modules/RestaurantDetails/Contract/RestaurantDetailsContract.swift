@@ -21,6 +21,7 @@ protocol RestaurantDetailsPresentation: class, SuccessScreen {
     func gotoRestaurantDirections(restaurantDetails: RestaurantDetails, parent: UINavigationController)
     func presentView(view:SmartPhotView)
     func saveSmartPhoto(smartPhoto: SmartPhoto)
+    func checkSmartPhoto(smartPhotoID: String) -> Bool
 
 }
 
