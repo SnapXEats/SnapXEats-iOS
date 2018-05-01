@@ -315,7 +315,7 @@ enum AlertMessage {
     static let sharingCanceled = "You can earn SnapXEats rewards by sharing photos, you have canceled your action."
     static let photoLibMessage = "SnapXEats need your photo library access to share  photo on Instagram, Please enable it from settings"
     static let draftMessage = "The photo has been saved in drafts and you can share it, once you login."
-    static let reviewMessage = "Do you want to discard your review?, You can earn rewards by sharing them."
+    static let reviewMessage = "Do you want to discard your review? You can earn rewards by sharing them."
     static let checkInMessage = "You need to checkIn again."
 }
 
