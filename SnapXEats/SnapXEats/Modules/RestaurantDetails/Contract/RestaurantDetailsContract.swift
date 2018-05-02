@@ -11,17 +11,16 @@ import Alamofire
 
 protocol RestaurantDetailsView: BaseView {
     var presenter: RestaurantDetailsPresentation? {get set}
-//    var smartPhotoPresenter: SmartPhotoPresentation? {get set}
 
 }
 
-protocol RestaurantDetailsPresentation: class, SuccessScreen {
+protocol RestaurantDetailsPresentation: class {
     func restaurantDetailsRequest(restaurantId: String)
     func drivingDirectionsRequest(origin: String, destination: String)
     func gotoRestaurantDirections(restaurantDetails: RestaurantDetails, parent: UINavigationController)
-    func presentView(view:SmartPhotView)
     func saveSmartPhoto(smartPhoto: SmartPhoto)
     func checkSmartPhoto(smartPhotoID: String) -> Bool
+    func checkInternet() -> Bool
 
 }
 
@@ -34,7 +33,6 @@ protocol RestaurantDetailsInteractorOutput: Response {
 }
 
 protocol RestaurantDetailsWireframe: class, RootWireFrame {
-    func presentSmartPhotoView(view: SmartPhotView)
     func checkInternet() -> Bool
 
     

@@ -11,20 +11,39 @@ import AVFoundation
 import UICircularProgressRing
 import Alamofire
 
+protocol RestaurantInfoDownloadDelegate: class {
+    func hideDownloadButton()
+}
+
 class RestaurantInfoDownload: UIView, UICircularProgressRingDelegate {
     
+    //MARK: Outlets
     @IBOutlet weak var progressBar: UICircularProgressRingView!
-
+    @IBOutlet var containerView: UIView!
+    @IBOutlet weak var okayButton: UIButton!
+    
+    //MARK: Properties
     var smartPhoto: SmartPhoto?
     weak var delegate: RestaurantDetailsPresentation?
-    weak var internetdelegate: RestaurantDetailsWireframe?
-    
     let utilityQueue = DispatchQueue.global(qos: .utility)
+    var parentController: UIViewController!
+    var actionButtonsView = RestaurantDetailsActionButtonView()
+    weak var downloadDelegate: RestaurantInfoDownloadDelegate?
+
+    func setupPopup(_ frame: CGRect, forViewController vc: UIViewController) {
+        self.frame = frame
+        self.parentController = vc
+        containerView.layer.cornerRadius = popupConstants.containerViewRadius
+        containerView.addShadow()
+        okayButton.layer.cornerRadius = okayButton.frame.height/2
+        okayButton.isHidden = true
+    }
+    
     func initView() {
         progressBar.outerCapStyle = .round
         progressBar.delegate = self
         progressBar.ringStyle = .ontop
-        if let on = internetdelegate?.checkInternet(), on {
+        if let on = delegate?.checkInternet(), on {
             startDownloading()
         }
     }
@@ -60,12 +79,15 @@ class RestaurantInfoDownload: UIView, UICircularProgressRingDelegate {
             if let audioURL =  smartPhoto?.audio_review_url, let url = URL(string: audioURL), imageDownloadSuccess {
                 downloadData(url: url, audioData: true)
             } else if imageDownloadSuccess || audioDownloadSuccess {
-                delegate?.showSuccess()
+                // Success popup
+                if let successView = UINib(nibName: SnapXEatsNibNames.restaurantInfoDownloadSuccess, bundle: nil).instantiate(withOwner: nil, options: nil)[0]as? RestaurantInfoDownloadSuccess {
+                    containerView.addSubview(successView)
+                    okayButton.isHidden = false
+                }
             }
             
-            
         case .failure( _):
-            internetdelegate?.checkInternet()
+            delegate?.checkInternet()
         }
     }
     
@@ -117,5 +139,10 @@ class RestaurantInfoDownload: UIView, UICircularProgressRingDelegate {
             return saveFilePath
         }
         return nil
+    }
+    
+    @IBAction func okayAction(_ sender: Any) {
+        self.removeFromSuperview()
+        downloadDelegate?.hideDownloadButton() // Hide download button
     }
 }
