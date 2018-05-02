@@ -18,6 +18,7 @@ enum fileManagerConstants {
     static let rootFolder = "SnapXEats"
     static let draftFolder = "Draft"
     static let smartPhotoFolder = "SmartPhoto"
+    static let restaurantDishInfo = "RestaurantDishInfo"
 }
 
 enum SmartPhotoPath {

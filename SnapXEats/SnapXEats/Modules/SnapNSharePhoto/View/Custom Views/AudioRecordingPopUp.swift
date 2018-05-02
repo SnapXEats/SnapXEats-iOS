@@ -22,18 +22,6 @@ enum AudioRecordingPopupTypes {
 }
 
 class AudioRecordingPopUp: UIView {
-
-    enum popupConstants {
-        static let containerViewRadius: CGFloat = 5.0
-        static let startButtonBorderWidth: CGFloat = 1.0
-        static let recordPopupTitle = "ADD AUDIO REVIEW"
-        static let playPopupTitle = "AUDIO REVIEW"
-        static let maxAudioLengthInSeconds = 30
-        static let startRecordButtonTitle = "RECORD"
-        static let doneButtontitle = "DONE"
-        static let cancelButtonTitle = "Cancel"
-        static let removeReviewButtonTitle = "Delete Review"
-    }
     
     weak var audioRecordingPopupDelegate: AudioRecordingPopUpViewActionsDelegate?
     var recordingSession: AVAudioSession!

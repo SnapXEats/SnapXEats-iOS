@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RestaurantInfoDownloadViewController" customModule="SnapXEats" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="ijX-OW-Wfc" customClass="RestaurantInfoDownload" customModule="SnapXEats" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.60000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Suc-7h-JaO">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="667-A3-J0x">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rfF-As-k6r" customClass="UICircularProgressRingView" customModule="UICircularProgressRing">
+                            <rect key="frame" x="137.5" y="15" width="100" height="100"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="65a-Sg-28K"/>
+                                <constraint firstAttribute="height" constant="100" id="6dO-tH-LmS"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                    <real key="value" value="100"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="outerRingWidth">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="innerRingWidth">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="outerRingColor">
+                                    <color key="value" red="0.33725490200000002" green="0.33725490200000002" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="innerRingColor">
+                                    <color key="value" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="ibRingStyle">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downloading ..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JF3-FL-qkG">
+                            <rect key="frame" x="128.5" y="139" width="118.5" height="22.5"/>
+                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
+                            <color key="textColor" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="rfF-As-k6r" firstAttribute="centerX" secondItem="667-A3-J0x" secondAttribute="centerX" id="DbO-qZ-wUi"/>
+                        <constraint firstItem="JF3-FL-qkG" firstAttribute="top" secondItem="rfF-As-k6r" secondAttribute="bottom" constant="24" id="SWe-PE-xzh"/>
+                        <constraint firstItem="JF3-FL-qkG" firstAttribute="centerX" secondItem="rfF-As-k6r" secondAttribute="centerX" id="X8t-d1-Fu1"/>
+                        <constraint firstItem="rfF-As-k6r" firstAttribute="top" secondItem="667-A3-J0x" secondAttribute="top" constant="15" id="hKW-F5-PXL"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="667-A3-J0x" firstAttribute="top" secondItem="Suc-7h-JaO" secondAttribute="top" id="8dk-GA-ygV"/>
+                <constraint firstItem="Suc-7h-JaO" firstAttribute="trailing" secondItem="Vzd-Sg-6gj" secondAttribute="trailing" id="ANf-rs-VT8"/>
+                <constraint firstItem="667-A3-J0x" firstAttribute="bottom" secondItem="Vzd-Sg-6gj" secondAttribute="bottom" id="FQW-p6-g1G"/>
+                <constraint firstItem="Suc-7h-JaO" firstAttribute="top" secondItem="ijX-OW-Wfc" secondAttribute="top" id="NBw-Rg-nIK"/>
+                <constraint firstItem="Suc-7h-JaO" firstAttribute="leading" secondItem="Vzd-Sg-6gj" secondAttribute="leading" id="Sku-01-dXU"/>
+                <constraint firstItem="Suc-7h-JaO" firstAttribute="bottom" secondItem="Vzd-Sg-6gj" secondAttribute="bottom" id="fw9-as-jLC"/>
+                <constraint firstItem="667-A3-J0x" firstAttribute="leading" secondItem="Suc-7h-JaO" secondAttribute="leading" id="qEL-OY-m1c"/>
+                <constraint firstItem="667-A3-J0x" firstAttribute="trailing" secondItem="Suc-7h-JaO" secondAttribute="trailing" id="qzW-cW-9mS"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Vzd-Sg-6gj"/>
+            <connections>
+                <outlet property="progressBar" destination="rfF-As-k6r" id="SaM-Nz-zE1"/>
+            </connections>
+        </view>
+    </objects>
+</document>

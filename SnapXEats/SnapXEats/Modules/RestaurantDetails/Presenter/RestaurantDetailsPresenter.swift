@@ -22,6 +22,31 @@ class RestaurantDetailsPresenter {
 }
 
 extension RestaurantDetailsPresenter: RestaurantDetailsPresentation {
+    func presentView(view: SmartPhotView) {
+        router?.presentSmartPhotoView(view: view)
+    }
+    
+    func showSuccess() {
+        router?.presentSmartPhotoView(view: .success)
+    }
+
+    
+    func presentScreen(screen: Screens) {
+        router?.presentScreen(screen: screen)
+    }
+    
+    func saveSmartPhoto(smartPhoto: SmartPhoto) {
+        interactor?.storeSmartPhoto(smartPhoto: smartPhoto)
+    }
+    
+    func checkSmartPhoto(smartPhotoID: String) -> Bool {
+        if let interactor = interactor {
+            return interactor.alreadyExistingSmartPhoto(smartPhotoID: smartPhotoID)
+        }
+        return false
+    }
+    
+    
     func restaurantDetailsRequest(restaurantId: String) {
         interactor?.getRestaurantDetailsRequest(restaurant_id: restaurantId)
     }

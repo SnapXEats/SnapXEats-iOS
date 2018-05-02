@@ -11,12 +11,18 @@ import Alamofire
 
 protocol RestaurantDetailsView: BaseView {
     var presenter: RestaurantDetailsPresentation? {get set}
+//    var smartPhotoPresenter: SmartPhotoPresentation? {get set}
+
 }
 
-protocol RestaurantDetailsPresentation: class {
+protocol RestaurantDetailsPresentation: class, SuccessScreen {
     func restaurantDetailsRequest(restaurantId: String)
     func drivingDirectionsRequest(origin: String, destination: String)
     func gotoRestaurantDirections(restaurantDetails: RestaurantDetails, parent: UINavigationController)
+    func presentView(view:SmartPhotView)
+    func saveSmartPhoto(smartPhoto: SmartPhoto)
+    func checkSmartPhoto(smartPhotoID: String) -> Bool
+
 }
 
 protocol RestaurantDetailsUseCase: class {
@@ -28,12 +34,17 @@ protocol RestaurantDetailsInteractorOutput: Response {
 }
 
 protocol RestaurantDetailsWireframe: class, RootWireFrame {
-    // TODO: Declare wireframe methods
+    func presentSmartPhotoView(view: SmartPhotView)
+    func checkInternet() -> Bool
+
+    
 }
 
 protocol RestaurantDetailsRequestFormatter: class {
     func getRestaurantDetailsRequest(restaurant_id: String)
     func getDrivingDirectionsFor(origin: String, destination: String)
+    func storeSmartPhoto(smartPhoto: SmartPhoto)
+    func alreadyExistingSmartPhoto(smartPhotoID: String) -> Bool
 }
 
 protocol RestaurantDetailsWebService: class {

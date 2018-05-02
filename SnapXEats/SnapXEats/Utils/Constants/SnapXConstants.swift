@@ -209,6 +209,10 @@ enum SnapXEatsNibNames {
     static let recentFoodJourneyPicturesCell = "RecentFoodJourneyPicturesCollectionViewCell"
     static let olderFoodJourneyTableViewCell = "OlderFoodJourneyTableViewCell"
     static let olderHeaderTableViewCell = "OlderHeaderTableViewCell"
+    static let restaurantDetailsActionButtonView = "RestaurantDetailsActionButtonView"
+    static let playAudioPopUp = "PlayAudioPopUp"
+    static let textReviewPopUp = "TextReviewPopUp"
+    static let restaurantInfoDownload = "RestaurantInfoDownload"
     static let reminderPopUp = "ReminderPopUp"
 }
 
@@ -389,6 +393,18 @@ enum CellHeight {
 enum HeaderLabel {
     static let x:CGFloat = 15
     static let y:CGFloat = 13
+}
+
+enum popupConstants {
+    static let containerViewRadius: CGFloat = 5.0
+    static let startButtonBorderWidth: CGFloat = 1.0
+    static let recordPopupTitle = "ADD AUDIO REVIEW"
+    static let playPopupTitle = "AUDIO REVIEW"
+    static let maxAudioLengthInSeconds = 30
+    static let startRecordButtonTitle = "RECORD"
+    static let doneButtontitle = "DONE"
+    static let cancelButtonTitle = "Cancel"
+    static let removeReviewButtonTitle = "Delete Review"
 }
 
 enum CheckOutContant {

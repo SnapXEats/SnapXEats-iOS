@@ -93,6 +93,9 @@ class RestaurantDetails: Mappable {
 class RestaurantPhoto: Mappable {
     var imageURL: String?
     var createDate: String?
+    var dishId: String?
+    var audioReviewURL: String?
+    var textReview: String?
     
     required init?(map: Map) {
     }
@@ -100,6 +103,9 @@ class RestaurantPhoto: Mappable {
     func mapping(map: Map) {
         imageURL        <- map["dish_image_url"]
         createDate      <- map["created_date"]
+        dishId          <- map["restaurant_dish_id"]
+        audioReviewURL  <- map["audio_review_url"]
+        textReview      <- map["text_review"]
     }
 }
 

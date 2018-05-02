@@ -19,6 +19,10 @@ class RestaurantDetailsInteractor {
 }
 
 extension RestaurantDetailsInteractor: RestaurantDetailsRequestFormatter {
+    func alreadyExistingSmartPhoto(smartPhotoID: String) -> Bool {
+        return  SmartPhotoHelper.shared.hasSmartPhoto(smartPhotoDishId: smartPhotoID)
+    }
+    
     func getRestaurantDetailsRequest(restaurant_id: String) {
         let path = SnapXEatsWebServicePath.restaurantDetails + "/" + restaurant_id
         getRestaurantDetails(forPath: path)
@@ -68,5 +72,7 @@ extension RestaurantDetailsInteractor: RestaurantDetailsObjectMapper {
 }
 
 extension RestaurantDetailsInteractor: RestaurantDetailsUseCase {
-    // TODO: Implement use case methods
+    func storeSmartPhoto(smartPhoto: SmartPhoto) {
+        SmartPhotoHelper.shared.saveSmartPhoto(smartPhoto: smartPhoto)
+    }
 }
