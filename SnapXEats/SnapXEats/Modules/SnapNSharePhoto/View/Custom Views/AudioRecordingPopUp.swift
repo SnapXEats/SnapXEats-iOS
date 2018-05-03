@@ -27,6 +27,7 @@ class AudioRecordingPopUp: UIView {
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
     var audioPlayer: AVAudioPlayer?
+    
     var timer = Timer()
     var seconds = 0
     var audioReviewDuration = 0
@@ -50,7 +51,13 @@ class AudioRecordingPopUp: UIView {
     }
     
     @IBAction func recordingStartAction(_ sender: UIButton) {
-        playAudioReview()
+        if recordAudioStartButton.isSelected {
+            recordAudioStartButton.setImage(#imageLiteral(resourceName: "play_popup_icon"), for: .normal)
+            pausePlayer()
+        } else {
+            recordAudioStartButton.setImage(#imageLiteral(resourceName: "pause_popup_icon"), for: .normal)
+            playAudioReview()
+        }
     }
     
     @IBAction func deleteReviewButtonAction(_ sender: UIButton) {
@@ -133,6 +140,7 @@ class AudioRecordingPopUp: UIView {
         if let restaurntID = LoginUserPreferences.shared.userDishReview.restaurantInfoId, let audioRecordingURL = SmartPhotoPath.draft(fileName: fileManagerConstants.audioReviewFileName, id: restaurntID).getPath() {
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: audioRecordingURL)
+                audioPlayer?.delegate = self
                 do {
                     try AVAudioSession.sharedInstance().overrideOutputAudioPort(AVAudioSessionPortOverride.speaker)
                 }
@@ -143,6 +151,10 @@ class AudioRecordingPopUp: UIView {
                 print("Unable to Play Audio")
             }
         }
+    }
+    
+    private func pausePlayer() {
+        audioPlayer?.pause()
     }
     
     func runTimer() {
@@ -190,6 +202,13 @@ class AudioRecordingPopUp: UIView {
     private func cancelRecordingAudioReview() {
         timer.invalidate()
         audioRecordingPopupDelegate?.audioRecordingCancelled(self)
+    }
+}
+
+extension AudioRecordingPopUp: AVAudioPlayerDelegate {
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        recordAudioStartButton.setImage(#imageLiteral(resourceName: "play_popup_icon"), for: .normal)
+        audioPlayer?.stop()
     }
 }
 
