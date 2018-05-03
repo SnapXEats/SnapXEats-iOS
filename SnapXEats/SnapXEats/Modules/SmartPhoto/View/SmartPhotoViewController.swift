@@ -185,13 +185,13 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
         draftShareButton.isHidden = false
         smartPhoto = SmartPhotoHelper.shared.getDraftPhoto(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id ?? SnapXEatsConstant.emptyString)
         if let photos = smartPhoto {
-            if let imageUrl = apptoDocumentDirPath(path: photos.dish_image_url) {
+            if photos.dish_image_url != SnapXEatsConstant.emptyString, let imageUrl = apptoDocumentDirPath(path: photos.dish_image_url) {
                 if FileManager.default.fileExists(atPath: imageUrl.path), let imageItem = UIImage(contentsOfFile: imageUrl.path)  {
                     smartPhotoImage.image = imageItem
                 }
             }
             
-            if let audioUrl = apptoDocumentDirPath(path: photos.audio_review_url) {
+            if photos.audio_review_url != SnapXEatsConstant.emptyString, let audioUrl = apptoDocumentDirPath(path: photos.audio_review_url)  {
                 if FileManager.default.fileExists(atPath: audioUrl.path) {
                     audioButton.isHidden = false
                 }
