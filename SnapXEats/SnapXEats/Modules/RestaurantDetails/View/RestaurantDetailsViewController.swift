@@ -34,6 +34,8 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
     }
     
     var presenter: RestaurantDetailsPresentation?
+    var restaurantInfoDownloadDelegate: RestaurantInfoDownloadDelegate?
+
     var restaurant_info_id: String?
     var slideshow =  ImageSlideshow()
     var specialities = [RestaurantSpeciality]()
@@ -267,19 +269,21 @@ extension RestaurantDetailsViewController: RestaurantDetailsView {
     }
     
     func refreshActionButtonsView(photos: [RestaurantPhoto], currentIndex:Int) {
-        if let textReview = photos[currentIndex].textReview {
-            self.actionButtonsView.toggleTextReviewButtonState(shouldHide: false)
-        } else {
-            self.actionButtonsView.toggleTextReviewButtonState(shouldHide: true)
-        }
-        if let audioReview = photos[currentIndex].audioReviewURL {
-            self.actionButtonsView.toggleAudioReviewButtonState(shouldHide: false)
-        } else {
-            self.actionButtonsView.toggleAudioReviewButtonState(shouldHide: true)
-        }
-        if let id = self.smartPhoto[currentIndex].restaurant_item_id {
-            self.alreadyDownloaded = self.presenter?.checkSmartPhoto(smartPhotoID: id) ?? false
-            self.actionButtonsView.toggleDownloadButtonState(shouldHide: (self.alreadyDownloaded))
+        if showMoreInfo {
+            if let textReview = photos[currentIndex].textReview {
+                self.actionButtonsView.toggleTextReviewButtonState(shouldHide: false)
+            } else {
+                self.actionButtonsView.toggleTextReviewButtonState(shouldHide: true)
+            }
+            if let audioReview = photos[currentIndex].audioReviewURL {
+                self.actionButtonsView.toggleAudioReviewButtonState(shouldHide: false)
+            } else {
+                self.actionButtonsView.toggleAudioReviewButtonState(shouldHide: true)
+            }
+            if let id = self.smartPhoto[currentIndex].restaurant_item_id {
+                self.alreadyDownloaded = self.presenter?.checkSmartPhoto(smartPhotoID: id) ?? false
+                self.actionButtonsView.toggleDownloadButtonState(shouldHide: (self.alreadyDownloaded))
+            }
         }
     }
 }
@@ -335,7 +339,7 @@ extension RestaurantDetailsViewController : RestaurantDetailsActionButtonViewDel
     
     func downloadAction() {
         if checkRechability() {
-            presenter?.presentView(view: .download(smartPhoto: smartPhoto[slideshow.currentPage]))
+            showDownloadPopUpView(smartPhoto: smartPhoto[slideshow.currentPage])
         }
     }
     
@@ -347,6 +351,7 @@ extension RestaurantDetailsViewController : RestaurantDetailsActionButtonViewDel
             restInfo.restaurant_address = (restaurantDetails?.address)!
             restInfo.dish_image_url = photo.imageURL!
             restInfo.pic_taken_date = photo.createDate!
+            restInfo.restaurant_aminities = (restaurantDetails?.restaurant_amenities)!
             if let audioURL = photo.audioReviewURL {
                 restInfo.audio_review_url = audioURL
             }
@@ -375,4 +380,25 @@ extension RestaurantDetailsViewController : RestaurantDetailsActionButtonViewDel
         textReviewPopupView.setupPopup(textReviewPopupFrame,text:text, forViewController: self)
         self.view.addSubview(textReviewPopupView)
     }
+    
+    private func showDownloadPopUpView(smartPhoto: SmartPhoto) {
+        dismissKeyboard()
+        let downloadPopupView = UINib(nibName:SnapXEatsNibNames.restaurantInfoDownload, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! RestaurantInfoDownload
+        downloadPopupView.smartPhoto = smartPhoto
+        downloadPopupView.delegate = presenter
+        downloadPopupView.downloadDelegate = self
+        let downloadPopupFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        downloadPopupView.setupPopup(downloadPopupFrame, forViewController: self)
+        downloadPopupView.initView()
+        self.view.addSubview(downloadPopupView)
+        
+    }
 }
+
+extension RestaurantDetailsViewController: RestaurantInfoDownloadDelegate {
+    func hideDownloadButton() {
+        self.actionButtonsView.toggleDownloadButtonState(shouldHide: true)
+    }
+}
+
+

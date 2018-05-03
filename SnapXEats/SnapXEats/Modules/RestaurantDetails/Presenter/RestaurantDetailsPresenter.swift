@@ -22,17 +22,12 @@ class RestaurantDetailsPresenter {
 }
 
 extension RestaurantDetailsPresenter: RestaurantDetailsPresentation {
-    func presentView(view: SmartPhotView) {
-        router?.presentSmartPhotoView(view: view)
-    }
     
-    func showSuccess() {
-        router?.presentSmartPhotoView(view: .success)
-    }
-
-    
-    func presentScreen(screen: Screens) {
-        router?.presentScreen(screen: screen)
+    func checkInternet()-> Bool {
+        if let checkInternet = router?.checkInternet() {
+            return checkInternet
+        }
+        return false
     }
     
     func saveSmartPhoto(smartPhoto: SmartPhoto) {

@@ -145,7 +145,7 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
             self?.navigationController?.popViewController(animated: true)
         })
         let cancel = UIAlertAction(title: SnapXButtonTitle.cancel, style: UIAlertActionStyle.default, handler: nil)
-        UIAlertController.presentAlertInViewController(self, title: AlertTitle.reviewTitle , message: AlertMessage.reviewMessage, actions: [cancel,Ok], completion: nil)
+        UIAlertController.presentAlertInViewController(self, title: nil , message: AlertMessage.reviewMessage, actions: [cancel,Ok], completion: nil)
     }
     
     
