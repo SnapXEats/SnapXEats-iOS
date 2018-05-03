@@ -97,7 +97,7 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
         
         let content = LinkShareContent(url: shareURL, quote: shareDetails.message)
         let shareDialog = ShareDialog(content: content)
-        shareDialog.mode = .automatic
+        shareDialog.mode = .feedBrowser
         shareDialog.presentingViewController = self
         shareDialog.failsOnInvalidData = true
         shareDialog.completion = { [weak self] result in
