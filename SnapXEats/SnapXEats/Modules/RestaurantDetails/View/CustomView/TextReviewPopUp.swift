@@ -23,6 +23,7 @@ class TextReviewPopUp: UIView {
         containerView.layer.cornerRadius = popupConstants.containerViewRadius
         containerView.addShadow()
         textReviewOkayButton.layer.cornerRadius = textReviewOkayButton.frame.height/2
+        textReview.isEditable = false
         textReview.text = text
     }
     
