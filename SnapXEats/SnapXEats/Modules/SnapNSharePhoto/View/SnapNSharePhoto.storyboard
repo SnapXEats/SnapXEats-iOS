@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -74,8 +74,8 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cfR-41-40C">
                                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="70"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
-                                                                <inset key="titleEdgeInsets" minX="-10" minY="50" maxX="0.0" maxY="0.0"/>
-                                                                <inset key="imageEdgeInsets" minX="35" minY="25" maxX="0.0" maxY="0.0"/>
+                                                                <inset key="titleEdgeInsets" minX="-34" minY="52" maxX="0.0" maxY="0.0"/>
+                                                                <inset key="imageEdgeInsets" minX="17" minY="12" maxX="0.0" maxY="0.0"/>
                                                                 <state key="normal" title="00:00" image="play_popup_icon">
                                                                     <color key="titleColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                                 </state>
@@ -213,7 +213,7 @@
     </scenes>
     <resources>
         <image name="mic_icon_no_record" width="11" height="18"/>
-        <image name="play_popup_icon" width="16" height="18"/>
+        <image name="play_popup_icon" width="44" height="44"/>
         <image name="star_icon_unfilled" width="23" height="23"/>
         <image name="start_icon_filled" width="23" height="23"/>
     </resources>

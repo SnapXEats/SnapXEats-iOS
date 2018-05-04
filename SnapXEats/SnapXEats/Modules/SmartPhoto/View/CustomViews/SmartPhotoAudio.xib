@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -52,9 +52,17 @@
                         <action selector="playButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="vYc-U2-q7H"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CqY-Xy-ajP">
+                    <rect key="frame" x="141.5" y="143" width="38.5" height="20"/>
+                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
+                    <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="CqY-Xy-ajP" firstAttribute="top" secondItem="XMF-My-D8n" secondAttribute="bottom" constant="23" id="0oh-FD-7bV"/>
+                <constraint firstItem="CqY-Xy-ajP" firstAttribute="centerX" secondItem="XMF-My-D8n" secondAttribute="centerX" id="FRx-xd-nq8"/>
                 <constraint firstItem="Udx-ss-f4F" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Gkh-lZ-J58"/>
                 <constraint firstItem="s6b-x5-OC3" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="Sns-wA-h4d"/>
                 <constraint firstItem="s6b-x5-OC3" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="UZT-GB-uC8"/>
@@ -68,6 +76,10 @@
                 <constraint firstItem="Udx-ss-f4F" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="xea-11-sfw"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="currentTimeLabel" destination="CqY-Xy-ajP" id="Fj7-du-SBI"/>
+                <outlet property="playPauseButton" destination="XMF-My-D8n" id="RpA-Pf-mYa"/>
+            </connections>
         </view>
     </objects>
     <resources>
