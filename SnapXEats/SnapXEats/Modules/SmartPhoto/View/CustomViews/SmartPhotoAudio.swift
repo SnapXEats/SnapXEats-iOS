@@ -42,8 +42,8 @@ class SmartPhotoAudio: UIView {
         
     }
     
-    func pausePlayer() {
-         jukebox?.pause()
+    func stopPlayer() {
+         jukebox?.stop()
          jukebox = nil
     }
     

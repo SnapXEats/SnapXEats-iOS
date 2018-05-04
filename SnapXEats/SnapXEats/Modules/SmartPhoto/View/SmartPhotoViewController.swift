@@ -42,6 +42,7 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
     let isloggedIn = LoginUserPreferences.shared.isLoggedIn
     
     @IBAction func draftShareAction(_ sender: Any) {
+        presenter?.stopAudio()
         if let smartPhoto_Draft_Stored_id = smartPhoto_Draft_Stored_id,  smartPhoto_Draft_Stored_id != SnapXEatsConstant.emptyString, let parent = parentController {
             if isloggedIn == false {
                 self.dismiss(animated: true, completion: { [weak self] in
@@ -55,11 +56,11 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
     }
     
     @IBAction func infoButtonAction(_ sender: Any) {
-        
         if infoButton.isSelected {
             removeSubView()
         } else {
             if let photoInfo = smartPhoto {
+                presenter?.stopAudio()
                 presenter?.presentView(view: .info(photoInfo: photoInfo))
             }
         }
@@ -74,17 +75,17 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
     }
     
     @IBAction func messageButtonAction(_ sender: Any) {
-        
         if messageButton.isSelected {
             removeSubView()
         } else {
+            presenter?.stopAudio()
             presenter?.presentView(view: .textReview(textReview: smartPhoto?.text_review ?? ""))
         }
         updateTintColor(sender: sender)
     }
     @IBAction func audioButtonAction(_ sender: Any) {
         if audioButton.isSelected {
-            presenter?.pausePlayAudio()
+            presenter?.stopAudio()
             removeSubView()
         } else if let smartPhoto = smartPhoto {
             switch photoType {
@@ -103,6 +104,7 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
     
     @IBAction func downloadButtonAction(_ sender: Any) {
         if downloadButton.isSelected {
+            presenter?.stopAudio()
             removeSubView()
             updateTintColor(sender: sender)
         } else if let _ = smartPhoto?.dish_image_url, checkRechability() {
@@ -113,6 +115,7 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
     }
     
     @IBAction func closeButtonAction(_ sender: Any) {
+        presenter?.stopAudio()
         self.dismiss(animated: true, completion: nil)
     }
     override func viewDidLoad() {
@@ -242,9 +245,7 @@ class SmartPhotoViewController: BaseViewController, StoryboardLoadable {
     @objc func hideButtonView() {
         buttonView.isHidden = buttonView.isHidden ? false : true
         if buttonView.isHidden {
-            if audioButton.isSelected {
-                presenter?.pausePlayAudio()
-            }
+            presenter?.stopAudio()
             removeSubView()
         }
         updateTintColor(sender: nil) // this is to reset all the button
