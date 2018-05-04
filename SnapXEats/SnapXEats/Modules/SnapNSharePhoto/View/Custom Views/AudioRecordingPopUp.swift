@@ -73,7 +73,6 @@ class AudioRecordingPopUp: UIView {
         containerView.layer.cornerRadius = popupConstants.containerViewRadius
         containerView.addShadow()
         recordAudioDoneButton.layer.cornerRadius = recordAudioDoneButton.frame.height/2
-        recordAudioStartButton.addBorder(ofWidth: popupConstants.startButtonBorderWidth, withColor: .lightGray, radius: recordAudioStartButton.frame.width/2)
         
         let recordAudioButtontitle = (type == .record) ? popupConstants.startRecordButtonTitle : popupConstants.doneButtontitle
         recordAudioDoneButton.setTitle(recordAudioButtontitle, for: .normal)
