@@ -45,10 +45,13 @@ extension DraftTableViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let photo = draftPhotos, let smartPhoto_Draft_Stored_id = photo[indexPath.row].smartPhoto_Draft_Stored_id,
-            let dishId = photo[indexPath.row].restaurant_item_id, let parent = self.navigationController {
-            delegate?.presentScreen(screen: .smartPhoto(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id, dishID: dishId, type: .draftPhoto, parentController: parent))
+        DispatchQueue.main.async {
+            if let photo = self.draftPhotos, let smartPhoto_Draft_Stored_id = photo[indexPath.row].smartPhoto_Draft_Stored_id,
+                let dishId = photo[indexPath.row].restaurant_item_id, let parent = self.navigationController {
+                self.delegate?.presentScreen(screen: .smartPhoto(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id, dishID: dishId, type: .draftPhoto, parentController: parent))
+            }
         }
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -67,7 +70,7 @@ extension DraftTableViewController: UITableViewDelegate, UITableViewDataSource {
             cell.smartPhot_Draft_id = photos[indexPath.row].smartPhoto_Draft_Stored_id
             cell.delegate = self
         }
-       
+        
         return cell
     }
 }

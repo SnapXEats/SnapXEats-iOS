@@ -24,13 +24,15 @@ class SmartPhotoAudio: UIView {
         if let on =  delegate?.checkInternet(), on {
             switch jukebox?.state {
             case .playing? :
+                playPauseButton.isSelected = false
                 jukebox?.pause()
-            case .paused? :
+            case .paused?, .ready? :
+                playPauseButton.isSelected = true
                 jukebox?.play()
             default:
                 jukebox?.stop()
             }
-          jukebox?.play()
+         // jukebox?.play()
         }
     }
     
@@ -42,8 +44,8 @@ class SmartPhotoAudio: UIView {
         
     }
     
-    func pausePlayer() {
-         jukebox?.pause()
+    func stopPlayer() {
+         jukebox?.stop()
          jukebox = nil
     }
     
@@ -56,31 +58,28 @@ extension SmartPhotoAudio:  JukeboxDelegate {
             self.playPauseButton.alpha = jukebox.state == .loading ? 0 : 1
             self.playPauseButton.isEnabled = jukebox.state == .loading ? false : true
         })
-        
-        if jukebox.state == .ready {
-            playPauseButton.setImage(#imageLiteral(resourceName: "play_popup_icon"), for: UIControlState())
-        } else if jukebox.state == .loading  {
-            playPauseButton.setImage(#imageLiteral(resourceName: "pause_popup_icon"), for: UIControlState())
-        } else {
-            let imageName: String
+
             switch jukebox.state {
             case .playing, .loading:
-                imageName = "pause_popup_icon"
+                 playPauseButton.isSelected = true
             case .paused, .failed, .ready:
-                imageName = "play_popup_icon"
+                playPauseButton.isSelected = false
             }
-            playPauseButton.setImage(UIImage(named: imageName), for: UIControlState())
-        }
+
         
         print("Jukebox state changed to \(jukebox.state)")
     }
     
     func jukeboxPlaybackProgressDidChange(_ jukebox: Jukebox) {
         if let currentTime = jukebox.currentItem?.currentTime, let duration = jukebox.currentItem?.meta.duration {
-            let value = Float(currentTime / duration)
-            populateLabelWithTime(currentTimeLabel, time: currentTime)
-        } else {
-            resetUI()
+            if currentTime == duration {
+                resetUI()
+                playPauseButton.isSelected = false
+                stopPlayer()
+                initView()
+            } else {
+                populateLabelWithTime(currentTimeLabel, time: currentTime)
+            }
         }
     }
     
@@ -130,6 +129,15 @@ extension SmartPhotoAudio:  JukeboxDelegate {
     func resetUI()
     {
         currentTimeLabel.text = "00:00"
+    }
+    
+    func playingFinish(jukebox: Jukebox) -> Bool {
+        if let currentTime = jukebox.currentItem?.currentTime, let duration = jukebox.currentItem?.meta.duration {
+            if (currentTime == duration) {
+                return true
+            }
+        }
+        return false
     }
 }
 

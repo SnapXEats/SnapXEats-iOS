@@ -48,6 +48,7 @@
                         <constraint firstAttribute="height" constant="50" id="Dnx-OI-Xrl"/>
                     </constraints>
                     <state key="normal" title="Button" image="Play_icon"/>
+                    <state key="selected" image="pause_popup_icon"/>
                     <connections>
                         <action selector="playButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="vYc-U2-q7H"/>
                     </connections>
@@ -84,5 +85,6 @@
     </objects>
     <resources>
         <image name="Play_icon" width="44" height="44"/>
+        <image name="pause_popup_icon" width="44" height="44"/>
     </resources>
 </document>

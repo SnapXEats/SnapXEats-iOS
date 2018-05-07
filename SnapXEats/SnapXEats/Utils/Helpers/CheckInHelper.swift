@@ -51,17 +51,16 @@ class CheckInHelper {
         return checkInStore
     }
     
-    func userCheckedOut() -> Bool {
+    func userCheckedOut() {
         let predicate  =  NSPredicate(format: "userID == %@", userID)
-        if let user = CheckInStore.getCheckInStatus(predicate: predicate), user.userID == userID, let checkInTime = user.checkIntime {
-            let timeInterval = Date().timeIntervalSince1970
-            if  let time = TimeInterval.init(checkInTime) {
+        DispatchQueue.global(qos: .background).async {[weak self] in
+            if let user = CheckInStore.getCheckInStatus(predicate: predicate), user.userID == self?.userID, let checkInTime = user.checkIntime,
+                let time = TimeInterval.init(checkInTime) {
+                let timeInterval = Date().timeIntervalSince1970
                 if (timeInterval - time ) >= CheckOutContant.timeInterval { //2 hour for auto checkout
-                    checkOutUser()
-                    return true
+                    self?.checkOutUser()
                 }
             }
         }
-        return false
     }
 }

@@ -112,7 +112,7 @@ class SmartPhotoRouter {
     
     func setContainerView(view: UIView, type: CurrentViewType) {
         if let containerView = containerView as? SmartPhotoAudio {
-            containerView.pausePlayer()
+            containerView.stopPlayer()
         }
         containerViewType = type
         containerView = view
@@ -156,9 +156,9 @@ extension SmartPhotoRouter: SmartPhotoWireframe {
         loadDownloadSuccessView()
     }
     
-    func pausePlayAudio() {
+    func stopAudio() {
         if let containerView = containerView as? SmartPhotoAudio {
-            containerView.pausePlayer()
+            containerView.stopPlayer()
         }
     }
     

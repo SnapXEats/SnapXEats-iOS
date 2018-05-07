@@ -13,10 +13,10 @@ import AVFoundation
 class SmartPhotoTextReview: UIView {
     var textReview = ""
     
-    @IBOutlet weak var reviewMessageLabel: UILabel!
+    @IBOutlet weak var reviewMessageView: UITextView!
     
     func initView() {
-        reviewMessageLabel.text = textReview
+        reviewMessageView.text = textReview
     }
 }
 

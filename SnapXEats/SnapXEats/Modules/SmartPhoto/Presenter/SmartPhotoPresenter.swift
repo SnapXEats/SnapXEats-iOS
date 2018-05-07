@@ -33,8 +33,8 @@ extension SmartPhotoPresenter: SmartPhotoPresentation {
         router?.presentSmartPhotoView(view: .success)
     }
     
-    func pausePlayAudio() {
-        router?.pausePlayAudio()
+    func stopAudio() {
+        router?.stopAudio()
     }
     
     func presentScreen(screen: Screens) {
