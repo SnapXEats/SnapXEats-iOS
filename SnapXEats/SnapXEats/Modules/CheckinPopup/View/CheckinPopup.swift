@@ -53,6 +53,7 @@ class CheckinPopup: SnapXEatsView, CheckinPopupView {
                 showLoading()
                 presenter?.checkinIntoRestaurant(restaurantId: id)
             } else {
+                checkInNonLoggedInUser()
                 checkinPopupDelegate?.userDidChekintoRestaurant(restaurantID: id)
             }
         }
@@ -78,6 +79,16 @@ class CheckinPopup: SnapXEatsView, CheckinPopupView {
             checkIn.restaurantID = restaurantID
             checkIn.checkIntime =  "\(Date().timeIntervalSince1970)"
             CheckInHelper.shared.checkInUser(checkIn: checkIn)
+        }
+    }
+    
+    func checkInNonLoggedInUser() {
+        if let restaurantID = self.restaurant?.restaurant_info_id {
+            let checkIn = CheckInModel()
+            checkIn.userID = SnapXNonLoggedInUserConstants.snapX_nonLogedIn_CheckIn
+            checkIn.restaurantID = restaurantID
+            checkIn.checkIntime =  "\(Date().timeIntervalSince1970)"
+            CheckInHelper.shared.nonLoggedInUserCheckIn(checkIn: checkIn)
         }
     }
     

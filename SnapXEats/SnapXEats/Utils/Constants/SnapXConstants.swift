@@ -364,6 +364,7 @@ enum UserGestureJSONKeys {
 enum SnapXNonLoggedInUserConstants {
     static let message = "Log-In to SnapXEats and Earn Reward Points"
     static let highlightText = "SnapXEats"
+    static let  snapX_nonLogedIn_CheckIn = "SnapXEats_NonLoggedIn_CheckIn"
 }
 
 enum timeFormatConstants {

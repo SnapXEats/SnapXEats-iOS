@@ -46,13 +46,14 @@ class LoginPopUpViewController: BaseViewController, StoryboardLoadable {
             self.dismiss(animated: true, completion: nil)
         }else if let id = smartPhoto?.restaurant_item_id {
             showShaingErrorDialog(completionHandler: {[weak self] in
-                self?.presenter?.presentScreen(screen: .snapNShareHome(restaurantID: id, displayFromNotification: false))
+                self?.presenter?.presentScreen(screen: .snapNShareHome(restaurantID: id, displayFromNotification: true)) // when its true it will not show Reminder popup on SnapNShare home screen
             })
         }
     }
     
     override func success(result: Any?) {
         if let result = result as? Bool, result == true, let navigationController = rootController, let _ = smartPhoto?.restaurant_item_id {
+            CheckInHelper.shared.updateNonLoggedInToLoggedInCheckIn() 
             presenter?.presentScreen(screen: .socialLoginFromLoginPopUp(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id, parentController: navigationController))
         }
     }

@@ -11,9 +11,26 @@ import Foundation
 class CheckInHelper {
     
     static let shared = CheckInHelper()
-    let userID = LoginUserPreferences.shared.loginUserID
+    var userID : String {
+        return  LoginUserPreferences.shared.isLoggedIn
+                ? LoginUserPreferences.shared.loginUserID
+                : SnapXNonLoggedInUserConstants.snapX_nonLogedIn_CheckIn
+        
+    }
+    
     private init() {}
     
+    func nonLoggedInUserCheckIn(checkIn: CheckInModel) {
+        let predicate = NSPredicate(format: "userID == %@", SnapXNonLoggedInUserConstants.snapX_nonLogedIn_CheckIn)
+             CheckInStore.createCheckInData(checkIn: mapCheckInStore(checkIn: checkIn), predicate: predicate)
+    }
+    
+    func updateNonLoggedInToLoggedInCheckIn() {
+        if userID != SnapXEatsConstant.emptyString {
+            let predicate  =  NSPredicate(format: "userID == %@", SnapXNonLoggedInUserConstants.snapX_nonLogedIn_CheckIn)
+            CheckInStore.updateCheckInID(loginID: userID, predicate: predicate)
+        }
+    }
     
     func checkInUser(checkIn: CheckInModel) {
         if let userID = checkIn.userID {
@@ -24,7 +41,7 @@ class CheckInHelper {
     
     func getCheckInRestroInfo() -> String? {
         let predicate  =  NSPredicate(format: "userID == %@", userID)
-        if let user = CheckInStore.getCheckInStatus(predicate: predicate), user.userID == userID {
+        if let user = CheckInStore.getCheckInStatus(predicate: predicate) {
             return user.restaurantID
         }
         return nil
@@ -37,7 +54,7 @@ class CheckInHelper {
     
     func isCheckedIn() -> Bool {
         let predicate  =  NSPredicate(format: "userID == %@", userID)
-        if let user = CheckInStore.getCheckInStatus(predicate: predicate), user.userID == userID {
+        if let _ = CheckInStore.getCheckInStatus(predicate: predicate) {
             return true
         }
         return false
@@ -54,7 +71,7 @@ class CheckInHelper {
     func userCheckedOut() {
         let predicate  =  NSPredicate(format: "userID == %@", userID)
         DispatchQueue.global(qos: .background).async {[weak self] in
-            if let user = CheckInStore.getCheckInStatus(predicate: predicate), user.userID == self?.userID, let checkInTime = user.checkIntime,
+            if let user = CheckInStore.getCheckInStatus(predicate: predicate), let checkInTime = user.checkIntime,
                 let time = TimeInterval.init(checkInTime) {
                 let timeInterval = Date().timeIntervalSince1970
                 if (timeInterval - time ) >= CheckOutContant.timeInterval { //2 hour for auto checkout

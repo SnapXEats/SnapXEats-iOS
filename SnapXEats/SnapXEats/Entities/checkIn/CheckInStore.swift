@@ -31,6 +31,15 @@ class CheckInStore: Object {
         }
     }
     
+    static func updateCheckInID(loginID: String, predicate: NSPredicate) {
+        let realm = try! Realm()
+        if let checkIn = getCheckInStatus(predicate: predicate) {
+            try! realm.write {
+                checkIn.userID = loginID
+            }
+        }
+    }
+    
     static func checkOutUser(predicate: NSPredicate) {
         DispatchQueue.global(qos: .background).async {
             if let checkIn = getCheckInStatus(predicate: predicate) {
