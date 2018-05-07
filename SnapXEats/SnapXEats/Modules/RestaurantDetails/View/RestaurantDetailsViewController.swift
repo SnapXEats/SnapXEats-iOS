@@ -23,9 +23,7 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
     @IBOutlet var moreInfoView: UIView!
     @IBOutlet var amenitiesTableView: UITableView!
     @IBOutlet var amenityTableHeightConstraint: NSLayoutConstraint!
-    
-    @IBOutlet weak var containerView: UIView!
-    
+
     private let durationTrailingText = " Away"
     private let photoCreatedDatePrefix = "Photo taken on "
     private enum restaurantTimingConstants {
@@ -97,13 +95,6 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
         }
     }
     
-    func removeSubView() {
-        for subView in containerView.subviews {
-            subView.removeFromSuperview()
-        }
-        containerView.isHidden = true
-    }
-    
     @IBAction func callButtonAction(_ sender: UIButton) {
         if let phoneNumberStr = restaurantDetails?.contactNumber {
             // String maipulation to convert number is iPhone Specific format
@@ -158,6 +149,7 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
                 if let dishInfo = restaurantDetails?.photos {
                     initSmartPhoto(dishInfo: dishInfo)
                 }
+                addTapGestureOnSlideShow()
                 registerViewForNib()
                 amenities = details.restaurant_amenities
                 amenitiesTableView.reloadData()
@@ -225,8 +217,19 @@ extension RestaurantDetailsViewController: RestaurantDetailsView {
         customizeNavigationItem(title: SnapXEatsPageTitles.restaurantDetail, isDetailPage: true)
         registerCellForNib()
         moreInfoView.isHidden =  (showMoreInfo == true) ? false : true
-        containerView.isHidden = true
         slideshowContainer.backgroundColor = UIColor(patternImage: UIImage(named: SnapXEatsImageNames.restaurant_details_placeholder)!)
+    }
+    
+    private func addTapGestureOnSlideShow() {
+        // Single Tap Gesture
+        let singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(didSingleTapSlideShowItem(_:)))
+        singleTapGesture.numberOfTapsRequired = 1
+        slideshowContainer.addGestureRecognizer(singleTapGesture)
+    }
+    
+    // Gesture Action Methods
+    @objc func didSingleTapSlideShowItem(_ sender: UITapGestureRecognizer) {
+        actionButtonsView.isHidden = !actionButtonsView.isHidden
     }
     
     private func registerViewForNib() {
@@ -234,6 +237,7 @@ extension RestaurantDetailsViewController: RestaurantDetailsView {
         actionButtonsView.delegate = self
         actionButtonsView.setupView(CGRect(x: 0, y: (slideshowContainer.frame.height - actionButtonsView.frame.height), width: slideshowContainer.frame.width, height: actionButtonsView.frame.height), alreadyDownloaded: alreadyDownloaded)
         slideshow.addSubview(actionButtonsView)
+        actionButtonsView.isHidden = true
     }
     
     private func registerCellForNib() {
@@ -263,6 +267,7 @@ extension RestaurantDetailsViewController: RestaurantDetailsView {
 
         // Call back of image changed event
         slideshow.currentPageChanged = { [weak self] (index) in
+            self?.actionButtonsView.isHidden = true
             self?.photoClickedDateLabel.text = self!.photoCreatedDatePrefix + (formatDateFromString(datestr: photos[0].createDate ?? SnapXEatsAppDefaults.emptyString))
             self?.refreshActionButtonsView(photos: photos, currentIndex: index)
         }

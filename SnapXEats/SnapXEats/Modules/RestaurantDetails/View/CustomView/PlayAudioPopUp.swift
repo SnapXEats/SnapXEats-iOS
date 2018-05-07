@@ -24,7 +24,6 @@ class PlayAudioPopUp: UIView {
     var audioURL: String?
     var dishId: String?
     var jukebox: Jukebox?
-    weak var delegate: RestaurantDetailsPresentation?
 
     func setupPopup(_ frame: CGRect, url:String, type: AudioRecordingPopupTypes, forDuration seconds: Int, forViewController vc: UIViewController) {
         self.frame = frame
@@ -54,6 +53,7 @@ class PlayAudioPopUp: UIView {
     }
     
     @IBAction func okayAction(_ sender: Any) {
+        jukebox?.stop()
         self.removeFromSuperview()
     }
     
