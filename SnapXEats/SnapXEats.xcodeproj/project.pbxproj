@@ -2753,9 +2753,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SnapXEats/Pods-SnapXEats-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/HockeySDK/HockeySDKResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HockeySDKResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3153,6 +3156,17 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 39B32FK9ST;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SnapXEats/External\\ Libraries/HockeyApp/HockeySDKCrashOnly",
+					"$(PROJECT_DIR)/SnapXEats/External\\ Libraries/HockeyApp/HockeySDK.embeddedframework",
+					"$(PROJECT_DIR)/SnapXEats/External\\ Libraries/HockeyApp/HockeySDKFeedbackOnly/HockeySDK.embeddedframework",
+					"$(PROJECT_DIR)/SnapXEats/External\\ Libraries/HockeyApp/HockeySDKCrashOnlyExtension",
+					"$(PROJECT_DIR)/SnapXEats/External\\ Libraries/HockeyApp/HockeySDKAllFeatures/HockeySDK.embeddedframework",
+					"$(PROJECT_DIR)/SnapXEats/External\\ Libraries/HockeyApp/HockeySDK.embeddedframework",
+					"$(PROJECT_DIR)/SnapXEats/External\\ Libraries/HockeyApp/HockeySDK.embeddedframework",
+					"$(PROJECT_DIR)/SnapXEats/External\\ Libraries/HockeyApp/HockeySDK.embeddedframework",
+				);
 				INFOPLIST_FILE = SnapXEats/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -3175,6 +3189,17 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 39B32FK9ST;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SnapXEats/External\\ Libraries/HockeyApp/HockeySDKCrashOnly",
+					"$(PROJECT_DIR)/SnapXEats/External\\ Libraries/HockeyApp/HockeySDK.embeddedframework",
+					"$(PROJECT_DIR)/SnapXEats/External\\ Libraries/HockeyApp/HockeySDKFeedbackOnly/HockeySDK.embeddedframework",
+					"$(PROJECT_DIR)/SnapXEats/External\\ Libraries/HockeyApp/HockeySDKCrashOnlyExtension",
+					"$(PROJECT_DIR)/SnapXEats/External\\ Libraries/HockeyApp/HockeySDKAllFeatures/HockeySDK.embeddedframework",
+					"$(PROJECT_DIR)/SnapXEats/External\\ Libraries/HockeyApp/HockeySDK.embeddedframework",
+					"$(PROJECT_DIR)/SnapXEats/External\\ Libraries/HockeyApp/HockeySDK.embeddedframework",
+					"$(PROJECT_DIR)/SnapXEats/External\\ Libraries/HockeyApp/HockeySDK.embeddedframework",
+				);
 				INFOPLIST_FILE = SnapXEats/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
