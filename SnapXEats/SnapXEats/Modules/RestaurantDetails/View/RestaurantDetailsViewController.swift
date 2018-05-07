@@ -158,6 +158,7 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
                 if let dishInfo = restaurantDetails?.photos {
                     initSmartPhoto(dishInfo: dishInfo)
                 }
+                addTapGestureOnSlideShow()
                 registerViewForNib()
                 amenities = details.restaurant_amenities
                 amenitiesTableView.reloadData()
@@ -229,11 +230,24 @@ extension RestaurantDetailsViewController: RestaurantDetailsView {
         slideshowContainer.backgroundColor = UIColor(patternImage: UIImage(named: SnapXEatsImageNames.restaurant_details_placeholder)!)
     }
     
+    private func addTapGestureOnSlideShow() {
+        // Single Tap Gesture
+        let singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(didSingleTapSlideShowItem(_:)))
+        singleTapGesture.numberOfTapsRequired = 1
+        slideshowContainer.addGestureRecognizer(singleTapGesture)
+    }
+    
+    // Gesture Action Methods
+    @objc func didSingleTapSlideShowItem(_ sender: UITapGestureRecognizer) {
+        actionButtonsView.isHidden = !actionButtonsView.isHidden
+    }
+    
     private func registerViewForNib() {
         actionButtonsView = UINib(nibName: SnapXEatsNibNames.restaurantDetailsActionButtonView, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! RestaurantDetailsActionButtonView
         actionButtonsView.delegate = self
         actionButtonsView.setupView(CGRect(x: 0, y: (slideshowContainer.frame.height - actionButtonsView.frame.height), width: slideshowContainer.frame.width, height: actionButtonsView.frame.height), alreadyDownloaded: alreadyDownloaded)
         slideshow.addSubview(actionButtonsView)
+        actionButtonsView.isHidden = true
     }
     
     private func registerCellForNib() {
@@ -263,6 +277,7 @@ extension RestaurantDetailsViewController: RestaurantDetailsView {
 
         // Call back of image changed event
         slideshow.currentPageChanged = { [weak self] (index) in
+            self?.actionButtonsView.isHidden = true
             self?.photoClickedDateLabel.text = self!.photoCreatedDatePrefix + (formatDateFromString(datestr: photos[0].createDate ?? SnapXEatsAppDefaults.emptyString))
             self?.refreshActionButtonsView(photos: photos, currentIndex: index)
         }
