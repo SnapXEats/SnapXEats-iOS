@@ -35,6 +35,9 @@ PODS:
   - FBSDKShareKit (4.29.0):
     - FBSDKCoreKit
   - FSPagerView (0.7.1)
+  - HockeySDK (5.1.2):
+    - HockeySDK/DefaultLib (= 5.1.2)
+  - HockeySDK/DefaultLib (5.1.2)
   - KeychainSwift (7.0.1)
   - Koloda (4.3.1):
     - pop (~> 1.0)
@@ -65,6 +68,7 @@ DEPENDENCIES:
   - FacebookLogin
   - FacebookShare
   - FSPagerView
+  - HockeySDK
   - KeychainSwift (~> 7.0)
   - Koloda (~> 4.3.1)
   - MBProgressHUD (~> 1.0.0)
@@ -92,6 +96,7 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: 56a057ca6822535ea0faa25f57a7c41edb697fd4
   FBSDKShareKit: 18a2cd118aef11dd657fe7e8b64bae5c719088b2
   FSPagerView: 958aba39684e1573755ddcfcc29f7eebb8413cee
+  HockeySDK: 38b7e2726af1ea86ae97ce4b5de33ab0817e3500
   KeychainSwift: 7e15d26b1d6fc504a5eadb89a3e8ab17b2d3573a
   Koloda: 0d39b2aa188ccd1fac48d752acaf9802e683c625
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
@@ -106,6 +111,6 @@ SPEC CHECKSUMS:
   UICircularProgressRing: 653b31f7252b2959e8234f5b9ea5f925da755954
   UIColor_Hex_Swift: 95f718452092a3efc8a827dffd2c04d3237be02d
 
-PODFILE CHECKSUM: df42d37187ac803facd4b6d0134914d5cec4cd7a
+PODFILE CHECKSUM: 31433d56a1dd0789b4d876591c338aba6f1fe9c1
 
 COCOAPODS: 1.4.0

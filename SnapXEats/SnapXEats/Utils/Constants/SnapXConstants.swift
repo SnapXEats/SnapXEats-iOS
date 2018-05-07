@@ -280,6 +280,7 @@ enum SnapXEatsConstant {
     static let urlScheme = "snapxeats"
     static let timeInterval = "ImageSavedTime"
     static let restaurantID = "RestaurantID"
+    static let hockeyAPPID =  "1ef1e308fee84a8b9348b3195c099f06"
 }
 
 enum UberAppConstants {
