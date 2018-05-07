@@ -23,9 +23,7 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
     @IBOutlet var moreInfoView: UIView!
     @IBOutlet var amenitiesTableView: UITableView!
     @IBOutlet var amenityTableHeightConstraint: NSLayoutConstraint!
-    
-    @IBOutlet weak var containerView: UIView!
-    
+
     private let durationTrailingText = " Away"
     private let photoCreatedDatePrefix = "Photo taken on "
     private enum restaurantTimingConstants {
@@ -95,13 +93,6 @@ class RestaurantDetailsViewController: BaseViewController, StoryboardLoadable {
                 durationLabel.text = duration.text + SnapXEatsDirectionConstants.durationTextPrefix
             }
         }
-    }
-    
-    func removeSubView() {
-        for subView in containerView.subviews {
-            subView.removeFromSuperview()
-        }
-        containerView.isHidden = true
     }
     
     @IBAction func callButtonAction(_ sender: UIButton) {
@@ -226,7 +217,6 @@ extension RestaurantDetailsViewController: RestaurantDetailsView {
         customizeNavigationItem(title: SnapXEatsPageTitles.restaurantDetail, isDetailPage: true)
         registerCellForNib()
         moreInfoView.isHidden =  (showMoreInfo == true) ? false : true
-        containerView.isHidden = true
         slideshowContainer.backgroundColor = UIColor(patternImage: UIImage(named: SnapXEatsImageNames.restaurant_details_placeholder)!)
     }
     
