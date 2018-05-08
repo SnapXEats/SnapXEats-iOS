@@ -100,6 +100,7 @@ extension UIViewController { // Navigation Item Customizations
 
     @objc func menuButtonTapped() {
         //Menu Button Action
+        CheckInHelper.shared.userCheckedOut()
         RootRouter.shared.updateDrawerState(state: .opened)
     }
 }

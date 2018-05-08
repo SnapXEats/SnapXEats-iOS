@@ -411,7 +411,7 @@ enum popupConstants {
 }
 
 enum CheckOutContant {
-    static let timeInterval = 60.0
+    static let timeInterval = 7200.0  // 2 hours
 }
 
 enum NotificationConstant {

@@ -92,12 +92,10 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        CheckInHelper.shared.userCheckedOut()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        CheckInHelper.shared.userCheckedOut()
         if isUserCheckedIn {
             checkInButton.setTitle(SnapXButtonTitle.checkOut, for: .normal)
         } else {
