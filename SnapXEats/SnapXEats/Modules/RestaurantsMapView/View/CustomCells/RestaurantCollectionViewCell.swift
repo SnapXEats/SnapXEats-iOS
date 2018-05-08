@@ -25,9 +25,10 @@ class RestaurantCollectionViewCell: FSPagerViewCell {
         if let price = restaurant.price {
             restaurantPriceLabel.text = "\(PricingPreference(rawValue: price)?.displayText() ?? "")"
         }
-        
-        if let imageURL = URL(string: restaurant.restaurantDishes[0].dish_image_url ?? "") {
-            restaurantImageView.af_setImage(withURL: imageURL, placeholderImage:UIImage(named: SnapXEatsImageNames.restaurant_collectionView_placeholder)!)
+        if restaurant.restaurantDishes.count > 0 {
+            if let imageURL = URL(string: restaurant.restaurantDishes[0].dish_image_url ?? "") {
+                restaurantImageView.af_setImage(withURL: imageURL, placeholderImage:UIImage(named: SnapXEatsImageNames.restaurant_collectionView_placeholder)!)
+            }
         }
     }
 }
