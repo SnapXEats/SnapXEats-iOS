@@ -33,12 +33,6 @@ class Restaurant: Mappable {
     var price: Int?
     var type: String?
     var logoImage: String?
-
-    // This is temp Code to send restaurant Object to Checkin Popup
-    init(id: String, name: String) {
-        restaurant_info_id = id
-        restaurant_name = name
-    }
     
     required init?(map: Map) {
     }

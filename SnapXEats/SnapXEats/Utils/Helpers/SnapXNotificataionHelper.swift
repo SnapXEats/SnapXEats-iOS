@@ -58,4 +58,87 @@ class SnapXNotificataionHelper {
         UNUserNotificationCenter.current().setNotificationCategories([category])
         SnapXNotificataionHelper.shared.scheduleNotification(userInfo: userInfo)
     }
+    
+    
+    func scheduleCheckInNotification(userInfo: [AnyHashable: Any]) {
+        let content = UNMutableNotificationContent()
+        let requestIdentifier = NotificationConstant.chekINrequestIdentifier
+        content.userInfo = userInfo
+        content.badge = 1
+        content.title = NotificationConstant.checkInTitle
+        content.subtitle = NotificationConstant.checkInSubTitle
+        content.body = NotificationConstant.checkINBody
+        content.categoryIdentifier = NotificationConstant.checkInCatogories
+        content.sound = UNNotificationSound.default()
+        
+        // imidately fire notification on arrival
+        let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 1, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request) { (error:Error?) in
+            
+            if error != nil {
+                print(error?.localizedDescription)
+            }
+        }
+    }
+    
+    func registerCheckInNotification(restaurant: CheckInRestaurant) {
+        var userInfo: [AnyHashable: Any] = [:]
+        userInfo = [NotificationConstant.checkINRestaurantID : createRestaurantDictionary(restaurant: restaurant)]
+        let category = UNNotificationCategory(identifier: NotificationConstant.checkInCatogories, actions: [], intentIdentifiers: [], options: [])
+        UNUserNotificationCenter.current().setNotificationCategories([category])
+        SnapXNotificataionHelper.shared.scheduleCheckInNotification(userInfo: userInfo)
+    }
+    
+    func createRestaurantDictionary(restaurant: CheckInRestaurant) -> [String: Any] {
+        let restaurant: [String: Any] = [NSCoderKeys.restaurantId: restaurant.restaurantId ?? "",
+                                         NSCoderKeys.name: restaurant.name ?? "",
+                                         NSCoderKeys.latitude: restaurant.latitude ?? 0.0,
+                                         NSCoderKeys.longitude: restaurant.longitude ?? 0.0,
+                                         NSCoderKeys.price: restaurant.price ?? 0,
+                                         NSCoderKeys.type: restaurant.type ?? "",
+                                         NSCoderKeys.logoImage: restaurant.logoImage ?? ""]
+        return restaurant
+    }
+    
+    func createRestaurantData(userInfo: [AnyHashable: Any]) -> CheckInRestaurant? {
+        if let restaurant: [String: Any] = userInfo[NotificationConstant.checkINRestaurantID] as? [String: Any] {
+            let checkINrestaurant =  CheckInRestaurant()
+            checkINrestaurant.restaurantId = restaurant[NSCoderKeys.restaurantId] as? String
+            checkINrestaurant.name = restaurant[NSCoderKeys.name] as? String
+            checkINrestaurant.latitude = restaurant[NSCoderKeys.latitude] as? Double
+            checkINrestaurant.longitude = restaurant[NSCoderKeys.longitude] as? Double
+            checkINrestaurant.price = restaurant[NSCoderKeys.price] as? Int
+            checkINrestaurant.type = restaurant[NSCoderKeys.type] as? String
+            checkINrestaurant.logoImage = restaurant[NSCoderKeys.logoImage] as? String
+            return checkINrestaurant
+        }
+        return nil
+    }
+    
+    func removePendingNotification(requestIdentifier: String) {
+        UNUserNotificationCenter.current().getPendingNotificationRequests { (notificationRequests) in
+            var identifiers: [String] = []
+            for notification:UNNotificationRequest in notificationRequests {
+                if notification.identifier == requestIdentifier {
+                    identifiers.append(notification.identifier)
+                }
+            }
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
+        }
+    }
+    
+    func removeDeliveredNotification(requestIdentifier: String) {
+        UNUserNotificationCenter.current().getDeliveredNotifications { (notificationRequests) in
+            var identifiers: [String] = []
+            for notification:UNNotification in notificationRequests {
+                if notification.request.identifier == requestIdentifier {
+                    identifiers.append(notification.request.identifier)
+                }
+            }
+            UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: identifiers)
+        }
+    }
+    
 }

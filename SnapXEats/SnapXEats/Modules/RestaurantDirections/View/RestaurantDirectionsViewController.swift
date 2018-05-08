@@ -16,7 +16,7 @@ class CurrentLocationAnnotation: MKPointAnnotation {
 }
 
 class RestaurantDirectionsViewController: BaseViewController, StoryboardLoadable {
-
+    
     private enum locationTitleInsets{
         static let left: CGFloat = 15.0
         static let top: CGFloat = 5.0
@@ -84,6 +84,22 @@ class RestaurantDirectionsViewController: BaseViewController, StoryboardLoadable
             pricingLabel.text = "\(PricingPreference(rawValue: price)?.displayText() ?? "")"
         }
         
+        if let id = restaurantDetails.id, let lat =  restaurantDetails.latitude, let long = restaurantDetails.longitude,
+            let name = restaurantDetails.name, let price = restaurantDetails.price {
+            let checkINRestaurant = CheckInRestaurant()
+            checkINRestaurant.restaurantId = id
+            checkINRestaurant.name = name
+            checkINRestaurant.latitude = lat
+            checkINRestaurant.longitude = long
+            checkINRestaurant.price = price
+            checkINRestaurant.type = restaurantDetails.restaurant_type
+            checkINRestaurant.logoImage = restaurantDetails.photos[0].imageURL ?? ""
+            CheckInHelper.shared.checkInRestaurant = checkINRestaurant
+        }
+        
+        // Below 2 line Code will enable SNAP-110 its under testing
+       // BackgroundLocationHelper.shared.reset()
+       // BackgroundLocationHelper.shared.start()
         setupMapViewWithDirections()
     }
     
@@ -217,7 +233,7 @@ extension RestaurantDirectionsViewController: MKMapViewDelegate {
         let status = CLLocationManager.authorizationStatus()
         let locationStatusRestricted = (status  == .denied ||  status  == .restricted)
         let locationServicesEnabled = CLLocationManager.locationServicesEnabled()
-
+        
         if (locationServicesEnabled == false || locationStatusRestricted) {
             showNavigationFailureAlert()
         } else {
