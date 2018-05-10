@@ -184,6 +184,7 @@
 		9D4E07F12091C74B001A9DC1 /* LocationStoreHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4E07F02091C74B001A9DC1 /* LocationStoreHelper.swift */; };
 		9D4E07F42091C784001A9DC1 /* LocationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4E07F32091C784001A9DC1 /* LocationStore.swift */; };
 		9D4E07F62091CAE6001A9DC1 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4E07F52091CAE6001A9DC1 /* LocationModel.swift */; };
+		9D60D9CC2099B256004E83BD /* BackGroundLocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D60D9CB2099B256004E83BD /* BackGroundLocationHelper.swift */; };
 		9D60DDAA20837A6F00678D3A /* FoodJourneyContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D60DDA120837A6E00678D3A /* FoodJourneyContract.swift */; };
 		9D60DDAB20837A6F00678D3A /* FoodJourneyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D60DDA320837A6E00678D3A /* FoodJourneyPresenter.swift */; };
 		9D60DDAC20837A6F00678D3A /* FoodJourneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D60DDA520837A6E00678D3A /* FoodJourneyViewController.swift */; };
@@ -201,6 +202,7 @@
 		9D748B432074B2E2004ED49A /* LoginPopUpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D748B3E2074B2E2004ED49A /* LoginPopUpRouter.swift */; };
 		9D748B472074E9A5004ED49A /* LoginPopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D748B462074E9A5004ED49A /* LoginPopUp.storyboard */; };
 		9D748B492074EBBC004ED49A /* LoginPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D748B482074EBBC004ED49A /* LoginPopUpViewController.swift */; };
+		9D79CD29209B57CA000C214A /* CheckInRestaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D79CD28209B57CA000C214A /* CheckInRestaurant.swift */; };
 		9D8095712015E5200077F84B /* SnapXEatsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8095702015E5200077F84B /* SnapXEatsApi.swift */; };
 		9D8E887D1FFD27F30066A1D9 /* SnapXEatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E887C1FFD27F30066A1D9 /* SnapXEatsTests.swift */; };
 		9D8E88EB1FFD2BEC0066A1D9 /* LoginContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E88C21FFD28C50066A1D9 /* LoginContract.swift */; };
@@ -497,6 +499,7 @@
 		9D4E07F02091C74B001A9DC1 /* LocationStoreHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationStoreHelper.swift; sourceTree = "<group>"; };
 		9D4E07F32091C784001A9DC1 /* LocationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationStore.swift; sourceTree = "<group>"; };
 		9D4E07F52091CAE6001A9DC1 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		9D60D9CB2099B256004E83BD /* BackGroundLocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackGroundLocationHelper.swift; sourceTree = "<group>"; };
 		9D60DDA120837A6E00678D3A /* FoodJourneyContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodJourneyContract.swift; sourceTree = "<group>"; };
 		9D60DDA320837A6E00678D3A /* FoodJourneyPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodJourneyPresenter.swift; sourceTree = "<group>"; };
 		9D60DDA520837A6E00678D3A /* FoodJourneyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodJourneyViewController.swift; sourceTree = "<group>"; };
@@ -514,6 +517,7 @@
 		9D748B3E2074B2E2004ED49A /* LoginPopUpRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPopUpRouter.swift; sourceTree = "<group>"; };
 		9D748B462074E9A5004ED49A /* LoginPopUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginPopUp.storyboard; sourceTree = "<group>"; };
 		9D748B482074EBBC004ED49A /* LoginPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPopUpViewController.swift; sourceTree = "<group>"; };
+		9D79CD28209B57CA000C214A /* CheckInRestaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInRestaurant.swift; sourceTree = "<group>"; };
 		9D8095702015E5200077F84B /* SnapXEatsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEatsApi.swift; sourceTree = "<group>"; };
 		9D8E88641FFD27F30066A1D9 /* SnapXEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapXEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8E88781FFD27F30066A1D9 /* SnapXEatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapXEatsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1168,10 +1172,10 @@
 			isa = PBXGroup;
 			children = (
 				7EC5013B20469A2C00D44E92 /* Contract */,
-				7EC5013D20469A2C00D44E92 /* Interactor */,
 				7EC5013F20469A2C00D44E92 /* Presenter */,
-				7EC5014120469A2C00D44E92 /* Router */,
 				7EC5014320469A2C00D44E92 /* View */,
+				7EC5013D20469A2C00D44E92 /* Interactor */,
+				7EC5014120469A2C00D44E92 /* Router */,
 			);
 			path = RestaurantDirections;
 			sourceTree = "<group>";
@@ -1211,8 +1215,8 @@
 		7EC5014320469A2C00D44E92 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7EC5014420469A2C00D44E92 /* RestaurantDirectionsViewController.swift */,
 				7EC5014A20469AE500D44E92 /* RestaurantDirections.storyboard */,
+				7EC5014420469A2C00D44E92 /* RestaurantDirectionsViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1675,6 +1679,15 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		9D79CD27209B5788000C214A /* Restaurant */ = {
+			isa = PBXGroup;
+			children = (
+				9D9868D62023202B003E82F6 /* Restaurant.swift */,
+				9D79CD28209B57CA000C214A /* CheckInRestaurant.swift */,
+			);
+			path = Restaurant;
+			sourceTree = "<group>";
+		};
 		9D8E885B1FFD27F30066A1D9 = {
 			isa = PBXGroup;
 			children = (
@@ -1877,6 +1890,7 @@
 				9DC325ED208F0BE1001DB62A /* SnapXNotificataionHelper.swift */,
 				9D4E07F02091C74B001A9DC1 /* LocationStoreHelper.swift */,
 				9DF0C2D420931FA800358071 /* CheckInHelper.swift */,
+				9D60D9CB2099B256004E83BD /* BackGroundLocationHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -2003,6 +2017,7 @@
 		9D8E88D91FFD28C50066A1D9 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				9D79CD27209B5788000C214A /* Restaurant */,
 				9DDC3AF020358E9600A7F181 /* Login */,
 				9DF0C2D62093201E00358071 /* checkIn */,
 				9D4E07F22091C76A001A9DC1 /* Location */,
@@ -2197,7 +2212,6 @@
 		9D902BC520171AED00359DFD /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
-				9D9868D520232018003E82F6 /* Model */,
 				9D902BC620171AED00359DFD /* FoodCardsInteractor.swift */,
 			);
 			path = Interactor;
@@ -2265,14 +2279,6 @@
 				9D902BE3201729E300359DFD /* SelectLocationRouter.swift */,
 			);
 			path = Router;
-			sourceTree = "<group>";
-		};
-		9D9868D520232018003E82F6 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				9D9868D62023202B003E82F6 /* Restaurant.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		9DAF6F5F205AAA26003001B5 /* InstagramLogin */ = {
@@ -2803,6 +2809,7 @@
 				9D0D713C203AAE1F0077FA7A /* RestaurantDetailsRouter.swift in Sources */,
 				7E393CB820637C7900E51149 /* RewardPointsPopup.swift in Sources */,
 				7EA940862063E9310005B6B9 /* CheckinPopupPresenter.swift in Sources */,
+				9D79CD29209B57CA000C214A /* CheckInRestaurant.swift in Sources */,
 				9D8FB1EF207CB862002E6662 /* SmartPhotoViewController.swift in Sources */,
 				9D8E88EF1FFD2BEC0066A1D9 /* LoginRouter.swift in Sources */,
 				7E539B7420593A01002C3E55 /* SnapNShareHomePresenter.swift in Sources */,
@@ -2981,6 +2988,7 @@
 				9D19404B2081024100B15F1E /* Jukebox.swift in Sources */,
 				9D3FC4DB2011E34D001A4264 /* CuisineCollectionViewCell.swift in Sources */,
 				9D8E89101FFD2BEC0066A1D9 /* ProfileApiDataManager.swift in Sources */,
+				9D60D9CC2099B256004E83BD /* BackGroundLocationHelper.swift in Sources */,
 				9DE7CE552023620500BBBFEC /* UserPreferenceRouter.swift in Sources */,
 				9DB02A702010805F0061FC0C /* LocationViewController.swift in Sources */,
 				9DB7FE0E2004BC9D00D0E816 /* Network.swift in Sources */,

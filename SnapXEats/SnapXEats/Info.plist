@@ -23,7 +23,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.7</string>
+	<string>0.8</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -44,7 +44,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>705</string>
+	<string>801</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -88,9 +88,9 @@
 	<key>NSCameraUsageDescription</key>
 	<string>SnapXEats want to use your Camera to take Snap n Share Photos</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>SnapXEats want to use your location to show cuisine based on your preferences</string>
+	<string>SnapXEats will use your location to notify you to checkin into restaurant once arrived.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Will you allow SnapXEats app to always use your location to show you cuisines based on your  preferences</string>
+	<string>Will you allow SnapXEats app to always use your location to show you cuisines based on your preferences</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>SnapXEats want to use your location to show cuisine based on your preferences</string>
 	<key>NSMicrophoneUsageDescription</key>
@@ -104,6 +104,10 @@
 		<string>Roboto-Medium.ttf</string>
 		<string>Roboto-Bold.ttf</string>
 		<string>Roboto-Italic.ttf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>FlashScreen</string>

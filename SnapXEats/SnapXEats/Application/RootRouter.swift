@@ -12,7 +12,7 @@ import SwiftInstagram
 import UserNotifications
 
 enum Screens {
-    case firsTimeUser, login, instagram(sharedLoginFromSkip: Bool, rootController: UINavigationController?), location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation(parent: UIViewController), userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurantID: String, parentController: UINavigationController, showMoreInfo: Bool), restaurantDirections(details: RestaurantDetails, parentController: UINavigationController), wishlist, restaurantsMapView(restaurants: [Restaurant], parentController: UINavigationController), snapNShareHome(restaurantID: String, displayFromNotification: Bool), snapNSharePhoto(photo: UIImage, iparentController: UINavigationController, restaurantDetails: RestaurantDetails?), snapNShareSocialMedia(smartPhoto_Draft_Stored_id: String?, parentController: UINavigationController), checkin(restaurant: Restaurant?),
+    case firsTimeUser, login, instagram(sharedLoginFromSkip: Bool, rootController: UINavigationController?), location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation(parent: UIViewController), userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurantID: String, parentController: UINavigationController, showMoreInfo: Bool), restaurantDirections(details: RestaurantDetails, parentController: UINavigationController), wishlist, restaurantsMapView(restaurants: [Restaurant], parentController: UINavigationController), snapNShareHome(restaurantID: String, displayFromNotification: Bool), snapNSharePhoto(photo: UIImage, iparentController: UINavigationController, restaurantDetails: RestaurantDetails?), snapNShareSocialMedia(smartPhoto_Draft_Stored_id: String?, parentController: UINavigationController), checkin(restaurant: CheckInRestaurant?),
     sharedSuccess(restaurantID: String), loginPopUp(storedID: String, parentController: UINavigationController, loadFromSmartPhot_Draft: Bool), socialLoginFromLoginPopUp(smartPhoto_Draft_Stored_id: String?, parentController: UINavigationController), smartPhoto(smartPhoto_Draft_Stored_id: String?, dishID: String, type: SmartPhotoType, parentController: UINavigationController?), smartPhotoDraft, foodJourney, snapAndShareFromDraft(smartPhoto_Draft_Stored_id: String?, parentController: UINavigationController), reminderPopUp(rewardsPoint: Int, restaurantID: String?, delegate: CameraMode)
 }
 
@@ -136,10 +136,11 @@ class RootRouter: NSObject {
         presentView(drawerController)
     }
     
-    private func presentCheckinPopupForRestaurant(restaurant: Restaurant?) {
+    private func presentCheckinPopupForRestaurant(restaurant: CheckInRestaurant?) {
         if let window = UIApplication.shared.keyWindow, SnapXEatsNetworkManager.shared.isConnectedToInternet == true {
             let checkinPopup = CheckinPopupRouter.shared.loadCheckinPopupModule()
             checkinPopup.checkinPopupDelegate = RootRouter.shared
+            checkinPopup.restaurant = restaurant
             let popupFrame = CGRect(x: 0, y: 0, width: window.frame.width, height: window.frame.height)
             checkinPopup.setupPopup(frame: popupFrame, restaurant: restaurant)
             window.addSubview(checkinPopup)
@@ -360,14 +361,14 @@ extension RootRouter: SharedSucceesActionsDelegate {
 extension RootRouter: ReminderNotification {
     
     func regiterNotification(restaurantID: String) {
-         SnapXNotificataionHelper.shared.registerReminderNotification(restaurantID: restaurantID)
+        SnapXNotificataionHelper.shared.registerReminderNotification(restaurantID: restaurantID)
     }
     
     func checkNotificationIdentifier(notification: UNNotification, completionHandler: (UNNotificationPresentationOptions) -> Void) {
         //If you don't want to show notification when app is open, do something here else and make a return here.
         //Even you you don't implement this delegate method, you will not see the notification on the specified controller. So, you have to implement this delegate and make sure the below line execute. i.e. completionHandler.
-//        if  notification.request.identifier == NotificationConstant.requestIdentifier {
-//        }
+        //        if  notification.request.identifier == NotificationConstant.requestIdentifier {
+        //        }
         completionHandler([.alert, .badge, .sound])
     }
     
@@ -375,7 +376,7 @@ extension RootRouter: ReminderNotification {
         switch response.actionIdentifier {
         case NotificationConstant.remindLater:
             if let restaurentID = response.notification.request.content.userInfo[SnapXEatsConstant.restaurantID] as? String {
-                 SnapXNotificataionHelper.shared.registerReminderNotification(restaurantID: restaurentID)
+                SnapXNotificataionHelper.shared.registerReminderNotification(restaurantID: restaurentID)
             }
             completionHandler()
         case NotificationConstant.takePhoto:
@@ -390,14 +391,24 @@ extension RootRouter: ReminderNotification {
                     return
                 }else {
                     presentSnapNShare(content: response.notification.request.content)
-                    removeDeliveredNotification()
+                    SnapXNotificataionHelper.shared.removeDeliveredNotification(requestIdentifier: NotificationConstant.requestIdentifier)
                 }
                 
                 completionHandler()
             }
         default:
-            presentSnapNShare(content: response.notification.request.content)
-            removeDeliveredNotification()
+            if response.notification.request.identifier == NotificationConstant.chekINrequestIdentifier {
+                
+                BackgroundLocationHelper.shared.reset()
+                let userinfo = response.notification.request.content.userInfo
+                let checkInrestaurant = SnapXNotificataionHelper.shared.createRestaurantData(userInfo: userinfo)
+                if let restaurant = checkInrestaurant {
+                    presentCheckinPopupForRestaurant(restaurant: restaurant)
+                }
+            } else {
+                presentSnapNShare(content: response.notification.request.content)
+                SnapXNotificataionHelper.shared.removeDeliveredNotification(requestIdentifier: NotificationConstant.requestIdentifier)
+            }
         }
     }
     
@@ -406,29 +417,4 @@ extension RootRouter: ReminderNotification {
             presentScreen(screens: .snapNShareHome(restaurantID: restaurentID, displayFromNotification: true))
         }
     }
-    
-    func removePendingNotification() {
-        UNUserNotificationCenter.current().getPendingNotificationRequests { (notificationRequests) in
-            var identifiers: [String] = []
-            for notification:UNNotificationRequest in notificationRequests {
-                if notification.identifier == NotificationConstant.requestIdentifier {
-                    identifiers.append(notification.identifier)
-                }
-            }
-            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
-        }
-    }
-    
-    func removeDeliveredNotification() {
-        UNUserNotificationCenter.current().getDeliveredNotifications { (notificationRequests) in
-            var identifiers: [String] = []
-            for notification:UNNotification in notificationRequests {
-                if notification.request.identifier == NotificationConstant.requestIdentifier {
-                    identifiers.append(notification.request.identifier)
-                }
-            }
-            UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: identifiers)
-        }
-    }
-    
 }

@@ -412,18 +412,27 @@ enum popupConstants {
 
 enum CheckOutContant {
     static let timeInterval = 7200.0  // 2 hours
+    static let stopMonitoring = 7200.0  // 2 hours
 }
 
 enum NotificationConstant {
+    static let checkINRestaurantID = "CheckINRestaurantID"
     static let remindLater = "RemindLater"
     static let takePhoto = "TakePhoto"
     static let remindTitle = "Remind Later"
     static let photoTitle = "Take Photo"
     static let catogories = "ReminderNotification"
+    static let checkInCatogories = "CheckInNotification"
     
+    static let requestIdentifier = "SnapXEatsNotification"
     static let messageTitle = "SnapXEats Reminder"
     static let messageSubTitle = "Its Time to take some food snap"
     static let messageBody =  "By sharing photos you can earn rewards"
-    static let requestIdentifier = "SnapXEatsNotification"
+    
+    static let chekINrequestIdentifier = "ChekINrequestIdentifier"
+    static let checkInTitle = "CheckIn Reminder"
+    static let checkInSubTitle = "You have arrived "
+    static let checkINBody =  "Your restaurnat is arrived, By CheckIn into it, you can earn reward points."
     static let notificationTimer = 600.0
+    static let snapXEatsTravelStartTime = "SNapXEatsTravelStartTime"
 }

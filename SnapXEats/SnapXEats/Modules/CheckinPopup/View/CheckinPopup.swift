@@ -21,7 +21,7 @@ class CheckinPopup: SnapXEatsView, CheckinPopupView {
     
     weak var checkinPopupDelegate: CheckinPopUpActionsDelegate?
     var presenter: CheckinPopupPresenter?
-    var restaurant: Restaurant?
+    var restaurant: CheckInRestaurant?
     var router: CheckinPopupRouter?
     var restaurantList = [Restaurant]()
     var locationManager = CLLocationManager()
@@ -47,7 +47,7 @@ class CheckinPopup: SnapXEatsView, CheckinPopupView {
         }
         
         // Call Checkin API only if User is Logged in and then Show Reward Points popup else directly go to snapnShare Home page
-        if let id = restaurant.restaurant_info_id {
+        if let id = restaurant.restaurantId, id != SnapXEatsConstant.emptyString {
             self.removeFromSuperview()
             if LoginUserPreferences.shared.isLoggedIn {
                 showLoading()
@@ -65,15 +65,20 @@ class CheckinPopup: SnapXEatsView, CheckinPopupView {
             self.removeFromSuperview()
             router?.showRewardPointsPopup(parent: self, points: rewardPoints.points)
         } else if let restaurantList = result as? RestaurantsList {
-            
-            self.restaurantList = restaurantList.restaurants
-            nearbyRestaurantsErrorLabel.isHidden = self.restaurantList.count == 0 ? false : true
-            restaurantListTableView.reloadData()
+            if restaurantList.restaurants.count > 1 {
+                self.restaurantList = restaurantList.restaurants
+                showRestaurantList()
+                nearbyRestaurantsErrorLabel.isHidden = self.restaurantList.count == 0 ? false : true
+                restaurantListTableView.reloadData()
+            } else {
+                restaurant =  mapRestaurantAndCheckInRestaurant(restaurnat: restaurantList.restaurants[0])
+                showRestaurantInfo()
+            }
         }
     }
     
     func checkInUser() {
-        if let restaurantID = self.restaurant?.restaurant_info_id {
+        if let restaurantID = self.restaurant?.restaurantId {
             let checkIn = CheckInModel()
             checkIn.userID = userID
             checkIn.restaurantID = restaurantID
@@ -83,7 +88,7 @@ class CheckinPopup: SnapXEatsView, CheckinPopupView {
     }
     
     func checkInNonLoggedInUser() {
-        if let restaurantID = self.restaurant?.restaurant_info_id {
+        if let restaurantID = self.restaurant?.restaurantId {
             let checkIn = CheckInModel()
             checkIn.userID = SnapXNonLoggedInUserConstants.snapX_nonLogedIn_CheckIn
             checkIn.restaurantID = restaurantID
@@ -92,15 +97,16 @@ class CheckinPopup: SnapXEatsView, CheckinPopupView {
         }
     }
     
-    func setupPopup(frame: CGRect, restaurant: Restaurant?) {
+    func setupPopup(frame: CGRect, restaurant: CheckInRestaurant?) {
+        
         self.frame = frame
         self.restaurant = restaurant
         checkinButton.layer.cornerRadius = checkinButton.frame.height/2
         restaurantLogoImageView.layer.cornerRadius = restaurantLogoImageView.frame.height/2
         containerView.layer.cornerRadius = popupConstants.containerRadius
         restaurantListTableView.tableFooterView = UIView()
-        if let restaurant = self.restaurant, let name = restaurant.restaurant_name {
-            restaurantNameLabel.text = name
+        if let restaurant = self.restaurant {
+            restaurantNameLabel.text = restaurant.name
         }
         registerCellForNib()
         checkIfRestaurantIsAvailable()
@@ -112,8 +118,7 @@ class CheckinPopup: SnapXEatsView, CheckinPopupView {
     }
     
     private func checkIfRestaurantIsAvailable() {
-        //TODO:  When user goes to direction page restaurant from UserdishReview needs to be updated which should be used for Check in once user location is detected within certain distance from this restaurant
-        LoginUserPreferences.shared.userDishReview.restaurant == nil ? showRestaurantList() : showRestaurantInfo()
+        restaurant == nil ?  checkLocationStatus() : showRestaurantInfo()
     }
     
     private func showRestaurantList() {
@@ -121,18 +126,19 @@ class CheckinPopup: SnapXEatsView, CheckinPopupView {
         restaurantListView.isHidden = false
         checkinButton.isEnabled = false
         checkinButton.alpha = 0.5
-        checkLocationStatus()
+        
     }
     
     private func showRestaurantInfo() {
         restaurantInfoView.isHidden = false
         restaurantListView.isHidden = true
         
-        if let restaurant = LoginUserPreferences.shared.userDishReview.restaurant {
-            restaurantNameLabel.text = restaurant.restaurant_name ?? ""
+        if let restaurant = restaurant {
+            restaurantNameLabel.text = restaurant.name ?? ""
             restaurantTypeLabel.text = restaurant.type ?? ""
             if let url = URL(string: restaurant.logoImage ?? "") {
                 let placeholderImage = UIImage(named: SnapXEatsImageNames.restaurant_logo)!
+                restaurantLogoImageView.maskCircle(anyImage: placeholderImage)
                 restaurantLogoImageView.af_setImage(withURL: url, placeholderImage: placeholderImage)
             }
         }
@@ -156,8 +162,8 @@ class CheckinPopup: SnapXEatsView, CheckinPopupView {
 
 extension CheckinPopup: RewardPopupActionsDelegate {
     func popupDidDismiss(_ popup: RewardPointsPopup) {
-        if let restaurantID = self.restaurant?.restaurant_info_id {
-           checkinPopupDelegate?.userDidChekintoRestaurant(restaurantID: restaurantID)
+        if let restaurantID = self.restaurant?.restaurantId {
+            checkinPopupDelegate?.userDidChekintoRestaurant(restaurantID: restaurantID)
         }
     }
 }
@@ -176,7 +182,22 @@ extension CheckinPopup: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         checkinButton.isEnabled = true
         checkinButton.alpha = 1.0
-        self.restaurant = restaurantList[indexPath.row]
+        self.restaurant = mapRestaurantAndCheckInRestaurant(restaurnat: restaurantList[indexPath.row])
+    }
+    
+    func mapRestaurantAndCheckInRestaurant(restaurnat: Restaurant) -> CheckInRestaurant? {
+        if let id = restaurnat.restaurant_info_id {
+            let checkINRestaurant = CheckInRestaurant()
+            checkINRestaurant.restaurantId = id
+            checkINRestaurant.name = restaurnat.restaurant_name
+            checkINRestaurant.latitude = restaurnat.latitude
+            checkINRestaurant.longitude = restaurnat.longitude
+            checkINRestaurant.price = restaurnat.price
+            checkINRestaurant.type = restaurnat.type
+            checkINRestaurant.logoImage = restaurnat.logoImage
+            return checkINRestaurant
+        }
+        return nil
     }
 }
 
@@ -194,7 +215,7 @@ extension CheckinPopup: CLLocationManagerDelegate {
                 locationManager.startUpdatingLocation()
             }
         case .denied: print("....... Location not enabled .......")
-            //showSettingDialog()
+        //showSettingDialog()
         case  .notDetermined:
             locationManager.requestWhenInUseAuthorization()
         default: break

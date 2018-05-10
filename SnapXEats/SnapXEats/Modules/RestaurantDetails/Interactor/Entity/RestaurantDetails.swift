@@ -41,7 +41,7 @@ class RestaurantDetails: Mappable {
     var specialities = [RestaurantSpeciality]()
     var timings = [RestaurantTiming]()
     var restaurant_amenities = [String]()
-    
+    var restaurant_type: String?
     required init?(map: Map) {
     }
     
@@ -61,6 +61,7 @@ class RestaurantDetails: Mappable {
         latitude      <- map["location_lat"]
         longitude      <- map["location_long"]
         restaurant_amenities  <- map["restaurant_amenities"]
+        restaurant_type <- map["restaurant_type"]
     }
     
     func timingDisplayText() -> String {

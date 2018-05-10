@@ -11,6 +11,8 @@ import Foundation
 class CheckInHelper {
     
     static let shared = CheckInHelper()
+    var checkInRestaurant: CheckInRestaurant?
+    
     var userID : String {
         return  LoginUserPreferences.shared.isLoggedIn
                 ? LoginUserPreferences.shared.loginUserID
@@ -31,7 +33,7 @@ class CheckInHelper {
             CheckInStore.updateCheckInID(loginID: userID, predicate: predicate)
         }
     }
-    
+
     func checkInUser(checkIn: CheckInModel) {
         if let userID = checkIn.userID {
             let predicate  =  NSPredicate(format: "userID == %@", userID)
