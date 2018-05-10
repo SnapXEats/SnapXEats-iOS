@@ -97,9 +97,9 @@ class RestaurantDirectionsViewController: BaseViewController, StoryboardLoadable
             CheckInHelper.shared.checkInRestaurant = checkINRestaurant
         }
         
-        // Below 2 line Code will enable SNAP-110 its under testing
-       // BackgroundLocationHelper.shared.reset()
-       // BackgroundLocationHelper.shared.start()
+        // Below 2 line Code will enable SNAP-110  
+        BackgroundLocationHelper.shared.reset()
+        BackgroundLocationHelper.shared.start()
         setupMapViewWithDirections()
     }
     

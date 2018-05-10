@@ -412,6 +412,7 @@ enum popupConstants {
 
 enum CheckOutContant {
     static let timeInterval = 7200.0  // 2 hours
+    static let stopMonitoring = 7200.0  // 2 hours
 }
 
 enum NotificationConstant {
@@ -433,4 +434,5 @@ enum NotificationConstant {
     static let checkInSubTitle = "You have arrived "
     static let checkINBody =  "Your restaurnat is arrived, By CheckIn into it, you can earn reward points."
     static let notificationTimer = 600.0
+    static let snapXEatsTravelStartTime = "SNapXEatsTravelStartTime"
 }
