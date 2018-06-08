@@ -319,6 +319,7 @@ enum AlertMessage {
     static let draftMessage = "The photo has been saved in drafts and you can share it, once you login."
     static let reviewMessage = "Do you want to discard your review? You can earn rewards by sharing them."
     static let checkInMessage = "You need to checkIn again."
+    static let loginSuccessMessage = "Congratulations, your signin was successful"
 }
 
 enum AlertTitle {
@@ -333,6 +334,7 @@ enum AlertTitle {
     static let draftTitle = "Draft"
     static let reviewTitle = "Review Error"
     static let checkInTitle = "CheckIn Error"
+    static let loginSuccess = "Login Success"
 }
 
 enum PreferecneConstant {

@@ -251,6 +251,14 @@ class RootRouter: NSObject {
         window?.rootViewController?.view.addSubview(reminderview)
     }
     
+    func presentSuccessDialog() {
+        if let controller =  window?.rootViewController {
+            let okAction = UIAlertAction(title: SnapXButtonTitle.ok, style: .default, handler: { [weak self] action in
+                self?.presentFirstTimeUserScreen()
+            })
+        UIAlertController.presentAlertInViewController(controller, title: AlertTitle.loginSuccess, message: AlertMessage.loginSuccessMessage, actions: [okAction], completion: nil)
+        }
+    }
     
     func presentScreen(screens: Screens) {
         
@@ -260,7 +268,7 @@ class RootRouter: NSObject {
         
         switch screens {
         case .firsTimeUser:
-            presentFirstTimeUserScreen()
+                presentSuccessDialog()
         case .firstScreen:
             presentFirstScreen()
         case .login:
