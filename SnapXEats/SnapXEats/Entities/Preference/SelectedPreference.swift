@@ -143,8 +143,8 @@ class SelectedPreference {
     var selectedCuisine = [String]()
     var loginUserPreference = LoginUserPreferences.shared
     func getLatitude() -> (Decimal, Decimal) {
-        let lat  =  40.7179//40.4862157
-        let long = -73.9901//-74.4518188
+        let lat  =  location.latitude // 40.7179//40.4862157
+        let long =  location.longitude // -73.9901//-74.4518188
         return (NSDecimalNumber(floatLiteral: lat).decimalValue, NSDecimalNumber(floatLiteral: long).decimalValue)
     }
 
