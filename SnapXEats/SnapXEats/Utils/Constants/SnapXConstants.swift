@@ -320,6 +320,7 @@ enum AlertMessage {
     static let reviewMessage = "Do you want to discard your review? You can earn rewards by sharing them."
     static let checkInMessage = "You need to checkIn again."
     static let loginSuccessMessage = "Congratulations, your signin was successful"
+    static let shareReviewMessage = "Do you want to add and share your review ?"
 }
 
 enum AlertTitle {
@@ -335,6 +336,7 @@ enum AlertTitle {
     static let reviewTitle = "Review Error"
     static let checkInTitle = "CheckIn Error"
     static let loginSuccess = "Login Success"
+    static let snapNShare = "Snap N Share"
 }
 
 enum PreferecneConstant {

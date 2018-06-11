@@ -122,9 +122,19 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
     
     func continueSharingUserReview() {
         if checkRechability() {
-            setReviewData()
-            gotoSnapNShareSocialMediaView()
+            showShareDiscardDialog()
         }
+    }
+    
+    
+    func showShareDiscardDialog() {
+            let cancel = UIAlertAction(title: SnapXButtonTitle.cancel, style: .default, handler: nil)
+        let continueTitle = UIAlertAction(title: SnapXButtonTitle.continueNext, style: .default, handler: { [weak self] action in
+            self?.setReviewData()
+            self?.gotoSnapNShareSocialMediaView()
+        })
+            UIAlertController.presentAlertInViewController(self, title: AlertTitle.snapNShare, message: AlertMessage.shareReviewMessage, actions: [cancel, continueTitle], completion: nil)
+
     }
     
     private func enableBackButtonAction() {
