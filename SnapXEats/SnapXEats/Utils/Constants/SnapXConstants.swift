@@ -215,6 +215,7 @@ enum SnapXEatsNibNames {
     static let restaurantInfoDownload = "RestaurantInfoDownload"
     static let reminderPopUp = "ReminderPopUp"
     static let restaurantInfoDownloadSuccess = "RestaurantInfoDownloadSuccess"
+    static let noNearByRestaurantPopup = "NoNearByRestaurantPopup"
 }
 
 enum SnapXEatsWebServiceParameterKeys {

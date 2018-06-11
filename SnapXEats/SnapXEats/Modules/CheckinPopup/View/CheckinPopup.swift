@@ -70,9 +70,12 @@ class CheckinPopup: SnapXEatsView, CheckinPopupView {
                 showRestaurantList()
                 nearbyRestaurantsErrorLabel.isHidden = self.restaurantList.count == 0 ? false : true
                 restaurantListTableView.reloadData()
-            } else {
+            } else if restaurantList.restaurants.count == 1 {
                 restaurant =  mapRestaurantAndCheckInRestaurant(restaurnat: restaurantList.restaurants[0])
                 showRestaurantInfo()
+            } else {
+                self.removeFromSuperview()
+                router?.showNoRestaurantPopup()
             }
         }
     }
@@ -148,7 +151,7 @@ class CheckinPopup: SnapXEatsView, CheckinPopupView {
         if let currentLocation = self.currentLocation {
             showActivityIndicator()
             // This is used for testing as current location is not from US
-            presenter?.getNearbyRestaurantList(latitude: "40.7014", longitude: "-74.0151")
+            presenter?.getNearbyRestaurantList(latitude: String(currentLocation.coordinate.latitude), longitude: String(currentLocation.coordinate.longitude))
             //presenter?.getNearbyRestaurantList(latitude: String(currentLocation.coordinate.latitude), longitude: String(currentLocation.coordinate.longitude))
         }
     }

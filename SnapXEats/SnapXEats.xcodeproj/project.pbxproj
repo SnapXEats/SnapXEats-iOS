@@ -295,6 +295,8 @@
 		9DC325EE208F0BE1001DB62A /* SnapXNotificataionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC325ED208F0BE1001DB62A /* SnapXNotificataionHelper.swift */; };
 		9DCBE184201EF6F80030A0F9 /* SnapXEatsNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCBE183201EF6F80030A0F9 /* SnapXEatsNetworkManager.swift */; };
 		9DDC3AEC2035553600A7F181 /* SnapXEatsLoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDC3AEB2035553600A7F181 /* SnapXEatsLoginHelper.swift */; };
+		9DE0F5B520CEA232004C5D06 /* NoNearByRestaurantPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE0F5B320CEA231004C5D06 /* NoNearByRestaurantPopup.swift */; };
+		9DE0F5B620CEA232004C5D06 /* NoNearByRestaurantPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DE0F5B420CEA232004C5D06 /* NoNearByRestaurantPopup.xib */; };
 		9DE7CE512023620500BBBFEC /* UserPreferenceContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE7CE482023620500BBBFEC /* UserPreferenceContract.swift */; };
 		9DE7CE522023620500BBBFEC /* UserPreferencePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE7CE4A2023620500BBBFEC /* UserPreferencePresenter.swift */; };
 		9DE7CE532023620500BBBFEC /* UserPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE7CE4C2023620500BBBFEC /* UserPreferenceViewController.swift */; };
@@ -622,6 +624,8 @@
 		9DC325ED208F0BE1001DB62A /* SnapXNotificataionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXNotificataionHelper.swift; sourceTree = "<group>"; };
 		9DCBE183201EF6F80030A0F9 /* SnapXEatsNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEatsNetworkManager.swift; sourceTree = "<group>"; };
 		9DDC3AEB2035553600A7F181 /* SnapXEatsLoginHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEatsLoginHelper.swift; sourceTree = "<group>"; };
+		9DE0F5B320CEA231004C5D06 /* NoNearByRestaurantPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoNearByRestaurantPopup.swift; path = SnapXEats/Modules/CheckinPopup/View/NoNearByRestaurantPopup.swift; sourceTree = SOURCE_ROOT; };
+		9DE0F5B420CEA232004C5D06 /* NoNearByRestaurantPopup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoNearByRestaurantPopup.xib; path = SnapXEats/Modules/CheckinPopup/View/NoNearByRestaurantPopup.xib; sourceTree = SOURCE_ROOT; };
 		9DE7CE482023620500BBBFEC /* UserPreferenceContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferenceContract.swift; sourceTree = "<group>"; };
 		9DE7CE4A2023620500BBBFEC /* UserPreferencePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferencePresenter.swift; sourceTree = "<group>"; };
 		9DE7CE4C2023620500BBBFEC /* UserPreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferenceViewController.swift; sourceTree = "<group>"; };
@@ -1083,6 +1087,8 @@
 		7E7AC906206B660E00CA4FEF /* TableviewCells */ = {
 			isa = PBXGroup;
 			children = (
+				9DE0F5B320CEA231004C5D06 /* NoNearByRestaurantPopup.swift */,
+				9DE0F5B420CEA232004C5D06 /* NoNearByRestaurantPopup.xib */,
 				7E7AC907206B663700CA4FEF /* RestaurantListTableViewCell.swift */,
 				7E7AC908206B663700CA4FEF /* RestaurantListTableViewCell.xib */,
 			);
@@ -2626,6 +2632,7 @@
 				99706122208F01E4003A0C82 /* RestaurantDetailsActionButtonView.xib in Resources */,
 				7E539BB0205A5268002C3E55 /* SnapNSharePhoto.storyboard in Resources */,
 				7E8B850D20624E4300F802B3 /* CheckinPopup.xib in Resources */,
+				9DE0F5B620CEA232004C5D06 /* NoNearByRestaurantPopup.xib in Resources */,
 				9D902BEC201736B500359DFD /* FoodCards.storyboard in Resources */,
 				7E5E7FDA203AF7EE00009A56 /* ic_cross_white@2x.png in Resources */,
 				9D8FB201207CCB39002E6662 /* SmartPhotoTextReview.xib in Resources */,
@@ -2973,6 +2980,7 @@
 				7E491D24204E920E004445E2 /* RestaurantsMapViewRouter.swift in Sources */,
 				9DAF6F6D205AAA26003001B5 /* InstagramLoginInteractor.swift in Sources */,
 				9D8E890A1FFD2BEC0066A1D9 /* SimpleCircle.swift in Sources */,
+				9DE0F5B520CEA232004C5D06 /* NoNearByRestaurantPopup.swift in Sources */,
 				7E389709205FCBA6005E248F /* FileManager.swift in Sources */,
 				9D1940452080E3B900B15F1E /* SmartPhotoDownloadSuccess.swift in Sources */,
 				7E5E7FE1203AF7EE00009A56 /* UIImage+AspectFit.swift in Sources */,

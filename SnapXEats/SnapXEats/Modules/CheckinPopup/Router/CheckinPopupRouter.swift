@@ -48,6 +48,16 @@ class CheckinPopupRouter {
             window.addSubview(rewardPointsPopup)
         }
     }
+    
+    func showNoRestaurantPopup() {
+        if let window = UIApplication.shared.keyWindow {
+            let noRestaurantPopup = UINib(nibName:SnapXEatsNibNames.noNearByRestaurantPopup, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! NoNearByRestaurantPopup
+            //rewardPointsPopup.rewardsPopupDelegate = parent
+            let popupFrame = CGRect(x: 0, y: 0, width: window.frame.width, height: window.frame.height)
+            noRestaurantPopup.setupPopup(popupFrame)
+            window.addSubview(noRestaurantPopup)
+        }
+    }
 }
 
 extension CheckinPopupRouter: CheckinPopupWireframe {
