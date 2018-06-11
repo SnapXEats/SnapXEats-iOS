@@ -48,8 +48,8 @@ class UserLogin: Object {
     static func updateExpireDate(currentDate: Date, newDate: Date) {
         // Get the default Realm
         let realm = try! Realm()
-        // let predicate  =  NSPredicate(format: "expireDate == %@", currentDate as CVarArg)
-        let result: Results<UserLogin> = realm.objects(UserLogin.self).filter("expireDate == '\(currentDate)'")
+      //  let result: Results<UserLogin> = realm.objects(UserLogin.self).filter("expireDate == '\(currentDate)'")
+        let result: Results<UserLogin> = realm.objects(UserLogin.self)
         if let userLogin = result.first {
             try! realm.write {
                 userLogin.expireDate = newDate

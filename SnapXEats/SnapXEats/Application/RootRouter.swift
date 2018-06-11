@@ -62,8 +62,8 @@ class RootRouter: NSObject {
             : presentScreen(screens: .location)
     }
     
-    private func instagramLoggedIn () -> Bool{
-        return UserDefaults.standard.bool(forKey: InstagramConstant.INSTAGRAM_LOGGEDIN)
+    private func instagramLoggedIn () -> Bool {
+        return SnapXEatsLoginHelper.shared.instagramHelper()
     }
     
     private func faceBookLoggedIn () -> Bool {

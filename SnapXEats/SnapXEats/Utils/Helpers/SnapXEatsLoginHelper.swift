@@ -150,10 +150,18 @@ class SnapXEatsLoginHelper {
         return UserLogin.getUserProfile(id: id)
     }
     
+    func instagramHelper() -> Bool {
+        var loggedIn = false
+        if isLoggedUsingInstagram() == true, let _ =  getloginInfo() {
+            loggedIn = true
+        }
+        return loggedIn
+    }
+    
     func fbHelper() -> Bool {
         var fbLoggedIn = false
-        if let fbLoginInfo  =  getloginInfo() {
-            if Date() > fbLoginInfo.expireDate {
+        if isLoggedUsingFB() == true, let fbLoginInfo  =  getloginInfo() {
+            if Date().timeIntervalSince1970 > fbLoginInfo.expireDate.timeIntervalSince1970 {
                 AccessToken.refreshCurrentToken({ (accessToken, error) in
                     if error == nil {
                         UserLogin.updateExpireDate(currentDate: fbLoginInfo.expireDate, newDate: accessToken?.expirationDate ?? Date())
