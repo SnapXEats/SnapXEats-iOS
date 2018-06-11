@@ -41,7 +41,11 @@ class RootRouter: NSObject {
     }
     
     private func presentFirstTimeUserScreen() {
-        showFirstScreen()
+        if faceBookLoggedIn() || instagramLoggedIn() {
+            presentSuccessDialog()
+        } else {
+            showFirstScreen()
+        }
     }
     
     private func userLoggedIn() {
@@ -254,7 +258,7 @@ class RootRouter: NSObject {
     func presentSuccessDialog() {
         if let controller =  window?.rootViewController {
             let okAction = UIAlertAction(title: SnapXButtonTitle.ok, style: .default, handler: { [weak self] action in
-                self?.presentFirstTimeUserScreen()
+                self?.showFirstScreen()
             })
         UIAlertController.presentAlertInViewController(controller, title: AlertTitle.loginSuccess, message: AlertMessage.loginSuccessMessage, actions: [okAction], completion: nil)
         }
@@ -268,7 +272,7 @@ class RootRouter: NSObject {
         
         switch screens {
         case .firsTimeUser:
-                presentSuccessDialog()
+                presentFirstTimeUserScreen()
         case .firstScreen:
             presentFirstScreen()
         case .login:
