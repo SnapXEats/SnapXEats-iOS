@@ -29,40 +29,26 @@
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kN3-ts-JZ8">
-                    <rect key="frame" x="39" y="107.5" width="242" height="353"/>
+                    <rect key="frame" x="39" y="108" width="242" height="353"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_food_card_popup_icon" translatesAutoresizingMaskIntoConstraints="NO" id="5iL-aG-C2v">
-                            <rect key="frame" x="79" y="45" width="83" height="55"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="No resto" translatesAutoresizingMaskIntoConstraints="NO" id="5iL-aG-C2v">
+                            <rect key="frame" x="80" y="54" width="83" height="90"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="83" id="Z67-Ww-bwz"/>
-                                <constraint firstAttribute="height" constant="55" id="vZf-Hd-7vq"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Whoops!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ogb-Ys-R7m">
-                            <rect key="frame" x="20" y="137" width="202" height="20"/>
+                            <rect key="frame" x="92" y="160" width="59.5" height="20"/>
                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
                             <color key="textColor" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There is no " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UiQ-HD-q9D">
-                            <rect key="frame" x="26" y="161" width="202" height="14.5"/>
-                            <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="12"/>
-                            <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="restaurant near by you" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pul-QF-XUo">
-                            <rect key="frame" x="30" y="178.5" width="202" height="16"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="12"/>
-                            <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTj-pL-efW">
-                            <rect key="frame" x="35.5" y="219.5" width="171" height="43"/>
+                            <rect key="frame" x="56" y="239" width="131" height="43"/>
                             <color key="backgroundColor" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="43" id="6pf-Ir-7fd"/>
-                                <constraint firstAttribute="width" constant="171" id="YSl-A8-0wT"/>
+                                <constraint firstAttribute="height" constant="43" id="2G4-V0-9ft"/>
+                                <constraint firstAttribute="width" constant="131" id="YSl-A8-0wT"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="13"/>
                             <state key="normal" title="OKAY">
@@ -75,30 +61,42 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="Ogb-Ys-R7m" firstAttribute="leading" secondItem="kN3-ts-JZ8" secondAttribute="leading" constant="20" id="0Tg-fw-3Yw"/>
-                        <constraint firstItem="UiQ-HD-q9D" firstAttribute="leading" secondItem="kN3-ts-JZ8" secondAttribute="leading" constant="26" id="9B9-To-hIZ"/>
+                        <constraint firstItem="Ogb-Ys-R7m" firstAttribute="top" secondItem="5iL-aG-C2v" secondAttribute="bottom" constant="16" id="4xN-tY-yiF"/>
                         <constraint firstAttribute="width" constant="242" id="9M4-Tf-HYN"/>
-                        <constraint firstItem="5iL-aG-C2v" firstAttribute="top" secondItem="kN3-ts-JZ8" secondAttribute="top" constant="45" id="CEP-CM-6ey"/>
-                        <constraint firstItem="UiQ-HD-q9D" firstAttribute="top" secondItem="Ogb-Ys-R7m" secondAttribute="bottom" constant="4" id="Lap-xk-pW9"/>
+                        <constraint firstItem="5iL-aG-C2v" firstAttribute="top" secondItem="kN3-ts-JZ8" secondAttribute="top" constant="54" id="CEP-CM-6ey"/>
                         <constraint firstAttribute="height" constant="353" id="LbN-IO-D3W"/>
-                        <constraint firstAttribute="trailing" secondItem="UiQ-HD-q9D" secondAttribute="trailing" constant="14" id="Pjk-CU-sY3"/>
                         <constraint firstItem="qTj-pL-efW" firstAttribute="centerX" secondItem="kN3-ts-JZ8" secondAttribute="centerX" id="UC2-Ji-Xwv"/>
-                        <constraint firstItem="UiQ-HD-q9D" firstAttribute="centerX" secondItem="kN3-ts-JZ8" secondAttribute="centerX" constant="6" id="kAs-n3-Rr4"/>
-                        <constraint firstItem="Ogb-Ys-R7m" firstAttribute="top" secondItem="5iL-aG-C2v" secondAttribute="bottom" constant="37" id="nj1-F7-2qr"/>
+                        <constraint firstItem="Ogb-Ys-R7m" firstAttribute="centerX" secondItem="5iL-aG-C2v" secondAttribute="centerX" id="eRg-Jc-2XK"/>
                         <constraint firstItem="5iL-aG-C2v" firstAttribute="centerX" secondItem="kN3-ts-JZ8" secondAttribute="centerX" id="scF-1v-0vp"/>
-                        <constraint firstAttribute="trailing" secondItem="Ogb-Ys-R7m" secondAttribute="trailing" constant="20" id="x5X-JH-081"/>
-                        <constraint firstItem="qTj-pL-efW" firstAttribute="top" secondItem="UiQ-HD-q9D" secondAttribute="bottom" constant="44" id="xX9-p0-oti"/>
                     </constraints>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="restaurant near by you" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pul-QF-XUo">
+                    <rect key="frame" x="100" y="310.5" width="121" height="14.5"/>
+                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="12"/>
+                    <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="There is no " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UiQ-HD-q9D">
+                    <rect key="frame" x="128.5" y="296" width="63.5" height="14.5"/>
+                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="12"/>
+                    <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="kN3-ts-JZ8" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="H60-dG-bhd"/>
+                <constraint firstItem="pul-QF-XUo" firstAttribute="top" secondItem="UiQ-HD-q9D" secondAttribute="bottom" id="HRq-5V-ew1"/>
                 <constraint firstItem="bp1-aY-S7h" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="NVc-Vx-6eL"/>
+                <constraint firstItem="UiQ-HD-q9D" firstAttribute="centerX" secondItem="Ogb-Ys-R7m" secondAttribute="centerX" id="RvH-PA-f3e"/>
+                <constraint firstItem="UiQ-HD-q9D" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="TJt-sn-6wI"/>
                 <constraint firstItem="kN3-ts-JZ8" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Wdj-pU-90Z"/>
                 <constraint firstItem="bp1-aY-S7h" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="cCi-bl-Ov2"/>
                 <constraint firstItem="bp1-aY-S7h" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fLp-D4-7G4"/>
+                <constraint firstItem="qTj-pL-efW" firstAttribute="top" secondItem="pul-QF-XUo" secondAttribute="bottom" constant="22" id="g7g-49-pJN"/>
+                <constraint firstItem="UiQ-HD-q9D" firstAttribute="top" secondItem="Ogb-Ys-R7m" secondAttribute="bottom" constant="8" id="gUi-fk-sz8"/>
                 <constraint firstItem="bp1-aY-S7h" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="mo6-se-6Ud"/>
+                <constraint firstItem="pul-QF-XUo" firstAttribute="centerX" secondItem="UiQ-HD-q9D" secondAttribute="centerX" id="tzp-zX-jPc"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
@@ -108,6 +106,6 @@
         </view>
     </objects>
     <resources>
-        <image name="no_food_card_popup_icon" width="122" height="55"/>
+        <image name="No resto" width="90" height="90"/>
     </resources>
 </document>
