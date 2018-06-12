@@ -1087,8 +1087,6 @@
 		7E7AC906206B660E00CA4FEF /* TableviewCells */ = {
 			isa = PBXGroup;
 			children = (
-				9DE0F5B320CEA231004C5D06 /* NoNearByRestaurantPopup.swift */,
-				9DE0F5B420CEA232004C5D06 /* NoNearByRestaurantPopup.xib */,
 				7E7AC907206B663700CA4FEF /* RestaurantListTableViewCell.swift */,
 				7E7AC908206B663700CA4FEF /* RestaurantListTableViewCell.xib */,
 			);
@@ -1153,6 +1151,8 @@
 			isa = PBXGroup;
 			children = (
 				7E7AC906206B660E00CA4FEF /* TableviewCells */,
+				9DE0F5B320CEA231004C5D06 /* NoNearByRestaurantPopup.swift */,
+				9DE0F5B420CEA232004C5D06 /* NoNearByRestaurantPopup.xib */,
 				7E393CB720637C7900E51149 /* RewardPointsPopup.xib */,
 				7E393CB620637C7900E51149 /* RewardPointsPopup.swift */,
 				7E8B850C20624E4300F802B3 /* CheckinPopup.xib */,

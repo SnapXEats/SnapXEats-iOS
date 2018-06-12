@@ -152,7 +152,6 @@ class CheckinPopup: SnapXEatsView, CheckinPopupView {
             showActivityIndicator()
             // This is used for testing as current location is not from US
             presenter?.getNearbyRestaurantList(latitude: String(currentLocation.coordinate.latitude), longitude: String(currentLocation.coordinate.longitude))
-            //presenter?.getNearbyRestaurantList(latitude: String(currentLocation.coordinate.latitude), longitude: String(currentLocation.coordinate.longitude))
         }
     }
     
