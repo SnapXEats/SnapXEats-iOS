@@ -58,6 +58,7 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var checkInButton: UIButton!
     
+    @IBOutlet weak var rewardLabel: UILabel!
     @IBAction func checkInAction(_ sender: Any) {
         if isUserCheckedIn == false {
             checkLocationStatus()
@@ -150,6 +151,7 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
             let placeholderImage = UIImage(named: SnapXEatsImageNames.profile_placeholder)!
             userImageView.af_setImage(withURL: url, placeholderImage: placeholderImage)
             userNameLabel.text = loginInfo.name
+            rewardLabel.text = "\(loginInfo.rewardsPoint)"
         }
     }
     private func registerNibsForCells() {

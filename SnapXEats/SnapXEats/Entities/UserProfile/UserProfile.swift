@@ -22,6 +22,7 @@ class UserInfo: Mappable {
     var user_id: String?
     var social_platform: String?
     var first_time_login: Bool = false
+    var userRewardPoint: Int64 = 0
     var wishList = [WishStoredList]()
     
     required init?(map: Map) {
@@ -32,6 +33,7 @@ class UserInfo: Mappable {
         user_id <- map["user_id"]
         social_platform <- map["social_platform"]
         first_time_login <- map["first_time_login"]
+        userRewardPoint <- map["userRewardPoint"]
         wishList <- map["userWishList"]
         
     }

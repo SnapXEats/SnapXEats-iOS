@@ -36,8 +36,9 @@ extension InstagramLoginInteractor {
             case .success(let data):
                 if let userInfo = data as? UserProfile, let serverID = userInfo.userInfo?.user_id, let serverToken = userInfo.userInfo?.token,
                     let firstTimeUser = userInfo.userInfo?.first_time_login {
+                    let rewardsPoint: Int64 = userInfo.userInfo?.userRewardPoint ?? 0
                     SnapXEatsLoginHelper.shared.saveloginInfo(userId: instagramUser.id, firstTimeLogin: firstTimeUser, plateform: SnapXEatsConstant.platFormInstagram)
-                    SnapXEatsLoginHelper.shared.saveInstagramLoginData(serverToken: serverToken, serverID: serverID, instagram: instagramUser)
+                    SnapXEatsLoginHelper.shared.saveInstagramLoginData(rewardsPoints: rewardsPoint, serverToken: serverToken, serverID: serverID, instagram: instagramUser)
                     self?.saveWishList(userInfo: userInfo)
                     self?.sendUserPreferenceRequest(path: SnapXEatsWebServicePath.userPreferene, completionHandler: completionHandler)
                 }

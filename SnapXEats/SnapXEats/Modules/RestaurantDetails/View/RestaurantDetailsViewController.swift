@@ -214,7 +214,8 @@ extension RestaurantDetailsViewController: UIPopoverPresentationControllerDelega
 
 extension RestaurantDetailsViewController: RestaurantDetailsView {
     func initView() {
-        customizeNavigationItem(title: SnapXEatsPageTitles.restaurantDetail, isDetailPage: true)
+        let title = showMoreInfo ? SnapXEatsPageTitles.restaurantInformation : SnapXEatsPageTitles.restaurantDetail
+        customizeNavigationItem(title: title, isDetailPage: true)
         registerCellForNib()
         moreInfoView.isHidden =  (showMoreInfo == true) ? false : true
         slideshowContainer.backgroundColor = UIColor(patternImage: UIImage(named: SnapXEatsImageNames.restaurant_details_placeholder)!)

@@ -61,14 +61,14 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LcS-2d-a4Q" userLabel="Reward POints View">
                                                 <rect key="frame" x="0.0" y="20.5" width="273" height="15.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="riH-Q0-NRY">
-                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="15.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="riH-Q0-NRY" userLabel="RewardsLabel">
+                                                        <rect key="frame" x="0.0" y="0.0" width="7.5" height="15.5"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="13"/>
                                                         <color key="textColor" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reward_points" translatesAutoresizingMaskIntoConstraints="NO" id="bhW-7O-NFZ">
-                                                        <rect key="frame" x="33" y="1" width="16" height="12"/>
+                                                        <rect key="frame" x="10.5" y="1" width="16" height="12"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="16" id="WsH-WI-bgF"/>
                                                             <constraint firstAttribute="height" constant="12" id="o77-rO-Y9z"/>
@@ -199,6 +199,7 @@
                         <outlet property="logoutButton" destination="Eq0-UJ-ZtV" id="pGm-ZN-iHN"/>
                         <outlet property="navigationOptionTable" destination="Afx-AE-9a9" id="3gL-Lv-reB"/>
                         <outlet property="nonLoggedInUserMessageLabel" destination="4kd-lA-NdA" id="Gmo-d3-hCa"/>
+                        <outlet property="rewardLabel" destination="riH-Q0-NRY" id="uMv-RN-qR6"/>
                         <outlet property="userImageView" destination="17w-bE-dMa" id="Y9v-nV-LQ7"/>
                         <outlet property="userInfoView" destination="liz-ok-5Rm" id="OaO-Z3-BpZ"/>
                         <outlet property="userNameLabel" destination="9Oa-s3-Z3q" id="Pvu-yL-cpd"/>

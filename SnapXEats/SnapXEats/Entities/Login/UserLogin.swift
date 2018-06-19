@@ -17,6 +17,7 @@ class UserLogin: Object {
     @objc dynamic var email = SnapXEatsConstant.emptyString
     @objc dynamic var serverUserID = SnapXEatsConstant.emptyString
     @objc dynamic var serverUserToken = SnapXEatsConstant.emptyString
+    @objc dynamic var rewardsPoint: Int64 = 0
     
     @objc dynamic var expireDate = Date()
     @objc dynamic var accessToken = SnapXEatsConstant.emptyString

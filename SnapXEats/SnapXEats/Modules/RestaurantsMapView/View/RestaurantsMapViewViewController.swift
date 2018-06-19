@@ -123,7 +123,9 @@ class RestaurantsMapViewViewController: BaseViewController, StoryboardLoadable {
 
 extension RestaurantsMapViewViewController: RestaurantsMapViewView {
     func initView() {
-        customizeNavigationItem(title: String(format:navigationTitle, LoginUserPreferences.shared.distancePreference), isDetailPage: true)
+        if let distancePreference = presenter?.getUserPreference(userID: LoginUserPreferences.shared.loginUserID) {
+            customizeNavigationItem(title: String(format:navigationTitle, distancePreference.distancePreference), isDetailPage: true)
+        }
     }
 }
 

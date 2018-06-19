@@ -15,13 +15,14 @@ protocol RestaurantsMapViewView: BaseView {
 
 protocol RestaurantsMapViewPresentation: class {
     func gotoRestaurantInfo(selectedRestaurant: String, parent: UINavigationController, showMoreInfo: Bool)
+    func getUserPreference(userID: String) -> SetUserPreference?
 }
 
 protocol RestaurantsMapViewUseCase: class {
-    // TODO: Declare use case methods
+     func getUserPreference(userID: String) -> SetUserPreference?
 }
 
-protocol RestaurantsMapViewInteractorOutput: class {
+protocol RestaurantsMapViewInteractorOutput: Response {
     // TODO: Declare interactor output methods
 }
 
