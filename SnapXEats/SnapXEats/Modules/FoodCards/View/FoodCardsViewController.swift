@@ -108,9 +108,14 @@ class FoodCardsViewController: BaseViewController, StoryboardLoadable {
             FoodCardActionHelper.shared.resetLocalFoodCardActions()
             showLoading()
             presenter?.getFoodCards(selectedPreferences: selectedPrefernce!)
-        } else if let dishInfo = result as?  DishInfo, let restaurants = dishInfo.restaurants, restaurants.count > 0  {
+        } else if let dishInfo = result as?  DishInfo, let restaurants = dishInfo.restaurants {
+            if restaurants.count > 0 {
             self.restaurants = restaurants
-            setFoodCardDetails(restaurants: restaurants)
+                setFoodCardDetails(restaurants: restaurants)
+                
+            } else {
+                showNoFoodCardsPopup()
+            }
         }
         setButtonState()
     }
