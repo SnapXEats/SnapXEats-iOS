@@ -60,7 +60,8 @@ extension LoginPopUpInteractor: LoginPopUpInteractorInPut {
     
     private func saveUserData(accessToken: AccessToken, data: Any?) {
         if let userInfo = data as? UserProfile, let serverID = userInfo.userInfo?.user_id, let serverToken = userInfo.userInfo?.token, let firstTimeUser = userInfo.userInfo?.first_time_login {
-            SnapXEatsLoginHelper.shared.getUserProfileData(serverID: serverID, serverToken: serverToken, accessToken: accessToken) {[weak self] (result) in
+            let rewardsPoint: Int64 = userInfo.userInfo?.userRewardPoint ?? 0
+            SnapXEatsLoginHelper.shared.getUserProfileData(rewardsPoint: rewardsPoint, serverID: serverID, serverToken: serverToken, accessToken: accessToken) {[weak self] (result) in
                 
                 switch result {
                 case .success(_):

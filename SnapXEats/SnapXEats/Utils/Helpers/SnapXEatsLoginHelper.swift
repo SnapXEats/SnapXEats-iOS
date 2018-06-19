@@ -29,7 +29,7 @@ class SnapXEatsLoginHelper {
     static let shared = SnapXEatsLoginHelper()
     private init() {}
     
-    private func saveFBLoginData(serverID: String, serverToken: String, accessToken: AccessToken, response: [String : Any]?) {
+    private func saveFBLoginData(rewardsPoint: Int64, serverID: String, serverToken: String, accessToken: AccessToken, response: [String : Any]?) {
         if let dict = response, let userID =  dict[FBLoginConstant.loginId] as? String,
             let userName = dict[FBLoginConstant.loginName] as? String,
             let email = dict[FBLoginConstant.email] as? String,
@@ -40,6 +40,7 @@ class SnapXEatsLoginHelper {
             fblogin.Id = userID
             fblogin.serverUserID = serverID
             fblogin.serverUserToken = serverToken
+            fblogin.rewardsPoint = rewardsPoint
             fblogin.name = userName
             fblogin.email = email
             fblogin.imageURL = imageURL
@@ -49,12 +50,12 @@ class SnapXEatsLoginHelper {
         }
     }
     
-    func getUserProfileData(serverID: String, serverToken: String, accessToken: AccessToken,  completionHandler: @escaping (_ result: NetworkResult) -> ()) {
+    func getUserProfileData(rewardsPoint: Int64, serverID: String, serverToken: String, accessToken: AccessToken,  completionHandler: @escaping (_ result: NetworkResult) -> ()) {
         let connection = GraphRequestConnection()
         connection.add(GraphRequest(graphPath: "/me" , parameters : ["fields" : "\(FBLoginConstant.email), \(FBLoginConstant.loginId), \(FBLoginConstant.loginName), \(FBLoginConstant.pictureSizeSmall)"])) {[weak self] httpResponse, result in
             switch result {
             case .success(let response):
-                self?.saveFBLoginData(serverID: serverID, serverToken: serverToken, accessToken: accessToken, response: response.dictionaryValue)
+                self?.saveFBLoginData(rewardsPoint: rewardsPoint, serverID: serverID, serverToken: serverToken, accessToken: accessToken, response: response.dictionaryValue)
                 completionHandler(.success(data: accessToken))
                 
             case .failed(_):
@@ -185,12 +186,13 @@ class SnapXEatsLoginHelper {
 }
 
 extension SnapXEatsLoginHelper {
-    func saveInstagramLoginData(serverToken: String, serverID: String, instagram: InstagramUser) {
+    func saveInstagramLoginData(rewardsPoints: Int64, serverToken: String, serverID: String, instagram: InstagramUser) {
         if let accesToken = Instagram.shared.retrieveAccessToken() {
             let login = UserLogin()
             login.Id = instagram.id
             login.serverUserID = serverID
             login.serverUserToken = serverToken
+            login.rewardsPoint = rewardsPoints
             login.name = instagram.fullName
             login.imageURL = instagram.profilePicture.absoluteString
             login.accessToken = accesToken

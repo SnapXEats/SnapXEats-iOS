@@ -320,7 +320,7 @@ enum AlertMessage {
     static let draftMessage = "The photo has been saved in drafts and you can share it, once you login."
     static let reviewMessage = "Do you want to discard your review? You can earn rewards by sharing them."
     static let checkInMessage = "You need to checkIn again."
-    static let loginSuccessMessage = "Congratulations, your signin was successful"
+    static let loginSuccessMessage = "Congratulations, You have successfully logged in !"
     static let shareReviewMessage = "Do you want to add and share your review ?"
 }
 
