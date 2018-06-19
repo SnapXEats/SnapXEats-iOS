@@ -67,6 +67,9 @@
                                 <state key="normal" title="Checked in " image="tickmark_icon">
                                     <color key="titleColor" red="0.36470588235294116" green="0.36470588235294116" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="checkedInLabel:" destination="EWZ-f4-NuP" eventType="touchUpInside" id="flp-eU-ifO"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From The Menu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDY-yx-9Da">
                                 <rect key="frame" x="20" y="307" width="99" height="18.5"/>
@@ -140,6 +143,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="DN1-vt-F81"/>
                     <connections>
+                        <outlet property="checkinTimeLabel" destination="5vo-a8-BZj" id="OTJ-Px-PrF"/>
                         <outlet property="closingTimeLabel" destination="rKs-6G-MeW" id="3oy-XK-8bC"/>
                         <outlet property="restaurantNameLabel" destination="AUD-aF-CT0" id="fKX-np-aQc"/>
                         <outlet property="slideshowContainer" destination="ml8-8H-VhT" id="sTr-Cx-vAP"/>
@@ -148,6 +152,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sb8-DW-PjD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="EWZ-f4-NuP" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="397.5" y="171.12676056338029"/>
         </scene>

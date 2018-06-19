@@ -35,7 +35,7 @@ class SnapNShareHomeViewController: BaseViewController, StoryboardLoadable {
     
     @IBOutlet var restaurantNameLabel: UILabel!
     @IBOutlet var closingTimeLabel: UILabel!
-    @IBOutlet var checkinTimeLabel: UILabel!
+    @IBOutlet weak var checkinTimeLabel: UIButton!
     @IBOutlet var specialityCollectionView: UICollectionView!
     @IBOutlet var slideshowCountLabel: UILabel!
     @IBOutlet var slideshowContainer: UIView!
@@ -80,6 +80,7 @@ class SnapNShareHomeViewController: BaseViewController, StoryboardLoadable {
     override func success(result: Any?) {
         if let result = result as? RestaurantDetailsItem {
             hideLoading()
+             checkinTimeLabel.isHidden = false
             restaurantDetails = result.restaurantDetails
             showRestaurantDetails()
         }
@@ -160,6 +161,7 @@ extension SnapNShareHomeViewController: SnapNShareHomeView {
     func initView() {
         customizeNavigationItem(title: SnapXEatsPageTitles.snapnshare, isDetailPage: false)
         CamerPicker.picker.delegate = self
+        checkinTimeLabel.isHidden = true
         registerCellForNib()       
     }
     
