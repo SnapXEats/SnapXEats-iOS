@@ -163,7 +163,8 @@ enum SnapXEatsPageTitles {
     
     static let cusinePreferences = "Cuisine Preferences"
     static let foodPreferences = "Food Preferences"
-    static let restaurantDetail = "Restaurant Information"
+    static let restaurantDetail = "Restaurant Details"
+    static let restaurantInformation = "Restaurant Information"
     static let directions = "Directions"
 }
 
