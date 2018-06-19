@@ -16,5 +16,7 @@ class RestaurantsMapViewInteractor {
 }
 
 extension RestaurantsMapViewInteractor: RestaurantsMapViewUseCase {
-    // TODO: Implement use case methods
+    func getUserPreference(userID: String) -> SetUserPreference? {
+        return  PreferenceHelper.shared.getUserPrefernce(userID: userID)
+    }
 }

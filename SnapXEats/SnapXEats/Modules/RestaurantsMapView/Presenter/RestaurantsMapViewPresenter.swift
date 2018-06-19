@@ -19,6 +19,10 @@ class RestaurantsMapViewPresenter {
 }
 
 extension RestaurantsMapViewPresenter: RestaurantsMapViewPresentation {
+    func getUserPreference(userID: String) -> SetUserPreference? {
+        return interactor?.getUserPreference(userID: userID)
+    }
+    
     func gotoRestaurantInfo(selectedRestaurant: String, parent: UINavigationController, showMoreInfo: Bool) {
         router?.presentScreen(screen: .restaurantDetails(restaurantID: selectedRestaurant, parentController: parent, showMoreInfo: showMoreInfo))
     }
