@@ -13,7 +13,7 @@ import UserNotifications
 
 enum Screens {
     case firsTimeUser, login, instagram(sharedLoginFromSkip: Bool, rootController: UINavigationController?), location, firstScreen, foodcards(selectPreference: SelectedPreference, parentController: UINavigationController), selectLocation(parent: UIViewController), userPreference, foodAndCusinePreferences(preferenceType: PreferenceType, parentController: UINavigationController), restaurantDetails(restaurantID: String, parentController: UINavigationController, showMoreInfo: Bool), restaurantDirections(details: RestaurantDetails, parentController: UINavigationController), wishlist, restaurantsMapView(restaurants: [Restaurant], parentController: UINavigationController), snapNShareHome(restaurantID: String, displayFromNotification: Bool), snapNSharePhoto(photo: UIImage, iparentController: UINavigationController, restaurantDetails: RestaurantDetails?), snapNShareSocialMedia(smartPhoto_Draft_Stored_id: String?, parentController: UINavigationController), checkin(restaurant: CheckInRestaurant?),
-    sharedSuccess(restaurantID: String), loginPopUp(storedID: String, parentController: UINavigationController, loadFromSmartPhot_Draft: Bool), socialLoginFromLoginPopUp(smartPhoto_Draft_Stored_id: String?, parentController: UINavigationController), smartPhoto(smartPhoto_Draft_Stored_id: String?, dishID: String, type: SmartPhotoType, parentController: UINavigationController?), smartPhotoDraft, foodJourney, snapAndShareFromDraft(smartPhoto_Draft_Stored_id: String?, parentController: UINavigationController), reminderPopUp(rewardsPoint: Int, restaurantID: String?, delegate: CameraMode)
+    sharedSuccess(restaurantID: String), loginPopUp(storedID: String, parentController: UINavigationController, loadFromSmartPhot_Draft: Bool), socialLoginFromLoginPopUp(smartPhoto_Draft_Stored_id: String?, parentController: UINavigationController), smartPhoto(smartPhoto_Draft_Stored_id: String?, dishID: String, type: SmartPhotoType, parentController: UINavigationController?), smartPhotoDraft, foodJourney, snapAndShareFromDraft(smartPhoto_Draft_Stored_id: String?, parentController: UINavigationController), reminderPopUp(rewardsPoint: Int, restaurantID: String?, delegate: CameraMode), privacyPolicy
 }
 
 class RootRouter: NSObject {
@@ -321,7 +321,14 @@ class RootRouter: NSObject {
             presentSocialShareFromDraft(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id, parentController: parentController)
         case .reminderPopUp(let rewardsPoint, let restaurantID, let cameraDelegate):
             showReminderView(rewardPoints: rewardsPoint, restaurantID: restaurantID, delegate: cameraDelegate)
+        case .privacyPolicy:
+            presentPrivacyPolicy()
         }
+    }
+    
+    private func presentPrivacyPolicy() {
+        let policyController = PrivacyRouter.shared.loadPrivacyPolicyModule()
+         window?.rootViewController?.present(policyController, animated: true, completion: nil)
     }
     
     private func presentView(_ viewController: UIViewController) {
