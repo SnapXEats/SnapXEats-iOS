@@ -598,7 +598,7 @@
                                             <constraint firstAttribute="width" constant="46" id="YkG-op-b25"/>
                                             <constraint firstAttribute="height" constant="30" id="oCK-Qu-zH3"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
                                         <state key="normal" title="Reset">
                                             <color key="titleColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
