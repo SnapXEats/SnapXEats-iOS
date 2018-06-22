@@ -47,6 +47,7 @@
                                 <constraint firstAttribute="height" constant="73" id="zUc-L8-ZEx"/>
                             </constraints>
                             <state key="normal" image="play_popup_icon"/>
+                            <state key="selected" image="pause_popup_icon"/>
                             <connections>
                                 <action selector="recordingStartAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="7k7-sc-dFh"/>
                             </connections>
@@ -121,6 +122,7 @@
         </view>
     </objects>
     <resources>
-        <image name="play_popup_icon" width="16" height="18"/>
+        <image name="pause_popup_icon" width="44" height="44"/>
+        <image name="play_popup_icon" width="44" height="44"/>
     </resources>
 </document>
