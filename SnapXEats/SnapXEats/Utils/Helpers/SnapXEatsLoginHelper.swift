@@ -182,7 +182,14 @@ class SnapXEatsLoginHelper {
         UserLogin.deleteStoredLogedInUser()
         SetUserPreference.deleteStoredLogedInUser()
     }
-
+    
+    func updateRewardPoints(rewardPoints: Int64) {
+        UserLogin.updateRewardPoints(rewardPoints: rewardPoints)
+    }
+    
+    func getRewarPoints() -> Int64 {
+       return  UserLogin.getRewardPoints(id: getLoggedInUserID())
+    }
 }
 
 extension SnapXEatsLoginHelper {

@@ -51,8 +51,20 @@ extension LocationInteractor: LocationWebService {
     func getCuisinesRequest(forPath: String, withParameters: [String: Any]) {
         
         SnapXEatsApi.snapXRequestObjectWithParameters(path: forPath, parameters: withParameters) { [weak self](response: DataResponse<CuisinePreference>) in
-            let cuisePrefernceArray = response.result
-            self?.cuisinesDetails(data: cuisePrefernceArray)
+             LoginUserPreferences.shared.isLoggedIn ? self?.checkRewardsPoints(cuisePrefernceArray: response.result)
+                                                    : self?.cuisinesDetails(data: response.result)
+        }
+    }
+    
+    func checkRewardsPoints(cuisePrefernceArray: Result<CuisinePreference>) {
+        SnapXEatsApi.snapXGetRequestJSONWithParameters(path: SnapXEatsWebServicePath.rewardsPoint, parameters: [:]) { [weak self] data in
+            if data.result.isSuccess, let response = data.result.value as? [String: Int64] {
+                let  rewardsPoint = response[SnapXEatsWebServiceParameterKeys.userRewardPoint] ?? 0
+                SnapXEatsLoginHelper.shared.updateRewardPoints(rewardPoints: rewardsPoint)
+                self?.cuisinesDetails(data: cuisePrefernceArray)
+            } else {
+                self?.cuisinesDetails(data: cuisePrefernceArray)
+            }
         }
     }
 }

@@ -92,6 +92,11 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        updateRewardsPoints()
+    }
+    
+    func updateRewardsPoints() {
+        rewardLabel.text = "\(SnapXEatsLoginHelper.shared.getRewarPoints())"
     }
     
     override func viewDidAppear(_ animated: Bool) {

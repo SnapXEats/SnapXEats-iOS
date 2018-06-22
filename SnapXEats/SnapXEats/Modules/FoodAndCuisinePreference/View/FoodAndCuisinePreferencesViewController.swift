@@ -114,6 +114,7 @@ class FoodAndCuisinePreferencesViewController: BaseViewController, StoryboardLoa
             hideLoading()
             loadPrefernceData()
             preferencesCollectionView.reloadData()
+            enableRest()
         }
     }
     @IBAction func resetButtonAction(_: Any) {

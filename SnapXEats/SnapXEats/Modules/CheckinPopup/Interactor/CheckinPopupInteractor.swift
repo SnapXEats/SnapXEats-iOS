@@ -36,8 +36,20 @@ extension CheckinPopupInteractor: CheckinPopupRequestFormatter {
 extension CheckinPopupInteractor: CheckinPopupWebService {
     func checkinIntoRestaurant(forPath: String, withParameters: [String: Any]) {
         SnapXEatsApi.snapXPostRequestObjectWithParameters(path: forPath, parameters: withParameters) { [weak self] (response: DataResponse<RewardPoints>) in
-            let checkinReardPoints = response.result
-            self?.mapCheckinIntoRestaurantResult(data: checkinReardPoints)
+            LoginUserPreferences.shared.isLoggedIn ? self?.checkRewardsPoints(rewardPointsEarned: response.result)
+                                                   : self?.mapCheckinIntoRestaurantResult(data: response.result)
+        }
+    }
+    
+    func checkRewardsPoints(rewardPointsEarned: Result<RewardPoints>) {
+        SnapXEatsApi.snapXGetRequestJSONWithParameters(path: SnapXEatsWebServicePath.rewardsPoint, parameters: [:]) { [weak self] data in
+            if data.result.isSuccess, let response = data.result.value as? [String: Int64] {
+                let  rewardsPoint = response[SnapXEatsWebServiceParameterKeys.userRewardPoint] ?? 0
+                SnapXEatsLoginHelper.shared.updateRewardPoints(rewardPoints: rewardsPoint)
+                self?.mapCheckinIntoRestaurantResult(data: rewardPointsEarned)
+            } else {
+                self?.mapCheckinIntoRestaurantResult(data: rewardPointsEarned)
+            }
         }
     }
     

@@ -57,6 +57,27 @@ class UserLogin: Object {
             }
         }
     }
+    
+    // Expire date is only for FB token
+    static func updateRewardPoints(rewardPoints: Int64) {
+        // Get the default Realm
+        let realm = try! Realm()
+        let result: Results<UserLogin> = realm.objects(UserLogin.self)
+        if let userLogin = result.first {
+            try! realm.write {
+                userLogin.rewardsPoint = rewardPoints
+            }
+        }
+    }
+    
+    static func getRewardPoints(id: String) -> Int64  {
+        // Get the default Realm
+        let realm = try! Realm()
+        let predicate  =  NSPredicate(format: "Id == %@", id)
+        // Query Realm for profile for which id is not empty
+        let result: Results<UserLogin> = realm.objects(UserLogin.self).filter(predicate)
+        return result.first?.rewardsPoint ?? 0
+    }
 
     static func deleteStoredLogedInUser() {
         // Get the default Realm
