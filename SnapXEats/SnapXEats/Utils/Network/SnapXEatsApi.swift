@@ -48,7 +48,6 @@ class SnapXEatsApi {
     static func snapXRequestObjectWithParameters<T: Mappable>(path: String, parameters: [String: Any], completionHandler:  @escaping (DataResponse<T>) -> ()) {
         let url = baseURL + path
         Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: header).responseObject( completionHandler: completionHandler)
-        
     }
     
     static func snapXPostRequestObjectWithParameters<T: Mappable>(path: String, parameters: [String: Any], completionHandler:  @escaping (DataResponse<T>) -> ()) {
@@ -129,6 +128,13 @@ class SnapXEatsApi {
         Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: header).response { (data) in
             completionHandler(data)
         }
+    }
+    
+    static func snapXGetRequestJSONWithParameters(path: String, parameters: [String: Any], completionHandler:  @escaping (DataResponse<Any>) -> ()) {
+        let url = baseURL + path
+        Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: header).responseJSON(completionHandler: { (data) in
+            completionHandler(data)
+        })
     }
     
     static func snapXDelteRequestWithParameters(path: String, parameters: [String: Any], completionHandler:  @escaping (DefaultDataResponse) -> ()) {
