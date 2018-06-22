@@ -156,7 +156,7 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     private func setUserSelectedFoodPrefercne() {
         for (index, cuiseItem) in cuiseItems.enumerated() {
             for cuisine in cuisinePreference {
-                if let id = cuiseItem.itemID , cuisine.itemID == id {
+                if let id = cuiseItem.itemID , cuisine.itemID == id, (cuisine.isLiked || cuisine.isFavourite) {
                     selectedCuisineIndexes.add(index)
                 }
             }

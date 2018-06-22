@@ -59,6 +59,7 @@ enum SnapXEatsStoryboard {
     static let smartPhotoDraft = "SmartPhotoDraft"
     static let foodJourney = "FoodJourney"
     static let drawer = "Drawer"
+    static let privacyPolicy = "PrivacyPolicy"
 }
 
 enum SnapXEatsStoryboardIdentifier {
@@ -79,6 +80,7 @@ enum SnapXEatsStoryboardIdentifier {
     static let draftTableViewControllerID = "DraftTableViewController"
     static let smartPhotoTableViewControllerID = "SmartPhotoTableViewController"
     static let foodJourneyNavigationControllerID = "FoodJourneyNavigationController"
+    static let privacyPolicyNavigationController = "PrivacyPolicyNavigationController"
 }
 
 enum SnapXEatsLocationConstant {
@@ -160,12 +162,12 @@ enum SnapXEatsPageTitles {
     static let smartPhotos = "Smart Photos"
     static let restaurants = "Restaurants"
     static let checkin = "Check-In"
-    
     static let cusinePreferences = "Cuisine Preferences"
     static let foodPreferences = "Food Preferences"
     static let restaurantDetail = "Restaurant Details"
     static let restaurantInformation = "Restaurant Information"
     static let directions = "Directions"
+    static let privacyPolicy = "Privacy Policy"
 }
 
 enum SnapXEatsCellResourceIdentifiler {
@@ -419,6 +421,14 @@ enum popupConstants {
 enum CheckOutContant {
     static let timeInterval = 7200.0  // 2 hours
     static let stopMonitoring = 7200.0  // 2 hours
+}
+
+enum SnapXEatsFile {
+    static let privacyPolicy = "PrivacyPolicySnapXEats"
+}
+
+enum SnapXEatsFiltType {
+    static let html = "html"
 }
 
 enum NotificationConstant {

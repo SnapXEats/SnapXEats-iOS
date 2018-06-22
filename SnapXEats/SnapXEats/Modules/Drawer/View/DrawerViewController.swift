@@ -18,7 +18,6 @@ enum navigateScreen: Int {
     // case rewards  add rewards later by uncomment it and add in option  the order should follow
     case snapnshare
     case smartPhotos
-    case privacyPolicy
     case showLogin
 }
 class DrawerViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
@@ -83,7 +82,7 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func privacyPolicyButtonAction(sender: UIButton) {
-        // Privacy Policy Action
+        presenter?.presentScreen(screen: .privacyPolicy, drawerState: .closed)
     }
     
     override func viewDidLoad() {
@@ -214,8 +213,6 @@ class DrawerViewController: BaseViewController, UITableViewDelegate, UITableView
             }
         case .showLogin:
             presenter?.presentScreen(screen: .login, drawerState: .closed)
-        default:
-            break
         }
     }
 }

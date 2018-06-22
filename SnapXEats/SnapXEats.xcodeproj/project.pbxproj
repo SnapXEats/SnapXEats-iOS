@@ -194,6 +194,8 @@
 		9D60DDB32083892700678D3A /* FoodJourney.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D60DDB22083892700678D3A /* FoodJourney.storyboard */; };
 		9D60DDB52084A86D00678D3A /* SmartPhotoAndDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D60DDB42084A86D00678D3A /* SmartPhotoAndDraft.swift */; };
 		9D60DDB72084B33200678D3A /* SmartPhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D60DDB62084B33200678D3A /* SmartPhotoHelper.swift */; };
+		9D6BFF8A20DBA2210005493D /* PrivacyPolicy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D6BFF8920DBA2210005493D /* PrivacyPolicy.storyboard */; };
+		9D6BFF8C20DBA3D60005493D /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6BFF8B20DBA3D60005493D /* PrivacyPolicyViewController.swift */; };
 		9D748B272073883C004ED49A /* SharedSucceesPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D748B252073883C004ED49A /* SharedSucceesPopup.swift */; };
 		9D748B282073883C004ED49A /* SharedSucceesPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D748B262073883C004ED49A /* SharedSucceesPopup.xib */; };
 		9D748B3F2074B2E2004ED49A /* LoginPopUpContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D748B362074B2E2004ED49A /* LoginPopUpContract.swift */; };
@@ -202,6 +204,8 @@
 		9D748B432074B2E2004ED49A /* LoginPopUpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D748B3E2074B2E2004ED49A /* LoginPopUpRouter.swift */; };
 		9D748B472074E9A5004ED49A /* LoginPopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D748B462074E9A5004ED49A /* LoginPopUp.storyboard */; };
 		9D748B492074EBBC004ED49A /* LoginPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D748B482074EBBC004ED49A /* LoginPopUpViewController.swift */; };
+		9D74D90D20DBAB8A00E0592A /* PrivacyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D74D90C20DBAB8A00E0592A /* PrivacyRouter.swift */; };
+		9D74D91A20DBC07200E0592A /* PrivacyPolicySnapXEats.html in Resources */ = {isa = PBXBuildFile; fileRef = 9D74D91920DBC07200E0592A /* PrivacyPolicySnapXEats.html */; };
 		9D79CD29209B57CA000C214A /* CheckInRestaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D79CD28209B57CA000C214A /* CheckInRestaurant.swift */; };
 		9D8095712015E5200077F84B /* SnapXEatsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8095702015E5200077F84B /* SnapXEatsApi.swift */; };
 		9D8E887D1FFD27F30066A1D9 /* SnapXEatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E887C1FFD27F30066A1D9 /* SnapXEatsTests.swift */; };
@@ -511,6 +515,8 @@
 		9D60DDB22083892700678D3A /* FoodJourney.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FoodJourney.storyboard; sourceTree = "<group>"; };
 		9D60DDB42084A86D00678D3A /* SmartPhotoAndDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartPhotoAndDraft.swift; sourceTree = "<group>"; };
 		9D60DDB62084B33200678D3A /* SmartPhotoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartPhotoHelper.swift; sourceTree = "<group>"; };
+		9D6BFF8920DBA2210005493D /* PrivacyPolicy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PrivacyPolicy.storyboard; sourceTree = "<group>"; };
+		9D6BFF8B20DBA3D60005493D /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
 		9D748B252073883C004ED49A /* SharedSucceesPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedSucceesPopup.swift; sourceTree = "<group>"; };
 		9D748B262073883C004ED49A /* SharedSucceesPopup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SharedSucceesPopup.xib; sourceTree = "<group>"; };
 		9D748B362074B2E2004ED49A /* LoginPopUpContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPopUpContract.swift; sourceTree = "<group>"; };
@@ -519,6 +525,8 @@
 		9D748B3E2074B2E2004ED49A /* LoginPopUpRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPopUpRouter.swift; sourceTree = "<group>"; };
 		9D748B462074E9A5004ED49A /* LoginPopUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginPopUp.storyboard; sourceTree = "<group>"; };
 		9D748B482074EBBC004ED49A /* LoginPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPopUpViewController.swift; sourceTree = "<group>"; };
+		9D74D90C20DBAB8A00E0592A /* PrivacyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyRouter.swift; sourceTree = "<group>"; };
+		9D74D91920DBC07200E0592A /* PrivacyPolicySnapXEats.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = PrivacyPolicySnapXEats.html; sourceTree = "<group>"; };
 		9D79CD28209B57CA000C214A /* CheckInRestaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInRestaurant.swift; sourceTree = "<group>"; };
 		9D8095702015E5200077F84B /* SnapXEatsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapXEatsApi.swift; sourceTree = "<group>"; };
 		9D8E88641FFD27F30066A1D9 /* SnapXEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapXEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1622,6 +1630,24 @@
 			path = FoodJourney;
 			sourceTree = "<group>";
 		};
+		9D6BFF8720DBA0110005493D /* PrivacyPolicy */ = {
+			isa = PBXGroup;
+			children = (
+				9D6BFF8820DBA02E0005493D /* view */,
+				9D74D90B20DBAB7C00E0592A /* Router */,
+			);
+			path = PrivacyPolicy;
+			sourceTree = "<group>";
+		};
+		9D6BFF8820DBA02E0005493D /* view */ = {
+			isa = PBXGroup;
+			children = (
+				9D6BFF8920DBA2210005493D /* PrivacyPolicy.storyboard */,
+				9D6BFF8B20DBA3D60005493D /* PrivacyPolicyViewController.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		9D748B24207387A5004ED49A /* SuccessPopup */ = {
 			isa = PBXGroup;
 			children = (
@@ -1681,6 +1707,22 @@
 			isa = PBXGroup;
 			children = (
 				9D748B3E2074B2E2004ED49A /* LoginPopUpRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		9D74D90820DBA63E00E0592A /* File */ = {
+			isa = PBXGroup;
+			children = (
+				9D74D91920DBC07200E0592A /* PrivacyPolicySnapXEats.html */,
+			);
+			path = File;
+			sourceTree = "<group>";
+		};
+		9D74D90B20DBAB7C00E0592A /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				9D74D90C20DBAB8A00E0592A /* PrivacyRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -1935,6 +1977,7 @@
 				9D8FB1E2207CB861002E6662 /* SmartPhoto */,
 				9D48FF4A2081F0D600A88E70 /* SmartPhotoDraft */,
 				9D60DD9F20837A6E00678D3A /* FoodJourney */,
+				9D6BFF8720DBA0110005493D /* PrivacyPolicy */,
 				9D8E88CD1FFD28C50066A1D9 /* Base */,
 			);
 			path = Modules;
@@ -2075,6 +2118,7 @@
 		9D8E88E41FFD2A6F0066A1D9 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				9D74D90820DBA63E00E0592A /* File */,
 				9D8E88E51FFD2A6F0066A1D9 /* Strings */,
 				9D8E88E91FFD2A6F0066A1D9 /* Images */,
 			);
@@ -2621,6 +2665,7 @@
 				997493FC2084D0F4005016A6 /* RecentFoodJourneyTableViewCell.xib in Resources */,
 				7EDB8ED9204FF3710015F48A /* RestaurantCollectionViewCell.xib in Resources */,
 				7E393CB920637C7900E51149 /* RewardPointsPopup.xib in Resources */,
+				9D74D91A20DBC07200E0592A /* PrivacyPolicySnapXEats.html in Resources */,
 				9D60DDB32083892700678D3A /* FoodJourney.storyboard in Resources */,
 				7E491D27204E9314004445E2 /* RestaurantsMapView.storyboard in Resources */,
 				7E7AC910206CCA5200CA4FEF /* NoFoodCardsPopup.xib in Resources */,
@@ -2661,6 +2706,7 @@
 				9DB7FE1F20061E8C00D0E816 /* BG@3x.png in Resources */,
 				7E539BD4205BA380002C3E55 /* SnapNShareSocialMedia.storyboard in Resources */,
 				9DB7FE132005F96A00D0E816 /* Assets.xcassets in Resources */,
+				9D6BFF8A20DBA2210005493D /* PrivacyPolicy.storyboard in Resources */,
 				9D2A9FED207E4071004484E6 /* SmartPhotoAudio.xib in Resources */,
 				9973C64B2092FBE00064FBAB /* RestaurantInfoDownload.xib in Resources */,
 			);
@@ -2795,6 +2841,7 @@
 				9D8FB1FD207CCB39002E6662 /* SmartPhotoDownload.swift in Sources */,
 				9D48FF582081F0D600A88E70 /* SmartPhotoDraftInteractor.swift in Sources */,
 				9D8E89171FFD2C400066A1D9 /* AppDelegate.swift in Sources */,
+				9D74D90D20DBAB8A00E0592A /* PrivacyRouter.swift in Sources */,
 				9D8E88EB1FFD2BEC0066A1D9 /* LoginContract.swift in Sources */,
 				9D2C484D202073A700FD8B1C /* SelectedPreference.swift in Sources */,
 				9D8095712015E5200077F84B /* SnapXEatsApi.swift in Sources */,
@@ -2959,6 +3006,7 @@
 				9D0D7139203AAE1F0077FA7A /* RestaurantDetailsPresenter.swift in Sources */,
 				9DE7CE522023620500BBBFEC /* UserPreferencePresenter.swift in Sources */,
 				9D8E89041FFD2BEC0066A1D9 /* UIAlertController.swift in Sources */,
+				9D6BFF8C20DBA3D60005493D /* PrivacyPolicyViewController.swift in Sources */,
 				9D48FF572081F0D600A88E70 /* SmartPhotoDraftViewController.swift in Sources */,
 				7E5946972020BD02006702AF /* SearchPlacesTableViewCell.swift in Sources */,
 				7EB5921F2040048600CC6888 /* DrivingDirections.swift in Sources */,
