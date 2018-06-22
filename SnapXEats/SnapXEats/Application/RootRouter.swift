@@ -328,7 +328,9 @@ class RootRouter: NSObject {
     
     private func presentPrivacyPolicy() {
         let policyController = PrivacyRouter.shared.loadPrivacyPolicyModule()
-         window?.rootViewController?.present(policyController, animated: true, completion: nil)
+        // window?.rootViewController?.present(policyController, animated: true, completion: nil)
+        updateDrawerWithMainController(mainVC: policyController)
+        presentView(drawerController)
     }
     
     private func presentView(_ viewController: UIViewController) {

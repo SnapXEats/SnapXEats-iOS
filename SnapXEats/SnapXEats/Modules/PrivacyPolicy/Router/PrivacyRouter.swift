@@ -19,7 +19,12 @@ class PrivacyRouter {
     static let shared = PrivacyRouter()
     // MARK: Static methods
     
-    func loadPrivacyPolicyModule() -> PrivacyPolicyViewController {
-       return UIStoryboard.loadViewController() as PrivacyPolicyViewController
+    func loadPrivacyPolicyModule() -> UINavigationController {
+        let privacyPolicyNC = UIStoryboard.loadNavigationControler(storyBoardName: SnapXEatsStoryboard.privacyPolicy, storyBoardId: SnapXEatsStoryboardIdentifier.privacyPolicyNavigationController)
+        
+        guard let firstViewController = privacyPolicyNC.viewControllers.first, let _ = firstViewController as? PrivacyPolicyViewController else {
+            return UINavigationController()
+        }
+       return privacyPolicyNC
     }
 }

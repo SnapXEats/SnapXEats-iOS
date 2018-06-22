@@ -15,14 +15,11 @@ class PrivacyPolicyViewController: UIViewController, StoryboardLoadable {
     override func viewDidLoad() {
         initView()
     }
-    @IBAction func closeButtonAction(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
     
     private func creatWKWebview() {
         let webConfiguration = WKWebViewConfiguration()
-        privacyWebView = WKWebView(frame: .init(x: self.view.frame.origin.x, y: self.view.frame.origin.y + 55, width: self.view.frame.width, height: self.view.frame.height), configuration: webConfiguration)
-        if let url = Bundle.main.url(forResource: "PrivacyPolicySnapXEats", withExtension: "html"), let webView = privacyWebView {
+        privacyWebView = WKWebView(frame: .init(x: self.view.frame.origin.x, y: self.view.frame.origin.y, width: self.view.frame.width, height: self.view.frame.height), configuration: webConfiguration)
+        if let url = Bundle.main.url(forResource: SnapXEatsFile.privacyPolicy, withExtension: SnapXEatsFiltType.html), let webView = privacyWebView {
             webView.loadFileURL(url, allowingReadAccessTo: url)
             self.view.addSubview(webView)
             self.view.sendSubview(toBack: webView)
@@ -31,6 +28,7 @@ class PrivacyPolicyViewController: UIViewController, StoryboardLoadable {
     }
     
     func initView() {
+        customizeNavigationItem(title: SnapXEatsPageTitles.privacyPolicy, isDetailPage: false)
         creatWKWebview()
     }
 }
