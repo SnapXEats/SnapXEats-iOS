@@ -150,10 +150,9 @@ class CheckinPopup: SnapXEatsView, CheckinPopupView {
     private func getRestaurantList() {
         if let currentLocation = self.currentLocation {
             showActivityIndicator()
-            presenter?.getNearbyRestaurantList(latitude: "40.7014", longitude: "-74.0151")
-
+           // presenter?.getNearbyRestaurantList(latitude: "40.7014", longitude: "-74.0151")
             // This is used for testing as current location is not from US
-//            presenter?.getNearbyRestaurantList(latitude: String(currentLocation.coordinate.latitude), longitude: String(currentLocation.coordinate.longitude))
+            presenter?.getNearbyRestaurantList(latitude: String(currentLocation.coordinate.latitude), longitude: String(currentLocation.coordinate.longitude))
         }
     }
     
