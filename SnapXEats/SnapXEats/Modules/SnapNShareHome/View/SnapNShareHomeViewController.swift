@@ -124,16 +124,17 @@ class SnapNShareHomeViewController: BaseViewController, StoryboardLoadable {
         slideshow.setImageInputs(inputsources)
         slideshow.contentScaleMode = .scaleAspectFit
         slideshow.slideshowInterval = 0
-        slideshow.pageControlPosition = .hidden
+        slideshow.pageControlPosition = .insideScrollView
         slideshow.activityIndicator = DefaultActivityIndicator(style: .whiteLarge, color: .black)
-        
-        //Show details for First item which is by default selected
-        slideshowCountLabel.text = "1/\(inputsources.count)"
-        
-        // Call back of image changed event
-        slideshow.currentPageChanged = { [weak self] (index) in
-            self?.slideshowCountLabel.text = "\(index+1)/\(inputsources.count)"
-        }
+       // slideshow.pageControlPosition = .hidden   //un comment the code to show numbers on slides 
+
+//        //Show details for First item which is by default selected
+//        slideshowCountLabel.text = "1/\(inputsources.count)"
+//
+//        // Call back of image changed event
+//        slideshow.currentPageChanged = { [weak self] (index) in
+//            self?.slideshowCountLabel.text = "\(index+1)/\(inputsources.count)"
+//        }
     }
     
     
