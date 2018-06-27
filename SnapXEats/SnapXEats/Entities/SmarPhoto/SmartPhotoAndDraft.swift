@@ -32,7 +32,8 @@ class SmartPhotoAndDraft: Object {
     static func createDraftData(photo: DraftData, aminities: [String], predicate: NSPredicate) {
         if photo.smartPhoto_Draft_Stored_id != SnapXEatsConstant.emptyString {
             DispatchQueue.global(qos: .background).async {
-                if  let _ = DraftData.getDraftData(predicate: predicate)  {
+                if  let data = DraftData.getDraftData(predicate: predicate)  {
+                    updateDraftData(draftData: data, newData: photo)
                     return
                 }
                 let realm = try! Realm()
@@ -45,6 +46,15 @@ class SmartPhotoAndDraft: Object {
                     realm.add(photo)
                 }
             }
+        }
+    }
+    
+    static func updateDraftData(draftData: DraftData, newData: DraftData) {
+         let realm = try! Realm()
+        try! realm.write {
+            draftData.audioURL = newData.audioURL
+            draftData.textReview = newData.textReview
+            draftData.rating = newData.rating
         }
     }
     

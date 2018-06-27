@@ -43,7 +43,7 @@ func getFilePath(fileName: String, path: String) -> URL? {
         UserDefaults.standard.set(timeInterval, forKey: SnapXEatsConstant.timeInterval)
     }
     let pathComponent = fileManagerConstants.rootFolder + "/" + path + "/" + "\(timeInterval)"
-   
+    
     let filePath =  apptoDocumentDirPath(path: pathComponent)
     let fileManager = FileManager.default
     do {
@@ -56,11 +56,11 @@ func getFilePath(fileName: String, path: String) -> URL? {
 }
 
 func getPathTillDocDir(path: String) -> String? {
-     let result = path.range(of: fileManagerConstants.rootFolder,
-                                            options: NSString.CompareOptions.literal,
-                                            range: path.startIndex..<path.endIndex,
-                                            locale: nil)
-   // https://www.dotnetperls.com/find-swift
+    let result = path.range(of: fileManagerConstants.rootFolder,
+                            options: NSString.CompareOptions.literal,
+                            range: path.startIndex..<path.endIndex,
+                            locale: nil)
+    // https://www.dotnetperls.com/find-swift
     if let range = result {
         // Start of range of found string.
         let start = range.lowerBound
@@ -78,22 +78,26 @@ func apptoDocumentDirPath(path: String) -> URL? {
 
 func deleteAudioReview(restaurantId: String) {
     // Delete the Audio Recording from documents directory as well
-    if let audioRecordingURL = SmartPhotoPath.smartPhoto(fileName: fileManagerConstants.audioReviewFileName, id: restaurantId).getPath() {
-        do {
-            try FileManager.default.removeItem(at: audioRecordingURL)
-        } catch {
-            print("Unable to Delete File")
+    if let audioRecordingURL = SmartPhotoPath.draft(fileName: fileManagerConstants.audioReviewFileName, id: restaurantId).getPath() {
+        if FileManager.default.fileExists(atPath: audioRecordingURL.path) {
+            do {
+                try FileManager.default.removeItem(at: audioRecordingURL)
+            } catch {
+                print("Unable to Delete File")
+            }
         }
     }
 }
 
 func deletesmartPhoto(restaurantId: String) {
     // Delete the Smart Photo from documents directory as well
-    if let smartPhotoURL = SmartPhotoPath.smartPhoto(fileName: fileManagerConstants.smartPhotoFileName, id: restaurantId).getPath() {
-        do {
-            try FileManager.default.removeItem(at: smartPhotoURL)
-        } catch {
-            print("Unable to Delete File")
+    if let smartPhotoURL = SmartPhotoPath.draft(fileName: fileManagerConstants.smartPhotoFileName, id: restaurantId).getPath() {
+        if FileManager.default.fileExists(atPath: smartPhotoURL.path) {
+            do {
+                try FileManager.default.removeItem(at: smartPhotoURL)
+            } catch {
+                print("Unable to Delete File")
+            }
         }
     }
 }
@@ -110,24 +114,24 @@ func getFileName(filePath: String?) -> String? {
     return nil
 }
 
- func savePhoto(image: UIImage, path: URL) -> Bool {
-        do {
-            try UIImageJPEGRepresentation(image, 0.3)?.write(to: path, options: .atomic)
-            return true
-        } catch {
-            print("file cant not be saved at path \(path), with error : \(error)")
-        }
+func savePhoto(image: UIImage, path: URL) -> Bool {
+    do {
+        try UIImageJPEGRepresentation(image, 0.3)?.write(to: path, options: .atomic)
+        return true
+    } catch {
+        print("file cant not be saved at path \(path), with error : \(error)")
+    }
     return false
 }
 
 func saveAudioFile(value: Data, path: URL) -> Bool {
-        do {
-            try  value.write(to: path)
-            return true
-        }
-        catch {
-            print("file cant not be saved at path \(path), with error : \(error)")
-        }
+    do {
+        try  value.write(to: path)
+        return true
+    }
+    catch {
+        print("file cant not be saved at path \(path), with error : \(error)")
+    }
     return false
 }
 
@@ -136,5 +140,5 @@ func resetImageSaveTimeInterval() {
 }
 
 func getTimeInterval() -> String {
-     return UserDefaults.standard.string(forKey: SnapXEatsConstant.timeInterval) ?? SnapXEatsConstant.emptyString
+    return UserDefaults.standard.string(forKey: SnapXEatsConstant.timeInterval) ?? SnapXEatsConstant.emptyString
 }

@@ -149,6 +149,10 @@ class SnapNSharePhotoViewController: BaseViewController, StoryboardLoadable {
     func showErrorDialog() {
         let Ok = UIAlertAction(title: SnapXButtonTitle.ok, style: UIAlertActionStyle.default, handler: { [weak self] action in
             if let id = self?.restaurantDetails?.id {
+                if let smartPhoto_Draft_Stored_id = self?.smartPhoto?.smartPhoto_Draft_Stored_id {
+                    SmartPhotoHelper.shared.deleteDraftReview(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id) // delete the draft photo also if
+                    // user come here after reaching to socialMedia screen using back button
+                }
                 deleteUserReviewData(restaurantId: id)
             }
             self?.navigationController?.popViewController(animated: true)
