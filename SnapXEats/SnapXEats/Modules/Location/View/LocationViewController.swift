@@ -132,11 +132,20 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     override func success(result: Any?) {
         if let result = result as? CuisinePreference {
             hideLoading()
-            cuiseItems = result.cuisineList.sorted { $0.name! < $1.name! }
-            setUserSelectedFoodPrefercne()
-            enableDoneButton()
+            if (result.cuisineList.count > 0 ) {
+                cuiseItems = result.cuisineList.sorted { $0.name! < $1.name! }
+                setUserSelectedFoodPrefercne()
+                enableDoneButton()
+            } else {
+                presentEmptyCuisineListDialog()
+            }
             cuisinCollectionView.reloadData()
         }
+    }
+    
+    private func presentEmptyCuisineListDialog() {
+            let okAction = UIAlertAction(title: SnapXButtonTitle.ok, style: .default, handler: nil)
+            UIAlertController.presentAlertInViewController(self, title: AlertTitle.errorTitle, message: AlertMessage.emptyCuisineListMessage, actions: [okAction], completion: nil)
     }
     
     private func setCuisinePreferences() {

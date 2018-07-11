@@ -86,22 +86,22 @@ class BaseViewController: UIViewController {
     }
     
     func error(result: NetworkResult) {
-        loginAlert.createAlert(alertTitle: AlertTitle.loginTitle, message: AlertMessage.messageNoInternet,forView: self)
+        loginAlert.createAlert(alertTitle: AlertTitle.errorTitle, message: AlertMessage.messageNoInternet,forView: self)
         loginAlert.show()
     }
     
     func noInternet(result: NetworkResult) {
-        loginAlert.createAlert(alertTitle: AlertTitle.loginTitle, message: AlertMessage.messageNoInternet,forView: self)
+        loginAlert.createAlert(alertTitle: AlertTitle.errorTitle, message: AlertMessage.messageNoInternet,forView: self)
         loginAlert.show()
     }
     
     func success(result: Any?) {
-        loginAlert.createAlert(alertTitle: AlertTitle.loginTitle, message: AlertMessage.messageSuccess,forView: self)
+        loginAlert.createAlert(alertTitle: AlertTitle.errorTitle, message: AlertMessage.messageSuccess,forView: self)
         loginAlert.show()
     }
     
     func cancel(result: NetworkResult) {
-        loginAlert.createAlert(alertTitle: AlertTitle.loginTitle, message: AlertMessage.cancelRequest,forView: self)
+        loginAlert.createAlert(alertTitle: AlertTitle.errorTitle, message: AlertMessage.cancelRequest,forView: self)
         loginAlert.show()
     }
     

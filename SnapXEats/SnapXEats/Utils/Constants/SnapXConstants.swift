@@ -327,10 +327,11 @@ enum AlertMessage {
     static let checkInMessage = "You need to checkIn again."
     static let loginSuccessMessage = "Congratulations, You have successfully logged in !"
     static let shareReviewMessage = "Do you want to add and share your review ?"
+    static let emptyCuisineListMessage = "Cuisines are not available for this location."
 }
 
 enum AlertTitle {
-    static let loginTitle = "Error"
+    static let errorTitle = "Error"
     static let preferenceTitle = "Preference Error"
     static let logOutTitle = "LogOut"
     static let sharingTitle = "Sharing Error"

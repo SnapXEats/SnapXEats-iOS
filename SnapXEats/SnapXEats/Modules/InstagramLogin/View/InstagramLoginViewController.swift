@@ -157,7 +157,7 @@ extension InstagramLoginViewController: WKNavigationDelegate{
         let action = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler:  { [weak self ]action in
             guard let strongSelf = self else { return }
             strongSelf.discardWebView()})
-        loginAlert.createAlert(alertTitle: AlertTitle.loginTitle, message: AlertMessage.messageNoInternet, forView: self, withAction: action)
+        loginAlert.createAlert(alertTitle: AlertTitle.errorTitle, message: AlertMessage.messageNoInternet, forView: self, withAction: action)
         loginAlert.show()
     }
     
