@@ -67,7 +67,7 @@ class LoginUserPreferences {
     var ratingPreference: RatingPreferences = .defaultStart
     var pricingPreference: PricingPreference = .auto
     var sortByPreference: SortByPreference = .distance
-    var distancePreference = 1 // default  distances  in 1 miles
+    var distancePreference = PreferecneConstant.defaultDistancePreference
     
     var foodPreference = [FoodItem]()
     var cuisinePreference = [CuisineItem]()
@@ -130,7 +130,7 @@ class LoginUserPreferences {
         ratingPreference = .defaultStart
         pricingPreference = .auto
         sortByPreference = .distance
-        distancePreference = 1
+        distancePreference = PreferecneConstant.defaultDistancePreference
         isDirty = false
         foodPreference.removeAll()
         cuisinePreference.removeAll()

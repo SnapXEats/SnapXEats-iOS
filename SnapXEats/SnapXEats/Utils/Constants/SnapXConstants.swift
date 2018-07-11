@@ -363,6 +363,10 @@ enum PreferecneConstant {
     static let cuisine_info_id = "cuisine_info_id"
     static let is_cuisine_like = "is_cuisine_like"
     static let is_cuisine_favourite = "is_cuisine_favourite"
+    
+    static let defaultDistancePreference = 5 // default distance in 5 mile
+    static let defaultRatingPreference = 0
+    static let defaultPricePreference = 1
 }
 
 enum UserGestureJSONKeys {
