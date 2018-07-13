@@ -132,6 +132,7 @@ class LocationViewController: BaseViewController, StoryboardLoadable {
     override func success(result: Any?) {
         if let result = result as? CuisinePreference {
             hideLoading()
+            cuiseItems.removeAll()
             if (result.cuisineList.count > 0 ) {
                 cuiseItems = result.cuisineList.sorted { $0.name! < $1.name! }
                 setUserSelectedFoodPrefercne()
