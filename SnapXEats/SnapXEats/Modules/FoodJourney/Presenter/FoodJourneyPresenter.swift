@@ -24,6 +24,10 @@ extension FoodJourneyPresenter: FoodJourneyPresentation {
     func getFoodJourneyData() {
         interactor?.sendFoodJourneyRequest()
     }
+    
+    func navigateToHomeScreen() {
+        router?.presentScreen(screen: .location)
+    }
 }
 
 extension FoodJourneyPresenter: FoodJourneyInteractorOutput {

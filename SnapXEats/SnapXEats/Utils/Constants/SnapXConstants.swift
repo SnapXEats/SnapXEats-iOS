@@ -328,6 +328,7 @@ enum AlertMessage {
     static let loginSuccessMessage = "Congratulations, You have successfully logged in !"
     static let shareReviewMessage = "Do you want to add and share your review ?"
     static let emptyCuisineListMessage = "Cuisines are not available for this location."
+    static let emptyFoodJourney = "You haven't visited any restaurant yet."
 }
 
 enum AlertTitle {

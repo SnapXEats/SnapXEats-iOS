@@ -10,12 +10,12 @@ import Foundation
 import UIKit
 
 class FoodJourneyViewController: BaseViewController, StoryboardLoadable {
-
+    
     // MARK: Outlets
     @IBOutlet weak var foodJourneyTableView: UITableView!
     
     // MARK: Properties
-
+    
     var presenter: FoodJourneyPresentation?
     var foodJourneyItems = [FoodJourney]()
     var currentWeekHistoryItems = [UserCurrentWeekHistory]()
@@ -23,7 +23,7 @@ class FoodJourneyViewController: BaseViewController, StoryboardLoadable {
     fileprivate var contentHeights = [CGFloat]() // Used for storing dynamic heights of recent food journey
     
     // MARK: Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
@@ -50,6 +50,11 @@ class FoodJourneyViewController: BaseViewController, StoryboardLoadable {
     
     override func success(result: Any?) {
         if let result = result as? FoodJourney {
+            if  let userCurrentWeekHistory = result.userCurrentWeekHistory, userCurrentWeekHistory.count == 0,
+                let userPastHistory = result.userPastHistory, userPastHistory.count == 0 {
+                presentEmptyFoodJOurneyDialog()
+                return
+            }
             if let userCurrentWeekHistory = result.userCurrentWeekHistory {
                 currentWeekHistoryItems = userCurrentWeekHistory
                 initContentHeight()
@@ -58,7 +63,15 @@ class FoodJourneyViewController: BaseViewController, StoryboardLoadable {
                 userPastHistoryItems = userPastHistory
             }
             foodJourneyTableView.reloadData()
+            
         }
+    }
+    
+    private func presentEmptyFoodJOurneyDialog() {
+        let okAction = UIAlertAction(title: SnapXButtonTitle.ok, style: .default, handler: { [weak self] action in
+            self?.presenter?.navigateToHomeScreen()
+        })
+        UIAlertController.presentAlertInViewController(self, title: AlertTitle.errorTitle, message: AlertMessage.emptyFoodJourney, actions: [okAction], completion: nil)
     }
 }
 
@@ -98,7 +111,7 @@ extension FoodJourneyViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-
+        
         if section == 1 && userPastHistoryItems.count > 0 {
             let headerView = UIView()
             let headerLabel = UILabel(frame: CGRect(x: HeaderLabel.x, y: HeaderLabel.y, width:
@@ -137,8 +150,8 @@ extension FoodJourneyViewController: UITableViewDelegate, UITableViewDataSource 
             return cell
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: SnapXEatsCellResourceIdentifiler.olderFoodJourneyTableView, for: indexPath) as! OlderFoodJourneyTableViewCell
-                cell.configureOlderFoodJourneyCell(item:userPastHistoryItems[indexPath.row])
-                return cell
+            cell.configureOlderFoodJourneyCell(item:userPastHistoryItems[indexPath.row])
+            return cell
         }
         return UITableViewCell()
     }
@@ -148,8 +161,8 @@ extension FoodJourneyViewController:RecentFoodJourneyCellDelegate {
     func updateRecentFoodJourneyCellHeight(indexPath: IndexPath, estimatedHeight: CGFloat) {
         contentHeights[indexPath.row] = estimatedHeight
         /* FIXME :: If there will be issue on scroll
-        self.foodJourneyTableView.beginUpdates()
-        self.foodJourneyTableView.endUpdates()
+         self.foodJourneyTableView.beginUpdates()
+         self.foodJourneyTableView.endUpdates()
          */
     }
 }
