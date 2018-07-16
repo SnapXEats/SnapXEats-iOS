@@ -14,6 +14,7 @@ protocol FoodJourneyView:  BaseView {
 
 protocol FoodJourneyPresentation: class {
     func getFoodJourneyData()
+    func navigateToHomeScreen()
 }
 
 protocol FoodJourneyUseCase: FoodJourneyRequestFormatter {
