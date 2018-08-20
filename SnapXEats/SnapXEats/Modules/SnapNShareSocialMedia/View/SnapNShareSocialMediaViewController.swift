@@ -43,12 +43,7 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
     
     @IBAction func fbImageShare(_ sender: Any) {
         if let _ = shareDetails {
-            if loginPreferecne.fbSharingenabled {
-                // if already loggedin (FB or instagram) and Fb sharing is enabled
-                sharingDialogFB()
-            } else {
-                presenter?.loginUsingFaceBook()
-            }
+            sharingDialogFB()
         }
     }
     
