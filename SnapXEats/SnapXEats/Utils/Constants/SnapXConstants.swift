@@ -88,8 +88,7 @@ enum SnapXEatsLocationConstant {
     static let locationAlertMessage = "Location services are turned off on your device. Please go to settings and enable location services to use this feature or manually select a location."
 }
 enum SnapXEatsWebServicePath {
-    static let  port = "3000"
-    static let  rootURL =  "http://ec2-18-216-193-78.us-east-2.compute.amazonaws.com:" + port
+    static let  rootURL =  "https://app.snapxeats.com"
     static let  cuisinePreferenceURL = "/api/v1/cuisine"
     static let  dishesURL = "/api/v1/dishes"
     static let  foodtypesURL = "/api/v1/foodTypes"

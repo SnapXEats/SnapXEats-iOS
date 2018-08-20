@@ -10,7 +10,7 @@ import Foundation
 
 
 /// Represents presenting an image to the user.
-//http://18.216.193.78:3000/api/v1/dishes/smartPhoto?url=snapxeats://dishes?id=20d19925-2be7-4875-88d5-5067d252c9e5
+//https://app.snapxeats.com/api/v1/dishes/smartPhoto?url=snapxeats://dishes?id=20d19925-2be7-4875-88d5-5067d252c9e5
 /// Example - snapxeats://dishes?id=
 struct SnapXEatsPhotoDeepLink: DeepLink {
     static let template = DeepLinkTemplate()
