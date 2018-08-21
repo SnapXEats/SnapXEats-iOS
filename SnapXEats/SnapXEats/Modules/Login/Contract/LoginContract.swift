@@ -5,31 +5,24 @@
 import Foundation
 import UIKit
 
-protocol LoginView: BaseView, SnapXResult {
+protocol LoginView: BaseView  {
     var presenter: LoginViewPresentation? {get set}
-    func initView()
 }
 
-protocol LoginViewPresentation: LoginViewPresentationInstagram {
-    func loginUsingInstagram()
+protocol LoginViewPresentation {
     func loginUsingFaceBook()
-    func setView(view: LoginView)
+    func loginUsingInstagram()
+    func skipUserLogin()
 }
 
-protocol LoginViewPresentationInstagram: class {
-        func instagramLoginRequest(request: URLRequest) -> Bool
-        func removeInstagramWebView()
-}
 protocol LoginViewInteractorInput: class {
-    func sendFaceBookLoginRequest(view: LoginView?)
-    func sendInstagramRequest(request: URLRequest) -> Bool
+    func sendFaceBookLoginRequest(view: BaseView?)
 }
 
-protocol LoginViewInteractorOutput: class {
+protocol LoginViewInteractorOutput: class, Response {
     func onLoginReguestFailure(message: String)
 }
 
-protocol LoginViewWireframe: class {
+protocol LoginViewWireframe: class, RootWireFrame {
     func loadLoginModule() -> LoginView
-    func loadInstagramView() -> LoginView
 }

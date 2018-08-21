@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -30,10 +31,10 @@
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_snapX-logo" translatesAutoresizingMaskIntoConstraints="NO" id="JA4-qj-M4R">
-                                <rect key="frame" x="53.5" y="133" width="267" height="61"/>
+                                <rect key="frame" x="60.5" y="133" width="253" height="62"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="61" id="NS8-EV-pjB"/>
-                                    <constraint firstAttribute="width" constant="267" id="eEL-Ej-tEq"/>
+                                    <constraint firstAttribute="height" constant="62" id="NS8-EV-pjB"/>
+                                    <constraint firstAttribute="width" constant="253" id="eEL-Ej-tEq"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ioS-Mu-RNs">
@@ -62,6 +63,9 @@
                                 <state key="normal" title="Skip">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="skipLogin:" destination="b95-f1-haL" eventType="touchUpInside" id="itt-JB-FyQ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zu6-5E-njV">
                                 <rect key="frame" x="67" y="371" width="241" height="44"/>
@@ -79,6 +83,12 @@
                                     <action selector="fbLoginClicked:" destination="b95-f1-haL" eventType="touchUpInside" id="pji-S6-8V8"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iY3-iq-9af">
+                                <rect key="frame" x="16" y="35" width="339" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -86,9 +96,12 @@
                             <constraint firstItem="6Fd-nu-MZK" firstAttribute="bottom" secondItem="ioS-Mu-RNs" secondAttribute="bottom" constant="183" id="9dI-fr-jdI"/>
                             <constraint firstItem="cF3-Vv-vyL" firstAttribute="leading" secondItem="6Fd-nu-MZK" secondAttribute="leading" id="PTB-rz-BvG"/>
                             <constraint firstItem="ioS-Mu-RNs" firstAttribute="trailing" secondItem="Zu6-5E-njV" secondAttribute="trailing" id="PdW-2p-cnz"/>
+                            <constraint firstItem="iY3-iq-9af" firstAttribute="top" secondItem="6Fd-nu-MZK" secondAttribute="top" constant="15" id="d9U-5d-xb1"/>
                             <constraint firstItem="JA4-qj-M4R" firstAttribute="top" secondItem="6Fd-nu-MZK" secondAttribute="top" constant="113" id="fd5-Sa-ott"/>
                             <constraint firstItem="6Fd-nu-MZK" firstAttribute="bottom" secondItem="cF3-Vv-vyL" secondAttribute="bottom" id="jt0-2n-dBk"/>
+                            <constraint firstAttribute="trailing" secondItem="iY3-iq-9af" secondAttribute="trailing" constant="20" symbolic="YES" id="kcJ-2U-rQJ"/>
                             <constraint firstItem="6Fd-nu-MZK" firstAttribute="bottom" secondItem="8n5-OQ-hoZ" secondAttribute="bottom" constant="58" id="lyD-JB-g71"/>
+                            <constraint firstItem="iY3-iq-9af" firstAttribute="leading" secondItem="6Fd-nu-MZK" secondAttribute="leading" constant="16" id="nuG-Rf-SYA"/>
                             <constraint firstItem="JA4-qj-M4R" firstAttribute="centerX" secondItem="KJu-86-iFm" secondAttribute="centerX" id="pxk-Bc-X1O"/>
                             <constraint firstItem="6Fd-nu-MZK" firstAttribute="trailing" secondItem="cF3-Vv-vyL" secondAttribute="trailing" id="qlh-hn-XA0"/>
                             <constraint firstItem="ioS-Mu-RNs" firstAttribute="centerX" secondItem="KJu-86-iFm" secondAttribute="centerX" id="rr9-lk-NZn"/>
@@ -99,6 +112,7 @@
                         <viewLayoutGuide key="safeArea" id="6Fd-nu-MZK"/>
                     </view>
                     <connections>
+                        <outlet property="buildLabel" destination="iY3-iq-9af" id="2Ih-fN-Wi8"/>
                         <outlet property="facebookLoginButton" destination="Zu6-5E-njV" id="Pap-on-FM5"/>
                         <outlet property="instagramLoginButton" destination="ioS-Mu-RNs" id="ULD-oO-Cya"/>
                     </connections>
@@ -107,34 +121,34 @@
             </objects>
             <point key="canvasLocation" x="-655.20000000000005" y="-142.57871064467767"/>
         </scene>
-        <!--Instagram View Controller-->
+        <!--Instagram Login View Controller-->
         <scene sceneID="tOf-az-WL5">
             <objects>
-                <viewController storyboardIdentifier="InstagramViewController" id="hWB-Zl-iHy" customClass="InstagramViewController" customModule="SnapXEats" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InstagramViewController" id="hWB-Zl-iHy" customClass="InstagramLoginViewController" customModule="SnapXEats" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jiv-Zm-y6f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fsh-fw-c3F">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lDU-OH-uuE">
+                                <rect key="frame" x="0.0" y="15" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Instagram Login" id="i2s-Pu-t0g">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="w0h-5V-GBE">
+                                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="cancelLogin:" destination="hWB-Zl-iHy" id="6g9-V9-jsf"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="fsh-fw-c3F" firstAttribute="trailing" secondItem="UVM-MV-wxs" secondAttribute="trailing" id="AQO-MT-waE"/>
-                            <constraint firstItem="fsh-fw-c3F" firstAttribute="top" secondItem="jiv-Zm-y6f" secondAttribute="top" id="E3U-Es-djt"/>
-                            <constraint firstItem="fsh-fw-c3F" firstAttribute="leading" secondItem="UVM-MV-wxs" secondAttribute="leading" id="U46-oZ-q5R"/>
-                            <constraint firstItem="fsh-fw-c3F" firstAttribute="bottom" secondItem="UVM-MV-wxs" secondAttribute="bottom" id="b89-lV-XGK"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="UVM-MV-wxs"/>
                     </view>
                     <connections>
-                        <outlet property="webView" destination="fsh-fw-c3F" id="M2R-LG-6vR"/>
+                        <outlet property="cancelButton" destination="w0h-5V-GBE" id="Qup-d0-uxd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ArX-3S-vrw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -145,7 +159,7 @@
     <resources>
         <image name="Image" width="375" height="667"/>
         <image name="facebook_icon" width="20" height="20"/>
-        <image name="icon_snapX-logo" width="267" height="61"/>
+        <image name="icon_snapX-logo" width="253" height="62"/>
         <image name="instagram_icon" width="20" height="20"/>
     </resources>
 </document>

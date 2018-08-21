@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Smart Photo Draft View Controller-->
+        <scene sceneID="ImX-IH-tPy">
+            <objects>
+                <viewController storyboardIdentifier="SmartPhotoDraftViewController" id="bk7-DQ-219" customClass="SmartPhotoDraftViewController" customModule="SnapXEats" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="T0B-se-hXL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Fk-dh-EBW">
+                                <rect key="frame" x="0.0" y="122" width="375" height="501"/>
+                            </containerView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="PNX-yn-ehQ">
+                                <rect key="frame" x="90" y="74" width="195" height="29"/>
+                                <segments>
+                                    <segment title="Smart Photos"/>
+                                    <segment title="Draft"/>
+                                </segments>
+                                <color key="tintColor" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="indexChangedWithSender:" destination="bk7-DQ-219" eventType="valueChanged" id="44P-xx-jMJ"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="PNX-yn-ehQ" firstAttribute="centerX" secondItem="T0B-se-hXL" secondAttribute="centerX" id="JeA-UQ-tZK"/>
+                            <constraint firstItem="0Fk-dh-EBW" firstAttribute="bottom" secondItem="G7f-tQ-l7b" secondAttribute="bottom" id="N3M-VE-7H6"/>
+                            <constraint firstItem="0Fk-dh-EBW" firstAttribute="leading" secondItem="G7f-tQ-l7b" secondAttribute="leading" id="Oc6-jY-DxF"/>
+                            <constraint firstItem="0Fk-dh-EBW" firstAttribute="top" secondItem="PNX-yn-ehQ" secondAttribute="bottom" constant="20" id="cd3-Pe-SY4"/>
+                            <constraint firstItem="G7f-tQ-l7b" firstAttribute="trailing" secondItem="0Fk-dh-EBW" secondAttribute="trailing" id="mQs-T5-dPM"/>
+                            <constraint firstItem="PNX-yn-ehQ" firstAttribute="top" secondItem="G7f-tQ-l7b" secondAttribute="top" constant="10" id="pkk-8J-xfE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="G7f-tQ-l7b"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="N70-P4-yH4"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="containerView" destination="0Fk-dh-EBW" id="sv0-oY-SoT"/>
+                        <outlet property="segmentView" destination="PNX-yn-ehQ" id="Iyb-gv-pGN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k7o-z9-5Hh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="422" y="-83"/>
+        </scene>
+        <!--Draft Table View Controller-->
+        <scene sceneID="SRp-Wq-kge">
+            <objects>
+                <viewController storyboardIdentifier="DraftTableViewController" id="51R-cZ-nhM" customClass="DraftTableViewController" customModule="SnapXEats" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5yl-4c-Rre">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UNR-QN-jto">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="51R-cZ-nhM" id="LGt-1a-aba"/>
+                                    <outlet property="delegate" destination="51R-cZ-nhM" id="bMR-kI-A4i"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="UNR-QN-jto" firstAttribute="trailing" secondItem="B0s-4b-RZQ" secondAttribute="trailing" id="0b6-CW-QkF"/>
+                            <constraint firstItem="UNR-QN-jto" firstAttribute="top" secondItem="5yl-4c-Rre" secondAttribute="top" id="F5g-yg-Cc0"/>
+                            <constraint firstItem="UNR-QN-jto" firstAttribute="bottom" secondItem="B0s-4b-RZQ" secondAttribute="bottom" id="tHy-LT-3gq"/>
+                            <constraint firstItem="UNR-QN-jto" firstAttribute="leading" secondItem="B0s-4b-RZQ" secondAttribute="leading" id="uuZ-GN-JqM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="B0s-4b-RZQ"/>
+                    </view>
+                    <connections>
+                        <outlet property="draftTableView" destination="UNR-QN-jto" id="RnO-7j-VPL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="49C-DG-9Hc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1166" y="-457"/>
+        </scene>
+        <!--Smart Photo Table View Controller-->
+        <scene sceneID="Mkl-Xf-CzB">
+            <objects>
+                <viewController storyboardIdentifier="SmartPhotoTableViewController" id="5uK-Yh-jbD" customClass="SmartPhotoTableViewController" customModule="SnapXEats" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oOA-O9-P24">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2FQ-hQ-17J">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="5uK-Yh-jbD" id="gud-ah-4NG"/>
+                                    <outlet property="delegate" destination="5uK-Yh-jbD" id="0o8-cG-uor"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2FQ-hQ-17J" firstAttribute="top" secondItem="wGP-y0-VpZ" secondAttribute="top" id="43o-ta-gxv"/>
+                            <constraint firstItem="2FQ-hQ-17J" firstAttribute="bottom" secondItem="wGP-y0-VpZ" secondAttribute="bottom" id="ITE-H2-q0u"/>
+                            <constraint firstItem="2FQ-hQ-17J" firstAttribute="leading" secondItem="wGP-y0-VpZ" secondAttribute="leading" id="a4E-M5-rYS"/>
+                            <constraint firstItem="2FQ-hQ-17J" firstAttribute="trailing" secondItem="wGP-y0-VpZ" secondAttribute="trailing" id="zVy-Uk-p2l"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wGP-y0-VpZ"/>
+                    </view>
+                    <connections>
+                        <outlet property="smartPhotoTableView" destination="2FQ-hQ-17J" id="nUb-L6-vGO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OzC-Z3-QXR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1166" y="259"/>
+        </scene>
+        <!--Smart Photo-->
+        <scene sceneID="xNl-It-Rgp">
+            <objects>
+                <navigationController storyboardIdentifier="SmartPhotoDraftNavigationController" title="Smart Photo" automaticallyAdjustsScrollViewInsets="NO" id="Rcd-9r-dA9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oFI-qJ-lEi">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bk7-DQ-219" kind="relationship" relationship="rootViewController" id="DOT-fK-p0O"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oqq-IO-IYD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-316" y="-83"/>
+        </scene>
+    </scenes>
+</document>

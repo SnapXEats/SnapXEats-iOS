@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+        <array key="roboto.bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--SnapN Share Home View Controller-->
+        <scene sceneID="v7R-VF-gYW">
+            <objects>
+                <viewController id="SGK-vv-BMD" customClass="SnapNShareHomeViewController" customModule="SnapXEats" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="abU-cE-Tx8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ml8-8H-VhT">
+                                <rect key="frame" x="0.0" y="64" width="320" height="160"/>
+                                <color key="backgroundColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ml8-8H-VhT" secondAttribute="height" multiplier="24:12" id="e9h-RU-TIb"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hE8-3q-355">
+                                <rect key="frame" x="0.0" y="199" width="40" height="25"/>
+                                <color key="backgroundColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="We2-4q-XAW"/>
+                                    <constraint firstAttribute="height" constant="25" id="jNc-Rx-RWU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Name" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AUD-aF-CT0">
+                                <rect key="frame" x="20" y="234" width="290" height="32"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="24"/>
+                                <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rKs-6G-MeW">
+                                <rect key="frame" x="20" y="271" width="290" height="0.0"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                                <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5vo-a8-BZj">
+                                <rect key="frame" x="20" y="276" width="290" height="16"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                                <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Checked in " image="tickmark_icon">
+                                    <color key="titleColor" red="0.36470588235294116" green="0.36470588235294116" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="checkedInLabel:" destination="EWZ-f4-NuP" eventType="touchUpInside" id="flp-eU-ifO"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From The Menu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDY-yx-9Da">
+                                <rect key="frame" x="20" y="307" width="99" height="18.5"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8uh-cT-5E6">
+                                <rect key="frame" x="20" y="330.5" width="290" height="90"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="gDy-lp-03u"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="11" minimumInteritemSpacing="0.0" id="8eS-Ee-fgf">
+                                    <size key="itemSize" width="160" height="90"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="SGK-vv-BMD" id="E2r-bb-KzS"/>
+                                    <outlet property="delegate" destination="SGK-vv-BMD" id="qLg-Mo-QPn"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3e-mi-MPk">
+                                <rect key="frame" x="131.5" y="476" width="57" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="CYg-ho-YxC"/>
+                                    <constraint firstAttribute="width" constant="57" id="bWf-Ic-mL0"/>
+                                </constraints>
+                                <state key="normal" image="take_a_snap"/>
+                                <connections>
+                                    <action selector="takeSnapButtonAction:" destination="SGK-vv-BMD" eventType="touchUpInside" id="9NZ-uo-XY9"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Snap-N-Share" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GiX-8K-Gw5">
+                                <rect key="frame" x="128.5" y="536" width="64" height="12"/>
+                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="10"/>
+                                <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9qh-xV-vRa" firstAttribute="bottom" secondItem="GiX-8K-Gw5" secondAttribute="bottom" constant="20" id="0NF-il-ZNL"/>
+                            <constraint firstItem="ml8-8H-VhT" firstAttribute="leading" secondItem="abU-cE-Tx8" secondAttribute="leading" id="0on-48-mBy"/>
+                            <constraint firstItem="rKs-6G-MeW" firstAttribute="leading" secondItem="AUD-aF-CT0" secondAttribute="leading" id="5SN-Wy-6CF"/>
+                            <constraint firstItem="ml8-8H-VhT" firstAttribute="top" secondItem="9qh-xV-vRa" secondAttribute="top" id="BLv-qu-wxE"/>
+                            <constraint firstItem="GiX-8K-Gw5" firstAttribute="centerX" secondItem="abU-cE-Tx8" secondAttribute="centerX" id="CVO-TG-caG"/>
+                            <constraint firstItem="5vo-a8-BZj" firstAttribute="top" secondItem="rKs-6G-MeW" secondAttribute="bottom" constant="5" id="D2Y-Cm-akl"/>
+                            <constraint firstItem="5vo-a8-BZj" firstAttribute="trailing" secondItem="rKs-6G-MeW" secondAttribute="trailing" id="Hg4-Mq-htr"/>
+                            <constraint firstItem="9qh-xV-vRa" firstAttribute="trailing" secondItem="ml8-8H-VhT" secondAttribute="trailing" id="Hs6-AC-9nw"/>
+                            <constraint firstItem="hDY-yx-9Da" firstAttribute="leading" secondItem="5vo-a8-BZj" secondAttribute="leading" id="KuM-gX-q96"/>
+                            <constraint firstItem="hE8-3q-355" firstAttribute="bottom" secondItem="ml8-8H-VhT" secondAttribute="bottom" id="Lnb-Gg-hTr"/>
+                            <constraint firstItem="8uh-cT-5E6" firstAttribute="top" secondItem="hDY-yx-9Da" secondAttribute="bottom" constant="5" id="NbN-GZ-HrW"/>
+                            <constraint firstItem="9qh-xV-vRa" firstAttribute="trailing" secondItem="AUD-aF-CT0" secondAttribute="trailing" constant="10" id="SgA-ha-LAb"/>
+                            <constraint firstItem="GiX-8K-Gw5" firstAttribute="top" secondItem="Q3e-mi-MPk" secondAttribute="bottom" constant="3" id="XTt-hl-QUb"/>
+                            <constraint firstItem="rKs-6G-MeW" firstAttribute="trailing" secondItem="AUD-aF-CT0" secondAttribute="trailing" id="XhH-UZ-52x"/>
+                            <constraint firstItem="5vo-a8-BZj" firstAttribute="leading" secondItem="rKs-6G-MeW" secondAttribute="leading" id="aqQ-cE-ILe"/>
+                            <constraint firstItem="Q3e-mi-MPk" firstAttribute="centerX" secondItem="abU-cE-Tx8" secondAttribute="centerX" id="bjQ-Q6-mEE"/>
+                            <constraint firstItem="rKs-6G-MeW" firstAttribute="top" secondItem="AUD-aF-CT0" secondAttribute="bottom" constant="5" id="ehc-TJ-bah"/>
+                            <constraint firstItem="AUD-aF-CT0" firstAttribute="leading" secondItem="abU-cE-Tx8" secondAttribute="leading" constant="20" id="giU-O4-G8H"/>
+                            <constraint firstItem="8uh-cT-5E6" firstAttribute="leading" secondItem="hDY-yx-9Da" secondAttribute="leading" id="hjw-p7-gzH"/>
+                            <constraint firstItem="hDY-yx-9Da" firstAttribute="top" secondItem="5vo-a8-BZj" secondAttribute="bottom" constant="15" id="kJy-zG-BK2"/>
+                            <constraint firstItem="hE8-3q-355" firstAttribute="leading" secondItem="ml8-8H-VhT" secondAttribute="leading" id="nBB-RZ-n4H"/>
+                            <constraint firstItem="9qh-xV-vRa" firstAttribute="trailing" secondItem="8uh-cT-5E6" secondAttribute="trailing" constant="10" id="oXq-Dy-XNi"/>
+                            <constraint firstItem="AUD-aF-CT0" firstAttribute="top" secondItem="ml8-8H-VhT" secondAttribute="bottom" constant="10" id="xji-vU-IVJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9qh-xV-vRa"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="DN1-vt-F81"/>
+                    <connections>
+                        <outlet property="checkinTimeLabel" destination="5vo-a8-BZj" id="OTJ-Px-PrF"/>
+                        <outlet property="closingTimeLabel" destination="rKs-6G-MeW" id="3oy-XK-8bC"/>
+                        <outlet property="restaurantNameLabel" destination="AUD-aF-CT0" id="fKX-np-aQc"/>
+                        <outlet property="slideshowContainer" destination="ml8-8H-VhT" id="sTr-Cx-vAP"/>
+                        <outlet property="slideshowCountLabel" destination="hE8-3q-355" id="HRi-bB-bZR"/>
+                        <outlet property="specialityCollectionView" destination="8uh-cT-5E6" id="bnm-7D-tBK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sb8-DW-PjD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="EWZ-f4-NuP" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="397.5" y="171.12676056338029"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="sEQ-om-nOV">
+            <objects>
+                <navigationController storyboardIdentifier="SnapNShareHomeNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="xMR-ph-gvQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gaA-n1-qfp">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="SGK-vv-BMD" kind="relationship" relationship="rootViewController" id="5d1-jW-lSc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zaG-ka-Y0A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-348" y="173"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="take_a_snap" width="57" height="57"/>
+        <image name="tickmark_icon" width="7" height="7"/>
+    </resources>
+</document>

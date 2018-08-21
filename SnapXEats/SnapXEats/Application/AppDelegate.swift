@@ -4,6 +4,8 @@
 
 import UIKit
 import FacebookCore
+import UserNotifications
+import HockeySDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -11,15 +13,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        SnapXEatsNetworkManager.shared.startMonitoringNetwork()
         setupNavigationBarFont()
-        setupBackButtonAppearance()
         presentInitialScreen()
-        return true
+        if #available(iOS 10.0, *) {
+            registerForRichNotifications()
+            UNUserNotificationCenter.current().delegate = self
+        }
+        
+        BITHockeyManager.shared().configure(withIdentifier: SnapXEatsConstant.hockeyAPPID)
+        BITHockeyManager.shared().start()
+        BITHockeyManager.shared().authenticator.authenticateInstallation() // This line is obsolete in the cr
+        // This is for FB
+        return SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        if  url.scheme == SnapXEatsConstant.urlScheme  {
+            return SnapXLinkingManager.shared.checkDeepLink(with: url)
+        }
+        return SDKApplicationDelegate.shared.application(app, open: url, options: options)
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        AppEventsLogger.activate(application)
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -37,6 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // in analytics and advertising reporting.
         AppEventsLogger.activate(application)
         SDKSettings.limitedEventAndDataUsage = true
+        application.applicationIconBadgeNumber = 0
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
@@ -46,19 +66,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: Private Methods
     
     func presentInitialScreen() {
-        RootRouter.singleInstance.presentFirstScreen(inWindow: window!)
+        RootRouter.shared.presentFirstScreen(inWindow: window!)
     }
     
     fileprivate func setupNavigationBarFont() {
         let navigationBarAppearace = UINavigationBar.appearance()
         navigationBarAppearace.tintColor = .black
         navigationBarAppearace.barTintColor = .white
-        navigationBarAppearace.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.black]
+        navigationBarAppearace.titleTextAttributes =  [NSAttributedStringKey.foregroundColor:UIColor.rgba(74.0, 74.0, 74.0, 1.0), NSAttributedStringKey.font: UIFont(name: "Roboto-Medium", size: 16.0)!]
     }
     
     fileprivate func setupBackButtonAppearance() {
         //UINavigationBar.appearance().backIndicatorImage = UIImage.backIcon
         //UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage.backIcon
         //UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -60), for: .default)
+    }
+    
+    @available(iOS 10.0, *)
+    func registerForRichNotifications() {
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.badge,.sound]) { (granted:Bool, error:Error?) in
+            if error != nil {
+                print(error?.localizedDescription)
+            }
+            if granted {
+                print("Permission granted")
+            } else {
+                print("Permission not granted")
+            }
+        }        
+    }
+}
+
+
+@available(iOS 10.0, *)
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    //for displaying notification when app is in foreground
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        RootRouter.shared.checkNotificationIdentifier(notification: notification, completionHandler: completionHandler)
+    }
+    
+    // For handling tap and user actions
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        RootRouter.shared.checkNotification(response: response, completionHandler: completionHandler)
     }
 }

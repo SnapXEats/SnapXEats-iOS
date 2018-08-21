@@ -8,23 +8,37 @@
 
 import Foundation
 
+enum ServerErrorCode  {
+    static let timeOut = -1001  // TIMED OUT:
+    static let serverCanFound = -1003  // SERVER CANNOT BE FOUND
+    static let urlNotFoundONServer = -1100  // URL NOT FOUND ON SERVER
+    static let noInternetConnection = -1009  // No Internet connection
+    static let loadingFiled = -999 // HTTP load failed
+    
+}
+
 enum NetworkResult {
     case noInternet
     case error
     case fail
-    case success
+    case success(data: Any?)
     case cancelRequest
 }
-protocol NetworkFailure {
-    func resultNOInternet(result: NetworkResult)
-}
 
-protocol Result {
-    func result(result: NetworkResult)
+// MARK: - Notifications
+enum SnapXEatsNotification {
+    static let connectedToInternet = "ConnectedToInternet"
+}
+protocol SnapXEatsData {
+    
+}
+protocol NetworkFailure: class {
+    func noInternet(result: NetworkResult)
+    func checkRechability() -> Bool
 }
 
 protocol SnapXResult: NetworkFailure {
-    func resultSuccess(result: NetworkResult)
-    func resultError(result: NetworkResult)
+    func success(result: Any?)
+    func error(result: NetworkResult)
+    func cancel (result: NetworkResult)
 }
-

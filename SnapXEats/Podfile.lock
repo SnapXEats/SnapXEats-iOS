@@ -1,8 +1,11 @@
 PODS:
   - Alamofire (4.6.0)
+  - AlamofireImage (3.3.0):
+    - Alamofire (~> 4.5)
   - AlamofireObjectMapper (5.0.0):
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 3.0)
+  - BetterSegmentedControl (0.9)
   - Bolts (1.9.0):
     - Bolts/AppLinks (= 1.9.0)
     - Bolts/Tasks (= 1.9.0)
@@ -31,28 +34,58 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.29.0):
     - FBSDKCoreKit
+  - FSPagerView (0.7.1)
+  - HockeySDK (5.1.2):
+    - HockeySDK/DefaultLib (= 5.1.2)
+  - HockeySDK/DefaultLib (5.1.2)
   - KeychainSwift (7.0.1)
+  - Koloda (4.3.1):
+    - pop (~> 1.0)
   - MBProgressHUD (1.0.0)
   - ObjectMapper (3.0.0)
+  - pop (1.0.10)
   - ReachabilitySwift (3)
+  - Realm (3.0.2):
+    - Realm/Headers (= 3.0.2)
+  - Realm/Headers (3.0.2)
+  - RealmSwift (3.0.2):
+    - Realm (= 3.0.2)
+  - SwiftInstagram (1.1.0):
+    - SwiftInstagram/Core (= 1.1.0)
+  - SwiftInstagram/Core (1.1.0)
+  - SwiftyStarRatingView (1.0.4)
+  - TPKeyboardAvoiding (1.3.2)
+  - UICircularProgressRing (1.8.4)
   - UIColor_Hex_Swift (3.0.2)
 
 DEPENDENCIES:
-  - Alamofire
+  - Alamofire (~> 4.5)
+  - AlamofireImage (~> 3.3)
   - AlamofireObjectMapper (~> 5.0)
+  - BetterSegmentedControl (~> 0.9)
   - Crashlytics
   - FacebookCore
   - FacebookLogin
   - FacebookShare
+  - FSPagerView
+  - HockeySDK
   - KeychainSwift (~> 7.0)
+  - Koloda (~> 4.3.1)
   - MBProgressHUD (~> 1.0.0)
   - ObjectMapper (~> 3.0.0)
   - ReachabilitySwift (~> 3)
+  - RealmSwift
+  - SwiftInstagram (~> 1.1.0)
+  - SwiftyStarRatingView (~> 1.0)
+  - TPKeyboardAvoiding (~> 1.3)
+  - UICircularProgressRing
   - UIColor_Hex_Swift (~> 3.0.1)
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  AlamofireImage: 2e784dc5d00f04903a52c1d169181469c805c3df
   AlamofireObjectMapper: 5fafc816351cbbc0d486611aaeba7461c0cbad49
+  BetterSegmentedControl: 40b2b6a08bbc59663149624d1b5235efa8d43a3c
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
   Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
@@ -62,12 +95,22 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 6f139173dc63a1deaff4430a55f2fe5bb222d2af
   FBSDKLoginKit: 56a057ca6822535ea0faa25f57a7c41edb697fd4
   FBSDKShareKit: 18a2cd118aef11dd657fe7e8b64bae5c719088b2
+  FSPagerView: 958aba39684e1573755ddcfcc29f7eebb8413cee
+  HockeySDK: 38b7e2726af1ea86ae97ce4b5de33ab0817e3500
   KeychainSwift: 7e15d26b1d6fc504a5eadb89a3e8ab17b2d3573a
+  Koloda: 0d39b2aa188ccd1fac48d752acaf9802e683c625
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   ObjectMapper: 92230db59bf8f341a5c3a3cf0b9fbdde3cf0d87f
+  pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
+  Realm: 6f23fd1f178a09342eac21bfa7c2bf4312a7a180
+  RealmSwift: 695393add1b8f9d5fa75dd16e6355cf3935f71e2
+  SwiftInstagram: 90d5c143d8ebe1c790e06a138b8da3c8f2a9ba16
+  SwiftyStarRatingView: a2b0057700e0adeb8e7442c55d99cb53b531d2f4
+  TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
+  UICircularProgressRing: 653b31f7252b2959e8234f5b9ea5f925da755954
   UIColor_Hex_Swift: 95f718452092a3efc8a827dffd2c04d3237be02d
 
-PODFILE CHECKSUM: 0531eaa025e6c4a65e4fafcb8f21b9423d0ac124
+PODFILE CHECKSUM: 31433d56a1dd0789b4d876591c338aba6f1fe9c1
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.4.0

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Food Journey View Controller-->
+        <scene sceneID="MRg-dA-9jm">
+            <objects>
+                <viewController storyboardIdentifier="FoodJourneyViewController" id="Voj-fb-jzY" customClass="FoodJourneyViewController" customModule="SnapXEats" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SkX-ch-OEI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gEO-36-Lpf">
+                                <rect key="frame" x="0.0" y="72" width="375" height="595"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Voj-fb-jzY" id="dHC-Sn-XEa"/>
+                                    <outlet property="delegate" destination="Voj-fb-jzY" id="9hw-3S-owg"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gEO-36-Lpf" firstAttribute="trailing" secondItem="KCa-HH-IDL" secondAttribute="trailing" id="NnZ-Wm-kUL"/>
+                            <constraint firstItem="gEO-36-Lpf" firstAttribute="top" secondItem="KCa-HH-IDL" secondAttribute="top" constant="8" id="YrR-5k-NOJ"/>
+                            <constraint firstItem="gEO-36-Lpf" firstAttribute="leading" secondItem="KCa-HH-IDL" secondAttribute="leading" id="kcK-Ov-RPY"/>
+                            <constraint firstItem="KCa-HH-IDL" firstAttribute="bottom" secondItem="gEO-36-Lpf" secondAttribute="bottom" id="weh-hh-U5b"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KCa-HH-IDL"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="b2u-lc-2Cs"/>
+                    <connections>
+                        <outlet property="foodJourneyTableView" destination="gEO-36-Lpf" id="cuv-LA-p8W"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T5J-8l-DbA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="232.80000000000001" y="49.925037481259373"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7f3-Ns-OYu">
+            <objects>
+                <navigationController storyboardIdentifier="FoodJourneyNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="th6-Xi-kBf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bfS-ps-P1j">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Voj-fb-jzY" kind="relationship" relationship="rootViewController" id="H34-tQ-GPK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zEQ-re-kbB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-631" y="50"/>
+        </scene>
+    </scenes>
+</document>

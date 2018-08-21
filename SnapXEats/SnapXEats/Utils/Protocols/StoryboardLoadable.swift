@@ -33,4 +33,9 @@ extension UIStoryboard {
         let storyboard = UIStoryboard(name: storyBoardName, bundle: nil)
         return  storyboard.instantiateViewController(withIdentifier: storyBoardId)
     }
+    
+    static func loadNavigationControler(storyBoardName: String, storyBoardId: String) -> UINavigationController {
+        let storyboard = UIStoryboard(name: storyBoardName, bundle: nil)
+        return  storyboard.instantiateViewController(withIdentifier: storyBoardId) as! UINavigationController
+    }
 }

@@ -9,12 +9,6 @@
 import Foundation
 import UIKit
 
-enum LoginAlert {
-    static var loginTitle = "Login"
-    static var messageNoInternet = "You can't login check the Internet first"
-    static var messageSuccess = "Login Succesful"
-    static var loginError = "Server Error in login"
-}
 class SnapXAlert{
     private var alertSnapX: UIAlertController?
     
@@ -25,7 +19,7 @@ class SnapXAlert{
     
     func createAlert(alertTitle: String, message: String, forView: UIViewController) {
         create(alertTitle: alertTitle, message: message, forView: forView)
-        alertSnapX?.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        alertSnapX?.addAction(UIAlertAction(title: SnapXButtonTitle.ok, style: UIAlertActionStyle.default, handler: nil))
     }
     
     func createAlert(alertTitle: String, message: String, forView: UIViewController, withAction: UIAlertAction) {
@@ -39,6 +33,21 @@ class SnapXAlert{
         view = forView
     }
     
+    func showLoationSettingDialog(forView: UIViewController, settingString: String, cancel : @escaping () -> ()) {
+         create(alertTitle: SnapXEatsLocationConstant.locationAlertTitle, message: SnapXEatsLocationConstant.locationAlertMessage, forView: forView)
+        
+        let cancelAction = UIAlertAction(title: NSLocalizedString(SnapXButtonTitle.cancel, comment: ""), style: .cancel, handler: {(UIAlertAction) in
+            cancel()
+        })
+        let settingsAction = UIAlertAction(title: NSLocalizedString(SnapXButtonTitle.settings, comment: ""), style: .default) { (UIAlertAction) in
+            if let url = NSURL(string: settingString) as URL? {
+                UIApplication.shared.openURL(url)
+            }
+        }
+        alertSnapX?.addAction(cancelAction)
+        alertSnapX?.addAction(settingsAction)
+        show()
+    }
     
     func show() {
         if let alert = alertSnapX, let alrtView = view {

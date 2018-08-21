@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>BuildVersion</key>
+	<false/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -21,18 +23,28 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.1</string>
+	<string>0.8</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb160584371233936</string>
+				<string>fb240700273135016</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string></string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>snapxeats</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>0.1</string>
+	<string>806</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -48,15 +60,21 @@
 		</array>
 	</dict>
 	<key>FacebookAppID</key>
-	<string>160584371233936</string>
+	<string>240700273135016</string>
 	<key>FacebookDisplayName</key>
 	<string>SnapXEats</string>
+	<key>InstagramClientId</key>
+	<string>739cbd7da5c048fbab575487859602c9</string>
+	<key>InstagramRedirectURI</key>
+	<string>http://www.snapxeats.com/</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
 		<string>fb-messenger-api</string>
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
+		<string>uber</string>
+		<string>instagram</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
@@ -67,11 +85,29 @@
 		<key>NSExceptionDomains</key>
 		<dict/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>SnapXEats want to use your Camera to take Snap n Share Photos</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>SnapXEats will use your location to notify you to checkin into restaurant once arrived.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Will you allow SnapXEats app to always use your location to show you cuisines based on your preferences</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>SnapXEats want to use your location to show cuisine based on your preferences</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>SnapXEats want to use your Microphone to record Snap n Share Audio Review</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>SnapXeats app requires access to the photo library.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Roboto-Light.ttf</string>
 		<string>Roboto-Regular.ttf</string>
 		<string>Roboto-Medium.ttf</string>
+		<string>Roboto-Bold.ttf</string>
+		<string>Roboto-Italic.ttf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>FlashScreen</string>

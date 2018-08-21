@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="66" id="KGk-i7-Jjw" customClass="SavedLocationTableViewCell" customModule="SnapXEats" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="354" height="68.5"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="354" height="68"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FT5-tQ-mdY">
+                        <rect key="frame" x="57" y="13" width="277" height="19"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="19" id="0Eb-1R-A08"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                        <color key="textColor" red="0.36470588235294116" green="0.36470588235294116" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_icon" translatesAutoresizingMaskIntoConstraints="NO" id="7z4-eo-7pi">
+                        <rect key="frame" x="20" y="16" width="18" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="18" id="25E-xH-jOK"/>
+                            <constraint firstAttribute="height" constant="17" id="rVb-Xh-trM"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4278 Water Street, Edison, NJ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Th5-lo-yJy">
+                        <rect key="frame" x="57" y="39" width="277" height="16"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                        <color key="textColor" red="0.36470588240000001" green="0.36470588240000001" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Th5-lo-yJy" secondAttribute="trailing" constant="20" id="C5c-ne-zC5"/>
+                    <constraint firstItem="Th5-lo-yJy" firstAttribute="leading" secondItem="FT5-tQ-mdY" secondAttribute="leading" id="MIE-eJ-YDp"/>
+                    <constraint firstItem="FT5-tQ-mdY" firstAttribute="leading" secondItem="7z4-eo-7pi" secondAttribute="trailing" constant="19" id="TnR-Vt-8q3"/>
+                    <constraint firstItem="FT5-tQ-mdY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="dDc-jo-0So"/>
+                    <constraint firstItem="7z4-eo-7pi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="dcB-Oo-FPX"/>
+                    <constraint firstAttribute="bottom" secondItem="Th5-lo-yJy" secondAttribute="bottom" constant="13" id="m6D-xb-Qv6"/>
+                    <constraint firstItem="7z4-eo-7pi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="mDA-mX-hQD"/>
+                    <constraint firstItem="Th5-lo-yJy" firstAttribute="top" secondItem="FT5-tQ-mdY" secondAttribute="bottom" constant="7" id="pG8-ut-qPy"/>
+                    <constraint firstAttribute="trailing" secondItem="FT5-tQ-mdY" secondAttribute="trailing" constant="20" id="tFp-a6-ms9"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="addressImageView" destination="7z4-eo-7pi" id="gPW-I5-N1N"/>
+                <outlet property="addressLabel" destination="Th5-lo-yJy" id="1uV-1D-kPt"/>
+                <outlet property="titleLabel" destination="FT5-tQ-mdY" id="7Vc-Um-hgO"/>
+            </connections>
+            <point key="canvasLocation" x="51" y="65"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="home_icon" width="17" height="13"/>
+    </resources>
+</document>

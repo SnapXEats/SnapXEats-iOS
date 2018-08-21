@@ -8,6 +8,13 @@ import UIKit
 
 extension UIView {
     
+    enum ViewSides {
+        case top
+        case bottom
+        case left
+        case right
+    }
+    
     func superview<T>(ofType type: T.Type) -> T? where T: UIView {
         return superview as? T ?? superview?.superview(ofType: type)
     }
@@ -36,5 +43,84 @@ extension UIView {
         self.layer.borderColor = color.cgColor
         self.layer.borderWidth = width
         self.layer.cornerRadius = radius
+    }
+    
+    func addShadow(width: CGFloat = 1.0, height: CGFloat = 1.0) {
+        self.layer.shadowOpacity = 0.6
+        self.layer.shadowRadius = 1.0
+        self.layer.shadowColor = UIColor.rgba(202.0, 202.0, 202.0, 1).cgColor
+        self.layer.shadowOffset = CGSize(width: width, height: height)
+        self.layer.masksToBounds = false
+    }
+    
+    func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = path.cgPath
+        self.layer.mask = maskLayer
+    }
+    
+    func addViewBorderWithColor(color: UIColor, width: CGFloat, side: ViewSides) {
+        var frame = CGRect()
+        switch side {
+            case .top: frame = CGRect(x:0,y: 0, width:self.frame.size.width, height:width)
+            case .bottom: frame = CGRect(x:0, y:self.frame.size.height - width, width:self.frame.size.width, height:width)
+            case .left: frame = CGRect(x:0, y:0, width:width, height:self.frame.size.height)
+            case .right: frame = CGRect(x: self.frame.size.width - width,y: 0, width:width, height:self.frame.size.height)
+        }
+        
+        let border = CALayer()
+        border.backgroundColor = color.cgColor
+        border.frame = frame
+        self.layer.addSublayer(border)
+    }
+    
+    func fullShadow(color: UIColor, opacity: Float = 0.7, offSet: CGSize, radius: CGFloat = 2) {
+        layer.shadowColor = color.cgColor
+        layer.shadowOpacity = opacity
+        layer.shadowOffset = offSet
+        layer.shadowRadius = radius
+    }
+    
+    func image() -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, isOpaque, 0)
+        guard let context = UIGraphicsGetCurrentContext() else {
+            return UIImage()
+        }
+        layer.render(in: context)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image!
+    }
+    
+    /// Adding provision to provide cornerRadius from Interface builder
+    @IBInspectable var cornerRadius: CGFloat {
+        get {
+            return layer.cornerRadius
+        }
+        set {
+            layer.cornerRadius = newValue
+            layer.masksToBounds = newValue > 0
+        }
+    }
+    
+    /// Adding provision to provide borderWidth from Interface builder
+    @IBInspectable var borderWidth: CGFloat {
+        get {
+            return layer.borderWidth
+        }
+        set {
+            layer.borderWidth = newValue
+        }
+    }
+    
+    /// Adding provision to provide borderColor from Interface builder
+    @IBInspectable var borderColor: UIColor? {
+        get {
+            return UIColor(cgColor: layer.borderColor!)
+        }
+        set {
+            layer.borderColor = newValue?.cgColor
+        }
     }
 }

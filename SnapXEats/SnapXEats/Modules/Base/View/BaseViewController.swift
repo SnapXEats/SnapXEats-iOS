@@ -4,25 +4,39 @@
 
 import UIKit
 import MBProgressHUD
+import ReachabilitySwift
 
-class BaseViewController: UIViewController, BaseView {
+class BaseViewController: UIViewController {
 
     // MARK: Properties
     
     var progressHUD: MBProgressHUD?
     
+    var loginAlert = SnapXAlert.singleInstance
+    
     fileprivate var internalScrollView: UIScrollView?
     
+    var isProgressHUD = false
     // MARK: Methods
     
     func showLoading() {
-        let topmostViewController = findTopmostViewController()
-        progressHUD = MBProgressHUD.showAdded(to: topmostViewController.view, animated: true)
-        progressHUD?.mode = MBProgressHUDMode.indeterminate
+        if isProgressHUD == false {
+            isProgressHUD = true
+            let topmostViewController = findTopmostViewController()
+            progressHUD = MBProgressHUD.showAdded(to: topmostViewController.view, animated: true)
+            progressHUD?.mode = MBProgressHUDMode.indeterminate
+        }
     }
     
     func hideLoading() {
-        self.progressHUD?.hide(animated: true)
+        if isProgressHUD {
+            self.progressHUD?.hide(animated: true)
+            isProgressHUD = false
+        }
+    }
+    
+    @objc func internetConnected() {
+        // Sub class should have thre own implemetation
     }
     
     func showMessage(_ message: String?, withTitle title: String?) {
@@ -42,14 +56,14 @@ class BaseViewController: UIViewController, BaseView {
     
     func setupKeyboardNotifications(with scrollView: UIScrollView?) {
         internalScrollView = scrollView
-       // NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-       // NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        // NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        // NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     // MARK: Keyboard Notifications
     func keyboardWillShow(notification: NSNotification) {
         guard let info = notification.userInfo,
-              let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size else { return }
+            let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size else { return }
         let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height + 15.0, right: 0.0)
         
         internalScrollView?.contentInset = contentInsets
@@ -69,5 +83,35 @@ class BaseViewController: UIViewController, BaseView {
         let contentInsets = UIEdgeInsets.zero
         internalScrollView?.contentInset = contentInsets
         internalScrollView?.scrollIndicatorInsets = contentInsets
+    }
+    
+    func error(result: NetworkResult) {
+        loginAlert.createAlert(alertTitle: AlertTitle.errorTitle, message: AlertMessage.messageNoInternet,forView: self)
+        loginAlert.show()
+    }
+    
+    func noInternet(result: NetworkResult) {
+        loginAlert.createAlert(alertTitle: AlertTitle.errorTitle, message: AlertMessage.messageNoInternet,forView: self)
+        loginAlert.show()
+    }
+    
+    func success(result: Any?) {
+        loginAlert.createAlert(alertTitle: AlertTitle.errorTitle, message: AlertMessage.messageSuccess,forView: self)
+        loginAlert.show()
+    }
+    
+    func cancel(result: NetworkResult) {
+        loginAlert.createAlert(alertTitle: AlertTitle.errorTitle, message: AlertMessage.cancelRequest,forView: self)
+        loginAlert.show()
+    }
+    
+    func checkRechability() -> Bool {
+        if SnapXEatsNetworkManager.shared.isConnectedToInternet  == false {
+            hideLoading()
+            noInternet(result: .noInternet)
+            return false
+        } else {
+            return true
+        }
     }
 }

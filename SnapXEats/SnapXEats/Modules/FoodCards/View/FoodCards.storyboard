@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Food Cards View Controller-->
+        <scene sceneID="LXt-sH-03S">
+            <objects>
+                <viewController storyboardIdentifier="FoodCardsViewController" id="PVr-ZQ-ZIz" customClass="FoodCardsViewController" customModule="SnapXEats" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OZx-SU-l0N">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yDu-HP-HSF">
+                                <rect key="frame" x="20" y="124" width="335" height="368.5"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yZP-OQ-Zyj" customClass="KolodaView" customModule="Koloda">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="368.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="yDu-HP-HSF" secondAttribute="height" multiplier="1:1.1" id="8ax-cU-lxS"/>
+                                    <constraint firstItem="yZP-OQ-Zyj" firstAttribute="leading" secondItem="yDu-HP-HSF" secondAttribute="leading" id="Jtb-MG-Slu"/>
+                                    <constraint firstAttribute="trailing" secondItem="yZP-OQ-Zyj" secondAttribute="trailing" id="WxP-2g-cnU"/>
+                                    <constraint firstItem="yZP-OQ-Zyj" firstAttribute="top" secondItem="yDu-HP-HSF" secondAttribute="top" id="go3-ox-f4L"/>
+                                    <constraint firstAttribute="bottom" secondItem="yZP-OQ-Zyj" secondAttribute="bottom" id="n00-XI-lTx"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D8N-1e-PCl">
+                                <rect key="frame" x="47" y="546" width="282" height="70"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6do-gt-WaK">
+                                        <rect key="frame" x="20" y="16" width="38" height="38"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="38" id="f2q-Gr-VyQ"/>
+                                            <constraint firstAttribute="width" constant="38" id="hFv-Ul-JMu"/>
+                                        </constraints>
+                                        <state key="normal" image="undo"/>
+                                        <connections>
+                                            <action selector="undoButtonAction:" destination="PVr-ZQ-ZIz" eventType="touchUpInside" id="xuU-BA-wEB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6O6-Ad-9oa" userLabel="dislikeButton">
+                                        <rect key="frame" x="72" y="2" width="66" height="66"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="66" id="AL4-Oi-RZI"/>
+                                            <constraint firstAttribute="width" constant="66" id="uWB-HS-6U0"/>
+                                        </constraints>
+                                        <state key="normal" image="cross">
+                                            <color key="titleColor" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="disLikeButtonAction:" destination="PVr-ZQ-ZIz" eventType="touchUpInside" id="f4d-1E-Gfk"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xjo-O2-KrF" userLabel="likeButton">
+                                        <rect key="frame" x="146" y="3" width="64" height="64"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="64" id="bKa-NQ-jPV"/>
+                                            <constraint firstAttribute="height" constant="64" id="iAY-7N-TTc"/>
+                                        </constraints>
+                                        <state key="normal" image="heart">
+                                            <color key="titleColor" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="favouriteButtonAction:" destination="PVr-ZQ-ZIz" eventType="touchUpInside" id="KPG-ac-f79"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUt-w3-E1e">
+                                        <rect key="frame" x="224" y="16.5" width="38" height="38"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="*" image="star">
+                                            <color key="titleColor" red="0.90196078430000004" green="0.46274509800000002" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="starButtonAction:" destination="PVr-ZQ-ZIz" eventType="touchUpInside" id="8E7-UA-7Ou"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="6do-gt-WaK" firstAttribute="leading" secondItem="D8N-1e-PCl" secondAttribute="leading" constant="20" id="0cU-Vh-VOc"/>
+                                    <constraint firstItem="LUt-w3-E1e" firstAttribute="centerY" secondItem="D8N-1e-PCl" secondAttribute="centerY" id="7Gc-09-Xca"/>
+                                    <constraint firstItem="6do-gt-WaK" firstAttribute="centerY" secondItem="D8N-1e-PCl" secondAttribute="centerY" id="9p8-HB-ROD"/>
+                                    <constraint firstAttribute="height" constant="70" id="HbB-ev-n0Q"/>
+                                    <constraint firstItem="Xjo-O2-KrF" firstAttribute="centerY" secondItem="D8N-1e-PCl" secondAttribute="centerY" id="Mrn-lV-fpm"/>
+                                    <constraint firstAttribute="trailing" secondItem="LUt-w3-E1e" secondAttribute="trailing" constant="20" id="NvF-ea-aOC"/>
+                                    <constraint firstItem="Xjo-O2-KrF" firstAttribute="leading" secondItem="6O6-Ad-9oa" secondAttribute="trailing" constant="8" id="NzZ-bc-saC"/>
+                                    <constraint firstItem="LUt-w3-E1e" firstAttribute="height" secondItem="6do-gt-WaK" secondAttribute="height" id="PQn-ru-zv4"/>
+                                    <constraint firstItem="6O6-Ad-9oa" firstAttribute="centerY" secondItem="D8N-1e-PCl" secondAttribute="centerY" id="dKh-dK-cZW"/>
+                                    <constraint firstItem="LUt-w3-E1e" firstAttribute="leading" secondItem="Xjo-O2-KrF" secondAttribute="trailing" constant="14" id="eJa-7N-VRn"/>
+                                    <constraint firstItem="6O6-Ad-9oa" firstAttribute="leading" secondItem="6do-gt-WaK" secondAttribute="trailing" constant="14" id="f6E-Fl-ZJN"/>
+                                    <constraint firstItem="LUt-w3-E1e" firstAttribute="width" secondItem="6do-gt-WaK" secondAttribute="width" id="gnw-1d-ZiY"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="yDu-HP-HSF" firstAttribute="leading" secondItem="4TV-Kl-tqH" secondAttribute="leading" constant="20" id="ICq-Kq-xHJ"/>
+                            <constraint firstItem="D8N-1e-PCl" firstAttribute="centerX" secondItem="OZx-SU-l0N" secondAttribute="centerX" id="JgB-Ct-JUa"/>
+                            <constraint firstItem="4TV-Kl-tqH" firstAttribute="bottom" secondItem="D8N-1e-PCl" secondAttribute="bottom" constant="51" id="bhd-RJ-O2K"/>
+                            <constraint firstItem="yDu-HP-HSF" firstAttribute="top" secondItem="4TV-Kl-tqH" secondAttribute="top" constant="60" id="m5g-am-gvy"/>
+                            <constraint firstItem="4TV-Kl-tqH" firstAttribute="trailing" secondItem="yDu-HP-HSF" secondAttribute="trailing" constant="20" id="w9e-Lr-D1p"/>
+                            <constraint firstItem="yDu-HP-HSF" firstAttribute="centerX" secondItem="OZx-SU-l0N" secondAttribute="centerX" id="yVG-Ed-lVB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4TV-Kl-tqH"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="g0V-s3-Rqf">
+                        <barButtonItem key="rightBarButtonItem" image="map_icon" id="Tif-uD-TTq">
+                            <color key="tintColor" red="0.36470588235294116" green="0.36470588235294116" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="mapButtonAction:" destination="PVr-ZQ-ZIz" id="xT5-14-tLH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="disLikeButton" destination="6O6-Ad-9oa" id="kFg-AG-e5d"/>
+                        <outlet property="kolodaView" destination="yZP-OQ-Zyj" id="wac-SE-htp"/>
+                        <outlet property="likeButton" destination="Xjo-O2-KrF" id="IbX-jW-yUy"/>
+                        <outlet property="mapButton" destination="Tif-uD-TTq" id="gnJ-dU-pBu"/>
+                        <outlet property="undoButton" destination="6do-gt-WaK" id="y7g-6A-7gN"/>
+                        <outlet property="wishListButton" destination="LUt-w3-E1e" id="viZ-Fa-CwV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rOa-bO-Hsq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-906" y="-2544"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cross" width="65" height="64"/>
+        <image name="heart" width="64" height="64"/>
+        <image name="map_icon" width="24" height="22"/>
+        <image name="star" width="38" height="38"/>
+        <image name="undo" width="38" height="38"/>
+    </resources>
+</document>

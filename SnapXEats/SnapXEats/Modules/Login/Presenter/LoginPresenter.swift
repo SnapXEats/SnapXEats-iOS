@@ -7,7 +7,8 @@ import Foundation
 
 class LoginPresenter {
     // MARK: Properties
-    private var view: LoginView?
+
+    var baseView: BaseView?
     
     var router: LoginViewWireframe?
     
@@ -18,59 +19,44 @@ class LoginPresenter {
 }
 
 extension LoginPresenter: LoginViewPresentation {
-    func loginUsingFaceBook() {
-        interactor?.sendFaceBookLoginRequest(view: view)
-    }
-    
-    func loginUsingInstagram() {
-        if let router = router, let interact = interactor, interact.checkRechability() == true {
-           let  instaView = router.loadInstagramView()
-            RootRouter.singleInstance.presentLoginInstagramScreen(instaView)
-        }
-    }
-    
-    func setView(view: LoginView) {
-        self.view = view
-    }
 
-    //TODO: Implement other methods from presenter->view here
+    func loginUsingInstagram() {
+        router?.presentScreen(screen: .instagram(sharedLoginFromSkip: false, rootController: nil))
+    }
     
+    func loginUsingFaceBook() {
+        interactor?.sendFaceBookLoginRequest(view: baseView)
+    }
+    
+    func skipUserLogin() {
+        presentFirstTimeUserScreen()
+    }
 }
 
-extension LoginPresenter: Result {
+extension LoginPresenter: LoginViewInteractorOutput {
     
-    func result(result: NetworkResult) {
+    func response(result: NetworkResult) {
+        baseView?.hideLoading()
         switch result {
-        case .success:
-            view?.resultSuccess(result: NetworkResult.success)
+        case .success(_):
+                presentFirstTimeUserScreen()
         case .error:
-            view?.resultError(result: NetworkResult.error)
+            baseView?.error(result: NetworkResult.error)
         case .fail:
-            view?.resultError(result: NetworkResult.error)
+            baseView?.error(result: NetworkResult.error)
         case  .noInternet:
-            view?.resultNOInternet(result: NetworkResult.noInternet)
+            baseView?.noInternet(result: NetworkResult.noInternet)
         case  .cancelRequest:
-            view?.resultNOInternet(result: NetworkResult.noInternet)
+            baseView?.cancel(result: NetworkResult.cancelRequest)
             
         }
     }
     
     func onLoginReguestFailure(message: String) {
-        view?.showError(message)
-    }
-    //TODO: Implement other methods from interactor->presenter here
-}
-
-extension LoginPresenter: LoginViewPresentationInstagram {
-    func instagramLoginRequest(request: URLRequest) -> Bool {
-        guard let interactor = interactor else {
-            return false
-        }
-        return interactor.sendInstagramRequest(request: request)
+        baseView?.showError(message)
     }
     
-    func removeInstagramWebView() {
-        RootRouter.singleInstance.presentFirstScreen()
-        //router?.loadLoginModule()
+    private func presentFirstTimeUserScreen() {
+        router?.presentScreen(screen: .firsTimeUser)
     }
 }

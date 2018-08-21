@@ -1,0 +1,44 @@
+//
+//  FoodCardsRouter.swift
+//  SnapXEats
+//
+//  Created by Durgesh Trivedi on 23/01/18.
+//  Copyright © 2018 SnapXEats. All rights reserved.
+//
+
+import Foundation
+import UIKit
+
+class FoodCardsRouter {
+
+    // MARK: Properties
+
+    weak var view: UIViewController?
+    private init() {}
+    // MARK: Static methods
+    static let shared = FoodCardsRouter()
+    
+     func loadFoodCardModule() -> FoodCardsViewController {
+        
+        let viewController = UIStoryboard.loadViewController() as FoodCardsViewController
+        
+        let presenter = FoodCardsPresenter.shared
+        let router = FoodCardsRouter.shared
+        let interactor = FoodCardsInteractor.shared
+
+        viewController.presenter =  presenter
+
+        presenter.baseView = viewController
+        presenter.router = router
+        presenter.interactor = interactor
+
+        router.view = viewController
+
+        interactor.output = presenter
+
+        return viewController
+    }
+}
+
+extension FoodCardsRouter: FoodCardsWireframe {
+}

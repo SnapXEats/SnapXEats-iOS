@@ -61,5 +61,48 @@ extension UIViewController: UIGestureRecognizerDelegate {
     }
 }
 
+extension UIViewController { // Navigation Item Customizations
+
+    func customizeNavigationItem(title: String = "", isDetailPage: Bool) {
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationItem.backBarButtonItem?.title = nil
+        self.navigationItem.title = title
+        self.navigationController?.navigationBar.addShadow()
+        
+        
+        if isDetailPage == false {
+            // Left Button - Menu
+            self.navigationItem.leftBarButtonItem = setMenuButton()
+        } else {
+            self.navigationItem.leftBarButtonItem = nil
+        }
+        
+        let leftItem: UIBarButtonItem = UIBarButtonItem()
+        leftItem.title = ""
+        self.navigationItem.backBarButtonItem = leftItem
+    }
+    
+    private func setTitleLogo() -> UIImageView {
+        let titleLogoImage = UIImageView(frame: CGRect(x:0, y:0, width: 134, height: 30))
+        titleLogoImage.contentMode = .scaleAspectFit
+        titleLogoImage.image = UIImage(named: SnapXEatsImageNames.navigationLogo)
+        return titleLogoImage
+    }
+    
+    
+    private func setMenuButton() -> UIBarButtonItem {
+        let menuButton:UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 21, height: 18))
+        menuButton.setImage(UIImage(named: SnapXEatsImageNames.navigationMenu), for: UIControlState.normal)
+        menuButton.addTarget(self, action: #selector(menuButtonTapped), for: UIControlEvents.touchUpInside)
+        return  UIBarButtonItem(customView: menuButton)
+    }
+    
+
+    @objc func menuButtonTapped() {
+        //Menu Button Action
+        CheckInHelper.shared.userCheckedOut()
+        RootRouter.shared.updateDrawerState(state: .opened)
+    }
+}
 extension UIViewController: ReusableView { }
 

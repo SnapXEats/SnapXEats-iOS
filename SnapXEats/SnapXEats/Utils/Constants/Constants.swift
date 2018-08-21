@@ -16,15 +16,6 @@ enum Constants {
         static let login = baseURL + "auth/"
     }
     
-    enum Storyboard {
-        static let loginStoryboard = "Login"
-    }
-    
-    enum StoryboardIdentifier {
-        static let loginViewControllerID = "LoginViewController"
-        static let instagramViewControllerID = "InstagramViewController"
-    }
-    
     enum Label {
         static let padding = CGFloat(10)
         static let edgeInsets = UIEdgeInsetsMake(0, 10, 0, 0)
@@ -34,6 +25,12 @@ enum Constants {
         static let SFTextLight = "SanFranciscoText-Light"
         static let SFTextMedium = "SanFranciscoText-Medium"
         static let SFTextRegular = "SanFranciscoText-Regular"
+        static let roboto_regular = "Roboto-Regular"
+        static let roboto_bold = "Roboto-Bold"
+    }
+    
+    enum FontSize {
+        static let OlderFoodJourneyHeader:CGFloat = 11.0
     }
 
 }
