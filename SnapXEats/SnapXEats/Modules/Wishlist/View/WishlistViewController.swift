@@ -187,7 +187,7 @@ extension WishlistViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     private func deleteActionForRowInTableView(tableView: UITableView) -> UITableViewRowAction {
-        let deleteAction = UITableViewRowAction(style: .default, title: "") { (action, indexPath) in
+        let deleteAction = UITableViewRowAction(style: .default, title: "       ") { (action, indexPath) in
             self.presenter?.deleteWishListItem(item: self.wishItems[indexPath.row])
             self.wishItems.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
