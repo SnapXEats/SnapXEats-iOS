@@ -23,11 +23,11 @@ class LoginPopUpInteractor {
 }
 
 extension LoginPopUpInteractor: LoginPopUpInteractorInPut {
-    
     func sendLoginFaceBook(view: UIViewController) {
         if  let view = view as? LoginPopUpViewController, view.checkRechability() {
             let loginManager = LoginManager()
-            loginManager.logIn(publishPermissions: [.publishActions], viewController: view) { [weak self] loginResult in
+            
+            loginManager.logIn(readPermissions: [ .publicProfile, .email, .userFriends, ], viewController: view) { [weak self] loginResult in
                 switch loginResult {
                 case .failed( _):
                     self?.output?.response(result: NetworkResult.error)
@@ -36,13 +36,10 @@ extension LoginPopUpInteractor: LoginPopUpInteractorInPut {
                 case .success( _, _, let accessToken):
                     view.showLoading()
                     self?.updateLoginUserData(accessToken: accessToken)
-                   // self?.output?.response(result: .success(data: true))
                 }
             }
         }
     }
-    
-    
     
     private func updateLoginUserData(accessToken: AccessToken) {
         // Send Login User info to server
@@ -67,8 +64,12 @@ extension LoginPopUpInteractor: LoginPopUpInteractorInPut {
                 case .success(_):
                     if let userId = accessToken.userId {
                         SnapXEatsLoginHelper.shared.saveloginInfo(userId: userId, firstTimeLogin: firstTimeUser, plateform: SnapXEatsConstant.platFormFB)
+                        self?.saveWishList(userInfo: userInfo)
+                        self?.sendUserPreferenceRequest(path: SnapXEatsWebServicePath.userPreferene, completionHandler: nil)
                         // Save also as second time login as FB, so there will no login FB dialog show again
-                        SocialPlatformHelper.shared.saveSecondSocialLoginInfoAsFB(accessToken: accessToken)
+                        
+                        // TODO :: Check the following line is needed or not
+//                        SocialPlatformHelper.shared.saveSecondSocialLoginInfoAsFB(accessToken: accessToken)
                         self?.output?.response(result: .success(data: true))
                     } else {
                         self?.output?.response(result: .error)
@@ -110,4 +111,36 @@ extension LoginPopUpInteractor: LoginPopUpInteractorInPut {
     }
     
     // TODO: Implement use case methods
+    private func saveWishList(userInfo: UserProfile?) {
+        if let list = userInfo?.userInfo?.wishList, list.count > 0 {
+            FoodCardActionHelper.shared.addWishListWhenLogin(wishList: list)
+        }
+    }
+    
+    func sendUserPreferenceRequest(path: String, completionHandler: (()-> ())?) {
+        SnapXEatsApi.snapXRequestObjectWithParameters(path: path, parameters: [:]) {[weak self] (response: DataResponse<FirstTimeUserPreference>) in
+            let result = response.result
+            self?.preferenceDetails(data: result, completionHandler: completionHandler)
+        }
+    }
+    
+    
+    // TODO: Implement use case methods
+    func preferenceDetails(data: Result<FirstTimeUserPreference>, completionHandler: (()-> ())?) {
+        switch data {
+        case .success(let value):
+            if let preferecne = value.userPreferences {
+                PreferenceHelper.shared.saveFirstTimeLoginPreferecne(storedPreferecne: preferecne)
+                if  let completion = completionHandler {
+                    completion()  // This will dissmiss the instagramviewControl
+                }
+            }
+            output?.response(result: .success(data: value))  // This will navigate to the next screen
+        case .failure( _):
+            if  let completion = completionHandler {
+                completion()  //This will dissmiss the instagramviewControl
+            }
+            output?.response(result: NetworkResult.noInternet)
+        }
+    }
 }
