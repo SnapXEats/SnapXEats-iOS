@@ -11,8 +11,8 @@ import UIKit
 
 enum InstagramConstant {
     static let INSTAGRAM_AUTHURL = "https://api.instagram.com/oauth/authorize/"
-    static let INSTAGRAM_CLIENT_ID = "739cbd7da5c048fbab575487859602c9"
-    static let INSTAGRAM_CLIENTSERCRET = "9df371b962c945e69c2e3f5603ab1a32"
+    static let INSTAGRAM_CLIENT_ID = "3e7db9eb1faf436c923e4a3dfc1790fc"
+    static let INSTAGRAM_CLIENTSERCRET = "006f9837dea24bf8846cb204cad55556"
     static let INSTAGRAM_REDIRECT_URI = "http://www.snapxeats.com"
     static let INSTAGRAM_ACCESS_TOKEN = "access_token"
     static let INSTAGRAM_SCOPE = "follower_list+public_content" /* add whatever scope you need https://www.instagram.com/developer/authorization/ */
@@ -138,7 +138,7 @@ enum SnapXEatsImageNames {
 
 enum SnapXEatsPlaceSearchConstants {
     static let autocompleteApiUrl = "https://maps.googleapis.com/maps/api/place/autocomplete/json"
-    static let apiKey = "AIzaSyBhb0GdrMqn4ge5QLgxkybQv66M6_bu7y0"
+    static let apiKey = "AIzaSyBthIjFTzaJSyk_ySUVVJ0Jkks7AukFJZQ"
     static let components = "country:us"
     static let detailsApiUrl = "https://maps.googleapis.com/maps/api/place/details/json"
 }
@@ -296,7 +296,7 @@ enum UberAppConstants {
 enum SnapXEatsDirectionConstants {
     static let pingExamValidatedString = "Congratulations! Your exam has been validated. You have %@ to start this exam.\n\n"
     static let directionApiUrl = "https://maps.googleapis.com/maps/api/directions/json?mode=driving&key=%@&origin=%@&destination=%@"
-    static let apiKey = "AIzaSyA0wc__o_uvrQwR-Z_L-DzD3OlwPMmyG34"
+    static let apiKey = "AIzaSyBthIjFTzaJSyk_ySUVVJ0Jkks7AukFJZQ"
     static let durationTextPrefix = " Away"
 }
 

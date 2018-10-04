@@ -52,12 +52,11 @@ class LoginPopUpViewController: BaseViewController, StoryboardLoadable {
     }
     
     override func success(result: Any?) {
-        if let result = result as? Bool, result == true, let navigationController = rootController, let _ = smartPhoto?.restaurant_item_id {
-            CheckInHelper.shared.updateNonLoggedInToLoggedInCheckIn() 
-            presenter?.presentScreen(screen: .socialLoginFromLoginPopUp(smartPhoto_Draft_Stored_id: smartPhoto_Draft_Stored_id, parentController: navigationController))
+        if let result = result as? Bool, result == true, let _ = smartPhoto?.restaurant_item_id {
+            CheckInHelper.shared.updateNonLoggedInToLoggedInCheckIn()
+            self.dismiss(animated: true, completion: nil)
         }
     }
-    
     
     func showShaingErrorDialog(completionHandler: (() -> ())?) {
         let Ok = UIAlertAction(title: SnapXButtonTitle.ok, style: UIAlertActionStyle.default, handler: { action in
@@ -73,5 +72,4 @@ extension LoginPopUpViewController: LoginPopUpView {
     func initView() {
         
     }
-    
 }

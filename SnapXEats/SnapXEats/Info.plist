@@ -29,7 +29,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb240700273135016</string>
+				<string>fb1899167340378268</string>
 			</array>
 		</dict>
 		<dict>
@@ -60,11 +60,11 @@
 		</array>
 	</dict>
 	<key>FacebookAppID</key>
-	<string>240700273135016</string>
+	<string>1899167340378268</string>
 	<key>FacebookDisplayName</key>
 	<string>SnapXEats</string>
 	<key>InstagramClientId</key>
-	<string>739cbd7da5c048fbab575487859602c9</string>
+	<string>3e7db9eb1faf436c923e4a3dfc1790fc</string>
 	<key>InstagramRedirectURI</key>
 	<string>http://www.snapxeats.com/</string>
 	<key>LSApplicationQueriesSchemes</key>
