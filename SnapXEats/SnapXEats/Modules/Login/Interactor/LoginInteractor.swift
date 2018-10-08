@@ -27,7 +27,7 @@ extension LoginInteractor: LoginViewInteractorInput {
         if  let view = view as? LoginViewController, checkRechability() {
             let loginManager = LoginManager()
            
-            loginManager.logIn(readPermissions: [ .publicProfile, .email, .userFriends, ], viewController: view) { [weak self] loginResult in
+            loginManager.logIn(readPermissions: [ .publicProfile, .email, ], viewController: view) { [weak self] loginResult in
                 switch loginResult {
                 case .failed( _):
                     self?.output?.response(result: NetworkResult.error)
