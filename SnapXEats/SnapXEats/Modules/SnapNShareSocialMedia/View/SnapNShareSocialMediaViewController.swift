@@ -86,7 +86,7 @@ class SnapNShareSocialMediaViewController: BaseViewController, StoryboardLoadabl
     }
     
     func sharingDialogFB() {
-        guard let shareDetails = self.shareDetails, let shareURL = URL(string: shareDetails.dish_image_url ?? "") else {
+        guard let shareDetails = self.shareDetails, let shareURL = URL(string: shareDetails.shared_dish_image_url ?? "") else {
             return
         }
         
