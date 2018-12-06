@@ -265,7 +265,6 @@ enum SnapXEatsAppDefaults {
 
 enum SnapXEatsSettingsURL {
     static let appLocationSettings = UIApplicationOpenSettingsURLString
-    static let deviceLocationSetting = "App-Prefs:root=Privacy&path=LOCATION" // There is a bug in ios 11 because of that it is not oppening the URL
 }
 
 enum SnapXEatsConstant {
