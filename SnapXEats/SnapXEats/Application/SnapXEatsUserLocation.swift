@@ -54,9 +54,7 @@ extension SnapXEatsUserLocation {
         let status = CLLocationManager.authorizationStatus()
         let currenctStatus = (status  == .denied ||  status  == .restricted)
         let locationServicesEnabled = CLLocationManager.locationServicesEnabled()
-        if   locationServicesEnabled == false {
-            SnapXAlert.singleInstance.showLoationSettingDialog(forView: currentView, settingString: SnapXEatsSettingsURL.deviceLocationSetting) { /*Empty block */}
-        } else if locationServicesEnabled && currenctStatus && permissionDenied {
+        if   locationServicesEnabled == false || (locationServicesEnabled && currenctStatus && permissionDenied) {
             SnapXAlert.singleInstance.showLoationSettingDialog(forView: currentView, settingString: SnapXEatsSettingsURL.appLocationSettings) { /*Empty block */}
         } else {
             checkLocationStatus()

@@ -14,13 +14,16 @@ class SnapNShare: Mappable {
     var restaurant_dish_id: String?
     var dish_image_url: String?
     var message: String?
+    var shared_dish_image_url: String?
+    
     required init?(map: Map) {
     }
     
     func mapping(map: Map) {
-        restaurant_name     <- map["restaurant_name"]
-        restaurant_dish_id  <- map["restaurant_dish_id"]
-        dish_image_url      <- map["dish_image_url"]
-        message             <- map["message"]
+        restaurant_name       <- map["restaurant_name"]
+        restaurant_dish_id    <- map["restaurant_dish_id"]
+        dish_image_url        <- map["dish_image_url"]
+        message               <- map["message"]
+        shared_dish_image_url <- map["shared_dish_image_url"]
     }
 }
